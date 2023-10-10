@@ -1,0 +1,10 @@
+node_modules
+.next
+dist
+*.md
+*.json
+*.config.js
+*.d.ts
+.github
+.prettierrc.json
+*.yml
