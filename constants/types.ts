@@ -18,7 +18,7 @@ export type CarouselSlideType = {
 export type CarouselType = {
   fields: {
     name: string;
-    slides: CarouselSlideType[];
+    slides?: CarouselSlideType[];
   }
 };
 
@@ -31,7 +31,8 @@ export type PageSectionType = {
     image: ImageType;
     columnCount: number;
     reverseOrder: boolean;
-    slides: CarouselSlideType;
+    slides: CarouselSlideType[];
+    backgroundColor: string;
   };
 };
 

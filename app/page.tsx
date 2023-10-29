@@ -17,8 +17,10 @@ import {
 export default async function Home() {
   const page = await getPage() as LandingPageType;
 
+  console.log(JSON.stringify(page, null, 2));
+
   return (
-    <main className="p-10">
+    <main>
       {page.sections.map((section: PageSectionType) => (
         <PageSection key={section.fields.title} section={section} />
       ))}
