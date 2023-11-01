@@ -2,7 +2,7 @@
 export default function WaysToGive() {
   return (
     <main>
-      <h1>Transform a Child's Future</h1>
+      <h1>Transform a Child&apos;s Future</h1>
     </main>
   );
 }

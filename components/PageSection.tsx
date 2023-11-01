@@ -1,9 +1,11 @@
-import { PageSectionType, CarouselSlideType } from '@/constants/types';
-import Image from 'next/image';
+import { PageSectionType } from "@/constants/types";
+import Image from "next/image";
 
-export default function PageSection({ section } : { section: PageSectionType }) {
+export default function PageSection({ section }: { section: PageSectionType }) {
   const orderClass = section.fields.reverseOrder ? "order-1" : "";
-  const backgroundClass = section.fields.backgroundColor ? `bg-${section.fields.backgroundColor}-500` : "";
+  const backgroundClass = section.fields.backgroundColor
+    ? `bg-${section.fields.backgroundColor}-500`
+    : "";
 
   if (section.fields.slides) {
     const slide = section.fields.slides[0];
@@ -16,7 +18,7 @@ export default function PageSection({ section } : { section: PageSectionType }) 
           height={slide.fields.image.fields.file.details.image.height}
         />
       </section>
-    )
+    );
   }
 
   return (
@@ -24,9 +26,7 @@ export default function PageSection({ section } : { section: PageSectionType }) 
       <div className={`col-span-1 ${orderClass}`}>
         <h3>{section.fields.title}</h3>
         <p>{section.fields.description}</p>
-        <a href={section.fields.actionUrl}>
-          {section.fields.actionText}
-        </a>
+        <a href={section.fields.actionUrl}>{section.fields.actionText}</a>
       </div>
       <div className="col-span-1">
         {section.fields.image && (
