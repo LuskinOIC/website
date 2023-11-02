@@ -47,37 +47,24 @@ App directory
 ```
 .
 ├── about
-│   └── page.tsx
 ├── blog
-│   └── page.tsx
+├── components
+├── constants
 ├── events
-│   ├── [slug]
-│   └── page.tsx
 ├── favicon.ico
 ├── globals.css
 ├── layout.tsx
 ├── leadership
-│   └── page.tsx
 ├── medical-professionals
-│   └── page.tsx
 ├── news
-│   ├── [slug]
-│   └── page.tsx
 ├── page.tsx
 ├── patient-care
-│   └── page.tsx
 ├── patient-stories
-│   ├── [slug]
-│   └── page.tsx
 ├── physician-bio
-│   └── [slug]
 ├── physicians
-│   └── page.tsx
 ├── specialties
-│   ├── [slug]
-│   └── page.tsx
+├── utils
 └── ways-to-give
-    └── page.tsx
 ```
 
 
