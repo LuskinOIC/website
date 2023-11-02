@@ -1,26 +1,21 @@
 # LuskinIOC
+Front end app for LuskinOIC powered by [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and integrated with [Contenful](https://www.contentful.com/developers/).
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/)
+
 
 ## Getting Started
 
-First, run the development server:
+Ensure you have NodeJS version v18.8.0 installed. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage node version.
+
+To start the development environment install the dependencies and run the development server command:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Site structure
 
@@ -66,7 +61,29 @@ App directory
 ├── utils
 └── ways-to-give
 ```
+## Running linters
 
+To run ESLINT use the command 
+
+```
+npm run lint
+```
+
+To run in CI mode to help with debugging Github Action failing
+
+```
+CI=true npm run lint
+```
+
+## Updating environment variables
+
+To copy over env variables needed for email functionality
+
+```
+cp .env.sample .env.local
+```
+
+Fill in the variables as needed
 
 ## Learn More
 
@@ -77,8 +94,6 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is deployed on [DigitalOcean](https://www.digitalocean.com/). 
