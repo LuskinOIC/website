@@ -1,6 +1,6 @@
 // import Link from "next/link";
 
-export default function Navbar() {
+export default function Footer() {
   // TODO: Replace this with the actual navbar.
   // Use next/link to link to the pages.
   return (
