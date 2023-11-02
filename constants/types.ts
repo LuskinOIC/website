@@ -36,6 +36,11 @@ export type PageSectionType = {
   };
 };
 
+export type EventType = {
+  eventName: string;
+  slug: string;
+};
+
 export type ImageType = {
   fields: {
     title: string;

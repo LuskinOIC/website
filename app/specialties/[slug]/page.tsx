@@ -1,3 +1,7 @@
+export function generateStaticParams() {
+  return [{ slug: "place-holder" }];
+}
+
 export default function Specialty() {
   return (
     <main>

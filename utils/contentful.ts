@@ -4,6 +4,7 @@ import {
   SocialMediaSectionType,
   SpecialtyType,
   PageSectionType,
+  EventType,
 } from '@/constants/types';
 import { LANDING_PAGE_ID } from '@/constants/entries';
 
@@ -20,6 +21,23 @@ export async function getEntryById(id: string) {
 export async function getPage() {
   const entry = await client.getEntry(LANDING_PAGE_ID, { include: 2, locale: 'es-US' });
   return entry.fields as LandingPageType;
+}
+
+export async function getEvents() {
+  const entries = await client.getEntries({
+    content_type: 'event',
+    locale: 'en-US',
+  });
+  return entries.items.map(entry => entry.fields);
+}
+
+export async function getEventBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: 'event',
+    'fields.slug': slug,
+    locale: 'en-US',
+  });
+  return entry.items[0].fields as EventType;
 }
 
 export async function getSpecialty(): Promise<SpecialtyType> {

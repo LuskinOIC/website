@@ -1,5 +1,7 @@
-// Main landing page for the institute's blog.
-// Lists a feature article news, events, and patient stories.
+export function generateStaticParams() {
+  return [{ slug: "place-holder" }];
+}
+
 export default function PatientStory({ params }: { params: { slug: string } }) {
   return (
     <main>
