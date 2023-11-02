@@ -29,10 +29,8 @@ Root directory
 .
 ├── README.md
 ├── _static
-├── app -> Routing structure
-├── components -> Shared components
-├── constants -> Constant values
-├── docs -> Documentation
+├── app
+├── docs
 ├── next-env.d.ts
 ├── next.config.js
 ├── node_modules
@@ -42,8 +40,7 @@ Root directory
 ├── prettierrc.json
 ├── public
 ├── tailwind.config.ts
-├── tsconfig.json
-└── utils
+└── tsconfig.json
 ```
 
 App directory
