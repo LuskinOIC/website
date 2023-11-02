@@ -1,11 +1,4 @@
-type SocialMediaSectionType = {
-  title: string;
-  subtitle: string;
-};
-
-type SocialMediaSectionPropsType = {
-  section: SocialMediaSectionType;
-};
+import { SocialMediaSectionPropsType } from "@/app/constants/types";
 
 export default function SocialMediaSection({
   section,

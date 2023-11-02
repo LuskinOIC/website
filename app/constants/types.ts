@@ -1,6 +1,13 @@
+// NOTE: We will probably want to move these into separate
+// files as the app grows.
+
 export type SocialMediaSectionType = {
   title: string;
   subtitle: string;
+};
+
+export type SocialMediaSectionPropsType = {
+  section: SocialMediaSectionType;
 };
 
 export type SpecialtyType = {
