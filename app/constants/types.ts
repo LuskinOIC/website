@@ -12,14 +12,14 @@ export type CarouselSlideType = {
   fields: {
     title: string;
     image: ImageType;
-  }
+  };
 };
 
 export type CarouselType = {
   fields: {
     name: string;
     slides?: CarouselSlideType[];
-  }
+  };
 };
 
 export type PageSectionType = {
