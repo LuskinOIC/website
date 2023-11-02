@@ -46,25 +46,28 @@ Root directory
 App directory
 ```
 .
-├── about
-├── blog
+| SHARED FOLDERS
 ├── components
 ├── constants
+├── utils
+| PAGE FOLDERS
+├── about
+├── blog
 ├── events
-├── favicon.ico
-├── globals.css
-├── layout.tsx
 ├── leadership
 ├── medical-professionals
 ├── news
-├── page.tsx
 ├── patient-care
 ├── patient-stories
 ├── physician-bio
 ├── physicians
 ├── specialties
-├── utils
-└── ways-to-give
+├── ways-to-give
+| APP FILES
+├── favicon.ico -> Favicon file
+├── globals.css -> Global styles
+├── layout.tsx -> Nav bar / body / footer
+└── page.tsx -> Root page
 ```
 
 
