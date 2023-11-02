@@ -6,7 +6,7 @@ Built in partnership by [Sustainable Progress and Equality Collective](https://s
 
 ## Getting Started
 
-Ensure you have NodeJS version v18.8.0 installed. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage node version.
+Ensure you have NodeJS version v16.20.2 installed. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage node version. Run `nvm use` to trigger the .nvmrc file.
 
 To start the development environment install the dependencies and run the development server command:
 
