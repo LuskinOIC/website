@@ -1,4 +1,4 @@
-import { getEvents, getEventBySlug } from "@/utils/contentful";
+import { getEvents, getEventBySlug } from "@/app/utils/contentful";
 
 export async function generateStaticParams() {
   const events = await getEvents();

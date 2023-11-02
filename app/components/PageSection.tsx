@@ -1,4 +1,4 @@
-import { PageSectionType } from "@/constants/types";
+import { PageSectionType } from "@/app/constants/types";
 import Image from "next/image";
 
 export default function PageSection({ section }: { section: PageSectionType }) {

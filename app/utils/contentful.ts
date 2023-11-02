@@ -5,8 +5,8 @@ import {
   SpecialtyType,
   PageSectionType,
   EventType,
-} from '@/constants/types';
-import { LANDING_PAGE_ID } from '@/constants/entries';
+} from '@/app/constants/types';
+import { LANDING_PAGE_ID } from '@/app/constants/entries';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID as string,
