@@ -9,7 +9,7 @@ export default function Footer() {
 			{/* left section of footer */}
 			<div
 				id="footer-left-content-container"
-				className="flex flex-col sm:justify-center items-center">
+				className="flex flex-col sm:justify-between items-center">
 				<h1 id="organization-header">LuskinOIC Pediatric Orthopedic</h1>
 				<div id="contact-info" className="flex">
 					<div id="contact-info-hospital-uc">
@@ -44,7 +44,7 @@ export default function Footer() {
 						<a href="#">Mission & Purpose</a>
 						<a href="#">News</a>
 					</span>
-					<span id="support-container" className="">
+					<span id="support-container" className="flex flex-col">
 						<h2 className="font-bold">Patient Support</h2>
 						<a href="#" className="">
 							Urgent Care
@@ -62,7 +62,7 @@ export default function Footer() {
 				</div>
 				{/* right section of footer-left */}
 				<div id="prof-involvement-container" className="">
-					<span id="health-pro-container" className="">
+					<span id="health-pro-container" className="flex flex-col">
 						<h3 className="font-bold">Health Professionals</h3>
 						<a href="#" className="">
 							LuskinOIC Physicians
