@@ -5,35 +5,41 @@ export default function Footer() {
 	// Use next/link to link to the pages.
 	return (
 		// footer container
-		<div className="flex">
+		<div id="container" className="flex">
 			{/* left section of footer */}
-			<div className="flex flex-col">
-				<h1 id="header">LuskinOIC Pediatric Orthopedic</h1>
-				<div id="locations" className="flex">
-					<div>
+			<div id="footer-left-content-container" className="flex flex-col">
+				<h1 id="organization-header">LuskinOIC Pediatric Orthopedic</h1>
+				<div id="contact-info" className="">
+					<div id="contact-info-hospital-uc">
 						<h3>Hospital/Urgent Care</h3>
+						<p>403 West Adams Boulevard</p>
+						<p>Los Angeles, CA 90007</p>
+						<p>(213) 742-1000</p>
 					</div>
-					<div className="invisible lg:visible">
+					<div id="contact-info-clinic" className="hidden lg:block">
 						<h3>Clinic</h3>
 					</div>
 				</div>
 
-				<div id="soc-med">
+				<div id="follow-container">
 					{/* id="social-media" makes div vanish? */}
 					<p>Follow LuskinOIC!</p>
-					<p>*INSERT SOCIAL MEDIA IMG HYPERLINKS*</p>
+					<div id="social-media-buttons">
+						<p>*INSERT SOCIAL MEDIA IMG HYPERLINKS*</p>
+						<img />
+					</div>
 				</div>
 			</div>
 			{/* right section of footer */}
-			<div id="footer-right" className="flex hidden lg:block">
+			<div id="footer-right-content-container" className="flex hidden lg:block">
 				{/* left section of footer-right */}
-				<div id="about-patient-support" className="px-10">
-					<span className="flex flex-col pb-5">
+				<div id="about-support-container" className="">
+					<span id="about-container" className="flex flex-col">
 						<h2>About</h2>
 						<a href="#">Mission & Purpose</a>
 						<a href="#">News</a>
 					</span>
-					<span className="flex flex-col">
+					<span id="support-container" className="flex flex-col">
 						<h2>Patient Support</h2>
 						<a href="#" className="">
 							Urgent Care
@@ -50,8 +56,8 @@ export default function Footer() {
 					</span>
 				</div>
 				{/* right section of footer-left */}
-				<div id="health-prof-get-involved" className="">
-					<span className="flex flex-col">
+				<div id="prof-involvement-container" className="">
+					<span id="health-pro-container" className="flex flex-col">
 						<h3>Health Professionals</h3>
 						<a href="#" className="">
 							LuskinOIC Physicians
@@ -69,7 +75,7 @@ export default function Footer() {
 							Research
 						</a>
 					</span>
-					<span className="flex flex-col">
+					<span id="involvement-container" className="flex flex-col">
 						<h3>Get Involved</h3>
 						<a href="#" className="">
 							Donate
