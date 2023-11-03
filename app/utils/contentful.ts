@@ -8,7 +8,6 @@ import {
 } from "@/app/constants/types";
 import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
-console.log(`**************${process.env.CONTENTFUL_SPACE_ID}`);
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
 	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
