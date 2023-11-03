@@ -1,19 +1,19 @@
 // import Link from "next/link";
 
 export default function Footer() {
-	// TODO: Replace this with the actual Footer.
+	// TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
 	// Use next/link to link to the pages.
 	return (
 		// footer container
-		<div className="flex justify-evenly py-10">
+		<div className="flex">
 			{/* left section of footer */}
-			<div className="footer-left flex flex-col">
+			<div className="flex flex-col">
 				<h1 id="header">LuskinOIC Pediatric Orthopedic</h1>
 				<div id="locations" className="flex">
 					<div>
 						<h3>Hospital/Urgent Care</h3>
 					</div>
-					<div>
+					<div className="invisible lg:visible">
 						<h3>Clinic</h3>
 					</div>
 				</div>
@@ -25,7 +25,7 @@ export default function Footer() {
 				</div>
 			</div>
 			{/* right section of footer */}
-			<div id="footer-right" className="flex">
+			<div id="footer-right" className="flex hidden lg:block">
 				{/* left section of footer-right */}
 				<div id="about-patient-support" className="px-10">
 					<span className="flex flex-col pb-5">
@@ -50,8 +50,8 @@ export default function Footer() {
 					</span>
 				</div>
 				{/* right section of footer-left */}
-				<div id="health-prof-get-involved" className="px-10">
-					<span className="flex flex-col pb-5">
+				<div id="health-prof-get-involved" className="">
+					<span className="flex flex-col">
 						<h3>Health Professionals</h3>
 						<a href="#" className="">
 							LuskinOIC Physicians
