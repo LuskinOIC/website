@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 // import { Icons } from "@/components/icons"
@@ -55,9 +56,17 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Navbar() {
   return (
-    <NavigationMenu>
+    <NavigationMenu style={{ height: '199px'}}>
       <NavigationMenuList>
-        <NavigationMenuItem>Logo</NavigationMenuItem>
+        <NavigationMenuItem>
+          <Image
+            src={"/logo.svg"}
+            alt={"Logo"}
+            width={178}
+            height={187}
+            style={{height: "187px"}}
+          />
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuList>
             <NavigationMenuItem></NavigationMenuItem>
@@ -74,7 +83,7 @@ export default function Navbar() {
           </NavigationMenuList>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Patient Care</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
@@ -110,7 +119,7 @@ export default function Navbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Medical Professionals</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                   {components.map((component) => (
@@ -127,8 +136,11 @@ export default function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Documentation
+                <NavigationMenuLink 
+                  className={navigationMenuTriggerStyle()}
+                  style={{backgroundColor: "hsla(47, 95%, 75%, 1)"}}
+                >
+                  Donate
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
