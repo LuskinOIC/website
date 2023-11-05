@@ -4,6 +4,7 @@ import React from "react";
 import { Inter } from "next/font/google";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import SocialMediaBanner from "./components/SocialMediaBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
+        <SocialMediaBanner />
         <Footer />
       </body>
     </html>
