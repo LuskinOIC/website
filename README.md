@@ -17,6 +17,16 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Updating environment variables
+
+To copy over env variables needed for Contentful functionality
+
+```
+cp .env.sample .env.local
+```
+
+Reach out to a project admin to fill in the variables as needed.
+
 ## Site structure
 
 Root directory
@@ -74,16 +84,6 @@ To run in CI mode to help with debugging Github Action failing
 ```
 CI=true npm run lint
 ```
-
-## Updating environment variables
-
-To copy over env variables needed for email functionality
-
-```
-cp .env.sample .env.local
-```
-
-Fill in the variables as needed
 
 ## Learn More
 
