@@ -13,8 +13,8 @@ export default function Footer() {
     >
       <div
         id="footer-left-content-container"
-
-        className="flex flex-col p-2 tracking-wide">
+        className="flex flex-col p-2 tracking-wide"
+      >
         <h1
           id="organization-header"
           className="text-lg font-semibold tracking-wide text-center"
