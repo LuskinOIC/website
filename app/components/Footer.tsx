@@ -7,7 +7,9 @@ export default function Footer() {
   // replaced all tabs with spaces, this time to match prettierrc.json, 3rd attempt
   return (
     // footer container
-    <div id="container" className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11">
+    <div 
+      id="container" 
+      className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11">
       {/* left section of footer */}
       <div id="footer-left-content-container" className="flex flex-col p-2 tracking-wide">
         <h1 id="organization-header" className="text-lg font-semibold tracking-wide text-center">
