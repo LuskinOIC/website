@@ -29,7 +29,7 @@ export default function Footer() {
 		// footer container
 		<div
 			id="container"
-			className="flex justify-around bg-[#0076AD] text-white pt-8 pb-6">
+			className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11">
 			{/* left section of footer */}
 			<div
 				id="footer-left-content-container"
