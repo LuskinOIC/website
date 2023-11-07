@@ -4,27 +4,6 @@ export default function Footer() {
 	// TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
 	// Use next/link to link to the pages.
 
-	interface ContactInfo {
-		title: string;
-		address: string[];
-		phoneNumber: string;
-		hiddenOnSmallScreen?: boolean;
-	}
-
-	const contactData: ContactInfo[] = [
-		{
-			title: "Hospital/Urgent Care",
-			address: ["403 West Adams Boulevard", "Los Angeles, CA 90007"],
-			phoneNumber: "(213) 742-1000",
-		},
-		{
-			title: "Clinic",
-			address: ["1250 16th Street, Suite 2100B", "Santa Monica, CA 90404"],
-			phoneNumber: "(310) 395-4814",
-			hiddenOnSmallScreen: true, //To hide on mobile screens
-		},
-	];
-
 	return (
 		// footer container
 		<div
@@ -59,32 +38,6 @@ export default function Footer() {
 							<p>(310) 395-4814</p>
 						</div>
 					</div>
-					{/* BELOW: To avoid repeating same code for both hospital and clinic information. However line in between caused problems. Might return to in near future */}
-					{/* <div id="contact-info-container" className="pt-4 pb-6 flex ">
-						{contactData.map((contact, index) => (
-							<div
-								key={index}
-								className={`${
-									contact.hiddenOnSmallScreen ? "hidden lg:flex" : "lg:flex"
-								} flex flex-col`}>
-								<p className="text-base pb-2.5">{contact.title}</p>
-								<div className="pb-4 pr-14">
-									{contact.address.map((line, lineIndex) => (
-										<p key={lineIndex}>{line}</p>
-									))}
-								</div>
-								<p>{contact.phoneNumber}</p>
-							</div>
-						))}
-					</div> */}
-					{/* <div id="contact-info-hospital-uc" className="pt-4 pb-6">
-							<h3 className="pb-2.5">Hospital/Urgent Care</h3>
-							<div id="hospital-uc-address" className="pb-4">
-								<p>403 West Adams Boulevard</p>
-								<p>Los Angeles, CA 90007</p>
-							</div>
-							<p>(213) 742-1000</p>
-						</div> */}
 				</div>
 
 				<div id="follow-container">
