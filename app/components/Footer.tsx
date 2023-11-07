@@ -4,7 +4,7 @@ export default function Footer() {
 	// TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
 	// Use next/link to link to the pages.
 
-	// replaced all tabs with spaces, this time to match prettierrc.json
+	// replaced all tabs with spaces, this time to match prettierrc.json, 3rd attempt
 	return (
 		// footer container
 		<div
