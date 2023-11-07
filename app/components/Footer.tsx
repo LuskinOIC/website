@@ -10,8 +10,8 @@ export default function Footer() {
     <div 
       id="container" 
       className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11">
-      <div 
-      id="footer-left-content-container" 
+      <div
+      id="footer-left-content-container"
       className="flex flex-col p-2 tracking-wide">
         <h1 
         id="organization-header"
