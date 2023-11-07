@@ -4,6 +4,7 @@ export default function Footer() {
 	// TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
 	// Use next/link to link to the pages.
 
+	// replaced all tabs with spaces
 	return (
 		// footer container
 		<div
