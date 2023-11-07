@@ -15,7 +15,7 @@ export default function Footer() {
       className="flex flex-col p-2 tracking-wide">
         <h1 
         id="organization-header"
-        className="text-lg font-semibold tracking-wide text-center">
+          className="text-lg font-semibold tracking-wide text-center">
           LuskinOIC Pediatric Orthopedic
         </h1>
         <div className="text-sm font-medium">
