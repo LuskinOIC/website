@@ -10,9 +10,12 @@ export default function Footer() {
     <div 
       id="container" 
       className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11">
-      {/* left section of footer */}
-      <div id="footer-left-content-container" className="flex flex-col p-2 tracking-wide">
-        <h1 id="organization-header" className="text-lg font-semibold tracking-wide text-center">
+      <div 
+      id="footer-left-content-container" 
+      className="flex flex-col p-2 tracking-wide">
+        <h1 
+        id="organization-header" 
+        className="text-lg font-semibold tracking-wide text-center">
           LuskinOIC Pediatric Orthopedic
         </h1>
         <div className="text-sm font-medium">
@@ -36,9 +39,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
         <div id="follow-container">
-          {/* id="social-media" makes div vanish? */}
           <h3 className="text-sm pt-4">Follow LuskinOIC!</h3>
           <div id="social-media-buttons">
             <p>*****</p>
