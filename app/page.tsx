@@ -7,7 +7,7 @@ export default async function Home() {
   const page = await getPage();
 
   return (
-    <main>
+    <main className="px-2.5">
       {page.sections.map((section: PageSectionType) => (
         <PageSection key={section.fields.title} section={section} />
       ))}
