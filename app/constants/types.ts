@@ -40,6 +40,7 @@ export type PageSectionType = {
     reverseOrder: boolean;
     slides: CarouselSlideType[];
     backgroundColor: string;
+    twoColumnContent: any;
   };
 };
 

@@ -1,5 +1,5 @@
 import { PageSectionType } from "@/app/constants/types";
-import { TwoColumn } from "@/app/components/TwoColumn"
+import TwoColumn from "@/app/components/TwoColumn";
 import Image from "next/image";
 
 export default function PageSection({ section }: { section: PageSectionType }) {
@@ -7,9 +7,12 @@ export default function PageSection({ section }: { section: PageSectionType }) {
   const backgroundClass = section.fields.backgroundColor
     ? `bg-${section.fields.backgroundColor}-500`
     : "";
-
+  //////
+  section.fields.twoColumnContent = true;
+  //////
   if (section.fields.twoColumnContent) {
-    return <TwoColumn />
+    const twoColumnContent = section.fields.twoColumnContent;
+    return <TwoColumn section={twoColumnContent} />;
   }
 
   if (section.fields.slides) {
