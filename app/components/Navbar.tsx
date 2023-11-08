@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 // import { Icons } from "@/components/icons"
@@ -55,9 +56,17 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Navbar() {
   return (
-    <NavigationMenu>
+    <NavigationMenu style={{ height: '199px'}}>
       <NavigationMenuList>
-        <NavigationMenuItem>Logo</NavigationMenuItem>
+        <NavigationMenuItem>
+          <Image
+            src={"/logo.svg"}
+            alt={"Logo"}
+            width={178}
+            height={187}
+            style={{height: "187px"}}
+          />
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuList>
             <NavigationMenuItem></NavigationMenuItem>
@@ -111,7 +120,6 @@ export default function Navbar() {
                 </NavigationMenuContent>
               </div>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuTrigger>
                 Medical Professionals
@@ -132,8 +140,11 @@ export default function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  About
+                <NavigationMenuLink 
+                  className={navigationMenuTriggerStyle()}
+                  style={{backgroundColor: "hsla(47, 95%, 75%, 1)"}}
+                >
+                  Donate
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
