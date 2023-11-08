@@ -56,7 +56,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Navbar() {
   return (
-    <NavigationMenu style={{ height: '199px'}}>
+    <NavigationMenu style={{ height: "199px" }}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <Image
@@ -64,7 +64,7 @@ export default function Navbar() {
             alt={"Logo"}
             width={178}
             height={187}
-            style={{height: "187px"}}
+            style={{ height: "187px" }}
           />
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -140,9 +140,9 @@ export default function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink 
+                <NavigationMenuLink
                   className={navigationMenuTriggerStyle()}
-                  style={{backgroundColor: "hsla(47, 95%, 75%, 1)"}}
+                  style={{ backgroundColor: "hsla(47, 95%, 75%, 1)" }}
                 >
                   Donate
                 </NavigationMenuLink>
