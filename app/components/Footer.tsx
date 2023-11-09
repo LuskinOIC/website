@@ -1,4 +1,5 @@
-// import Link from "next/link";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
@@ -45,32 +46,32 @@ export default function Footer() {
             <ul id="" className="flex">
               <li>
                 <a href="https://www.facebook.com/LuskinOIC/">
-                  <img src="" alt="facebook.com" className="" />
+                  <Image src="" alt="facebook.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
-                  <img src="" alt="linkedin.com" className="" />
+                  <Image src="" alt="linkedin.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FLuskinOIC">
-                  <img src="" alt="twitter.com" className="" />
+                  <Image src="" alt="twitter.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
-                  <img src="" alt="youtube.com" className="" />
+                  <Image src="" alt="youtube.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.instagram.com/luskinoic/">
-                  <img src="" alt="instagram.com" className="" />
+                  <Image src="" alt="instagram.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
-                  <img src="" alt="yelp.com" className="" />
+                  <Image src="" alt="yelp.com" className="" />
                 </a>
               </li>
             </ul>
