@@ -45,10 +45,43 @@ export default function Footer() {
         <div id="follow-container">
           <h3 className="text-sm pt-4">Follow LuskinOIC!</h3>
           <div id="social-media-buttons">
-            <p>*****</p>
+            <ul>
+              <li>
+                <a href="https://www.facebook.com/LuskinOIC/">
+                  <img src="" alt="facebook.com" className=""/>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
+                  <img src="" alt="linkedin.com" className=""/>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FLuskinOIC">
+                  <img src="" alt="twitter.com" className=""/>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
+                  <img src="" alt="youtube.com" className=""/>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/luskinoic/">
+                  <img src="" alt="instagram.com" className=""/>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
+                  <img src="" alt="yelp.com" className=""/>
+                </a>
+              </li>
+            </ul>
+            
           </div>
         </div>
       </div>
+
       {/* right section of footer */}
       <div id="footer-right-content-container" className="hidden lg:flex">
         {/* left section of footer-right */}
