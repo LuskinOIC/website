@@ -14,8 +14,9 @@ export default function TabbedSection({
   contents
 }: TabbedSectionType) {
   return (
-    <Tabs defaultValue={keys[0]} className="flex flex-col items-center w-full">
-      <TabsList className={`h-[88px] w-[1050px] pt-[24px] grid grid-cols-${keys.length}`}>
+    // <Tabs defaultValue={keys[0]} className="flex flex-col items-center w-full">
+    <Tabs defaultValue={keys[0]}>
+      <TabsList className={"grid grid-cols-5"}>
         {keys.map((key: string, index: number) => (
           <TabsTrigger key={key} value={key}>
             {labels[index]}
