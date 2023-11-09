@@ -73,9 +73,3 @@ export type LandingPageType = {
   goalSection: PageSectionType;
   sections: PageSectionType[];
 };
-
-export type TabbedSectionType = {
-  keys: string[],
-  labels: string[],
-  contents: React.ReactNode[]
-}
