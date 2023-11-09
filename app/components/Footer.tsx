@@ -1,5 +1,6 @@
 // import Link from "next/link";
 import Image from "next/image";
+import facebook from "../../public/facebook.svg"
 
 export default function Footer() {
   // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
@@ -49,7 +50,7 @@ export default function Footer() {
             <ul id="" className="flex">
               <li>
                 <a href="https://www.facebook.com/LuskinOIC/">
-                  <Image src="" alt="facebook.com" className="" />
+                  <Image src={facebook} alt="facebook.com" className="" />
                 </a>
               </li>
               <li>
