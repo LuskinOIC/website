@@ -9,16 +9,13 @@ export default function Footer() {
     // footer container
     <div
       id="container"
-      className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11"
-    >
+      className="flex justify-around bg-[#0076AD] text-white pt-8 pb-11">
       <div
         id="footer-left-content-container"
-        className="flex flex-col p-2 tracking-wide"
-      >
+        className="flex flex-col p-2 tracking-wide">
         <h1
           id="organization-header"
-          className="text-lg font-semibold tracking-wide text-center"
-        >
+          className="text-lg font-semibold tracking-wide text-center">
           LuskinOIC Pediatric Orthopedic
         </h1>
         <div className="text-sm font-medium">
@@ -44,40 +41,39 @@ export default function Footer() {
         </div>
         <div id="follow-container">
           <h3 className="text-sm pt-4">Follow LuskinOIC!</h3>
-          <div id="social-media-buttons">
-            <ul>
+          <div id="">
+            <ul id="" className="flex">
               <li>
                 <a href="https://www.facebook.com/LuskinOIC/">
-                  <img src="" alt="facebook.com" className=""/>
+                  <img src="" alt="facebook.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
-                  <img src="" alt="linkedin.com" className=""/>
+                  <img src="" alt="linkedin.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FLuskinOIC">
-                  <img src="" alt="twitter.com" className=""/>
+                  <img src="" alt="twitter.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
-                  <img src="" alt="youtube.com" className=""/>
+                  <img src="" alt="youtube.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.instagram.com/luskinoic/">
-                  <img src="" alt="instagram.com" className=""/>
+                  <img src="" alt="instagram.com" className="" />
                 </a>
               </li>
               <li>
                 <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
-                  <img src="" alt="yelp.com" className=""/>
+                  <img src="" alt="yelp.com" className="" />
                 </a>
               </li>
             </ul>
-            
           </div>
         </div>
       </div>
@@ -90,25 +86,57 @@ export default function Footer() {
             <h2 className="font-semibold text-lg text-[#FCE385] tracking-wide pb-0.5">
               About
             </h2>
-            <a href="#">Mission & Purpose</a>
-            <a href="#">News</a>
+            <ul id="about" className="">
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Mission & Purpose
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a className="hover:underline" href="#">
+                    News
+                  </a>
+                </p>
+              </li>
+            </ul>
           </span>
           <span id="support-container" className="flex flex-col">
             <h2 className="font-semibold text-xl text-[#FCE385] tracking-wide pb-0.5">
               Patient Support
             </h2>
-            <a href="#" className="">
-              Urgent Care
-            </a>
-            <a href="#" className="">
-              Specialty Treatment
-            </a>
-            <a href="#" className="">
-              Billing & Insurance
-            </a>
-            <a href="#" className="">
-              MyChart
-            </a>
+            <ul id="patient-support" className="">
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Urgent Care
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Specialty Treatment
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Billing & Insurance
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    MyChart
+                  </a>
+                </p>
+              </li>
+            </ul>
           </span>
         </div>
         {/* right section of footer-left */}
@@ -117,35 +145,71 @@ export default function Footer() {
             <h3 className="font-semibold text-xl text-[#FCE385] tracking-wide pb-0.5">
               Health Professionals
             </h3>
-            <a href="#" className="">
-              LuskinOIC Physicians
-            </a>
-            <a href="#" className="">
-              Refer a Patient
-            </a>
-            <a href="#" className="">
-              Careers
-            </a>
-            <a href="#" className="">
-              Volunteer
-            </a>
-            <a href="#" className="">
-              Research
-            </a>
+            <ul id="health-professionals" className="">
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    LuskinOIC Physicians
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Refer a Patient
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Careers
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Volunteer
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Research
+                  </a>
+                </p>
+              </li>
+            </ul>
           </span>
           <span id="involvement-container" className="flex flex-col">
             <h3 className="font-semibold text-xl text-[#FCE385] tracking-wide pb-0.5">
               Get Involved
             </h3>
-            <a href="#" className="">
-              Donate
-            </a>
-            <a href="#" className="">
-              Events
-            </a>
-            <a href="#" className="">
-              Volunteer
-            </a>
+            <ul id="get-involved" className="">
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Donate
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Events
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="#" className="hover:underline">
+                    Volunteer
+                  </a>
+                </p>
+              </li>
+            </ul>
           </span>
         </div>
       </div>
