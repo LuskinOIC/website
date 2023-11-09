@@ -1,14 +1,5 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+'use client'
+
 import {
   Tabs,
   TabsContent,
@@ -23,19 +14,18 @@ export default function TabbedSection({
   contents
 }: TabbedSectionType) {
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-2">
+    <Tabs defaultValue={keys[0]} className="flex flex-col items-center w-full">
+      <TabsList className={`h-[88px] w-[1050px] pt-[24px] grid grid-cols-${keys.length}`}>
         {keys.map((key: string, index: number) => (
-          <TabsTrigger value={key}>{labels[index]}</TabsTrigger>
+          <TabsTrigger key={key} value={key}>
+            {labels[index]}
+          </TabsTrigger>
         ))}
-        <TabsTrigger value="planning">Plan Your Visit</TabsTrigger>
-        <TabsTrigger value="billing">Billing & Insurance</TabsTrigger>
-        <TabsTrigger value="rights">Patient Rights & Responsibilities</TabsTrigger>
-        <TabsTrigger value="prep">Appointment Preparation</TabsTrigger>
-        <TabsTrigger value=""></TabsTrigger>
       </TabsList>
       {keys.map((key: string, index: number) => (
-        <TabsContent value={key}>{contents[index]}</TabsContent>
+        <TabsContent key={key} value={key}>
+          {contents[index]}
+        </TabsContent>
       ))}
     </Tabs>
   );
