@@ -1,4 +1,4 @@
-import PhysicianBio from ";./[slug]/page";
+import PhysicianBio from "./[slug]/page";
 
 export default function PhysicianBiography() {
   // const params = {
