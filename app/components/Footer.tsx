@@ -52,28 +52,28 @@ export default function Footer() {
         <div id="follow-container">
           <h3 className="text-sm pt-4">Follow LuskinOIC!</h3>
           <div id="social-media">
-            <ul className="flex">
-              <li>
+            <ul className="flex pt-3.5">
+              <li className="pr-3">
                 <Link href="https://www.facebook.com/LuskinOIC/">
                   <Image src={facebook} alt="facebook" className="" />
                 </Link>
               </li>
-              <li>
+              <li className="pr-3">
                 <Link href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
                   <Image src={linkedin} alt="linkedin" className="" />
                 </Link>
               </li>
-              <li>
-                <Link href="https://twitter.com/i/flow/login?redirect_after_login=%2FLuskinOIC">
+              <li className="pr-3">
+                <Link href="https://twitter.com/i/flow/login?redirect_after_login=%3FLuskinOIC">
                   <Image src={twitter} alt="twitter" className="" />
                 </Link>
               </li>
-              <li>
+              <li className="pr-3">
                 <Link href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
                   <Image src={youtube} alt="youtube" className="" />
                 </Link>
               </li>
-              <li>
+              <li className="pr-3">
                 <Link href="https://www.instagram.com/luskinoic/">
                   <Image src={instagram} alt="instagram" className="" />
                 </Link>
