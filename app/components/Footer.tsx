@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import facebook from "../../public/facebook.svg"
+import linkedin from "../../public/linkedin.svg"
+import twitter from "../../public/twitter.svg"
+import youtube from "../../public/youtube.svg"
+import instagram from "../../public/instagram.svg"
+import yelp from "../../public/yelp.svg"
 
 export default function Footer() {
   // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
@@ -46,37 +51,37 @@ export default function Footer() {
         </div>
         <div id="follow-container">
           <h3 className="text-sm pt-4">Follow LuskinOIC!</h3>
-          <div id="">
-            <ul id="" className="flex">
+          <div id="social-media">
+            <ul className="flex">
               <li>
-                <a href="https://www.facebook.com/LuskinOIC/">
-                  <Image src={facebook} alt="facebook.com" className="fill-[#FBFAF5]" />
-                </a>
+                <Link href="https://www.facebook.com/LuskinOIC/">
+                  <Image src={facebook} alt="facebook" className="" />
+                </Link>
               </li>
               <li>
-                <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
-                  <Image src="" alt="linkedin.com" className="" />
-                </a>
+                <Link href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
+                  <Image src={linkedin} alt="linkedin" className="" />
+                </Link>
               </li>
               <li>
-                <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FLuskinOIC">
-                  <Image src="" alt="twitter.com" className="" />
-                </a>
+                <Link href="https://twitter.com/i/flow/login?redirect_after_login=%2FLuskinOIC">
+                  <Image src={twitter} alt="twitter" className="" />
+                </Link>
               </li>
               <li>
-                <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
-                  <Image src="" alt="youtube.com" className="" />
-                </a>
+                <Link href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
+                  <Image src={youtube} alt="youtube" className="" />
+                </Link>
               </li>
               <li>
-                <a href="https://www.instagram.com/luskinoic/">
-                  <Image src="" alt="instagram.com" className="" />
-                </a>
+                <Link href="https://www.instagram.com/luskinoic/">
+                  <Image src={instagram} alt="instagram" className="" />
+                </Link>
               </li>
               <li>
-                <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
-                  <Image src="" alt="yelp.com" className="" />
-                </a>
+                <Link href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
+                  <Image src={yelp} alt="yelp" className="" />
+                </Link>
               </li>
             </ul>
           </div>
