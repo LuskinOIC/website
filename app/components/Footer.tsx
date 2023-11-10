@@ -99,16 +99,16 @@ export default function Footer() {
             <ul id="about" className="">
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Mission & Purpose
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a className="hover:underline" href="#">
+                  <Link className="hover:underline" href="#">
                     News
-                  </a>
+                  </Link>
                 </p>
               </li>
             </ul>
@@ -120,30 +120,30 @@ export default function Footer() {
             <ul id="patient-support" className="">
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Urgent Care
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Specialty Treatment
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Billing & Insurance
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     MyChart
-                  </a>
+                  </Link>
                 </p>
               </li>
             </ul>
@@ -158,37 +158,37 @@ export default function Footer() {
             <ul id="health-professionals" className="">
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     LuskinOIC Physicians
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Refer a Patient
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Careers
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Volunteer
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Research
-                  </a>
+                  </Link>
                 </p>
               </li>
             </ul>
@@ -207,16 +207,16 @@ export default function Footer() {
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Events
-                  </a>
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Volunteer
-                  </a>
+                  </Link>
                 </p>
               </li>
             </ul>
