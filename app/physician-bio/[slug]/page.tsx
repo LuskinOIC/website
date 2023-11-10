@@ -1,16 +1,21 @@
 import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
 
-export async function generateStaticParams() {
-  const physicians = await getPhysicianBioBySlug('anthony-scaduto-md');
-  // temp hard code
+// export async function generateStaticParams() {
+//   const physicians = await getPhysicianBioBySlug('anthony-scaduto-md');
+//   // temp hard code
 
-  if (physicians.fields && physicians.fields.slug) {
-    console.log(physicians.fields.slug);
-    const slug = physicians.fields.slug;
-    return[{ slug }]
-  }
-  console.log('HELLO WORLD', physicians.fields)
-  return [];
+//   if (physicians.fields && physicians.fields.slug) {
+//     console.log(physicians.fields.slug);
+//     const slug = physicians.fields.slug;
+//     return[{ slug }]
+//   }
+//   console.log('HELLO WORLD', physicians.fields)
+//   return [];
+// }
+
+export async function generateStaticParams() {
+  const physicians = await getPhysicianBio();
+  return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
 export default async function PhysicianBio({ params }: { params: { slug: string } }) {
