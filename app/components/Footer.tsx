@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import facebook from "../../public/facebook.svg"
-import linkedin from "../../public/linkedin.svg"
-import twitter from "../../public/twitter.svg"
-import youtube from "../../public/youtube.svg"
-import instagram from "../../public/instagram.svg"
-import yelp from "../../public/yelp.svg"
+import facebook from "../../public/facebook.svg";
+import linkedin from "../../public/linkedin.svg";
+import twitter from "../../public/twitter.svg";
+import youtube from "../../public/youtube.svg";
+import instagram from "../../public/instagram.svg";
+import yelp from "../../public/yelp.svg";
 
 export default function Footer() {
   // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
@@ -199,11 +199,11 @@ export default function Footer() {
             </h3>
             <ul id="get-involved" className="">
               <li>
-
+                <p>
                   <Link href="/ways-to-give" className="hover:underline">
-                    <p>Donate</p>
+                    Donate
                   </Link>
-
+                </p>
               </li>
               <li>
                 <p>
