@@ -1,4 +1,4 @@
-// import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import facebook from "../../public/facebook.svg"
 
@@ -50,7 +50,7 @@ export default function Footer() {
             <ul id="" className="flex">
               <li>
                 <a href="https://www.facebook.com/LuskinOIC/">
-                  <Image src={facebook} alt="facebook.com" className="" />
+                  <Image src={facebook} alt="facebook.com" className="fill-[#FBFAF5]" />
                 </a>
               </li>
               <li>
@@ -194,11 +194,11 @@ export default function Footer() {
             </h3>
             <ul id="get-involved" className="">
               <li>
-                <p>
-                  <a href="#" className="hover:underline">
-                    Donate
-                  </a>
-                </p>
+
+                  <Link href="/ways-to-give" className="hover:underline">
+                    <p>Donate</p>
+                  </Link>
+
               </li>
               <li>
                 <p>
