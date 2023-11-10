@@ -5,6 +5,7 @@ import {
   SpecialtyType,
   PageSectionType,
   EventType,
+  PhysicianBioType,
 } from "@/app/constants/types";
 import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
@@ -53,4 +54,19 @@ export async function getSocialMediaSection(): Promise<SocialMediaSectionType> {
   return entry.fields as SocialMediaSectionType;
 }
 
-export async function get 
+export async function getPhysicianBio() {
+  const entries = await client.getEntries({
+    content_type: "physicianBio",
+    locale: "en-US",
+  });
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getPhysicianBioBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "physicianBio",
+    "fields.slug": slug,
+    locale: "en-US",
+  });
+  return entry.items[0].fields as PhysicianBioType;
+}

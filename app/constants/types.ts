@@ -91,5 +91,6 @@ export type PhysicianBioType = {
     appointmentNumber: string;
     physicianNumber: string;
     bioPageSection: BioPageSectionType[];
-  }
+    slug: string;
+  };
  };
