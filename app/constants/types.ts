@@ -91,11 +91,11 @@ export type LandingPageType = {
 
 export type BioPageSectionType = {
   fields: {
-   title: string;
-   professionalHistory: string;
-  }
- };
- 
+    title: string;
+    professionalHistory: string;
+  };
+};
+
 export type PhysicianBioType = {
   fields: {
     physicianName: string;
@@ -108,4 +108,4 @@ export type PhysicianBioType = {
     bioPageSection: BioPageSectionType[];
     slug: string;
   };
- };
+};
