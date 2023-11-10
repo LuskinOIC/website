@@ -10,7 +10,7 @@ export default function PhysicianBiography() {
       <h1>Physician Biography</h1>
       {physicianSlugs.map((slug) => (
         <PhysicianBio key={slug} params={{ slug }} />
-    ))} 
+      ))} 
     </main>
   );
 }

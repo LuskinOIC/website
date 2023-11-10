@@ -21,8 +21,8 @@ export async function generateStaticParams() {
 export default async function PhysicianBio({
   params,
 }: {
-   params: { slug: string };
-   }) {
+  params: { slug: string };
+}) {
   const docBio = await getPhysicianBioBySlug(params.slug);
   console.log("DOC BIO", docBio);
   console.log("SLUG", docBio.slug);
