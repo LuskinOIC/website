@@ -52,3 +52,20 @@ export async function getSocialMediaSection(): Promise<SocialMediaSectionType> {
   const entry = await client.getEntry("6Mg6c3R91lEllwDWkYSkde");
   return entry.fields as SocialMediaSectionType;
 }
+
+export async function getPhysicianBio() {
+  const entries = await client.getEntries({
+    content_type: "physicianBio",
+    locale: "en-US",
+  });
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getPhysicianBioBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "physicianBio",
+    "fields.slug": slug,
+    locale: "en-US",
+  });
+  return entry.items[0].fields as PhysicianBioType;
+}

@@ -88,3 +88,24 @@ export type LandingPageType = {
   goalSection: PageSectionType;
   sections: PageSectionType[];
 };
+
+export type BioPageSectionType = {
+  fields: {
+    title: string;
+    professionalHistory: string;
+  };
+};
+
+export type PhysicianBioType = {
+  fields: {
+    physicianName: string;
+    specialties: string;
+    physicianPortrait: ImageType;
+    overview: string;
+    asset: ImageType;
+    appointmentNumber: string;
+    physicianNumber: string;
+    bioPageSection: BioPageSectionType[];
+    slug: string;
+  };
+};
