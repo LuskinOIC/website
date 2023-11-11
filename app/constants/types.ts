@@ -82,6 +82,7 @@ export type BioPageSectionType = {
 };
 
 export type PhysicianBioType = {
+  physicianName: any;
   fields: {
     physicianName: string;
     specialties: string;
