@@ -10,7 +10,7 @@ export default async function PhysicianBio({
   const docBio = await getPhysicianBioBySlug(params.slug);
   // console.log("DOC BIO", docBio);
   // console.log("SLUG", docBio.slug);
-  // console.log("PHYSICIAN NAME", docBio.physicianName);
+  console.log("PHYSICIAN NAME", docBio.physicianName);
   return (
     <main>
       <h1>Physician Bio - {docBio.physicianName}</h1>
