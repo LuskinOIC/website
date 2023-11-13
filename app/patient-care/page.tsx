@@ -12,8 +12,8 @@ export default async function PatientCare() {
   return (
     <main>
       <Tabs defaultValue="planning">
-      <TabsList className={"grid grid-cols-5"}>
-          <TabsTrigger value="planning">
+      <TabsList className="grid grid-cols-5">
+          <TabsTrigger value="planning" className="ml-0"> {/* Overwrite left margin */}
             <h1>PLAN</h1>
             <h1>YOUR VISIT</h1>
           </TabsTrigger>
@@ -29,7 +29,7 @@ export default async function PatientCare() {
             <h1>APPOINTMENT</h1>
             <h1>PREPARATION</h1>
           </TabsTrigger>
-          <TabsTrigger value="forms">
+          <TabsTrigger value="forms" className="mr-0">  {/* Overwrite right margin */}
             <h1>PATIENT FORMS</h1>
           </TabsTrigger>
       </TabsList>
