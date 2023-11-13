@@ -13,11 +13,11 @@ export default async function PatientCare() {
     <main>
       <Tabs defaultValue="planning">
       <TabsList className={"grid grid-cols-5"}>
-          <TabsTrigger value="planning">Plan Your Visit</TabsTrigger>
-          <TabsTrigger value="billing">Billing & Insurance</TabsTrigger>
-          <TabsTrigger value="rights">Patient Rights & Responsibilities</TabsTrigger>
-          <TabsTrigger value="prep">Appointment Preparation</TabsTrigger>
-          <TabsTrigger value="forms">Patient Forms</TabsTrigger>
+          <TabsTrigger value="planning">PLAN YOUR VISIT</TabsTrigger>
+          <TabsTrigger value="billing">BILLING & INSURANCE</TabsTrigger>
+          <TabsTrigger value="rights"><h1>PATIENT RIGHTS & RESPONSIBILITIES</h1></TabsTrigger>
+          <TabsTrigger value="prep">APPOINTMENT PREPARATION</TabsTrigger>
+          <TabsTrigger value="forms">PATIENT FORMS</TabsTrigger>
       </TabsList>
       <TabsContent value="planning">
         <div>
