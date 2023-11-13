@@ -6,6 +6,32 @@ import {
 } from "@/components/ui/tabs";
 import Image from 'next/image';
 
+const placeholderContent = (
+  <div className="flex flex-col items-center">
+    <Image
+      src="/placeholder-content.svg"
+      alt="Placeholder content"
+      width={1144}
+      height={339}
+      className="mb-10"
+    />
+    <Image
+      src="/placeholder-content.svg"
+      alt="Placeholder content"
+      width={1144}
+      height={339}
+      className="mb-10"
+    />
+    <Image
+      src="/placeholder-content.svg"
+      alt="Placeholder content"
+      width={1144}
+      height={339}
+      className="mb-10"
+    />
+  </div>
+)
+
 export default async function PatientCare() {
   // const patientCarePage = await getPatientCarePage();
 
@@ -34,114 +60,19 @@ export default async function PatientCare() {
           </TabsTrigger>
       </TabsList>
       <TabsContent value="planning">
-        <div>
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-        </div>
+        {placeholderContent}
       </TabsContent>
       <TabsContent value="billing">
-        <div>
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-        </div>
+        {placeholderContent}
       </TabsContent>
       <TabsContent value="rights">
-        <div>
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-        </div>
+        {placeholderContent}
       </TabsContent>
       <TabsContent value="prep">
-        <div>
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-        </div>
+        {placeholderContent}
       </TabsContent>
       <TabsContent value="forms">
-        <div>
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-          <Image
-            src="/placeholder-content.svg"
-            alt="Placeholder content"
-            width={1144}
-            height={339}
-          />
-        </div>
+        {placeholderContent}
       </TabsContent>
     </Tabs>
     </main>
