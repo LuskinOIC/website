@@ -7,12 +7,11 @@ export default function PageSection({ section }: { section: PageSectionType }) {
   const backgroundClass = section.fields.backgroundColor
     ? `bg-${section.fields.backgroundColor}-500`
     : "";
-  //////
-  section.fields.twoColumnContent = true;
-  //////
-  if (section.fields.twoColumnContent) {
-    const twoColumnContent = section.fields.twoColumnContent;
-    return <TwoColumn section={twoColumnContent} />;
+
+  if (section.fields.twoColumnContentCard) {
+    const twoColumnContentCard = section.fields.twoColumnContentCard;
+
+    return <TwoColumn contents={twoColumnContentCard} />;
   }
 
   if (section.fields.slides) {

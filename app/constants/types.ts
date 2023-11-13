@@ -40,7 +40,8 @@ export type PageSectionType = {
     reverseOrder: boolean;
     slides: CarouselSlideType[];
     backgroundColor: string;
-    twoColumnContent: any;
+    //FIX TYPE DECLARATION
+    twoColumnContentCard: TwoColumnComponentType[];
   };
 };
 
@@ -73,4 +74,22 @@ export type FileDetailsType = {
 export type LandingPageType = {
   goalSection: PageSectionType;
   sections: PageSectionType[];
+};
+
+export type TwoColumnComponentType = {
+  column: any;
+  fields: {
+    columnTitle: string;
+    columnImage: string;
+    columnSubTitle: string;
+    columnParagraph: string;
+    button: {
+      text: string;
+      link: string;
+    };
+  };
+};
+
+export type TwoColumnProps = {
+  contents?: TwoColumnComponentType[];
 };
