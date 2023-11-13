@@ -3,7 +3,10 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import { cn } from "@/lib/utils";
 // import { Icons } from "@/components/icons"
 import {
@@ -15,6 +18,13 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons'
+
+
+
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -56,6 +66,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Navbar() {
   return (
+<<<<<<< Updated upstream
     <NavigationMenu style={{ height: "199px" }}>
       <NavigationMenuList>
         <NavigationMenuItem>
@@ -68,8 +79,34 @@ export default function Navbar() {
           />
         </NavigationMenuItem>
         <NavigationMenuItem>
+=======
+    <NavigationMenu style={{height:"115px"}} className="">
+      <NavigationMenuList className="justify-between">
+        <NavigationMenuItem className="mt-9 px-3">
+          <Image
+            src={"/logo.svg"}
+            alt={"Logo"}
+            width={72}
+            height={62}
+            style={{}}
+          />
+          </NavigationMenuItem>
+        <NavigationMenuItem className="">
+>>>>>>> Stashed changes
           <NavigationMenuList>
-            <NavigationMenuItem></NavigationMenuItem>
+            <NavigationMenuItem className="navbar mt-5">
+              <div className="container mx-auto flex w-full items-right justify-between  md:hidden">
+                <Link href="/">
+                </Link>
+                <button className="bg-transparent text-white rounded-full p-2">
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+        {/* Font Awesome search icon */}
+                </button>
+                <button className="bg-transparent  text-white rounded-full p-2">
+                  <FontAwesomeIcon icon={faBars} />
+                </button>
+              </div>
+            </NavigationMenuItem>
             <NavigationMenuItem className="hidden md:block bg-purple-700 text-sm">
               Urgent Care - Save My Spot
             </NavigationMenuItem>
@@ -81,7 +118,7 @@ export default function Navbar() {
               </ul>
             </NavigationMenuItem>
           </NavigationMenuList>
-          <NavigationMenuList className="flex flex-col space-y">
+          <NavigationMenuList className=" hidden md:flex">
             <NavigationMenuItem>
               <div className="relative">
                 <NavigationMenuTrigger>Patient Care</NavigationMenuTrigger>
