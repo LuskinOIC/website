@@ -9,21 +9,21 @@ import Image from 'next/image';
 const placeholderContent = (
   <div className="flex flex-col items-center">
     <Image
-      src="/placeholder-content.svg"
+      src="/tabbed-placeholder-content.svg"
       alt="Placeholder content"
       width={1144}
       height={339}
       className="mb-10"
     />
     <Image
-      src="/placeholder-content.svg"
+      src="/tabbed-placeholder-content.svg"
       alt="Placeholder content"
       width={1144}
       height={339}
       className="mb-10"
     />
     <Image
-      src="/placeholder-content.svg"
+      src="/tabbed-placeholder-content.svg"
       alt="Placeholder content"
       width={1144}
       height={339}
