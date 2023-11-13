@@ -1,12 +1,9 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 import { cn } from "@/lib/utils";
 // import { Icons } from "@/components/icons"
 import {
@@ -22,8 +19,6 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons'
-
-
 
 
 const components: { title: string; href: string; description: string }[] = [
@@ -65,22 +60,12 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export default function Navbar() {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   return (
-<<<<<<< Updated upstream
-    <NavigationMenu style={{ height: "199px" }}>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <Image
-            src={"/logo.svg"}
-            alt={"Logo"}
-            width={178}
-            height={187}
-            style={{ height: "187px" }}
-          />
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-=======
-    <NavigationMenu style={{height:"115px"}} className="">
+    <NavigationMenu style={{height: isDropdownOpen ? "200px" : "115px" }} className="relative">
       <NavigationMenuList className="justify-between">
         <NavigationMenuItem className="mt-9 px-3">
           <Image
@@ -92,19 +77,39 @@ export default function Navbar() {
           />
           </NavigationMenuItem>
         <NavigationMenuItem className="">
->>>>>>> Stashed changes
           <NavigationMenuList>
             <NavigationMenuItem className="navbar mt-5">
-              <div className="container mx-auto flex w-full items-right justify-between  md:hidden">
+              <div className="container mx-auto flex w-full items-right justify-between relative md:hidden">
                 <Link href="/">
                 </Link>
                 <button className="bg-transparent text-white rounded-full p-2">
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
-        {/* Font Awesome search icon */}
                 </button>
-                <button className="bg-transparent  text-white rounded-full p-2">
-                  <FontAwesomeIcon icon={faBars} />
-                </button>
+
+                <button
+              onClick={toggleDropdown} // Toggle the dropdown on button click
+              className="bg-transparent text-white rounded-full p-2"
+            >
+              <FontAwesomeIcon icon={faBars} />
+              {/* Font Awesome bars icon */}
+            </button>
+            {isDropdownOpen && (
+              // Conditionally render the dropdown content when isDropdownOpen is true
+              <div className="w-full absolute top-12 mt-2 p-4">
+                 <div className="flex items-justify-center">
+                <ul className="w-full absolute space-y-2 text-sm">
+                  {/* Add your dropdown menu items here */}
+                  <li className= "">
+                    <Link href="/item1">Item 1</Link>
+                  </li>
+                  <li>
+                    <Link href="/item2">Item 2</Link>
+                  </li>
+                  {/* ... Add more items as needed */}
+                </ul>
+                </div>
+              </div>
+            )}
               </div>
             </NavigationMenuItem>
             <NavigationMenuItem className="hidden md:block bg-purple-700 text-sm">
