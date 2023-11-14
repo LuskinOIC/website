@@ -3,7 +3,11 @@ import Image from "next/image";
 // Types
 import { PageSectionType } from "@/app/constants/types";
 
-export default function FullWidthImageLayout({ section }: { section: PageSectionType }) {
+export default function FullWidthImageLayout({
+  section,
+}: {
+  section: PageSectionType;
+}) {
   return (
     <div>
       <Image

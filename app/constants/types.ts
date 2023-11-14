@@ -78,4 +78,3 @@ export type LandingPageType = {
   goalSection: PageSectionType;
   sections: PageSectionType[];
 };
-

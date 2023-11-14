@@ -5,7 +5,11 @@ import Image from "next/image";
 import { PageSectionType } from "@/app/constants/types";
 
 // TODO: Refactor to be used in Research Centers section.
-export default function NarrowCardLayout({ section }: { section: PageSectionType }) {
+export default function NarrowCardLayout({
+  section,
+}: {
+  section: PageSectionType;
+}) {
   return (
     <div className="rounded-[10px] md:max-w-[550px] shadow border border-black border-opacity-10 pb-8 md:p-6 overflow-hidden">
       <div className="relative w-full h-[240px] md:h-[400px] md:rounded-[10px] overflow-hidden">
