@@ -1,7 +1,7 @@
 # LuskinOIC
 Front end app for LuskinOIC powered by [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and integrated with [Contenful](https://www.contentful.com/developers/).
 
-Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/)
+Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/).
 
 
 ## Getting Started
@@ -16,6 +16,16 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Updating environment variables
+
+To copy over env variables needed for Contentful functionality
+
+```
+cp .env.sample .env.local
+```
+
+Reach out to a project admin to fill in the variables as needed.
 
 ## Site structure
 
@@ -74,16 +84,6 @@ To run in CI mode to help with debugging Github Action failing
 ```
 CI=true npm run lint
 ```
-
-## Updating environment variables
-
-To copy over env variables needed for email functionality
-
-```
-cp .env.sample .env.local
-```
-
-Fill in the variables as needed
 
 ## Learn More
 

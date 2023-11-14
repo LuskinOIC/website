@@ -21,7 +21,7 @@ export async function getEntryById(id: string) {
 export async function getPage() {
   const entry = await client.getEntry(LANDING_PAGE_ID, {
     include: 2,
-    locale: "es-US",
+    locale: "en-US",
   });
   return entry.fields as LandingPageType;
 }
