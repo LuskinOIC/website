@@ -2,7 +2,10 @@ import { PageSectionType } from "@/app/constants/types";
 import TwoColumn from "@/app/components/TwoColumn";
 import Image from "next/image";
 
+import { TitleComponent } from "@/app/components/ui/Typography/Title";
+
 export default function PageSection({ section }: { section: PageSectionType }) {
+  const isBold = section.fields.bold ? "md:font-bold" : "md:font-normal";
   const orderClass = section.fields.reverseOrder ? "order-1" : "";
   const backgroundClass = section.fields.backgroundColor
     ? `bg-${section.fields.backgroundColor}-500`
@@ -31,7 +34,11 @@ export default function PageSection({ section }: { section: PageSectionType }) {
   return (
     <section className={`grid grid-cols-2 gap-20 ${backgroundClass}`}>
       <div className={`col-span-1 ${orderClass}`}>
-        <h3>{section.fields.title}</h3>
+        <TitleComponent
+          title={section.fields.title}
+          bold={isBold}
+          titleSize={section.fields.titleSize}
+        />
         <p>{section.fields.description}</p>
         <a href={section.fields.actionUrl}>{section.fields.actionText}</a>
       </div>

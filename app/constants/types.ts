@@ -40,8 +40,9 @@ export type PageSectionType = {
     reverseOrder: boolean;
     slides: CarouselSlideType[];
     backgroundColor: string;
-    //FIX TYPE DECLARATION
     twoColumnContentCard: TwoColumnComponentType[];
+    bold: boolean;
+    titleSize: string;
   };
 };
 
