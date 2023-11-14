@@ -25,7 +25,7 @@ const placeholderContent = (
       className="mb-10"
     />
   </div>
-)
+);
 
 export default async function PatientCare() {
   // const patientCarePage = await getPatientCarePage();
