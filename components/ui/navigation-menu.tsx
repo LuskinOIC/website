@@ -11,7 +11,7 @@ const NavigationMenu = React.forwardRef<
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
-      "relative z-10 w-full items-center justify-center bg-blue-400",
+      "relative z-10 w-full items-center justify-center bg-[#0076AD]",
       className,
     )}
     {...props}

@@ -64,53 +64,97 @@ export default function Navbar() {
   };
   return (
     <NavigationMenu
-      style={{ height: isDropdownOpen ? "200px" : "115px" }}
-      className=""
+      // style={{ height: isDropdownOpen ? "200px" : "115px" }}
+      className=''
     >
-      <NavigationMenuList className="bg-purple-600 flex items-center justify-between">
-        <div className="flex items-center">
-          <NavigationMenuItem className="mt-9 px-3">
-            <Image
-              src={"/logo.svg"}
-              alt={"Logo"}
-              width={72}
-              height={62}
-              style={{}}
-            />
-          </NavigationMenuItem>
-        </div>
+      <NavigationMenuList className='flex items-center justify-between py-3'>
+        <NavigationMenuItem className='px-3'>
+          <Image
+            src={"/logo.svg"}
+            alt={"Logo"}
+            width={72}
+            height={62}
+            style={{}}
+          />
+        </NavigationMenuItem>
 
-        <NavigationMenuList className="navbar mt-5 relative container mx-auto flex w-full">
-          <NavigationMenuItem className="justify-between md:hidden">
-            <button className="bg-transparent text-white rounded-full p-2">
+        <NavigationMenuList className='navbar mt-8 relative container mx-auto flex w-full'>
+          <NavigationMenuItem className='justify-between md:hidden'>
+            <button className='bg-transparent text-white rounded-full p-2'>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
 
             <button
               onClick={toggleDropdown} // Toggle the dropdown on button click
-              className="bg-transparent text-white rounded-full p-2"
+              className='bg-transparent text-white rounded-full p-2'
             >
               <FontAwesomeIcon icon={faBars} />
-              {/* Font Awesome bars icon */}
             </button>
           </NavigationMenuItem>
         </NavigationMenuList>
+      </NavigationMenuList>
+      <NavigationMenuList className='md:hidden'>
         {isDropdownOpen && (
           // Conditionally render the dropdown content when isDropdownOpen is true
-          <NavigationMenuItem className="bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4">
-            <ul className="w-full space-y-2 text-xs justify-center items-center ">
-              {/* Add your dropdown menu items here */}
-              <li className="text-white hover:bg-purple-700">
-                <Link href="/item1">URGENT CARE </Link>
+          // <NavigationMenuItem className='bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4'>
+            <ul className='w-full text-sm flex justify-center items-center flex-col'>
+              <li className='text-white bg-purple-700 w-full text-center py-2'>
+                <Link href='/item1'> URGENT CARE </Link>
               </li>
-              <li className="text-white hover:bg-purple-700">
-                <Link href="/item2">PATIENT CARE </Link>
+              <li className='text-white w-full text-center py-2'>
+                <button> PATIENT CARE </button>
+              </li>
+              <li className='text-white w-full text-center py-2'>
+                <Link href='/item2'> FOR MEDICAL PROFESSIONALS </Link>
+              </li>
+              <li className='text-white w-full text-center py-2'>
+                <Link href='/item2'> ABOUT LUSKINOIC </Link>
+              </li>
+              <li className='text-white w-full text-center py-2'>
+                <Link href='/item2'> WAYS TO GIVE </Link>
+              </li>
+              <li className='text-black w-full text-center py-2 bg-yellow-50'>
+                <Link href='/item2'> MY CHART </Link>
+              </li>
+              <li className='text-black w-full text-center py-2 bg-white'>
+                <Link href='/item2'> CLOSE </Link>
               </li>
             </ul>
-          </NavigationMenuItem>
+          // </NavigationMenuItem>
         )}
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+}
 
-        <NavigationMenuItem className="hidden md:flex bg-purple-700 text-sm">
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className='text-sm font-medium leading-none'>{title}</div>
+          <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
+
+{
+  /* <NavigationMenuItem className="hidden md:flex bg-purple-700 text-sm">
           Urgent Care - Save My Spot
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -182,33 +226,22 @@ export default function Navbar() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
+      </NavigationMenuList> */
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className,
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
+{
+  /* {isDropdownOpen && (
+          // Conditionally render the dropdown content when isDropdownOpen is true
+          <NavigationMenuItem className="bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4">
+            <ul className="w-full space-y-2 text-xs justify-center items-center ">
+
+              {/* <li className="text-white hover:bg-purple-700">
+                <Link href="/item1">URGENT CARE </Link>
+              </li>
+              <li className="text-white hover:bg-purple-700">
+                <Link href="/item2">PATIENT CARE </Link>
+              </li>
+            </ul>
+          </NavigationMenuItem>
+        )} */
+}
