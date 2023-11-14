@@ -5,7 +5,7 @@ type TitleProps = {
   className?: string;
   title?: string;
   titleSize?: string;
-  bold?: string;
+  bold?: boolean;
 };
 
 export const Title1 = ({ children, className = "" }: TitleProps) => {
@@ -23,14 +23,16 @@ export const Title3 = ({ children, className = "" }: TitleProps) => {
 };
 
 export function TitleComponent({ title, titleSize, bold }: TitleProps) {
+  const boldClass = bold ? "md:font-bold" : "md:font-normal";
+
   switch (titleSize) {
     case "Title Large":
-      return <Title1 className={bold}>{title}</Title1>;
+      return <Title1 className={boldClass}>{title}</Title1>;
     case "Title Medium":
-      return <Title2 className={bold}>{title}</Title2>;
+      return <Title2 className={boldClass}>{title}</Title2>;
     case "Title Small":
-      return <Title3 className={bold}>{title}</Title3>;
+      return <Title3 className={boldClass}>{title}</Title3>;
     default:
-      return <Title1 className={bold}>{title}</Title1>;
+      return <Title1 className={boldClass}>{title}</Title1>;
   }
 }

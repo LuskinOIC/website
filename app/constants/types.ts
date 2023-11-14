@@ -31,18 +31,21 @@ export type CarouselType = {
 
 export type PageSectionType = {
   fields: {
-    title: string;
-    description: string;
     actionText: string;
     actionUrl: string;
-    image: ImageType;
-    columnCount: number;
-    reverseOrder: boolean;
-    slides: CarouselSlideType[];
     backgroundColor: string;
     twoColumnContentCard: TwoColumnComponentType[];
     bold: boolean;
+    columnCount: number;
+    description: string;
+    image: ImageType;
+    reverseOrder: boolean;
+    secondaryActionText: string;
+    secondaryActionUrl: string;
+    slides: CarouselSlideType[];
+    title: string;
     titleSize: string;
+    type: string;
   };
 };
 
@@ -73,6 +76,7 @@ export type FileDetailsType = {
 };
 
 export type LandingPageType = {
+  metaData: string;
   goalSection: PageSectionType;
   sections: PageSectionType[];
 };
