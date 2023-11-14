@@ -40,7 +40,6 @@ export default function ColumnLayout({
             bold={section.fields.bold}
             titleSize={section.fields.titleSize}
           />
-
           <p>{section.fields.description}</p>
         </div>
 

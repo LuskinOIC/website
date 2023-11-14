@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PageSectionType } from "@/app/constants/types";
 
 // TODO: Refactor to be used in Research Centers section.
-export default function NarrowCardLayout({
+export default function MultiCardLayout({
   section,
 }: {
   section: PageSectionType;
