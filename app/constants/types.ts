@@ -34,7 +34,6 @@ export type PageSectionType = {
     actionText: string;
     actionUrl: string;
     backgroundColor: string;
-    twoColumnContentCard: TwoColumnComponentType[];
     bold: boolean;
     columnCount: number;
     description: string;
@@ -42,7 +41,6 @@ export type PageSectionType = {
     reverseOrder: boolean;
     secondaryActionText: string;
     secondaryActionUrl: string;
-    slides: CarouselSlideType[];
     title: string;
     titleSize: string;
     type: string;
@@ -81,20 +79,3 @@ export type LandingPageType = {
   sections: PageSectionType[];
 };
 
-export type TwoColumnComponentType = {
-  column: any;
-  fields: {
-    columnTitle: string;
-    columnImage: string;
-    columnSubTitle: string;
-    columnParagraph: string;
-    button: {
-      text: string;
-      link: string;
-    };
-  };
-};
-
-export type TwoColumnProps = {
-  contents?: TwoColumnComponentType[];
-};

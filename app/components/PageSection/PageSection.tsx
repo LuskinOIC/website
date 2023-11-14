@@ -1,6 +1,7 @@
 // Components
 import ColumnLayout from "@/app/components/PageSection/ColumnLayout";
 import CardLayout from "@/app/components/PageSection/CardLayout";
+import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLayout";
 
 // Types
 import { PageSectionType } from "@/app/constants/types";
@@ -11,6 +12,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       return <ColumnLayout section={section} />;
     case "Card Layout":
       return <CardLayout section={section} />;
+    case "Full Width Image Layout":
+      return <FullWidthImageLayout section={section} />;
     default:
       return null;
   }

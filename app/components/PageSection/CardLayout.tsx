@@ -1,5 +1,11 @@
-import { TitleComponent } from "@/app/components/ui/Typography/Title";
+// Next components
 import Image from "next/image";
+
+// Types
+import { PageSectionType } from "@/app/constants/types";
+
+// Custom components
+import { TitleComponent } from "@/app/components/ui/Typography/Title";
 
 const styles = {
   pageSectionContent: "",
@@ -7,6 +13,7 @@ const styles = {
     "block mx-auto text-center w-full bg-blue-500 rounded text-white p-2",
 };
 
+// This component is primary used for the Specialties sections.
 export default function CardLayout({ section }: { section: PageSectionType }) {
   return (
     <section className="grid grid-cols-2 gap-20 border rounded shadow-md w-4/5 mx-auto my-10 p-20">
