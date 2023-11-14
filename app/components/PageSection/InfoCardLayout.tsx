@@ -17,7 +17,7 @@ export default function InfoCardLayout({
         return (
           <div
             key={i}
-            className="col-span-1 rounded-[10px] shadow border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
+            className="col-span-1 md:w-10/12 rounded-[10px] shadow border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
           >
             <div className="relative md:rounded-[10px] overflow-hidden">
               <Image
