@@ -1,10 +1,5 @@
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import Image from 'next/image';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 
 const placeholderContent = (
   <div className="flex flex-col items-center">
@@ -38,8 +33,8 @@ export default async function PatientCare() {
   return (
     <main>
       <Tabs defaultValue="planning">
-      <TabsList className="grid grid-cols-5">
-          <TabsTrigger value="planning" className="ml-0"> {/* Overwrite left margin */}
+        <TabsList className="grid grid-cols-5">
+          <TabsTrigger value="planning" className="ml-0">
             <h1>PLAN</h1>
             <h1>YOUR VISIT</h1>
           </TabsTrigger>
@@ -55,26 +50,16 @@ export default async function PatientCare() {
             <h1>APPOINTMENT</h1>
             <h1>PREPARATION</h1>
           </TabsTrigger>
-          <TabsTrigger value="forms" className="mr-0">  {/* Overwrite right margin */}
+          <TabsTrigger value="forms" className="mr-0">
             <h1>PATIENT FORMS</h1>
           </TabsTrigger>
-      </TabsList>
-      <TabsContent value="planning">
-        {placeholderContent}
-      </TabsContent>
-      <TabsContent value="billing">
-        {placeholderContent}
-      </TabsContent>
-      <TabsContent value="rights">
-        {placeholderContent}
-      </TabsContent>
-      <TabsContent value="prep">
-        {placeholderContent}
-      </TabsContent>
-      <TabsContent value="forms">
-        {placeholderContent}
-      </TabsContent>
-    </Tabs>
+        </TabsList>
+        <TabsContent value="planning">{placeholderContent}</TabsContent>
+        <TabsContent value="billing">{placeholderContent}</TabsContent>
+        <TabsContent value="rights">{placeholderContent}</TabsContent>
+        <TabsContent value="prep">{placeholderContent}</TabsContent>
+        <TabsContent value="forms">{placeholderContent}</TabsContent>
+      </Tabs>
     </main>
   );
 }

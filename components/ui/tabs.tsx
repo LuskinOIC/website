@@ -1,9 +1,9 @@
 /* Modified:
  * Tabs
- *    - Change width to full
- *    - Add flexbox and center all tabs and content
+ *    - Changed width to full
+ *    - Added flexbox and center all tabs and content
  * TabsList
- *    - Change height, width, and padding
+ *    - Changed height, width, and padding
  * TabsTrigger
  *    - Added rounding to top, removed other rounding
  *    - Changed padding and colors
@@ -15,9 +15,6 @@ import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@/lib/utils"
-
-const selectedColor = "hsl(214, 25%, 49%, 1)";
-const unselectedColor = "hsla(214, 25%, 49%, 0.15)";
 
 const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
@@ -48,18 +45,6 @@ const TabsList = React.forwardRef<
   />
 ))
 TabsList.displayName = TabsPrimitive.List.displayName
-
-{/* <div>
-<TabsPrimitive.List
-  ref={ref}
-  className={cn(
-    "inline-flex h-[88px] w-[1050px] pt-[24px] items-center justify-center rounded-md bg-white p-1 text-muted-foreground",
-    className
-  )}
-  {...props}
-/>
-<div className={} />
-</div> */}
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
