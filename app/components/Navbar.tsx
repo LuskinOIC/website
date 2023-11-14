@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -16,10 +16,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -65,132 +63,124 @@ export default function Navbar() {
     setIsDropdownOpen(!isDropdownOpen);
   };
   return (
-    <NavigationMenu style={{height: isDropdownOpen ? "200px" : "115px" }} className="relative">
-      <NavigationMenuList className="justify-between">
-        <NavigationMenuItem className="mt-9 px-3">
-          <Image
-            src={"/logo.svg"}
-            alt={"Logo"}
-            width={72}
-            height={62}
-            style={{}}
-          />
+    <NavigationMenu
+      style={{ height: isDropdownOpen ? "200px" : "115px" }}
+      className=""
+    >
+      <NavigationMenuList className="bg-purple-600 flex items-center justify-between">
+        <div className="flex items-center">
+          <NavigationMenuItem className="mt-9 px-3">
+            <Image
+              src={"/logo.svg"}
+              alt={"Logo"}
+              width={72}
+              height={62}
+              style={{}}
+            />
           </NavigationMenuItem>
-        <NavigationMenuItem className="">
-          <NavigationMenuList>
-            <NavigationMenuItem className="navbar mt-5">
-              <div className="container mx-auto flex w-full items-right justify-between relative md:hidden">
-                <Link href="/">
-                </Link>
-                <button className="bg-transparent text-white rounded-full p-2">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
+        </div>
 
-                <button
+        <NavigationMenuList className="navbar mt-5 relative container mx-auto flex w-full">
+          <NavigationMenuItem className="justify-between md:hidden">
+            <button className="bg-transparent text-white rounded-full p-2">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+
+            <button
               onClick={toggleDropdown} // Toggle the dropdown on button click
               className="bg-transparent text-white rounded-full p-2"
             >
               <FontAwesomeIcon icon={faBars} />
               {/* Font Awesome bars icon */}
             </button>
-            {isDropdownOpen && (
-              // Conditionally render the dropdown content when isDropdownOpen is true
-              <div className="w-full absolute top-12 mt-2 p-4">
-                 <div className="flex items-justify-center">
-                <ul className="w-full absolute space-y-2 text-sm">
-                  {/* Add your dropdown menu items here */}
-                  <li className= "">
-                    <Link href="/item1">Item 1</Link>
-                  </li>
-                  <li>
-                    <Link href="/item2">Item 2</Link>
-                  </li>
-                  {/* ... Add more items as needed */}
-                </ul>
-                </div>
-              </div>
-            )}
-              </div>
-            </NavigationMenuItem>
-            <NavigationMenuItem className="hidden md:block bg-purple-700 text-sm">
-              Urgent Care - Save My Spot
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <ul className="hidden md:block space-y-2 text-sm bg-blue-300">
-                <li>(213) 742-1000 </li>
-                <li> MyChart </li>
-                <li> Espanol </li>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+        {isDropdownOpen && (
+          // Conditionally render the dropdown content when isDropdownOpen is true
+          <NavigationMenuItem className="bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4">
+            <ul className="w-full space-y-2 text-xs justify-center items-center ">
+              {/* Add your dropdown menu items here */}
+              <li className="text-white hover:bg-purple-700">
+                <Link href="/item1">URGENT CARE </Link>
+              </li>
+              <li className="text-white hover:bg-purple-700">
+                <Link href="/item2">PATIENT CARE </Link>
+              </li>
+            </ul>
+          </NavigationMenuItem>
+        )}
+
+        <NavigationMenuItem className="hidden md:flex bg-purple-700 text-sm">
+          Urgent Care - Save My Spot
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <ul className="hidden md:flex text-sm bg-blue-300">
+            <li className="mr-4"> 2137421000 </li>
+            <li className="mr-4"> MyChart </li>
+            <li className="mr-4"> Espanol </li>
+          </ul>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+      <NavigationMenuList className="hidden md:flex">
+        <NavigationMenuItem>
+          <div className="relative">
+            <NavigationMenuTrigger>Patient Care</NavigationMenuTrigger>
+            <NavigationMenuContent className="flex absolute z-10 w-64">
+              <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 p-6">
+                <li>
+                  <NavigationMenuLink asChild>
+                    <a
+                      className="flex h-full w-full select-none flex-col justify-end"
+                      href="/"
+                    >
+                      <div className="mb-2 mt-4 text-lg font-medium">
+                        shadcn/ui
+                      </div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        Beautifully designed components built with Radix UI and
+                        Tailwind CSS.
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <ListItem href="/docs" title="Introduction">
+                  Re-usable components built using Radix UI and Tailwind CSS.
+                </ListItem>
+                <ListItem href="/docs/installation" title="Installation">
+                  How to install dependencies and structure your app.
+                </ListItem>
+                <ListItem href="/docs/primitives/typography" title="Typography">
+                  Styles for headings, paragraphs, lists...etc
+                </ListItem>
               </ul>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-          <NavigationMenuList className=" hidden md:flex">
-            <NavigationMenuItem>
-              <div className="relative">
-                <NavigationMenuTrigger>Patient Care</NavigationMenuTrigger>
-                <NavigationMenuContent className="flex absolute z-10 w-64">
-                  <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 p-6">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            shadcn/ui
-                          </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components built with Radix UI
-                            and Tailwind CSS.
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <ListItem href="/docs" title="Introduction">
-                      Re-usable components built using Radix UI and Tailwind
-                      CSS.
-                    </ListItem>
-                    <ListItem href="/docs/installation" title="Installation">
-                      How to install dependencies and structure your app.
-                    </ListItem>
-                    <ListItem
-                      href="/docs/primitives/typography"
-                      title="Typography"
-                    >
-                      Styles for headings, paragraphs, lists...etc
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </div>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>
-                Medical Professionals
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    >
-                      {component.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={navigationMenuTriggerStyle()}
-                  style={{ backgroundColor: "hsla(47, 95%, 75%, 1)" }}
+            </NavigationMenuContent>
+          </div>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Medical Professionals</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
                 >
-                  Donate
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/docs" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle()}
+              style={{ backgroundColor: "hsla(47, 95%, 75%, 1)" }}
+            >
+              Donate
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
