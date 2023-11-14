@@ -51,11 +51,11 @@ export type PageSectionType = {
 export type CardType = {
   fields: {
     title: string;
+    subTitle: string;
     content: string;
     image: ImageType;
   };
 };
-
 
 export type EventType = {
   eventName: string;
@@ -73,7 +73,7 @@ export type ImageType = {
 export type FileDetailsType = {
   url: string;
   details: {
-    size: number;
+    size?: number;
     image: {
       width: number;
       height: number;

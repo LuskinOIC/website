@@ -8,7 +8,6 @@ import InfoCardLayout from "@/app/components/PageSection/InfoCardLayout";
 import { PageSectionType } from "@/app/constants/types";
 
 export default function PageSection({ section }: { section: PageSectionType }) {
-  console.log(section.fields.type);
   switch (section.fields.type) {
     case "Column Layout":
       return <TwoColumnLayout section={section} />;
