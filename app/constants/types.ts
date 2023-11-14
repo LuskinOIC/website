@@ -44,8 +44,18 @@ export type PageSectionType = {
     title: string;
     titleSize: string;
     type: string;
+    infoCards: CardType[];
   };
 };
+
+export type CardType = {
+  fields: {
+    title: string;
+    content: string;
+    image: ImageType;
+  };
+};
+
 
 export type EventType = {
   eventName: string;
