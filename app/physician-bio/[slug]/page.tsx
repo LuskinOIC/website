@@ -29,8 +29,8 @@ export default async function PhysicianBio({
         {docBio.specialties.content[0].content[0].value}
       </p>
       {/* <p>{docBio.specialties.content[1].content[0].content}</p> */}
-      <p>{docBio.appointmentNumber}</p>
-      <p>{docBio.physicianNumber}</p>
+      <p>Appointment Number: {docBio.appointmentNumber}</p>
+      <p>Physician Number: {docBio.physicianNumber}</p>
     </main>
   );
 }
