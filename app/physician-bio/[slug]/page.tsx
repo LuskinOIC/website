@@ -1,9 +1,29 @@
 import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
+import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export async function generateStaticParams() {
   const physicians = await getPhysicianBio();
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
+
+// const Bold = ({ children }) => <span className="font-bold">{children}</span>;
+
+// const Text = ({ children }) => <p className="align-center">{children}</p>;
+
+const List = ({ children }) => <li className="font-bold">{children}</li>;
+
+const options = {
+  // renderMark: {
+  //   [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+  // },
+  // renderNode: {
+  //   [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+  // },
+  renderList: {
+    [BLOCKS.LIST_ITEM]: (text) => <List>{text}</List>,
+  },
+};
 
 export default async function PhysicianBio({
   params,
@@ -12,12 +32,6 @@ export default async function PhysicianBio({
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
   const firstObject = docBio.specialties;
-  console.log("DOC BIO", docBio);
-
-  console.log("docBio.specialties", firstObject);
-  console.log("docBio.specialties.content", firstObject.content);
-  console.log("docBio.specialties.content[0]", firstObject.content[0]);
-  console.log("docBio.specialties.content[0]", firstObject.content[1]);
 
   return (
     <main>
@@ -25,10 +39,8 @@ export default async function PhysicianBio({
         Physician Bio - {docBio.physicianName}
       </h1>
       <h4 className="text-lg text-[#800080]">Specialties</h4>
-      <p className="text-[#800080]">
-        {docBio.specialties.content[0].content[0].value}
-      </p>
-      {/* <p>{docBio.specialties.content[1].content[0].content}</p> */}
+      <p className="text-[#800080]"></p>
+      {documentToReactComponents(docBio.specialties, options)}
       <p>Appointment Number: {docBio.appointmentNumber}</p>
       <p>Physician Number: {docBio.physicianNumber}</p>
     </main>

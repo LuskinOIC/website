@@ -5,7 +5,7 @@ export default function PhysicianBiography() {
   //   slug: 'anthony-scaduto-md',
   // }
   // const physicianSlugs = ["anthony-scaduto-md", "doctor-md"];
-  const physicianSlugs = ["anthony-scaduto-md"];
+  const physicianSlugs = ["anthony-scaduto-md", "doctor-md"];
   return (
     <main>
       <h1 className="text-lg text-[#800080]">Physician Biography</h1>
