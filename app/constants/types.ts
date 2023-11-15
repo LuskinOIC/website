@@ -89,7 +89,7 @@ export type BioPageSectionType = {
 export type PhysicianBioType = {
   // physicianName: any;
   physicianName: string;
-  specialties: any;
+  specialties: object;
   physicianPortrait: ImageType;
   overview: string;
   asset: ImageType;
