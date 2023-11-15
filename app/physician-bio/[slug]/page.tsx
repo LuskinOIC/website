@@ -1,21 +1,5 @@
 import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
 
-// export async function generateStaticParams() {
-//   const physicians = await getPhysicianBioBySlug('anthony-scaduto-md');
-//   // temp hard code
-
-//   if (physicians.fields && physicians.fields.slug) {
-//     console.log(physicians.fields.slug);
-//     const slug = physicians.fields.slug;
-//     return[{ slug }]
-//   }
-//   console.log('HELLO WORLD', physicians.fields)
-//   return [];
-// }
-interface SpecialtyType {
-  value: string;
-}
-
 export async function generateStaticParams() {
   const physicians = await getPhysicianBio();
   return physicians.map((evt) => ({ slug: evt.slug }));
@@ -27,17 +11,24 @@ export default async function PhysicianBio({
   params: { slug: string };
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
+  const firstObject = docBio.specialties;
   console.log("DOC BIO", docBio);
-  console.log('SPECIALTIES', docBio.specialties.content)
-  // console.log("SLUG", docBio.slug);
-  // console.log("PHYSICIAN NAME", docBio.physicianName);
+
+  console.log("docBio.specialties", firstObject);
+  console.log("docBio.specialties.content", firstObject.content);
+  console.log("docBio.specialties.content[0]", firstObject.content[0]);
+  console.log("docBio.specialties.content[0]", firstObject.content[1]);
+
   return (
     <main>
-      <h1>Physician Bio - {docBio.physicianName}</h1>
-      <h4>Specialties</h4>
-      <p>Specializes in: {docBio.specialties?.content.map((specialty: {value: string }, index: number) => (
-        <p key={index}>{specialty.value}</p>
-      ))}</p>
+      <h1 className="text-lg text-[#800080]">
+        Physician Bio - {docBio.physicianName}
+      </h1>
+      <h4 className="text-lg text-[#800080]">Specialties</h4>
+      <p className="text-[#800080]">
+        {docBio.specialties.content[0].content[0].value}
+      </p>
+      {/* <p>{docBio.specialties.content[1].content[0].content}</p> */}
       <p>{docBio.appointmentNumber}</p>
       <p>{docBio.physicianNumber}</p>
     </main>
