@@ -13,7 +13,11 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { TabsContentCardType, TabsContentTextType } from "@/app/constants/types";
+import {
+  TabsContentDataType,
+  TabsContentCardType,
+  TabsContentTextType,
+} from "@/app/constants/types";
 
 import { cn } from "@/lib/utils";
 
@@ -75,12 +79,14 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-const TabsContentData = (props: {
-  textContent?: TabsContentCardType[],
-  cardContent?: TabsContentTextType[]
-}) => (
-  <div>
-  </div>
-)
+function TabsContentData(props: TabsContentDataType) {
+  if (props.cardContent == undefined) {
+    // No card content, so render text
+    return <div />;
+  } else {
+    // There's card content, so render cards
+    return <div />;
+  }
+}
 
 export { Tabs, TabsList, TabsTrigger, TabsContent, TabsContentData };

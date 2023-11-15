@@ -90,3 +90,8 @@ export type TabsContentTextType = {
   header: string;
   markdownBody: string;
 };
+
+export type TabsContentDataType = {
+  cardContent?: TabsContentCardType[];
+  textContent?: TabsContentTextType[];
+};

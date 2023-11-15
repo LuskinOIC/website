@@ -1,4 +1,10 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  TabsContentData,
+} from "@/components/ui/tabs";
 import Image from "next/image";
 
 const placeholderContent = (
@@ -54,8 +60,28 @@ export default async function PatientCare() {
             <h1>PATIENT FORMS</h1>
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="planning">{placeholderContent}</TabsContent>
-        <TabsContent value="billing">{placeholderContent}</TabsContent>
+        <TabsContent value="planning">
+          <TabsContentData
+            cardContent={[
+              {
+                header: "test",
+                body: "test",
+                buttonText: "button",
+                buttonCallback: () => null,
+              },
+            ]}
+          />
+        </TabsContent>
+        <TabsContent value="billing">
+          <TabsContentData
+            textContent={[
+              {
+                header: "test",
+                markdownBody: "test",
+              },
+            ]}
+          />
+        </TabsContent>
         <TabsContent value="rights">{placeholderContent}</TabsContent>
         <TabsContent value="prep">{placeholderContent}</TabsContent>
         <TabsContent value="forms">{placeholderContent}</TabsContent>
