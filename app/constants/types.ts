@@ -78,3 +78,15 @@ export type LandingPageType = {
   goalSection: PageSectionType;
   sections: PageSectionType[];
 };
+
+export type TabsContentCardType = {
+  header: string;
+  body: string;
+  buttonText: string;
+  buttonCallback: () => void;
+};
+
+export type TabsContentTextType = {
+  header: string;
+  markdownBody: string;
+};

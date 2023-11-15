@@ -13,6 +13,7 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { TabsContentCardType, TabsContentTextType } from "@/app/constants/types";
 
 import { cn } from "@/lib/utils";
 
@@ -74,4 +75,12 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+const TabsContentData = (props: {
+  textContent?: TabsContentCardType[],
+  cardContent?: TabsContentTextType[]
+}) => (
+  <div>
+  </div>
+)
+
+export { Tabs, TabsList, TabsTrigger, TabsContent, TabsContentData };
