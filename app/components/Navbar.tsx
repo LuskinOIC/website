@@ -63,10 +63,20 @@ export default function Navbar() {
     setIsDropdownOpen(!isDropdownOpen);
   };
   return (
-    <NavigationMenu
-      // style={{ height: isDropdownOpen ? "200px" : "115px" }}
-      className=''
-    >
+    <NavigationMenu className=''>
+      <NavigationMenuList>
+        <NavigationMenuItem className='hidden md:flex ml-auto bg-purple-700 px-3 py-1 font-medium text-white text-xs rounded-bl-lg'>
+          Urgent Care - Save My Spot
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <ul className='hidden md:flex ml-auto text-xs font-bold bg-blue-300 text-black py-1 px-3'>
+            <li className='mr-4'> 2137421000 </li>
+            <li className='mr-4'> MyChart </li>
+            <li className='mr-4'> Espanol </li>
+          </ul>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+
       <NavigationMenuList className='flex items-center justify-between py-3'>
         <NavigationMenuItem className='px-3'>
           <Image
@@ -97,31 +107,82 @@ export default function Navbar() {
         {isDropdownOpen && (
           // Conditionally render the dropdown content when isDropdownOpen is true
           // <NavigationMenuItem className='bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4'>
-            <ul className='w-full text-sm flex justify-center items-center flex-col'>
-              <li className='text-white bg-purple-700 w-full text-center py-2'>
-                <Link href='/item1'> URGENT CARE </Link>
-              </li>
-              <li className='text-white w-full text-center py-2'>
-                <button> PATIENT CARE </button>
-              </li>
-              <li className='text-white w-full text-center py-2'>
-                <Link href='/item2'> FOR MEDICAL PROFESSIONALS </Link>
-              </li>
-              <li className='text-white w-full text-center py-2'>
-                <Link href='/item2'> ABOUT LUSKINOIC </Link>
-              </li>
-              <li className='text-white w-full text-center py-2'>
-                <Link href='/item2'> WAYS TO GIVE </Link>
-              </li>
-              <li className='text-black w-full text-center py-2 bg-yellow-50'>
-                <Link href='/item2'> MY CHART </Link>
-              </li>
-              <li className='text-black w-full text-center py-2 bg-white'>
-                <Link href='/item2'> CLOSE </Link>
-              </li>
-            </ul>
-          // </NavigationMenuItem>
+          <ul className='w-full text-sm flex justify-center items-center flex-col'>
+            <li className='text-white bg-purple-700 w-full text-center py-2'>
+              <Link href='/item1'> URGENT CARE </Link>
+            </li>
+            <li className='text-white w-full text-center py-2'>
+              <button> PATIENT CARE </button>
+            </li>
+            <li className='text-white w-full text-center py-2'>
+              <Link href='/item2'> FOR MEDICAL PROFESSIONALS </Link>
+            </li>
+            <li className='text-white w-full text-center py-2'>
+              <Link href='/item2'> ABOUT LUSKINOIC </Link>
+            </li>
+            <li className='text-white w-full text-center py-2'>
+              <Link href='/item2'> WAYS TO GIVE </Link>
+            </li>
+            <li className='text-black w-full text-center py-2 bg-yellow-50'>
+              <Link href='/item2'> MY CHART </Link>
+            </li>
+            <li className='text-black w-full text-center py-2 bg-white'>
+              <Link href='/item2'> CLOSE </Link>
+            </li>
+          </ul>
         )}
+      </NavigationMenuList>
+      <NavigationMenuList className='hidden md:flex'>
+        <NavigationMenuItem>
+          <div className=''>
+            <NavigationMenuTrigger
+            >Patient Care</NavigationMenuTrigger>
+            <NavigationMenuContent className='flex'>
+              <ul className='flex flex-col'>
+                <li>
+                  <NavigationMenuLink asChild>
+                  test
+                  </NavigationMenuLink>
+                </li>
+                <ListItem href='/docs' title='Introduction'>
+                  Re-usable components built using Radix UI and Tailwind CSS.
+                </ListItem>
+                <ListItem href='/docs/installation' title='Installation'>
+                  How to install dependencies and structure your app.
+                </ListItem>
+                <ListItem href='/docs/primitives/typography' title='Typography'>
+                  Styles for headings, paragraphs, lists...etc
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </div>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Medical Professionals</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href='/docs' legacyBehavior passHref>
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle()}
+              style={{ backgroundColor: "" }}
+            >
+              Donate
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -137,7 +198,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 p-3 leading-none no-underline outline-none",
             className
           )}
           {...props}
@@ -152,96 +213,3 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
-
-{
-  /* <NavigationMenuItem className="hidden md:flex bg-purple-700 text-sm">
-          Urgent Care - Save My Spot
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <ul className="hidden md:flex text-sm bg-blue-300">
-            <li className="mr-4"> 2137421000 </li>
-            <li className="mr-4"> MyChart </li>
-            <li className="mr-4"> Espanol </li>
-          </ul>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-      <NavigationMenuList className="hidden md:flex">
-        <NavigationMenuItem>
-          <div className="relative">
-            <NavigationMenuTrigger>Patient Care</NavigationMenuTrigger>
-            <NavigationMenuContent className="flex absolute z-10 w-64">
-              <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 p-6">
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end"
-                      href="/"
-                    >
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                        shadcn/ui
-                      </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components built with Radix UI and
-                        Tailwind CSS.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
-                </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
-                </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </div>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Medical Professionals</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              style={{ backgroundColor: "hsla(47, 95%, 75%, 1)" }}
-            >
-              Donate
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList> */
-}
-
-{
-  /* {isDropdownOpen && (
-          // Conditionally render the dropdown content when isDropdownOpen is true
-          <NavigationMenuItem className="bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4">
-            <ul className="w-full space-y-2 text-xs justify-center items-center ">
-
-              {/* <li className="text-white hover:bg-purple-700">
-                <Link href="/item1">URGENT CARE </Link>
-              </li>
-              <li className="text-white hover:bg-purple-700">
-                <Link href="/item2">PATIENT CARE </Link>
-              </li>
-            </ul>
-          </NavigationMenuItem>
-        )} */
-}
