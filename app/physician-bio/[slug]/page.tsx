@@ -53,7 +53,7 @@ const Section = ({ section }: { section: BioPageSectionType }) => (
       {section.fields.content.content.map(
         (contentItem: object, contentIndex: number) => (
           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        ),
+        )
       )}
     </div>
   </div>
@@ -67,10 +67,11 @@ export default async function PhysicianBio({
   const docBio = await getPhysicianBioBySlug(params.slug);
   // console.log("DOC BIO", docBio);
 
+  let educationAndCertificatesHeaderRendered = false;
+  let researchInsightsAndPublicationsHeaderRendered = false;
   return (
     <main className="m-10">
       <div>
-        <h1>HELLO WORLD</h1>
         <Image
           src={docBio.physicianPortrait.fields.file.url}
           alt=""
@@ -86,8 +87,11 @@ export default async function PhysicianBio({
           <p>Physician Number: {docBio.physicianNumber}</p>
         </div>
       </div>
+      <div className="flex items-center">
+        <hr className="flex-grow border-[#99C221]"></hr>
+      </div>
       <div id="overview">
-        <h2 className="text-xl">Overview</h2>
+        <h2 className="text-xl text-[#0076AD]">Overview</h2>
         <p>{renderRichTextToReactComponent(docBio.overview as Document)}</p>
       </div>
       <div id="asset-container">
@@ -109,11 +113,59 @@ export default async function PhysicianBio({
       </div>
       <div id="temp-bio-page-sections">
         {docBio.bioPageSection.map((section: BioPageSectionType) => (
+          <div key={section.sys.id}>
+            {/* Render header based on section title */}
+            {!educationAndCertificatesHeaderRendered &&
+              (section.fields.title === "Medical School" ||
+                section.fields.title === "Internship" ||
+                section.fields.title === "Board Certification" ||
+                section.fields.title === "Residency" ||
+                section.fields.title === "State License" ||
+                section.fields.title === "Fellowships" ||
+                section.fields.title === "Affiliations" ||
+                section.fields.title === "Awards and Recognitions") && (
+                <>
+                  <div className="flex items-center">
+                    <hr className="flex-grow border-[#99C221]"></hr>
+                  </div>
+                  <h2 className="text-lg text-[#0076AD]">
+                    Education and Certificates
+                  </h2>
+                  {(educationAndCertificatesHeaderRendered = true)}
+                </>
+              )}
+
+            {!researchInsightsAndPublicationsHeaderRendered &&
+              (section.fields.title === "Research Insights" ||
+                section.fields.title === "Publications") && (
+                <>
+                  <div className="flex items-center">
+                    <hr className="flex-grow border-[#99C221]"></hr>
+                  </div>
+                  <h2 className="text-lg text-[#0076AD]">
+                    Research Insights and Publications
+                  </h2>
+                  {(researchInsightsAndPublicationsHeaderRendered = true)}
+                </>
+              )}
+
+            {/* Render the section content */}
+            <Section key={section.sys.id} section={section} />
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}
+{
+  /* <div id="temp-bio-page-sections">
+        {docBio.bioPageSection.map((section: BioPageSectionType) => (
           <Section key={section.sys.id} section={section} />
         ))}
       </div>
     </main>
   );
+} */
 }
 
 // <main className="m-10">
