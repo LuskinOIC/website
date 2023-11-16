@@ -13,7 +13,8 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"; // Placeholder
+// import { renderRichTextToReactComponent } from "@/app/utils/rich-text.tsx"
 
 import {
   TabsContentDataType,
@@ -94,6 +95,7 @@ function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
           <div>
             <Text2>{section.header}</Text2>
             {documentToReactComponents(section.richTextBody) /* Placeholder */}
+            {/* renderRichTextToReactComponent(section.richTextBody) */}
           </div>
           ))}
       </div>
