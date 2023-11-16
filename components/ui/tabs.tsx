@@ -13,6 +13,9 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import rehypeReact from "rehype-react";
 import {
   TabsContentDataType,
   TabsContentCardType,
@@ -79,14 +82,24 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-function TabsContentData(props: TabsContentDataType) {
-  if (props.cardContent == undefined) {
-    // No card content, so render text
-    return <div />;
-  } else {
+function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
+  if (cardContent != undefined) {
     // There's card content, so render cards
     return <div />;
-  }
+  } else if (textContent != undefined) {
+    // There's text content, so render text
+
+    // Convert Markdown to React components
+    // prettier-ignore
+    // @ts-expect-error
+    const body = unified()
+      .use(remarkParse)
+      .use(rehypeReact)
+      .processSync().result;
+
+    console.log(body);
+    return <div />;
+  } else return <div />;
 }
 
 export { Tabs, TabsList, TabsTrigger, TabsContent, TabsContentData };

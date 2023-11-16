@@ -83,7 +83,7 @@ export type TabsContentCardType = {
   header: string;
   body: string;
   buttonText: string;
-  buttonCallback: () => void;
+  buttonLink: string;
 };
 
 export type TabsContentTextType = {
