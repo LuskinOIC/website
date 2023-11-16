@@ -86,8 +86,12 @@ export type BioPageSectionType = {
   };
 };
 
+export type PhysicianBioSectionType = {
+  title: string;
+  content: string;
+};
+
 export type PhysicianBioType = {
-  // physicianName: any;
   physicianName: string;
   specialties: object;
   physicianPortrait: ImageType;
@@ -95,17 +99,6 @@ export type PhysicianBioType = {
   asset: ImageType;
   appointmentNumber: string;
   physicianNumber: string;
-  bioPageSection: BioPageSectionType[];
+  bioPageSection: PhysicianBioSectionType;
   slug: string;
-  // fields: {
-  //   physicianName: string;
-  //   specialties: string;
-  //   physicianPortrait: ImageType;
-  //   overview: string;
-  //   asset: ImageType;
-  //   appointmentNumber: string;
-  //   physicianNumber: string;
-  //   bioPageSection: BioPageSectionType[];
-  //   slug: string;
-  // };
 };
