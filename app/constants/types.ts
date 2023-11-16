@@ -95,13 +95,23 @@ export type BioPageSectionType = {
 //   title: string;
 //   content: string;
 // };
+export type AssetType = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    description: string;
+    file: FileDetailsType;
+  };
+};
 
 export type PhysicianBioType = {
   physicianName: string;
   specialties: object;
   physicianPortrait: ImageType;
   overview: object;
-  asset: ImageType;
+  asset: AssetType;
   appointmentNumber: string;
   physicianNumber: string;
   bioPageSection: BioPageSectionType[];
