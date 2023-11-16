@@ -4,7 +4,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 export default function renderRichTextToReactComponent(
   richText: Document,
-  options = {},)
+  options = {},
+  )
   {
   const defaultOptions = {
     renderNode: {
