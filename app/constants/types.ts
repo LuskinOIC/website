@@ -1,6 +1,8 @@
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 
+import { Document } from "@contentful/rich-text-types";
+
 export type SocialMediaSectionType = {
   title: string;
   subtitle: string;
@@ -88,7 +90,7 @@ export type TabsContentCardType = {
 
 export type TabsContentTextType = {
   header: string;
-  markdownBody: string;
+  richTextBody: Document;
 };
 
 export type TabsContentDataType = {
