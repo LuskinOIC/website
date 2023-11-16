@@ -1,22 +1,22 @@
-import React from "react";
-import { BLOCKS, Document } from "@contentful/rich-text-types";
+import { BLOCKS, MARKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-export default function renderRichTextToReactComponent(
-  richText: Document,
-  options = {},
-) {
+const Bold = ({ children }: { children: React.ReactNode }) => (
+  <span className="font-bold">{children}</span>
+);
+const Text = ({ children }: { children: React.ReactNode }) => (
+  <p className="align-center">{children}</p>
+);
+const List = ({ children }: { children: React.ReactNode }) => (
+  <li className="font-bold">{children}</li>
+);
+
+function renderRichTextToReactComponent(richText: Document, options = {}) {
   const defaultOptions = {
     renderNode: {
       [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
-        <li className="list-disc">{children}</li>
-      ),
-      [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p>{children}</p>
+        <li>{children}</li>
       ),
     },
   };
-  return documentToReactComponents(richText, { ...defaultOptions, ...options });
 }
-
-// more examples: https://github.com/contentful/rich-text/blob/master/packages/rich-text-react-renderer/src/index.tsx
