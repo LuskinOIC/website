@@ -1,5 +1,5 @@
 import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { BLOCKS, MARKS, DOCUMENT } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export async function generateStaticParams() {
@@ -11,20 +11,21 @@ export async function generateStaticParams() {
 
 // const Text = ({ children }) => <p className="align-center">{children}</p>;
 
-const List = ({ children }) => <li className="font-bold">{children}</li>;
+// const List = ({ children }) => <li className="font-bold">{children}</li>;
 
-const options = {
-  // renderMark: {
-  //   [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
-  // },
-  // renderNode: {
-  //   [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-  // },
-  renderList: {
-    [BLOCKS.LIST_ITEM]: (text) => <List>{text}</List>,
-  },
-};
+// const optdefaultOptionsions = {
+//   // renderMark: {
+//   //   [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+//   // },
+//   // renderNode: {
+//   //   [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+//   // },
+//   renderNode: {
+//     [BLOCKS.LIST_ITEM]: (node, children) => <List>{children}</List>,
+//   },
+// };
 
+// function renderRichTextToReactComponent(richText, options = {});
 export default async function PhysicianBio({
   params,
 }: {
