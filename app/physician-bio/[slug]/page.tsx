@@ -1,14 +1,8 @@
 import React from "react";
 import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
-import { BLOCKS, MARKS, Document } from "@contentful/rich-text-types";
+import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import {
-  ImageType,
-  FileDetailsType,
-  PhysicianBioType,
-  BioPageSectionType,
-  AssetType,
-} from "@/app/constants/types";
+import { BioPageSectionType, AssetType } from "@/app/constants/types";
 import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -18,9 +12,9 @@ export async function generateStaticParams() {
 
 // const Bold = ({ children }) => <span className="font-bold">{children}</span>;
 // const Text = ({ children }) => <p className="align-center">{children}</p>;
-const List = ({ children }: { children: React.ReactNode }) => (
-  <li className="font-bold">{children}</li>
-);
+// const List = ({ children }: { children: React.ReactNode }) => (
+//   <li className="font-bold">{children}</li>
+// );
 
 function renderRichTextToReactComponent(richText: Document, options = {}) {
   const defaultOptions = {
@@ -71,10 +65,7 @@ export default async function PhysicianBio({
   params: { slug: string };
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
-  console.log("DOC BIO", docBio);
-  // console.log("")
-  // console.log("BIO PAGE SECTION", docBio.bioPageSection);
-  console.log("ASSETS", docBio.asset[0].fields.title);
+  // console.log("DOC BIO", docBio);
 
   return (
     <main className="m-10">
