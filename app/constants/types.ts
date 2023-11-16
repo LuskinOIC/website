@@ -90,25 +90,30 @@ export type LandingPageType = {
 };
 
 export type BioPageSectionType = {
+  sys: {
+    id: string;
+  };
   fields: {
     title: string;
-    professionalHistory: string;
+    content: {
+      content: Array<{ content: Array<{ value: string }> }>;
+    };
   };
 };
 
-export type PhysicianBioSectionType = {
-  title: string;
-  content: string;
-};
+// export type PhysicianBioSectionType = {
+//   title: string;
+//   content: string;
+// };
 
 export type PhysicianBioType = {
   physicianName: string;
   specialties: object;
   physicianPortrait: ImageType;
-  overview: string;
+  overview: object;
   asset: ImageType;
   appointmentNumber: string;
   physicianNumber: string;
-  bioPageSection: PhysicianBioSectionType;
+  bioPageSection: BioPageSectionType[];
   slug: string;
 };
