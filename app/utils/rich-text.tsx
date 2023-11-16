@@ -2,7 +2,7 @@ import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 
-function renderRichTextToReactComponent(richText: Document, options = {}) {
+export default function renderRichTextToReactComponent(richText: Document, options = {}) {
   const defaultOptions = {
     renderNode: {
       [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
