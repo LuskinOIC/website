@@ -53,7 +53,7 @@ const Section = ({ section }: { section: BioPageSectionType }) => (
       {section.fields.content.content.map(
         (contentItem: object, contentIndex: number) => (
           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        )
+        ),
       )}
     </div>
   </div>
