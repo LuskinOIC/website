@@ -7,6 +7,7 @@ import {
   FileDetailsType,
   PhysicianBioType,
   BioPageSectionType,
+  AssetType,
 } from "@/app/constants/types";
 import Image from "next/image";
 
@@ -70,7 +71,10 @@ export default async function PhysicianBio({
   params: { slug: string };
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
+  console.log("DOC BIO", docBio);
+  // console.log("")
   // console.log("BIO PAGE SECTION", docBio.bioPageSection);
+  console.log("ASSETS", docBio.asset[0].fields.title);
 
   return (
     <main className="m-10">
@@ -94,6 +98,23 @@ export default async function PhysicianBio({
       <div id="overview">
         <h2 className="text-xl">Overview</h2>
         <p>{renderRichTextToReactComponent(docBio.overview as Document)}</p>
+      </div>
+      <div id="asset-container">
+        {Array.isArray(docBio.asset) && docBio.asset.length > 0 && (
+          <div>
+            {docBio.asset.map((asset: AssetType) => (
+              <div key={asset.sys.id}>
+                <h3>{asset.fields.title}</h3>
+                <Image
+                  src={asset.fields.file.url}
+                  alt={asset.fields.description}
+                  width={asset.fields.file.details.image.width}
+                  height={asset.fields.file.details.image.height}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div id="temp-bio-page-sections">
         {docBio.bioPageSection.map((section: BioPageSectionType) => (
@@ -221,3 +242,24 @@ export default async function PhysicianBio({
 //   title: 'State License',
 //   content: { nodeType: 'document', data: {}, content: [ [Object] ] }
 // }
+
+// ASSETS [
+//   {
+//     metadata: { tags: [] },
+//     sys: {
+//       space: [Object],
+//       id: '4XFbnIzX9txiWkjKv95sdf',
+//       type: 'Asset',
+//       createdAt: '2023-11-10T02:00:33.561Z',
+//       updatedAt: '2023-11-10T02:41:08.779Z',
+//       environment: [Object],
+//       revision: 2,
+//       locale: 'en-US'
+//     },
+//     fields: {
+//       title: 'Image Placeholder',
+//       description: 'Dr. Scaduto and child patient',
+//       file: [Object]
+//     }
+//   }
+// ]
