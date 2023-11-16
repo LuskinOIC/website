@@ -2,6 +2,7 @@ import React from "react";
 import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { BLOCKS, MARKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { ImageType, FileDetailsType } from "@/app/constants/types";
 // import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
 }
 
 // const Bold = ({ children }) => <span className="font-bold">{children}</span>;
-const Text = ({ children }) => <p className="align-center">{children}</p>;
+// const Text = ({ children }) => <p className="align-center">{children}</p>;
 const List = ({ children }: { children: React.ReactNode }) => (
   <li className="font-bold">{children}</li>
 );
@@ -38,6 +39,7 @@ export default async function PhysicianBio({
   const docBio = await getPhysicianBioBySlug(params.slug);
   const firstObject = docBio.specialties;
   console.log(docBio);
+  console.log("physicianPortrait", docBio.physicianPortrait);
 
   return (
     <main className="m-10">
