@@ -58,9 +58,21 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export default function Navbar() {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const [isHamburgerOpen, setIsHamburgerOpen] = React.useState(false);
+  const [isPatientCareOpen, setIsPatientCareOpen] = React.useState(false);
+  const [isMedicalProfessionalsOpen, setIsMedicalProfessionalsOpen] =
+    React.useState(false);
+
+  const toggleHamburgerDropdown = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
+  };
+
+  const togglePatientCareDropdown = () => {
+    setIsPatientCareOpen(!isPatientCareOpen);
+  };
+
+  const toggleMedicalProfessionalsDropdown = () => {
+    setIsMedicalProfessionalsOpen(!isMedicalProfessionalsOpen);
   };
   return (
     <NavigationMenu className=''>
@@ -95,7 +107,7 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={toggleDropdown} // Toggle the dropdown on button click
+              onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
               className='bg-transparent text-white rounded-full p-2'
             >
               <FontAwesomeIcon icon={faBars} />
@@ -104,7 +116,7 @@ export default function Navbar() {
         </NavigationMenuList>
       </NavigationMenuList>
       <NavigationMenuList className='md:hidden'>
-        {isDropdownOpen && (
+        {isHamburgerOpen && (
           // Conditionally render the dropdown content when isDropdownOpen is true
           // <NavigationMenuItem className='bg-red-400 w-full absolute justify-items-center top-12 mt-1 p-4'>
           <ul className='w-full text-sm flex justify-center items-center flex-col'>
@@ -134,44 +146,80 @@ export default function Navbar() {
       </NavigationMenuList>
       <NavigationMenuList className='hidden md:flex'>
         <NavigationMenuItem>
-          <div className=''>
-            <NavigationMenuTrigger
-            >Patient Care</NavigationMenuTrigger>
-            <NavigationMenuContent className='flex'>
-              <ul className='flex flex-col'>
+          <div
+            className='relative text-white px-6 pb-10'
+            onMouseEnter={togglePatientCareDropdown}
+            onMouseLeave={() => setIsPatientCareOpen(false)} // Close on mouse leave
+          >
+            <button onClick={togglePatientCareDropdown}>Patient Care</button>
+            <div
+              className={`absolute mt-2 ${
+                isPatientCareOpen ? "block" : "hidden"
+              }`}
+            >
+              <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start'>
                 <li>
                   <NavigationMenuLink asChild>
-                  test
+                    <a href='/' className='px-4 py-2'>
+                      Link 1
+                    </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href='/docs' title='Introduction'>
-                  Re-usable components built using Radix UI and Tailwind CSS.
-                </ListItem>
-                <ListItem href='/docs/installation' title='Installation'>
-                  How to install dependencies and structure your app.
-                </ListItem>
-                <ListItem href='/docs/primitives/typography' title='Typography'>
-                  Styles for headings, paragraphs, lists...etc
-                </ListItem>
+                <li>
+                  <NavigationMenuLink asChild>
+                    <a href='/' className='px-4 py-2'>
+                      Link 2
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <li>
+                  <NavigationMenuLink asChild>
+                    <a href='/' className='px-4 py-2'>
+                      Link 3
+                    </a>
+                  </NavigationMenuLink>
+                </li>
               </ul>
-            </NavigationMenuContent>
+            </div>
           </div>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Medical Professionals</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
+          <div
+            className='relative text-white px-6 pb-10'
+            onMouseEnter={toggleMedicalProfessionalsDropdown}
+            onMouseLeave={() => setIsMedicalProfessionalsOpen(false)} // Close on mouse leave
+          >
+            <button onClick={toggleMedicalProfessionalsDropdown}>Medical Professionals</button>
+            <div
+              className={`absolute mt-2 ${
+                isMedicalProfessionalsOpen ? "block" : "hidden"
+              }`}
+            >
+              <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start'>
+                <li className= 'border-b border-blue-400 w-64'>
+                  <NavigationMenuLink asChild>
+                    <a href='/' className='px-4 py-2'>
+                      Link 1
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <li className= 'border-b border-blue-400 rounded-md w-64'>
+                  <NavigationMenuLink asChild>
+                    <a href='/' className='px-4 py-2'>
+                      Link 2
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <li className= 'border-b border-blue-400 w-64'>
+                  <NavigationMenuLink asChild>
+                    <a href='/' className='px-4 py-2'>
+                      Link 3
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+              </ul>
+            </div>
+          </div>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href='/docs' legacyBehavior passHref>
