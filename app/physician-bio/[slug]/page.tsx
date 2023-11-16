@@ -101,59 +101,60 @@ export default async function PhysicianBio({
         ))}
       </div>
     </main>
-    // <main className="m-10">
-    //   <div>
-    //     <h1>HELLO WORLD</h1>
-    //     <Image
-    //       src={docBio.physicianPortrait.fields.file.url}
-    //       alt=""
-    //       width={docBio.physicianPortrait.fields.file.details.image.width}
-    //       height={docBio.physicianPortrait.fields.file.details.image.height}
-    //     />
-    //     <h1 className="text-lg text-[#800080]">{docBio.physicianName}</h1>
-    //     <h3 className="text-base">Specializes in:</h3>
-    //     <p className="text-[#800080]"></p>
-    //     {renderRichTextToReactComponent(docBio.specialties as Document)}
-    //     <div id="phone-numbers">
-    //       <p>Appointment Number: {docBio.appointmentNumber}</p>
-    //       <p>Physician Number: {docBio.physicianNumber}</p>
-    //     </div>
-    //   </div>
-    //   <div id="overview">
-    //     <h2 className="text-xl">Overview</h2>
-    //     <p>{renderRichTextToReactComponent(docBio.overview as Document)}</p>
-    //   </div>
-    //   <div id="temp-bio-page-sections">
-    //     <h1>
-    //       {docBio.bioPageSection.map(
-    //         (section: BioPageSectionType, index: number) => (
-    //           <div key={index}>
-    //             <h2 className="text-xl">{section.fields.title}</h2>
-    //             <div className="text-sm">
-    //               {section.fields.content.content.map(
-    //                 (contentItem: any, contentIndex: number) => (
-    //                   <p key={contentIndex}>
-    //                     {contentItem.content.map(
-    //                       (nestedContent: any, nestedIndex: number) => (
-    //                         <span key={nestedIndex}>
-    //                           {renderRichTextToReactComponent(
-    //                             nestedContent as Document
-    //                           )}
-    //                         </span>
-    //                       )
-    //                     )}
-    //                   </p>
-    //                 )
-    //               )}
-    //             </div>
-    //           </div>
-    //         )
-    //       )}
-    //     </h1>
-    //   </div>
-    // </main>
   );
 }
+
+// <main className="m-10">
+//   <div>
+//     <h1>HELLO WORLD</h1>
+//     <Image
+//       src={docBio.physicianPortrait.fields.file.url}
+//       alt=""
+//       width={docBio.physicianPortrait.fields.file.details.image.width}
+//       height={docBio.physicianPortrait.fields.file.details.image.height}
+//     />
+//     <h1 className="text-lg text-[#800080]">{docBio.physicianName}</h1>
+//     <h3 className="text-base">Specializes in:</h3>
+//     <p className="text-[#800080]"></p>
+//     {renderRichTextToReactComponent(docBio.specialties as Document)}
+//     <div id="phone-numbers">
+//       <p>Appointment Number: {docBio.appointmentNumber}</p>
+//       <p>Physician Number: {docBio.physicianNumber}</p>
+//     </div>
+//   </div>
+//   <div id="overview">
+//     <h2 className="text-xl">Overview</h2>
+//     <p>{renderRichTextToReactComponent(docBio.overview as Document)}</p>
+//   </div>
+//   <div id="temp-bio-page-sections">
+//     <h1>
+//       {docBio.bioPageSection.map(
+//         (section: BioPageSectionType, index: number) => (
+//           <div key={index}>
+//             <h2 className="text-xl">{section.fields.title}</h2>
+//             <div className="text-sm">
+//               {section.fields.content.content.map(
+//                 (contentItem: any, contentIndex: number) => (
+//                   <p key={contentIndex}>
+//                     {contentItem.content.map(
+//                       (nestedContent: any, nestedIndex: number) => (
+//                         <span key={nestedIndex}>
+//                           {renderRichTextToReactComponent(
+//                             nestedContent as Document
+//                           )}
+//                         </span>
+//                       )
+//                     )}
+//                   </p>
+//                 )
+//               )}
+//             </div>
+//           </div>
+//         )
+//       )}
+//     </h1>
+//   </div>
+// </main>
 
 // DOCBIO {
 //   physicianName: 'Anthony A. Scaduto, MD',
