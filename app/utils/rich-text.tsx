@@ -1,3 +1,4 @@
+import React from "react";
 import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
