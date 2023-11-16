@@ -5,8 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 export default function renderRichTextToReactComponent(
   richText: Document,
   options = {},
-  )
-  {
+) {
   const defaultOptions = {
     renderNode: {
       [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
