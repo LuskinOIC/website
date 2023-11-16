@@ -4,7 +4,6 @@ export default function PhysicianBiography() {
   // const params = {
   //   slug: 'anthony-scaduto-md',
   // }
-  // const physicianSlugs = ["anthony-scaduto-md", "doctor-md"];
   const physicianSlugs = ["anthony-scaduto-md"];
   return (
     <main>
