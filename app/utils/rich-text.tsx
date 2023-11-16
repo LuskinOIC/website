@@ -8,7 +8,7 @@ const Text = ({ children }: { children: React.ReactNode }) => (
   <p className="align-center">{children}</p>
 );
 const List = ({ children }: { children: React.ReactNode }) => (
-  <li className="font-bold">{children}</li>
+  <li className="list-disc">{children}</li>
 );
 
 function renderRichTextToReactComponent(richText: Document, options = {}) {
