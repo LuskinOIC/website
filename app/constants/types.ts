@@ -87,6 +87,15 @@ export type BioPageSectionType = {
     title: string;
     content: {
       content: Array<{ content: Array<{ value: string }> }>;
+      // content: Array<{
+      //   nodeType: string;
+      //   data: object;
+      //   content: Array<{
+      //     nodeType: string;
+      //     data: object;
+      //     content: Array<{}>;
+      //   }>;
+      // }>;
     };
   };
 };
@@ -108,7 +117,15 @@ export type AssetType = {
 
 export type PhysicianBioType = {
   physicianName: string;
-  specialties: object;
+  specialties: Array<{
+    nodeType: string;
+    data: object;
+    content: Array<{
+      nodeType: string;
+      data: object;
+      content: Array<object>;
+    }>;
+  }>;
   physicianPortrait: ImageType;
   overview: object;
   asset: AssetType;

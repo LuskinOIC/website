@@ -4,6 +4,7 @@ import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BioPageSectionType, AssetType } from "@/app/constants/types";
 import Image from "next/image";
+import { render } from "react-dom";
 
 // asynchronous function, uses getPhysicianBio function to fetch Physician Bio data, maps over results to create array of objects, each containing slug property
 export async function generateStaticParams() {
@@ -21,9 +22,15 @@ function renderRichTextToReactComponent(richText: Document, options = {}) {
   // Declares constant variable 'defaultOptions' with object structure. Contains 'renderNode' property which is also an object. Inside 'renderNode', defines how specific Contentful block types should be rendered
   const defaultOptions = {
     renderNode: {
+      [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => {
+        return <ul className="list-disc">{children}</ul>;
+      },
+      [BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => {
+        return <ol className="list-decimal">{children}</ol>;
+      },
       // Provides rendering function that takes a node and children, returning React <li> elements with list-disc styling class
       [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => {
-        return <li className="list-disc">{children}</li>;
+        return <li className="">{children}</li>;
       },
       // Provides rendering function, returns React <p> element
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
@@ -35,19 +42,11 @@ function renderRichTextToReactComponent(richText: Document, options = {}) {
   return documentToReactComponents(richText, { ...defaultOptions, ...options });
 }
 
-//Functional React component. Takes single prop 'nestedContent', which can have any type. Inside component, renders <span> element containing result of calling 'renderRichTextToReactComponent' with 'nestedContent' cast as 'Document'
-const ContentItem = ({ nestedContent }: { nestedContent: any }) => (
-  <ol>{renderRichTextToReactComponent(nestedContent as Document)}</ol>
-);
-
 // Functional React component. Renders <p> element. Maps over contentItem.content array, array should contain objects with 'content' property
-const ContentParagraph = ({ contentItem }: { contentItem: any }) => (
-  <p>
-    {contentItem.content.map((nestedContent: any, nestedIndex: number) => (
-      <ContentItem key={nestedIndex} nestedContent={nestedContent} />
-    ))}
-  </p>
-);
+const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
+  console.log("ContentParagraph - contentItem:", contentItem);
+  return <div>{renderRichTextToReactComponent(contentItem as Document)}</div>;
+};
 
 // Functional React component. Renders <div> element with 'key' attribute based on 'section.sys.id'. Renders <h2> element with text content based on 'section.fields.title'. Renders nested <div> element--within which maps over 'section.fields.content.content', each element should be an object with a 'content' property. For each element, renders 'ContentParagraph' component with 'contentItem' as prop
 const Section = ({ section }: { section: BioPageSectionType }) => (
@@ -72,33 +71,6 @@ export default async function PhysicianBio({
   params: { slug: string };
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
-  // console.log("DOC BIO", docBio);
-  // console.log(
-  //   "RENDER",
-  //   renderRichTextToReactComponent(docBio.specialties as Document)
-  // );
-  // console.log(
-  //   "RENDERING BIOSECTION",
-  //   docBio.bioPageSection[docBio.bioPageSection.length - 1]
-  // );
-  // console.log(
-  //   "RESEARCH",
-  //   docBio.bioPageSection[docBio.bioPageSection.length - 2].fields.content
-  // );
-  // console.log(
-  //   "RESEARCH-CONTENT-NODETYPE",
-  //   docBio.bioPageSection[docBio.bioPageSection.length - 2].fields.content
-  //     .content[0].nodeType
-  // );
-  console.log(
-    "PUBLICATIONS",
-    docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
-  );
-  console.log(
-    "PUBLICATIONS-CONTENT-NODETYPE",
-    docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
-      .content[0].nodeType
-  );
 
   let educationAndCertificatesHeaderRendered = false;
   let researchInsightsAndPublicationsHeaderRendered = false;
@@ -113,8 +85,11 @@ export default async function PhysicianBio({
         />
         <h1 className="text-lg text-[#800080]">{docBio.physicianName}</h1>
         <h3 className="text-base">Specializes in:</h3>
-        <p className="text-[#800080]"></p>
-        {renderRichTextToReactComponent(docBio.specialties as Document)}
+        <div>
+          {renderRichTextToReactComponent(
+            docBio.specialties as unknown as Document
+          )}
+        </div>
         <div id="phone-numbers">
           <p>Appointment Number: {docBio.appointmentNumber}</p>
           <p>Physician Number: {docBio.physicianNumber}</p>
@@ -144,24 +119,12 @@ export default async function PhysicianBio({
           </div>
         )}
       </div>
-      <div id="test-div text-xl">
-        {/* console.log( "PUBLICATIONS-CONTENT-NODETYPE",
-        docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
-        .content[0].nodeType ); */}
-        <p>
-          {
-            docBio.bioPageSection[docBio.bioPageSection.length - 1].fields
-              .content.content[0].nodeType
-          }
-        </p>
-      </div>
+      <div id="test-div text-xl"></div>
 
       {/* Following code block resopnsible for rendering section with dynamic header based on section title and then renders the content of said section using 'Section' component */}
       <div id="temp-bio-page-sections">
         {docBio.bioPageSection.map((section: BioPageSectionType) => (
           <div key={section.sys.id}>
-            {/* Render header based on section title */}
-            {/* If 'educationAndCertificatesHeaderRendered' not true, and 'section.fields.title' matches following values, will render education and certificates header */}
             {!educationAndCertificatesHeaderRendered &&
               (section.fields.title === "Medical School" ||
                 section.fields.title === "Internship" ||
@@ -195,8 +158,6 @@ export default async function PhysicianBio({
                   {(researchInsightsAndPublicationsHeaderRendered = true)}
                 </>
               )}
-
-            {/* Render the section content */}
             <Section key={section.sys.id} section={section} />
           </div>
         ))}
