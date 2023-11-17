@@ -88,3 +88,9 @@ export type LandingPageType = {
   goalSection: PageSectionType;
   sections: PageSectionType[];
 };
+
+export type ButtonProps = {
+  href: string;
+  text: string;
+  className?: string;
+};
