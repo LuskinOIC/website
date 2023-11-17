@@ -6,7 +6,7 @@ type TextProps = {
 };
 
 export function Text1({ children, className = "" }: TextProps) {
-  const classes = `text-base md:text-2xl lg:text-3xl font-arial leading-150 ${className}`;
+  const classes = `text-base md:text-2xl font-arial leading-150 ${className}`;
   return <p className={classes}>{children}</p>;
 }
 
