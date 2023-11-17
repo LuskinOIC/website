@@ -43,10 +43,10 @@ const Section = ({ section }: { section: BioPageSectionType }) => (
       {section.fields.content.content.map(
         (
           contentItem: { content: Array<{ value: string }> },
-          contentIndex: number
+          contentIndex: number,
         ) => (
           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        )
+        ),
       )}
     </div>
   </div>
@@ -74,7 +74,7 @@ export default async function PhysicianBio({
         <h3 className="text-base">Specializes in:</h3>
         <div>
           {renderRichTextToReactComponent(
-            docBio.specialties as unknown as Document
+            docBio.specialties as unknown as Document,
           )}
         </div>
         <div id="phone-numbers">
