@@ -4,7 +4,7 @@ import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BioPageSectionType, AssetType } from "@/app/constants/types";
 import Image from "next/image";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 
 // asynchronous function, uses getPhysicianBio function to fetch Physician Bio data, maps over results to create array of objects, each containing slug property
 export async function generateStaticParams() {
@@ -12,11 +12,6 @@ export async function generateStaticParams() {
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
-// console.log(
-//   "PUBLICATIONS-CONTENT-NODETYPE",
-//   docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
-//     .content[0].nodeType
-// );
 // Function takes 2 parameters, 'richText' (Document type) and 'options' (optional, so it comes with default value)
 function renderRichTextToReactComponent(richText: Document, options = {}) {
   // Declares constant variable 'defaultOptions' with object structure. Contains 'renderNode' property which is also an object. Inside 'renderNode', defines how specific Contentful block types should be rendered
@@ -56,10 +51,10 @@ const Section = ({ section }: { section: BioPageSectionType }) => (
       {section.fields.content.content.map(
         (
           contentItem: { content: Array<{ value: string }> },
-          contentIndex: number
+          contentIndex: number,
         ) => (
           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        )
+        ),
       )}
     </div>
   </div>
@@ -87,7 +82,7 @@ export default async function PhysicianBio({
         <h3 className="text-base">Specializes in:</h3>
         <div>
           {renderRichTextToReactComponent(
-            docBio.specialties as unknown as Document
+            docBio.specialties as unknown as Document,
           )}
         </div>
         <div id="phone-numbers">
