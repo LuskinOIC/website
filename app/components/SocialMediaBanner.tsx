@@ -1,6 +1,10 @@
 // import Link from "next/link";
 import Ozzie from "../../public/Ozzie Crutches SVG 2.png";
-import SocialIcons from "../../public/SocialMediaIcons.png";
+import FB from "../../public/fb.svg";
+import Yelp from "../../public/yelp.svg"
+import LinkedIN from "../../public/linkedin.svg"
+import TwitterX from "../../public/TwitterX.svg"
+import Youtube from "../../public/youtube.svg"
 import React from "react";
 import Image from "next/image";
 
@@ -25,8 +29,22 @@ export default function SocialMediaBanner() {
         </div>
       </div>
       <div className="row-span-1  .. ">
-        <div className="flex flex-row min-h-[75%] justify-center items-center">
-          <Image src={SocialIcons} alt="Social Icons" />
+        <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4">
+        <a href="https://www.instagram.com/orthokids_losangeles/">
+          <Image src={FB} alt="Facebook Logo"/>
+        </a>
+        <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
+          <Image src={LinkedIN} alt="LinkedIn Logo"/>
+        </a>
+        <a href="https://twitter.com/i/flow/login?redirect_after_login=%3FLuskinOIC">
+          <Image src={TwitterX} alt="X Logo"/>
+        </a>
+        <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
+          <Image src={Youtube} alt="Youtube Logo"/>
+        </a>
+        <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
+          <Image src={Yelp} alt="Yelp Logo"/>
+        </a>
         </div>
       </div>
     </div>
