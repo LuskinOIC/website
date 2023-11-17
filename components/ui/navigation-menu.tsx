@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NavigationMenu = React.forwardRef<
@@ -66,10 +65,7 @@ const NavigationMenuContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.Content
     ref={ref}
-    className={cn(
-      "w-full md:w-auto",
-      className,
-    )}
+    className={cn("w-full md:w-auto", className)}
     {...props}
   />
 ));
@@ -83,10 +79,7 @@ const NavigationMenuViewport = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div className={cn("flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
-      className={cn(
-        '',
-        className,
-      )}
+      className={cn("", className)}
       ref={ref}
       {...props}
     />
@@ -101,10 +94,7 @@ const NavigationMenuIndicator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.Indicator
     ref={ref}
-    className={cn(
-      "",
-      className,
-    )}
+    className={cn("", className)}
     {...props}
   >
     <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
