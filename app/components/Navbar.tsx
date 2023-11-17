@@ -60,8 +60,9 @@ const components: { title: string; href: string; description: string }[] = [
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = React.useState(false);
   const [isPatientCareOpen, setIsPatientCareOpen] = React.useState(false);
-  const [isMedicalProfessionalsOpen, setIsMedicalProfessionalsOpen] =
-    React.useState(false);
+  const [isMedicalProfessionalsOpen, setIsMedicalProfessionalsOpen] = React.useState(false);
+  const [isAboutOpen, setIsAboutOpen] = React.useState(false);
+  const [isWaysToGiveOpen, setIsWaysToGiveOpen] = React.useState(false);
 
   const toggleHamburgerDropdown = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
@@ -73,6 +74,14 @@ export default function Navbar() {
 
   const toggleMedicalProfessionalsDropdown = () => {
     setIsMedicalProfessionalsOpen(!isMedicalProfessionalsOpen);
+
+  };
+  const toggleAboutDropdown = () => {
+    setIsAboutOpen(!isMedicalProfessionalsOpen);
+
+  };
+  const toggleWaysToGiveDropdown = () => {
+    setIsWaysToGiveOpen(!isWaysToGiveOpen);
   };
   return (
     <NavigationMenu className=''>
@@ -89,7 +98,7 @@ export default function Navbar() {
         </NavigationMenuItem>
       </NavigationMenuList>
 
-      <NavigationMenuList className='flex items-center justify-between py-3'>
+      <NavigationMenuList className='flex items-end justify-between py-3'>
         <NavigationMenuItem className='px-3'>
           <Image
             src={"/logo.svg"}
@@ -99,18 +108,184 @@ export default function Navbar() {
             style={{}}
           />
         </NavigationMenuItem>
+        {/* mobile */}
 
-        <NavigationMenuList className='navbar mt-8 relative container mx-auto flex w-full'>
-          <NavigationMenuItem className='justify-between md:hidden'>
-            <button className='bg-transparent text-white rounded-full p-2'>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
+        <NavigationMenuItem className='navbar mt-8 justify-end relative container flex w-full md:hidden'>
+          <button className='bg-transparent text-white rounded-full p-2'>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
 
-            <button
-              onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-              className='bg-transparent text-white rounded-full p-2'
+          <button
+            onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
+            className='bg-transparent text-white rounded-full p-2'
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        </NavigationMenuItem>
+
+        {/* mobile */}
+        <NavigationMenuList className='hidden md:flex'>
+          <NavigationMenuItem>
+            <div
+              className='relative text-white px-6 pb-10'
+              onMouseEnter={togglePatientCareDropdown}
+              onMouseLeave={() => setIsPatientCareOpen(false)} // Close on mouse leave
             >
-              <FontAwesomeIcon icon={faBars} />
+              <button onClick={togglePatientCareDropdown}>Patient Care</button>
+              <div
+                className={`absolute mt-2 ${
+                  isPatientCareOpen ? "block" : "hidden"
+                }`}
+              >
+                <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start'>
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 1
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 2
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 3
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div
+              className='relative text-white px-6 pb-10'
+              onMouseEnter={toggleMedicalProfessionalsDropdown}
+              onMouseLeave={() => setIsMedicalProfessionalsOpen(false)} // Close on mouse leave
+            >
+              <button onClick={toggleMedicalProfessionalsDropdown}>
+                Medical Professionals
+              </button>
+              <div
+                className={`absolute mt-2 ${
+                  isMedicalProfessionalsOpen ? "block" : "hidden"
+                }`}
+              >
+                <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start'>
+                  <li className='border-b border-blue-400 w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 1
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className='border-b border-blue-400 rounded-md w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 2
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className='border-b border-blue-400 w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 3
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div
+              className='relative text-white px-6 pb-10'
+              onMouseEnter={toggleAboutDropdown}
+              onMouseLeave={() => setIsAboutOpen(false)} // Close on mouse leave
+            >
+              <button onClick={toggleAboutDropdown}>
+                About
+              </button>
+              <div
+                className={`absolute mt-2 ${
+                  isAboutOpen ? "block" : "hidden"
+                }`}
+              >
+                <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start'>
+                  <li className='border-b border-blue-400 w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 1
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className='border-b border-blue-400 rounded-md w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 2
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className='border-b border-blue-400 w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 3
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div
+              className='relative text-white px-6 pb-10'
+              onMouseEnter={toggleWaysToGiveDropdown}
+              onMouseLeave={() => setIsWaysToGiveOpen(false)} // Close on mouse leave
+            >
+              <button onClick={toggleWaysToGiveDropdown}>
+                Ways To Give
+              </button>
+              <div
+                className={`absolute mt-2 ${
+                  isWaysToGiveOpen ? "block" : "hidden"
+                }`}
+              >
+                <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start'>
+                  <li className='border-b border-blue-400 w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 1
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className='border-b border-blue-400 rounded-md w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 2
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className='border-b border-blue-400 w-64'>
+                    <NavigationMenuLink asChild>
+                      <a href='/' className='px-4 py-2'>
+                        Link 3
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </NavigationMenuItem>
+          <NavigationMenuItem className='relative text-white px-6 pb-10'>
+            <button className='text-black bg-yellow-200 rounded-md w-32 text-center py-2'>
+              Donate
             </button>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -139,99 +314,18 @@ export default function Navbar() {
               <Link href='/item2'> MY CHART </Link>
             </li>
             <li className='text-black w-full text-center py-2 bg-white'>
-              <Link href='/item2'> CLOSE </Link>
+              <Link href='/item2'></Link>
+              <button
+                onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
+              >
+                CLOSE
+              </button>
             </li>
           </ul>
         )}
       </NavigationMenuList>
-      <NavigationMenuList className='hidden md:flex'>
-        <NavigationMenuItem>
-          <div
-            className='relative text-white px-6 pb-10'
-            onMouseEnter={togglePatientCareDropdown}
-            onMouseLeave={() => setIsPatientCareOpen(false)} // Close on mouse leave
-          >
-            <button onClick={togglePatientCareDropdown}>Patient Care</button>
-            <div
-              className={`absolute mt-2 ${
-                isPatientCareOpen ? "block" : "hidden"
-              }`}
-            >
-              <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start'>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href='/' className='px-4 py-2'>
-                      Link 1
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href='/' className='px-4 py-2'>
-                      Link 2
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href='/' className='px-4 py-2'>
-                      Link 3
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <div
-            className='relative text-white px-6 pb-10'
-            onMouseEnter={toggleMedicalProfessionalsDropdown}
-            onMouseLeave={() => setIsMedicalProfessionalsOpen(false)} // Close on mouse leave
-          >
-            <button onClick={toggleMedicalProfessionalsDropdown}>Medical Professionals</button>
-            <div
-              className={`absolute mt-2 ${
-                isMedicalProfessionalsOpen ? "block" : "hidden"
-              }`}
-            >
-              <ul className='flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start'>
-                <li className= 'border-b border-blue-400 w-64'>
-                  <NavigationMenuLink asChild>
-                    <a href='/' className='px-4 py-2'>
-                      Link 1
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <li className= 'border-b border-blue-400 rounded-md w-64'>
-                  <NavigationMenuLink asChild>
-                    <a href='/' className='px-4 py-2'>
-                      Link 2
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <li className= 'border-b border-blue-400 w-64'>
-                  <NavigationMenuLink asChild>
-                    <a href='/' className='px-4 py-2'>
-                      Link 3
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href='/docs' legacyBehavior passHref>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              style={{ backgroundColor: "" }}
-            >
-              Donate
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
+
+
     </NavigationMenu>
   );
 }

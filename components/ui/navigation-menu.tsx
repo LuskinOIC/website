@@ -39,7 +39,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  " flex w-max items-center justify-center px-4 pb-8 text-sm text-white font-medium hover:underline",
+  "group inline-flex h-10 w-max items-center justify-center px-4 pb-8 text-sm text-white font-medium hover:underline",
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -67,7 +67,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "w-auto",
+      "w-full md:w-auto",
       className,
     )}
     {...props}
@@ -107,7 +107,7 @@ const NavigationMenuIndicator = React.forwardRef<
     )}
     {...props}
   >
-    <div className="relative" />
+    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
   </NavigationMenuPrimitive.Indicator>
 ));
 NavigationMenuIndicator.displayName =
