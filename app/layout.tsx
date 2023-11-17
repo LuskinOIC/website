@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import React from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import SocialMediaBanner from "./components/SocialMediaBanner";
 
 export const metadata: Metadata = {
   title:
@@ -21,7 +20,7 @@ export default function RootLayout({
       <body className="font-arial">
         <Navbar />
         {children}
-        <SocialMediaBanner />
+        
         <Footer />
       </body>
     </html>
