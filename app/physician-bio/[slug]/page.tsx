@@ -5,38 +5,42 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BioPageSectionType, AssetType } from "@/app/constants/types";
 import Image from "next/image";
 
+// asynchronous function, uses getPhysicianBio function to fetch Physician Bio data, maps over results to create array of objects, each containing slug property
 export async function generateStaticParams() {
   const physicians = await getPhysicianBio();
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
-// const Bold = ({ children }) => <span className="font-bold">{children}</span>;
-// const Text = ({ children }) => <p className="align-center">{children}</p>;
-// const List = ({ children }: { children: React.ReactNode }) => (
-//   <li className="font-bold">{children}</li>
+// console.log(
+//   "PUBLICATIONS-CONTENT-NODETYPE",
+//   docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
+//     .content[0].nodeType
 // );
-
+// Function takes 2 parameters, 'richText' (Document type) and 'options' (optional, so it comes with default value)
 function renderRichTextToReactComponent(richText: Document, options = {}) {
+  // Declares constant variable 'defaultOptions' with object structure. Contains 'renderNode' property which is also an object. Inside 'renderNode', defines how specific Contentful block types should be rendered
   const defaultOptions = {
     renderNode: {
-      [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
-        <li className="list-disc">{children}</li>
-      ),
+      // Provides rendering function that takes a node and children, returning React <li> elements with list-disc styling class
+      [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => {
+        return <li className="list-disc">{children}</li>;
+      },
+      // Provides rendering function, returns React <p> element
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
         <p>{children}</p>
       ),
     },
   };
-
+  // Calls 'documentToReactComponents' function, passing in richText and options object merging `defaultOptions` and provided `options`. Converts Contentful rich text into React component tree based on provided rendering options
   return documentToReactComponents(richText, { ...defaultOptions, ...options });
 }
 
-//Separate component for rendering a single content item
+//Functional React component. Takes single prop 'nestedContent', which can have any type. Inside component, renders <span> element containing result of calling 'renderRichTextToReactComponent' with 'nestedContent' cast as 'Document'
 const ContentItem = ({ nestedContent }: { nestedContent: any }) => (
-  <span>{renderRichTextToReactComponent(nestedContent as Document)}</span>
+  <ol>{renderRichTextToReactComponent(nestedContent as Document)}</ol>
 );
 
-// Separate component for rendering a single content paragraph
+// Functional React component. Renders <p> element. Maps over contentItem.content array, array should contain objects with 'content' property
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => (
   <p>
     {contentItem.content.map((nestedContent: any, nestedIndex: number) => (
@@ -45,15 +49,18 @@ const ContentParagraph = ({ contentItem }: { contentItem: any }) => (
   </p>
 );
 
+// Functional React component. Renders <div> element with 'key' attribute based on 'section.sys.id'. Renders <h2> element with text content based on 'section.fields.title'. Renders nested <div> element--within which maps over 'section.fields.content.content', each element should be an object with a 'content' property. For each element, renders 'ContentParagraph' component with 'contentItem' as prop
 const Section = ({ section }: { section: BioPageSectionType }) => (
   <div key={section.sys.id}>
     <h2 className="text-xl">{section.fields.title}</h2>
     <div className="text-sm">
-      {/* within a bio page section: fields {title, content} --> content: {content: [Array]} */}
       {section.fields.content.content.map(
-        (contentItem: object, contentIndex: number) => (
+        (
+          contentItem: { content: Array<{ value: string }> },
+          contentIndex: number
+        ) => (
           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        ),
+        )
       )}
     </div>
   </div>
@@ -66,6 +73,32 @@ export default async function PhysicianBio({
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
   // console.log("DOC BIO", docBio);
+  // console.log(
+  //   "RENDER",
+  //   renderRichTextToReactComponent(docBio.specialties as Document)
+  // );
+  // console.log(
+  //   "RENDERING BIOSECTION",
+  //   docBio.bioPageSection[docBio.bioPageSection.length - 1]
+  // );
+  // console.log(
+  //   "RESEARCH",
+  //   docBio.bioPageSection[docBio.bioPageSection.length - 2].fields.content
+  // );
+  // console.log(
+  //   "RESEARCH-CONTENT-NODETYPE",
+  //   docBio.bioPageSection[docBio.bioPageSection.length - 2].fields.content
+  //     .content[0].nodeType
+  // );
+  console.log(
+    "PUBLICATIONS",
+    docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
+  );
+  console.log(
+    "PUBLICATIONS-CONTENT-NODETYPE",
+    docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
+      .content[0].nodeType
+  );
 
   let educationAndCertificatesHeaderRendered = false;
   let researchInsightsAndPublicationsHeaderRendered = false;
@@ -111,10 +144,24 @@ export default async function PhysicianBio({
           </div>
         )}
       </div>
+      <div id="test-div text-xl">
+        {/* console.log( "PUBLICATIONS-CONTENT-NODETYPE",
+        docBio.bioPageSection[docBio.bioPageSection.length - 1].fields.content
+        .content[0].nodeType ); */}
+        <p>
+          {
+            docBio.bioPageSection[docBio.bioPageSection.length - 1].fields
+              .content.content[0].nodeType
+          }
+        </p>
+      </div>
+
+      {/* Following code block resopnsible for rendering section with dynamic header based on section title and then renders the content of said section using 'Section' component */}
       <div id="temp-bio-page-sections">
         {docBio.bioPageSection.map((section: BioPageSectionType) => (
           <div key={section.sys.id}>
             {/* Render header based on section title */}
+            {/* If 'educationAndCertificatesHeaderRendered' not true, and 'section.fields.title' matches following values, will render education and certificates header */}
             {!educationAndCertificatesHeaderRendered &&
               (section.fields.title === "Medical School" ||
                 section.fields.title === "Internship" ||
@@ -157,68 +204,6 @@ export default async function PhysicianBio({
     </main>
   );
 }
-{
-  /* <div id="temp-bio-page-sections">
-        {docBio.bioPageSection.map((section: BioPageSectionType) => (
-          <Section key={section.sys.id} section={section} />
-        ))}
-      </div>
-    </main>
-  );
-} */
-}
-
-// <main className="m-10">
-//   <div>
-//     <h1>HELLO WORLD</h1>
-//     <Image
-//       src={docBio.physicianPortrait.fields.file.url}
-//       alt=""
-//       width={docBio.physicianPortrait.fields.file.details.image.width}
-//       height={docBio.physicianPortrait.fields.file.details.image.height}
-//     />
-//     <h1 className="text-lg text-[#800080]">{docBio.physicianName}</h1>
-//     <h3 className="text-base">Specializes in:</h3>
-//     <p className="text-[#800080]"></p>
-//     {renderRichTextToReactComponent(docBio.specialties as Document)}
-//     <div id="phone-numbers">
-//       <p>Appointment Number: {docBio.appointmentNumber}</p>
-//       <p>Physician Number: {docBio.physicianNumber}</p>
-//     </div>
-//   </div>
-//   <div id="overview">
-//     <h2 className="text-xl">Overview</h2>
-//     <p>{renderRichTextToReactComponent(docBio.overview as Document)}</p>
-//   </div>
-//   <div id="temp-bio-page-sections">
-//     <h1>
-//       {docBio.bioPageSection.map(
-//         (section: BioPageSectionType, index: number) => (
-//           <div key={index}>
-//             <h2 className="text-xl">{section.fields.title}</h2>
-//             <div className="text-sm">
-//               {section.fields.content.content.map(
-//                 (contentItem: any, contentIndex: number) => (
-//                   <p key={contentIndex}>
-//                     {contentItem.content.map(
-//                       (nestedContent: any, nestedIndex: number) => (
-//                         <span key={nestedIndex}>
-//                           {renderRichTextToReactComponent(
-//                             nestedContent as Document
-//                           )}
-//                         </span>
-//                       )
-//                     )}
-//                   </p>
-//                 )
-//               )}
-//             </div>
-//           </div>
-//         )
-//       )}
-//     </h1>
-//   </div>
-// </main>
 
 // DOCBIO {
 //   physicianName: 'Anthony A. Scaduto, MD',
@@ -306,3 +291,79 @@ export default async function PhysicianBio({
 //     }
 //   }
 // ]
+
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
+// {
+//   nodeType: 'list-item',
+//   data: {},
+//   content: [ { nodeType: 'paragraph', data: {}, content: [Array] } ]
+// }
