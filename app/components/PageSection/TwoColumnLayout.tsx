@@ -44,7 +44,7 @@ export default function ColumnLayout({
           <Title1>{section.fields.title}</Title1>
           <Text1>{section.fields.description}</Text1>
         </div>
-          {/* TODO: Provide text button option */}
+        {/* TODO: Provide text button option */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 pt-5">
           {section.fields.actionUrl && (
             <Button
