@@ -85,7 +85,6 @@ export default async function PhysicianBio({
       </div>
       <div id="overview">
         <h2 className="text-xl text-[#0076AD]">Overview</h2>
-        <p>{renderRichTextToReactComponent(docBio.overview as Document)}</p>
       </div>
       <div id="asset-container">
         {Array.isArray(docBio.asset) && docBio.asset.length > 0 && (
@@ -104,7 +103,6 @@ export default async function PhysicianBio({
           </div>
         )}
       </div>
-      <div id="test-div text-xl"></div>
 
       <div id="temp-bio-page-sections">
         {docBio.bioPageSection.map((section: BioPageSectionType) => (
