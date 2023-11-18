@@ -4,7 +4,6 @@ import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BioPageSectionType, AssetType } from "@/app/constants/types";
 import Image from "next/image";
-// import { render } from "react-dom";
 
 export async function generateStaticParams() {
   const physicians = await getPhysicianBio();
@@ -32,7 +31,6 @@ function renderRichTextToReactComponent(richText: Document, options = {}) {
 }
 
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
-  console.log("ContentParagraph - contentItem:", contentItem);
   return <div>{renderRichTextToReactComponent(contentItem as Document)}</div>;
 };
 
@@ -43,10 +41,10 @@ const Section = ({ section }: { section: BioPageSectionType }) => (
       {section.fields.content.content.map(
         (
           contentItem: { content: Array<{ value: string }> },
-          contentIndex: number,
+          contentIndex: number
         ) => (
           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        ),
+        )
       )}
     </div>
   </div>
@@ -74,7 +72,7 @@ export default async function PhysicianBio({
         <h3 className="text-base">Specializes in:</h3>
         <div>
           {renderRichTextToReactComponent(
-            docBio.specialties as unknown as Document,
+            docBio.specialties as unknown as Document
           )}
         </div>
         <div id="phone-numbers">
