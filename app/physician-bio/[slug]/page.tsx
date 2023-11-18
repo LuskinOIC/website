@@ -31,13 +31,7 @@ function renderRichTextToReactComponent(richText: Document, options = {}) {
 }
 
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
-  return (
-    <div>
-      {contentItem && contentItem.content
-        ? renderRichTextToReactComponent(contentItem as Document)
-        : null}
-    </div>
-  );
+  return <div>{renderRichTextToReactComponent(contentItem as Document)}</div>;
 };
 
 const Section = ({ section }: { section: BioPageSectionType }) => (

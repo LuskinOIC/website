@@ -5,6 +5,7 @@ import {
   SpecialtyType,
   PageSectionType,
   EventType,
+  PhysicianBioType,
 } from "@/app/constants/types";
 import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
