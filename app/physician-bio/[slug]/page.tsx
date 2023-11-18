@@ -31,21 +31,25 @@ function renderRichTextToReactComponent(richText: Document, options = {}) {
 }
 
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
-  return <div>{renderRichTextToReactComponent(contentItem as Document)}</div>;
+  return (
+    <div>
+      {contentItem && contentItem.content
+        ? renderRichTextToReactComponent(contentItem as Document)
+        : null}
+    </div>
+  );
 };
 
 const Section = ({ section }: { section: BioPageSectionType }) => (
   <div key={section.sys.id}>
     <h2 className="text-xl">{section.fields.title}</h2>
     <div className="text-sm">
-      {section.fields.content.content.map(
-        (
-          contentItem: { content: Array<{ value: string }> },
-          contentIndex: number,
-        ) => (
-          <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        ),
-      )}
+      {section.fields.content.content &&
+      Array.isArray(section.fields.content.content)
+        ? section.fields.content.content.map((contentItem, contentIndex) => (
+            <ContentParagraph key={contentIndex} contentItem={contentItem} />
+          ))
+        : null}
     </div>
   </div>
 );
@@ -72,7 +76,7 @@ export default async function PhysicianBio({
         <h3 className="text-base">Specializes in:</h3>
         <div>
           {renderRichTextToReactComponent(
-            docBio.specialties as unknown as Document,
+            docBio.specialties as unknown as Document
           )}
         </div>
         <div id="phone-numbers">
