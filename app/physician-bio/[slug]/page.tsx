@@ -44,12 +44,14 @@ const Section = ({ section }: { section: BioPageSectionType }) => (
   <div key={section.sys.id}>
     <h2 className="text-xl">{section.fields.title}</h2>
     <div className="text-sm">
-      {section.fields.content.content &&
-      Array.isArray(section.fields.content.content)
-        ? section.fields.content.content.map((contentItem, contentIndex) => (
-            <ContentParagraph key={contentIndex} contentItem={contentItem} />
-          ))
-        : null}
+      {section.fields.content.content.map(
+        (
+          contentItem: { content: Array<{ value: string }> },
+          contentIndex: number,
+        ) => (
+          <ContentParagraph key={contentIndex} contentItem={contentItem} />
+        ),
+      )}
     </div>
   </div>
 );
