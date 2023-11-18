@@ -87,23 +87,10 @@ export type BioPageSectionType = {
     title: string;
     content: {
       content: Array<{ content: Array<{ value: string }> }>;
-      // content: Array<{
-      //   nodeType: string;
-      //   data: object;
-      //   content: Array<{
-      //     nodeType: string;
-      //     data: object;
-      //     content: Array<{}>;
-      //   }>;
-      // }>;
     };
   };
 };
 
-// export type PhysicianBioSectionType = {
-//   title: string;
-//   content: string;
-// };
 export type AssetType = {
   sys: {
     id: string;
