@@ -1,5 +1,5 @@
 import React from "react";
-import SocialMediaBanner from "../components/SocialMediaBanner";
+import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 
 export default function About() {
   return (
