@@ -20,7 +20,7 @@ export default function SocialMediaBanner() {
         <div className="text-4xl flex flex-row min-h-[50%] justify-center items-center text-center">
           <h1>Follow our story on social media!</h1>
         </div>
-<div className="text-md text-center">
+       <div className="text-md text-center">
           <p>
             Join us in our mission to transform musculoskeletal care for all,
             one child at a time,
@@ -31,19 +31,19 @@ export default function SocialMediaBanner() {
       <div className="row-span-1  .. ">
         <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 ..">
           <a href="https://www.instagram.com/orthokids_losangeles/ ..">
-                <Image src={FB} alt="Facebook Logo"/>
+          <Image src={FB} alt="Facebook Logo"/>
           </a>
           <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
           <Image src={LinkedIN} alt="LinkedIn Logo"/>
-        </a>
-        <a href="https://twitter.com/i/flow/login?redirect_after_login=%3FLuskinOIC">
-            <Image src={TwitterX} alt="X Logo"/>
+          </a>
+          <a href="https://twitter.com/i/flow/login?redirect_after_login=%3FLuskinOIC">
+            <Image src={TwitterX} alt="X Logo" />
           </a>
           <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
             <Image src={Youtube} alt="Youtube Logo" />
-         </a>
+          </a>
           <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
-            <Image src={Yelp} alt="Yelp Logo "/>
+            <Image src={Yelp} alt="Yelp Logo " />
           </a>
         </div>
       </div>
