@@ -89,6 +89,12 @@ export type LandingPageType = {
   sections: PageSectionType[];
 };
 
+export type ButtonProps = {
+  href: string;
+  text: string;
+  className?: string;
+};
+
 export type BioPageSectionType = {
   sys: {
     id: string;
