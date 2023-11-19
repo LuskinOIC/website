@@ -94,3 +94,46 @@ export type ButtonProps = {
   text: string;
   className?: string;
 };
+
+export type BioPageSectionType = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    content: {
+      content: Array<{ content: Array<{ value: string }> }>;
+    };
+  };
+};
+
+export type AssetType = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    description: string;
+    file: FileDetailsType;
+  };
+};
+
+export type PhysicianBioType = {
+  physicianName: string;
+  specialties: Array<{
+    nodeType: string;
+    data: object;
+    content: Array<{
+      nodeType: string;
+      data: object;
+      content: Array<object>;
+    }>;
+  }>;
+  physicianPortrait: ImageType;
+  overview: object;
+  asset: AssetType;
+  appointmentNumber: string;
+  physicianNumber: string;
+  bioPageSection: BioPageSectionType[];
+  slug: string;
+};
