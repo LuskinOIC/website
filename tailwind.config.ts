@@ -30,6 +30,8 @@ const config: Config = {
       '150': '150%'
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")
+],
 };
 export default config;
+
