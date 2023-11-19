@@ -3,27 +3,23 @@ import {
   LandingPageType,
   SocialMediaSectionType,
   SpecialtyType,
-  PageSectionType,
   EventType,
   PhysicianBioType,
 } from "@/app/constants/types";
 import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
+// Create the Contentful Client
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID as string,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 });
 
-export async function getEntryById(id: string) {
-  const entry = await client.getEntry(id);
-  return entry.fields as PageSectionType;
-}
-
-export async function getPage() {
+export async function getLandingPage() {
   const entry = await client.getEntry(LANDING_PAGE_ID, {
     include: 2,
     locale: "en-US",
   });
+
   return entry.fields as LandingPageType;
 }
 
@@ -32,6 +28,7 @@ export async function getEvents() {
     content_type: "event",
     locale: "en-US",
   });
+
   return entries.items.map((entry) => entry.fields);
 }
 
@@ -41,7 +38,17 @@ export async function getEventBySlug(slug: string) {
     "fields.slug": slug,
     locale: "en-US",
   });
+
   return entry.items[0].fields as EventType;
+}
+
+export async function getSpecialties(): Promise<SpecialtyType[]> {
+  const entries = await client.getEntries({
+    content_type: "specialty",
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields) as SpecialtyType[];
 }
 
 export async function getSpecialty(): Promise<SpecialtyType> {
