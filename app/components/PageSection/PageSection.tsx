@@ -12,7 +12,18 @@ export default function PageSection({ section }: { section: PageSectionType }) {
     case "Column Layout":
       return <TwoColumnLayout section={section} />;
     case "Card Layout":
-      return <FullCardLayout section={section} />;
+      return (
+        <FullCardLayout
+          title={section.fields.title}
+          bold={section.fields.bold}
+          titleSize={section.fields.titleSize}
+          description={section.fields.description}
+          imageUrl={section.fields.image.fields.file.url}
+          imageAlt={section.fields.image.fields.description}
+          imageWidth={section.fields.image.fields.file.details.image.width}
+          imageHeight={section.fields.image.fields.file.details.image.height}
+        />
+      );
     case "Full Width Image Layout":
       return <FullWidthImageLayout section={section} />;
     case "Info Card Layout":

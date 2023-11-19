@@ -98,15 +98,15 @@ export default function Navbar() {
                 <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start">
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/" className="px-4 py-2">
-                        Link 1
+                      <a href="/patient-care" className="px-4 py-2">
+                        Patient Care
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/" className="px-4 py-2">
-                        Link 2
+                      <a href="/urgent-care" className="px-4 py-2">
+                        Urgent Care
                       </a>
                     </NavigationMenuLink>
                   </li>
