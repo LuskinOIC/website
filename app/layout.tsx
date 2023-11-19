@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="font-arial">
         <Navbar />
   {children}
-        <Footer />
+              <Footer />
       </body>
     </html>
   );
