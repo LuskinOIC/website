@@ -20,7 +20,7 @@ export default function SocialMediaBanner() {
         <div className="text-4xl flex flex-row min-h-[50%] justify-center items-center text-center">
           <h1>Follow our story on social media!</h1>
         </div>
-<div className="text-md text-center">
+        <div className="text-md text-center">
           <p>
             Join us in our mission to transform musculoskeletal care for all,
             one child at a time,
