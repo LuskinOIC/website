@@ -10,10 +10,11 @@ const config: Config = {
     extend: {
       colors: {
         luskin: {
-          darkBlue: '#0076AD',
+          white: 'FFF',
+          blue: '#0076AD',
           brightBlue: '#32B8DE',
           green: '#99C221',
-          
+          purple: '#825AA4',
         }
       },
       backgroundImage: {
