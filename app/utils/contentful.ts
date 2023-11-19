@@ -14,6 +14,8 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 });
 
+/* LANDING PAGE */
+
 export async function getLandingPage() {
   const entry = await client.getEntry(LANDING_PAGE_ID, {
     include: 2,
@@ -22,6 +24,8 @@ export async function getLandingPage() {
 
   return entry.fields as LandingPageType;
 }
+
+/* EVENTS */
 
 export async function getEvents() {
   const entries = await client.getEntries({
@@ -42,6 +46,8 @@ export async function getEventBySlug(slug: string) {
   return entry.items[0].fields as EventType;
 }
 
+/* SPECIALTIES */
+
 export async function getSpecialties(): Promise<SpecialtyType[]> {
   const entries = await client.getEntries({
     content_type: "specialty",
@@ -56,15 +62,21 @@ export async function getSpecialty(): Promise<SpecialtyType> {
   return entry.fields as SpecialtyType;
 }
 
+/* SOCAL MEDIA */
+
 export async function getSocialMediaSection(): Promise<SocialMediaSectionType> {
   const entry = await client.getEntry("6Mg6c3R91lEllwDWkYSkde");
   return entry.fields as SocialMediaSectionType;
 }
-export async function getPhysicianBio() {
+
+/* PHYSICIANS */
+
+export async function getPhysicians() {
   const entries = await client.getEntries({
     content_type: "physicianBio",
     locale: "en-US",
   });
+
   return entries.items.map((entry) => entry.fields);
 }
 
@@ -74,5 +86,6 @@ export async function getPhysicianBioBySlug(slug: string) {
     "fields.slug": slug,
     locale: "en-US",
   });
+
   return entry.items[0].fields as PhysicianBioType;
 }

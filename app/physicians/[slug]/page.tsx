@@ -1,15 +1,19 @@
 import React from "react";
-import { getPhysicianBio, getPhysicianBioBySlug } from "@/app/utils/contentful";
+import { getPhysicians, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BioPageSectionType, AssetType } from "@/app/constants/types";
 import Image from "next/image";
 
+// We need to export this function so that Next.js knows what pages to generate
+// static HTML for.
 export async function generateStaticParams() {
-  const physicians = await getPhysicianBio();
+  const physicians = await getPhysicians();
+
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
+// TODO: Move into utils
 function renderRichTextToReactComponent(richText: Document, options = {}) {
   const defaultOptions = {
     renderNode: {
@@ -30,10 +34,12 @@ function renderRichTextToReactComponent(richText: Document, options = {}) {
   return documentToReactComponents(richText, { ...defaultOptions, ...options });
 }
 
+// TODO: Move into components
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
   return <div>{renderRichTextToReactComponent(contentItem as Document)}</div>;
 };
 
+// TODO: Move into components
 const Section = ({ section }: { section: BioPageSectionType }) => (
   <div key={section.sys.id}>
     <h2 className="text-xl">{section.fields.title}</h2>
