@@ -89,6 +89,30 @@ export type ImageType = {
   };
 };
 
+export type LandingPageType = {
+  metaData: string;
+  goalSection: PageSectionType;
+  sections: PageSectionType[];
+};
+
+export type PatientCarePageType = {
+  title: string;
+  tabSection: TabSectionType;
+};
+
+export type TabSectionType = {
+  fields: {
+    tabs: TabType[];
+  };
+};
+
+export type TabType = {
+  fields: {
+    richTextContent: Document;
+    tabTitle: string;
+  };
+};
+
 export type PageSectionType = {
   fields: {
     actionText: string;
@@ -128,10 +152,21 @@ export type PhysicianBioType = {
   slug: string;
 };
 
-export type LandingPageType = {
-  metaData: string;
-  goalSection: PageSectionType;
-  sections: PageSectionType[];
+export type TabsContentCardType = {
+  header: string;
+  body: string;
+  buttonText: string;
+  buttonLink: string;
+};
+
+export type TabsContentTextType = {
+  header: string;
+  richTextBody: Document;
+};
+
+export type TabsContentDataType = {
+  cardContent?: TabsContentCardType[];
+  textContent?: TabsContentTextType[];
 };
 
 export type SocialMediaSectionPropsType = {

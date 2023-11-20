@@ -5,6 +5,7 @@ import {
   SpecialtyType,
   EventType,
   PhysicianBioType,
+  PatientCarePageType,
 } from "@/app/constants/types";
 import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
@@ -88,4 +89,15 @@ export async function getPhysicianBioBySlug(slug: string) {
   });
 
   return entry.items[0].fields as PhysicianBioType;
+}
+
+export async function getPatientCarePage() {
+  const entries = await client.getEntries({
+    content_type: "patientCarePage",
+    include: 2,
+    locale: "en-US",
+  });
+  const entry = entries.items[0];
+
+  return entry.fields as unknown as PatientCarePageType;
 }
