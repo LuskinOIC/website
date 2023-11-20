@@ -104,27 +104,30 @@ const richTextDocument: Document = {
           data: {},
           content: [
             {
-              nodeType: 'text',
+              nodeType: "text",
               data: {},
-              value: "Considerate and respectful care, and to be made comfortable. You have the right to respect for your cultural, psychosocial, spiritual, and personal values, beliefs and preferences.",
+              value:
+                "Considerate and respectful care, and to be made comfortable. You have the right to respect for your cultural, psychosocial, spiritual, and personal values, beliefs and preferences.",
               marks: [],
             },
             {
-              nodeType: 'text',
+              nodeType: "text",
               data: {},
-              value: "Have family (or other representative of your choosing) be involved in care, treatment, or services decisions to the extent permitted by you or your surrogate decision maker, in accordance with laws and regulations.",
+              value:
+                "Have family (or other representative of your choosing) be involved in care, treatment, or services decisions to the extent permitted by you or your surrogate decision maker, in accordance with laws and regulations.",
               marks: [],
             },
             {
-              nodeType: 'text',
+              nodeType: "text",
               data: {},
-              value: "Know the name of the licensed health care practitioner acting within the scope of his or her professional licensure who has primary relationship for coordinating your care, and the names and professional relationships of physicians and nonphysicians who will see you.",
+              value:
+                "Know the name of the licensed health care practitioner acting within the scope of his or her professional licensure who has primary relationship for coordinating your care, and the names and professional relationships of physicians and nonphysicians who will see you.",
               marks: [],
             },
-          ]
+          ],
         },
       ],
-    }
+    },
   ],
 };
 

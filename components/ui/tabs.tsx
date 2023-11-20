@@ -16,11 +16,7 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"; // Placeholder
 // import { renderRichTextToReactComponent } from "@/app/utils/rich-text.tsx"
 
-import {
-  TabsContentDataType,
-  TabsContentCardType,
-  TabsContentTextType,
-} from "@/app/constants/types";
+import { TabsContentDataType } from "@/app/constants/types";
 
 import { cn } from "@/lib/utils";
 import { Text2 } from "@/app/components/ui/Typography/Text";
@@ -88,16 +84,15 @@ function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
     // There's card content, so render cards
     return <div />;
   } else if (textContent != undefined) {
-
     return (
       <div>
-        { textContent.map((section) => (
-          <div>
+        {textContent.map((section) => (
+          <div key={section.header}>
             <Text2>{section.header}</Text2>
             {documentToReactComponents(section.richTextBody) /* Placeholder */}
             {/* renderRichTextToReactComponent(section.richTextBody) */}
           </div>
-          ))}
+        ))}
       </div>
     );
   } else return <div />;
