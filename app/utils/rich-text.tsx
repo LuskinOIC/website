@@ -2,7 +2,7 @@ import React from "react";
 import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-export default function renderRichTextToReactComponent(
+export function renderRichTextToReactComponent(
   richText: Document,
   options = {},
 ) {

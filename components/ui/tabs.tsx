@@ -95,7 +95,7 @@ function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
         ))}
       </div>
     );
-  } else return <div />;
+  } else return <div></div>;
 }
 
 export { Tabs, TabsList, TabsTrigger, TabsContent, TabsContentData };
