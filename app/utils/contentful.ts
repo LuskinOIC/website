@@ -99,5 +99,5 @@ export async function getPatientCarePage() {
   });
   const entry = entries.items[0];
 
-  return entry.fields as PatientCarePageType;
+  return entry.fields as unknown as PatientCarePageType;
 }

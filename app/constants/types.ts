@@ -166,7 +166,7 @@ export type TabsContentTextType = {
 
 export type TabsContentDataType = {
   cardContent?: TabsContentCardType[];
-  richTextContent?: TabsContentTextType[];
+  textContent?: TabsContentTextType[];
 };
 
 export type SocialMediaSectionPropsType = {
