@@ -4,8 +4,8 @@ import Image from "next/image";
 import { PageSectionType } from "@/app/constants/types";
 // Custom components
 import { Title1 } from "@/app/components/ui/Typography/Title";
-import { Text1 } from "../ui/Typography/Text";
-import Button from "../ui/Button";
+import { Text1 } from "@/app/components/ui/Typography/Text";
+import Button from "@/app/components/ui/Button";
 
 export default function ColumnLayout({
   section,
@@ -13,10 +13,12 @@ export default function ColumnLayout({
   section: PageSectionType;
 }) {
   const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
-  const bgColor = `bg-luskin-${section.fields.backgroundColor}`;
+  // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
+  // for dynamically generated classes. This is a temporary fix.
+  const bgColor =
+    section.fields.backgroundColor === "blue" ? "bg-[#0076AD]" : "bg-white";
   const textColor =
-    section.fields.backgroundColor !== "white" ? "text-white" : "text-black";
-
+    section.fields.backgroundColor === "blue" ? "text-white" : "text-black";
   return (
     <section
       className={`block ${bgColor} grid md:grid-cols-2 md:gap-14 px-6 md:px-0 py-3 md:py-0`}
