@@ -1,12 +1,11 @@
-// import Link from "next/link";
-import Ozzie from "../../public/Ozzie Crutches SVG 2.png";
-import FB from "../../public/fb.svg";
-import Yelp from "../../public/yelp.svg";
-import LinkedIN from "../../public/linkedin.svg";
-import TwitterX from "../../public/TwitterX.svg";
-import Youtube from "../../public/youtube.svg";
 import React from "react";
+import FB from "../../public/fb.svg";
 import Image from "next/image";
+import LinkedIN from "../../public/libanner.svg";
+import Ozzie from "../../public/Ozzie Crutches SVG 2.png";
+import TwitterX from "../../public/TwitterX.svg";
+import Yelp from "../../public/yelpbanner.svg";
+import Youtube from "../../public/youtubebanner.svg";
 
 export default function SocialMediaBanner() {
   return (
