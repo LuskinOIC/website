@@ -87,12 +87,9 @@ function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
         {textContent.map((section) => (
           <div key={section.header}>
             <Text2>{section.header}</Text2>
-            {
-              documentToReactComponents(
-                section.richTextBody as unknown as Document,
-              ) /* Placeholder */
-            }
-            {/* renderRichTextToReactComponent(section.richTextBody) */}
+            {documentToReactComponents(
+              section.richTextBody as unknown as Document,
+            )}
           </div>
         ))}
       </div>

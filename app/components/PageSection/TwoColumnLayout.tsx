@@ -19,7 +19,7 @@ export default function ColumnLayout({
 
   return (
     <section
-      className={`${bgColor} grid md:grid-cols-2 md:gap-14 px-6 md:px-0 py-3 md:py-0`}
+      className={`block ${bgColor} grid md:grid-cols-2 md:gap-14 px-6 md:px-0 py-3 md:py-0`}
     >
       {/* TODO: Adjust image sizing */}
       {section.fields.image && (
@@ -39,7 +39,7 @@ export default function ColumnLayout({
         </div>
       )}
       {/* TODO: Adjust letter spacing, + Patient Care header order */}
-      <div className="col-span-1 grid gap-2 md:px-40 py-9 md:py-40">
+      <div className="col-span-1 grid gap-2 md:px-16 py-9 md:py-40">
         <div className={`grid gap-2 ${textColor}`}>
           <Title1>{section.fields.title}</Title1>
           <Text1>{section.fields.description}</Text1>
