@@ -1,8 +1,6 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContentData } from "@/components/ui/tabs";
 import Image from "next/image";
-import { Document } from "@contentful/rich-text-types";
 import { getPatientCarePage } from "@/app/utils/contentful";
-import { renderRichTextToReactComponent } from "@/app/utils/rich-text";
 
 const placeholderContent = (
   <div className="flex flex-col items-center">
@@ -59,16 +57,14 @@ export default async function PatientCare() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="planning">
-          {renderRichTextToReactComponent(
-            patientCarePage.tabSection.fields.tabs[0].fields
-              .richTextContent as unknown as Document,
-          )}
+          <TabsContentData
+            fields={patientCarePage.tabSection.fields.tabs[0].fields}
+          />
         </TabsContent>
         <TabsContent value="billing">
-          {renderRichTextToReactComponent(
-            patientCarePage.tabSection.fields.tabs[1].fields
-              .richTextContent as unknown as Document,
-          )}
+          <TabsContentData
+            fields={patientCarePage.tabSection.fields.tabs[1].fields}
+          />
         </TabsContent>
         <TabsContent value="rights">{placeholderContent}</TabsContent>
         <TabsContent value="prep">{placeholderContent}</TabsContent>

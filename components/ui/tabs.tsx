@@ -13,11 +13,9 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { Document } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { TabsContentDataType } from "@/app/constants/types";
+import { TabType } from "@/app/constants/types";
 import { cn } from "@/lib/utils";
-import { Text2 } from "@/app/components/ui/Typography/Text";
+import { renderRichTextToReactComponent } from "@/app/utils/rich-text";
 
 const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
@@ -77,21 +75,16 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
+function TabsContentData({ fields: { richTextContent, cardContent } }: TabType) {
   if (cardContent != undefined) {
     // There's card content, so render cards
     return <div />;
-  } else if (textContent != undefined) {
+  } else if (richTextContent != undefined) {
     return (
       <div>
-        {textContent.map((section) => (
-          <div key={section.header}>
-            <Text2>{section.header}</Text2>
-            {documentToReactComponents(
-              section.richTextBody as unknown as Document,
-            )}
-          </div>
-        ))}
+        {renderRichTextToReactComponent(
+          richTextContent
+        )}
       </div>
     );
   } else return <div></div>;
