@@ -90,9 +90,8 @@ function TabsContentData({ cardContent, textContent }: TabsContentDataType) {
             {
               documentToReactComponents(
                 section.richTextBody as unknown as Document,
-              ) /* Placeholder */
+              )
             }
-            {/* renderRichTextToReactComponent(section.richTextBody) */}
           </div>
         ))}
       </div>
