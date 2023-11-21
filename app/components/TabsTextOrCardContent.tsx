@@ -25,7 +25,11 @@ export default function TabsTextOrCardContent({
               <p>{card.body}</p>
             </CardContent>
             <CardFooter>
-              <Button href={card.buttonLink} text={card.buttonText} />
+              <Button
+                href={card.buttonLink}
+                text={card.buttonText}
+                className="font-bold align-middle"
+              />
             </CardFooter>
           </Card>
         ))}
