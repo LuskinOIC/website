@@ -29,6 +29,13 @@ const placeholderContent = (
   </div>
 );
 
+const placeholderCard = {
+  header: "Header",
+  body: "Considerate and respectful care, and to be made comfortable. You have the right to respect for your cultural, psychosocial, spiritual, and personal values, beliefs and preferences. Have family (or other representative of your choosing) be involved in care, treatment, or services decisions to the extent permitted by you or your surrogate decision maker, in accordance with laws and regulations.   Know the name of the licensed health care practitioner acting within the scope of his or her professional licensure who has primary relationship for coordinating you",
+  buttonLink: "/",
+  buttonText: "Button",
+};
+
 export default async function PatientCare() {
   const patientCarePage = await getPatientCarePage();
 
@@ -67,7 +74,21 @@ export default async function PatientCare() {
             fields={patientCarePage.tabSection.fields.tabs[1].fields}
           />
         </TabsContent>
-        <TabsContent value="rights">{placeholderContent}</TabsContent>
+        <TabsContent value="rights">
+          <TabsTextOrCardContent
+            fields={{
+              tabTitle: "",
+              cardContent: [
+                placeholderCard,
+                placeholderCard,
+                placeholderCard,
+                placeholderCard,
+                placeholderCard,
+                placeholderCard,
+              ],
+            }}
+          />
+        </TabsContent>
         <TabsContent value="prep">{placeholderContent}</TabsContent>
         <TabsContent value="forms">{placeholderContent}</TabsContent>
       </Tabs>

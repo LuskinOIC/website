@@ -2,6 +2,7 @@
  * Tabs
  *    - Changed width to full
  *    - Added flexbox and center all tabs and content
+ *    - Add padding
  * TabsList
  *    - Changed height, width, and padding
  * TabsTrigger
@@ -21,7 +22,7 @@ const Tabs = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Root
     ref={ref}
-    className={cn("flex flex-col items-center w-full", className)}
+    className={cn("flex flex-col items-center w-full h-fit pb-10", className)}
     {...props}
   />
 ));
