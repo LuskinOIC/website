@@ -1,6 +1,5 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getPatientCarePage } from "@/app/utils/contentful";
-import TabsTextOrCardContent from "../components/TabsTextOrCardContent";
+import TabSection from "../components/TabsSection";
 
 /* Here to next comment can be removed once values are in Contentful */
 const placeholderCard = {
@@ -50,30 +49,7 @@ export default async function PatientCare() {
 
   return (
     <main>
-      <Tabs
-        defaultValue={patientCarePage.tabSection.fields.tabs[0].fields.tabTitle}
-      >
-        <TabsList
-          className={
-            "grid grid-cols-" + patientCarePage.tabSection.fields.tabs.length
-          }
-        >
-          {patientCarePage.tabSection.fields.tabs.map((tab, index) => (
-            <TabsTrigger
-              key={index}
-              value={tab.fields.tabTitle}
-              className="ml-0"
-            >
-              <h1 className="uppercase">{tab.fields.tabTitle}</h1>
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        {patientCarePage.tabSection.fields.tabs.map((tab, index) => (
-          <TabsContent key={index} value={tab.fields.tabTitle}>
-            <TabsTextOrCardContent fields={tab.fields} />
-          </TabsContent>
-        ))}
-      </Tabs>
+      <TabSection fields={patientCarePage.tabSection.fields} />
     </main>
   );
 }
