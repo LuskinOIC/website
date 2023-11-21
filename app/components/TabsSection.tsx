@@ -1,7 +1,5 @@
-import { TabSectionType, TabType } from "../constants/types";
-import Button from "./ui/Button";
-import { renderRichTextToReactComponent } from "../utils/rich-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TabSectionType, TabType } from "../constants/types";
 import {
   Card,
   CardContent,
@@ -9,6 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
+import Button from "./ui/Button";
+import { renderRichTextToReactComponent } from "../utils/rich-text";
 
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
   return (
