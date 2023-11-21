@@ -75,18 +75,14 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-function TabsContentData({ fields: { richTextContent, cardContent } }: TabType) {
+function TabsContentData({
+  fields: { richTextContent, cardContent },
+}: TabType) {
   if (cardContent != undefined) {
     // There's card content, so render cards
     return <div />;
   } else if (richTextContent != undefined) {
-    return (
-      <div>
-        {renderRichTextToReactComponent(
-          richTextContent
-        )}
-      </div>
-    );
+    return (<div>{renderRichTextToReactComponent(richTextContent)}</div>);
   } else return <div></div>;
 }
 

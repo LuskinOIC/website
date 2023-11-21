@@ -1,4 +1,10 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContentData } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  TabsContentData,
+} from "@/components/ui/tabs";
 import Image from "next/image";
 import { getPatientCarePage } from "@/app/utils/contentful";
 
