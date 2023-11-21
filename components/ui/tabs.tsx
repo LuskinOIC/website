@@ -82,7 +82,7 @@ function TabsContentData({
     // There's card content, so render cards
     return <div />;
   } else if (richTextContent != undefined) {
-    return (<div>{renderRichTextToReactComponent(richTextContent)}</div>);
+    return <div>{renderRichTextToReactComponent(richTextContent)}</div>;
   } else return <div></div>;
 }
 
