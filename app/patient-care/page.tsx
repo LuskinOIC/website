@@ -1,12 +1,7 @@
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-  TabsContentData,
-} from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import Image from "next/image";
 import { getPatientCarePage } from "@/app/utils/contentful";
+import TabsTextOrCardContent from "../components/TabsTextOrCardContent";
 
 const placeholderContent = (
   <div className="flex flex-col items-center">
@@ -63,12 +58,12 @@ export default async function PatientCare() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="planning">
-          <TabsContentData
+          <TabsTextOrCardContent
             fields={patientCarePage.tabSection.fields.tabs[0].fields}
           />
         </TabsContent>
         <TabsContent value="billing">
-          <TabsContentData
+          <TabsTextOrCardContent
             fields={patientCarePage.tabSection.fields.tabs[1].fields}
           />
         </TabsContent>
