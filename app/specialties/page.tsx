@@ -21,6 +21,8 @@ export default async function Specialties() {
             imageAlt={specialty.image.fields.description}
             imageWidth={specialty.image.fields.file.details.image.width}
             imageHeight={specialty.image.fields.file.details.image.height}
+            //TEMP description hold
+            longText=""
           />
         ))}
       </div>

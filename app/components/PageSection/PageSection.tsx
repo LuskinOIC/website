@@ -22,6 +22,7 @@ export default function PageSection({ section }: { section: PageSectionType }) {
           imageAlt={section.fields.image.fields.description}
           imageWidth={section.fields.image.fields.file.details.image.width}
           imageHeight={section.fields.image.fields.file.details.image.height}
+          longText={section.fields.longText}
         />
       );
     case "Full Width Image Layout":

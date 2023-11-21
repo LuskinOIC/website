@@ -12,7 +12,7 @@ export function renderRichTextToReactComponent(
         <li className="list-disc">{children}</li>
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p>{children}</p>
+        <p className="my-3">{children}</p>
       ),
     },
   };
