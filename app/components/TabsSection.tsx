@@ -1,6 +1,14 @@
+import { TabSectionType, TabType } from "../constants/types";
+import Button from "./ui/Button";
+import { renderRichTextToReactComponent } from "../utils/rich-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TabsTextOrCardContent from "./TabsTextOrCardContent";
-import { TabSectionType } from "../constants/types";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
 
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
   return (
@@ -19,4 +27,36 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
       ))}
     </Tabs>
   );
+}
+
+function TabsTextOrCardContent({
+  fields: { richTextContent, cardContent },
+}: TabType) {
+  if (cardContent != undefined) {
+    // There's card content, so render cards
+    return (
+      <div className="grid grid-cols-2">
+        {cardContent.map((card, index) => (
+          <Card key={index} className="col-span-1 shadow-none border-none pb-5">
+            <CardHeader>
+              <CardTitle>{card.header}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>{card.body}</p>
+            </CardContent>
+            <CardFooter>
+              <Button
+                href={card.buttonLink}
+                text={card.buttonText}
+                className="font-bold align-middle"
+              />
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    );
+  } else if (richTextContent != undefined) {
+    // There's text content, so render text
+    return <div>{renderRichTextToReactComponent(richTextContent)}</div>;
+  } else return <div />;
 }
