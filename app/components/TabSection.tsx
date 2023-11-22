@@ -1,3 +1,5 @@
+"use client";
+
 import { TabSectionType, TabType } from "../constants/types";
 import Button from "./ui/Button";
 import { renderRichTextToReactComponent } from "../utils/rich-text";
@@ -9,13 +11,29 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
+import { useState } from "react";
 
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
+  const [selectedTab, setSelectedTab] = useState(tabs[0].fields.tabTitle);
+  // Trigger component refresh once tabs fully load
+  const [tabCount, setTabCount] = useState(tabs.length);
+  if (tabCount != tabs.length) {
+    setTabCount(tabs.length);
+  }
+
   return (
-    <Tabs defaultValue={tabs[0].fields.tabTitle}>
-      <TabsList className={"grid grid-cols-" + tabs.length}>
+    <Tabs defaultValue={selectedTab}>
+      <TabsList className={"grid grid-cols-" + tabCount}>
         {tabs.map((tab, index) => (
-          <TabsTrigger key={index} value={tab.fields.tabTitle} className="ml-0">
+          <TabsTrigger
+            key={index}
+            value={tab.fields.tabTitle}
+            onClick={() => setSelectedTab(tab.fields.tabTitle)}
+            className={
+              /* Set left margin of first item and right margin of last item to 0 */
+              index == 0 ? "ml-0" : index == tabCount - 1 ? "mr-0" : ""
+            }
+          >
             <h1 className="uppercase">{tab.fields.tabTitle}</h1>
           </TabsTrigger>
         ))}
