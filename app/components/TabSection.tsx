@@ -13,6 +13,24 @@ import {
 } from "../../components/ui/card";
 import { useState } from "react";
 
+const styles = {
+  tabsList: (tabCount: number) =>
+    `grid grid-cols-${tabCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-10 justify-items-stretch rounded-md bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`,
+  tabsTrigger: (index: number, tabCount: number) => {
+    // Set left margin of first item and right margin of last item to 0
+    let horizontalMargin: string = "";
+    if (index == 0) {
+      horizontalMargin = "ml-0 mr-1";
+    } else if (index == tabCount - 1) {
+      horizontalMargin = "ml-1 mr-1";
+    } else {
+      horizontalMargin = "mx-1";
+    }
+
+    return `flex flex-col h-[3.812rem] min-w-fit rounded-t-lg ${horizontalMargin} px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`
+  },
+};
+
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
   const [selectedTab, setSelectedTab] = useState(tabs[0].fields.tabTitle);
   // Trigger component refresh once tabs fully load
@@ -26,24 +44,13 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
       defaultValue={selectedTab}
       className="flex flex-col items-center w-full h-fit pb-15"
     >
-      <TabsList
-        className={`grid grid-cols-${tabCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-10 justify-items-stretch rounded-md bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`}
-      >
+      <TabsList className={styles.tabsList(tabCount)}>
         {tabs.map((tab, index) => (
           <TabsTrigger
             key={index}
             value={tab.fields.tabTitle}
             onClick={() => setSelectedTab(tab.fields.tabTitle)}
-            className={
-              /* Set left margin of first item and right margin of last item to 0 */
-              `${
-                index == 0
-                  ? "ml-0 mr-1"
-                  : index == tabCount - 1
-                  ? "ml-1 mr-0"
-                  : "mx-1"
-              } flex flex-col h-[3.812rem] min-w-fit rounded-t-lg px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`
-            }
+            className={styles.tabsTrigger(index, tabCount)}
           >
             <h1 className="uppercase">{tab.fields.tabTitle}</h1>
           </TabsTrigger>
