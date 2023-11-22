@@ -23,7 +23,7 @@ export const Title3 = ({ children, className = "" }: TitleProps) => {
 };
 
 export function TitleComponent({ title, titleSize, bold }: TitleProps) {
-  const boldClass = bold ? "md:font-bold" : "md:font-normal";
+  const boldClass = bold ? "font-bold" : "font-normal";
 
   switch (titleSize) {
     case "Title Large":

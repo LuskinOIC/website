@@ -41,7 +41,7 @@ export type CardLayoutProps = {
   imageWidth: number;
   imageHeight: number;
   //CHECK TYPE
-  longText: any;
+  longText?: any;
 };
 
 export type CardType = {
@@ -128,7 +128,16 @@ export type TabCardType = {
 export type PageSectionType = {
   fields: {
     // CHECK TYPE
-    longText: any;
+    longText?: any;
+    // Array<{
+    //   nodeType: string;
+    //   data: object;
+    //   content: Array<{
+    //     nodeType: string;
+    //     data: object;
+    //     content: Array<object>;
+    //   }>;
+    // }>;
     actionText: string;
     actionUrl: string;
     backgroundColor: string;
