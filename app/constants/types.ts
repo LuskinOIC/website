@@ -1,5 +1,7 @@
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
+import { Document } from "@contentful/rich-text-types";
+
 export type AssetType = {
   sys: {
     id: string;
@@ -108,9 +110,17 @@ export type TabSectionType = {
 
 export type TabType = {
   fields: {
-    richTextContent: Document;
+    richTextContent?: Document;
+    cardContent?: TabCardType[];
     tabTitle: string;
   };
+};
+
+export type TabCardType = {
+  header: string;
+  body: string;
+  buttonText: string;
+  buttonLink: string;
 };
 
 export type PageSectionType = {
@@ -150,23 +160,6 @@ export type PhysicianBioType = {
   physicianNumber: string;
   bioPageSection: BioPageSectionType[];
   slug: string;
-};
-
-export type TabsContentCardType = {
-  header: string;
-  body: string;
-  buttonText: string;
-  buttonLink: string;
-};
-
-export type TabsContentTextType = {
-  header: string;
-  richTextBody: Document;
-};
-
-export type TabsContentDataType = {
-  cardContent?: TabsContentCardType[];
-  textContent?: TabsContentTextType[];
 };
 
 export type SocialMediaSectionPropsType = {
