@@ -22,8 +22,13 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
   }
 
   return (
-    <Tabs defaultValue={selectedTab}>
-      <TabsList className={"grid grid-cols-" + tabCount}>
+    <Tabs
+      defaultValue={selectedTab}
+      className="flex flex-col items-center w-full h-fit pb-15"
+    >
+      <TabsList
+        className={`grid grid-cols-${tabCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-10 justify-items-stretch rounded-md bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`}
+      >
         {tabs.map((tab, index) => (
           <TabsTrigger
             key={index}
@@ -31,7 +36,13 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
             onClick={() => setSelectedTab(tab.fields.tabTitle)}
             className={
               /* Set left margin of first item and right margin of last item to 0 */
-              index == 0 ? "ml-0" : index == tabCount - 1 ? "mr-0" : ""
+              `${
+                index == 0
+                  ? "ml-0 mr-1"
+                  : index == tabCount - 1
+                  ? "ml-1 mr-0"
+                  : "mx-1"
+              } flex flex-col h-[3.812rem] min-w-fit rounded-t-lg px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`
             }
           >
             <h1 className="uppercase">{tab.fields.tabTitle}</h1>
@@ -39,7 +50,11 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
         ))}
       </TabsList>
       {tabs.map((tab, index) => (
-        <TabsContent key={index} value={tab.fields.tabTitle}>
+        <TabsContent
+          key={index}
+          value={tab.fields.tabTitle}
+          className="w-10/12"
+        >
           <TabsTextOrCardContent fields={tab.fields} />
         </TabsContent>
       ))}
