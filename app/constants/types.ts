@@ -1,5 +1,3 @@
-import { Document } from "@contentful/rich-text-types";
-
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
