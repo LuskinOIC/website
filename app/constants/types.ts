@@ -1,3 +1,5 @@
+import { Document } from "@contentful/rich-text-types";
+
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
@@ -40,8 +42,8 @@ export type CardLayoutProps = {
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
-  //CHECK TYPE
-  longText?: any;
+  //TYPE needs change w/ specialty
+  longText: Document;
 };
 
 export type CardType = {
@@ -87,6 +89,7 @@ export type FileDetailsType = {
 
 export type ImageType = {
   fields: {
+    longText: Document;
     title: string;
     description: string;
     file: FileDetailsType;
@@ -127,17 +130,7 @@ export type TabCardType = {
 
 export type PageSectionType = {
   fields: {
-    // CHECK TYPE
-    longText?: any;
-    // Array<{
-    //   nodeType: string;
-    //   data: object;
-    //   content: Array<{
-    //     nodeType: string;
-    //     data: object;
-    //     content: Array<object>;
-    //   }>;
-    // }>;
+    longText: Document;
     actionText: string;
     actionUrl: string;
     backgroundColor: string;
@@ -189,4 +182,5 @@ export type SpecialtyType = {
   name: string;
   description: string;
   image: ImageType;
+  longText: Document;
 };
