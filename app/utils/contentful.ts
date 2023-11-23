@@ -23,7 +23,7 @@ export async function getLandingPage() {
     locale: "en-US",
   });
 
-  return entry.fields as LandingPageType;
+  return entry.fields as unknown as LandingPageType;
 }
 
 /* EVENTS */
@@ -55,12 +55,14 @@ export async function getSpecialties(): Promise<SpecialtyType[]> {
     locale: "en-US",
   });
 
-  return entries.items.map((entry) => entry.fields) as SpecialtyType[];
+  return entries.items.map(
+    (entry) => entry.fields,
+  ) as unknown as SpecialtyType[];
 }
 
 export async function getSpecialty(): Promise<SpecialtyType> {
   const entry = await client.getEntry("sMgfuWhT7qUqMKUwRcsD2");
-  return entry.fields as SpecialtyType;
+  return entry.fields as unknown as SpecialtyType;
 }
 
 /* SOCAL MEDIA */
@@ -88,7 +90,7 @@ export async function getPhysicianBioBySlug(slug: string) {
     locale: "en-US",
   });
 
-  return entry.items[0].fields as PhysicianBioType;
+  return entry.items[0].fields as unknown as PhysicianBioType;
 }
 
 export async function getPatientCarePage() {
