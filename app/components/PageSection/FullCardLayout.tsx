@@ -13,6 +13,13 @@ import mapPin from "@/public/map-pin.svg";
 import clock from "@/public/clock.svg";
 
 // This component is primary used for the Specialties sections.
+
+const styles = {
+  sectionLayout:
+    "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-20",
+  boxStyling: "border border-zinc-300 rounded shadow-md md:w-9/12 xlg:w-6/12",
+};
+
 export default function CardLayout({
   title,
   bold,
@@ -24,111 +31,87 @@ export default function CardLayout({
   longText,
 }: CardLayoutProps) {
   const descriptionContent = renderRichTextToReactComponent(longText);
-  return (
-    <>
-      {/* DESKTOP */}
-      <section className="hidden md:grid grid-cols-2 gap-20 border rounded shadow-md w-9/12 xlg:w-6/12 mx-auto my-10 p-20">
-        <div className="grid gap-5">
-          <TitleComponent title={title} bold={bold} titleSize={titleSize} />
-          <div className="text-xl">{descriptionContent}</div>
-          <Button href="/" text="SAVE MY SPOT" />
-          <div className="flex flex-col gap-3">
-            <div className="flex gap-5">
-              <Image src={clock} alt="clock" />
-              <Text2>
-                Monday - Friday: 8am - 4pm
-                <br />
-                Closed: Saturday and Sunday
-              </Text2>
-            </div>
-            <div className="flex gap-5">
-              <Image src={phone} alt="phone" />
-              <Text2>(213) 742-1162</Text2>
-            </div>
-            <div className="flex gap-5">
-              <Image src={mapPin} alt="mapPin" />
-              <Text2>
-                403 West Adams Boulevard
-                <br />
-                Los Angeles, CA 90007
-              </Text2>
-            </div>
-          </div>
-        </div>
 
-        <div className="grid grid-rows-5 gap-5">
-          {imageUrl && (
-            <div className="relative w-full row-span-3 mb-6">
-              <Image
-                className="rounded"
-                src={`https:${imageUrl}`}
-                alt="My image"
-                layout="cover"
-                fill
-              />
-            </div>
-          )}
-          <div className="flex flex-col gap-3 row-span-2">
-            <Text1 className="">
-              Walk-ins welcome. No appointment necessary.
-            </Text1>
-            {/* TO DO: PROVIDE FORMS FOR DOWNLOAD */}
-            {/* <Text1 className="underline">Urgent Care Registration Form - English</Text1>
-            <Text1 className="underline">Urgent Care Registration Form - Spanish</Text1> */}
-          </div>
-        </div>
-      </section>
+  const walkIns = <Text1>Walk-ins welcome. No appointment necessary.</Text1>;
 
-      {/* MOBILE */}
-      <section className="grid md:hidden gap-2 border border-zinc-300 rounded shadow-md mx-2 my-5">
-        <div className="">
-          {imageUrl && (
-            <div className="w-full">
-              <Image
-                className=""
-                src={`https:${imageUrl}`}
-                alt={imageAlt}
-                sizes="100vw"
-                width={0}
-                height={0}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        <div className="grid gap-4 justify-items-start pl-5 pr-12 py-6">
-          <TitleComponent title={title} bold={bold} titleSize={titleSize} />
-          <div>{descriptionContent}</div>
-          <Button className="my-3" href="/" text="SAVE MY SPOT" />
-          <Text1>
-            Monday - Friday: 8am - 4pm
-            <br />
-            Closed: Saturday and Sunday
-          </Text1>
-          <Text1>Walk-ins welcome. No appointment necessary.</Text1>
+  const cardContent = () => {
+    return (
+      <div className="grid gap-4 md:gap-5 justify-items-start pl-5 pr-12 py-6 md:py-0">
+        <TitleComponent title={title} bold={bold} titleSize={titleSize} />
+        <div className="md:text-xl">{descriptionContent}</div>
+        <Button className="my-3" href="/" text="SAVE MY SPOT" />
+        <div className="flex flex-col gap-3">
           <div className="flex gap-5">
-            <Image src={phone} alt="phone" className="" />
-            <Text1>(213) 742-1162</Text1>
+            <Image className="hidden md:block" src={clock} alt="clock" />
+            <Text2>
+              Monday - Friday: 8am - 4pm
+              <br />
+              Closed: Saturday and Sunday
+            </Text2>
+          </div>
+          <div className="block md:hidden">{walkIns}</div>
+          <div className="flex gap-5">
+            <Image src={phone} alt="phone" />
+            <Text2>(213) 742-1162</Text2>
           </div>
           <div className="flex gap-5">
-            <Image src={mapPin} alt="phone" className="" />
-            <Text1>
+            <Image src={mapPin} alt="mapPin" />
+            <Text2>
               403 West Adams Boulevard
               <br />
               Los Angeles, CA 90007
-            </Text1>
+            </Text2>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    );
+  };
+
+  return (
+    <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
+      <div className="order-last md:order-first">{cardContent()}</div>
+      {/* desktop image section */}
+      <div className="hidden md:grid grid-rows-5 gap-5">
+        {imageUrl && (
+          <div className="relative w-full row-span-3 mb-6">
+            <Image
+              className="rounded"
+              src={`https:${imageUrl}`}
+              alt="My image"
+              style={{ objectFit: "cover" }}
+              fill
+            />
+          </div>
+        )}
+        <div className="hidden md:flex flex-col gap-3 row-span-2">
+          {walkIns}
+          {/* TO DO: PROVIDE FORMS FOR DOWNLOAD */}
+          {/* <Text1 className="underline">Urgent Care Registration Form - English</Text1>
+          <Text1 className="underline">Urgent Care Registration Form - Spanish</Text1> */}
+        </div>
+      </div>
+      {/* mobile image section */}
+      <div className="block md:hidden">
+        {imageUrl && (
+          <div className="w-full md:hidden">
+            <Image
+              src={`https:${imageUrl}`}
+              alt={imageAlt}
+              sizes="100vw"
+              width={0}
+              height={0}
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
 // To DO:
-// -combine styling changes to not have to render two different SpeechRecognitionResult
 // -Correct type declarations
 // -Fix description declaration in Contentful for rich text
