@@ -1,6 +1,8 @@
 import { getSpecialties } from "@/app/utils/contentful";
-import FullCardLayout from "@/app/components/PageSection/FullCardLayout";
+import { SpecialtyTypeProps } from "@/app/constants/types";
+// import FullCardLayout from "@/app/components/PageSection/FullCardLayout";
 import SearchBar from "@/app/components/ui/SearchBar";
+import UrgentCareCard from "../components/UrgentCareCard";
 
 export default async function Specialties() {
   const specialties = await getSpecialties();
@@ -8,24 +10,15 @@ export default async function Specialties() {
   return (
     <main>
       <SearchBar />
-
-      <div>
-        {specialties.map((specialty) => (
-          <FullCardLayout
-            key={specialty.id}
-            title={specialty.name}
-            bold={false}
-            titleSize="text-2xl"
-            description={specialty.description}
-            imageUrl={specialty.image.fields.file.url}
-            imageAlt={specialty.image.fields.description}
-            imageWidth={specialty.image.fields.file.details.image.width}
-            imageHeight={specialty.image.fields.file.details.image.height}
-            //TEMP description hold
-            longText={specialty.longText}
-          />
-        ))}
-      </div>
+      {specialties.map((specialty: SpecialtyTypeProps) =>
+        specialty.type == "Urgent Care Card" ? (
+          specialty && (
+            <UrgentCareCard specialty={specialty} key={specialty.id} />
+          )
+        ) : (
+          <div key={specialty.id}>HELLLOOOo</div>
+        ),
+      )}
     </main>
   );
 }
