@@ -5,6 +5,12 @@ import Button from "./ui/Button";
 import renderRichTextToReactComponent from "../utils/rich-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Card,
   CardContent,
   CardFooter,
@@ -32,8 +38,9 @@ const styles = {
 };
 
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
+  // Use state to switch tabs with the dropdown menu
   const [selectedTab, setSelectedTab] = useState(tabs[0].fields.tabTitle);
-  // Trigger component refresh once tabs fully load
+  // Use state to trigger component refresh once tabs fully load
   const [tabCount, setTabCount] = useState(tabs.length);
   if (tabCount != tabs.length) {
     setTabCount(tabs.length);
@@ -41,7 +48,7 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
 
   return (
     <Tabs
-      defaultValue={selectedTab}
+      value={selectedTab}
       className="flex flex-col items-center w-full h-fit pb-15"
     >
       <TabsList className={styles.tabsList(tabCount)}>
@@ -56,6 +63,22 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
           </TabsTrigger>
         ))}
       </TabsList>
+      {/* Show dropdown on mobile */}
+      <div className="block md:hidden">
+        <DropdownMenu>
+          <DropdownMenuTrigger>{tabs[0].fields.tabTitle}</DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {tabs.map((tab, index) => (
+              <DropdownMenuItem
+                key={index}
+                onSelect={() => setSelectedTab(tab.fields.tabTitle)}
+              >
+                <h1 className="uppercase">{tab.fields.tabTitle}</h1>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
       {tabs.map((tab, index) => (
         <TabsContent
           key={index}
