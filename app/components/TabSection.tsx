@@ -18,6 +18,8 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { useState } from "react";
+import Image from "next/image";
+import { Title3 } from "./ui/Typography/Title";
 
 const styles = {
   tabsList: (tabCount: number) =>
@@ -49,7 +51,7 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
   return (
     <Tabs
       value={selectedTab}
-      className="flex flex-col items-center w-full h-fit pb-15"
+      className="flex flex-col items-center w-full h-fit mb-12"
     >
       <TabsList className={styles.tabsList(tabCount)}>
         {tabs.map((tab, index) => (
@@ -59,21 +61,36 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
             onClick={() => setSelectedTab(tab.fields.tabTitle)}
             className={styles.tabsTrigger(index, tabCount)}
           >
-            <h1 className="uppercase">{tab.fields.tabTitle}</h1>
+            <Title3 className="uppercase">{tab.fields.tabTitle}</Title3>
           </TabsTrigger>
         ))}
       </TabsList>
       {/* Show dropdown on mobile */}
-      <div className="block md:hidden">
+      <div className="block md:hidden mt-6 mb-6">
         <DropdownMenu>
-          <DropdownMenuTrigger>{tabs[0].fields.tabTitle}</DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuTrigger className="w-[85vw] h-10 pl-5 border border-luskin-blue rounded-md">
+            <div className="grid grid-cols-2 w-full">
+              <Title3 className="self-start text-start align-middle uppercase text-sm text-gray-500">
+                {tabs[0].fields.tabTitle}
+              </Title3>
+              <Image
+                src="/dropdownarrow.svg"
+                width={20}
+                height={10}
+                alt=""
+                className="justify-self-end self-center mr-4"
+              />
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-[85vw]">
             {tabs.map((tab, index) => (
               <DropdownMenuItem
                 key={index}
                 onSelect={() => setSelectedTab(tab.fields.tabTitle)}
               >
-                <h1 className="uppercase">{tab.fields.tabTitle}</h1>
+                <Title3 className="uppercase text-luskin-blue font-bold">
+                  {tab.fields.tabTitle}
+                </Title3>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -98,7 +115,7 @@ function TabsTextOrCardContent({
   if (cardContent != undefined) {
     // There's card content, so render cards
     return (
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {cardContent.map((card, index) => (
           <Card key={index} className="col-span-1 shadow-none border-none pb-5">
             <CardHeader>
