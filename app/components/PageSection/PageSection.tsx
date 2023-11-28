@@ -1,6 +1,5 @@
 // Components
 import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
-// import FullCardLayout from "@/app/components/PageSection/FullCardLayout";
 import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLayout";
 import InfoCardLayout from "@/app/components/PageSection/InfoCardLayout";
 import UrgentCareCard from "@/app/components/UrgentCareCard";
