@@ -1,11 +1,7 @@
 // Next components
 import Image from "next/image";
 // Types
-import {
-  // CardLayoutProps,
-  // SpecialtyType,
-  SpecialtyTypeProps,
-} from "@/app/constants/types";
+import { UrgentCareType } from "@/app/constants/types";
 // Custom components
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import { renderRichTextToReactComponent } from "@/app/utils/rich-text";
@@ -16,7 +12,7 @@ import phone from "@/public/phone.svg";
 import mapPin from "@/public/map-pin.svg";
 import clock from "@/public/clock.svg";
 
-// This component is primary used for the Specialties sections.
+// This component is primary used for the Urgent Care section
 
 const styles = {
   sectionLayout:
@@ -24,19 +20,20 @@ const styles = {
   boxStyling: "border border-zinc-300 rounded shadow-md md:w-9/12 xlg:w-6/12",
 };
 
-export default function UrgentCareCard({ specialty }: SpecialtyTypeProps) {
-  const { title, description, image } = specialty.urgentCareCard.fields;
+export default function UrgentCareCard({ specialty }: UrgentCareType) {
+  const { name, description, image } = specialty;
 
   const { title: imageTitle, file: imageFile } = image.fields;
 
-  const descriptionContent = renderRichTextToReactComponent(description);
+  const descriptionContent =
+    description && renderRichTextToReactComponent(description);
 
   const walkIns = <Text1>Walk-ins welcome. No appointment necessary.</Text1>;
 
   const cardContent = () => {
     return (
       <div className="grid gap-4 md:gap-5 justify-items-start pl-5 pr-12 py-6 md:py-0">
-        <TitleComponent title={title} titleSize={"Title Medium"} />
+        <TitleComponent title={name} titleSize={"Title Medium"} />
         <div className="md:text-xl">{descriptionContent}</div>
         <Button className="my-3" href="/" text="SAVE MY SPOT" />
         <div className="flex flex-col gap-3">
@@ -113,4 +110,3 @@ export default function UrgentCareCard({ specialty }: SpecialtyTypeProps) {
 
 // To DO:
 // -Correct type declarations
-// -Fix description declaration in Contentful for rich text

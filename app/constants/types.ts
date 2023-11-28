@@ -129,6 +129,7 @@ export type TabCardType = {
 
 export type PageSectionType = {
   fields: {
+    specialty: any;
     longText: Document;
     actionText: string;
     actionUrl: string;
@@ -144,8 +145,6 @@ export type PageSectionType = {
     titleSize: string;
     type: string;
     infoCards: CardType[];
-    //TO DO: SPECIFY TYPE
-    urgentCareCard: any;
   };
 };
 
@@ -178,27 +177,46 @@ export type SocialMediaSectionType = {
   subtitle: string;
 };
 // TODO: MAJOR TYPE REFACTOR
+
 export type SpecialtyTypeProps = {
-  type?: string;
-  urgentCareCard?: any;
-  specialty?: any;
-  id?: string;
-};
-export type SpecialtyType = {
-  type: string;
-  description: string;
-  id: string;
-  image: ImageType;
-  longText: Document;
   name: string;
-  title: string;
+  id: string;
+  specialty?: any;
+  description: string;
+  image: ImageType;
   bold: boolean;
   titleSize: string;
   imageUrl: string;
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
-  //TYPE needs change w/ specialty
-  urgentCareCard: any;
+};
+
+export type SpecialtyType = {
+  description: string;
+  id: string;
+  image: ImageType;
+  name: string;
+  bold: boolean;
+  titleSize: string;
+  imageUrl: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  // TO FIX
+  specialty?: any;
+};
+
+export type UrgentCareType = {
+  description?: string;
+  id?: string;
+  image?: ImageType;
+  name?: string;
+  bold?: boolean;
+  titleSize?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   specialty?: any;
 };

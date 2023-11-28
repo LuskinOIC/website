@@ -40,6 +40,7 @@ export default function CardLayout({
         <TitleComponent title={title} bold={bold} titleSize={titleSize} />
         <div className="md:text-xl">{descriptionContent}</div>
         <Button className="my-3" href="/" text="SAVE MY SPOT" />
+        {/* CONTACT INFO */}
         <div className="flex flex-col gap-3">
           <div className="flex gap-5">
             <Image className="hidden md:block" src={clock} alt="clock" />
