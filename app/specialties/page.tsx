@@ -1,6 +1,7 @@
 import { getSpecialties } from "@/app/utils/contentful";
-import { SpecialtyTypeProps } from "@/app/constants/types";
 import SearchBar from "@/app/components/ui/SearchBar";
+import UrgentCareCard from "../components/UrgentCareCard";
+import SpecialtyCard from "../components/SpecialtyCard";
 
 export default async function Specialties() {
   const specialties = await getSpecialties();
@@ -8,13 +9,17 @@ export default async function Specialties() {
   return (
     <main>
       <SearchBar />
-      {specialties.map((specialty: SpecialtyTypeProps) =>
-        specialty.name == "Pediatric Orthopedic Urgent Care" ? (
-          specialty && <div>Urgent Care Card</div>
-        ) : (
-          <div key={specialty.id}>Individual Specialty Card</div>
-        ),
-      )}
+      <div className="grid">
+        {specialties.map((specialty) =>
+          specialty.name == "Pediatric Orthopedic Urgent Care" ? (
+            <div className="order-first" key={specialty.id}>
+              <UrgentCareCard specialty={specialty} />
+            </div>
+          ) : (
+            <SpecialtyCard specialty={specialty} key={specialty.id} />
+          ),
+        )}
+      </div>
     </main>
   );
 }

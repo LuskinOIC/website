@@ -40,9 +40,6 @@ export type CardLayoutProps = {
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
-  //TYPE needs change w/ specialty
-  longText: Document;
-  specialty: SpecialtyType[];
 };
 
 export type CardType = {
@@ -129,7 +126,7 @@ export type TabCardType = {
 
 export type PageSectionType = {
   fields: {
-    specialty: any;
+    specialty: SpecialtyType[];
     longText: Document;
     actionText: string;
     actionUrl: string;
@@ -176,47 +173,16 @@ export type SocialMediaSectionType = {
   title: string;
   subtitle: string;
 };
+
 // TODO: MAJOR TYPE REFACTOR
 
 export type SpecialtyTypeProps = {
   name: string;
-  id: string;
-  specialty?: any;
-  description: string;
-  image: ImageType;
-  bold: boolean;
-  titleSize: string;
-  imageUrl: string;
-  imageAlt: string;
-  imageWidth: number;
-  imageHeight: number;
+  fields: SpecialtyType;
 };
 
 export type SpecialtyType = {
-  description: string;
   id: string;
-  image: ImageType;
   name: string;
-  bold: boolean;
-  titleSize: string;
-  imageUrl: string;
-  imageAlt: string;
-  imageWidth: number;
-  imageHeight: number;
-  // TO FIX
-  specialty?: any;
-};
-
-export type UrgentCareType = {
-  description?: string;
-  id?: string;
-  image?: ImageType;
-  name?: string;
-  bold?: boolean;
-  titleSize?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  specialty?: any;
+  fields: SpecialtyTypeProps;
 };

@@ -1,7 +1,7 @@
 // Next components
 import Image from "next/image";
 // Types
-import { UrgentCareType } from "@/app/constants/types";
+
 // Custom components
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import { renderRichTextToReactComponent } from "@/app/utils/rich-text";
@@ -12,15 +12,22 @@ import phone from "@/public/phone.svg";
 import mapPin from "@/public/map-pin.svg";
 import clock from "@/public/clock.svg";
 
-// This component is primary used for the Urgent Care section
-
 const styles = {
   sectionLayout:
     "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-20",
   boxStyling: "border border-zinc-300 rounded shadow-md md:w-9/12 xlg:w-6/12",
 };
 
-export default function UrgentCareCard({ specialty }: UrgentCareType) {
+type Specialty = {
+  name: string;
+  description?: any;
+  image?: any;
+};
+type SpecialtyCardProps = {
+  specialty: Specialty;
+};
+
+export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
   const { name, description, image } = specialty;
 
   const { title: imageTitle, file: imageFile } = image.fields;
@@ -37,8 +44,14 @@ export default function UrgentCareCard({ specialty }: UrgentCareType) {
         <div className="md:text-xl">{descriptionContent}</div>
         <Button className="my-3" href="/" text="SAVE MY SPOT" />
         <div className="flex flex-col gap-3">
-          <div className="flex gap-5">
-            <Image className="hidden md:block" src={clock} alt="clock" />
+          <div className="flex place-items-center gap-5">
+            <div className="relative hidden md:block ">
+              <Image
+                src={clock}
+                alt="clock"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
             <Text2>
               Monday - Friday: 8am - 4pm
               <br />
@@ -46,12 +59,24 @@ export default function UrgentCareCard({ specialty }: UrgentCareType) {
             </Text2>
           </div>
           <div className="block md:hidden">{walkIns}</div>
-          <div className="flex gap-5">
-            <Image src={phone} alt="phone" />
+          <div className="flex place-items-center gap-5">
+            <div className="relative">
+              <Image
+                src={phone}
+                alt="phone"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
             <Text2>(213) 742-1162</Text2>
           </div>
-          <div className="flex gap-5">
-            <Image src={mapPin} alt="mapPin" />
+          <div className="flex place-items-center gap-5">
+            <div className="relative">
+              <Image
+                src={mapPin}
+                alt="mapPin"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
             <Text2>
               403 West Adams Boulevard
               <br />
