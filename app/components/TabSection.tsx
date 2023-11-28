@@ -19,7 +19,7 @@ import {
 } from "../../components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
-import { Title2, Title3 } from "./ui/Typography/Title";
+import { Title3 } from "./ui/Typography/Title";
 
 const styles = {
   tabsList: (tabCount: number) =>
