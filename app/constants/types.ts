@@ -85,6 +85,7 @@ export type FileDetailsType = {
 
 export type ImageType = {
   fields: {
+    longText: Document;
     title: string;
     description: string;
     file: FileDetailsType;
@@ -125,6 +126,8 @@ export type TabCardType = {
 
 export type PageSectionType = {
   fields: {
+    specialty: SpecialtyType[];
+    longText: Document;
     actionText: string;
     actionUrl: string;
     backgroundColor: string;
@@ -171,9 +174,15 @@ export type SocialMediaSectionType = {
   subtitle: string;
 };
 
+// TODO: MAJOR TYPE REFACTOR
+
+export type SpecialtyTypeProps = {
+  name: string;
+  fields: SpecialtyType;
+};
+
 export type SpecialtyType = {
   id: string;
   name: string;
-  description: string;
-  image: ImageType;
+  fields: SpecialtyTypeProps;
 };
