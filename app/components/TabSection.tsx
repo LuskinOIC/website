@@ -19,7 +19,7 @@ import {
 } from "../../components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
-import { Title3 } from "./ui/Typography/Title";
+import { Title2, Title3 } from "./ui/Typography/Title";
 
 const styles = {
   tabsList: (tabCount: number) =>
@@ -66,7 +66,7 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
         ))}
       </TabsList>
       {/* Show dropdown on mobile */}
-      <div className="block md:hidden mt-6 mb-6">
+      <div className="block md:hidden mt-6">
         <DropdownMenu>
           <DropdownMenuTrigger className="w-[85vw] h-10 pl-5 border border-luskin-blue rounded-md">
             <div className="grid grid-cols-2 w-full">
@@ -95,12 +95,15 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+        <Title3 className="w-10/12 ml-[8.3%] mt-5 uppercase text-luskin-blue font-medium">
+          {selectedTab}
+        </Title3>
       </div>
       {tabs.map((tab, index) => (
         <TabsContent
           key={index}
           value={tab.fields.tabTitle}
-          className="w-10/12"
+          className="flex flex-col items-center w-10/12"
         >
           <TabsTextOrCardContent fields={tab.fields} />
         </TabsContent>
@@ -137,6 +140,10 @@ function TabsTextOrCardContent({
     );
   } else if (richTextContent != undefined) {
     // There's text content, so render text
-    return <div>{renderRichTextToReactComponent(richTextContent)}</div>;
+    return (
+      <div className="w-10/12">
+        {renderRichTextToReactComponent(richTextContent)}
+      </div>
+    );
   } else return <div />;
 }
