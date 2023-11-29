@@ -30,7 +30,7 @@ export default function renderRichTextToReactComponent(
         return <li className={classNames?.li || ""}>{children}</li>;
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p className="my-3">{children}</p>
+        <p className={classNames?.paragraph || ""}>{children}</p>
       ),
     },
   };
