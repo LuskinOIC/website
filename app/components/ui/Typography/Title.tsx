@@ -9,7 +9,7 @@ type TitleProps = {
 };
 
 export const Title1 = ({ children, className = "" }: TitleProps) => {
-  const classes = `text-2xl md:text-[40px] lg:text-5xl font-bold leading-150 font-arial py-2 ${className}`;
+  const classes = `text-2xl md:text-[40px] lg:text-5xl font-bold md:leading-[60px] font-arial py-2 ${className}`;
   return <h1 className={classes}>{children}</h1>;
 };
 
