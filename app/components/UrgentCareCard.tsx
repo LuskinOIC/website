@@ -4,7 +4,7 @@ import Image from "next/image";
 
 // Custom components
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
-import { renderRichTextToReactComponent } from "@/app/utils/rich-text";
+import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
 import { Text1, Text2 } from "@/app/components/ui/Typography/Text";
 //Icons

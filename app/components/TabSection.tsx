@@ -2,7 +2,7 @@
 
 import { TabSectionType, TabType } from "../constants/types";
 import Button from "./ui/Button";
-import { renderRichTextToReactComponent } from "../utils/rich-text";
+import renderRichTextToReactComponent from "../utils/rich-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,

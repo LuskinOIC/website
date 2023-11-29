@@ -1,7 +1,7 @@
 // Types
 import { Document } from "@contentful/rich-text-types";
 //Custom Components
-import { renderRichTextToReactComponent } from "../utils/rich-text";
+import renderRichTextToReactComponent from "../utils/rich-text";
 import { TitleComponent } from "./ui/Typography/Title";
 
 type Specialty = {
