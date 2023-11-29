@@ -139,7 +139,7 @@ export default async function PhysicianBio({
       <div className="flex items-center mt-10 mb-2 hidden lg:block">
         <hr className="flex-grow border-[#99C221]"></hr>
       </div>
-      <div id="overview mb-4">
+      <div>
         <h2 className="text-xl text-[#0076AD] mb-4" id="#overview">
           Overview
         </h2>
