@@ -10,7 +10,6 @@ const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
   );
 };
 
-// TODO: Move into components
 const BioPageSection = ({ section }: { section: BioPageSectionType }) => (
   <div key={section.sys.id}>
     <h2 className="text-lg font-bold lg:mb-4">{section.fields.title}</h2>
