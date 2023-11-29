@@ -142,6 +142,7 @@ export type PageSectionType = {
     titleSize: string;
     type: string;
     infoCards: CardType[];
+    dividerText: string;
   };
 };
 
