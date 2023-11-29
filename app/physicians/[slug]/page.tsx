@@ -97,7 +97,7 @@ export default async function PhysicianBio({
 
           <div className="text-base pl-8 mb-4 lg:pl-0 lg:text-lg ">
             {renderRichTextToReactComponent(
-              docBio.specialties as unknown as Document
+              docBio.specialties as unknown as Document,
             )}
           </div>
         </div>
@@ -141,7 +141,7 @@ export default async function PhysicianBio({
       <div className="text-lg pb-6">
         {renderRichTextToReactComponent(
           docBio.overview as unknown as Document,
-          overviewClassNames
+          overviewClassNames,
         )}
       </div>
 
@@ -171,7 +171,8 @@ export default async function PhysicianBio({
 
                 <h2
                   className={headerClassName}
-                  id={generateTargetID(headerText)}>
+                  id={generateTargetID(headerText)}
+                >
                   {headerText}
                 </h2>
                 {headerRenderedState}
@@ -194,7 +195,8 @@ export default async function PhysicianBio({
                 {docBio.asset.map((asset: AssetType) => (
                   <div
                     key={asset.sys.id}
-                    className="pb-8 pt-5 lg:pt-0 lg:pb-10">
+                    className="pb-8 pt-5 lg:pt-0 lg:pb-10"
+                  >
                     <h3>{asset.fields.title}</h3>
                     <Image
                       src={asset.fields.file.url}
@@ -205,14 +207,11 @@ export default async function PhysicianBio({
                     />
                   </div>
                 ))}
-                {/* <div key={section.sys.id}>
-                    <BioPageSection key={section.sys.id} section={section} />
-                  </div> */}
               </div>
             );
           }
           return <BioPageSection key={section.sys.id} section={section} />;
-        }
+        },
       )}
     </main>
   );
