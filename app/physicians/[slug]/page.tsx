@@ -22,63 +22,9 @@ export async function generateStaticParams() {
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
-// TODO: Move into utils
-// function renderRichTextToReactComponent(
-//   richText: Document,
-//   classNames?: ClassNames,
-// ) {
-//   const defaultOptions = {
-//     renderNode: {
-//       [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => {
-//         return (
-//           <ul className={classNames?.ul || "list-disc pl-6"}>{children}</ul>
-//         );
-//       },
-//       [BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => {
-//         return (
-//           <ol className={classNames?.ol || "list-decimal pl-6"}>{children}</ol>
-//         );
-//       },
-//       [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => {
-//         return <li className={classNames?.li || ""}>{children}</li>;
-//       },
-//       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-//         <p className={classNames?.paragraph || ""}>{children}</p>
-//       ),
-//     },
-//   };
-//   return documentToReactComponents(richText, defaultOptions);
-// }
-
 const overviewClassNames: ClassNames = {
   paragraph: "pb-2",
 };
-
-// TODO: Move into components
-// const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
-//   return (
-//     <div className="pb-3">
-//       {renderRichTextToReactComponent(contentItem as Document)}
-//     </div>
-//   );
-// };
-
-// // TODO: Move into components
-// const BioPageSection = ({ section }: { section: BioPageSectionType }) => (
-//   <div key={section.sys.id}>
-//     <h2 className="text-lg font-bold lg:mb-4">{section.fields.title}</h2>
-//     <div className="text-base lg:pb-6">
-//       {section.fields.content.content.map(
-//         (
-//           contentItem: { content: Array<{ value: string }> },
-//           contentIndex: number,
-//         ) => (
-//           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-//         ),
-//       )}
-//     </div>
-//   </div>
-// );
 
 export default async function PhysicianBio({
   params,
