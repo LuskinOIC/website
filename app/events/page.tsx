@@ -1,3 +1,5 @@
+import { getEvents } from "@/app/utils/contentful"
+
 export default function Events() {
   return (
     <main>
