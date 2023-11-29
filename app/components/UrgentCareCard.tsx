@@ -22,13 +22,16 @@ type Specialty = {
   name: string;
   description?: any;
   image?: any;
+  englishFormUrl?: string;
+  spanishFormUrl?: string;
 };
 type SpecialtyCardProps = {
   specialty: Specialty;
 };
 
 export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
-  const { name, description, image } = specialty;
+  const { name, description, image, englishFormUrl, spanishFormUrl } =
+    specialty;
 
   const { title: imageTitle, file: imageFile } = image.fields;
 
@@ -104,11 +107,22 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             />
           </div>
         )}
-        <div className="hidden md:flex flex-col gap-3 row-span-2">
+        <div className="hidden md:flex flex-col gap-5 row-span-2">
           {walkIns}
-          {/* TO DO: PROVIDE FORMS FOR DOWNLOAD */}
-          {/* <Text1 className="underline">Urgent Care Registration Form - English</Text1>
-          <Text1 className="underline">Urgent Care Registration Form - Spanish</Text1> */}
+          <a
+            href={englishFormUrl}
+            target="_blank"
+            className="underline text-base md:text-2xl font-arial leading-150 "
+          >
+            Urgent Care Registration Form - English
+          </a>
+          <a
+            href={spanishFormUrl}
+            target="_blank"
+            className="underline text-base md:text-2xl font-arial leading-150 "
+          >
+            Urgent Care Registration Form - Spanish
+          </a>
         </div>
       </div>
       {/* mobile image section */}
