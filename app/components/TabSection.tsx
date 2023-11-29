@@ -45,6 +45,7 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
   // Use state to trigger component refresh once tabs fully load
   const [tabCount, setTabCount] = useState(tabs.length);
   if (tabCount != tabs.length) {
+    setSelectedTab(tabs[0].fields.tabTitle);
     setTabCount(tabs.length);
   }
 
@@ -69,9 +70,9 @@ export default function TabSection({ fields: { tabs } }: TabSectionType) {
       <div className="block md:hidden mt-6">
         <DropdownMenu>
           <DropdownMenuTrigger className="w-[85vw] h-10 pl-5 border border-luskin-blue rounded-md">
-            <div className="grid grid-cols-2 w-full">
-              <Title3 className="self-start text-start align-middle uppercase text-sm text-gray-500">
-                {tabs[0].fields.tabTitle}
+            <div className="flex flex-row w-full">
+              <Title3 className="grow self-start text-start align-middle uppercase text-sm text-gray-500">
+                {selectedTab}
               </Title3>
               <Image
                 src="/dropdownarrow.svg"
