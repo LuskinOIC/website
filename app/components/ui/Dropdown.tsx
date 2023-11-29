@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import chevronDown from "../../../public/chevron-down.svg";
+import chevronDown from "@/public/chevron-down.svg";
 import Image from "next/image";
 import { OptionType } from "@/app/constants/types";
 
@@ -12,7 +12,6 @@ interface DropdownProps {
 
 export default function Dropdown(props: DropdownProps) {
   const [showMenu, setShowMenu] = useState(false);
-  // allow users to select options and siplay value selecte din dropdown input
   const [selectedValue, setSelectedValue] = useState<OptionType | null>(null);
 
   useEffect(() => {
@@ -27,6 +26,10 @@ export default function Dropdown(props: DropdownProps) {
   const handleInputClick = (e: any) => {
     e.stopPropagation();
     setShowMenu(!showMenu);
+  };
+
+  const resetSelectedValue = () => {
+    setSelectedValue(null);
   };
 
   const getDisplay = () => {
@@ -68,7 +71,10 @@ export default function Dropdown(props: DropdownProps) {
             {props.options.map((option) => (
               <div
                 key={option.value}
-                onClick={() => onItemClick(option)}
+                onClick={() => {
+                  onItemClick(option);
+                  resetSelectedValue();
+                }}
                 className={`p-1 cursor-pointer :bg-[#9fc3f870] ${
                   isSelected(option) ? "bg-[#0d6efd] text-white" : ""
                 }`}
