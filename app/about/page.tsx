@@ -1,6 +1,7 @@
 import React from "react";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 import QuadCard from "@/app/components/QuadCard";
+import LegacyCard from "../components/LegacyCard";
 
 
 export default function About() {
@@ -9,6 +10,7 @@ export default function About() {
       <h1>TOGETHER, we are LuskinOIC.</h1>
       <SocialMediaBanner />
       <QuadCard />
+      <LegacyCard />
     </main>
   );
 }
