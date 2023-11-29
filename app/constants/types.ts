@@ -65,9 +65,27 @@ export type CarouselSlideType = {
   };
 };
 
+export type PatientCardType = {
+  patientName: string;
+  patientAsset: ImageType;
+}
+
+export type EventCardType = {
+  eventTitle: string;
+  eventSummary: string;
+  eventAsset: ImageType;
+}
+
 export type EventType = {
   eventName: string;
   slug: string;
+  eventSummary: string;
+  eventDate: string;
+  patientAmbassador: PatientCardType[]; 
+  moreEventInfo: string;
+  eventCards: EventCardType[];
+  sponsor: ImageType;
+  eventAsset: ImageType;
 };
 
 export type FileDetailsType = {
