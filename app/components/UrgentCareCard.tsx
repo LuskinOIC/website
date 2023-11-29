@@ -24,14 +24,23 @@ type Specialty = {
   image?: any;
   englishFormUrl?: string;
   spanishFormUrl?: string;
+  buttonUrl?: string;
+  buttonText?: string;
 };
 type SpecialtyCardProps = {
   specialty: Specialty;
 };
 
 export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
-  const { name, description, image, englishFormUrl, spanishFormUrl } =
-    specialty;
+  const {
+    name,
+    description,
+    image,
+    englishFormUrl,
+    spanishFormUrl,
+    buttonUrl,
+    buttonText,
+  } = specialty;
 
   const { title: imageTitle, file: imageFile } = image.fields;
 
@@ -45,7 +54,9 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
       <div className="grid gap-4 md:gap-5 justify-items-start pl-5 pr-12 py-6 md:py-0">
         <TitleComponent title={name} titleSize={"Title Medium"} />
         <div className="md:text-xl">{descriptionContent}</div>
-        <Button className="my-3" href="/" text="SAVE MY SPOT" />
+        {buttonUrl && buttonText && (
+          <Button className="my-3" href={buttonUrl} text={buttonText} />
+        )}
         <div className="flex flex-col gap-3">
           <div className="flex place-items-center gap-5">
             <div className="relative hidden md:block ">
