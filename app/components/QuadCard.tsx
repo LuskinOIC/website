@@ -8,29 +8,26 @@ import Casts from "@/public/Casts.png"
 
 export default function SocialMediaBanner() {
     return (
-            <div className="flex justify-content: space-around">
-                <div className="row">
-                    <div className="column">
+            <div className="grid grid-cols-2 ">
+                <div>
+                    
                         <Image src={PatientVisits} alt="54,000 patient visits" />
-                    </div>    
-                    <div className="column">
-                        <Image src={PTSessions} alt="54,000 patient visits" />
-                    </div>  
+                        
                 </div>
-                <div className="row">
-                    <div className="column">
+                <div>  
+                        <Image src={PTSessions} alt="54,000 patient visits" />
+                   
+                </div>
+                <div>
+                    
                         <Image src={Braces} alt="54,000 patient visits" />
-                    </div>  
-                    <div className="row">
+                </div>
+                <div>     
+                    
                         <Image src={Casts} alt="54,000 patient visits" />
-                    </div>  
+                    
                 </div>
         
-
-
-
-
-
-</div>
+            </div>
 )
 }
