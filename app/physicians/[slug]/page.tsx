@@ -9,12 +9,7 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import BioPageSection from "@/app/components/BioPageSection";
-// interface ClassNames {
-//   ul?: string;
-//   ol?: string;
-//   li?: string;
-//   paragraph?: string;
-// }
+
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
 export async function generateStaticParams() {
