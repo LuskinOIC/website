@@ -192,9 +192,3 @@ export type OptionType = {
   label: string;
   targetID: string;
 };
-
-export type OptionType = {
-  value: string;
-  label: string;
-  targetID: string;
-};
