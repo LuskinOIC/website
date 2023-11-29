@@ -186,3 +186,9 @@ export type SpecialtyType = {
   name: string;
   fields: SpecialtyTypeProps;
 };
+
+export type OptionType = {
+  value: string;
+  label: string;
+  targetID: string;
+};
