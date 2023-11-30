@@ -9,7 +9,7 @@ import Youtube from "../../public/youtubebanner.svg";
 
 export default function SocialMediaBanner() {
   return (
-    <div className="grid grid-rows-2 grid-flow-col gap-2 bg-[#FCE385] ">
+    <div className="grid grid-rows-2 grid-flow-col bg-[#FCE385] py-4 px-3">
       <div className="row-span-3 ...">
         <div className="flex flex-row min-h-[75%] justify-center items-center">
           <Image src={Ozzie} alt="Ozzie" />

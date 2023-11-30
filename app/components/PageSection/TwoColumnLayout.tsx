@@ -20,7 +20,7 @@ export default function ColumnLayout({
   const textColor =
     section.fields.backgroundColor === "blue" ? "text-white" : "text-black";
   return (
-    <section className={`block ${bgColor}`}>
+    <section className={`block ${bgColor} md:py-5`}>
       <div className="grid md:grid-cols-2 md:gap-14 md:w-9/12 mx-auto py-3 md:py-0">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
@@ -41,18 +41,15 @@ export default function ColumnLayout({
             />
           </div>
         )}
-        {/* TODO: Adjust letter spacing, + Patient Care header order */}
-        {/* <div className="col-span-1 grid gap-2 md:px-16 py-9 md:py-40"> */}
+        {/* TODO: Rich Text for description */}
         <div className="col-span-1 grid gap-2 mx-2 px-3 py-9 md:py-40">
           <div className={`grid gap-2 ${textColor}`}>
-            {/* <h1 className="text-[40px]">{section.fields.title}</h1> */}
             <TitleComponent
               title={section.fields.title}
               titleSize={section.fields.titleSize}
             />
             <Text1>{section.fields.description}</Text1>
           </div>
-          {/* TODO: Provide text button option */}
           <div className="grid md:grid-cols-2 gap-4 md:gap-6 pt-5">
             {section.fields.actionUrl && (
               <Button
