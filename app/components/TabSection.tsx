@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 const styles = {
   tabsList: (tabCount: number) => {
     const gridColCount = tabCount != 0 ? "grid-cols-5" : "grid-cols-0";
-    return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-10 justify-items-stretch rounded-md bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`
+    return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-10 justify-items-stretch rounded-md bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
     // Set left margin of first item and right margin of last item to 0
