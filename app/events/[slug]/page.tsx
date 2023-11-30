@@ -16,10 +16,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
   const mainAssetAccess = orgEvent.eventMainAsset.fields.file;
   console.log("ORG EVENT", orgEvent);
-  const patientAmbassadorCard = orgEvent.patientAmbassador.map((pt: any) => {
-    console.log("PATIENT:", pt.fields);
-  });
-  // console.log("GETTING PATIENT CARDS:", orgEvent.patientAmbassador.);
+
+  const dateString = orgEvent;
   return (
     <main>
       <div className="flex" id="main-event">
@@ -36,17 +34,62 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <button>Directions</button>
         </div>
         <div id="main-event-asset">
-          <Image
+          {/* <Image
             alt="Main Event Photo"
             src={mainAssetAccess.url}
             width={mainAssetAccess.details.image.width}
             height={mainAssetAccess.details.image.height}
-          />
+          /> */}
         </div>
       </div>
-      <div>
-        <h2>{"patient ambassadors".toUpperCase()}</h2>
-      </div>
+      <div>{/* <h2>{"patient ambassadors".toUpperCase()}</h2> */}</div>
     </main>
   );
 }
+
+// JSON OBJECT (Reference for proper typing and data parsing)
+// ORG EVENT {
+//   eventName: 'Swing For Kids Golf Classic',
+//   slug: 'swing-for-kids-golf-classic',
+//   eventSummary: { nodeType: 'document', data: {}, content: [ [Object] ] },
+//   eventDate: '2023-10-09T10:30-08:00',
+//   eventMainAsset: {
+//     metadata: { tags: [] },
+//     sys: {
+//       space: [Object],
+//       id: '1RZid99QqiN9gMABY2Xl84',
+//       type: 'Asset',
+//       createdAt: '2023-11-29T22:38:50.068Z',
+//       updatedAt: '2023-11-29T22:39:18.302Z',
+//       environment: [Object],
+//       revision: 2,
+//       locale: 'en-US'
+//     },
+//     fields: { title: 'Main', description: 'Event main photo', file: [Object] }
+//   },
+//   patientAmbassador: [
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] }
+//   ],
+//   moreEventInfo: 'From the action-packed shamble format, friendly yet competitive camaraderie, to a succulent buffet, it is a day on the course unlike any other. Become a sponsor today, and know that every time you tee up, you are driving LuskinOIC forward, ensuring that children receive care and heal to keep on moving toward a thriving future.\n' +
+//     'All contributions raised serve to support LuskinOICare for Kids.',
+//   eventCard: [
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] }
+//   ],
+//   sponsor: [
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] }
+//   ],
+//   eventAsset: [
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] },
+//     { metadata: [Object], sys: [Object], fields: [Object] }
+//   ]
+// }
