@@ -21,6 +21,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Title3 } from "./ui/Typography/Title";
 import { useRouter } from "next/navigation";
+import { Text2 } from "./ui/Typography/Text";
 
 const styles = {
   tabsList: (tabCount: number) => {
@@ -177,9 +178,13 @@ function MobileTabSection({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="pt-10 w-4/5">
+      <div className="pt-6 w-4/5">
         {tabs.map((tab, index) => (
-          <div id={tab.fields.tabTitle.replace(/[^A-z]/g, "")} key={index}>
+          <div
+            id={tab.fields.tabTitle.replace(/[^A-z]/g, "")}
+            key={index}
+            className="scroll-mt-[4.5rem]"
+          >
             <Title3
               key={index}
               className="mt-3 uppercase text-luskin-blue font-medium"
@@ -200,7 +205,7 @@ function TabsTextOrCardContent({
   if (cardContent != undefined) {
     // There's card content, so render cards
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {cardContent.map((card, index) => (
           <Card
             key={index}
@@ -209,14 +214,14 @@ function TabsTextOrCardContent({
             <CardHeader className="p-0 pt-4 pb-5">
               <CardTitle className="font-medium">{card.header}</CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
-              <p>{card.body}</p>
+            <CardContent className="p-0 ">
+              <Text2>{card.body}</Text2>
             </CardContent>
             <CardFooter className="p-0 pt-6">
               <Button
                 href={card.buttonLink}
                 text={card.buttonText}
-                className="font-bold align-middle p-2 px-4 mb-3"
+                className="font-bold align-middle p-2 px-4 mb-3 md:mb-8"
               />
             </CardFooter>
           </Card>
