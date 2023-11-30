@@ -10,7 +10,7 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 
-const overviewClassNames: ClassNames = {
+const descriptionClassNames: ClassNames = {
   paragraph: "py-4 leading-7 md:leading-10",
 };
 
@@ -32,7 +32,7 @@ export default function ColumnLayout({
 
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
-    overviewClassNames,
+    descriptionClassNames,
   );
   return (
     <section className={`block ${bgColor} my-5`}>
