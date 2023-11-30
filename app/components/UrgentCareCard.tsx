@@ -22,13 +22,25 @@ type Specialty = {
   name: string;
   description?: any;
   image?: any;
+  englishFormUrl?: string;
+  spanishFormUrl?: string;
+  buttonUrl?: string;
+  buttonText?: string;
 };
 type SpecialtyCardProps = {
   specialty: Specialty;
 };
 
 export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
-  const { name, description, image } = specialty;
+  const {
+    name,
+    description,
+    image,
+    englishFormUrl,
+    spanishFormUrl,
+    buttonUrl,
+    buttonText,
+  } = specialty;
 
   const { title: imageTitle, file: imageFile } = image.fields;
 
@@ -41,8 +53,10 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     return (
       <div className="grid gap-4 md:gap-5 justify-items-start pl-5 pr-12 py-6 md:py-0">
         <TitleComponent title={name} titleSize={"Title Medium"} />
-        <div className="md:text-xl">{descriptionContent}</div>
-        <Button className="my-3" href="/" text="SAVE MY SPOT" />
+        <div className="grid gap-4 md:text-xl">{descriptionContent}</div>
+        {buttonUrl && buttonText && (
+          <Button className="my-3" href={buttonUrl} text={buttonText} />
+        )}
         <div className="flex flex-col gap-3">
           <div className="flex place-items-center gap-5">
             <div className="relative hidden md:block ">
@@ -104,11 +118,22 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             />
           </div>
         )}
-        <div className="hidden md:flex flex-col gap-3 row-span-2">
+        <div className="hidden md:flex flex-col gap-5 row-span-2">
           {walkIns}
-          {/* TO DO: PROVIDE FORMS FOR DOWNLOAD */}
-          {/* <Text1 className="underline">Urgent Care Registration Form - English</Text1>
-          <Text1 className="underline">Urgent Care Registration Form - Spanish</Text1> */}
+          <a
+            href={englishFormUrl}
+            target="_blank"
+            className="underline text-base md:text-2xl font-arial leading-150 "
+          >
+            Urgent Care Registration Form - English
+          </a>
+          <a
+            href={spanishFormUrl}
+            target="_blank"
+            className="underline text-base md:text-2xl font-arial leading-150 "
+          >
+            Urgent Care Registration Form - Spanish
+          </a>
         </div>
       </div>
       {/* mobile image section */}

@@ -12,7 +12,7 @@ export default function InfoCardLayout({
   section: PageSectionType;
 }) {
   return (
-    <section className="grid md:grid-cols-2 gap-3 m-auto md:w-3/4 px-2 py-8">
+    <section className="grid md:grid-cols-2 gap-3 m-auto md:w-3/4 justify-items-center px-2 py-8">
       {section.fields.infoCards.map((card, i) => {
         return (
           <div
