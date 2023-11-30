@@ -66,22 +66,41 @@ export type CarouselSlideType = {
 };
 
 export type PatientCardType = {
-  patientName: string;
-  patientAsset: ImageType;
-}
+  fields: {
+    patientName: string;
+    patientAsset: Array<{
+      nodeType: string;
+      data: object;
+      content: Array<{
+        nodeType: string;
+        data: object;
+        content: Array<object>;
+      }>;
+    }>;
+  };
+};
 
 export type EventCardType = {
   eventTitle: string;
   eventSummary: string;
   eventAsset: ImageType;
-}
+};
 
 export type EventType = {
   eventName: string;
   slug: string;
-  eventSummary: string;
+  eventSummary: Array<{
+    nodeType: string;
+    data: object;
+    content: Array<{
+      nodeType: string;
+      data: object;
+      content: Array<object>;
+    }>;
+  }>;
   eventDate: string;
-  patientAmbassador: PatientCardType[]; 
+  eventMainAsset: ImageType;
+  patientAmbassador: PatientCardType[];
   moreEventInfo: string;
   eventCards: EventCardType[];
   sponsor: ImageType;
