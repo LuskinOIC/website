@@ -89,22 +89,36 @@ export type EventCardType = {
 export type EventType = {
   eventName: string;
   slug: string;
-  eventSummary: Array<{
-    nodeType: string;
-    data: object;
-    content: Array<{
-      nodeType: string;
-      data: object;
-      content: Array<object>;
-    }>;
-  }>;
+  eventSummary: object;
+  // eventSummary: Array<{
+  //   nodeType: string;
+  //   data: object;
+  //   content: Array<{
+  //     nodeType: string;
+  //     data: object;
+  //     content: Array<object>;
+  //   }>;
+  // }>;
   eventDate: string;
-  eventMainAsset: ImageType;
-  patientAmbassador: PatientCardType[];
+  // eventMainAsset: ImageType;
+  eventMainAsset: object;
+  patientAmbassador: Array<{
+    metadata: object;
+    sys: object; 
+    fields: PatientCardType[];
+  }>;
   moreEventInfo: string;
   eventCards: EventCardType[];
-  sponsor: ImageType;
-  eventAsset: ImageType;
+  sponsor: Array<{
+    metadata: object;
+    sys: object;
+    fields: object;
+  }>;
+  eventAsset: Array<{
+    metadata: object;
+    sys: object;
+    fields: object;
+  }>;;
 };
 
 export type FileDetailsType = {
@@ -122,7 +136,6 @@ export type FileDetailsType = {
 
 export type ImageType = {
   fields: {
-    longText: Document;
     title: string;
     description: string;
     file: FileDetailsType;
