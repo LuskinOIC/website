@@ -65,47 +65,45 @@ export type CarouselSlideType = {
   };
 };
 
+export type PatientAssetDetails = {
+  size: number;
+  image: {
+    width: number;
+    height: number;
+  };
+};
+export type PatientAssetType = {
+  fields: {
+    url: string;
+    details: PatientAssetDetails;
+    fileName: string;
+    contentType: string;
+  };
+};
+
 export type PatientCardType = {
   fields: {
     patientName: string;
-    patientAsset: Array<{
-      nodeType: string;
-      data: object;
-      content: Array<{
-        nodeType: string;
-        data: object;
-        content: Array<object>;
-      }>;
-    }>;
+    patientAsset: PatientAssetType[];
   };
 };
 
 export type EventCardType = {
-  eventTitle: string;
-  eventSummary: string;
-  eventAsset: ImageType;
+  fields: {
+    eventTitle: string;
+    eventSummary: string;
+    eventAsset: ImageType;
+  };
 };
 
 export type EventType = {
   eventName: string;
   slug: string;
   eventSummary: object;
-  // eventSummary: Array<{
-  //   nodeType: string;
-  //   data: object;
-  //   content: Array<{
-  //     nodeType: string;
-  //     data: object;
-  //     content: Array<object>;
-  //   }>;
-  // }>;
   eventDate: string;
-  // eventMainAsset: ImageType;
-  eventMainAsset: object;
+  eventMainAsset: ImageType;
   patientAmbassador: Array<{
-    metadata: object;
-    sys: object; 
-    fields: PatientCardType[];
+    fields: PatientCardType;
   }>;
   moreEventInfo: string;
   eventCards: EventCardType[];
@@ -118,7 +116,7 @@ export type EventType = {
     metadata: object;
     sys: object;
     fields: object;
-  }>;;
+  }>;
 };
 
 export type FileDetailsType = {
