@@ -5,11 +5,7 @@ import { Document } from "@contentful/rich-text-types";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
-import {
-  EventType,
-  PageSectionType,
-  PatientCardType,
-} from "@/app/constants/types";
+import { NestedAssetType, PatientCardType } from "@/app/constants/types";
 import PatientAmbassadorCard from "@/app/components/EventCards/PatientAmbassador";
 
 export async function generateStaticParams() {
@@ -17,36 +13,13 @@ export async function generateStaticParams() {
   return events.map((evt) => ({ slug: evt.slug }));
 }
 
-// function PatientAmbassadorCard({ patient }: { patient: PatientCardType }) {
-//   const patientName = patient.fields.patientName;
-//   const patientAssetFile = patient.fields.patientAsset.fields.file;
-//   const patientAssetHeight =
-//     patient.fields.patientAsset.fields.file.details.image.height;
-//   const patientAssetWidth =
-//     patient.fields.patientAsset.fields.file.details.image.width;
-//   return (
-//     <div>
-//       <Image
-//         alt={patientName}
-//         key={patientName}
-//         src={patient.fields.patientAsset.fields.file.url}
-//         width={patientAssetHeight}
-//         height={patientAssetWidth}
-//       />
-//       <h3>{patient.fields.patientName}</h3>
-//     </div>
-//   );
-// }
-
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
   const mainAssetAccess = orgEvent.eventMainAsset.fields.file;
+  const moreEventInfoAssetAccess = orgEvent.moreEventInfoAsset.fields.file;
   // console.log("ORG EVENT", orgEvent);
-  console.log("orgEvent, patientAmbassador", orgEvent.patientAmbassador);
-  // console.log("NESTING", orgEvent.patientAmbassador[0].fields);
-  // orgEvent.patientAmbassador.map((patient: object) => {
-  //   console.log("PATIENT:", patient);
-  // });
+  console.log("event assets", orgEvent.eventAsset[0]);
+  // console.log("TEST:", orgEvent.eventAsset[0].fields.file.details.image.width);
 
   // DATE TIME FORMATTING
   function formatDateTime(date: Date): string {
@@ -97,12 +70,32 @@ export default async function Event({ params }: { params: { slug: string } }) {
           )}
         </div>
       </div>
-      <div id="event-details">
+      <div id="event-details" className="flex">
         <p>{orgEvent.moreEventInfo}</p>
+        <Image
+          alt="Event Photo"
+          src={moreEventInfoAssetAccess.url}
+          width={moreEventInfoAssetAccess.details.image.width}
+          height={moreEventInfoAssetAccess.details.image.height}
+        />
+      </div>
+      <div id="event-assets" className="flex">
+        {orgEvent.eventAsset.map((asset: NestedAssetType) => (
+          <Image
+            alt="event-assets"
+            src={asset.fields.file.url}
+            width={asset.fields.file.details.image.width}
+            height={asset.fields.file.details.image.height}
+          />
+        ))}
       </div>
     </main>
   );
 }
+// orgEvent.eventAsset.map((asset: NestedAssetType) => {
+//   console.log("ASSET", asset.fields.file.url);
+// });
+// console.log("ORG EVENT MORE ASSETS FIELDS", orgEvent.eventAsset[0]);
 
 // JSON OBJECT (Reference for proper typing and data parsing)
 // ORG EVENT {
