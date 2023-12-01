@@ -89,6 +89,16 @@ export default async function Event({ params }: { params: { slug: string } }) {
           />
         ))}
       </div>
+      <div id="sponsor-assets" className="flex">
+        {orgEvent.sponsor.map((asset: NestedAssetType) => (
+          <Image
+            alt="sponsors"
+            src={asset.fields.file.url}
+            width={asset.fields.file.details.image.width}
+            height={asset.fields.file.details.image.height}
+          />
+        ))}
+      </div>
     </main>
   );
 }
