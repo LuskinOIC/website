@@ -72,19 +72,21 @@ export type PatientAssetDetails = {
     height: number;
   };
 };
-export type PatientAssetType = {
+export type NestedAssetType = {
   fields: {
-    url: string;
-    details: PatientAssetDetails;
-    fileName: string;
-    contentType: string;
+    file: {
+      url: string;
+      details: PatientAssetDetails;
+      fileName: string;
+      contentType: string;
+    };
   };
 };
 
 export type PatientCardType = {
   fields: {
     patientName: string;
-    patientAsset: PatientAssetType[];
+    patientAsset: NestedAssetType[];
   };
 };
 
@@ -106,17 +108,10 @@ export type EventType = {
     fields: PatientCardType;
   }>;
   moreEventInfo: string;
+  moreEventInfoAsset: ImageType;
   eventCards: EventCardType[];
-  sponsor: Array<{
-    metadata: object;
-    sys: object;
-    fields: object;
-  }>;
-  eventAsset: Array<{
-    metadata: object;
-    sys: object;
-    fields: object;
-  }>;
+  sponsor: NestedAssetType[];
+  eventAsset: NestedAssetType[];
 };
 
 export type FileDetailsType = {
