@@ -84,10 +84,8 @@ export type NestedAssetType = {
 };
 
 export type PatientCardType = {
-  fields: {
-    patientName: string;
-    patientAsset: NestedAssetType[];
-  };
+  patientName: string;
+  patientAsset: NestedAssetType;
 };
 
 export type EventCardType = {

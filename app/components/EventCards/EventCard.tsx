@@ -1,7 +1,7 @@
 import { getEvents, getEventBySlug } from "@/app/utils/contentful";
 import Image from "next/image";
 import Link from "next/link";
-import { Document } from "@contentful/rich-text-react-renderer";
+import { Document } from "@contentful/rich-text-types";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
