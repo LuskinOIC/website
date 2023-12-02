@@ -1,10 +1,8 @@
 import { getEvents, getEventBySlug } from "@/app/utils/contentful";
 import Image from "next/image";
-import link from "next/link";
+import dynamic from "next/dynamic";
 import { Document } from "@contentful/rich-text-types";
-import renderRichTextToReactComponent, {
-  ClassNames,
-} from "@/app/utils/rich-text";
+import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { NestedAssetType, PatientCardType } from "@/app/constants/types";
 import PatientAmbassadorCard from "@/app/components/EventCards/PatientAmbassador";
 
@@ -16,11 +14,17 @@ export async function generateStaticParams() {
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
   const mainAssetAccess = orgEvent.eventMainAsset.fields.file;
-  const moreEventInfoAssetAccess = orgEvent.moreEventInfoAsset.fields.file;
-  // console.log("ORG EVENT", orgEvent);
-  // console.log("event assets", orgEvent.eventAsset[0]);
-  // console.log("TEST:", orgEvent.eventAsset[0].fields.file.details.image.width);
+  const moreEventInfoAccess = orgEvent?.moreEventInfoAsset;
+  console.log("MOREEVENTINFOACCESS", moreEventInfoAccess);
+  const moreEventInfoAssetAccess = moreEventInfoAccess?.fields?.file.url;
+  const moreEventInfoAssetWidth =
+    moreEventInfoAccess?.fields?.file.details.image.width;
+  const moreEventInfoAssetHeight =
+    moreEventInfoAccess?.fields?.file.details.image.height;
 
+  const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
+
+  // console.log("ORGEVENT:", orgEvent.eventAsset);
   // DATE TIME FORMATTING
   function formatDateTime(date: Date): string {
     const options: Intl.DateTimeFormatOptions = {
@@ -37,6 +41,13 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const eventDate: Date = new Date(dateString);
   const formattedDateTime: string = formatDateTime(eventDate);
 
+  const hasPatientAmbassadors: boolean =
+    Array.isArray(orgEvent.patientAmbassador) &&
+    orgEvent.patientAmbassador.length > 0;
+  const hasSponsors: boolean =
+    Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
+  const hasEventAssets: boolean =
+    Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
   return (
     <main>
       <div className="flex" id="main-event">
@@ -44,7 +55,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <h1>{orgEvent.eventName}</h1>
           <p>
             {renderRichTextToReactComponent(
-              orgEvent.eventSummary as unknown as Document
+              orgEvent.eventSummary as unknown as Document,
             )}
           </p>
           <p>Event Date: {formattedDateTime}</p>
@@ -63,41 +74,49 @@ export default async function Event({ params }: { params: { slug: string } }) {
       <div>
         <h2>{"patient ambassadors".toUpperCase()}</h2>
         <div className="flex">
-          {orgEvent.patientAmbassador.map(
-            (patientObject: { fields: PatientCardType }) => (
-              <PatientAmbassadorCard patient={patientObject.fields} />
-            )
-          )}
+          {hasPatientAmbassadors &&
+            orgEvent.patientAmbassador.map(
+              (patientObject: { fields: PatientCardType }) => (
+                <PatientAmbassadorCard
+                  key={patientObject.fields.patientAsset.sys.id}
+                  patient={patientObject.fields}
+                />
+              ),
+            )}
         </div>
       </div>
       <div id="event-details" className="flex">
         <p>{orgEvent.moreEventInfo}</p>
         <Image
           alt="Event Photo"
-          src={moreEventInfoAssetAccess.url}
-          width={moreEventInfoAssetAccess.details.image.width}
-          height={moreEventInfoAssetAccess.details.image.height}
+          src={moreEventInfoAssetAccess}
+          width={moreEventInfoAssetWidth}
+          height={moreEventInfoAssetHeight}
         />
       </div>
       <div id="event-assets" className="flex">
-        {orgEvent.eventAsset.map((asset: NestedAssetType) => (
-          <Image
-            alt="event-assets"
-            src={asset.fields.file.url}
-            width={asset.fields.file.details.image.width}
-            height={asset.fields.file.details.image.height}
-          />
-        ))}
+        {hasEventAssets &&
+          orgEvent.eventAsset.map((asset: NestedAssetType) => (
+            <DynamicImage
+              alt="event-assets"
+              key={asset.sys.id}
+              src={asset.fields.file.url}
+              width={asset.fields.file.details.image.width}
+              height={asset.fields.file.details.image.height}
+            />
+          ))}
       </div>
       <div id="sponsor-assets" className="flex">
-        {orgEvent.sponsor.map((asset: NestedAssetType) => (
-          <Image
-            alt="sponsors"
-            src={asset.fields.file.url}
-            width={asset.fields.file.details.image.width}
-            height={asset.fields.file.details.image.height}
-          />
-        ))}
+        {hasSponsors &&
+          orgEvent.sponsor.map((asset: NestedAssetType) => (
+            <Image
+              alt="sponsors"
+              key={asset.sys.id}
+              src={asset.fields.file.url}
+              width={asset.fields.file.details.image.width}
+              height={asset.fields.file.details.image.height}
+            />
+          ))}
       </div>
     </main>
   );

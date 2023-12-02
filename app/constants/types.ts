@@ -73,6 +73,9 @@ export type PatientAssetDetails = {
   };
 };
 export type NestedAssetType = {
+  sys: {
+    id: string;
+  };
   fields: {
     file: {
       url: string;

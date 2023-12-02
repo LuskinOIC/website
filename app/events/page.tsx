@@ -1,8 +1,8 @@
 import { getEvents } from "@/app/utils/contentful";
-import { EventCardType, EventType } from "@/app/constants/types";
+import { EventType } from "@/app/constants/types";
 import EventCard from "@/app/components/EventCards/EventCard";
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
 
 // iterate through data model?
 export default async function Events() {
@@ -14,7 +14,7 @@ export default async function Events() {
       <h1 className="text-xl">Events</h1>
       <div className="flex">
         {events.map((eventObj) => (
-          <EventCard event={eventObj} />
+          <EventCard key={eventObj.slug} event={eventObj} />
         ))}
       </div>
     </main>

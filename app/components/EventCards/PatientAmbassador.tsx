@@ -7,12 +7,12 @@ export default function PatientAmbassadorCard({
   patient: PatientCardType;
 }) {
   const patientName = patient.patientName;
-  const patientAsset = patient.patientAsset.fields.file.url;
-  const patientAssetHeight =
-    patient.patientAsset.fields.file.details.image.height;
+  const patientAssetAccess = patient.patientAsset.fields.file;
+  const patientAsset = patientAssetAccess.url;
+  const patientAssetHeight = patientAssetAccess.details.image.height;
   // const patientAssetHeight = ppatient.patientAsset.fields.file.details.image.size;
-  const patientAssetWidth =
-    patient.patientAsset.fields.file.details.image.height;
+  const patientAssetWidth = patientAssetAccess.details.image.height;
+  // console.log("PATIENT", patient);
   return (
     <div>
       <Image

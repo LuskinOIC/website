@@ -1,12 +1,10 @@
-import { getEvents, getEventBySlug } from "@/app/utils/contentful";
 import Image from "next/image";
 import Link from "next/link";
 import { Document } from "@contentful/rich-text-types";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
-import { EventCardType, EventType } from "@/app/constants/types";
-import Event from "@/app/events/page";
+import { EventType } from "@/app/constants/types";
 
 // EVENTCARD data model
 // import event asset
@@ -20,13 +18,13 @@ const eventCardClassNames: ClassNames = {
 export default function EventCard({ event }: { event: EventType }) {
   // pass in event, create event card type
   // console.log("EVENT CARD:", event);
-  console.log("EVENT SUMMARY:", event.eventSummary);
+  // console.log("EVENT SUMMARY:", event.eventSummary);
+  const eventSlug = event.slug;
   const eventCardAsset = event.eventMainAsset;
-  // console.log("EVENTCARDASSET:", eventCardAsset);
   const eventAssetSource = eventCardAsset.fields.file.url;
   const eventAssetWidth = eventCardAsset.fields.file.details.image.width;
   const eventAssetHeight = eventCardAsset.fields.file.details.image.height;
-  // console.log("EVENT ASSET SOURCE:", eventAssetSource);
+
   return (
     <div className="w-44">
       <Image
@@ -36,12 +34,15 @@ export default function EventCard({ event }: { event: EventType }) {
         height={eventAssetHeight}
         className="rounded"
       />
-      <h3>{event.eventName}</h3>
+      <h3>
+        <Link href={`/events/${eventSlug}`}>{event.eventName}</Link>
+      </h3>
       <p>
         {renderRichTextToReactComponent(
           event.eventSummary as unknown as Document,
-          eventCardClassNames
+          eventCardClassNames,
         )}
+        ,
       </p>
     </div>
   );
