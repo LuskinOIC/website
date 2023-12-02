@@ -91,11 +91,17 @@ export type PatientCardType = {
 };
 
 export type EventCardType = {
-  fields: {
-    eventTitle: string;
-    eventSummary: string;
-    eventAsset: ImageType;
-  };
+  // fields: {
+  //   eventName: string;
+  //   slug: string;
+  //   eventSummary: object;
+  //   eventMainAsset: NestedAssetType;
+  // };
+  eventName: string;
+  slug: string;
+  eventSummary: object;
+  eventDate: string;
+  eventMainAsset: NestedAssetType;
 };
 
 export type EventType = {
@@ -109,7 +115,8 @@ export type EventType = {
   }>;
   moreEventInfo: string;
   moreEventInfoAsset: ImageType;
-  eventCards: EventCardType[];
+  // eventCards: EventCardType[];
+  eventCards: Array<{ fields: EventCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
 };

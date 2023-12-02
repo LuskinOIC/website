@@ -18,7 +18,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const mainAssetAccess = orgEvent.eventMainAsset.fields.file;
   const moreEventInfoAssetAccess = orgEvent.moreEventInfoAsset.fields.file;
   // console.log("ORG EVENT", orgEvent);
-  console.log("event assets", orgEvent.eventAsset[0]);
+  // console.log("event assets", orgEvent.eventAsset[0]);
   // console.log("TEST:", orgEvent.eventAsset[0].fields.file.details.image.width);
 
   // DATE TIME FORMATTING
