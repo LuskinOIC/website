@@ -28,7 +28,7 @@ export const Title1 = ({ children, className = "" }: TitleProps) => {
 };
 
 export const Title2 = ({ children, className = "" }: TitleProps) => {
-  const classes = `text-xl md:text-2xl font-arial leading-[60px] py-2 ${className}`;
+  const classes = `text-xl md:text-2xl font-arial leading-[30px] md:leading-[60px] py-2 ${className}`;
   return <h1 className={classes}>{children}</h1>;
 };
 

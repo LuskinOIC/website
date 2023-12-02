@@ -3,7 +3,7 @@ import Image from "next/image";
 // Types
 
 // Custom components
-import { TitleComponent } from "@/app/components/ui/Typography/Title";
+import { Title2 } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
 import { Text1, Text2 } from "@/app/components/ui/Typography/Text";

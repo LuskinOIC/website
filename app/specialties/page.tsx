@@ -1,7 +1,7 @@
 import { getSpecialties } from "@/app/utils/contentful";
 import SearchBar from "@/app/components/ui/SearchBar";
-import UrgentCareCard from "../components/UrgentCareCard";
-import SpecialtyCard from "../components/SpecialtyCard";
+import UrgentCareCard from "@/app/components/UrgentCareCard";
+import SpecialtyCard from "./SpecialtyCard";
 
 export default async function Specialties() {
   const specialties = await getSpecialties();
