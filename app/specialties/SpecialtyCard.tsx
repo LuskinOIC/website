@@ -15,7 +15,7 @@ import clock from "@/public/clock.svg";
 import { Text2 } from "../components/ui/Typography/Text";
 
 // TEMP IMPORT
-import PhysicianVerticalMobile from "../physicians/physicianCards";
+import PhysicianCardVertical from "../physicians/physicianCards";
 
 type Specialty = {
   id: string;
@@ -49,7 +49,10 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
   specialty.buttonUrl = "/";
   return (
     <>
-      <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
+      <section
+        key={specialty.specialistsTitle}
+        className={`${styles.sectionLayout} ${styles.boxStyling}`}
+      >
         <div className="md:grid md:grid-rows-3 my-5 items-center">
           <Title2 className={"md:font-bold"}> {specialty.name} </Title2>
           {descriptionContent}
@@ -103,7 +106,9 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
             {specialty.specialistsTitle}
           </h1>
 
-          <PhysicianVerticalMobile />
+          <div className="">
+            <PhysicianCardVertical />
+          </div>
         </div>
       </section>
     </>
