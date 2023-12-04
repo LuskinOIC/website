@@ -100,7 +100,23 @@ export type LandingPageType = {
 
 export type PatientCarePageType = {
   title: string;
+  locationsSection: LocationsSectionType;
   tabSection: TabSectionType;
+};
+
+export type LocationsSectionType = {
+  fields: {
+    locations: LocationsType[];
+  };
+};
+
+export type LocationsType = {
+  name: string;
+  hours: Document;
+  phoneNumber: string;
+  address: string;
+  buttonText: string;
+  buttonLink: string;
 };
 
 export type TabSectionType = {
