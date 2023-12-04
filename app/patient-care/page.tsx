@@ -1,12 +1,7 @@
 import { getPatientCarePage } from "@/app/utils/contentful";
 import TabSection from "../components/TabSection";
 import { LocationType } from "../constants/types";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import Button from "../components/ui/Button";
 import Image from "next/image";
 import { Text4 } from "../components/ui/Typography/Text";
