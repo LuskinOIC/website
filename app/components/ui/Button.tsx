@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const Button = ({ href, text, className = "" }: ButtonProps) => {
   const classes = cn(
-    "flex w-fit h-[43px] md:h-[53px] lg:h-[63px] px-6 py-3 bg-[#0076AD] rounded-[10px] items-center text-white md:font-bold",
+    "flex w-fit max-h-[43px] md:max-h-[53px] lg:max-h-[63px] px-6 py-3 bg-[#0076AD] rounded-[10px] items-center text-white md:font-bold",
     className,
   );
   return (
