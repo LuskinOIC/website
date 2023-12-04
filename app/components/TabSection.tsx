@@ -25,7 +25,7 @@ import { Text3 } from "./ui/Typography/Text";
 
 const styles = {
   tabsList: (tabCount: number) => {
-    // TODO: Refactor, if possible
+    // TODO: Refactor if possible
     const gridColCount =
       tabCount == 1
         ? "grid-cols-1"
@@ -240,7 +240,7 @@ function TabsTextOrCardContent({
               <CardTitle className="font-semibold">{card.header}</CardTitle>
             </CardHeader>
             <CardContent className="p-0 ">
-              <p className="text-lg">{card.body}</p>
+              <Text3>{card.body}</Text3>
             </CardContent>
             <CardFooter className="p-0 pt-6">
               <Button
