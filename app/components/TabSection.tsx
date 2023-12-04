@@ -25,7 +25,29 @@ import { Text3 } from "./ui/Typography/Text";
 
 const styles = {
   tabsList: (tabCount: number) => {
-    const gridColCount = tabCount != 0 ? "grid-cols-5" : "grid-cols-0";
+    // TODO: Refactor, if possible
+    const gridColCount =
+      tabCount == 1
+        ? "grid-cols-1"
+        : tabCount == 2
+        ? "grid-cols-2"
+        : tabCount == 3
+        ? "grid-cols-3"
+        : tabCount == 4
+        ? "grid-cols-4"
+        : tabCount == 5
+        ? "grid-cols-5"
+        : tabCount == 6
+        ? "grid-cols-6"
+        : tabCount == 7
+        ? "grid-cols-7"
+        : tabCount == 8
+        ? "grid-cols-8"
+        : tabCount == 9
+        ? "grid-cols-9"
+        : tabCount == 10
+        ? "grid-cols-10"
+        : "grid-cols-0";
     return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
