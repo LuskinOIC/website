@@ -21,12 +21,12 @@ import { useState } from "react";
 import Image from "next/image";
 import { Title3 } from "./ui/Typography/Title";
 import { useRouter } from "next/navigation";
-import { Text2 } from "./ui/Typography/Text";
+import { Text3 } from "./ui/Typography/Text";
 
 const styles = {
   tabsList: (tabCount: number) => {
     const gridColCount = tabCount != 0 ? "grid-cols-5" : "grid-cols-0";
-    return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-10 justify-items-stretch rounded-md bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
+    return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
     // Set left margin of first item and right margin of last item to 0
@@ -34,12 +34,12 @@ const styles = {
     if (index == 0) {
       horizontalMargin = "ml-0 mr-1";
     } else if (index == tabCount - 1) {
-      horizontalMargin = "ml-1 mr-1";
+      horizontalMargin = "ml-1 mr-0";
     } else {
       horizontalMargin = "mx-1";
     }
 
-    return `flex flex-col h-[3.812rem] min-w-fit rounded-t-lg ${horizontalMargin} px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
+    return `flex flex-col h-[3.812rem] min-w-fit rounded-t-lg rounded-b-none ${horizontalMargin} px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
   },
 };
 
@@ -106,7 +106,7 @@ function DesktopTabSection({
               onClick={() => setSelectedTab(tab.fields.tabTitle)}
               className={styles.tabsTrigger(index, tabCount)}
             >
-              <Title3 className="uppercase">{tab.fields.tabTitle}</Title3>
+              <p className="uppercase text-base">{tab.fields.tabTitle}</p>
             </TabsTrigger>
           ))}
         </TabsList>
@@ -140,13 +140,16 @@ function MobileTabSection({
   return (
     /* Only show on mobile */
     <div className="relative flex md:hidden flex-col items-center w-full mt-6">
+      <Text3 className="w-4/5]">
+        Choose a section you would like to review
+      </Text3>
       <div className="sticky top-0 flex flex-col items-center w-full pt-3 pb-1 bg-white">
         <DropdownMenu>
-          <DropdownMenuTrigger className="w-[85vw] h-10 pl-5 border border-luskin-blue rounded-md">
+          <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
             <div className="flex flex-row w-full">
-              <Title3 className="grow self-start text-start align-middle uppercase text-sm text-gray-500">
+              <p className="py-4 grow self-start text-start align-middle uppercase text-sm text-gray-400 font-medium">
                 {selectedTab}
-              </Title3>
+              </p>
               <Image
                 src="/dropdownarrow.svg"
                 width={20}
@@ -156,7 +159,7 @@ function MobileTabSection({
               />
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-[85vw]">
+          <DropdownMenuContent className="min-w-full w-[80vw]">
             {tabs.map((tab, index) => (
               <DropdownMenuItem
                 key={index}
@@ -170,15 +173,15 @@ function MobileTabSection({
                   );
                 }}
               >
-                <Title3 className="uppercase text-luskin-blue font-bold">
+                <p className="w-full py-2 text-sm text-center uppercase text-luskin-blue font-bold">
                   {tab.fields.tabTitle}
-                </Title3>
+                </p>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="pt-6 w-4/5">
+      <div className="pt-2 w-4/5">
         {tabs.map((tab, index) => (
           <div
             id={tab.fields.tabTitle.replace(/[^A-z]/g, "")}
@@ -187,7 +190,7 @@ function MobileTabSection({
           >
             <Title3
               key={index}
-              className="mt-3 uppercase text-luskin-blue font-medium"
+              className="uppercase text-luskin-blue font-medium"
             >
               {tab.fields.tabTitle}
             </Title3>
@@ -211,17 +214,17 @@ function TabsTextOrCardContent({
             key={index}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
-            <CardHeader className="p-0 pt-4 pb-5">
-              <CardTitle className="font-medium">{card.header}</CardTitle>
+            <CardHeader className="p-0 md:pt-4 pb-5">
+              <CardTitle className="font-semibold">{card.header}</CardTitle>
             </CardHeader>
             <CardContent className="p-0 ">
-              <Text2>{card.body}</Text2>
+              <p className="text-lg">{card.body}</p>
             </CardContent>
             <CardFooter className="p-0 pt-6">
               <Button
                 href={card.buttonLink}
                 text={card.buttonText}
-                className="font-bold align-middle p-2 px-4 mb-3 md:mb-8"
+                className="mb-3 md:mb-8"
               />
             </CardFooter>
           </Card>
@@ -231,7 +234,7 @@ function TabsTextOrCardContent({
   } else if (richTextContent != undefined) {
     // There's text content, so render text
     return (
-      <div className="pb-7">
+      <div className="md:pt-7 pb-7">
         {renderRichTextToReactComponent(richTextContent)}
       </div>
     );
