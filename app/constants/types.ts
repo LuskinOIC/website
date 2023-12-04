@@ -105,13 +105,15 @@ export type PatientCarePageType = {
 };
 
 export type LocationType = {
-  name: string;
-  hours: Document;
-  phoneNumber: string;
-  streetAddress: string;
-  cityStateZipcode: string;
-  buttonText?: string;
-  buttonLink?: string;
+  fields: {
+    name: string;
+    hours: Document;
+    phoneNumber: string;
+    streetAddress: string;
+    cityStateZipcode: string;
+    buttonTitle?: string;
+    buttonLink?: string;
+  };
 };
 
 export type TabSectionType = {
