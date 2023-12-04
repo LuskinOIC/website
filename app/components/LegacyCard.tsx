@@ -74,7 +74,7 @@ export default function LegacyCard() {
         <br></br>
         <p>
           Leaving a legacy is easy. Include LuskinOIC in your will, set up a
-          charitable trust, or donate property, and you`&apos;`ll be promptly
+          charitable trust, or donate property, and you`ll be promptly
           recognized in our legacy society.
         </p>
         <br></br>
