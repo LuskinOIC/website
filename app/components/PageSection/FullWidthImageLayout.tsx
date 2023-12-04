@@ -11,7 +11,7 @@ export default function FullWidthImageLayout({
   return (
     <div>
       <Image
-        className="mx-auto"
+        className="w-full"
         src={`https:${section.fields.image.fields.file.url}`}
         alt={section.fields.image.fields.description}
         width={section.fields.image.fields.file.details.image.width}
