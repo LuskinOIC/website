@@ -89,29 +89,41 @@ export default function Navbar() {
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/patient-care" className="px-4 py-2">
+                        <a
+                          href="/patient-care"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
                           Patient Care
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/urgent-care" className="px-4 py-2">
+                        <a
+                          href="/urgent-care"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
                           Urgent Care
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Find a Physician
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Find a Physician
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Specialties
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Specialties
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -121,7 +133,7 @@ export default function Navbar() {
             </div>
             <div>
               <div
-                className="relative text-white px-6"
+                className="relative text-white px-6 "
                 onMouseEnter={toggleMedicalProfessionalsDropdown}
                 onMouseLeave={() => setIsMedicalProfessionalsOpen(false)} // Close on mouse leave
               >
@@ -136,29 +148,41 @@ export default function Navbar() {
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Specialties
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Specialties
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <li className="border-b border-blue-400 rounded-md w-64">
+                    <li className="border-b border-blue-400 rounded-md w-64 no-underline hover:underline">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Patient Referrals
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Patient Referrals
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <li className="border-b border-blue-400 w-64">
+                    <li className="border-b border-blue-400 w-64 no-underline hover:underline">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Careers
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Careers
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <li className="border-b border-blue-400 w-64">
+                    <li className="border-b border-blue-400 w-64 no-underline hover:underline">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Volunteer
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Volunteer
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -181,15 +205,21 @@ export default function Navbar() {
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        About LuskinOIC
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          About LuskinOIC
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 rounded-md w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        LuskinOIC Blog
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          LuskinOIC Blog
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -212,29 +242,41 @@ export default function Navbar() {
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Donate
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Donate
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 rounded-md w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Corporate Partnerships
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Corporate Partnerships
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Events
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Events
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                        Volunteer
+                        <a
+                          href="/"
+                          className="px-4 py-2 no-underline hover:underline"
+                        >
+                          Volunteer
                         </a>
                       </NavigationMenuLink>
                     </li>
