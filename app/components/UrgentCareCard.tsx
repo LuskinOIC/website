@@ -15,7 +15,7 @@ import clock from "@/public/clock.svg";
 const styles = {
   sectionLayout:
     "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-20",
-  boxStyling: "border border-zinc-300 rounded shadow-md md:w-9/12 xlg:w-6/12",
+  boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
 };
 
 type Specialty = {
