@@ -23,6 +23,9 @@ export default function ColumnLayout({
   const textPadding = section.fields.reverseOrder
     ? "md:pl-[10%] md:pr-10"
     : "md:pr-[10%] md:pl-10";
+  const descriptionTextSize = !section.fields.descriptionTextSize
+    ? "md:text-xl"
+    : "md:text-2xl";
   // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
   // for dynamically generated classes. This is a temporary fix.
   const bgColor =
@@ -60,7 +63,9 @@ export default function ColumnLayout({
                 title={section.fields.title}
                 titleSize={section.fields.titleSize}
               />
-              <div className="text-base md:text-2xl">{descriptionContent}</div>
+              <div className={`text-base ${descriptionTextSize}`}>
+                {descriptionContent}
+              </div>
             </div>
             <div className="flex flex-col w-full md:flex-row md:justify-between gap-4 md:gap-6">
               {section.fields.actionUrl && (
