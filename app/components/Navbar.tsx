@@ -104,7 +104,14 @@ export default function Navbar() {
                     <li>
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 3
+                        Find a Physician
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="/" className="px-4 py-2">
+                        Specialties
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -130,21 +137,28 @@ export default function Navbar() {
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 1
+                        Specialties
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 rounded-md w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 2
+                        Patient Referrals
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 3
+                        Careers
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li className="border-b border-blue-400 w-64">
+                      <NavigationMenuLink asChild>
+                        <a href="/" className="px-4 py-2">
+                        Volunteer
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -168,21 +182,14 @@ export default function Navbar() {
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 1
+                        About LuskinOIC
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 rounded-md w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 2
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 3
+                        LuskinOIC Blog
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -206,21 +213,28 @@ export default function Navbar() {
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 1
+                        Donate
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 rounded-md w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 2
+                        Corporate Partnerships
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
                         <a href="/" className="px-4 py-2">
-                          Link 3
+                        Events
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li className="border-b border-blue-400 w-64">
+                      <NavigationMenuLink asChild>
+                        <a href="/" className="px-4 py-2">
+                        Volunteer
                         </a>
                       </NavigationMenuLink>
                     </li>
