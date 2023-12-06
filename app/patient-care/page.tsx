@@ -29,8 +29,6 @@ const placeholderCardContent = [
 export default async function PatientCare() {
   const patientCarePage = await getPatientCarePage();
 
-  console.dir(patientCarePage.locations);
-
   /* Here to next comment can be removed once values are in Contentful */
   if (patientCarePage.tabSection.fields.tabs.length == 2) {
     patientCarePage.tabSection.fields.tabs.push(
@@ -67,7 +65,6 @@ export default async function PatientCare() {
 type LocationsCardType = { locations: LocationType[] };
 
 function LocationsCard({ locations }: LocationsCardType) {
-  console.dir(locations);
   return (
     <div className="flex flex-row w-full items-center justify-center">
       <Card className="flex flex-col md:flex-row w-4/5 md:w-9/12 md:h-96 mt-10 mb-5 md:my-10 py-7 md:py-10">
