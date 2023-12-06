@@ -14,7 +14,7 @@ import clock from "@/public/clock.svg";
 
 const styles = {
   sectionLayout:
-    "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-20",
+    "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-10",
   boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
 };
 
@@ -52,8 +52,10 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
   const cardContent = () => {
     return (
       <div className="grid gap-4 md:gap-5 justify-items-start pl-5 pr-12 py-6 md:py-0">
-        <TitleComponent title={name} titleSize={"Title Medium"} />
-        <div className="grid gap-4 md:text-xl">{descriptionContent}</div>
+        <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
+        <div className="grid gap-4 md:text-xl leading-[30px]">
+          {descriptionContent}
+        </div>
         {buttonUrl && buttonText && (
           <Button className="my-3" href={buttonUrl} text={buttonText} />
         )}

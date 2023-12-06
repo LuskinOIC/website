@@ -57,7 +57,7 @@ export default function ColumnLayout({
           </div>
         )}
         <div className={`basis-1/2 px-2 ${textPadding}`}>
-          <div className="grid md:gap-4 mx-2 px-3 py-5 md:py-40">
+          <div className="grid md:gap-4 mx-2 px-3 py-5">
             <div className={`grid gap-2 ${textColor}`}>
               <TitleComponent
                 title={section.fields.title}
@@ -67,7 +67,7 @@ export default function ColumnLayout({
                 {descriptionContent}
               </div>
             </div>
-            <div className="flex flex-col w-full md:flex-row md:justify-between gap-4 md:gap-6">
+            <div className="flex flex-col w-full md:flex-row md:justify-between gap-4 md:gap-6 py-5">
               {section.fields.actionUrl && (
                 <Button
                   href={section.fields.actionUrl}
