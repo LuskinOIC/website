@@ -63,6 +63,10 @@ const styles = {
 
     return `flex flex-col h-[3.812rem] min-w-fit rounded-t-lg rounded-b-none ${horizontalMargin} px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
   },
+  dropdownSelectedItem:
+    "py-4 grow self-start text-start align-middle overflow-hidden whitespace-nowrap text-ellipsis uppercase text-sm text-gray-400 font-medium",
+  dropdownMenuItem:
+    "w-full py-2 text-sm text-center overflow-hidden whitespace-nowrap text-ellipsis uppercase text-luskin-blue font-bold",
 };
 
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
@@ -169,9 +173,7 @@ function MobileTabSection({
         <DropdownMenu>
           <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
             <div className="flex flex-row w-full">
-              <p className="py-4 grow self-start text-start align-middle uppercase text-sm text-gray-400 font-medium">
-                {selectedTab}
-              </p>
+              <p className={styles.dropdownSelectedItem}>{selectedTab}</p>
               <Image
                 src="/dropdownarrow.svg"
                 width={20}
@@ -195,9 +197,7 @@ function MobileTabSection({
                   );
                 }}
               >
-                <p className="w-full py-2 text-sm text-center uppercase text-luskin-blue font-bold">
-                  {tab.fields.tabTitle}
-                </p>
+                <p className={styles.dropdownMenuItem}>{tab.fields.tabTitle}</p>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
