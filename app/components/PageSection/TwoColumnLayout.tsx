@@ -32,7 +32,6 @@ export default function ColumnLayout({
     section.fields.backgroundColor === "blue" ? "bg-[#0076AD]" : "bg-white";
   const textColor =
     section.fields.backgroundColor === "blue" ? "text-white" : "text-black";
-
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
     descriptionClassNames,
@@ -62,6 +61,7 @@ export default function ColumnLayout({
               <TitleComponent
                 title={section.fields.title}
                 titleSize={section.fields.titleSize}
+                titleStyle={section.fields.titleStyle}
               />
               <div className={`text-base ${descriptionTextSize}`}>
                 {descriptionContent}

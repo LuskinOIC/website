@@ -142,6 +142,7 @@ export type PageSectionType = {
     secondaryActionUrl: string;
     title: string;
     titleSize: string;
+    titleStyle: boolean;
     type: string;
     infoCards: CardType[];
     dividerText: string;
