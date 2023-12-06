@@ -1,19 +1,46 @@
-// Next components
+import React from "react";
 import Link from "next/link";
-import { Text2 } from "./Typography/Text";
-
-// Types
-import { ButtonProps } from "@/app/constants/types";
 import { cn } from "@/lib/utils";
 
-const Button = ({ href, text, className = "" }: ButtonProps) => {
+export type ButtonVariant = "blue" | "yellow" | "text";
+
+export interface ButtonProps {
+  href: string;
+  variant?: ButtonVariant;
+  className?: string;
+  text?: string;
+  children?: React.ReactNode;
+}
+
+const styles = {
+  buttonContainer: "flex w-fit h-[43px] md:h-[53px] lg:h-[63px] rounded-[10px]",
+  buttonAlignment: "px-6 py-3 justify-center items-center inline-flex",
+  buttonText:
+    "text-base md:text-xl lg:text-2xl text-white md:font-bold leading-[28.8px]",
+};
+
+const Button = ({
+  href,
+  variant = "blue",
+  className,
+  children,
+  text,
+}: ButtonProps) => {
   const classes = cn(
-    "flex w-fit h-[43px] md:h-[53px] lg:h-[63px] px-6 py-3 bg-[#0076AD] rounded-[10px] items-center text-white md:font-bold",
+    styles.buttonContainer,
+    styles.buttonAlignment,
+    styles.buttonText,
+    {
+      blue: "bg-[#0076AD]",
+      yellow: "bg-amber-200 text-neutral-900",
+      text: "p-0 underline",
+    }[variant],
     className,
   );
+
   return (
-    <Link className={classes} href={href}>
-      <Text2>{text}</Text2>
+    <Link href={href} className={classes}>
+      {children || text}
     </Link>
   );
 };

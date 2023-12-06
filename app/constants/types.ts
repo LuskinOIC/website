@@ -128,12 +128,14 @@ export type PageSectionType = {
   fields: {
     specialty: SpecialtyType[];
     longText: Document;
+    buttonStyle: "blue" | "yellow" | "text";
     actionText: string;
     actionUrl: string;
     backgroundColor: string;
     bold: boolean;
     columnCount: number;
     description: string;
+    descriptionTextSize: boolean;
     image: ImageType;
     reverseOrder: boolean;
     secondaryActionText: string;
