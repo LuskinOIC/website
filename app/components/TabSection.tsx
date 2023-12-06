@@ -48,7 +48,7 @@ const styles = {
         : tabCount == 10
         ? "grid-cols-10"
         : "grid-cols-0";
-    return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
+    return `grid ${gridColCount} h-16 min-w-fit w-4/5 mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
     // Set left margin of first item and right margin of last item to 0
@@ -61,7 +61,7 @@ const styles = {
       horizontalMargin = "mx-1";
     }
 
-    return `flex flex-col h-[3.812rem] rounded-t-lg rounded-b-none ${horizontalMargin} pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
+    return `flex flex-col h-[3.812rem] rounded-t-lg rounded-b-none ${horizontalMargin} px-2 text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
   },
   dropdownSelectedItem:
     "py-4 grow self-start text-start align-middle overflow-hidden whitespace-nowrap text-ellipsis uppercase text-sm text-gray-400 font-medium",
@@ -133,7 +133,7 @@ function DesktopTabSection({
               onClick={() => setSelectedTab(tab.fields.tabTitle)}
               className={styles.tabsTrigger(index, tabCount)}
             >
-              <p className="uppercase text-base whitespace-normal">
+              <p className="max-w-full uppercase text-base two-line-ellipsis">
                 {tab.fields.tabTitle}
               </p>{" "}
             </TabsTrigger>
