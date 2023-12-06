@@ -1,4 +1,5 @@
 "use client";
+// first commit
 
 import * as React from "react";
 
@@ -84,8 +85,7 @@ export default function Navbar() {
                 <div
                   className={`absolute mt-2 ${
                     isPatientCareOpen ? "block" : "hidden"
-                  }`}
-                >
+                  }`}>
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start">
                     <li>
                       <NavigationMenuLink asChild>
@@ -124,8 +124,7 @@ export default function Navbar() {
                 <div
                   className={`absolute mt-2 ${
                     isMedicalProfessionalsOpen ? "block" : "hidden"
-                  }`}
-                >
+                  }`}>
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
@@ -162,8 +161,7 @@ export default function Navbar() {
                 <div
                   className={`absolute mt-2 ${
                     isAboutOpen ? "block" : "hidden"
-                  }`}
-                >
+                  }`}>
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
@@ -200,8 +198,7 @@ export default function Navbar() {
                 <div
                   className={`absolute mt-2 ${
                     isWaysToGiveOpen ? "block" : "hidden"
-                  }`}
-                >
+                  }`}>
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
@@ -244,8 +241,7 @@ export default function Navbar() {
 
           <button
             onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-            className="bg-transparent text-white rounded-full p-2"
-          >
+            className="bg-transparent text-white rounded-full p-2">
             <FontAwesomeIcon icon={faBars} />
           </button>
         </NavigationMenuItem>
