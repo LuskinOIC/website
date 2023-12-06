@@ -31,9 +31,8 @@ const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
 
 interface SectionProps {
   section: BioPageSectionType;
-  index: number;
 }
-export default function BioPageSection({ section, index }: SectionProps) {
+export default function BioPageSection({ section }: SectionProps) {
   return (
     <div key={section.sys.id}>
       <h2 className="text-lg font-bold lg:mb-4">{section.fields.title}</h2>
