@@ -61,7 +61,7 @@ const styles = {
       horizontalMargin = "mx-1";
     }
 
-    return `flex flex-col h-[3.812rem] min-w-fit rounded-t-lg rounded-b-none ${horizontalMargin} px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
+    return `flex flex-col h-[3.812rem] rounded-t-lg rounded-b-none ${horizontalMargin} pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
   },
   dropdownSelectedItem:
     "py-4 grow self-start text-start align-middle overflow-hidden whitespace-nowrap text-ellipsis uppercase text-sm text-gray-400 font-medium",
@@ -119,7 +119,8 @@ function DesktopTabSection({
 }: DesktopTabSectionType) {
   return (
     /* Only show on desktop */
-    <div className="hidden md:block mt-6">
+    <div className="hidden md:block mt-6 max-w-4/5 mx-[10%]">
+      {" "}
       <Tabs
         value={selectedTab}
         className="flex flex-col items-center w-full h-fit mb-12"
@@ -132,7 +133,9 @@ function DesktopTabSection({
               onClick={() => setSelectedTab(tab.fields.tabTitle)}
               className={styles.tabsTrigger(index, tabCount)}
             >
-              <p className="uppercase text-base">{tab.fields.tabTitle}</p>
+              <p className="uppercase text-base whitespace-normal">
+                {tab.fields.tabTitle}
+              </p>{" "}
             </TabsTrigger>
           ))}
         </TabsList>
