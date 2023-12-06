@@ -96,13 +96,13 @@ export type EventCardType = {
   //   eventName: string;
   //   slug: string;
   //   eventSummary: object;
-  //   eventMainAsset: NestedAssetType;
+  //   eventPhoto: NestedAssetType;
   // };
   eventName: string;
   slug: string;
   eventSummary: object;
   eventDate: string;
-  eventMainAsset: NestedAssetType;
+  eventPhoto: NestedAssetType;
 };
 
 export type EventType = {
@@ -110,12 +110,12 @@ export type EventType = {
   slug: string;
   eventSummary: object;
   eventDate: string;
-  eventMainAsset: ImageType;
+  eventPhoto: ImageType;
   patientAmbassador: Array<{
     fields: PatientCardType;
   }>;
-  moreEventInfo: string;
-  moreEventInfoAsset: ImageType;
+  eventDetails: string;
+  eventDetailsPhoto: ImageType;
   // eventCards: EventCardType[];
   eventCards: Array<{ fields: EventCardType }>;
   sponsor: NestedAssetType[];

@@ -20,7 +20,7 @@ export default function EventCard({ event }: { event: EventType }) {
   // console.log("EVENT CARD:", event);
   // console.log("EVENT SUMMARY:", event.eventSummary);
   const eventSlug = event.slug;
-  const eventCardAsset = event.eventMainAsset;
+  const eventCardAsset = event.eventPhoto;
   const eventAssetSource = eventCardAsset.fields.file.url;
   const eventAssetWidth = eventCardAsset.fields.file.details.image.width;
   const eventAssetHeight = eventCardAsset.fields.file.details.image.height;
