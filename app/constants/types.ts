@@ -128,6 +128,7 @@ export type PageSectionType = {
   fields: {
     specialty: SpecialtyType[];
     longText: Document;
+    buttonStyle: "blue" | "yellow" | "text";
     actionText: string;
     actionUrl: string;
     backgroundColor: string;

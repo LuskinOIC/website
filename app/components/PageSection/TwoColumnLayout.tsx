@@ -38,13 +38,13 @@ export default function ColumnLayout({
     descriptionClassNames,
   );
   return (
-    <section className={`block ${bgColor} my-5`}>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-14 items-center">
+    <section className={`block ${bgColor} md:my-10`}>
+      <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
           <div className={`basis-1/2 ${orderClass}`}>
             <Image
-              className="fill-inherit"
+              className="md:rounded-l-lg"
               src={`https:${section.fields.image.fields.file.url}`}
               alt={section.fields.image.fields.description}
               width={0}
@@ -72,6 +72,7 @@ export default function ColumnLayout({
                 <Button
                   href={section.fields.actionUrl}
                   text={section.fields.actionText}
+                  variant={section.fields.buttonStyle}
                 />
               )}
               {section.fields.secondaryActionUrl && (
