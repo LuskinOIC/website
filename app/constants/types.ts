@@ -182,6 +182,8 @@ export type PhysicianBioType = {
   bioPageSection: BioPageSectionType[];
   affiliations: Document;
   awardsAndRecognition: PageSectionType;
+  researchInsights: Document;
+  publications: Document;
 };
 
 export type SocialMediaSectionPropsType = {

@@ -183,6 +183,12 @@ export default async function PhysicianBio({
       </div>
 
       <PageSection section={docBio.awardsAndRecognition} />
+      <div id="RESEARCH-INSIGHTS">
+        {renderRichTextToReactComponent(
+          docBio.overview as unknown as Document,
+          overviewClassNames
+        )}
+      </div>
     </main>
   );
 }
