@@ -18,8 +18,8 @@ export async function generateStaticParams() {
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
-const overviewClassNames: ClassNames = {
-  paragraph: "pb-2",
+const richTextClassNames: ClassNames = {
+  paragraph: "pb-8",
 };
 
 export default async function PhysicianBio({
@@ -28,26 +28,6 @@ export default async function PhysicianBio({
   params: { slug: string };
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
-  const sectionTitles: string[] = [
-    "Medical School",
-    "Internship",
-    "Board Certification",
-    "Residency",
-    "State License",
-    "Fellowships",
-    "Affiliations",
-    "Awards and Recognitions",
-  ];
-
-  let educationAndCertificatesHeaderRendered = false;
-  let researchInsightsAndPublicationsHeaderRendered = false;
-
-  const isEducationAndCertificatesTitle = (title: string) =>
-    !educationAndCertificatesHeaderRendered && sectionTitles.includes(title);
-
-  const isResearchInsightsAndPublicationsTitle = (title: string) =>
-    !researchInsightsAndPublicationsHeaderRendered &&
-    (title === "Research Insights" || title === "Publications");
 
   const physicianName = docBio.physicianName;
   const physicianPortrait = docBio.physicianPortrait.fields.file.url;
@@ -74,6 +54,7 @@ export default async function PhysicianBio({
     },
   ];
 
+  console.log();
   return (
     <main className="">
       <div className="w-10/12 md:w-4/5 mx-auto">
@@ -90,14 +71,14 @@ export default async function PhysicianBio({
           </div>
 
           <div className="NAME-AND-SPECIALTIES">
-            <h1 className="PHYSICIAN-NAME text-xl font-semibold mb-1 md:mb-4 md:text-3xl md:pb-1 md:font-medium">
+            <h1 className="PHYSICIAN-NAME text-2xl font-semibold mb-4 md:text-3xl md:pb-1 md:font-medium">
               {physicianName}
             </h1>
-            <h3 className="SPECIALIZE text-base md:text-md mb-1 md:mb-2">
+            <h3 className="SPECIALIZE text-base md:text-md mb-2">
               Specializes in:
             </h3>
 
-            <div className="text-base pl-1 mb-4 md:pl-4 md:text-md">
+            <div className="text-base mb-4 pl-4 md:text-md">
               {renderRichTextToReactComponent(
                 docBio.specialties as unknown as Document
               )}
@@ -105,9 +86,9 @@ export default async function PhysicianBio({
           </div>
 
           <div className="CONTACT-MOBILE md:hidden mb-6">
-            <p className="mb-2 text-base">To make an appointment:</p>
+            <p className="mb-5 md:mb-2 text-base">To make an appointment:</p>
             <div className="flex text-lg">
-              <Image src={phone} alt="phone" className="mr-4" />
+              <Image src={phone} alt="phone" className="mr-4 md:mb-0 mb-6" />
               <p className="">{docBio.appointmentNumber}</p>
             </div>
           </div>
@@ -129,7 +110,7 @@ export default async function PhysicianBio({
           </div>
         </div>
 
-        <div className="md:hidden mb-6">
+        <div className="md:hidden mb-12">
           <p className="pb-4 px-1">Choose a section you would like to review</p>
           <Dropdown placeHolder="Overview" options={options} />
         </div>
@@ -138,56 +119,67 @@ export default async function PhysicianBio({
           <hr className="flex-grow border-[#99C221]"></hr>
         </div>
 
-        <h2 className="text-xl text-[#0076AD] mb-4" id="#overview">
-          Overview
+        <h2 className="text-xl text-[#0076AD] mb-10" id="#overview">
+          {"overview".toUpperCase()}
         </h2>
         <div className="text-lg pb-6">
           {renderRichTextToReactComponent(
             docBio.overview as unknown as Document,
-            overviewClassNames
+            richTextClassNames
           )}
         </div>
-
-        <h2
-          className="text-xl text-[#0076AD] mb-6"
-          id="education-and-certificates">
-          Education and Certificates
-        </h2>
 
         <div className="flex items-center">
           <hr className="flex-grow border-[#99C221] mb-2 hidden md:block"></hr>
         </div>
+        <h2
+          className="text-xl text-[#0076AD] mb-6"
+          id="#education-and-certificates">
+          {"education and certificates".toUpperCase()}
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {/* docBio.educationAndCertificates */}
           {docBio.bioPageSection.map(
             (section: BioPageSectionType): React.ReactNode => {
-              const title = section.fields.title;
-
               return <BioPageSection key={section.sys.id} section={section} />;
             }
           )}
         </div>
 
         <div>
-          <h2 className="text-lg font-bold lg:mb-4">
-            Affiliations
-          </h2>
+          <h2 className="text-lg font-bold lg:mb-4">Affiliations</h2>
           <div className="text-lg pb-6">
             {renderRichTextToReactComponent(
               docBio.affiliations as unknown as Document,
-              overviewClassNames
+              richTextClassNames
             )}
           </div>
         </div>
       </div>
-
-      <PageSection section={docBio.awardsAndRecognition} />
-      <div id="RESEARCH-INSIGHTS">
-        {renderRichTextToReactComponent(
-          docBio.overview as unknown as Document,
-          overviewClassNames
-        )}
+      <div className="pr-20">
+        <PageSection section={docBio.awardsAndRecognition} />
+      </div>
+      <div className="w-10/12 md:w-4/5 mx-auto">
+        <div className="flex items-center">
+          <hr className="flex-grow border-[#99C221] mb-2 hidden md:block"></hr>
+        </div>
+        <h2
+          className="text-xl text-[#0076AD] mb-6 md:pb-6 "
+          id="#research-insights-and-publications">
+          {"research insights and publications".toUpperCase()}
+        </h2>
+        <div id="RESEARCH-INSIGHTS" className="pb-10">
+          <h2 className="text-lg font-bold md:mb-4">Research Insights</h2>
+          {renderRichTextToReactComponent(
+            docBio.researchInsights as unknown as Document
+          )}
+        </div>
+        <div id="PUBLICATIONS" className="pb-14">
+          <h2 className="text-lg font-bold md:mb-4">Publications</h2>
+          {renderRichTextToReactComponent(
+            docBio.publications as unknown as Document
+          )}
+        </div>
       </div>
     </main>
   );
