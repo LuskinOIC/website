@@ -1,7 +1,7 @@
 import React from "react";
 import { getPhysicians, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { Document } from "@contentful/rich-text-types";
-import { BioPageSectionType, AssetType } from "@/app/constants/types";
+import { BioPageSectionType } from "@/app/constants/types";
 import Dropdown from "@/app/components/ui/Dropdown";
 import Image from "next/image";
 import phone from "@/public/phone.svg";
@@ -9,6 +9,7 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import BioPageSection from "@/app/components/BioPageSection";
+import PageSection from "@/app/components/PageSection/PageSection";
 
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
@@ -17,8 +18,12 @@ export async function generateStaticParams() {
   return physicians.map((evt) => ({ slug: evt.slug }));
 }
 
-const overviewClassNames: ClassNames = {
-  paragraph: "pb-2",
+const richTextClassNames: ClassNames = {
+  paragraph: "text-base md:text-lg pb-8",
+};
+
+const researchPubClassNames: ClassNames = {
+  paragraph: "text-base md:text-lg",
 };
 
 export default async function PhysicianBio({
@@ -27,26 +32,6 @@ export default async function PhysicianBio({
   params: { slug: string };
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
-  const sectionTitles: string[] = [
-    "Medical School",
-    "Internship",
-    "Board Certification",
-    "Residency",
-    "State License",
-    "Fellowships",
-    "Affiliations",
-    "Awards and Recognitions",
-  ];
-
-  let educationAndCertificatesHeaderRendered = false;
-  let researchInsightsAndPublicationsHeaderRendered = false;
-
-  const isEducationAndCertificatesTitle = (title: string) =>
-    !educationAndCertificatesHeaderRendered && sectionTitles.includes(title);
-
-  const isResearchInsightsAndPublicationsTitle = (title: string) =>
-    !researchInsightsAndPublicationsHeaderRendered &&
-    (title === "Research Insights" || title === "Publications");
 
   const physicianName = docBio.physicianName;
   const physicianPortrait = docBio.physicianPortrait.fields.file.url;
@@ -74,145 +59,137 @@ export default async function PhysicianBio({
   ];
 
   return (
-    <main className="m-10 lg:max-w-screen-xl lg:mx-auto">
-      <div className="lg:grid lg:grid-cols-3 gap-2">
-        <div className="lg:h-96 h-72 mb-3">
-          <Image
-            src={physicianPortrait}
-            alt={physicianName}
-            width={portraitWidth}
-            height={portraitHeight}
-            style={{ objectPosition: "center 20%" }}
-            className="object-none h-full sm:w-auto "
-          />
+    <main className="">
+      <div className="w-10/12 md:w-4/5 mx-auto">
+        <div className="md:grid md:grid-cols-3 gap-2 pt-12">
+          <div className="md:h-96 h-72 mb-3 md:mr-4">
+            <Image
+              src={physicianPortrait}
+              alt={physicianName}
+              width={portraitWidth}
+              height={portraitHeight}
+              style={{ objectPosition: "center 20%" }}
+              className="object-none h-full sm:w-auto"
+            />
+          </div>
+
+          <div className="NAME-AND-SPECIALTIES">
+            <h1 className="PHYSICIAN-NAME text-2xl font-semibold mb-4 md:text-3xl md:pb-1 md:font-medium">
+              {physicianName}
+            </h1>
+            <h3 className="SPECIALIZE text-base md:text-md mb-2">
+              Specializes in:
+            </h3>
+
+            <div className="text-base mb-4 pl-4 md:text-md">
+              {renderRichTextToReactComponent(
+                docBio.specialties as unknown as Document,
+              )}
+            </div>
+          </div>
+
+          <div className="CONTACT-MOBILE md:hidden mb-6">
+            <p className="mb-5 md:mb-2 text-base">To make an appointment:</p>
+            <div className="flex text-lg">
+              <Image src={phone} alt="phone" className="mr-4 md:mb-0 mb-6" />
+              <p className="">{docBio.appointmentNumber}</p>
+            </div>
+          </div>
+
+          <div className="CONTACT-DESKTOP hidden md:ml-20 md:block md:text-lg mt-16">
+            <div className="row-span-2">
+              <p className="PATIENT-NUMBER pb-2">Patient Appointment:</p>
+              <p className="flex mb-4">
+                <Image src={phone} alt="phone" className="mr-4" />
+                {docBio.appointmentNumber}
+              </p>
+            </div>
+
+            <p className="PHYSICIAN-NUMBER pb-2">For Physician:</p>
+            <p className="flex">
+              <Image src={phone} alt="phone" className="mr-4" />
+              {docBio.physicianNumber}
+            </p>
+          </div>
         </div>
 
-        <div className="NAME-AND-SPECIALTIES xl:-ml-24 lg:-ml-8 lg:mt-2">
-          <h1 className="PHYSICIAN-NAME text-xl font-semibold mb-1 lg:mb-4 lg:text-3xl lg:pb-1 lg:font-medium">
-            {physicianName}
-          </h1>
-          <h3 className="SPECIALIZE text-base lg:text-lg mb-1 lg:mb-2">
-            Specializes in:
-          </h3>
+        <div className="md:hidden mb-12">
+          <p className="pb-4 px-1">Choose a section you would like to review</p>
+          <Dropdown placeHolder="Overview" options={options} />
+        </div>
 
-          <div className="text-base pl-8 mb-4 lg:pl-0 lg:text-lg ">
+        <div className="flex items-center mt-10 mb-2 hidden md:block">
+          <hr className="flex-grow border-[#99C221]"></hr>
+        </div>
+
+        <h2 className="text-xl text-[#0076AD] mb-8" id="#overview">
+          OVERVIEW
+        </h2>
+        <div className="text-lg pb-6">
+          {renderRichTextToReactComponent(
+            docBio.overview as unknown as Document,
+            richTextClassNames,
+          )}
+        </div>
+
+        <div className="flex items-center">
+          <hr className="flex-grow border-[#99C221] mb-2 hidden md:block"></hr>
+        </div>
+        <h2
+          className="text-xl text-[#0076AD] mb-6"
+          id="#education-and-certificates"
+        >
+          EDUCATION AND CERTIFICATES
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-6 pb-6">
+          {docBio.bioPageSection.map(
+            (section: BioPageSectionType): React.ReactNode => {
+              return <BioPageSection key={section.sys.id} section={section} />;
+            },
+          )}
+        </div>
+
+        <div>
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">Affiliations</h2>
+          <div className="text-lg pb-6">
             {renderRichTextToReactComponent(
-              docBio.specialties as unknown as Document,
+              docBio.affiliations as unknown as Document,
+              richTextClassNames,
             )}
           </div>
         </div>
-
-        <div className="CONTACT-MOBILE lg:hidden mb-6">
-          <p className="mb-2 text-base">To make an appointment:</p>
-          <div className="flex text-lg">
-            <Image src={phone} alt="phone" className="mr-4" />
-            <p className="">{docBio.appointmentNumber}</p>
-          </div>
+      </div>
+      <div className="md:pr-20">
+        <PageSection section={docBio.awardsAndRecognition} />
+      </div>
+      <div className="w-10/12 md:w-4/5 mx-auto">
+        <div className="flex items-center">
+          <hr className="flex-grow border-[#99C221] mb-2 hidden md:block"></hr>
         </div>
-
-        <div className="CONTACT-DESKTOP hidden lg:ml-20 lg:block lg:text-lg mt-16">
-          <div className="row-span-2">
-            <p className="PATIENT-NUMBER pb-2">Patient Appointment:</p>
-            <p className="flex mb-4">
-              <Image src={phone} alt="phone" className="mr-4" />
-              {docBio.appointmentNumber}
-            </p>
-          </div>
-
-          <p className="PHYSICIAN-NUMBER pb-2">For Physician:</p>
-          <p className="flex">
-            <Image src={phone} alt="phone" className="mr-4" />
-            {docBio.physicianNumber}
-          </p>
+        <h2
+          className="text-xl text-[#0076AD] mb-6 md:pb-6 "
+          id="#research-insights-and-publications"
+        >
+          RESEARCH INSIGHTS & PUBLICATIONS
+        </h2>
+        <div id="RESEARCH-INSIGHTS" className="pb-10">
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">
+            Research Insights
+          </h2>
+          {renderRichTextToReactComponent(
+            docBio.researchInsights as unknown as Document,
+            researchPubClassNames,
+          )}
+        </div>
+        <div id="PUBLICATIONS" className="pb-14">
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">Publications</h2>
+          {renderRichTextToReactComponent(
+            docBio.publications as unknown as Document,
+            researchPubClassNames,
+          )}
         </div>
       </div>
-      <div className="lg:hidden mb-6">
-        <p className="pb-4 px-1">Choose a section you would like to review</p>
-        <Dropdown placeHolder="Overview" options={options} />
-      </div>
-
-      <div className="flex items-center mt-10 mb-2 hidden lg:block">
-        <hr className="flex-grow border-[#99C221]"></hr>
-      </div>
-
-      <h2 className="text-xl text-[#0076AD] mb-4" id="#overview">
-        Overview
-      </h2>
-      <div className="text-lg pb-6">
-        {renderRichTextToReactComponent(
-          docBio.overview as unknown as Document,
-          overviewClassNames,
-        )}
-      </div>
-
-      {docBio.bioPageSection.map(
-        (section: BioPageSectionType): React.ReactNode => {
-          const title = section.fields.title;
-
-          if (
-            isEducationAndCertificatesTitle(title) ||
-            isResearchInsightsAndPublicationsTitle(title)
-          ) {
-            const headerText = isEducationAndCertificatesTitle(title)
-              ? "Education and Certificates"
-              : "Research Insights and Publications";
-
-            const headerClassName = "text-xl text-[#0076AD] mb-6";
-
-            const headerRenderedState = isEducationAndCertificatesTitle(title)
-              ? (educationAndCertificatesHeaderRendered = true)
-              : (researchInsightsAndPublicationsHeaderRendered = true);
-
-            return (
-              <div key={section.sys.id}>
-                <div className="flex items-center">
-                  <hr className="flex-grow border-[#99C221] mb-2 hidden lg:block"></hr>
-                </div>
-
-                <h2
-                  className={headerClassName}
-                  id={generateTargetID(headerText)}
-                >
-                  {headerText}
-                </h2>
-                {headerRenderedState}
-                <BioPageSection key={section.sys.id} section={section} />
-              </div>
-            );
-          }
-          if (
-            title === "Awards and Recognition" &&
-            Array.isArray(docBio.asset) &&
-            docBio.asset.length > 0
-          ) {
-            return (
-              <div key={`asset-container-${title}`} className="flex">
-                <BioPageSection
-                  key={`section-${section.sys.id}`}
-                  section={section}
-                />
-
-                {docBio.asset.map((asset: AssetType) => (
-                  <div
-                    key={asset.sys.id}
-                    className="pb-8 pt-5 lg:pt-0 lg:pb-10"
-                  >
-                    <h3>{asset.fields.title}</h3>
-                    <Image
-                      src={asset.fields.file.url}
-                      alt={asset.fields.description}
-                      width={asset.fields.file.details.image.width}
-                      height={asset.fields.file.details.image.height}
-                      className="lg:w-3/5 lg:ml-24"
-                    />
-                  </div>
-                ))}
-              </div>
-            );
-          }
-          return <BioPageSection key={section.sys.id} section={section} />;
-        },
-      )}
     </main>
   );
 }

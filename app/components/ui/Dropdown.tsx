@@ -34,9 +34,9 @@ export default function Dropdown(props: DropdownProps) {
 
   const getDisplay = () => {
     if (selectedValue) {
-      return selectedValue.label;
+      return selectedValue.label.toUpperCase();
     }
-    return props.placeHolder;
+    return props.placeHolder.toUpperCase();
   };
 
   const onItemClick = (option: OptionType) => {
@@ -57,9 +57,11 @@ export default function Dropdown(props: DropdownProps) {
       <div className="DROPDOWN-MENU-CONTAINER text-left border border-solid border border-[#0076AD] relative rounded">
         <div
           onClick={handleInputClick}
-          className="DROPDOWN-INPUT p-1 flex items-center justify-between select-none"
+          className="DROPDOWN-INPUT p-1 py-4 flex items-center justify-between select-none"
         >
-          <div className="DROPDOWN-SELECTED-VALUE pl-2">{getDisplay()}</div>
+          <div className="DROPDOWN-SELECTED-VALUE pl-4 text-[#9A9A9A]">
+            {getDisplay()}
+          </div>
           <div className="DROPDOWN-TOOLS">
             <div className="DROPDOWN-TOOL pr-1">
               <Image alt="chevron-down" src={chevronDown} />
@@ -67,7 +69,7 @@ export default function Dropdown(props: DropdownProps) {
           </div>
         </div>
         {showMenu && (
-          <div className="DROPDOWN-MENU absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
+          <div className="text-[#9A9A9A] DROPDOWN-MENU absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
             {props.options.map((option) => (
               <div
                 key={option.value}
@@ -75,11 +77,11 @@ export default function Dropdown(props: DropdownProps) {
                   onItemClick(option);
                   resetSelectedValue();
                 }}
-                className={`p-1 cursor-pointer :bg-[#9fc3f870] ${
+                className={`p-2 cursor-pointer :bg-[#9fc3f870] ${
                   isSelected(option) ? "bg-[#0d6efd] text-white" : ""
                 }`}
               >
-                {option.label}
+                {option.label.toUpperCase()}
               </div>
             ))}
           </div>

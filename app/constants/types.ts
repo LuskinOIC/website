@@ -149,6 +149,7 @@ export type PageSectionType = {
     columnCount: number;
     description: string;
     descriptionTextSize: boolean;
+    descriptionFontSize: string;
     image: ImageType;
     reverseOrder: boolean;
     secondaryActionText: string;
@@ -164,6 +165,7 @@ export type PageSectionType = {
 
 export type PhysicianBioType = {
   physicianName: string;
+  slug: string;
   specialties: Array<{
     nodeType: string;
     data: object;
@@ -179,7 +181,10 @@ export type PhysicianBioType = {
   appointmentNumber: string;
   physicianNumber: string;
   bioPageSection: BioPageSectionType[];
-  slug: string;
+  affiliations: Document;
+  awardsAndRecognition: PageSectionType;
+  researchInsights: Document;
+  publications: Document;
 };
 
 export type SocialMediaSectionPropsType = {

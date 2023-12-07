@@ -4,26 +4,32 @@ import { BioPageSectionType } from "../constants/types";
 
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
   return (
-    <div className="pb-3">
+    <div className="md:pb-6 pb-3">
       {renderRichTextToReactComponent(contentItem as Document)}
     </div>
   );
 };
 
-const BioPageSection = ({ section }: { section: BioPageSectionType }) => (
-  <div key={section.sys.id}>
-    <h2 className="text-lg font-bold lg:mb-4">{section.fields.title}</h2>
-    <div className="text-base lg:pb-6">
-      {section.fields.content.content.map(
-        (
-          contentItem: { content: Array<{ value: string }> },
-          contentIndex: number,
-        ) => (
-          <ContentParagraph key={contentIndex} contentItem={contentItem} />
-        ),
-      )}
-    </div>
-  </div>
-);
+interface SectionProps {
+  section: BioPageSectionType;
+}
 
-export default BioPageSection;
+export default function BioPageSection({ section }: SectionProps) {
+  return (
+    <div key={section.sys.id}>
+      <h2 className="text-xl lg:text-2xl font-bold pb-4">
+        {section.fields.title}
+      </h2>
+      <div className="md:text-lg">
+        {section.fields.content.content.map(
+          (
+            contentItem: { content: Array<{ value: string }> },
+            contentIndex: number,
+          ) => (
+            <ContentParagraph key={contentIndex} contentItem={contentItem} />
+          ),
+        )}
+      </div>
+    </div>
+  );
+}

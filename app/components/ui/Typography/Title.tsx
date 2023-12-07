@@ -17,6 +17,11 @@ export const LuskinHeader = ({ children, className = "" }: TitleProps) => {
   return <h1 className={classes}>{children}</h1>;
 };
 
+export const Title0 = ({ children }: TitleProps) => {
+  const classes = `text-base md:text-[32px] md:leading-[48px] py-2 `;
+  return <h1 className={classes}>{children}</h1>;
+};
+
 export const Title1 = ({ children, className = "" }: TitleProps) => {
   const classes = `text-2xl md:text-[40px] md:leading-[30px]  lg:text-5xl lg:leading-[60px] font-bold md:leading-[60px] py-2 ${className}`;
   return <h1 className={classes}>{children}</h1>;
