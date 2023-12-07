@@ -1,5 +1,4 @@
 "use client";
-// first commit
 
 import * as React from "react";
 
@@ -16,31 +15,37 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 
+import { dropdowns, menuMobileItems } from "./NavbarConstants";
+import Button from "@/app/components/ui/Button";
+
+interface DropdownStates {
+  [key: string]: boolean;
+  patientCare: boolean;
+  medicalProfessionals: boolean;
+  about: boolean;
+  waysToGive: boolean;
+}
+
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = React.useState(false);
-  const [isPatientCareOpen, setIsPatientCareOpen] = React.useState(false);
-  const [isMedicalProfessionalsOpen, setIsMedicalProfessionalsOpen] =
-    React.useState(false);
-  const [isAboutOpen, setIsAboutOpen] = React.useState(false);
-  const [isWaysToGiveOpen, setIsWaysToGiveOpen] = React.useState(false);
-
   const toggleHamburgerDropdown = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
 
-  const togglePatientCareDropdown = () => {
-    setIsPatientCareOpen(!isPatientCareOpen);
+  const [dropdownStates, setDropdownStates] = React.useState<DropdownStates>({
+    patientCare: false,
+    medicalProfessionals: false,
+    about: false,
+    waysToGive: false,
+  });
+
+  const toggleDropdown = (key: keyof DropdownStates) => {
+    setDropdownStates((prevStates) => ({
+      ...prevStates,
+      [key]: !prevStates[key],
+    }));
   };
 
-  const toggleMedicalProfessionalsDropdown = () => {
-    setIsMedicalProfessionalsOpen(!isMedicalProfessionalsOpen);
-  };
-  const toggleAboutDropdown = () => {
-    setIsAboutOpen(!setIsAboutOpen);
-  };
-  const toggleWaysToGiveDropdown = () => {
-    setIsWaysToGiveOpen(!isWaysToGiveOpen);
-  };
   return (
     <NavigationMenu className="">
       <div className="flex flex-row w-full justify-between">
@@ -72,168 +77,49 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="hidden md:flex justify-end my-12 items-center px-8">
-            {/* <div> */}
-            <div
-              className="text-white px-6"
-              onMouseEnter={togglePatientCareDropdown}
-              // onClick={handleMouseOver}
-              onMouseLeave={togglePatientCareDropdown}
-              // onMouseLeave={() => setIsPatientCareOpen(false)} // Close on mouse leave
-            >
-              <button onClick={togglePatientCareDropdown}>Patient Care</button>
+          <div className="hidden md:flex justify-evenly my-12 items-center text-white text-2xl">
+            {dropdowns.map((dropdown, index) => (
               <div
-                className={`absolute mt-2 z-10 ${
-                  isPatientCareOpen ? "block" : "hidden"
-                }`}
+                key={index}
+                onMouseEnter={() => toggleDropdown(dropdown.stateKey)}
+                onMouseLeave={() => toggleDropdown(dropdown.stateKey)}
+                className=""
               >
-                <ul className="flex flex-col bg-[#0076AD] border border-[#32B8DE] rounded-md w-64 items-start font-light">
-                  <li className="border-b border-blue-400 w-64">
-                    <NavigationMenuLink asChild>
-                      <a href="/patient-care" className="px-4 pb-2 pt-6">
-                        Patient Care
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <li className="border-b border-[#32B8DE] w-64">
-                    <NavigationMenuLink asChild>
-                      <a href="/urgent-care" className="px-4 py-2">
-                        Urgent Care
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <li className="border-b border-[#32B8DE] w-64">
-                    <NavigationMenuLink asChild>
-                      <a href="/" className="px-4 py-2">
-                        Link 3
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-                <div className="w-10 h-10 mt-10">
-                  <div className="absolute border-b-[15px] border-b-[#32B8DE] border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full "></div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div
-                className="relative text-white px-6"
-                onMouseEnter={toggleMedicalProfessionalsDropdown}
-                onMouseLeave={() => setIsMedicalProfessionalsOpen(false)} // Close on mouse leave
-              >
-                <button onClick={toggleMedicalProfessionalsDropdown}>
-                  Medical Professionals
+                <button onClick={() => toggleDropdown(dropdown.stateKey)}>
+                  {dropdown.label}
                 </button>
                 <div
                   className={`absolute mt-2 z-10 ${
-                    isMedicalProfessionalsOpen ? "block" : "hidden"
+                    dropdownStates[dropdown.stateKey] ? "block" : "hidden"
                   }`}
                 >
-                  <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 1
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 rounded-md w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 2
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 3
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
+                  <ul className="flex flex-col bg-[#0076AD] border border-blue-400 divide-y divide-blue-400 rounded-md items-start">
+                    {dropdown.subItems.map((subItem, subIndex) => (
+                      <li key={subIndex} className="w-full py-2">
+                        <NavigationMenuLink asChild>
+                          <a
+                            href={subItem.url}
+                            className="px-4 pt-10 no-underline hover:underline"
+                          >
+                            {subItem.label}
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
                   </ul>
                   <div className="w-10 h-10 mt-10">
                     <div className="absolute border-b-[15px] border-b-[#32B8DE] border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full "></div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
             <div>
-              <div
-                className="relative text-white px-6"
-                onMouseEnter={toggleAboutDropdown}
-                onMouseLeave={() => setIsAboutOpen(false)} // Close on mouse leave
-              >
-                <button onClick={toggleAboutDropdown}>About</button>
-                <div className={`absolute ${isAboutOpen ? "block" : "hidden"}`}>
-                  <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 1
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 rounded-md w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 2
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 3
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div
-                className="relative text-white px-6"
-                onMouseEnter={toggleWaysToGiveDropdown}
-                onMouseLeave={() => setIsWaysToGiveOpen(false)} // Close on mouse leave
-              >
-                <button onClick={toggleWaysToGiveDropdown}>Ways To Give</button>
-                <div
-                  className={`absolute ${
-                    isWaysToGiveOpen ? "block" : "hidden"
-                  }`}
-                >
-                  <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 1
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 rounded-md w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 2
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="border-b border-blue-400 w-64">
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 3
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="text-white ">
-              <button className="text-black bg-yellow-200 rounded-md w-32 text-center py-2 px-6">
-                Donate
-              </button>
+              <Button
+                href={"/"}
+                text={"Donate"}
+                variant={"yellow"}
+                className="lg:h-[53px]"
+              />
             </div>
           </div>
         </div>
@@ -253,28 +139,24 @@ export default function Navbar() {
         </NavigationMenuItem>
       </div>
 
+      {/* Mobile dropdown options */}
       <NavigationMenuList className="md:hidden">
         {isHamburgerOpen && (
-          // Conditionally render the dropdown content when isDropdownOpen is true
           <ul className="w-full text-sm flex justify-center items-center flex-col">
-            <li className="text-white bg-purple-700 w-full text-center py-2">
-              <Link href="/item1"> URGENT CARE </Link>
-            </li>
-            <li className="text-white w-full text-center py-2">
-              <button> PATIENT CARE </button>
-            </li>
-            <li className="text-white w-full text-center py-2">
-              <Link href="/item2"> FOR MEDICAL PROFESSIONALS </Link>
-            </li>
-            <li className="text-white w-full text-center py-2">
-              <Link href="/item2"> ABOUT LUSKINOIC </Link>
-            </li>
-            <li className="text-white w-full text-center py-2">
-              <Link href="/item2"> WAYS TO GIVE </Link>
-            </li>
-            <li className="text-black w-full text-center py-2 bg-yellow-50">
-              <Link href="/item2"> MY CHART </Link>
-            </li>
+            {menuMobileItems.map((item, index) => (
+              <li
+                key={index}
+                className={`${item.cssClasses} w-full text-center py-2`}
+              >
+                {item.type === "link" ? (
+                  item.url && <Link href={item.url}>{item.label}</Link>
+                ) : (
+                  <button onClick={item.action || (() => {})}>
+                    {item.label}
+                  </button>
+                )}
+              </li>
+            ))}
             <li className="text-black w-full text-center py-2 bg-white">
               <Link href="/item2"></Link>
               <button
