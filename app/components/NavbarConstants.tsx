@@ -1,3 +1,11 @@
+interface MobileMenuItem {
+  type: "link" | "button";
+  label: string;
+  url?: string;
+  cssClasses: string;
+  action?: any;
+}
+
 export const dropdowns = [
   {
     label: "Patient Care",
@@ -34,7 +42,7 @@ export const dropdowns = [
   },
 ];
 
-export const menuMobileItems = [
+export const menuMobileItems: MobileMenuItem[] = [
   {
     type: "link",
     label: "URGENT CARE",
