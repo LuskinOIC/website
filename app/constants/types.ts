@@ -149,6 +149,7 @@ export type PageSectionType = {
     columnCount: number;
     description: string;
     descriptionTextSize: boolean;
+    descriptionFontSize: string;
     image: ImageType;
     reverseOrder: boolean;
     secondaryActionText: string;
