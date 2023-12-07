@@ -84,9 +84,9 @@ export default function Navbar() {
               <button onClick={togglePatientCareDropdown}>Patient Care</button>
               <div
                 className={`absolute mt-2 z-10 ${
-                  // isPatientCareOpen ? "block" : "hidden"
-                  isPatientCareOpen === true ? "block" : "hidden"
-                }`}>
+                  isPatientCareOpen ? "block" : "hidden"
+                }`}
+              >
                 <ul className="flex flex-col bg-[#0076AD] border border-[#32B8DE] rounded-md w-64 items-start font-light">
                   <li className="border-b border-blue-400 w-64">
                     <NavigationMenuLink asChild>
@@ -127,7 +127,8 @@ export default function Navbar() {
                 <div
                   className={`absolute mt-2 z-10 ${
                     isMedicalProfessionalsOpen ? "block" : "hidden"
-                  }`}>
+                  }`}
+                >
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
@@ -201,7 +202,8 @@ export default function Navbar() {
                 <div
                   className={`absolute ${
                     isWaysToGiveOpen ? "block" : "hidden"
-                  }`}>
+                  }`}
+                >
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
@@ -244,7 +246,8 @@ export default function Navbar() {
 
           <button
             onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-            className="bg-transparent text-white rounded-full p-2">
+            className="bg-transparent text-white rounded-full p-2"
+          >
             <FontAwesomeIcon icon={faBars} />
           </button>
         </NavigationMenuItem>
