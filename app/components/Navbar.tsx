@@ -1,4 +1,5 @@
 "use client";
+// first commit
 
 import * as React from "react";
 
@@ -35,7 +36,7 @@ export default function Navbar() {
     setIsMedicalProfessionalsOpen(!isMedicalProfessionalsOpen);
   };
   const toggleAboutDropdown = () => {
-    setIsAboutOpen(!isMedicalProfessionalsOpen);
+    setIsAboutOpen(!setIsAboutOpen);
   };
   const toggleWaysToGiveDropdown = () => {
     setIsWaysToGiveOpen(!isWaysToGiveOpen);
@@ -72,43 +73,45 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex justify-end my-12 items-center px-8">
-            <div>
+            {/* <div> */}
+            <div
+              className="text-white px-6"
+              onMouseEnter={togglePatientCareDropdown}
+              // onClick={handleMouseOver}
+              onMouseLeave={togglePatientCareDropdown}
+              // onMouseLeave={() => setIsPatientCareOpen(false)} // Close on mouse leave
+            >
+              <button onClick={togglePatientCareDropdown}>Patient Care</button>
               <div
-                className="relative text-white px-6"
-                onMouseEnter={togglePatientCareDropdown}
-                onMouseLeave={() => setIsPatientCareOpen(false)} // Close on mouse leave
+                className={`absolute mt-2 z-10 ${
+                  isPatientCareOpen ? "block" : "hidden"
+                }`}
               >
-                <button onClick={togglePatientCareDropdown}>
-                  Patient Care
-                </button>
-                <div
-                  className={`absolute mt-2 ${
-                    isPatientCareOpen ? "block" : "hidden"
-                  }`}
-                >
-                  <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a href="/patient-care" className="px-4 py-2">
-                          Patient Care
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a href="/urgent-care" className="px-4 py-2">
-                          Urgent Care
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a href="/" className="px-4 py-2">
-                          Link 3
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
+                <ul className="flex flex-col bg-[#0076AD] border border-[#32B8DE] rounded-md w-64 items-start font-light">
+                  <li className="border-b border-blue-400 w-64">
+                    <NavigationMenuLink asChild>
+                      <a href="/patient-care" className="px-4 pb-2 pt-6">
+                        Patient Care
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className="border-b border-[#32B8DE] w-64">
+                    <NavigationMenuLink asChild>
+                      <a href="/urgent-care" className="px-4 py-2">
+                        Urgent Care
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <li className="border-b border-[#32B8DE] w-64">
+                    <NavigationMenuLink asChild>
+                      <a href="/" className="px-4 py-2">
+                        Link 3
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+                <div className="w-10 h-10 mt-10">
+                  <div className="absolute border-b-[15px] border-b-[#32B8DE] border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full "></div>
                 </div>
               </div>
             </div>
@@ -122,7 +125,7 @@ export default function Navbar() {
                   Medical Professionals
                 </button>
                 <div
-                  className={`absolute mt-2 ${
+                  className={`absolute mt-2 z-10 ${
                     isMedicalProfessionalsOpen ? "block" : "hidden"
                   }`}
                 >
@@ -149,6 +152,9 @@ export default function Navbar() {
                       </NavigationMenuLink>
                     </li>
                   </ul>
+                  <div className="w-10 h-10 mt-10">
+                    <div className="absolute border-b-[15px] border-b-[#32B8DE] border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full "></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -159,11 +165,7 @@ export default function Navbar() {
                 onMouseLeave={() => setIsAboutOpen(false)} // Close on mouse leave
               >
                 <button onClick={toggleAboutDropdown}>About</button>
-                <div
-                  className={`absolute mt-2 ${
-                    isAboutOpen ? "block" : "hidden"
-                  }`}
-                >
+                <div className={`absolute ${isAboutOpen ? "block" : "hidden"}`}>
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-sm w-64 items-start">
                     <li className="border-b border-blue-400 w-64">
                       <NavigationMenuLink asChild>
@@ -198,7 +200,7 @@ export default function Navbar() {
               >
                 <button onClick={toggleWaysToGiveDropdown}>Ways To Give</button>
                 <div
-                  className={`absolute mt-2 ${
+                  className={`absolute ${
                     isWaysToGiveOpen ? "block" : "hidden"
                   }`}
                 >
