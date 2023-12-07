@@ -13,7 +13,7 @@ import { Title1 } from "./ui/Typography/Title";
 export default function SocialMediaBanner() {
   return (
     <div className="bg-[#FCE385]">
-      <div className="md:py-4 justify-center">
+      <div className="md:py-4 flex flex-row justify-center">
         <DesktopBanner />
         <MobileBanner />
       </div>
@@ -23,7 +23,7 @@ export default function SocialMediaBanner() {
 
 function DesktopBanner() {
   return (
-    <div className="hidden md:grid grid-rows-2 md:gap-x-0 md:grid-flow-col px-3">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[45%] px-3 py-4">
       <div className="row-span-3 ...">
         <div className="flex flex-row min-h-[75%] justify-center items-center">
           <Image src={Ozzie} alt="Ozzie" />
@@ -48,7 +48,7 @@ function DesktopBanner() {
 
 function MobileBanner() {
   return (
-    <div className="block md:hidden min-h-[75%] row-span-5">
+    <div className="block md:hidden min-h-[75%]">
       <div className="flex flex-row items-center">
         <Title1 className="pl-10 pt-4">
           Follow our story on social media!
