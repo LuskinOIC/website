@@ -209,7 +209,7 @@ function MobileTabSection({
       <div className="pt-2 w-4/5">
         {tabs.map((tab, index) => (
           <div
-            id={tab.fields.tabTitle.replace(/[^A-z]/g, "")}
+            id={tab.fields.tabTitle}
             key={index}
             className="scroll-mt-[4.5rem]"
           >
@@ -228,30 +228,35 @@ function MobileTabSection({
 }
 
 function TabsTextOrCardContent({
-  fields: { richTextContent, cardContent },
+  fields: { richTextContent, tabContent },
 }: TabType) {
-  if (cardContent != undefined) {
+  console.log(richTextContent);
+  if (tabContent != undefined) {
     // There's card content, so render cards
     return (
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {cardContent.map((card, index) => (
+        {tabContent.map((card, index) => (
           <Card
             key={index}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
             <CardHeader className="p-0 md:pt-4 pb-5">
-              <CardTitle className="font-semibold">{card.header}</CardTitle>
+              <CardTitle className="font-semibold">
+                {card.fields.header}
+              </CardTitle>
             </CardHeader>
             <CardContent className="p-0 ">
-              <Text3>{card.body}</Text3>
+              {renderRichTextToReactComponent(card.fields.body)}
             </CardContent>
-            <CardFooter className="p-0 pt-6">
-              <Button
-                href={card.buttonLink}
-                text={card.buttonText}
-                className="mb-3 md:mb-8"
-              />
-            </CardFooter>
+            {card.fields.buttonLink && (
+              <CardFooter className="p-0 pt-6">
+                <Button
+                  href={card.fields.buttonLink}
+                  text={card.fields.buttonText}
+                  className="mb-3 md:mb-8"
+                />
+              </CardFooter>
+            )}
           </Card>
         ))}
       </div>

@@ -125,16 +125,18 @@ export type TabSectionType = {
 export type TabType = {
   fields: {
     richTextContent?: Document;
-    cardContent?: TabCardType[];
+    tabContent?: TabCardType[];
     tabTitle: string;
   };
 };
 
 export type TabCardType = {
-  header: string;
-  body: string;
-  buttonText: string;
-  buttonLink: string;
+  fields: {
+    header: string;
+    body: Document;
+    buttonText: string;
+    buttonLink: string;
+  };
 };
 
 export type PageSectionType = {
