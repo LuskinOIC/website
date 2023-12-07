@@ -83,7 +83,7 @@ export default function Navbar() {
                 key={index}
                 onMouseEnter={() => toggleDropdown(dropdown.stateKey)}
                 onMouseLeave={() => toggleDropdown(dropdown.stateKey)}
-                className="h-full"
+                className=""
               >
                 <button onClick={() => toggleDropdown(dropdown.stateKey)}>
                   {dropdown.label}
@@ -95,11 +95,11 @@ export default function Navbar() {
                 >
                   <ul className="flex flex-col bg-[#0076AD] border border-blue-400 divide-y divide-blue-400 rounded-md items-start">
                     {dropdown.subItems.map((subItem, subIndex) => (
-                      <li key={subIndex} className="w-full px-4 py-2">
+                      <li key={subIndex} className="w-full py-2">
                         <NavigationMenuLink asChild>
                           <a
                             href={subItem.url}
-                            className="px-4 py-2 no-underline hover:underline"
+                            className="px-4 pt-10 no-underline hover:underline"
                           >
                             {subItem.label}
                           </a>
