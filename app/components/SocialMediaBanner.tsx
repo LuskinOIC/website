@@ -13,10 +13,9 @@ import { Title1 } from "./ui/Typography/Title";
 export default function SocialMediaBanner() {
   return (
     <div className="bg-[#FCE385]">
-      <div className="grid grid-rows-2 md:gap-x-6 md:grid-flow-col md:py-4 justify-center">
+      <div className="md:py-4 justify-center">
         <DesktopBanner />
         <MobileBanner />
-        <SocialMediaIcons />
       </div>
     </div>
   );
@@ -24,7 +23,7 @@ export default function SocialMediaBanner() {
 
 function DesktopBanner() {
   return (
-    <div className="hidden md:block px-3">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-0 md:grid-flow-col px-3">
       <div className="row-span-3 ...">
         <div className="flex flex-row min-h-[75%] justify-center items-center">
           <Image src={Ozzie} alt="Ozzie" />
@@ -42,6 +41,7 @@ function DesktopBanner() {
           <p>through education, research, and unwavering support.</p>
         </div>
       </div>
+      <SocialMediaIcons />
     </div>
   );
 }
@@ -59,13 +59,14 @@ function MobileBanner() {
         Join us in our mission to transform musculoskeletal care for all, one
         child at a time, through education, research, and unwavering support.
       </Text1>
+      <SocialMediaIcons />
     </div>
   );
 }
 
 function SocialMediaIcons() {
   return (
-    <div className="row-span-1  .. pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
+    <div className="row-span-1 .. pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
       <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 ..">
         <a href="https://www.instagram.com/orthokids_losangeles/ ..">
           <Image src={FB} alt="Facebook Logo" />
