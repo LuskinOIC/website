@@ -57,7 +57,8 @@ export default function Dropdown(props: DropdownProps) {
       <div className="DROPDOWN-MENU-CONTAINER text-left border border-solid border border-[#0076AD] relative rounded">
         <div
           onClick={handleInputClick}
-          className="DROPDOWN-INPUT p-1 py-4 flex items-center justify-between select-none">
+          className="DROPDOWN-INPUT p-1 py-4 flex items-center justify-between select-none"
+        >
           <div className="DROPDOWN-SELECTED-VALUE pl-4 text-[#9A9A9A]">
             {getDisplay()}
           </div>
@@ -78,7 +79,8 @@ export default function Dropdown(props: DropdownProps) {
                 }}
                 className={`p-2 cursor-pointer :bg-[#9fc3f870] ${
                   isSelected(option) ? "bg-[#0d6efd] text-white" : ""
-                }`}>
+                }`}
+              >
                 {option.label.toUpperCase()}
               </div>
             ))}

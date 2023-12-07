@@ -22,10 +22,10 @@ export default function BioPageSection({ section }: SectionProps) {
         {section.fields.content.content.map(
           (
             contentItem: { content: Array<{ value: string }> },
-            contentIndex: number
+            contentIndex: number,
           ) => (
             <ContentParagraph key={contentIndex} contentItem={contentItem} />
-          )
+          ),
         )}
       </div>
     </div>

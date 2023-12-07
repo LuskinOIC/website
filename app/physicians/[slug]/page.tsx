@@ -1,7 +1,7 @@
 import React from "react";
 import { getPhysicians, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { Document } from "@contentful/rich-text-types";
-import { BioPageSectionType, AssetType } from "@/app/constants/types";
+import { BioPageSectionType } from "@/app/constants/types";
 import Dropdown from "@/app/components/ui/Dropdown";
 import Image from "next/image";
 import phone from "@/public/phone.svg";
@@ -80,7 +80,7 @@ export default async function PhysicianBio({
 
             <div className="text-base mb-4 pl-4 md:text-md">
               {renderRichTextToReactComponent(
-                docBio.specialties as unknown as Document
+                docBio.specialties as unknown as Document,
               )}
             </div>
           </div>
@@ -125,7 +125,7 @@ export default async function PhysicianBio({
         <div className="text-lg pb-6">
           {renderRichTextToReactComponent(
             docBio.overview as unknown as Document,
-            richTextClassNames
+            richTextClassNames,
           )}
         </div>
 
@@ -134,7 +134,8 @@ export default async function PhysicianBio({
         </div>
         <h2
           className="text-xl text-[#0076AD] mb-6"
-          id="#education-and-certificates">
+          id="#education-and-certificates"
+        >
           {"education and certificates".toUpperCase()}
         </h2>
 
@@ -142,7 +143,7 @@ export default async function PhysicianBio({
           {docBio.bioPageSection.map(
             (section: BioPageSectionType): React.ReactNode => {
               return <BioPageSection key={section.sys.id} section={section} />;
-            }
+            },
           )}
         </div>
 
@@ -151,7 +152,7 @@ export default async function PhysicianBio({
           <div className="text-lg pb-6">
             {renderRichTextToReactComponent(
               docBio.affiliations as unknown as Document,
-              richTextClassNames
+              richTextClassNames,
             )}
           </div>
         </div>
@@ -165,19 +166,20 @@ export default async function PhysicianBio({
         </div>
         <h2
           className="text-xl text-[#0076AD] mb-6 md:pb-6 "
-          id="#research-insights-and-publications">
+          id="#research-insights-and-publications"
+        >
           {"research insights and publications".toUpperCase()}
         </h2>
         <div id="RESEARCH-INSIGHTS" className="pb-10">
           <h2 className="text-lg font-bold md:mb-4">Research Insights</h2>
           {renderRichTextToReactComponent(
-            docBio.researchInsights as unknown as Document
+            docBio.researchInsights as unknown as Document,
           )}
         </div>
         <div id="PUBLICATIONS" className="pb-14">
           <h2 className="text-lg font-bold md:mb-4">Publications</h2>
           {renderRichTextToReactComponent(
-            docBio.publications as unknown as Document
+            docBio.publications as unknown as Document,
           )}
         </div>
       </div>
