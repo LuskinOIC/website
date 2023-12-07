@@ -15,7 +15,7 @@ export default function Footer() {
   // replaced all tabs with spaces, this time to match prettierrc.json, 3rd attempt
   return (
     <>
-      <div className="flex justify-content-center px-5">
+      <div className="flex justify-center px-5">
         <Image src={newsLetter} alt="newsletter stand in" />
       </div>
       {/* footer container */}
