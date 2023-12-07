@@ -123,7 +123,7 @@ export default async function PhysicianBio({
         </div>
 
         <h2 className="text-xl text-[#0076AD] mb-8" id="#overview">
-          Overview
+          OVERVIEW
         </h2>
         <div className="text-lg pb-6">
           {renderRichTextToReactComponent(
@@ -139,7 +139,7 @@ export default async function PhysicianBio({
           className="text-xl text-[#0076AD] mb-6"
           id="#education-and-certificates"
         >
-          {"education and certificates".toUpperCase()}
+          EDUCATION AND CERTIFICATES
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6 pb-6">
@@ -171,7 +171,7 @@ export default async function PhysicianBio({
           className="text-xl text-[#0076AD] mb-6 md:pb-6 "
           id="#research-insights-and-publications"
         >
-          {"research insights and publications".toUpperCase()}
+          RESEARCH INSIGHTS & PUBLICATIONS
         </h2>
         <div id="RESEARCH-INSIGHTS" className="pb-10">
           <h2 className="text-xl lg:text-2xl font-bold pb-4">Research Insights</h2>
