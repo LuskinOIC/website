@@ -28,13 +28,13 @@ export default function ColumnLayout({
     : "md:text-2xl";
   const descriptionFontSize = () => {
     if (section.fields.descriptionFontSize === "large") {
-      return "md:text-2xl"
+      return "md:text-2xl";
     } else if (section.fields.descriptionFontSize === "medium") {
-      return "md:text-xl"
+      return "md:text-xl";
     } else {
-      return "md:text-lg"
+      return "md:text-lg";
     }
-  }
+  };
   // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
   // for dynamically generated classes. This is a temporary fix.
   const bgColor =
@@ -73,7 +73,13 @@ export default function ColumnLayout({
                 titleStyle={section.fields.titleStyle}
                 bold={section.fields.bold}
               />
-              <div className={`text-base ${descriptionFontSize ? descriptionFontSize() : descriptionTextSize}`}>
+              <div
+                className={`text-base ${
+                  descriptionFontSize
+                    ? descriptionFontSize()
+                    : descriptionTextSize
+                }`}
+              >
                 {descriptionContent}
               </div>
             </div>

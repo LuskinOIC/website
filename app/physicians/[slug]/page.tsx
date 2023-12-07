@@ -23,8 +23,8 @@ const richTextClassNames: ClassNames = {
 };
 
 const researchPubClassNames: ClassNames = {
-  paragraph: "text-base md:text-lg"
-}
+  paragraph: "text-base md:text-lg",
+};
 
 export default async function PhysicianBio({
   params,
@@ -174,15 +174,19 @@ export default async function PhysicianBio({
           RESEARCH INSIGHTS & PUBLICATIONS
         </h2>
         <div id="RESEARCH-INSIGHTS" className="pb-10">
-          <h2 className="text-xl lg:text-2xl font-bold pb-4">Research Insights</h2>
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">
+            Research Insights
+          </h2>
           {renderRichTextToReactComponent(
-            docBio.researchInsights as unknown as Document, researchPubClassNames
+            docBio.researchInsights as unknown as Document,
+            researchPubClassNames,
           )}
         </div>
         <div id="PUBLICATIONS" className="pb-14">
           <h2 className="text-xl lg:text-2xl font-bold pb-4">Publications</h2>
           {renderRichTextToReactComponent(
-            docBio.publications as unknown as Document, researchPubClassNames
+            docBio.publications as unknown as Document,
+            researchPubClassNames,
           )}
         </div>
       </div>
