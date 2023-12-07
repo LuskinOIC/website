@@ -10,25 +10,6 @@ const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
   );
 };
 
-// const BioPageSection = ({ section, index }: { section: BioPageSectionType, index: number }) => (
-
-//   <div key={section.sys.id}>
-//     <h2 className="text-lg font-bold lg:mb-4">{section.fields.title}</h2>
-//     <div className="text-base lg:pb-10">
-//       {section.fields.content.content.map(
-//         (
-//           contentItem: { content: Array<{ value: string }> },
-//           contentIndex: number
-//         ) => (
-//           <ContentParagraph key={contentIndex} contentItem={contentItem} />
-//         )
-//       )}
-//     </div>
-//   </div>
-// );
-
-// export default BioPageSection;
-
 interface SectionProps {
   section: BioPageSectionType;
 }

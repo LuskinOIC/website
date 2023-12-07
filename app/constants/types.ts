@@ -164,6 +164,7 @@ export type PageSectionType = {
 
 export type PhysicianBioType = {
   physicianName: string;
+  slug: string;
   specialties: Array<{
     nodeType: string;
     data: object;
@@ -179,7 +180,6 @@ export type PhysicianBioType = {
   appointmentNumber: string;
   physicianNumber: string;
   bioPageSection: BioPageSectionType[];
-  slug: string;
   affiliations: Document;
   awardsAndRecognition: PageSectionType;
 };
