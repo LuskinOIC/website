@@ -156,7 +156,7 @@ export default async function PhysicianBio({
           </div>
         </div>
       </div>
-      <div className="pr-20">
+      <div className="md:pr-20">
         <PageSection section={docBio.awardsAndRecognition} />
       </div>
       <div className="w-10/12 md:w-4/5 mx-auto">
