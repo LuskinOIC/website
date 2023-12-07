@@ -180,6 +180,8 @@ export type PhysicianBioType = {
   physicianNumber: string;
   bioPageSection: BioPageSectionType[];
   slug: string;
+  affiliations: Document;
+  awardsAndRecognition: PageSectionType;
 };
 
 export type SocialMediaSectionPropsType = {
