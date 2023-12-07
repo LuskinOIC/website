@@ -96,7 +96,7 @@ export async function getPhysicianBioBySlug(slug: string) {
 export async function getPatientCarePage() {
   const entries = await client.getEntries({
     content_type: "patientCarePage",
-    include: 2,
+    include: 3,
     locale: "en-US",
   });
   const entry = entries.items[0];
