@@ -151,7 +151,7 @@ export default async function PhysicianBio({
         </div>
 
         <div>
-          <h2 className="text-xl font-bold pb-4">Affiliations</h2>
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">Affiliations</h2>
           <div className="text-lg pb-6">
             {renderRichTextToReactComponent(
               docBio.affiliations as unknown as Document,
@@ -174,13 +174,13 @@ export default async function PhysicianBio({
           {"research insights and publications".toUpperCase()}
         </h2>
         <div id="RESEARCH-INSIGHTS" className="pb-10">
-          <h2 className="text-xl font-bold pb-4">Research Insights</h2>
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">Research Insights</h2>
           {renderRichTextToReactComponent(
             docBio.researchInsights as unknown as Document, researchPubClassNames
           )}
         </div>
         <div id="PUBLICATIONS" className="pb-14">
-          <h2 className="text-xl font-bold pb-4">Publications</h2>
+          <h2 className="text-xl lg:text-2xl font-bold pb-4">Publications</h2>
           {renderRichTextToReactComponent(
             docBio.publications as unknown as Document, researchPubClassNames
           )}

@@ -17,7 +17,7 @@ interface SectionProps {
 export default function BioPageSection({ section }: SectionProps) {
   return (
     <div key={section.sys.id}>
-      <h2 className="text-xl font-bold pb-4">{section.fields.title}</h2>
+      <h2 className="text-xl lg:text-2xl font-bold pb-4">{section.fields.title}</h2>
       <div className="md:text-lg">
         {section.fields.content.content.map(
           (
