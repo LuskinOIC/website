@@ -88,21 +88,21 @@ export default function Navbar() {
                   isPatientCareOpen === true ? "block" : "hidden"
                 }`}>
                 <ul className="flex flex-col bg-[#0076AD] border border-blue-400 rounded-md w-64 items-start">
-                  <li>
+                  <li className="border-b border-blue-400 w-64">
                     <NavigationMenuLink asChild>
-                      <a href="/patient-care" className="px-4">
+                      <a href="/patient-care" className="px-4 py-2">
                         Patient Care
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <li>
+                  <li className="border-b border-blue-400 w-64">
                     <NavigationMenuLink asChild>
                       <a href="/urgent-care" className="px-4 py-2">
                         Urgent Care
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <li>
+                  <li className="border-b border-blue-400 w-64">
                     <NavigationMenuLink asChild>
                       <a href="/" className="px-4 py-2">
                         Link 3
