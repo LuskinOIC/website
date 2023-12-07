@@ -13,7 +13,7 @@ import { Title1 } from "./ui/Typography/Title";
 export default function SocialMediaBanner() {
   return (
     <div className="bg-[#FCE385]">
-      <div className="grid grid-rows-2 md:gap-x-6 md:grid-flow-col py-4 justify-center">
+      <div className="grid grid-rows-2 md:gap-x-6 md:grid-flow-col md:py-4 justify-center">
         <DesktopBanner />
         <MobileBanner />
         <SocialMediaIcons />
@@ -48,12 +48,14 @@ function DesktopBanner() {
 
 function MobileBanner() {
   return (
-    <div className="block md:hidden">
+    <div className="block md:hidden min-h-[75%] row-span-5">
       <div className="flex flex-row items-center">
-        <Title1 className="pl-8">Follow our story on social media!</Title1>
+        <Title1 className="pl-10 pt-4">
+          Follow our story on social media!
+        </Title1>
         <Image src={OzzieMobile} alt="Ozzie" />
       </div>
-      <Text1 className="px-8">
+      <Text1 className="px-10">
         Join us in our mission to transform musculoskeletal care for all, one
         child at a time, through education, research, and unwavering support.
       </Text1>
@@ -63,7 +65,7 @@ function MobileBanner() {
 
 function SocialMediaIcons() {
   return (
-    <div className="row-span-1  .. py-8 md:py-0 px-3">
+    <div className="row-span-1  .. pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
       <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 ..">
         <a href="https://www.instagram.com/orthokids_losangeles/ ..">
           <Image src={FB} alt="Facebook Logo" />
