@@ -26,14 +26,6 @@ interface DropdownStates {
   waysToGive: boolean;
 }
 
-interface DropdownStates {
-  [key: string]: boolean;
-  patientCare: boolean;
-  medicalProfessionals: boolean;
-  about: boolean;
-  waysToGive: boolean;
-}
-
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = React.useState(false);
   const toggleHamburgerDropdown = () => {
