@@ -86,11 +86,6 @@ export type NestedAssetType = {
   };
 };
 
-// export type PatientCardType = {
-//   patientName: string;
-//   patientAsset: NestedAssetType;
-// };
-
 export type MinimalCardType = {
   sys?: {
     id: string;
@@ -118,7 +113,6 @@ export type EventType = {
   }>;
   eventDetails: string;
   eventDetailsPhoto: ImageType;
-  // eventCards: EventCardType[];
   eventCards: Array<{ fields: MinimalCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
