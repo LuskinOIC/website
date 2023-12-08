@@ -29,10 +29,10 @@ function formatDateTime(date: Date): string {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
-const mobileMinimalCardStyleProps = {
-  image: "p-1 w-20 h-20 object-cover md:w-64 rounded-xl",
-  wrapperDiv: "flex flex-reverse bg-[#0076AD] w-full rounded-lg mb-5",
-  header: "tracking-wider text-white font-normal text-xl py-6 ml-4",
+const eventMinimalCardStyleProps = {
+  image: "p-1 object-cover md:rounded-sm md:mt-4 rounded-xl",
+  wrapperDiv: "md:mr-2 md:border md:border-black md:border-8 flex flex-reverse md:items-center bg-[#0076AD] md:bg-white md:w-64 w-full rounded-lg mb-5 md:mb-10 md:flex-col ",
+  header: "tracking-wider md:text-center text-white md:text-black font-normal text-xl md:py-1 py-6 ml-4",
   summary: "",
 };
 
@@ -85,7 +85,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
               <MinimalCard
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
-                styleProps={mobileMinimalCardStyleProps}
+                styleProps={eventMinimalCardStyleProps}
               />
             ),
           )}
