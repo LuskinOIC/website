@@ -4,12 +4,16 @@ import dynamic from "next/dynamic";
 import { Document } from "@contentful/rich-text-types";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import {
-  EventType,
+  // EventType,
   NestedAssetType,
-  PatientCardType,
+  MinimalCardType,
 } from "@/app/constants/types";
-import PatientAmbassadorCard from "@/app/components/EventCards/PatientAmbassador";
-import EventCard from "@/app/components/EventCards/EventCard";
+import MinimalCard from "@/app/components/MinimalCard";
+
+// export async function generateStaticParams() {
+//   const events = await getEvents();
+//   return events.map((evt) => ({ slug: evt.slug }));
+// }
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -47,6 +51,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
   const hasEventAssets: boolean =
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
+
   return (
     <main>
       <div className="flex" id="main-event">
@@ -68,20 +73,18 @@ export default async function Event({ params }: { params: { slug: string } }) {
           />
         </div>
       </div>
-      {/* <div className="object"> */}
-      <h2>{"patient ambassadors".toUpperCase()}</h2>
+      <h2>PATIENT AMBASSADORS</h2>
       <div className="flex">
         {hasPatientAmbassadors &&
           orgEvent.patientAmbassador.map(
-            (patientObject: { fields: PatientCardType }) => (
-              <PatientAmbassadorCard
-                key={patientObject.fields.patientAsset.sys.id}
-                patient={patientObject.fields}
+            (patientObject: { fields: MinimalCardType }) => (
+              <MinimalCard
+                key={patientObject.fields.title}
+                cardContent={patientObject.fields}
               />
             )
           )}
       </div>
-      {/* </div> */}
       <div id="event-details" className="flex">
         <p>{orgEvent.eventDetails}</p>
         <DynamicImage
@@ -116,9 +119,9 @@ export default async function Event({ params }: { params: { slug: string } }) {
           ))}
       </div>
       <div id="event-cards">
-        {orgEvent.map((eventCard: EventType) => (
+        {/* {orgEvent.map((eventCard: EventType) => (
           <EventCard key={orgEvent.sys.id} patient={patientObject.fields} />
-        ))}
+        ))} */}
       </div>
     </main>
   );

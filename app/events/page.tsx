@@ -1,20 +1,39 @@
 import { getEvents } from "@/app/utils/contentful";
-import { EventType } from "@/app/constants/types";
-import EventCard from "@/app/components/EventCards/EventCard";
-// import Image from "next/image";
-// import Link from "next/link";
+import {
+  ImageType,
+  MinimalCardType,
+  NestedAssetType,
+} from "@/app/constants/types";
 
-// iterate through data model?
+import MinimalCard from "@/app/components/MinimalCard";
+
+type EventCard = {
+  eventName: string;
+  slug: string;
+  eventPhoto: NestedAssetType;
+  eventSummary: string;
+};
+
+const adaptEventToMinimalCardType = (event: EventCard): MinimalCardType => {
+  return {
+    title: event.eventName,
+    cardPhoto: event.eventPhoto,
+    summary: event.eventSummary,
+  };
+};
+
 export default async function Events() {
-  const events = (await getEvents()) as unknown as EventType[];
+  const events = (await getEvents()) as unknown as EventCard[];
 
   return (
     <main className="">
-      {/* <h1>LuskinOIC&apos;s Leadership Drives Our Mission Forward</h1> */}
       <h1 className="text-xl">Events</h1>
-      <div className="flex">
+      <div className="grid grid-cols-1 place-items-center">
         {events.map((eventObj) => (
-          <EventCard key={eventObj.slug} event={eventObj} />
+          <MinimalCard
+            key={eventObj.slug}
+            cardContent={adaptEventToMinimalCardType(eventObj)}
+          />
         ))}
       </div>
     </main>
