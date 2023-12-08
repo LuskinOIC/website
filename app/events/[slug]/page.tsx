@@ -11,19 +11,8 @@ import {
 import MinimalCard from "@/app/components/MinimalCard";
 import { adaptEventToMinimalCardType } from "../page";
 
-// export async function generateStaticParams() {
-//   const events = await getEvents();
-//   return events.map((evt) => ({ slug: evt.slug }));
-// }
-
 export async function generateStaticParams() {
   const events = await getEvents();
-  // console.log("EVENTS TYPE", typeof events);
-  // console.log("EVENTS", events);
-  // return {
-  //   allEvents: events,
-  //   slug: events.map((evt) => ({ slug: evt.slug })),
-  // };
   return events.map((evt) => ({ slug: evt.slug }));
 }
 
@@ -139,7 +128,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <MinimalCard
             key={soleEvent.slug}
             cardContent={adaptEventToMinimalCardType(soleEvent)}
-            // classNames={mobileCards}
           />
         ))}
       </div>
