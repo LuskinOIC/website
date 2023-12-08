@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
-import renderRichTextToReactComponent, { ClassNames } from "../utils/rich-text";
+import renderRichTextToReactComponent from "../utils/rich-text";
 
 type StylePropsType = {
   image: string;
@@ -22,7 +22,7 @@ export default function MinimalCard({
   const cardPhotoHeight = cardPhoto.details.image.height;
   const cardPhotoWidth = cardPhoto.details.image.width;
   const summary = renderRichTextToReactComponent(
-    cardContent.summary as unknown as Document
+    cardContent.summary as unknown as Document,
   );
 
   return (

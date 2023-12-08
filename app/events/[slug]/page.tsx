@@ -73,7 +73,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
         <div id="main-event-info">
           <h1>{orgEvent.eventName}</h1>
           {renderRichTextToReactComponent(
-            orgEvent.eventSummary as unknown as Document
+            orgEvent.eventSummary as unknown as Document,
           )}
           <p>Event Date: {formattedDateTime}</p>
           <button>Attend Event</button>
@@ -98,7 +98,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 cardContent={patientObject.fields}
                 styleProps={mobileMinimalCardStyleProps}
               />
-            )
+            ),
           )}
       </div>
       <div id="event-details" className="flex">

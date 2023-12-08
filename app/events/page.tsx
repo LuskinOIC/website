@@ -1,13 +1,9 @@
 import { getEvents } from "@/app/utils/contentful";
-import {
-  MinimalCardType,
-  NestedAssetType,
-  EventCardType,
-} from "@/app/constants/types";
+import { MinimalCardType, EventCardType } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
 
 export function adaptEventToMinimalCardType(
-  event: EventCardType
+  event: EventCardType,
 ): MinimalCardType {
   return {
     title: event.eventName,
