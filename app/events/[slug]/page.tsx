@@ -31,8 +31,10 @@ function formatDateTime(date: Date): string {
 
 const eventMinimalCardStyleProps = {
   image: "p-1 object-cover md:rounded-sm md:mt-4 rounded-xl",
-  wrapperDiv: "md:mr-2 md:border md:border-black md:border-8 flex flex-reverse md:items-center bg-[#0076AD] md:bg-white md:w-64 w-full rounded-lg mb-5 md:mb-10 md:flex-col ",
-  header: "tracking-wider md:text-center text-white md:text-black font-normal text-xl md:py-1 py-6 ml-4",
+  wrapperDiv:
+    "md:mr-2 md:border md:border-black md:border-8 flex flex-reverse md:items-center bg-[#0076AD] md:bg-white md:w-64 w-full rounded-lg mb-5 md:mb-10 md:flex-col ",
+  header:
+    "tracking-wider md:text-center text-white md:text-black font-normal text-xl md:py-1 py-6 ml-4",
   summary: "",
 };
 
