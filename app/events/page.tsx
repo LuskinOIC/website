@@ -1,29 +1,23 @@
 import { getEvents } from "@/app/utils/contentful";
 import {
-  ImageType,
   MinimalCardType,
   NestedAssetType,
+  EventCardType,
 } from "@/app/constants/types";
-
 import MinimalCard from "@/app/components/MinimalCard";
 
-type EventCard = {
-  eventName: string;
-  slug: string;
-  eventPhoto: NestedAssetType;
-  eventSummary: string;
-};
-
-const adaptEventToMinimalCardType = (event: EventCard): MinimalCardType => {
+export function adaptEventToMinimalCardType(
+  event: EventCardType
+): MinimalCardType {
   return {
     title: event.eventName,
     cardPhoto: event.eventPhoto,
     summary: event.eventSummary,
   };
-};
+}
 
 export default async function Events() {
-  const events = (await getEvents()) as unknown as EventCard[];
+  const events = (await getEvents()) as unknown as EventCardType[];
 
   return (
     <main className="">

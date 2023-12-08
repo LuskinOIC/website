@@ -1,12 +1,20 @@
 import Image from "next/image";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
-import renderRichTextToReactComponent from "../utils/rich-text";
+import renderRichTextToReactComponent, { ClassNames } from "../utils/rich-text";
 
+type StylePropsType = {
+  image: string;
+  wrapperDiv: string;
+  header: string;
+  summary: string;
+};
 export default function MinimalCard({
   cardContent,
+  styleProps,
 }: {
   cardContent: MinimalCardType;
+  styleProps?: StylePropsType;
 }) {
   const title = cardContent.title;
   const cardPhoto = cardContent.cardPhoto.fields.file;
@@ -18,17 +26,17 @@ export default function MinimalCard({
   );
 
   return (
-    <div className="w-64">
+    <div className={styleProps?.wrapperDiv}>
       <Image
         alt={title}
         key={cardContent.cardPhoto.sys.id}
         src={cardPhotoSource}
         width={cardPhotoHeight}
         height={cardPhotoWidth}
-        className="rounded-xl"
+        className={styleProps?.image}
       />
-      <h3>{title}</h3>
-      {summary ? <div>{summary}</div> : null}
+      <h3 className={styleProps?.header}>{title}</h3>
+      {summary ? <div className={styleProps?.summary}>{summary}</div> : null}
     </div>
   );
 }

@@ -101,17 +101,10 @@ export type MinimalCardType = {
 };
 
 export type EventCardType = {
-  // fields: {
-  //   eventName: string;
-  //   slug: string;
-  //   eventSummary: object;
-  //   eventPhoto: NestedAssetType;
-  // };
   eventName: string;
   slug: string;
-  eventSummary: object;
-  eventDate: string;
   eventPhoto: NestedAssetType;
+  eventSummary: string;
 };
 
 export type EventType = {

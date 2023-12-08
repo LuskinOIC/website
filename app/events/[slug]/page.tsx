@@ -4,11 +4,12 @@ import dynamic from "next/dynamic";
 import { Document } from "@contentful/rich-text-types";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import {
-  // EventType,
+  EventCardType,
   NestedAssetType,
   MinimalCardType,
 } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
+import { adaptEventToMinimalCardType } from "../page";
 
 // export async function generateStaticParams() {
 //   const events = await getEvents();
@@ -17,6 +18,12 @@ import MinimalCard from "@/app/components/MinimalCard";
 
 export async function generateStaticParams() {
   const events = await getEvents();
+  // console.log("EVENTS TYPE", typeof events);
+  // console.log("EVENTS", events);
+  // return {
+  //   allEvents: events,
+  //   slug: events.map((evt) => ({ slug: evt.slug })),
+  // };
   return events.map((evt) => ({ slug: evt.slug }));
 }
 
@@ -33,9 +40,17 @@ function formatDateTime(date: Date): string {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
+const mobileMinimalCardStyleProps = {
+  image: "p-1 w-20 h-20 object-cover md:w-64 rounded-xl",
+  wrapperDiv: "flex flex-reverse bg-[#0076AD] w-full rounded-lg mb-5",
+  header: "tracking-wider text-white font-normal text-xl py-6 ml-4",
+  summary: "",
+};
+
 export default async function Event({ params }: { params: { slug: string } }) {
-  // fetches all event fields from content model
+  const allEvents = (await getEvents()) as unknown as EventCardType[];
   const orgEvent = await getEventBySlug(params.slug);
+
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const eventDetails = orgEvent?.eventDetailsPhoto;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
@@ -74,13 +89,14 @@ export default async function Event({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <h2>PATIENT AMBASSADORS</h2>
-      <div className="flex">
+      <div className="md:flex grid grid-cols-1 place-items-center px-10">
         {hasPatientAmbassadors &&
           orgEvent.patientAmbassador.map(
             (patientObject: { fields: MinimalCardType }) => (
               <MinimalCard
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
+                styleProps={mobileMinimalCardStyleProps}
               />
             )
           )}
@@ -119,61 +135,14 @@ export default async function Event({ params }: { params: { slug: string } }) {
           ))}
       </div>
       <div id="event-cards">
-        {/* {orgEvent.map((eventCard: EventType) => (
-          <EventCard key={orgEvent.sys.id} patient={patientObject.fields} />
-        ))} */}
+        {allEvents.map((soleEvent) => (
+          <MinimalCard
+            key={soleEvent.slug}
+            cardContent={adaptEventToMinimalCardType(soleEvent)}
+            // classNames={mobileCards}
+          />
+        ))}
       </div>
     </main>
   );
 }
-// orgEvent.eventAsset.map((asset: NestedAssetType) => {
-//   console.log("ASSET", asset.fields.file.url);
-// });
-// console.log("ORG EVENT MORE ASSETS FIELDS", orgEvent.eventAsset[0]);
-
-// JSON OBJECT (Reference for proper typing and data parsing)
-// ORG EVENT {
-//   eventName: 'Swing For Kids Golf Classic',
-//   slug: 'swing-for-kids-golf-classic',
-//   eventSummary: { nodeType: 'document', data: {}, content: [ [Object] ] },
-//   eventDate: '2023-10-09T10:30-08:00',
-//   eventPhoto: {
-//     metadata: { tags: [] },
-//     sys: {
-//       space: [Object],
-//       id: '1RZid99QqiN9gMABY2Xl84',
-//       type: 'Asset',
-//       createdAt: '2023-11-29T22:38:50.068Z',
-//       updatedAt: '2023-11-29T22:39:18.302Z',
-//       environment: [Object],
-//       revision: 2,
-//       locale: 'en-US'
-//     },
-//     fields: { title: 'Main', description: 'Event main photo', file: [Object] }
-//   },
-//   patientAmbassador: [
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] }
-//   ],
-//   eventDetails: 'From the action-packed shamble format, friendly yet competitive camaraderie, to a succulent buffet, it is a day on the course unlike any other. Become a sponsor today, and know that every time you tee up, you are driving LuskinOIC forward, ensuring that children receive care and heal to keep on moving toward a thriving future.\n' +
-//     'All contributions raised serve to support LuskinOICare for Kids.',
-//   eventCard: [
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] }
-//   ],
-//   sponsor: [
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] }
-//   ],
-//   eventAsset: [
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] },
-//     { metadata: [Object], sys: [Object], fields: [Object] }
-//   ]
-// }
