@@ -119,7 +119,7 @@ export type EventType = {
   eventDetails: string;
   eventDetailsPhoto: ImageType;
   // eventCards: EventCardType[];
-  eventCards: Array<{ fields: EventCardType }>;
+  eventCards: Array<{ fields: MinimalCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
 };
