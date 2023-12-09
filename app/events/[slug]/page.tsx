@@ -29,9 +29,9 @@ function formatDateTime(date: Date): string {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
-const eventMinimalCardStyleProps = {
+const patientMinimalCardStyleProps = {
   image:
-    "rounded-xl object-cover h-28 w-28 p-1.5 md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
+    "rounded-xl h-28 w-28 p-1.5 md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
   wrapperDiv:
     "md:rounded-lg md:w-1/5 md:border md:bg-white flex md:flex-col flex-reverse flex mb-3 md:h-full h-28 w-full rounded-lg bg-[#0076AD] md:mb-8",
   header:
@@ -39,13 +39,12 @@ const eventMinimalCardStyleProps = {
   summary: "",
 };
 
-// const eventMinimalCardStyleProps = {
-//   image:
-//     "md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
-//   wrapperDiv: "md:rounded-lg md:w-1/5 md:border md:bg-white flex md:flex-col ",
-//   header: "md:text-center md:text-black md:pt-4 md:pb-6 md:text-2xl",
-//   summary: "",
-// };
+const eventMinimalCardStyleProps = {
+  image: "object-cover w-72 h-56 mt-3 rounded-xl mx-auto",
+  wrapperDiv: "mb-5 flex flex-col items-center h-3/5",
+  header: "w-64 font-bold text-lg py-4",
+  summary: "px-2 mb-4 w-72 overflow-hidden line-clamp-3 leading-tight",
+};
 
 export default async function Event({ params }: { params: { slug: string } }) {
   const allEvents = (await getEvents()) as unknown as EventCardType[];
@@ -65,8 +64,10 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const hasSponsors: boolean =
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
   const hasEventAssets: boolean =
-    Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
+    Array.isArray(orgEvent.eventAsset) && orgEvent.sponsor.length > 0;
 
+  console.log("HASEVENTASSETS:", hasEventAssets);
+  console.log("ORG EVENT:", orgEvent);
   return (
     <main>
       <div className="flex" id="main-event">
@@ -96,7 +97,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
               <MinimalCard
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
-                styleProps={eventMinimalCardStyleProps}
+                styleProps={patientMinimalCardStyleProps}
               />
             )
           )}
@@ -122,7 +123,15 @@ export default async function Event({ params }: { params: { slug: string } }) {
             />
           ))}
       </div>
-      <div id="sponsor-assets" className="flex">
+      <div className="mx-6 flex flex-col items-center">
+        <h3 className="mb-3 w-48 text-xl font-normal">
+          Interested in becoming a sponsor?
+        </h3>
+        <button className="rounded-md bg-[#0076AD] px-3 py-1 text-sm font-medium text-white">
+          SPONSOR EVENT
+        </button>
+      </div>
+      <div id="sponsor-assets" className="flex flex-wrap">
         {hasSponsors &&
           orgEvent.sponsor.map((asset: NestedAssetType) => (
             <DynamicImage
@@ -131,14 +140,16 @@ export default async function Event({ params }: { params: { slug: string } }) {
               src={asset.fields.file.url}
               width={asset.fields.file.details.image.width}
               height={asset.fields.file.details.image.height}
+              className="mx-6 my-6 w-20 object-contain"
             />
           ))}
       </div>
-      <div id="event-cards">
+      <div id="event-cards" className="mx-6">
         {allEvents.map((soleEvent) => (
           <MinimalCard
             key={soleEvent.slug}
             cardContent={adaptEventToMinimalCardType(soleEvent)}
+            styleProps={eventMinimalCardStyleProps}
           />
         ))}
       </div>
