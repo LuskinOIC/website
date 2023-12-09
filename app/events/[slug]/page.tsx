@@ -30,13 +30,22 @@ function formatDateTime(date: Date): string {
 }
 
 const eventMinimalCardStyleProps = {
-  image: "p-1 object-cover md:rounded-sm md:mt-4 rounded-xl",
+  image:
+    "rounded-xl object-cover h-28 w-28 p-1.5 md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
   wrapperDiv:
-    "md:mr-2 md:border md:border-black md:border-8 flex flex-reverse md:items-center bg-[#0076AD] md:bg-white md:w-64 w-full rounded-lg mb-5 md:mb-10 md:flex-col ",
+    "md:rounded-lg md:w-1/5 md:border md:bg-white flex md:flex-col flex-reverse flex mb-3 md:h-full h-28 w-full rounded-lg bg-[#0076AD] md:mb-8",
   header:
-    "tracking-wider md:text-center text-white md:text-black font-normal text-xl md:py-1 py-6 ml-4",
+    " md:text-center md:text-black md:pt-4 md:pb-6 md:text-2xl my-auto ml-6 text-3xl font-semibold tracking-wider text-white",
   summary: "",
 };
+
+// const eventMinimalCardStyleProps = {
+//   image:
+//     "md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
+//   wrapperDiv: "md:rounded-lg md:w-1/5 md:border md:bg-white flex md:flex-col ",
+//   header: "md:text-center md:text-black md:pt-4 md:pb-6 md:text-2xl",
+//   summary: "",
+// };
 
 export default async function Event({ params }: { params: { slug: string } }) {
   const allEvents = (await getEvents()) as unknown as EventCardType[];
@@ -64,7 +73,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
         <div id="main-event-info">
           <h1>{orgEvent.eventName}</h1>
           {renderRichTextToReactComponent(
-            orgEvent.eventSummary as unknown as Document,
+            orgEvent.eventSummary as unknown as Document
           )}
           <p>Event Date: {formattedDateTime}</p>
           <button>Attend Event</button>
@@ -80,7 +89,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <h2>PATIENT AMBASSADORS</h2>
-      <div className="md:flex grid grid-cols-1 place-items-center px-10">
+      <div className="mx-6 grid grid-cols-1 place-items-center md:mx-auto md:flex md:justify-center md:gap-8">
         {hasPatientAmbassadors &&
           orgEvent.patientAmbassador.map(
             (patientObject: { fields: MinimalCardType }) => (
@@ -89,7 +98,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 cardContent={patientObject.fields}
                 styleProps={eventMinimalCardStyleProps}
               />
-            ),
+            )
           )}
       </div>
       <div id="event-details" className="flex">
