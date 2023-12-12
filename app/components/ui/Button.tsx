@@ -14,9 +14,8 @@ export interface ButtonProps {
 
 const styles = {
   buttonContainer: "flex w-fit h-[43px] md:h-[53px] lg:h-[63px] rounded-[10px]",
-  buttonAlignment: "px-6 py-3 justify-center items-center inline-flex",
-  buttonText:
-    "text-base md:text-xl lg:text-2xl text-white md:font-bold leading-[28.8px]",
+  buttonAlignment: "px-2 lg:px-4 py-3 justify-center items-center inline-flex",
+  buttonText: "text-base md:text-xl text-white md:font-bold leading-[28.8px]",
 };
 
 const Button = ({
