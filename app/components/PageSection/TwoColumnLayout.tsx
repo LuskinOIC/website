@@ -50,7 +50,7 @@ export default function ColumnLayout({
       <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
-          <div className={`basis-1/2 ${orderClass}`}>
+          <div className={`basis-1/2 ${orderClass} w-full`}>
             <Image
               className="md:rounded-l-lg"
               src={`https:${section.fields.image.fields.file.url}`}
