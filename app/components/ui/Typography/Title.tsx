@@ -13,7 +13,7 @@ type TitleProps = {
 export const myFont = localFont({ src: "./Mathlete-Bulky.otf" });
 
 export const LuskinHeader = ({ children, className = "" }: TitleProps) => {
-  const classes = `${myFont.className} text-[#825AA4] text-[64px] md:text-[96px] leading-[60px] tracking-wide py-2 ${className}`;
+  const classes = `${myFont.className} text-[#825AA4] text-[64px] md:text-[75px] lg:text-[96px] leading-[60px] tracking-wide py-2 ${className}`;
   return <h1 className={classes}>{children}</h1>;
 };
 
@@ -23,7 +23,7 @@ export const Title0 = ({ children }: TitleProps) => {
 };
 
 export const Title1 = ({ children, className = "" }: TitleProps) => {
-  const classes = `text-2xl md:text-[40px] md:leading-[30px]  lg:text-5xl lg:leading-[60px] font-bold md:leading-[60px] py-2 ${className}`;
+  const classes = `text-2xl md:text-3xl md:leading-[30px] lg:text-5xl lg:leading-[60px] py-2 ${className}`;
   return <h1 className={classes}>{children}</h1>;
 };
 
