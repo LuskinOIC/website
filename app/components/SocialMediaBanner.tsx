@@ -2,8 +2,8 @@ import React from "react";
 import FB from "../../public/fb.svg";
 import Image from "next/image";
 import LinkedIN from "../../public/libanner.svg";
-import Ozzie from "../../public/Ozzie Crutches SVG 2.png";
-import OzzieMobile from "../../public/Ozzie Peeking In.png";
+import Ozzie from "../../public/ozzie-crutches.png";
+import OzzieMobile from "../../public/ozzie-peeking-in.png";
 import TwitterX from "../../public/TwitterX.svg";
 import Yelp from "../../public/yelpbanner.svg";
 import Youtube from "../../public/youtubebanner.svg";
@@ -23,22 +23,22 @@ export default function SocialMediaBanner() {
 
 function DesktopBanner() {
   return (
-    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[45%] px-3 py-4">
-      <div className="row-span-3 ...">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] px-3 py-4">
+      <div className="self-center row-span-3">
         <div className="flex flex-row min-h-[75%] justify-center items-center">
           <Image src={Ozzie} alt="Ozzie" />
         </div>
       </div>
-      <div className="hidden md:block col-span-1 ..">
+      <div className="hidden md:block col-span-1">
         <div className="text-4xl flex flex-row min-h-[50%] justify-center items-center text-center">
           <h1>Follow our story on social media!</h1>
         </div>
-        <div className="text-md text-center">
-          <p>
+        <div className="flex items-center justify-center text-md text-center">
+          <p className="w-5/6">
             Join us in our mission to transform musculoskeletal care for all,
-            one child at a time,
-          </p>{" "}
-          <p>through education, research, and unwavering support.</p>
+            one child at a time, through education, research, and unwavering
+            support.
+          </p>
         </div>
       </div>
       <SocialMediaIcons />
@@ -49,7 +49,7 @@ function DesktopBanner() {
 function MobileBanner() {
   return (
     <div className="block md:hidden min-h-[75%]">
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center justify-between">
         <Title1 className="pl-10 pt-4">
           Follow our story on social media!
         </Title1>
