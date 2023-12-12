@@ -21,8 +21,8 @@ export default function ColumnLayout({
 }) {
   const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
   const textPadding = section.fields.reverseOrder
-    ? "md:pl-[8%] lg:pl-[10%] lg:pr-[5%]"
-    : "md:pr-[5%] lg:pr-[10%] lg:pl-[5%]";
+    ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
+    : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
   const descriptionTextSize = !section.fields.descriptionTextSize
     ? "md:text-xl"
     : "md:text-2xl";
