@@ -11,7 +11,7 @@ import renderRichTextToReactComponent, {
 } from "@/app/utils/rich-text";
 
 const descriptionClassNames: ClassNames = {
-  paragraph: "py-4 leading-7 md:leading-10",
+  paragraph: "py-2 leading-7 md:leading-10",
 };
 
 export default function ColumnLayout({
@@ -21,8 +21,8 @@ export default function ColumnLayout({
 }) {
   const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
   const textPadding = section.fields.reverseOrder
-    ? "md:pl-[10%] md:pr-10"
-    : "md:pr-[10%] md:pl-10";
+    ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
+    : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
   const descriptionTextSize = !section.fields.descriptionTextSize
     ? "md:text-xl"
     : "md:text-2xl";
@@ -50,7 +50,7 @@ export default function ColumnLayout({
       <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
-          <div className={`basis-1/2 ${orderClass}`}>
+          <div className={`basis-1/2 ${orderClass} w-full`}>
             <Image
               className="md:rounded-l-lg"
               src={`https:${section.fields.image.fields.file.url}`}
@@ -65,7 +65,7 @@ export default function ColumnLayout({
           </div>
         )}
         <div className={`basis-1/2 px-2 ${textPadding}`}>
-          <div className="grid md:gap-4 mx-2 px-3 py-5">
+          <div className="grid py-5">
             <div className={`grid gap-2 ${textColor}`}>
               <TitleComponent
                 title={section.fields.title}
@@ -83,7 +83,7 @@ export default function ColumnLayout({
                 {descriptionContent}
               </div>
             </div>
-            <div className="flex flex-col w-full md:flex-row md:justify-between gap-4 md:gap-6 py-5">
+            <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
               {section.fields.actionUrl && (
                 <Button
                   href={section.fields.actionUrl}
