@@ -68,13 +68,13 @@ function SocialMediaIcons() {
   return (
     <div className="row-span-1 .. pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
       <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 ..">
-        <a href="https://www.instagram.com/orthokids_losangeles/ ..">
+        <a href="https://www.facebook.com/LuskinOIC/">
           <Image src={FB} alt="Facebook Logo" />
         </a>
         <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
           <Image src={LinkedIN} alt="LinkedIn Logo" />
         </a>
-        <a href="https://twitter.com/i/flow/login?redirect_after_login=%3FLuskinOIC">
+        <a href="https://twitter.com/LuskinOIC">
           <Image src={TwitterX} alt="X Logo" />
         </a>
         <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
