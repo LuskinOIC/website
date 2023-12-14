@@ -182,7 +182,7 @@ export type LocationType = {
     streetAddress: string;
     cityStateZipcode: string;
     buttonTitle?: string;
-    buttonLink?: string;
+    buttonUrl?: string;
   };
 };
 
