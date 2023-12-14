@@ -31,23 +31,6 @@ function formatDateTime(date: Date): string {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
-const patientMinimalCardStyleProps = {
-  image:
-    "rounded-xl h-28 w-28 p-1.5 md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
-  wrapperDiv:
-    "md:rounded-lg md:w-1/5 md:border md:bg-white flex md:flex-col flex-reverse flex mb-3 md:h-full h-28 w-full rounded-lg bg-[#0076AD] md:mb-8",
-  header:
-    " md:text-center md:text-black md:pt-4 md:pb-6 md:text-2xl my-auto ml-6 text-3xl font-semibold tracking-wider text-white",
-  summary: "",
-};
-
-const eventMinimalCardStyleProps = {
-  image: "object-cover w-72 h-56 mt-3 rounded-xl mx-auto",
-  wrapperDiv: "mb-5 flex flex-col items-center h-3/5",
-  header: "w-64 font-bold text-lg py-4",
-  summary: "px-2 mb-4 w-72 overflow-hidden line-clamp-3 leading-tight",
-};
-
 const eventSummaryClassNames: ClassNames = {
   paragraph: "text-base mb-4 mr-8 ml-1",
 };
@@ -77,7 +60,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <h1 className="my-6 text-2xl font-bold">{orgEvent.eventName}</h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames,
+            eventSummaryClassNames
           )}
           <p>Event Date: {formattedDateTime}</p>
           <div className="flex flex-col">
@@ -107,9 +90,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
               <MinimalCard
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
-                styleProps={patientMinimalCardStyleProps}
               />
-            ),
+            )
           )}
       </div>
       <div id="event-details" className="flex flex-col-reverse">
@@ -170,7 +152,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <MinimalCard
             key={soleEvent.slug}
             cardContent={adaptEventToMinimalCardType(soleEvent)}
-            styleProps={eventMinimalCardStyleProps}
           />
         ))}
       </div>
