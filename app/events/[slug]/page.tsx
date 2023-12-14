@@ -62,7 +62,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const dateString = orgEvent.eventDate;
   const eventDate: Date = new Date(dateString);
   const formattedDateTime: string = formatDateTime(eventDate);
-
   const hasPatientAmbassadors: boolean =
     Array.isArray(orgEvent.patientAmbassador) &&
     orgEvent.patientAmbassador.length > 0;
@@ -78,7 +77,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <h1 className="my-6 text-2xl font-bold">{orgEvent.eventName}</h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames,
+            eventSummaryClassNames
           )}
           <p>Event Date: {formattedDateTime}</p>
           <div className="flex flex-col">
@@ -110,7 +109,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 cardContent={patientObject.fields}
                 styleProps={patientMinimalCardStyleProps}
               />
-            ),
+            )
           )}
       </div>
       <div id="event-details" className="flex flex-col-reverse">
@@ -136,9 +135,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
             />
           ))}
       </div>
-      {/* change date according to event year */}
       <p className="ml-36 w-44 text-lg font-semibold">
-        THANK YOU TO OUR 2023 SPONSORS
+        {`THANK YOU TO OUR ${dateString.slice(0, 4)} SPONSORS`}
       </p>
       <div id="sponsor-assets" className="my-6 flex flex-wrap border">
         {hasSponsors &&
