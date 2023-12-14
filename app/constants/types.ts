@@ -65,9 +65,57 @@ export type CarouselSlideType = {
   };
 };
 
+export type PatientAssetDetails = {
+  size: number;
+  image: {
+    width: number;
+    height: number;
+  };
+};
+export type NestedAssetType = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    file: {
+      url: string;
+      details: PatientAssetDetails;
+      fileName: string;
+      contentType: string;
+    };
+  };
+};
+
+export type MinimalCardType = {
+  sys?: {
+    id: string;
+  };
+  title: string;
+  cardPhoto: NestedAssetType;
+  summary: string;
+};
+
+export type EventCardType = {
+  eventName: string;
+  slug: string;
+  eventPhoto: NestedAssetType;
+  eventSummary: string;
+};
+
 export type EventType = {
   eventName: string;
   slug: string;
+  eventSummary: object;
+  eventDate: string;
+  eventPhoto: ImageType;
+  patientAmbassador: Array<{
+    fields: MinimalCardType;
+  }>;
+  eventDetails: string;
+  eventDetailsPhoto: ImageType;
+  eventCards: Array<{ fields: MinimalCardType }>;
+  sponsor: NestedAssetType[];
+  eventAsset: NestedAssetType[];
 };
 
 export type FileDetailsType = {
@@ -85,7 +133,6 @@ export type FileDetailsType = {
 
 export type ImageType = {
   fields: {
-    longText: Document;
     title: string;
     description: string;
     file: FileDetailsType;

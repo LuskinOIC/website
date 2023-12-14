@@ -44,7 +44,7 @@ export async function getEventBySlug(slug: string) {
     locale: "en-US",
   });
 
-  return entry.items[0].fields as EventType;
+  return entry.items[0].fields as unknown as EventType;
 }
 
 /* SPECIALTIES */
