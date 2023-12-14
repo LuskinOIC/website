@@ -3,13 +3,6 @@ import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
 import renderRichTextToReactComponent from "../utils/rich-text";
 
-type StylePropsType = {
-  image: string;
-  wrapperDiv: string;
-  header: string;
-  summary: string;
-};
-
 const titleImageComponentStyles = {
   image:
     "rounded-xl h-28 w-28 p-1.5 md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",

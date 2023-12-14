@@ -60,7 +60,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <h1 className="my-6 text-2xl font-bold">{orgEvent.eventName}</h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames
+            eventSummaryClassNames,
           )}
           <p>Event Date: {formattedDateTime}</p>
           <div className="flex flex-col">
@@ -91,7 +91,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
               />
-            )
+            ),
           )}
       </div>
       <div id="event-details" className="flex flex-col-reverse">
