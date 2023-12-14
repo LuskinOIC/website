@@ -12,11 +12,11 @@ export default async function Specialties() {
       <div className="grid">
         {specialties.map((specialty) =>
           specialty.name == "Pediatric Orthopedic Urgent Care" ? (
-            <div className="order-first" key={specialty.id}>
+            <div className="order-first" key={specialty.name}>
               <UrgentCareCard specialty={specialty} />
             </div>
           ) : (
-            <SpecialtyCard specialty={specialty} key={specialty.id} />
+            <SpecialtyCard specialty={specialty} key={specialty.name} />
           ),
         )}
       </div>
