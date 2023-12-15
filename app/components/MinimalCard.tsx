@@ -15,7 +15,7 @@ const titleImageComponentStyles = {
 
 const titleImageSummaryComponentStyles = {
   image: "object-cover w-72 h-56 mt-3 rounded-xl mx-auto",
-  wrapperDiv: "mb-5 flex flex-col items-center h-3/5",
+  wrapperDiv: "mb-5 flex flex-col items-center h-3/5 md:pr-6",
   header: "w-64 font-bold text-lg py-4",
   summary: "px-2 mb-4 w-72 overflow-hidden line-clamp-3 leading-tight",
 };
@@ -31,7 +31,7 @@ export default function MinimalCard({
   const cardPhotoHeight = cardPhoto.details.image.height;
   const cardPhotoWidth = cardPhoto.details.image.width;
   const summary = renderRichTextToReactComponent(
-    cardContent.summary as unknown as Document,
+    cardContent.summary as unknown as Document
   );
 
   const selectedStyles = summary
