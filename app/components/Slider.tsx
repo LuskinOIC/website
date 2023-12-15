@@ -79,8 +79,8 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
             key={index}
             className={`h-2 w-2 mx-1 rounded-full ${
               index === indicatorPosition
-                ? "bg-green-600 border-2 border-black h-4 w-4 transition-opacity duration-500 ease-in-out motion-reduce:transition-none"
-                : "bg-gray-300 border-2 border-black w-4 h-4 opacity-20"
+                ? "bg-black border-2 border-black h-2 w-2 transition-opacity duration-500 ease-in-out motion-reduce:transition-none"
+                : "bg-gray-300 border-2 border-black w-2 h-2 opacity-20"
             }`}></span>
         ))}
       </div>

@@ -118,19 +118,21 @@ export default async function Event({ params }: { params: { slug: string } }) {
             />
           ))}
       </div>
-      <div id="event-assets-mobile" className="md:hidden">
+      <div id="event-assets-mobile" className="mb-10 md:hidden">
         {hasEventAssets && (
           <Slider
-            slides={orgEvent.eventAsset.map((asset: NestedAssetType) => (
-              <DynamicImage
-                alt="event-assets"
-                key={asset.sys.id}
-                src={asset.fields.file.url}
-                width={asset.fields.file.details.image.width}
-                height={asset.fields.file.details.image.height}
-                className="mb-8"
-              />
-            ))}
+            slides={
+              orgEvent.eventAsset.map((asset: NestedAssetType) => (
+                <DynamicImage
+                  alt="event-assets"
+                  key={asset.sys.id}
+                  src={asset.fields.file.url}
+                  width={asset.fields.file.details.image.width}
+                  height={asset.fields.file.details.image.height}
+                  className="mb-5"
+                />
+              )) as any
+            }
           />
         )}
       </div>
