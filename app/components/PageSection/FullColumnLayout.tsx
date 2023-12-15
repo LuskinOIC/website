@@ -38,19 +38,21 @@ export default function FullWidthImageLayout({
         bold={section.fields.bold}
       />
       <div>{descriptionContent}</div>
-      {section.fields.actionUrl && (
-        <Button
-          href={section.fields.actionUrl}
-          text={section.fields.actionText}
-          variant={section.fields.buttonStyle}
-        />
-      )}
-      {section.fields.secondaryActionUrl && (
-        <Button
-          href={section.fields.secondaryActionUrl}
-          text={section.fields.secondaryActionText}
-        />
-      )}
+      <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
+        {section.fields.actionUrl && (
+          <Button
+            href={section.fields.actionUrl}
+            text={section.fields.actionText}
+            variant={section.fields.buttonStyle}
+          />
+        )}
+        {section.fields.secondaryActionUrl && (
+          <Button
+            href={section.fields.secondaryActionUrl}
+            text={section.fields.secondaryActionText}
+          />
+        )}
+      </div>
     </section>
   );
 }

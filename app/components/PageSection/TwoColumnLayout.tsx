@@ -43,7 +43,7 @@ export default function ColumnLayout({
     descriptionClassNames,
   );
   return (
-    <section className={`block ${bgColor} md:my-10`}>
+    <section className={`block ${bgColor}`}>
       <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
