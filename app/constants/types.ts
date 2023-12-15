@@ -2,6 +2,10 @@
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
 
+export interface AboutPageType {
+  pageSections: PageSectionType[];
+}
+
 export type AssetType = {
   sys: {
     id: string;
@@ -186,6 +190,12 @@ export type TabCardType = {
   };
 };
 
+export type FontSizeMap = {
+  large: string;
+  medium: string;
+  small: string;
+};
+
 export type PageSectionType = {
   fields: {
     specialty: SpecialtyType[];
@@ -198,7 +208,7 @@ export type PageSectionType = {
     columnCount: number;
     description: string;
     descriptionTextSize: boolean;
-    descriptionFontSize: string;
+    descriptionFontSize: keyof FontSizeMap;
     image: ImageType;
     reverseOrder: boolean;
     secondaryActionText: string;

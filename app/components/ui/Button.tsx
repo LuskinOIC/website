@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export type ButtonVariant = "blue" | "yellow" | "text";
+export type ButtonVariant = "blue" | "yellow" | "text" | "none";
 
 export interface ButtonProps {
   href: string;
@@ -20,7 +20,7 @@ const styles = {
 
 const Button = ({
   href,
-  variant = "blue",
+  variant = "none",
   className,
   children,
   text,
@@ -33,6 +33,7 @@ const Button = ({
       blue: "bg-[#0076AD]",
       yellow: "bg-amber-200 text-neutral-900",
       text: "p-0 underline",
+      none: "",
     }[variant],
     className,
   );
