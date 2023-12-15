@@ -11,8 +11,6 @@ interface SliderProps {
   slides: Slide[];
 }
 
-const indicatorStyles = ``;
-
 const Slider: React.FC<SliderProps> = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
