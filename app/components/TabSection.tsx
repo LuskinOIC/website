@@ -243,7 +243,6 @@ function MobileTabSection({
 function TabsTextOrCardContent({
   fields: { richTextContent, tabContent },
 }: TabType) {
-  console.log(richTextContent);
   if (tabContent != undefined) {
     // There's card content, so render cards
     return (

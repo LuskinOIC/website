@@ -9,6 +9,7 @@ import Button from "@/app/components/ui/Button";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
+import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 
 const descriptionClassNames: ClassNames = {
   paragraph: "py-2 leading-7 md:leading-10",
@@ -27,20 +28,19 @@ export default function ColumnLayout({
     ? "md:text-xl"
     : "md:text-2xl";
   const descriptionFontSize = () => {
-    if (section.fields.descriptionFontSize === "large") {
-      return "md:text-2xl";
-    } else if (section.fields.descriptionFontSize === "medium") {
-      return "md:text-xl";
-    } else {
-      return "md:text-lg";
-    }
+    const fontSizeMap = {
+      large: "md:text-2xl",
+      medium: "md:text-xl",
+      small: "md:text-lg",
+    };
+
+    return fontSizeMap[section.fields.descriptionFontSize] || "md:text-lg";
   };
   // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
   // for dynamically generated classes. This is a temporary fix.
-  const bgColor =
-    section.fields.backgroundColor === "blue" ? "bg-[#0076AD]" : "bg-white";
+  const bgColor = getBackgroundColor(section.fields.backgroundColor);
   const textColor =
-    section.fields.backgroundColor === "blue" ? "text-white" : "text-black";
+    section.fields.backgroundColor != "white" ? "text-white" : "text-black";
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
     descriptionClassNames,
@@ -73,13 +73,7 @@ export default function ColumnLayout({
                 titleStyle={section.fields.titleStyle}
                 bold={section.fields.bold}
               />
-              <div
-                className={`text-base ${
-                  descriptionFontSize
-                    ? descriptionFontSize()
-                    : descriptionTextSize
-                }`}
-              >
+              <div className={`text-base ${descriptionFontSize()}`}>
                 {descriptionContent}
               </div>
             </div>

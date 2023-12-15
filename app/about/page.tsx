@@ -1,16 +1,15 @@
-import React from "react";
-import SocialMediaBanner from "@/app/components/SocialMediaBanner";
-import QuadCard from "../components/QuadComponent";
-import LegacyCard from "../components/LegacyCard";
+import PageSection from "@/app/components/PageSection/PageSection";
+import { PageSectionType, AboutPageType } from "@/app/constants/types";
+import { getAboutPage } from "../utils/contentful";
 
 // TODO: Move grid components to their final homes.
-export default function About() {
+export default async function About() {
+  const page: AboutPageType = await getAboutPage();
   return (
     <main>
-      <h1>TOGETHER, we are LuskinOIC.</h1>
-      <SocialMediaBanner />
-      <QuadCard />
-      <LegacyCard />
+      {page.pageSections.map((pageSection: PageSectionType) => (
+        <PageSection key={pageSection.fields.title} section={pageSection} />
+      ))}
     </main>
   );
 }
