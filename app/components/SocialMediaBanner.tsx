@@ -1,4 +1,8 @@
 import React from "react";
+// Components
+import { Text1 } from "./ui/Typography/Text";
+import { Title1 } from "./ui/Typography/Title";
+// Icons + Images
 import FB from "../../public/fb.svg";
 import Image from "next/image";
 import LinkedIN from "../../public/libanner.svg";
@@ -7,8 +11,14 @@ import OzzieMobile from "../../public/ozzie-peeking-in.png";
 import TwitterX from "../../public/TwitterX.svg";
 import Yelp from "../../public/yelpbanner.svg";
 import Youtube from "../../public/youtubebanner.svg";
-import { Text1 } from "./ui/Typography/Text";
-import { Title1 } from "./ui/Typography/Title";
+// Links
+import {
+  FACEBOOK_URL,
+  LINKEDIN_URL,
+  TWITTER_URL,
+  YELP_URL,
+  YOUTUBE_URL,
+} from "../constants/links";
 
 export default function SocialMediaBanner() {
   return (
@@ -66,22 +76,22 @@ function MobileBanner() {
 
 function SocialMediaIcons() {
   return (
-    <div className="row-span-1 .. pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
-      <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 ..">
-        <a href="https://www.facebook.com/LuskinOIC/">
+    <div className="row-span-1 pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
+      <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4">
+        <a href={FACEBOOK_URL}>
           <Image src={FB} alt="Facebook Logo" />
         </a>
-        <a href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
+        <a href={LINKEDIN_URL}>
           <Image src={LinkedIN} alt="LinkedIn Logo" />
         </a>
-        <a href="https://twitter.com/LuskinOIC">
-          <Image src={TwitterX} alt="X Logo" />
+        <a href={TWITTER_URL}>
+          <Image src={TwitterX} alt="Twitter Logo" />
         </a>
-        <a href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
+        <a href={YOUTUBE_URL}>
           <Image src={Youtube} alt="Youtube Logo" />
         </a>
-        <a href="https://www.yelp.com/biz/luskin-orthopaedic-institute-for-children-los-angeles">
-          <Image src={Yelp} alt="Yelp Logo " />
+        <a href={YELP_URL}>
+          <Image src={Yelp} alt="Yelp Logo" />
         </a>
       </div>
     </div>

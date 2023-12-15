@@ -17,6 +17,7 @@ import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { dropdowns, menuMobileItems } from "./NavbarConstants";
 import Button from "@/app/components/ui/Button";
+import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
 
 interface DropdownStates {
   [key: string]: boolean;
@@ -65,13 +66,23 @@ export default function Navbar() {
         {/* Links Container */}
         <div className="basis-3/4 text-lg">
           <div className="flex flex-row justify-end h-fit">
-            <div className="hidden md:flex bg-purple-700 px-3 py-1 font-medium text-white rounded-bl-lg">
-              Urgent Care - Save My Spot
+            <div className="hidden md:flex bg-purple-700 px-3 py-1 font-medium text-white rounded-bl-lg hover:underline">
+              <a href={SAVE_MY_SPOT} target="_blank" rel="noopener noreferrer">
+                Urgent Care - Save My Spot
+              </a>
             </div>
             <div>
               <ul className="hidden md:flex font-bold bg-blue-300 text-black py-1 px-3">
-                <li className="mr-4"> 2137421000 </li>
-                <li className="mr-4"> MyChart </li>
+                <li className="mr-4"> (213) 742 - 1000 </li>
+                <li className="mr-4 hover:underline">
+                  <a
+                    href={MYCHART_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    MyChart
+                  </a>
+                </li>
                 <li className="mr-4"> Espanol </li>
               </ul>
             </div>
@@ -115,7 +126,7 @@ export default function Navbar() {
             ))}
             <div>
               <Button
-                href={"/"}
+                href={DONATE_URL}
                 text={"Donate"}
                 variant={"yellow"}
                 className="lg:h-[53px]"
