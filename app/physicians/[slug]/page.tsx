@@ -60,46 +60,46 @@ export default async function PhysicianBio({
 
   return (
     <main className="">
-      <div className="w-10/12 md:w-4/5 mx-auto">
-        <div className="md:grid md:grid-cols-3 gap-2 pt-12">
-          <div className="md:h-96 h-72 mb-3 md:mr-4">
+      <div className="mx-auto w-10/12 md:w-4/5">
+        <div className="gap-2 pt-12 md:grid md:grid-cols-3">
+          <div className="mb-3 h-72 md:mr-4 md:h-96">
             <Image
               src={physicianPortrait}
               alt={physicianName}
               width={portraitWidth}
               height={portraitHeight}
               style={{ objectPosition: "center 20%" }}
-              className="object-none h-full sm:w-auto"
+              className="h-full object-none sm:w-auto md:rounded-md"
             />
           </div>
 
           <div className="NAME-AND-SPECIALTIES">
-            <h1 className="PHYSICIAN-NAME text-2xl font-semibold mb-4 md:text-3xl md:pb-1 md:font-medium">
+            <h1 className="PHYSICIAN-NAME mb-4 text-2xl font-semibold md:pb-1 md:text-3xl md:font-medium">
               {physicianName}
             </h1>
-            <h3 className="SPECIALIZE text-base md:text-md mb-2">
+            <h3 className="SPECIALIZE md:text-md mb-2 text-base">
               Specializes in:
             </h3>
 
-            <div className="text-base mb-4 pl-4 md:text-md">
+            <div className="md:text-md mb-4 pl-4 text-base">
               {renderRichTextToReactComponent(
                 docBio.specialties as unknown as Document,
               )}
             </div>
           </div>
 
-          <div className="CONTACT-MOBILE md:hidden mb-6">
-            <p className="mb-5 md:mb-2 text-base">To make an appointment:</p>
+          <div className="CONTACT-MOBILE mb-6 md:hidden">
+            <p className="mb-5 text-base md:mb-2">To make an appointment:</p>
             <div className="flex text-lg">
-              <Image src={phone} alt="phone" className="mr-4 md:mb-0 mb-6" />
+              <Image src={phone} alt="phone" className="mb-6 mr-4 md:mb-0" />
               <p className="">{docBio.appointmentNumber}</p>
             </div>
           </div>
 
-          <div className="CONTACT-DESKTOP hidden md:ml-20 md:block md:text-lg mt-16">
+          <div className="CONTACT-DESKTOP mt-16 hidden md:ml-20 md:block md:text-lg">
             <div className="row-span-2">
               <p className="PATIENT-NUMBER pb-2">Patient Appointment:</p>
-              <p className="flex mb-4">
+              <p className="mb-4 flex">
                 <Image src={phone} alt="phone" className="mr-4" />
                 {docBio.appointmentNumber}
               </p>
@@ -113,19 +113,19 @@ export default async function PhysicianBio({
           </div>
         </div>
 
-        <div className="md:hidden mb-12">
-          <p className="pb-4 px-1">Choose a section you would like to review</p>
+        <div className="mb-12 md:hidden">
+          <p className="px-1 pb-4">Choose a section you would like to review</p>
           <Dropdown placeHolder="Overview" options={options} />
         </div>
 
-        <div className="flex items-center mt-10 mb-2 hidden md:block">
+        <div className="mb-2 mt-10 flex hidden items-center md:block">
           <hr className="flex-grow border-[#99C221]"></hr>
         </div>
 
-        <h2 className="text-xl text-[#0076AD] mb-8" id="#overview">
+        <h2 className="mb-8 text-xl text-[#0076AD]" id="#overview">
           OVERVIEW
         </h2>
-        <div className="text-lg pb-6">
+        <div className="pb-6 text-lg">
           {renderRichTextToReactComponent(
             docBio.overview as unknown as Document,
             richTextClassNames,
@@ -133,16 +133,16 @@ export default async function PhysicianBio({
         </div>
 
         <div className="flex items-center">
-          <hr className="flex-grow border-[#99C221] mb-2 hidden md:block"></hr>
+          <hr className="mb-2 hidden flex-grow border-[#99C221] md:block"></hr>
         </div>
         <h2
-          className="text-xl text-[#0076AD] mb-6"
+          className="mb-6 text-xl text-[#0076AD]"
           id="#education-and-certificates"
         >
           EDUCATION AND CERTIFICATES
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6 pb-6">
+        <div className="grid gap-6 pb-6 md:grid-cols-2">
           {docBio.bioPageSection.map(
             (section: BioPageSectionType): React.ReactNode => {
               return <BioPageSection key={section.sys.id} section={section} />;
@@ -151,8 +151,8 @@ export default async function PhysicianBio({
         </div>
 
         <div>
-          <h2 className="text-xl lg:text-2xl font-bold pb-4">Affiliations</h2>
-          <div className="text-lg pb-6">
+          <h2 className="pb-4 text-xl font-bold lg:text-2xl">Affiliations</h2>
+          <div className="pb-6 text-lg">
             {renderRichTextToReactComponent(
               docBio.affiliations as unknown as Document,
               richTextClassNames,
@@ -163,18 +163,18 @@ export default async function PhysicianBio({
       <div className="md:pr-20">
         <PageSection section={docBio.awardsAndRecognition} />
       </div>
-      <div className="w-10/12 md:w-4/5 mx-auto">
+      <div className="mx-auto w-10/12 md:w-4/5">
         <div className="flex items-center">
-          <hr className="flex-grow border-[#99C221] mb-2 hidden md:block"></hr>
+          <hr className="mb-2 hidden flex-grow border-[#99C221] md:block"></hr>
         </div>
         <h2
-          className="text-xl text-[#0076AD] mb-6 md:pb-6 "
+          className="mb-6 text-xl text-[#0076AD] md:pb-6"
           id="#research-insights-and-publications"
         >
           RESEARCH INSIGHTS & PUBLICATIONS
         </h2>
         <div id="RESEARCH-INSIGHTS" className="pb-10">
-          <h2 className="text-xl lg:text-2xl font-bold pb-4">
+          <h2 className="pb-4 text-xl font-bold lg:text-2xl">
             Research Insights
           </h2>
           {renderRichTextToReactComponent(
@@ -183,7 +183,7 @@ export default async function PhysicianBio({
           )}
         </div>
         <div id="PUBLICATIONS" className="pb-14">
-          <h2 className="text-xl lg:text-2xl font-bold pb-4">Publications</h2>
+          <h2 className="pb-4 text-xl font-bold lg:text-2xl">Publications</h2>
           {renderRichTextToReactComponent(
             docBio.publications as unknown as Document,
             researchPubClassNames,
