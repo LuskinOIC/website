@@ -13,38 +13,6 @@ interface SliderProps {
 
 const indicatorStyles = ``;
 
-const LeftArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="h-6 w-6">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15.75 19.5L8.25 12l7.5-7.5"
-    />
-  </svg>
-);
-
-const RightArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="h-6 w-6">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-    />
-  </svg>
-);
-
 const Slider: React.FC<SliderProps> = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
@@ -106,9 +74,6 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         ))}
       </div>
       <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center">
-        <button onClick={prevSlide}>
-          <LeftArrow />
-        </button>
         {slides.map((_, index) => (
           <span
             key={index}
@@ -118,9 +83,6 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
                 : "bg-gray-300 border-2 border-black w-4 h-4 opacity-20"
             }`}></span>
         ))}
-        <button onClick={nextSlide}>
-          <RightArrow />
-        </button>
       </div>
     </div>
   );
