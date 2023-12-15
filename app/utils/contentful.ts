@@ -68,6 +68,16 @@ export async function getSpecialty(): Promise<SpecialtyType> {
   return entry.fields as unknown as SpecialtyType;
 }
 
+export async function getSpecialtyBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "specialty",
+    "fields.slug": slug,
+    locale: "en-US",
+  });
+
+  return entry.items[0].fields as unknown as SpecialtyType;
+}
+
 /* SOCAL MEDIA */
 
 export async function getSocialMediaSection(): Promise<SocialMediaSectionType> {

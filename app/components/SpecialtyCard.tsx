@@ -1,17 +1,11 @@
 // Types
-import { Document } from "@contentful/rich-text-types";
 //Custom Components
 import renderRichTextToReactComponent from "../utils/rich-text";
 import { TitleComponent } from "./ui/Typography/Title";
-
-type Specialty = {
-  id: string;
-  name: string;
-  description?: Document;
-};
+import { SpecialtyType } from "../constants/types";
 
 type SpecialtyCardProps = {
-  specialty: Specialty;
+  specialty: SpecialtyType;
 };
 
 const styles = {
@@ -22,8 +16,8 @@ const styles = {
 
 export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
   const descriptionContent =
-    specialty.description &&
-    renderRichTextToReactComponent(specialty.description);
+    specialty.specialtyDescription &&
+    renderRichTextToReactComponent(specialty.specialtyDescription);
 
   return (
     <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>

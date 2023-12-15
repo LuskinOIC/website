@@ -1,19 +1,33 @@
-export function generateStaticParams() {
-  return [{ slug: "place-holder" }];
+import TabSection from "@/app/components/TabSection";
+import { Title1 } from "@/app/components/ui/Typography/Title";
+import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
+import renderRichTextToReactComponent from "@/app/utils/rich-text";
+import Image from "next/image";
+
+export async function generateStaticParams() {
+  const specialties = await getSpecialties();
+  return specialties.map((specialty) => ({
+    slug: specialty.slug,
+  }));
 }
 
-export default function Specialty() {
+export default async function Specialty({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const specialty = await getSpecialtyBySlug(params.slug);
+ 
   return (
     <main>
-      <h1>The Center for Cerebral Palsy at UCLA/LuskinOIC</h1>
-      <p>
-        The UCLA/LuskinOIC Cerebral Palsy Center strives to enhance
-        children&apos;s physical abilities and independence through early
-        diagnosis, thorough assessment, and personalized treatment. Given the
-        multifaceted nature of cerebral palsy, our interdisciplinary team of
-        medical experts is committed to addressing this complex neurological
-        disorder affecting balance, strength, coordination, and muscle tone.
-      </p>
+      <div className="flex flex-row">
+        <div className="flex flex-col">
+          <Title1>{specialty.name}</Title1>
+          {renderRichTextToReactComponent(specialty.specialtyDescription)}
+        </div>
+        <Image />
+      </div>
+      <TabSection fields={specialty.tabSection.fields} />
     </main>
   );
 }
