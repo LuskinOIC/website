@@ -7,12 +7,18 @@ import youtube from "../../public/youtube.svg";
 import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
 import newsLetter from "../../public/Newsletter.svg";
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  MYCHART_URL,
+  SAVE_MY_SPOT,
+  TWITTER_URL,
+  YOUTUBE_URL,
+} from "../constants/links";
 
 export default function Footer() {
   // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
-  // Use next/link to link to the pages.
-
-  // replaced all tabs with spaces, this time to match prettierrc.json, 3rd attempt
   return (
     <>
       <div className="flex justify-center px-5">
@@ -59,27 +65,27 @@ export default function Footer() {
             <div id="social-media">
               <ul className="flex pt-3.5">
                 <li className="pr-3">
-                  <Link href="https://www.facebook.com/LuskinOIC/">
+                  <Link href={FACEBOOK_URL}>
                     <Image src={facebook} alt="facebook" className="" />
                   </Link>
                 </li>
                 <li className="pr-3">
-                  <Link href="https://www.linkedin.com/school/luskin-orthopaedic-institute-for-children/">
+                  <Link href={LINKEDIN_URL}>
                     <Image src={linkedin} alt="linkedin" className="" />
                   </Link>
                 </li>
                 <li className="pr-3">
-                  <Link href="https://twitter.com/i/flow/login?redirect_after_login=%3FLuskinOIC">
+                  <Link href={TWITTER_URL}>
                     <Image src={twitter} alt="twitter" className="" />
                   </Link>
                 </li>
                 <li className="pr-3">
-                  <Link href="https://www.youtube.com/channel/UC3JqUFKs4TmQUGa9ekOYePA">
+                  <Link href={YOUTUBE_URL}>
                     <Image src={youtube} alt="youtube" className="" />
                   </Link>
                 </li>
                 <li className="pr-3">
-                  <Link href="https://www.instagram.com/luskinoic/">
+                  <Link href={INSTAGRAM_URL}>
                     <Image src={instagram} alt="instagram" className="" />
                   </Link>
                 </li>
@@ -125,7 +131,7 @@ export default function Footer() {
               <ul id="patient-support" className="">
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link href={SAVE_MY_SPOT} className="hover:underline">
                       Urgent Care
                     </Link>
                   </p>
@@ -146,7 +152,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link href={MYCHART_URL} className="hover:underline">
                       MyChart
                     </Link>
                   </p>
