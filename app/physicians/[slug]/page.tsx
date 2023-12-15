@@ -77,9 +77,7 @@ export default async function PhysicianBio({
             <h1 className="text-2xl font-semibold mb-4 md:text-3xl md:pb-1 md:font-medium">
               {physicianName}
             </h1>
-            <h3 className="text-base md:text-md mb-2">
-              Specializes in:
-            </h3>
+            <h3 className="text-base md:text-md mb-2">Specializes in:</h3>
 
             <div className="text-base mb-4 pl-4 md:text-md">
               {renderRichTextToReactComponent(
