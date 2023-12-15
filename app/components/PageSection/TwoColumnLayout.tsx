@@ -24,9 +24,6 @@ export default function ColumnLayout({
   const textPadding = section.fields.reverseOrder
     ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
     : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
-  const descriptionTextSize = !section.fields.descriptionTextSize
-    ? "md:text-xl"
-    : "md:text-2xl";
   const descriptionFontSize = () => {
     const fontSizeMap = {
       large: "md:text-2xl",
