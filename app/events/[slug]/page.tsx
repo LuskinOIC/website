@@ -12,6 +12,7 @@ import {
 } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
 import { adaptEventToMinimalCardType } from "../page";
+import Slider from "@/app/components/Slider";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -60,7 +61,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           <h1 className="my-6 text-2xl font-bold">{orgEvent.eventName}</h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames,
+            eventSummaryClassNames
           )}
           <p>Event Date: {formattedDateTime}</p>
           <div className="flex flex-col">
@@ -91,7 +92,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
               />
-            ),
+            )
           )}
       </div>
       <div id="event-details" className="flex flex-col-reverse">
@@ -104,7 +105,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           className="my-8 h-52 object-cover"
         />
       </div>
-      <div id="event-assets" className="flex">
+      <div id="event-assets" className="hidden md:block md:flex">
         {hasEventAssets &&
           orgEvent.eventAsset.map((asset: NestedAssetType) => (
             <DynamicImage
@@ -116,6 +117,22 @@ export default async function Event({ params }: { params: { slug: string } }) {
               className="mb-8"
             />
           ))}
+      </div>
+      <div id="event-assets-mobile" className="md:hidden">
+        {hasEventAssets && (
+          <Slider
+            slides={orgEvent.eventAsset.map((asset: NestedAssetType) => (
+              <DynamicImage
+                alt="event-assets"
+                key={asset.sys.id}
+                src={asset.fields.file.url}
+                width={asset.fields.file.details.image.width}
+                height={asset.fields.file.details.image.height}
+                className="mb-8"
+              />
+            ))}
+          />
+        )}
       </div>
       <p className="ml-36 w-44 text-lg font-semibold">
         {`THANK YOU TO OUR ${dateString.slice(0, 4)} SPONSORS`}
