@@ -73,11 +73,11 @@ export default async function PhysicianBio({
             />
           </div>
 
-          <div className="NAME-AND-SPECIALTIES">
-            <h1 className="PHYSICIAN-NAME text-2xl font-semibold mb-4 md:text-3xl md:pb-1 md:font-medium">
+          <div className="">
+            <h1 className="text-2xl font-semibold mb-4 md:text-3xl md:pb-1 md:font-medium">
               {physicianName}
             </h1>
-            <h3 className="SPECIALIZE text-base md:text-md mb-2">
+            <h3 className="text-base md:text-md mb-2">
               Specializes in:
             </h3>
 
@@ -87,16 +87,16 @@ export default async function PhysicianBio({
               )}
             </div>
           </div>
-
-          <div className="CONTACT-MOBILE md:hidden mb-6">
+          {/* contact mobile */}
+          <div className="md:hidden mb-6">
             <p className="mb-5 md:mb-2 text-base">To make an appointment:</p>
             <div className="flex text-lg">
               <Image src={phone} alt="phone" className="mr-4 md:mb-0 mb-6" />
               <p className="">{docBio.appointmentNumber}</p>
             </div>
           </div>
-
-          <div className="CONTACT-DESKTOP hidden md:ml-20 md:block md:text-lg mt-16">
+          {/* contact desktop */}
+          <div className="hidden md:ml-20 md:block md:text-lg mt-16">
             <div className="row-span-2">
               <p className="PATIENT-NUMBER pb-2">Patient Appointment:</p>
               <p className="flex mb-4">
@@ -105,7 +105,7 @@ export default async function PhysicianBio({
               </p>
             </div>
 
-            <p className="PHYSICIAN-NUMBER pb-2">For Physician:</p>
+            <p className="pb-2">For Physician:</p>
             <p className="flex">
               <Image src={phone} alt="phone" className="mr-4" />
               {docBio.physicianNumber}
@@ -173,7 +173,7 @@ export default async function PhysicianBio({
         >
           RESEARCH INSIGHTS & PUBLICATIONS
         </h2>
-        <div id="RESEARCH-INSIGHTS" className="pb-10">
+        <div className="pb-10">
           <h2 className="text-xl lg:text-2xl font-bold pb-4">
             Research Insights
           </h2>
@@ -182,7 +182,7 @@ export default async function PhysicianBio({
             researchPubClassNames,
           )}
         </div>
-        <div id="PUBLICATIONS" className="pb-14">
+        <div className="pb-14">
           <h2 className="text-xl lg:text-2xl font-bold pb-4">Publications</h2>
           {renderRichTextToReactComponent(
             docBio.publications as unknown as Document,
