@@ -64,7 +64,8 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
             ? "transition-transform duration-500 ease-in-out"
             : ""
         } h-full`}
-        style={{ transform: `translateX(${slideOffset}%)` }}>
+        style={{ transform: `translateX(${slideOffset}%)` }}
+      >
         {wrappedSlides.map((slide: any, index) => (
           <div key={index} className="w-full flex-shrink-0 text-center">
             {slide}
@@ -79,7 +80,8 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
               index === indicatorPosition
                 ? "bg-black border-2 border-black h-2 w-2 transition-opacity duration-500 ease-in-out motion-reduce:transition-none"
                 : "bg-gray-300 border-2 border-black w-2 h-2 opacity-20"
-            }`}></span>
+            }`}
+          ></span>
         ))}
       </div>
     </div>
