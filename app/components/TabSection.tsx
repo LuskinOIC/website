@@ -48,7 +48,7 @@ const styles = {
         : tabCount == 10
         ? "grid-cols-10"
         : "grid-cols-0";
-    return `grid ${gridColCount} h-16 min-w-fit w-[65rem] mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
+    return `grid ${gridColCount} h-16 min-w-fit w-4/5 mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
     // Set left margin of first item and right margin of last item to 0
@@ -61,8 +61,12 @@ const styles = {
       horizontalMargin = "mx-1";
     }
 
-    return `flex flex-col h-[3.812rem] min-w-fit rounded-t-lg rounded-b-none ${horizontalMargin} px-[30px] pt-[16px] pb-[13px] text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
+    return `flex flex-col h-[3.812rem] rounded-t-lg rounded-b-none ${horizontalMargin} px-2 text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
   },
+  dropdownSelectedItem:
+    "py-4 grow self-start text-start align-middle overflow-hidden whitespace-nowrap text-ellipsis uppercase text-sm text-gray-400 font-medium",
+  dropdownMenuItem:
+    "w-full py-2 text-sm text-center overflow-hidden whitespace-nowrap text-ellipsis uppercase text-luskin-blue font-bold",
 };
 
 export default function TabSection({ fields: { tabs } }: TabSectionType) {
@@ -115,7 +119,8 @@ function DesktopTabSection({
 }: DesktopTabSectionType) {
   return (
     /* Only show on desktop */
-    <div className="hidden md:block mt-6">
+    <div className="hidden md:block mt-6 max-w-4/5 mx-[10%]">
+      {" "}
       <Tabs
         value={selectedTab}
         className="flex flex-col items-center w-full h-fit mb-12"
@@ -128,7 +133,9 @@ function DesktopTabSection({
               onClick={() => setSelectedTab(tab.fields.tabTitle)}
               className={styles.tabsTrigger(index, tabCount)}
             >
-              <p className="uppercase text-base">{tab.fields.tabTitle}</p>
+              <p className="max-w-full uppercase text-base two-line-ellipsis">
+                {tab.fields.tabTitle}
+              </p>{" "}
             </TabsTrigger>
           ))}
         </TabsList>
@@ -169,9 +176,7 @@ function MobileTabSection({
         <DropdownMenu>
           <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
             <div className="flex flex-row w-full">
-              <p className="py-4 grow self-start text-start align-middle uppercase text-sm text-gray-400 font-medium">
-                {selectedTab}
-              </p>
+              <p className={styles.dropdownSelectedItem}>{selectedTab}</p>
               <Image
                 src="/dropdownarrow.svg"
                 width={20}
@@ -195,9 +200,7 @@ function MobileTabSection({
                   );
                 }}
               >
-                <p className="w-full py-2 text-sm text-center uppercase text-luskin-blue font-bold">
-                  {tab.fields.tabTitle}
-                </p>
+                <p className={styles.dropdownMenuItem}>{tab.fields.tabTitle}</p>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>

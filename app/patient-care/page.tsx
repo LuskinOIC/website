@@ -1,5 +1,6 @@
 import { getPatientCarePage } from "@/app/utils/contentful";
 import TabSection from "../components/TabSection";
+import LocationsCard from "../components/LocationsCard";
 
 /* Here to next comment can be removed once values are in Contentful */
 const placeholderCard = {
@@ -47,33 +48,9 @@ export default async function PatientCare() {
   }
   /* */
 
-  /* Here to next comment can be removed once values are in Contentful */
-  if (patientCarePage.tabSection.fields.tabs.length == 2) {
-    patientCarePage.tabSection.fields.tabs.push(
-      {
-        fields: {
-          tabTitle: "Patient Rights & Responsibilities",
-          cardContent: placeholderCardContent,
-        },
-      },
-      {
-        fields: {
-          tabTitle: "Appointment Preparation",
-          cardContent: placeholderCardContent,
-        },
-      },
-      {
-        fields: {
-          tabTitle: "Patient Forms",
-          cardContent: placeholderCardContent,
-        },
-      },
-    );
-  }
-  /* */
-
   return (
     <main>
+      <LocationsCard locations={patientCarePage.locations} />
       <TabSection fields={patientCarePage.tabSection.fields} />
     </main>
   );

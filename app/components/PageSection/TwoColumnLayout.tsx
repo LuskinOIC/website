@@ -21,8 +21,11 @@ export default function ColumnLayout({
 }) {
   const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
   const textPadding = section.fields.reverseOrder
-    ? "md:pl-[15%] md:pr-10"
-    : "md:pr-[15%] md:pl-10";
+    ? "md:pl-[10%] md:pr-10"
+    : "md:pr-[10%] md:pl-10";
+  const descriptionTextSize = !section.fields.descriptionTextSize
+    ? "md:text-xl"
+    : "md:text-2xl";
   // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
   // for dynamically generated classes. This is a temporary fix.
   const bgColor =
@@ -35,13 +38,13 @@ export default function ColumnLayout({
     descriptionClassNames,
   );
   return (
-    <section className={`block ${bgColor} my-5`}>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-14 items-center">
+    <section className={`block ${bgColor} md:my-10`}>
+      <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
           <div className={`basis-1/2 ${orderClass}`}>
             <Image
-              className="fill-inherit"
+              className="md:rounded-l-lg"
               src={`https:${section.fields.image.fields.file.url}`}
               alt={section.fields.image.fields.description}
               width={0}
@@ -53,20 +56,23 @@ export default function ColumnLayout({
             />
           </div>
         )}
-        <div className={`basis-1/2 ${textPadding}`}>
-          <div className="md:w-10/12 grid md:gap-4 mx-2 px-3 py-5 md:py-40">
+        <div className={`basis-1/2 px-2 ${textPadding}`}>
+          <div className="grid md:gap-4 mx-2 px-3 py-5">
             <div className={`grid gap-2 ${textColor}`}>
               <TitleComponent
                 title={section.fields.title}
                 titleSize={section.fields.titleSize}
               />
-              <div className="text-base md:text-2xl">{descriptionContent}</div>
+              <div className={`text-base ${descriptionTextSize}`}>
+                {descriptionContent}
+              </div>
             </div>
-            <div className="flex flex-col md:flex-row md:justify-between gap-4 md:gap-6">
+            <div className="flex flex-col w-full md:flex-row md:justify-between gap-4 md:gap-6 py-5">
               {section.fields.actionUrl && (
                 <Button
                   href={section.fields.actionUrl}
                   text={section.fields.actionText}
+                  variant={section.fields.buttonStyle}
                 />
               )}
               {section.fields.secondaryActionUrl && (
