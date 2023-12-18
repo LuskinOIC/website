@@ -72,6 +72,7 @@ export async function getSpecialtyBySlug(slug: string) {
   const entry = await client.getEntries({
     content_type: "specialty",
     "fields.slug": slug,
+    include: 3,
     locale: "en-US",
   });
 

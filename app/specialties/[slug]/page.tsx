@@ -17,15 +17,20 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
- 
+
   return (
     <main>
       <div className="flex flex-row">
         <div className="flex flex-col">
           <Title1>{specialty.name}</Title1>
-          {renderRichTextToReactComponent(specialty.specialtyDescription)}
+          {renderRichTextToReactComponent(specialty.description)}
         </div>
-        <Image />
+        <Image
+          src={specialty.image.fields.file.url}
+          width={720}
+          height={720}
+          alt={specialty.name}
+        />
       </div>
       <TabSection fields={specialty.tabSection.fields} />
     </main>

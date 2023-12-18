@@ -297,7 +297,7 @@ export type SpecialtyTypeProps = {
 export type SpecialtyType = {
   name: string;
   slug: string;
-  specialtyDescription: Document;
+  description: Document;
   specialistsTitle?: string;
   buttonText?: string;
   buttonUrl?: string;

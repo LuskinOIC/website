@@ -16,8 +16,8 @@ const styles = {
 
 export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
   const descriptionContent =
-    specialty.specialtyDescription &&
-    renderRichTextToReactComponent(specialty.specialtyDescription);
+    specialty.description &&
+    renderRichTextToReactComponent(specialty.description);
 
   return (
     <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
