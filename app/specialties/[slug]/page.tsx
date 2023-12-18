@@ -29,8 +29,8 @@ export default async function Specialty({
           alt={specialty.name}
           className="col-span-4 w-1/2"
         />
-        <div className="flex flex-col w-[38%] text-xl">
-          <Title1 className="font-normal mb-5">{specialty.name}</Title1>
+        <div className="flex flex-col w-[35%] text-xl">
+          <Title1 className="md:text-5xl mb-5">{specialty.name}</Title1>
           {renderRichTextToReactComponent(specialty.description)}
         </div>
       </div>
