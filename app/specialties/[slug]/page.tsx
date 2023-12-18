@@ -21,13 +21,13 @@ export default async function Specialty({
 
   return (
     <main>
-      <div className="flex flex-row-reverse w-full pl-[13%] mt-[2%] mb-[2%] items-center justify-between">
+      <div className="flex flex-col md:flex-row-reverse w-full md:pl-[13%] mt-[-7%] md:mt-[2%] md:mb-[2%] items-center justify-between">
         <Image
           src={specialty.image.fields.file.url}
           width={720}
           height={720}
           alt={specialty.name}
-          className="col-span-4 w-1/2"
+          className="md:w-1/2"
         />
         <div className="flex flex-col w-[35%] text-xl">
           <Title1 className="md:text-5xl mb-5">{specialty.name}</Title1>
