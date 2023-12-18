@@ -21,7 +21,7 @@ export default async function Specialty({
 
   return (
     <main>
-      <div className="flex flex-row-reverse w-full pl-[10%] mt-[2%] items-center">
+      <div className="flex flex-row-reverse w-full pl-[13%] mt-[2%] mb-[2%] items-center justify-between">
         <Image
           src={specialty.image.fields.file.url}
           width={720}
@@ -29,8 +29,8 @@ export default async function Specialty({
           alt={specialty.name}
           className="col-span-4 w-1/2"
         />
-        <div className="flex flex-col w-[41%] mr-[3%] text-xl">
-          <Title1 className="font-normal">{specialty.name}</Title1>
+        <div className="flex flex-col w-[38%] text-xl">
+          <Title1 className="font-normal mb-5">{specialty.name}</Title1>
           {renderRichTextToReactComponent(specialty.description)}
         </div>
       </div>
