@@ -302,7 +302,9 @@ export type SpecialtyType = {
   buttonText?: string;
   buttonUrl?: string;
   location: LocationType;
-  physicians: PhysicianBioType[];
+  physicians: Array<{
+    fields: PhysicianBioType;
+  }>;
   image: ImageType;
   tabSection: TabSectionType;
   englishFormUrl: string;

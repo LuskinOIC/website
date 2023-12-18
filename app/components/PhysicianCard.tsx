@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { PhysicianBioType } from "../constants/types"
+import { PhysicianBioType } from "../constants/types";
 import { Title3 } from "./ui/Typography/Title";
 
 export default function PhysicianCard({
@@ -8,9 +8,6 @@ export default function PhysicianCard({
 }: {
   physician: PhysicianBioType;
 }) {
-  console.dir(physician);
-  console.dir(physician.physicianPortrait);
-
   return (
     <Card>
       <div className="flex flex-col">

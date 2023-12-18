@@ -36,7 +36,7 @@ export default async function Specialty({
       <TabSection fields={specialty.tabSection.fields} />
       <div className="grid">
         {specialty.physicians.map((phys, index) => (
-          <PhysicianCard key={index} physician={phys} />
+          <PhysicianCard key={index} physician={phys.fields} />
         ))}
       </div>
     </main>
