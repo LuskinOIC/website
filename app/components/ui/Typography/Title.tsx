@@ -1,5 +1,6 @@
 import React from "react";
 import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
 type TitleProps = {
   children?: React.ReactNode;
@@ -13,27 +14,37 @@ type TitleProps = {
 export const myFont = localFont({ src: "./Mathlete-Bulky.otf" });
 
 export const LuskinHeader = ({ children, className = "" }: TitleProps) => {
-  const classes = `${myFont.className} text-[#825AA4] text-[64px] leading-[60px] tracking-wide py-2 font-normal ${className}`;
+  const classes = cn(
+    myFont.className,
+    "text-[#825AA4] text-[64px] leading-[60px] tracking-wide py-2 font-normal",
+    className,
+  );
   return <h1 className={classes}>{children}</h1>;
 };
 
-export const Title0 = ({ children }: TitleProps) => {
-  const classes = `text-base md:text-[32px] md:leading-[48px] py-2 `;
+export const Title0 = ({ children, className = "" }: TitleProps) => {
+  const classes = cn(
+    "text-base md:text-[32px] md:leading-[48px] py-2",
+    className,
+  );
   return <h1 className={classes}>{children}</h1>;
 };
 
 export const Title1 = ({ children, className = "" }: TitleProps) => {
-  const classes = `text-2xl md:text-3xl md:leading-[30px] py-2 ${className}`;
+  const classes = cn("text-2xl md:text-3xl md:leading-[30px] py-2", className);
   return <h1 className={classes}>{children}</h1>;
 };
 
 export const Title2 = ({ children, className = "" }: TitleProps) => {
-  const classes = `text-xl md:text-2xl font-arial leading-[60px] py-2 ${className}`;
+  const classes = cn(
+    "text-xl md:text-2xl font-arial leading-[60px] py-2",
+    className,
+  );
   return <h1 className={classes}>{children}</h1>;
 };
 
 export const Title3 = ({ children, className = "" }: TitleProps) => {
-  const classes = `text-base font-arial leading-[60px] py-2 ${className}`;
+  const classes = cn("text-base font-arial leading-[60px] py-2", className);
   return <h1 className={classes}>{children}</h1>;
 };
 
