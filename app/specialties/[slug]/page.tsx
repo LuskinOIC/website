@@ -1,6 +1,6 @@
-import PhysicianCard from "@/app/components/PhysicianCard";
+import PhysicianList from "@/app/components/PhysicianList";
 import TabSection from "@/app/components/TabSection";
-import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
+import { Title1 } from "@/app/components/ui/Typography/Title";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Image from "next/image";
@@ -34,15 +34,11 @@ export default async function Specialty({
           {renderRichTextToReactComponent(specialty.description)}
         </div>
       </div>
-      <TabSection fields={specialty.tabSection.fields} />
-      <Title3 className="pl-[15%] mt-[-40px] ml-4 leading-10 uppercase text-luskin-blue font-medium">
-        {specialty.specialistsTitle}
-      </Title3>
-      <div className="w-full px-[15%] grid mb-5">
-        {specialty.physicians.map((phys, index) => (
-          <PhysicianCard key={index} physician={phys.fields} />
-        ))}
-      </div>
+      <TabSection fields={specialty.tabSection.fields} className="mb-[-40px]" />
+      <PhysicianList
+        specialistsTitle={specialty.specialistsTitle}
+        physicians={specialty.physicians}
+      />
     </main>
   );
 }
