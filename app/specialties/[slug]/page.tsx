@@ -1,3 +1,4 @@
+import PhysicianCard from "@/app/components/PhysicianCard";
 import TabSection from "@/app/components/TabSection";
 import { Title1 } from "@/app/components/ui/Typography/Title";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
@@ -33,6 +34,11 @@ export default async function Specialty({
         />
       </div>
       <TabSection fields={specialty.tabSection.fields} />
+      <div className="grid">
+        {specialty.physicians.map((phys, index) => (
+          <PhysicianCard key={index} physician={phys} />
+        ))}
+      </div>
     </main>
   );
 }
