@@ -69,17 +69,15 @@ export default async function PhysicianBio({
               width={portraitWidth}
               height={portraitHeight}
               style={{ objectPosition: "center 20%" }}
-              className="h-full object-none sm:w-auto md:rounded-md"
+              className="h-full object-none sm:w-auto"
             />
           </div>
 
-          <div className="NAME-AND-SPECIALTIES">
-            <h1 className="PHYSICIAN-NAME mb-4 text-2xl font-semibold md:pb-1 md:text-3xl md:font-medium">
+          <div className="">
+            <h1 className="mb-4 text-2xl font-semibold md:pb-1 md:text-3xl md:font-medium">
               {physicianName}
             </h1>
-            <h3 className="SPECIALIZE md:text-md mb-2 text-base">
-              Specializes in:
-            </h3>
+            <h3 className="md:text-md mb-2 text-base">Specializes in:</h3>
 
             <div className="md:text-md mb-4 pl-4 text-base">
               {renderRichTextToReactComponent(
@@ -87,25 +85,25 @@ export default async function PhysicianBio({
               )}
             </div>
           </div>
-
-          <div className="CONTACT-MOBILE mb-6 md:hidden">
+          {/* contact mobile */}
+          <div className="mb-6 md:hidden">
             <p className="mb-5 text-base md:mb-2">To make an appointment:</p>
             <div className="flex text-lg">
               <Image src={phone} alt="phone" className="mb-6 mr-4 md:mb-0" />
               <p className="">{docBio.appointmentNumber}</p>
             </div>
           </div>
-
-          <div className="CONTACT-DESKTOP mt-16 hidden md:ml-20 md:block md:text-lg">
+          {/* contact desktop */}
+          <div className="mt-16 hidden md:ml-20 md:block md:text-lg">
             <div className="row-span-2">
-              <p className="PATIENT-NUMBER pb-2">Patient Appointment:</p>
+              <p className="pb-2">Patient Appointment:</p>
               <p className="mb-4 flex">
                 <Image src={phone} alt="phone" className="mr-4" />
                 {docBio.appointmentNumber}
               </p>
             </div>
 
-            <p className="PHYSICIAN-NUMBER pb-2">For Physician:</p>
+            <p className="pb-2">For Physician:</p>
             <p className="flex">
               <Image src={phone} alt="phone" className="mr-4" />
               {docBio.physicianNumber}
@@ -173,7 +171,7 @@ export default async function PhysicianBio({
         >
           RESEARCH INSIGHTS & PUBLICATIONS
         </h2>
-        <div id="RESEARCH-INSIGHTS" className="pb-10">
+        <div className="pb-10">
           <h2 className="pb-4 text-xl font-bold lg:text-2xl">
             Research Insights
           </h2>
@@ -182,7 +180,7 @@ export default async function PhysicianBio({
             researchPubClassNames,
           )}
         </div>
-        <div id="PUBLICATIONS" className="pb-14">
+        <div className="pb-14">
           <h2 className="pb-4 text-xl font-bold lg:text-2xl">Publications</h2>
           {renderRichTextToReactComponent(
             docBio.publications as unknown as Document,
