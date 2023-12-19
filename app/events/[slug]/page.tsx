@@ -96,25 +96,28 @@ export default async function Event({ params }: { params: { slug: string } }) {
     <main>
       <div
         className="flex flex-col-reverse md:flex-row md:justify-between"
-        id="main-event">
+        id="main-event"
+      >
         <div className="mx-10 md:ml-36 md:mt-24 md:w-4/12" id="main-event-info">
           <h1 className="my-6 text-2xl font-bold md:mb-8 md:text-4xl md:font-normal">
             {orgEvent.eventName}
           </h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames
+            eventSummaryClassNames,
           )}
           <p className="mb-4 text-lg md:mb-6 md:text-2xl">
             Event Date: {formattedDateTime}
           </p>
           <div className="flex flex-col md:mb-32 md:flex-row">
             <button
-              className={`md:mr-6 mb-4 w-44 rounded-lg bg-[#0076AD] py-1 text-lg tracking-wide uppercase text-white ${buttonStyling}`}>
+              className={`md:mr-6 mb-4 w-44 rounded-lg bg-[#0076AD] py-1 text-lg tracking-wide uppercase text-white ${buttonStyling}`}
+            >
               attend event
             </button>
             <button
-              className={`text-left md:text-center mb-4 underline ${buttonStyling}`}>
+              className={`text-left md:text-center mb-4 underline ${buttonStyling}`}
+            >
               directions
             </button>
           </div>
@@ -140,12 +143,13 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
               />
-            )
+            ),
           )}
       </div>
       <div
         id="event-details"
-        className="flex flex-col-reverse md:mb-20 md:flex-row md:justify-between 2xl:ml-64">
+        className="flex flex-col-reverse md:mb-20 md:flex-row md:justify-between 2xl:ml-64"
+      >
         <p className="mx-6 mb-6 md:mt-48 md:w-2/5 md:text-2xl">
           {orgEvent.eventDetails}
         </p>
@@ -196,7 +200,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
         </p>
         <div
           id="sponsor-assets"
-          className="my-6 flex flex-wrap border md:border-0">
+          className="my-6 flex flex-wrap border md:border-0"
+        >
           {/* {hasSponsors &&
             orgEvent.sponsor.map((asset: NestedAssetType) => (
               <DynamicImage
