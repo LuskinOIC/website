@@ -78,12 +78,10 @@ export default async function PhysicianBio({
               {physicianName}
             </h1>
             <h3 className="md:text-md mb-2 text-base">Specializes in:</h3>
-            <h3 className="md:text-md mb-2 text-base">Specializes in:</h3>
 
             <div className="md:text-md mb-4 pl-4 text-base">
-            <div className="md:text-md mb-4 pl-4 text-base">
               {renderRichTextToReactComponent(
-                docBio.specialties as unknown as Document,
+                docBio.specialties as unknown as Document
               )}
             </div>
           </div>
@@ -92,15 +90,12 @@ export default async function PhysicianBio({
             <p className="mb-5 text-base md:mb-2">To make an appointment:</p>
             <div className="flex text-lg">
               <Image src={phone} alt="phone" className="mb-6 mr-4 md:mb-0" />
-              <Image src={phone} alt="phone" className="mb-6 mr-4 md:mb-0" />
               <p className="">{docBio.appointmentNumber}</p>
             </div>
           </div>
           {/* contact desktop */}
           <div className="mt-16 hidden md:ml-20 md:block md:text-lg">
             <div className="row-span-2">
-              <p className="pb-2">Patient Appointment:</p>
-              <p className="mb-4 flex">
               <p className="pb-2">Patient Appointment:</p>
               <p className="mb-4 flex">
                 <Image src={phone} alt="phone" className="mr-4" />
@@ -118,58 +113,46 @@ export default async function PhysicianBio({
 
         <div className="mb-12 md:hidden">
           <p className="px-1 pb-4">Choose a section you would like to review</p>
-        <div className="mb-12 md:hidden">
-          <p className="px-1 pb-4">Choose a section you would like to review</p>
           <Dropdown placeHolder="Overview" options={options} />
         </div>
 
-        <div className="mb-2 mt-10 flex hidden items-center md:block">
         <div className="mb-2 mt-10 flex hidden items-center md:block">
           <hr className="flex-grow border-[#99C221]"></hr>
         </div>
 
         <h2 className="mb-8 text-xl text-[#0076AD]" id="#overview">
-        <h2 className="mb-8 text-xl text-[#0076AD]" id="#overview">
           OVERVIEW
         </h2>
         <div className="pb-6 text-lg">
-        <div className="pb-6 text-lg">
           {renderRichTextToReactComponent(
             docBio.overview as unknown as Document,
-            richTextClassNames,
+            richTextClassNames
           )}
         </div>
 
         <div className="flex items-center">
           <hr className="mb-2 hidden flex-grow border-[#99C221] md:block"></hr>
-          <hr className="mb-2 hidden flex-grow border-[#99C221] md:block"></hr>
         </div>
         <h2
           className="mb-6 text-xl text-[#0076AD]"
           id="#education-and-certificates">
-          className="mb-6 text-xl text-[#0076AD]"
-          id="#education-and-certificates"
-        >
           EDUCATION AND CERTIFICATES
         </h2>
 
         <div className="grid gap-6 pb-6 md:grid-cols-2">
-        <div className="grid gap-6 pb-6 md:grid-cols-2">
           {docBio.bioPageSection.map(
             (section: BioPageSectionType): React.ReactNode => {
               return <BioPageSection key={section.sys.id} section={section} />;
-            },
+            }
           )}
         </div>
 
         <div>
           <h2 className="pb-4 text-xl font-bold lg:text-2xl">Affiliations</h2>
           <div className="pb-6 text-lg">
-          <h2 className="pb-4 text-xl font-bold lg:text-2xl">Affiliations</h2>
-          <div className="pb-6 text-lg">
             {renderRichTextToReactComponent(
               docBio.affiliations as unknown as Document,
-              richTextClassNames,
+              richTextClassNames
             )}
           </div>
         </div>
@@ -178,17 +161,12 @@ export default async function PhysicianBio({
         <PageSection section={docBio.awardsAndRecognition} />
       </div>
       <div className="mx-auto w-10/12 md:w-4/5">
-      <div className="mx-auto w-10/12 md:w-4/5">
         <div className="flex items-center">
-          <hr className="mb-2 hidden flex-grow border-[#99C221] md:block"></hr>
           <hr className="mb-2 hidden flex-grow border-[#99C221] md:block"></hr>
         </div>
         <h2
           className="mb-6 text-xl text-[#0076AD] md:pb-6"
           id="#research-insights-and-publications">
-          className="mb-6 text-xl text-[#0076AD] md:pb-6"
-          id="#research-insights-and-publications"
-        >
           RESEARCH INSIGHTS & PUBLICATIONS
         </h2>
         <div className="pb-10">
@@ -197,14 +175,14 @@ export default async function PhysicianBio({
           </h2>
           {renderRichTextToReactComponent(
             docBio.researchInsights as unknown as Document,
-            researchPubClassNames,
+            researchPubClassNames
           )}
         </div>
         <div className="pb-14">
           <h2 className="pb-4 text-xl font-bold lg:text-2xl">Publications</h2>
           {renderRichTextToReactComponent(
             docBio.publications as unknown as Document,
-            researchPubClassNames,
+            researchPubClassNames
           )}
         </div>
       </div>
