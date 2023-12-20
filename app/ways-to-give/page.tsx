@@ -8,7 +8,7 @@ export default async function WaysToGive() {
 
   return (
     <main>
-      {page.sections.map((pageSection: PageSectionType) => (
+      {page.pageSections.map((pageSection: PageSectionType) => (
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
     </main>
