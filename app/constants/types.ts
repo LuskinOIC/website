@@ -143,10 +143,9 @@ export type ImageType = {
   };
 };
 
-export type LandingPageType = {
+export type PageType = {
   metaData: string;
-  goalSection: PageSectionType;
-  sections: PageSectionType[];
+  pageSection: PageSectionType[];
 };
 
 export type PatientCarePageType = {
@@ -219,8 +218,21 @@ export type PageSectionType = {
     type: string;
     infoCards: CardType[];
     dividerText: string;
+    columns: ColumnType[];
   };
 };
+
+export type ColumnType = {
+  title: string; // Short text
+  titleSize: string; // Short text
+  bold: boolean; // Boolean
+  subHeader: string; // Short text
+  luskinHeader: boolean; // Boolean
+  columnImage: any; // Media (type can vary based on implementation)
+  content: string; // Long text
+  imageColumnSection: ImageType; // Media (type can vary based on implementation)
+  button: any[]; // References, many (type can vary based on implementation)
+}
 
 export type PhysicianBioType = {
   physicianName: string;

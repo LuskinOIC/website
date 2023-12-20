@@ -1,13 +1,14 @@
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionType } from "@/app/constants/types";
-import { getLandingPage } from "@/app/utils/contentful";
+import { getPageByType } from "@/app/utils/contentful";
+import { PAGE_TYPES } from "@/app/constants/entries";
 
 // This is the root page to the website.
 export default async function Home() {
-  const page = await getLandingPage();
+  const page = await getPageByType(PAGE_TYPES.LANDING_PAGE);
   return (
     <main>
-      {page.sections.map((section: PageSectionType) => (
+      {page.pageSection.map((section: PageSectionType) => (
         <PageSection key={section.fields.title} section={section} />
       ))}
     </main>

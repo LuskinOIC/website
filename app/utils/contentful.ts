@@ -2,13 +2,12 @@ import { createClient } from "contentful";
 import {
   AboutPageType,
   EventType,
-  LandingPageType,
+  PageType,
   PatientCarePageType,
   PhysicianBioType,
   SocialMediaSectionType,
   SpecialtyType,
 } from "@/app/constants/types";
-import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
 // Create the Contentful Client
 const client = createClient({
@@ -18,13 +17,15 @@ const client = createClient({
 
 /* LANDING PAGE */
 
-export async function getLandingPage() {
-  const entry = await client.getEntry(LANDING_PAGE_ID, {
-    include: 2,
+export async function getPageByType(pageType: string) {
+  const entry = await client.getEntries({
+    content_type: "page",
+    "fields.pageType": pageType,
     locale: "en-US",
+    include: 4,
   });
 
-  return entry.fields as unknown as LandingPageType;
+  return entry.items[0].fields as unknown as PageType;
 }
 
 /* EVENTS */
