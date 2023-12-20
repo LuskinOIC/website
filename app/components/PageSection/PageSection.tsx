@@ -10,6 +10,7 @@ import ImagesLayout from "./ImagesLayout";
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
 
 export default function PageSection({ section }: { section: PageSectionType }) {
+  console.log(section.fields.column);
   switch (section.fields.type) {
     case "Column Layout":
       return <ColumnLayout section={section} />;
