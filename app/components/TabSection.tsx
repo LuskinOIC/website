@@ -1,6 +1,6 @@
 "use client";
 
-import { TabSectionType, TabType } from "../constants/types";
+import { TabType } from "../constants/types";
 import Button from "./ui/Button";
 import renderRichTextToReactComponent from "../utils/rich-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -82,7 +82,7 @@ const styles = {
     "w-full py-2 text-sm text-center overflow-hidden whitespace-nowrap text-ellipsis uppercase text-luskin-blue font-bold",
 };
 
-export default function TabSection({ fields: { tabs } }: TabSectionType) {
+export default function TabSection({ tabs }: { tabs: TabType[] }) {
   // Use state to switch tabs with the dropdown menu
   const [selectedTab, setSelectedTab] = useState(tabs[0].fields.tabTitle);
   // Use state to trigger component refresh once tabs fully load
@@ -241,13 +241,13 @@ function MobileTabSection({
 }
 
 function TabsTextOrCardContent({
-  fields: { richTextContent, tabContent },
+  fields: { type, richTextContent, cardContent },
 }: TabType) {
-  if (tabContent != undefined) {
-    // There's card content, so render cards
+  if (type == "Double Column" && cardContent) {
+    // Render two columns of cards
     return (
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {tabContent.map((card, index) => (
+        {cardContent.map((card, index) => (
           <Card
             key={index}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
@@ -273,8 +273,8 @@ function TabsTextOrCardContent({
         ))}
       </div>
     );
-  } else if (richTextContent != undefined) {
-    // There's text content, so render text
+  } else if (type == "Single Column" && richTextContent) {
+    // Render one column of rich text
     return (
       <div className="md:pt-7 pb-7">
         {renderRichTextToReactComponent(richTextContent)}
