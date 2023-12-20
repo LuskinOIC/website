@@ -3,7 +3,6 @@ import {
   AboutPageType,
   EventType,
   PageType,
-  PatientCarePageType,
   PhysicianBioType,
   SocialMediaSectionType,
   SpecialtyType,
@@ -17,12 +16,15 @@ const client = createClient({
 
 /* LANDING PAGE */
 
-export async function getPageByType(pageType: string) {
+export async function getPageByType(
+  pageType: string,
+  include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4,
+) {
   const entry = await client.getEntries({
     content_type: "page",
     "fields.pageType": pageType,
     locale: "en-US",
-    include: 4,
+    include: include,
   });
 
   return entry.items[0].fields as unknown as PageType;
@@ -93,19 +95,6 @@ export async function getPhysicianBioBySlug(slug: string) {
   });
 
   return entry.items[0].fields as unknown as PhysicianBioType;
-}
-
-/* PATIENT CARE */
-
-export async function getPatientCarePage() {
-  const entries = await client.getEntries({
-    content_type: "patientCarePage",
-    include: 3,
-    locale: "en-US",
-  });
-  const entry = entries.items[0];
-
-  return entry.fields as unknown as PatientCarePageType;
 }
 
 /* ABOUT */
