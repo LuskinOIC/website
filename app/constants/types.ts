@@ -146,7 +146,7 @@ export type ImageType = {
 export type PageType = {
   metaData: string;
   pageType: string;
-  pageSection: PageSectionType[];
+  pageSections: PageSectionType[];
   slug: string;
 };
 
