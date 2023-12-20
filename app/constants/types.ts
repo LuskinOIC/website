@@ -145,13 +145,9 @@ export type ImageType = {
 
 export type PageType = {
   metaData: string;
+  pageType: string;
   pageSection: PageSectionType[];
-};
-
-export type PatientCarePageType = {
-  title: string;
-  locations: LocationType[];
-  tabSection: TabSectionType;
+  slug: string;
 };
 
 export type LocationType = {
@@ -166,17 +162,12 @@ export type LocationType = {
   };
 };
 
-export type TabSectionType = {
-  fields: {
-    tabs: TabType[];
-  };
-};
-
 export type TabType = {
   fields: {
-    richTextContent?: Document;
-    tabContent?: TabCardType[];
+    type: string;
     tabTitle: string;
+    richTextContent?: Document;
+    cardContent?: TabCardType[];
   };
 };
 
@@ -206,7 +197,6 @@ export type PageSectionType = {
     bold: boolean;
     columnCount: number;
     description: string;
-    descriptionTextSize: boolean;
     descriptionFontSize: keyof FontSizeMap;
     image: ImageType;
     reverseOrder: boolean;
@@ -219,19 +209,21 @@ export type PageSectionType = {
     infoCards: CardType[];
     dividerText: string;
     column: ColumnType[];
+    tabs: TabType[];
+    locations: LocationType[];
   };
 };
 
 export type ColumnType = {
-  title: string;
-  titleSize: string;
-  bold: boolean;
-  subHeader: string;
-  luskinHeader: boolean;
-  columnImage: ImageType[];
-  content: string;
-  imageColumnSection: ImageType;
-  button: any[];
+  title: string; // Short text
+  titleSize: string; // Short text
+  bold: boolean; // Boolean
+  subHeader: string; // Short text
+  luskinHeader: boolean; // Boolean
+  columnImage: any; // Media (type can vary based on implementation)
+  content: string; // Long text
+  imageColumnSection: ImageType; // Media (type can vary based on implementation)
+  button: any[]; // References, many (type can vary based on implementation)
 };
 
 export type PhysicianBioType = {
