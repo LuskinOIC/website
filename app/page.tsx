@@ -8,7 +8,7 @@ export default async function Home() {
   const page = await getPageByType(PAGE_TYPES.LANDING_PAGE);
   return (
     <main>
-      {page.pageSection.map((section: PageSectionType) => (
+      {page.pageSections.map((section: PageSectionType) => (
         <PageSection key={section.fields.title} section={section} />
       ))}
     </main>
