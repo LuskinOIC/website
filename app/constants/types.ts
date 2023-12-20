@@ -204,18 +204,6 @@ export type PageSectionType = {
   };
 };
 
-export type ColumnType = {
-  title: string; // Short text
-  titleSize: string; // Short text
-  bold: boolean; // Boolean
-  subHeader: string; // Short text
-  luskinHeader: boolean; // Boolean
-  columnImage: any; // Media (type can vary based on implementation)
-  content: string; // Long text
-  imageColumnSection: ImageType; // Media (type can vary based on implementation)
-  button: any[]; // References, many (type can vary based on implementation)
-};
-
 export type TextType = {
   fields: {
     title: string;
@@ -233,6 +221,18 @@ export type ButtonType = {
     logoImage: ImageType;
   };
 };
+
+export type ColumnType = {
+  title: string; // Short text
+  titleSize: string; // Short text
+  bold: boolean; // Boolean
+  subHeader: string; // Short text
+  luskinHeader: boolean; // Boolean
+  columnImage: any; // Media (type can vary based on implementation)
+  content: string; // Long text
+  imageColumnSection: ImageType; // Media (type can vary based on implementation)
+  button: any[]; // References, many (type can vary based on implementation)
+}
 
 export type PhysicianBioType = {
   physicianName: string;
