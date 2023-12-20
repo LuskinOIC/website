@@ -295,20 +295,22 @@ export type SpecialtyTypeProps = {
 };
 
 export type SpecialtyType = {
-  name: string;
-  slug: string;
-  description: Document;
-  specialistsTitle?: string;
-  buttonText?: string;
-  buttonUrl?: string;
-  location: LocationType;
-  physicians: Array<{
-    fields: PhysicianBioType;
-  }>;
-  image: ImageType;
-  tabSection: TabSectionType;
-  englishFormUrl: string;
-  spanishFormUrl: string;
+  fields: {
+    name: string;
+    slug: string;
+    description: Document;
+    specialistsTitle?: string;
+    buttonText?: string;
+    buttonUrl?: string;
+    location: LocationType;
+    physicians: Array<{
+      fields: PhysicianBioType;
+    }>;
+    image: ImageType;
+    tabSection: TabSectionType;
+    englishFormUrl: string;
+    spanishFormUrl: string;
+  };
 };
 
 export type OptionType = {
