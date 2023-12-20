@@ -223,16 +223,16 @@ export type ButtonType = {
 };
 
 export type ColumnType = {
-  title: string; // Short text
-  titleSize: string; // Short text
-  bold: boolean; // Boolean
-  subHeader: string; // Short text
-  luskinHeader: boolean; // Boolean
-  columnImage: any; // Media (type can vary based on implementation)
-  content: string; // Long text
-  imageColumnSection: ImageType; // Media (type can vary based on implementation)
-  button: any[]; // References, many (type can vary based on implementation)
-}
+  title: string;
+  titleSize: string;
+  bold: boolean;
+  subHeader: string;
+  luskinHeader: boolean;
+  columnImage: ImageType[];
+  content: string;
+  imageColumnSection: ImageType;
+  button: any[];
+};
 
 export type PhysicianBioType = {
   physicianName: string;
