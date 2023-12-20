@@ -5,15 +5,14 @@ import LocationsCard from "../components/LocationsCard";
 
 export default async function PatientCare() {
   const patientCarePage = await getPageByType(PAGE_TYPES.PATIENT_CARE, 10);
-  console.log(patientCarePage.pageSection);
 
   // TODO: Replace hardcoding with map and PageSection components
   return (
     <main>
       <LocationsCard
-        locations={patientCarePage.pageSection[0].fields.locations}
+        locations={patientCarePage.pageSections[0].fields.locations}
       />
-      <TabSection tabs={patientCarePage.pageSection[1].fields.tabs} />
+      <TabSection tabs={patientCarePage.pageSections[1].fields.tabs} />
     </main>
   );
 }

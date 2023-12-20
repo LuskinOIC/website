@@ -254,17 +254,18 @@ function TabsTextOrCardContent({
           >
             <CardHeader className="p-0 md:pt-4 pb-5">
               <CardTitle className="font-semibold">
-                {card.fields.header}
+                {card.fields.title}
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0 ">
-              {renderRichTextToReactComponent(card.fields.body)}
+              {card.fields.content &&
+                renderRichTextToReactComponent(card.fields.content)}
             </CardContent>
-            {card.fields.buttonLink && (
+            {card.fields.button && (
               <CardFooter className="p-0 pt-6">
                 <Button
-                  href={card.fields.buttonLink}
-                  text={card.fields.buttonText}
+                  href={card.fields.button.fields.buttonUrl}
+                  text={card.fields.button.fields.text}
                   className="mb-3 md:mb-8"
                 />
               </CardFooter>
