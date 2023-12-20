@@ -167,16 +167,7 @@ export type TabType = {
     type: string;
     tabTitle: string;
     richTextContent?: Document;
-    cardContent?: TabCardType[];
-  };
-};
-
-export type TabCardType = {
-  fields: {
-    header: string;
-    body: Document;
-    buttonText: string;
-    buttonLink: string;
+    cardContent?: TextType[];
   };
 };
 
@@ -224,6 +215,24 @@ export type ColumnType = {
   content: string; // Long text
   imageColumnSection: ImageType; // Media (type can vary based on implementation)
   button: any[]; // References, many (type can vary based on implementation)
+};
+
+export type TextType = {
+  fields: {
+    title: string;
+    content?: Document;
+    location?: LocationType;
+    button?: ButtonType;
+  };
+};
+
+export type ButtonType = {
+  fields: {
+    type: string;
+    text: string;
+    buttonUrl: string;
+    logoImage: ImageType;
+  };
 };
 
 export type PhysicianBioType = {
