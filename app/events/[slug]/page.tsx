@@ -189,7 +189,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           />
         )}
       </div>
-      {/* sponsors: mobile */}
+      {/* Sponsors: MOBILE */}
       <div className="md:hidden">
         <p className="ml-36 w-44 text-lg font-semibold">
           {`THANK YOU TO OUR ${dateString.slice(0, 4)} SPONSORS`}
@@ -197,17 +197,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
         <div
           id="sponsor-assets"
           className="my-6 flex flex-wrap border md:border-0">
-          {/* {hasSponsors &&
-            orgEvent.sponsor.map((asset: NestedAssetType) => (
-              <DynamicImage
-                alt="sponsors"
-                key={asset.sys.id}
-                src={asset.fields.file.url}
-                width={asset.fields.file.details.image.width}
-                height={asset.fields.file.details.image.height}
-                className="mx-6 my-6 w-20 object-contain"
-              />
-            ))} */}
           {hasSponsors && <Slider slides={sliderSlides as any} />}
         </div>
 
