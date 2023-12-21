@@ -7,7 +7,7 @@ type TitleProps = {
   title?: string;
   titleSize?: string;
   bold?: boolean;
-  titleStyle?: boolean;
+  luskinHeader?: boolean;
 };
 
 export const myFont = localFont({ src: "./Mathlete-Bulky.otf" });
@@ -41,10 +41,10 @@ export function TitleComponent({
   title,
   titleSize,
   bold,
-  titleStyle = false,
+  luskinHeader = false,
 }: TitleProps) {
   const boldClass = bold ? "font-bold" : "font-normal";
-  if (titleStyle) {
+  if (luskinHeader) {
     return <LuskinHeader className={boldClass}>{title}</LuskinHeader>;
   }
 

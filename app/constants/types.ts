@@ -223,15 +223,20 @@ export type ButtonType = {
 };
 
 export type ColumnType = {
-  title: string;
-  titleSize: string;
-  bold: boolean;
-  subHeader: string;
-  luskinHeader: boolean;
-  columnImage: ImageType[];
-  content: string;
-  imageColumnSection: ImageType;
-  button: any[];
+  fields: {
+    title: string;
+    titleSize: string;
+    bold: boolean;
+    subHeader: string;
+    luskinHeader: boolean;
+    image: ImageType;
+    description: Document;
+    descriptionFontSize: keyof FontSizeMap;
+    buttons: any[];
+    reverseOrder: boolean;
+    backgroundColor: string;
+    columnType: string;
+  };
 };
 
 export type PhysicianBioType = {

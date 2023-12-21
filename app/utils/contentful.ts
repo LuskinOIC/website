@@ -92,6 +92,7 @@ export async function getPhysicianBioBySlug(slug: string) {
     content_type: "physicianBio",
     "fields.slug": slug,
     locale: "en-US",
+    include: 3,
   });
 
   return entry.items[0].fields as unknown as PhysicianBioType;
