@@ -82,7 +82,13 @@ const styles = {
     "w-full py-2 text-sm text-center overflow-hidden whitespace-nowrap text-ellipsis uppercase text-luskin-blue font-bold",
 };
 
-export default function TabSection({ tabs }: { tabs: TabType[] }) {
+export default function TabSection({
+  tabs,
+  className = "",
+}: {
+  tabs: TabType[];
+  className?: string;
+}) {
   // Use state to switch tabs with the dropdown menu
   const [selectedTab, setSelectedTab] = useState(tabs[0].fields.tabTitle);
   // Use state to trigger component refresh once tabs fully load
@@ -93,7 +99,7 @@ export default function TabSection({ tabs }: { tabs: TabType[] }) {
   }
 
   return (
-    <div>
+    <div className={className}>
       <DesktopTabSection
         styles={styles}
         tabs={tabs}
