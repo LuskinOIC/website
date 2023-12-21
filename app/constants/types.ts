@@ -143,16 +143,11 @@ export type ImageType = {
   };
 };
 
-export type LandingPageType = {
+export type PageType = {
   metaData: string;
-  goalSection: PageSectionType;
-  sections: PageSectionType[];
-};
-
-export type PatientCarePageType = {
-  title: string;
-  locations: LocationType[];
-  tabSection: TabSectionType;
+  pageType: string;
+  pageSections: PageSectionType[];
+  slug: string;
 };
 
 export type LocationType = {
@@ -167,26 +162,12 @@ export type LocationType = {
   };
 };
 
-export type TabSectionType = {
-  fields: {
-    tabs: TabType[];
-  };
-};
-
 export type TabType = {
   fields: {
-    richTextContent?: Document;
-    tabContent?: TabCardType[];
+    type: string;
     tabTitle: string;
-  };
-};
-
-export type TabCardType = {
-  fields: {
-    header: string;
-    body: Document;
-    buttonText: string;
-    buttonLink: string;
+    richTextContent?: Document;
+    cardContent?: TextType[];
   };
 };
 
@@ -198,27 +179,58 @@ export type FontSizeMap = {
 
 export type PageSectionType = {
   fields: {
-    specialty: SpecialtyType[];
-    longText: Document;
-    buttonStyle: "blue" | "yellow" | "text";
-    actionText: string;
-    actionUrl: string;
-    backgroundColor: string;
-    bold: boolean;
-    columnCount: number;
-    description: string;
-    descriptionTextSize: boolean;
-    descriptionFontSize: keyof FontSizeMap;
-    image: ImageType;
-    reverseOrder: boolean;
-    secondaryActionText: string;
-    secondaryActionUrl: string;
-    title: string;
-    titleSize: string;
-    titleStyle: boolean;
     type: string;
-    infoCards: CardType[];
-    dividerText: string;
+    title: string;
+    titleSize?: string;
+    bold?: boolean;
+    titleStyle?: boolean;
+    description?: Document;
+    descriptionFontSize?: keyof FontSizeMap;
+    backgroundColor?: string;
+    reverseOrder?: boolean;
+    image?: ImageType;
+    buttonStyle?: "blue" | "yellow" | "text";
+    actionUrl?: string;
+    actionText?: string;
+    secondaryActionText?: string;
+    secondaryActionUrl?: string;
+    dividerText?: string;
+    infoCards?: CardType[];
+    specialty?: SpecialtyType[];
+    column?: ColumnType[];
+    tabs?: TabType[];
+    locations?: LocationType[];
+    cardsLayout?: CardType[];
+  };
+};
+
+export type ColumnType = {
+  title: string; // Short text
+  titleSize: string; // Short text
+  bold: boolean; // Boolean
+  subHeader: string; // Short text
+  luskinHeader: boolean; // Boolean
+  columnImage: any; // Media (type can vary based on implementation)
+  content: string; // Long text
+  imageColumnSection: ImageType; // Media (type can vary based on implementation)
+  button: any[]; // References, many (type can vary based on implementation)
+};
+
+export type TextType = {
+  fields: {
+    title: string;
+    content?: Document;
+    location?: LocationType;
+    button?: ButtonType;
+  };
+};
+
+export type ButtonType = {
+  fields: {
+    type: string;
+    text: string;
+    buttonUrl: string;
+    logoImage: ImageType;
   };
 };
 

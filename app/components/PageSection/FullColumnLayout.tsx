@@ -14,7 +14,9 @@ export default function FullWidthImageLayout({
 }: {
   section: PageSectionType;
 }) {
-  const bgColor = getBackgroundColor(section.fields.backgroundColor);
+  const bgColor = section.fields.backgroundColor
+    ? getBackgroundColor(section.fields.backgroundColor)
+    : "white";
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
   );

@@ -2,13 +2,11 @@ import { createClient } from "contentful";
 import {
   AboutPageType,
   EventType,
-  LandingPageType,
-  PatientCarePageType,
+  PageType,
   PhysicianBioType,
   SocialMediaSectionType,
   SpecialtyType,
 } from "@/app/constants/types";
-import { LANDING_PAGE_ID } from "@/app/constants/entries";
 
 // Create the Contentful Client
 const client = createClient({
@@ -18,13 +16,18 @@ const client = createClient({
 
 /* LANDING PAGE */
 
-export async function getLandingPage() {
-  const entry = await client.getEntry(LANDING_PAGE_ID, {
-    include: 2,
+export async function getPageByType(
+  pageType: string,
+  include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4,
+) {
+  const entry = await client.getEntries({
+    content_type: "page",
+    "fields.pageType": pageType,
     locale: "en-US",
+    include: include,
   });
 
-  return entry.fields as unknown as LandingPageType;
+  return entry.items[0].fields as unknown as PageType;
 }
 
 /* EVENTS */
@@ -92,19 +95,6 @@ export async function getPhysicianBioBySlug(slug: string) {
   });
 
   return entry.items[0].fields as unknown as PhysicianBioType;
-}
-
-/* PATIENT CARE */
-
-export async function getPatientCarePage() {
-  const entries = await client.getEntries({
-    content_type: "patientCarePage",
-    include: 3,
-    locale: "en-US",
-  });
-  const entry = entries.items[0];
-
-  return entry.fields as unknown as PatientCarePageType;
 }
 
 /* ABOUT */

@@ -10,13 +10,15 @@ export default function FullWidthImageLayout({
 }) {
   return (
     <div>
-      <Image
-        className="w-full"
-        src={`https:${section.fields.image.fields.file.url}`}
-        alt={section.fields.image.fields.description}
-        width={section.fields.image.fields.file.details.image.width}
-        height={section.fields.image.fields.file.details.image.height}
-      />
+      {section.fields.image && (
+        <Image
+          className="w-full"
+          src={`https:${section.fields.image.fields.file.url}`}
+          alt={section.fields.image.fields.description}
+          width={section.fields.image.fields.file.details.image.width}
+          height={section.fields.image.fields.file.details.image.height}
+        />
+      )}
     </div>
   );
 }
