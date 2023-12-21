@@ -18,7 +18,7 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
-  console.dir(specialty.fields.tabSection.fields);
+  console.dir(specialty.fields.tabs);
 
   return (
     <main>
@@ -35,10 +35,7 @@ export default async function Specialty({
           {renderRichTextToReactComponent(specialty.fields.description)}
         </div>
       </div>
-      <TabSection
-        fields={specialty.fields.tabSection.fields}
-        className="mb-[-40px]"
-      />
+      <TabSection tabs={specialty.fields.tabs} className="mb-[-40px]" />
       <PhysicianList
         specialistsTitle={specialty.fields.specialistsTitle}
         physicians={specialty.fields.physicians}

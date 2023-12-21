@@ -307,7 +307,7 @@ export type SpecialtyType = {
       fields: PhysicianBioType;
     }>;
     image: ImageType;
-    tabSection: TabSectionType;
+    tabs: TabType[];
     englishFormUrl: string;
     spanishFormUrl: string;
   };
