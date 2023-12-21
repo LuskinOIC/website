@@ -210,7 +210,7 @@ export type PageSectionType = {
     infoCards: CardType[];
     quadCards: CardType[];
     specialty?: SpecialtyType[];
-    column?: ColumnType[];
+    columnLayout: ColumnType[];
     tabs?: TabType[];
     locations?: LocationType[];
     cardsLayout: CardType[];
@@ -299,6 +299,7 @@ export type SpecialtyType = {
     name: string;
     slug: string;
     description: Document;
+    topSection: PageSectionType;
     specialistsTitle?: string;
     buttonText?: string;
     buttonUrl?: string;

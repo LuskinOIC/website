@@ -10,7 +10,7 @@ import ImagesLayout from "./ImagesLayout";
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
 
 export default function PageSection({ section }: { section: PageSectionType }) {
-  console.log(section.fields.column);
+  console.log(section.fields.columnLayout);
   switch (section.fields.type) {
     case "Column Layout":
       return <ColumnLayout section={section} />;
@@ -25,7 +25,7 @@ export default function PageSection({ section }: { section: PageSectionType }) {
     case "Specialty":
       return (
         <UrgentCareCard
-          specialty={(section.fields.specialty as SpecialtyType[])[0].fields}
+          specialty={(section.fields.specialty as SpecialtyType[])[0]}
         />
       );
     default:

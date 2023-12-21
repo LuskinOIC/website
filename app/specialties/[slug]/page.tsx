@@ -1,3 +1,5 @@
+// import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
+import PageSection from "@/app/components/PageSection/PageSection";
 import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
 import PhysicianList from "@/app/components/PhysicianList";
 import TabSection from "@/app/components/TabSection";
@@ -8,11 +10,9 @@ import Image from "next/image";
 
 export async function generateStaticParams() {
   const specialties = await getSpecialties();
-  const specialtySlugs = specialties.map((specialty) => ({
+  return specialties.map((specialty) => ({
     slug: specialty.fields.slug,
   }));
-  console.dir(specialtySlugs);
-  return specialtySlugs;
 }
 
 export default async function Specialty({
@@ -21,7 +21,7 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
-  console.dir(specialty.fields.tabs);
+  console.dir(specialty.fields);
 
   return (
     <main>
@@ -38,7 +38,30 @@ export default async function Specialty({
           {renderRichTextToReactComponent(specialty.fields.description)}
         </div>
       </div> */}
-      <TwoColumnLayout />
+      <PageSection
+        section={{
+          fields: {
+            type: "Column Layout",
+            title: specialty.fields.name,
+            description: specialty.fields.description,
+            image: specialty.fields.image,
+            columnLayout: [
+              {
+                title: specialty.fields.name,
+                titleSize: "Title",
+                bold: false,
+                subHeader: "",
+                luskinHeader: false,
+                columnImage: specialty.fields.image,
+                content: specialty.fields.description.toString(),
+                imageColumnSection: specialty.fields.image,
+                button: [],
+              },
+            ],
+          },
+        }}
+      />
+      {/* <PageSection section={specialty.fields.topSection} /> */}
       <TabSection tabs={specialty.fields.tabs} className="mb-[-40px]" />
       <PhysicianList
         specialistsTitle={specialty.fields.specialistsTitle}
