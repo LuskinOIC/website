@@ -18,6 +18,7 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
+  console.dir(specialty.fields.tabSection.fields);
 
   return (
     <main>

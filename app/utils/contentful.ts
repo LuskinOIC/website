@@ -58,9 +58,7 @@ export async function getSpecialties(): Promise<SpecialtyType[]> {
     locale: "en-US",
   });
 
-  return entries.items.map(
-    (entry) => entry.fields,
-  ) as unknown as SpecialtyType[];
+  return entries.items as unknown as SpecialtyType[];
 }
 
 export async function getSpecialty(): Promise<SpecialtyType> {
@@ -72,11 +70,11 @@ export async function getSpecialtyBySlug(slug: string) {
   const entry = await client.getEntries({
     content_type: "specialty",
     "fields.slug": slug,
-    include: 10,
+    include: 10, // TODO: Change
     locale: "en-US",
   });
 
-  return entry.items[0].fields as unknown as SpecialtyType;
+  return entry.items[0] as unknown as SpecialtyType;
 }
 
 /* SOCAL MEDIA */
