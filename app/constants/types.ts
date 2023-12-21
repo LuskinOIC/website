@@ -48,6 +48,7 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    cardType: string;
     title: string;
     subTitle: string;
     content: string;
@@ -143,7 +144,6 @@ export type ImageType = {
   };
 };
 
-
 export type PageType = {
   metaData: string;
   pageType: string;
@@ -180,6 +180,7 @@ export type FontSizeMap = {
 
 export type PageSectionType = {
   fields: {
+    columnLayout: ColumnType;
     type: string;
     title: string;
     titleSize?: string;
@@ -225,16 +226,21 @@ export type ButtonType = {
 };
 
 export type ColumnType = {
-  title: string; // Short text
-  titleSize: string; // Short text
-  bold: boolean; // Boolean
-  subHeader: string; // Short text
-  luskinHeader: boolean; // Boolean
-  columnImage: any; // Media (type can vary based on implementation)
-  content: string; // Long text
-  imageColumnSection: ImageType; // Media (type can vary based on implementation)
-  button: any[]; // References, many (type can vary based on implementation)
-}
+  fields: {
+    title: string;
+    titleSize: string;
+    bold: boolean;
+    subHeader: string;
+    luskinHeader: boolean;
+    image: ImageType;
+    description: Document;
+    descriptionFontSize: keyof FontSizeMap;
+    buttons: any[];
+    reverseOrder: boolean;
+    backgroundColor: string;
+    columnType: string;
+  };
+};
 
 export type PhysicianBioType = {
   physicianName: string;

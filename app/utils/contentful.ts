@@ -27,7 +27,7 @@ export async function getPageByType(
     include: include,
   });
 
-  return entry.fields as unknown as LandingPageType;
+  return entry.items[0].fields as unknown as PageType;
 }
 
 /* EVENTS */

@@ -5,7 +5,7 @@ import UrgentCareCard from "@/app/components/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 import ColumnLayout from "./ColumnLayout";
-import CardLayoutSection from "./CardLayoutSection";
+// import CardLayoutSection from "./CardLayoutSection";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -20,8 +20,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       return <Divider section={section} />;
     case "Social Media Banner":
       return <SocialMediaBanner />;
-    case "Card Layout":
-      return <CardLayoutSection section={section} />;
+    // case "Card Layout":
+    //   return <CardLayoutSection section={section} />;
     case "Info Card Layout":
       return <InfoCardLayout section={section} />;
     case "Specialty":
