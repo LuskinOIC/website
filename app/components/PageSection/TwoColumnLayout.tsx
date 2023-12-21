@@ -31,11 +31,15 @@ export default function ColumnLayout({
       small: "md:text-lg",
     };
 
-    return fontSizeMap[section.fields.descriptionFontSize] || "md:text-lg";
+    return section.fields.descriptionFontSize
+      ? fontSizeMap[section.fields.descriptionFontSize]
+      : "md:text-lg";
   };
   // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
   // for dynamically generated classes. This is a temporary fix.
-  const bgColor = getBackgroundColor(section.fields.backgroundColor);
+  const bgColor = section.fields.backgroundColor
+    ? getBackgroundColor(section.fields.backgroundColor)
+    : "white";
   const textColor =
     section.fields.backgroundColor != "white" ? "text-white" : "text-black";
   const descriptionContent = renderRichTextToReactComponent(

@@ -8,7 +8,7 @@ import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 
 // Types
-import { PageSectionType } from "@/app/constants/types";
+import { PageSectionType, SpecialtyType } from "@/app/constants/types";
 
 export default function PageSection({ section }: { section: PageSectionType }) {
   console.log(section.fields.column);
@@ -28,7 +28,11 @@ export default function PageSection({ section }: { section: PageSectionType }) {
     case "Info Card Layout":
       return <InfoCardLayout section={section} />;
     case "Specialty":
-      return <UrgentCareCard specialty={section.fields.specialty[0].fields} />;
+      return (
+        <UrgentCareCard
+          specialty={(section.fields.specialty as SpecialtyType[])[0].fields}
+        />
+      );
     default:
       return null;
   }
