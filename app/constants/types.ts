@@ -179,29 +179,28 @@ export type FontSizeMap = {
 
 export type PageSectionType = {
   fields: {
-    specialty: SpecialtyType[];
-    longText: Document;
-    buttonStyle: "blue" | "yellow" | "text";
-    actionText: string;
-    actionUrl: string;
-    backgroundColor: string;
-    bold: boolean;
-    columnCount: number;
-    description: string;
-    descriptionFontSize: keyof FontSizeMap;
-    image: ImageType;
-    reverseOrder: boolean;
-    secondaryActionText: string;
-    secondaryActionUrl: string;
-    title: string;
-    titleSize: string;
-    titleStyle: boolean;
     type: string;
-    infoCards: CardType[];
-    dividerText: string;
-    column: ColumnType[];
-    tabs: TabType[];
-    locations: LocationType[];
+    title: string;
+    titleSize?: string;
+    bold?: boolean;
+    titleStyle?: boolean;
+    description?: Document;
+    descriptionFontSize?: keyof FontSizeMap;
+    backgroundColor?: string;
+    reverseOrder?: boolean;
+    image?: ImageType;
+    buttonStyle?: "blue" | "yellow" | "text";
+    actionUrl?: string;
+    actionText?: string;
+    secondaryActionText?: string;
+    secondaryActionUrl?: string;
+    dividerText?: string;
+    infoCards?: CardType[];
+    specialty?: SpecialtyType[];
+    column?: ColumnType[];
+    tabs?: TabType[];
+    locations?: LocationType[];
+    cardsLayout?: CardType[];
   };
 };
 
