@@ -10,15 +10,16 @@ export default async function Specialties() {
     <main>
       <SearchBar />
       <div className="grid">
-        {specialties.map((specialty) =>
-          specialty.name == "Pediatric Orthopedic Urgent Care" ? (
-            <div className="order-first" key={specialty.name}>
+        {specialties.map((specialty) => {
+          const specialtyName = specialty.fields.name;
+          return specialtyName == "Pediatric Orthopedic Urgent Care" ? (
+            <div className="order-first" key={specialtyName}>
               <UrgentCareCard specialty={specialty} />
             </div>
           ) : (
-            <SpecialtyCard specialty={specialty} key={specialty.name} />
-          ),
-        )}
+            <SpecialtyCard specialty={specialty} key={specialtyName} />
+          );
+        })}
       </div>
     </main>
   );

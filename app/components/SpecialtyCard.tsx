@@ -16,12 +16,15 @@ const styles = {
 
 export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
   const descriptionContent =
-    specialty.description &&
-    renderRichTextToReactComponent(specialty.description);
+    specialty.fields.description &&
+    renderRichTextToReactComponent(specialty.fields.description);
 
   return (
     <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
-      <TitleComponent title={specialty.name} titleSize={"Title Medium"} />
+      <TitleComponent
+        title={specialty.fields.name}
+        titleSize={"Title Medium"}
+      />
       {descriptionContent}
     </section>
   );

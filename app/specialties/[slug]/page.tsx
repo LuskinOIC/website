@@ -8,7 +8,7 @@ import Image from "next/image";
 export async function generateStaticParams() {
   const specialties = await getSpecialties();
   return specialties.map((specialty) => ({
-    slug: specialty.slug,
+    slug: specialty.fields.slug,
   }));
 }
 
@@ -23,21 +23,24 @@ export default async function Specialty({
     <main>
       <div className="flex flex-col md:flex-row-reverse w-full md:pl-[13%] mt-[-7%] md:mt-[2%] md:mb-[2%] items-center justify-between">
         <Image
-          src={specialty.image.fields.file.url}
+          src={specialty.fields.image.fields.file.url}
           width={720}
           height={720}
-          alt={specialty.name}
+          alt={specialty.fields.name}
           className="md:w-1/2"
         />
         <div className="flex flex-col w-[35%] text-xl">
-          <Title1 className="md:text-5xl mb-5">{specialty.name}</Title1>
-          {renderRichTextToReactComponent(specialty.description)}
+          <Title1 className="md:text-5xl mb-5">{specialty.fields.name}</Title1>
+          {renderRichTextToReactComponent(specialty.fields.description)}
         </div>
       </div>
-      <TabSection fields={specialty.tabSection.fields} className="mb-[-40px]" />
+      <TabSection
+        fields={specialty.fields.tabSection.fields}
+        className="mb-[-40px]"
+      />
       <PhysicianList
-        specialistsTitle={specialty.specialistsTitle}
-        physicians={specialty.physicians}
+        specialistsTitle={specialty.fields.specialistsTitle}
+        physicians={specialty.fields.physicians}
       />
     </main>
   );

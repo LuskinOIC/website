@@ -11,6 +11,7 @@ import { Text1, Text2 } from "@/app/components/ui/Typography/Text";
 import phone from "@/public/phone.svg";
 import mapPin from "@/public/map-pin.svg";
 import clock from "@/public/clock.svg";
+import { SpecialtyType } from "../constants/types";
 
 const styles = {
   sectionLayout:
@@ -18,17 +19,8 @@ const styles = {
   boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
 };
 
-type Specialty = {
-  name: string;
-  description?: any;
-  image?: any;
-  englishFormUrl?: string;
-  spanishFormUrl?: string;
-  buttonUrl?: string;
-  buttonText?: string;
-};
 type SpecialtyCardProps = {
-  specialty: Specialty;
+  specialty: SpecialtyType;
 };
 
 export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
@@ -40,7 +32,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     spanishFormUrl,
     buttonUrl,
     buttonText,
-  } = specialty;
+  } = specialty.fields;
 
   const { title: imageTitle, file: imageFile } = image.fields;
 
