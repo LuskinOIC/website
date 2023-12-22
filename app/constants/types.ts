@@ -197,12 +197,12 @@ export type PageSectionType = {
     secondaryActionText?: string;
     secondaryActionUrl?: string;
     dividerText?: string;
-    infoCards?: CardType[];
+    infoCards: CardType[];
     specialty?: SpecialtyType[];
     column?: ColumnType[];
     tabs?: TabType[];
     locations?: LocationType[];
-    cardsLayout?: CardType[];
+    cardsLayout: CardType[];
   };
 };
 
