@@ -120,6 +120,9 @@ export type EventType = {
   eventCards: Array<{ fields: MinimalCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
+  directions: string;
+  // attendLink: string;
+  // sponsorLink: string;
 };
 
 export type FileDetailsType = {

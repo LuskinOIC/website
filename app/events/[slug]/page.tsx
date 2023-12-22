@@ -243,7 +243,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
       </div>
       <div id="event-cards" className="mx-6">
         <div className="mx-6 flex justify-between">
-          <h3 className="text-lg font-semibold uppercase text-[#FF7548] md:mb-3 md:text-3xl md:font-normal md:capitalize md:text-[#0076AD]">
+          <h3 className="mt-20 text-lg font-semibold uppercase text-[#FF7548] md:mb-3 md:text-3xl md:font-normal md:capitalize md:text-[#0076AD]">
             events
           </h3>
           <p className="text-sm underline md:hidden">
