@@ -16,12 +16,4 @@ export default function ColumnLayout({
   if (infoCards.length > 0) {
     return <InfoCardLayout section={infoCards} />;
   }
-
-  // const CardLayout = section.fields.columnLayout;
-  // switch (cardType) {
-  //   case "Info Card":
-  //     return <InfoCardLayout section={CardLayout} />;
-  //   default:
-  //     return null;
-  // }
 }
