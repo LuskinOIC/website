@@ -5,7 +5,7 @@ import FullColumnLayout from "@/app/components/PageSection/FullColumnLayout";
 // Types
 import { PageSectionType } from "@/app/constants/types";
 
-export default function ColumnLayout({
+export default function ColumnsLayout({
   section,
 }: {
   section: PageSectionType;

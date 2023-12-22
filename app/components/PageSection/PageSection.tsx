@@ -3,8 +3,8 @@ import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLay
 import UrgentCareCard from "@/app/components/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
-import ColumnLayout from "./ColumnLayout";
-import CardLayoutSection from "./CardLayoutSection";
+import ColumnLayout from "./ColumnsLayout";
+import CardLayoutSection from "./CardsLayout";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
