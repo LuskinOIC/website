@@ -8,5 +8,7 @@ export default function getBackgroundColor(colorName: string) {
       return "bg-[#FFFFFF]";
     default:
       return "bg-white";
+    case "bright-blue":
+      return "bg-[#32B8DE]";
   }
 }

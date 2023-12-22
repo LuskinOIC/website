@@ -1,10 +1,4 @@
-interface MobileMenuItem {
-  type: "link" | "button";
-  label: string;
-  url?: string;
-  cssClasses: string;
-  action?: any;
-}
+import { DONATE_URL } from "../constants/links";
 
 export const dropdowns = [
   {
@@ -42,36 +36,72 @@ export const dropdowns = [
   },
 ];
 
-export const menuMobileItems: MobileMenuItem[] = [
+export const MobileDropdowns = [
   {
-    type: "link",
-    label: "URGENT CARE",
-    url: "/item1",
-    cssClasses: "text-white bg-purple-700",
+    label: "PATIENT CARE",
+    type: "button",
+    stateKey: "patientCare",
+    cssClasses: "",
+
+    subItems: [
+      { label: "PATIENT CARE", url: "/patient-care", type: "link" },
+      { label: "URGENT CARE", url: "/urgent-care", type: "link" },
+      { label: "SPECIALTIES", url: "/specialties", type: "link" },
+      { label: "PLAN YOUR VISIT", url: "/plan-your-visit", type: "link" },
+      { label: "BILLING & INSURANCE", url: "/billing", type: "link" },
+      {
+        label: "PATIENT RIGHTS & RESPONSIBILITIES",
+        url: "/patient-rights",
+        type: "link",
+      },
+      {
+        label: "APPOINTMENT PREPARATION",
+        url: "/appointment-preparation",
+        type: "link",
+      },
+      { label: "PATIENT FORMS", url: "/patient-forms", type: "link" },
+    ],
   },
-  { type: "button", label: "PATIENT CARE", cssClasses: "text-white" },
   {
-    type: "link",
     label: "FOR MEDICAL PROFESSIONALS",
-    url: "/",
-    cssClasses: "text-white",
+    type: "button",
+    cssClasses: "",
+    subItems: [
+      { label: "REFER A PATIENT", url: "/patient-referrals", type: "link" },
+      { label: "SPECIALTIES", url: "/specialties", type: "link" },
+      { label: "CAREERS", url: "/careers", type: "link" },
+      { label: "VOLUNTEER", url: "/volunteers", type: "link" },
+    ],
+    stateKey: "medicalProfessionals",
   },
   {
-    type: "link",
     label: "ABOUT LUSKINOIC",
-    url: "/",
-    cssClasses: "text-white",
+    type: "button",
+    cssClasses: "",
+    subItems: [
+      { label: "ABOUT", url: "/about-luskin", type: "link" },
+      { label: "NEWS/BLOG", url: "/blog", type: "link" },
+    ],
+    stateKey: "about",
   },
   {
-    type: "link",
     label: "WAYS TO GIVE",
-    url: "/",
-    cssClasses: "text-white",
-  },
-  {
-    type: "link",
-    label: "MY CHART",
-    url: "/",
-    cssClasses: "text-black bg-yellow-50",
+    subItems: [
+      {
+        label: "DONATE",
+        url: DONATE_URL,
+        type: "link",
+      },
+      {
+        label: "CORPORATE PARTNERSHIPS",
+        url: "/corporate-partnerships",
+        type: "link",
+      },
+      { label: "EVENTS", url: "/events", type: "link" },
+      { label: "VOLUNTEER", url: "/volunteer", type: "link" },
+    ],
+
+    stateKey: "waysToGive",
+    cssClasses: "",
   },
 ];
