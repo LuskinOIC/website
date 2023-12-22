@@ -5,19 +5,25 @@ import renderRichTextToReactComponent from "../utils/rich-text";
 
 const titleImageComponentStyles = {
   image:
-    "rounded-xl h-28 w-28 p-1.5 md:rounded-sm object-cover md:h-5/6 md:w-11/12 md:mx-auto md:px-4 md:pt-6",
+    "h-28 w-28 rounded-xl object-cover p-1.5 md:mx-auto md:h-5/6 md:w-10/12 md:rounded-sm md:px-4 md:pt-6",
   wrapperDiv:
-    "md:rounded-lg md:w-1/5 md:border md:bg-white flex md:flex-col flex-reverse flex mb-3 md:h-full h-28 w-full rounded-lg bg-[#0076AD] md:mb-8",
+    "flex-reverse mb-3 flex h-28 w-full rounded-lg bg-[#0076AD] md:mb-8 md:h-full md:w-1/5 md:flex-col md:rounded-lg md:border md:bg-white",
   header:
-    " md:text-center md:text-black md:pt-4 md:pb-6 md:text-2xl my-auto ml-6 text-3xl font-semibold tracking-wider text-white",
+    "my-auto ml-6 text-3xl font-semibold tracking-wider text-white md:pb-6 md:pt-4 md:text-center md:text-2xl md:text-black",
   summary: "",
 };
 
 const titleImageSummaryComponentStyles = {
-  image: "object-cover w-72 h-56 mt-3 rounded-xl mx-auto",
-  wrapperDiv: "mb-5 flex flex-col items-center h-3/5 md:pr-6",
-  header: "w-64 font-bold text-lg py-4",
-  summary: "px-2 mb-4 w-72 overflow-hidden line-clamp-3 leading-tight",
+  // image: "mx-auto mt-3 md:w-80 w-72 h-56 h-[300px] rounded-xl object-cover",
+  // wrapperDiv:
+  //   "md:w-96 border border-2 mb-5 w-72 h-[400px] md:h-[500px] justify-center flex flex-col items-center md:pr-6",
+  // header: "md:w-80 w-64 text-center py-4 text-lg font-bold",
+  // summary: "mb-4 line-clamp-4 w-64 md:w-80 overflow-hidden px-2 leading-tight",
+  image: "rounded-xl w-80 md:w-[300px] h-[280px] object-cover",
+  wrapperDiv:
+    "w-80 m-auto md:m-4 md:w-[300px] md:flex-shrink-0 flex flex-col mb-10",
+  header: "md:text-center py-4 text-xl font-bold",
+  summary: "mb-4 line-clamp-4 overflow-hidden leading-tight",
 };
 // INSERT STYLING - 1. for title and image, 2. for title, image, and summary
 export default function MinimalCard({
