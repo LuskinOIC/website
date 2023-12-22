@@ -48,6 +48,7 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    cardType: string;
     title: string;
     subTitle: string;
     content: string;
@@ -179,6 +180,7 @@ export type FontSizeMap = {
 
 export type PageSectionType = {
   fields: {
+    columnLayout: ColumnType;
     type: string;
     title: string;
     titleSize?: string;
@@ -195,25 +197,13 @@ export type PageSectionType = {
     secondaryActionText?: string;
     secondaryActionUrl?: string;
     dividerText?: string;
-    infoCards?: CardType[];
+    infoCards: CardType[];
     specialty?: SpecialtyType[];
     column?: ColumnType[];
     tabs?: TabType[];
     locations?: LocationType[];
-    cardsLayout?: CardType[];
+    cardsLayout: CardType[];
   };
-};
-
-export type ColumnType = {
-  title: string; // Short text
-  titleSize: string; // Short text
-  bold: boolean; // Boolean
-  subHeader: string; // Short text
-  luskinHeader: boolean; // Boolean
-  columnImage: any; // Media (type can vary based on implementation)
-  content: string; // Long text
-  imageColumnSection: ImageType; // Media (type can vary based on implementation)
-  button: any[]; // References, many (type can vary based on implementation)
 };
 
 export type TextType = {
@@ -231,6 +221,24 @@ export type ButtonType = {
     text: string;
     buttonUrl: string;
     logoImage: ImageType;
+    columns: ColumnType[];
+  };
+};
+
+export type ColumnType = {
+  fields: {
+    title: string;
+    titleSize: string;
+    bold: boolean;
+    subHeader: string;
+    luskinHeader: boolean;
+    image: ImageType;
+    description: Document;
+    descriptionFontSize: keyof FontSizeMap;
+    buttons: any[];
+    reverseOrder: boolean;
+    backgroundColor: string;
+    columnType: string;
   };
 };
 

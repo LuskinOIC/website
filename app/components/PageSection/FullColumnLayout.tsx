@@ -1,7 +1,7 @@
 // Next components
 import Image from "next/image";
 // Types
-import { PageSectionType } from "@/app/constants/types";
+import { ColumnType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
 //Local Components
 import { TitleComponent } from "../ui/Typography/Title";
@@ -12,7 +12,7 @@ import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 export default function FullWidthImageLayout({
   section,
 }: {
-  section: PageSectionType;
+  section: ColumnType;
 }) {
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
@@ -36,24 +36,20 @@ export default function FullWidthImageLayout({
       <TitleComponent
         title={section.fields.title}
         titleSize={section.fields.titleSize}
-        titleStyle={section.fields.titleStyle}
+        luskinHeader={section.fields.luskinHeader}
         bold={section.fields.bold}
       />
       <div>{descriptionContent}</div>
       <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
-        {section.fields.actionUrl && (
-          <Button
-            href={section.fields.actionUrl}
-            text={section.fields.actionText}
-            variant={section.fields.buttonStyle}
-          />
-        )}
-        {section.fields.secondaryActionUrl && (
-          <Button
-            href={section.fields.secondaryActionUrl}
-            text={section.fields.secondaryActionText}
-          />
-        )}
+        {section.fields.buttons &&
+          section.fields.buttons.map((button) => (
+            <Button
+              key={button.sys.id}
+              href={button.fields.buttonUrl}
+              text={button.fields.text}
+              variant={button.fields.type}
+            />
+          ))}
       </div>
     </section>
   );
