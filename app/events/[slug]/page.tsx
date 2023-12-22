@@ -171,7 +171,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
               src={asset.fields.file.url}
               width={asset.fields.file.details.image.width}
               height={asset.fields.file.details.image.height}
-              className="mb-8"
+              className="mb-8 w-full"
             />
           ))}
       </div>
