@@ -1,10 +1,10 @@
 import PageSection from "@/app/components/PageSection/PageSection";
-import { PageSectionType, AboutPageType } from "@/app/constants/types";
-import { getAboutPage } from "../utils/contentful";
+import { PageSectionType } from "@/app/constants/types";
+import { getPageByType } from "@/app/utils/contentful";
+import { PAGE_TYPES } from "@/app/constants/entries";
 
-// TODO: Move grid components to their final homes.
 export default async function About() {
-  const page: AboutPageType = await getAboutPage();
+  const page = await getPageByType(PAGE_TYPES.ABOUT);
   return (
     <main>
       {page.pageSections.map((pageSection: PageSectionType) => (

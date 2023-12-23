@@ -5,8 +5,13 @@
 export const LANDING_PAGE_ID = "1g2q8XhHMq66zFxhrIA50T";
 
 export const PAGE_TYPES = {
-  EVENT: "Event",
   LANDING_PAGE: "Landing Page",
   PATIENT_CARE: "Patient Care Page",
+  ABOUT: "About Page",
+  MEDICAL_PROFESSIONALS: "Medical Professionals Page",
+  CORPORATE_SPONSORSHIP: "Corporate Sponsorship Page",
+  LEADERSHIP: "Leadership Page",
+  //Events and Specialty will likely be it's own contentful component
+  EVENT: "Event",
   SPECIALTY: "Specialty",
 };

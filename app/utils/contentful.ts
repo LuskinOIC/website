@@ -1,6 +1,5 @@
 import { createClient } from "contentful";
 import {
-  AboutPageType,
   EventType,
   PageType,
   PhysicianBioType,
@@ -14,7 +13,7 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 });
 
-/* LANDING PAGE */
+/* PAGE */
 
 export async function getPageByType(
   pageType: string,
@@ -96,16 +95,4 @@ export async function getPhysicianBioBySlug(slug: string) {
   });
 
   return entry.items[0].fields as unknown as PhysicianBioType;
-}
-
-/* ABOUT */
-
-export async function getAboutPage() {
-  const entries = await client.getEntries({
-    content_type: "aboutPage",
-    include: 2,
-    locale: "en-US",
-  });
-
-  return entries.items[0].fields as unknown as AboutPageType;
 }
