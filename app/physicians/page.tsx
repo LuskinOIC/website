@@ -2,6 +2,8 @@ import { getPhysicians } from "@/app/utils/contentful";
 import SearchBar from "@/app/components/ui/SearchBar";
 import { PhysicianBioType } from "@/app/constants/types";
 import Image from "next/image";
+import renderRichTextToReactComponent from "../utils/rich-text";
+import { Document } from "@contentful/rich-text-types";
 
 export default async function Physicians() {
   // TEMP fix for linter
@@ -27,8 +29,14 @@ export default async function Physicians() {
             </div>
             <div className="flex-grow">
               <h2 className="text-lg font-bold">{physician.name}</h2>
-              {/* Add more physician details here */}
-              {/* Add other details as needed */}
+              <h5> Specializes in: </h5>
+              <div className="md:text-md mb-4 pl-4 text-base">
+                {renderRichTextToReactComponent(
+                  physician.specialties as unknown as Document,
+                )}
+              </div>
+              <p>For Patients: {physician.appointmentNumber}</p>
+              <p>For Physicians: {physician.physicianNumber}</p>
             </div>
           </div>
         ))}
