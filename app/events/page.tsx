@@ -1,20 +1,9 @@
 import { getEvents } from "@/app/utils/contentful";
-import { MinimalCardType, EventCardType } from "@/app/constants/types";
+import { EventCardType } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
-
-export function adaptEventToMinimalCardType(
-  event: EventCardType,
-): MinimalCardType {
-  return {
-    title: event.eventName,
-    cardPhoto: event.eventPhoto,
-    summary: event.eventSummary,
-  };
-}
 
 export default async function Events() {
   const events = (await getEvents()) as unknown as EventCardType[];
-
   return (
     <main className="">
       {/* MOBILE Search Box */}
@@ -34,7 +23,11 @@ export default async function Events() {
           {events.map((eventObj) => (
             <MinimalCard
               key={eventObj.slug}
-              cardContent={adaptEventToMinimalCardType(eventObj)}
+              cardContent={{
+                title: eventObj.eventName,
+                cardPhoto: eventObj.eventPhoto,
+                summary: eventObj.eventSummary,
+              }}
             />
           ))}
         </div>
