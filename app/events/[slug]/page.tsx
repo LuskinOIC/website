@@ -6,7 +6,7 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import {
-  // EventCardType,
+  EventCardType,
   NestedAssetType,
   MinimalCardType,
 } from "@/app/constants/types";
@@ -249,7 +249,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
           </p>
         </div>
         <div className="md:flex">
-          {/* {allEvents.map((soleEvent) => (
+          {allEvents.map((soleEvent) => (
             <MinimalCard
               key={soleEvent.slug}
               cardContent={{
@@ -258,7 +258,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 summary: soleEvent.eventSummary,
               }}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </main>
