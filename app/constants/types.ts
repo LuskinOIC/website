@@ -48,6 +48,7 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    bioCards: CardsRowType[];
     cardType: string;
     title: string;
     subTitle: string;
@@ -97,7 +98,22 @@ export type MinimalCardType = {
   };
   title: string;
   cardPhoto: NestedAssetType;
-  summary: string;
+  summary?: string;
+};
+
+export type CardsRowPropsType = {
+  title: string;
+  cards: CardsRowType[];
+};
+
+export type CardsRowType = {
+  fields: {
+    name: string;
+    portrait: NestedAssetType;
+  };
+  sys: {
+    id: string;
+  };
 };
 
 export type EventCardType = {
