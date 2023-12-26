@@ -209,8 +209,7 @@ export type PageSectionType = {
     dividerText?: string;
     infoCards: CardType[];
     quadCards: CardType[];
-    specialty?: SpecialtyType[];
-    columnLayout: ColumnType[];
+    specialty: SpecialtyType[];
     tabs?: TabType[];
     locations?: LocationType[];
     cardsLayout: CardType[];
@@ -296,6 +295,7 @@ export type SpecialtyTypeProps = {
 
 export type SpecialtyType = {
   fields: {
+    twoColumn: ColumnType;
     name: string;
     slug: string;
     description: Document;
