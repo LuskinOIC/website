@@ -24,7 +24,7 @@ export const dropdowns = [
   {
     label: "About",
     subItems: [
-      { label: "About Luskin", url: "/about-luskin" },
+      { label: "About Luskin", url: "/about" },
       { label: "Blog", url: "/blog" },
     ],
     stateKey: "about",
