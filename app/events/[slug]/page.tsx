@@ -11,7 +11,6 @@ import {
   MinimalCardType,
 } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
-import { adaptEventToMinimalCardType } from "../page";
 import Slider from "@/app/components/Slider";
 
 export async function generateStaticParams() {
@@ -41,13 +40,12 @@ const buttonStyling =
   "md:rounded-lg md:no-underline md:bg-[#0076AD] uppercase md:text-white md:my-5 md:w-48 md:py-3 md:text-2xl md:font-semibold md:capitalize md:tracking-wide";
 
 export default async function Event({ params }: { params: { slug: string } }) {
-  const allEvents = (await getEvents()) as unknown as EventCardType[];
   const orgEvent = await getEventBySlug(params.slug);
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const eventDetails = orgEvent?.eventDetailsPhoto;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
-
+  const allEvents = (await getEvents()) as unknown as EventCardType[];
   const dateString = orgEvent.eventDate;
   const eventDate: Date = new Date(dateString);
   const formattedDateTime: string = formatDateTime(eventDate);
@@ -254,7 +252,11 @@ export default async function Event({ params }: { params: { slug: string } }) {
           {allEvents.map((soleEvent) => (
             <MinimalCard
               key={soleEvent.slug}
-              cardContent={adaptEventToMinimalCardType(soleEvent)}
+              cardContent={{
+                title: soleEvent.eventName,
+                cardPhoto: soleEvent.eventPhoto,
+                summary: soleEvent.eventSummary,
+              }}
             />
           ))}
         </div>
