@@ -144,6 +144,13 @@ export type ImageType = {
   };
 };
 
+export type ImagesLayoutType = {
+  fields: {
+    type: string;
+    images: ImageType[];
+  };
+};
+
 export type PageType = {
   metaData: string;
   pageType: string;
@@ -203,6 +210,7 @@ export type PageSectionType = {
     tabs?: TabType[];
     locations?: LocationType[];
     cardsLayout: CardType[];
+    imagesLayout: ImagesLayoutType;
   };
 };
 
