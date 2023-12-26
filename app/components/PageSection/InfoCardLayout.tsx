@@ -20,8 +20,7 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
                 className="object-cover"
                 src={`https:${card.fields.image.fields.file.url}`}
                 alt={card.fields.image.fields.description}
-                layout="responsive"
-                sizes="(max-width: 500px) 100vw, 500px"
+                style={{ width: "100%", height: "auto" }}
                 width={500}
                 height={400}
               />

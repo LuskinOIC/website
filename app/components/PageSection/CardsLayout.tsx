@@ -10,10 +10,9 @@ export default function ColumnLayout({
   section: PageSectionType;
 }) {
   const cards = section.fields.cardsLayout;
-  const infoCards = cards.filter(
-    (card) => card.fields.cardType === "Info Card",
-  );
-  if (infoCards.length > 0) {
+  const infoCards =
+    cards && cards.filter((card) => card.fields.cardType === "Info Card");
+  if (infoCards && infoCards.length > 0) {
     return <InfoCardLayout section={infoCards} />;
   }
 }
