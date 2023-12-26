@@ -20,7 +20,7 @@ export default async function Events() {
           Events
         </h1>
         <div className="flex flex-col flex-wrap md:flex-row">
-          {events.map((eventObj) => (
+          {/* {events.map((eventObj) => (
             <MinimalCard
               key={eventObj.slug}
               cardContent={{
@@ -29,7 +29,7 @@ export default async function Events() {
                 summary: eventObj.eventSummary,
               }}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </main>
