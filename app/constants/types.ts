@@ -144,6 +144,13 @@ export type ImageType = {
   };
 };
 
+export type ImagesLayoutType = {
+  fields: {
+    type: string;
+    images: ImageType[];
+  };
+};
+
 export type PageType = {
   metaData: string;
   pageType: string;
@@ -183,26 +190,15 @@ export type PageSectionType = {
     columnLayout: ColumnType;
     type: string;
     title: string;
-    titleSize?: string;
-    bold?: boolean;
-    titleStyle?: boolean;
-    description?: Document;
-    descriptionFontSize?: keyof FontSizeMap;
-    backgroundColor?: string;
-    reverseOrder?: boolean;
-    image?: ImageType;
-    buttonStyle?: "blue" | "yellow" | "text";
-    actionUrl?: string;
-    actionText?: string;
-    secondaryActionText?: string;
-    secondaryActionUrl?: string;
     dividerText?: string;
     infoCards: CardType[];
+    quadCards: CardType[];
     specialty?: SpecialtyType[];
     column?: ColumnType[];
     tabs?: TabType[];
     locations?: LocationType[];
     cardsLayout: CardType[];
+    imagesLayout: ImagesLayoutType;
   };
 };
 

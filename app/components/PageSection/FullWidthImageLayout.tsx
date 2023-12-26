@@ -1,22 +1,22 @@
 // Next components
 import Image from "next/image";
 // Types
-import { PageSectionType } from "@/app/constants/types";
+import { ImagesLayoutType } from "@/app/constants/types";
 
 export default function FullWidthImageLayout({
   section,
 }: {
-  section: PageSectionType;
+  section: ImagesLayoutType;
 }) {
   return (
     <div>
-      {section.fields.image && (
+      {section.fields.images && (
         <Image
           className="w-full"
-          src={`https:${section.fields.image.fields.file.url}`}
-          alt={section.fields.image.fields.description}
-          width={section.fields.image.fields.file.details.image.width}
-          height={section.fields.image.fields.file.details.image.height}
+          src={`https:${section.fields.images[0].fields.file.url}`}
+          alt={section.fields.images[0].fields.title}
+          width={section.fields.images[0].fields.file.details.image.width}
+          height={section.fields.images[0].fields.file.details.image.height}
         />
       )}
     </div>
