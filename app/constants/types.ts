@@ -190,9 +190,9 @@ export type PageSectionType = {
     columnLayout: ColumnType;
     type: string;
     title: string;
-    titleSize?: string;
     dividerText?: string;
     infoCards: CardType[];
+    quadCards: CardType[];
     specialty?: SpecialtyType[];
     column?: ColumnType[];
     tabs?: TabType[];

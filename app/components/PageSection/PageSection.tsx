@@ -14,7 +14,6 @@ export default function PageSection({ section }: { section: PageSectionType }) {
     case "Column Layout":
       return <ColumnLayout section={section} />;
     case "Images Layout":
-      // return <FullWidthImageLayout section={section} />;
       return <ImagesLayout section={section} />;
     case "Divider":
       return <Divider section={section} />;
