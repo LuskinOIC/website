@@ -191,18 +191,6 @@ export type PageSectionType = {
     type: string;
     title: string;
     titleSize?: string;
-    bold?: boolean;
-    titleStyle?: boolean;
-    description?: Document;
-    descriptionFontSize?: keyof FontSizeMap;
-    backgroundColor?: string;
-    reverseOrder?: boolean;
-    image?: ImageType;
-    buttonStyle?: "blue" | "yellow" | "text";
-    actionUrl?: string;
-    actionText?: string;
-    secondaryActionText?: string;
-    secondaryActionUrl?: string;
     dividerText?: string;
     infoCards: CardType[];
     specialty?: SpecialtyType[];
