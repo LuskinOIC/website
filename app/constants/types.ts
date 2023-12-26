@@ -255,7 +255,7 @@ export type ColumnType = {
 };
 
 export type PhysicianBioType = {
-  physicianName: string;
+  name: string;
   slug: string;
   specialties: Array<{
     nodeType: string;
@@ -266,7 +266,7 @@ export type PhysicianBioType = {
       content: Array<object>;
     }>;
   }>;
-  physicianPortrait: ImageType;
+  portrait: ImageType;
   overview: object;
   asset: AssetType;
   appointmentNumber: string;
