@@ -9,7 +9,6 @@ import renderRichTextToReactComponent from "../utils/rich-text";
 import { Document } from "@contentful/rich-text-types";
 
 export default async function Physicians() {
-  // TEMP fix for linter
   const physicians = (await getPhysicians()) as unknown as PhysicianBioType[];
 
   return (
