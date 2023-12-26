@@ -5,6 +5,7 @@ import QuadCard from "../QuadComponent";
 //Components
 import InfoCardLayout from "./InfoCardLayout";
 import LegacyCard from "../LegacyCard";
+import CardsRow from "../CardsRow";
 
 export default function ColumnLayout({
   section,
@@ -18,6 +19,8 @@ export default function ColumnLayout({
     cards && cards.filter((card) => card.fields.cardType === "Quad Image Card");
   const quadTextCards =
     cards && cards.filter((card) => card.fields.cardType === "Quad Text Card");
+  const bioCards =
+    cards && cards.filter((card) => card.fields.cardType === "Bio Cards");
 
   if (infoCards && infoCards.length > 0) {
     return <InfoCardLayout section={infoCards} />;
@@ -27,5 +30,13 @@ export default function ColumnLayout({
   }
   if (quadTextCards && quadTextCards.length > 0) {
     return <LegacyCard />;
+  }
+  if (bioCards && bioCards.length > 0) {
+    return (
+      <CardsRow
+        title={bioCards[0].fields.title}
+        cards={bioCards[0].fields.bioCards}
+      />
+    );
   }
 }
