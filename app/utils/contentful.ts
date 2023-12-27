@@ -3,7 +3,6 @@ import {
   EventType,
   PageType,
   PhysicianBioType,
-  SocialMediaSectionType,
   SpecialtyType,
 } from "@/app/constants/types";
 

@@ -1,4 +1,7 @@
-import { SocialMediaSectionPropsType } from "@/app/constants/types";
+import {
+  SocialMediaSectionPropsType,
+  SocialMediaKey,
+} from "@/app/constants/types";
 
 // import { Facebook, Instagram, Linkedin, Twitter, Youtube, Globe } from 'react-feather';
 import Image from "next/image";
@@ -9,40 +12,32 @@ import Youtube from "../../public/socials/youtube-social.svg";
 import Instagram from "../../public/socials/instagram-social.svg";
 import Yelp from "../../public/socials/yelp-social.svg";
 
+const socialMediaIcons: [SocialMediaKey, string][] = [
+  ["facebook", Facebook],
+  ["instagram", Instagram],
+  ["linkedIn", Linkedin],
+  ["x", Twitter], // Assuming 'x' is for Twitter
+  ["yelp", Yelp],
+  ["youTube", Youtube],
+];
+
 const SocialMediaSection = ({ section }: SocialMediaSectionPropsType) => {
   const { fields } = section;
 
   return (
     <div className="flex align-center gap-x-1.5">
-      {fields.facebook && (
-        <a href={fields.facebook} target="_blank" rel="noopener noreferrer">
-          <Image src={Facebook} alt="facebook" />
-        </a>
-      )}
-      {fields.instagram && (
-        <a href={fields.instagram} target="_blank" rel="noopener noreferrer">
-          <Image src={Instagram} alt="instagram" />
-        </a>
-      )}
-      {fields.linkedIn && (
-        <a href={fields.linkedIn} target="_blank" rel="noopener noreferrer">
-          <Image src={Linkedin} alt="LinkedIn" />
-        </a>
-      )}
-      {fields.x && (
-        <a href={fields.x} target="_blank" rel="noopener noreferrer">
-          <Image src={Twitter} alt="twitter" />
-        </a>
-      )}
-      {fields.yelp && (
-        <a href={fields.yelp} target="_blank" rel="noopener noreferrer">
-          <Image src={Yelp} alt="yelp" />
-        </a>
-      )}
-      {fields.youTube && (
-        <a href={fields.youTube} target="_blank" rel="noopener noreferrer">
-          <Image src={Youtube} alt="youtube" />
-        </a>
+      {socialMediaIcons.map(
+        ([alt, src]) =>
+          fields[alt] && (
+            <a
+              href={fields[alt]}
+              key={alt}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image src={src} alt={alt} />
+            </a>
+          ),
       )}
     </div>
   );

@@ -282,9 +282,24 @@ export type SocialMediaSectionPropsType = {
 };
 
 export type SocialMediaSectionType = {
-  title: string;
-  subtitle: string;
+  fields: {
+    title?: string;
+    facebook?: string;
+    instagram?: string;
+    linkedIn?: string;
+    x?: string;
+    yelp?: string;
+    youTube?: string;
+  };
 };
+
+export type SocialMediaKey =
+  | "facebook"
+  | "instagram"
+  | "linkedIn"
+  | "x"
+  | "yelp"
+  | "youTube";
 
 // TODO: MAJOR TYPE REFACTOR
 
