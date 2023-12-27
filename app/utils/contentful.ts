@@ -77,13 +77,6 @@ export async function getSpecialtyBySlug(slug: string) {
   return entry.items[0] as unknown as SpecialtyType;
 }
 
-/* SOCAL MEDIA */
-
-export async function getSocialMediaSection(): Promise<SocialMediaSectionType> {
-  const entry = await client.getEntry("6Mg6c3R91lEllwDWkYSkde");
-  return entry.fields as SocialMediaSectionType;
-}
-
 /* PHYSICIANS */
 
 export async function getPhysicians() {
