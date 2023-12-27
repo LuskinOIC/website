@@ -1,5 +1,4 @@
 import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
-import SocialMediaSection from "@/app/components/SocialMediaSection";
 import { getLeadershipBioBySlug, getMembers } from "@/app/utils/contentful";
 
 export async function generateStaticParams() {
@@ -13,11 +12,9 @@ export default async function LeadershipMember({
   params: { slug: string };
 }) {
   const member = await getLeadershipBioBySlug(params.slug);
-
   return (
     <main>
       <TwoColumnLayout section={member.topSection} />
-      <SocialMediaSection section={member.socialMedia} />
     </main>
   );
 }

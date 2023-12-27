@@ -238,6 +238,7 @@ export type ButtonType = {
 
 export type ColumnType = {
   fields: {
+    socialMedia?: SocialMediaSectionType;
     title: string;
     titleSize: string;
     bold: boolean;
@@ -301,8 +302,6 @@ export type SocialMediaKey =
   | "yelp"
   | "youTube";
 
-// TODO: MAJOR TYPE REFACTOR
-
 export type SpecialtyTypeProps = {
   name: string;
   fields: SpecialtyType;
@@ -333,4 +332,11 @@ export type OptionType = {
   value: string;
   label: string;
   targetID: string;
+};
+
+export type MemberType = {
+  name: string;
+  portrait: ImageType;
+  slug: string;
+  topSection: ColumnType;
 };

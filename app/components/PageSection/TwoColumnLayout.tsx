@@ -10,6 +10,7 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
+import SocialMediaSection from "../SocialMediaSection";
 
 const descriptionClassNames: ClassNames = {
   paragraph: "py-2 leading-7 md:leading-10",
@@ -31,8 +32,6 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
       ? fontSizeMap[section.fields.descriptionFontSize]
       : "md:text-lg";
   };
-  // NOTE: For some reason the tailwind them class bg-luskin-blue is not working
-  // for dynamically generated classes. This is a temporary fix.
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
@@ -86,6 +85,9 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
                 ))}
             </div>
           </div>
+          {section.fields.socialMedia && (
+            <SocialMediaSection section={section.fields.socialMedia} />
+          )}
         </div>
       </div>
     </section>

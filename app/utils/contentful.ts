@@ -1,6 +1,7 @@
 import { createClient } from "contentful";
 import {
   EventType,
+  MemberType,
   PageType,
   PhysicianBioType,
   SpecialtyType,
@@ -116,5 +117,5 @@ export async function getLeadershipBioBySlug(slug: string) {
     include: 4,
   });
 
-  return entry.items[0].fields;
+  return entry.items[0].fields as unknown as MemberType;
 }
