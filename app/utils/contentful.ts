@@ -105,3 +105,24 @@ export async function getPhysicianBioBySlug(slug: string) {
 
   return entry.items[0].fields as unknown as PhysicianBioType;
 }
+
+/* LEADERSHIP MEMBERS */
+export async function getMembers() {
+  const entries = await client.getEntries({
+    content_type: "memberBio",
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getLeadershipBioBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "memberBio",
+    "fields.slug": slug,
+    locale: "en-US",
+    include: 4,
+  });
+
+  return entry.items[0].fields;
+}
