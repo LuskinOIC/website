@@ -49,7 +49,12 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
           {descriptionContent}
         </div>
         {buttonUrl && buttonText && (
-          <Button className="my-3" href={buttonUrl} text={buttonText} />
+          <Button
+            className="my-3"
+            href={buttonUrl}
+            text={buttonText}
+            variant="blue"
+          />
         )}
         <div className="flex flex-col gap-3">
           <div className="flex place-items-center gap-5">
