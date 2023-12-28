@@ -16,7 +16,7 @@ const socialMediaIcons: [SocialMediaKey, string][] = [
   ["facebook", Facebook],
   ["instagram", Instagram],
   ["linkedIn", Linkedin],
-  ["x", Twitter], // Assuming 'x' is for Twitter
+  ["x", Twitter],
   ["yelp", Yelp],
   ["youTube", Youtube],
 ];
