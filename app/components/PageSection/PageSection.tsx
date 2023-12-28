@@ -24,7 +24,7 @@ export default function PageSection({ section }: { section: PageSectionType }) {
     case "Specialty":
       return (
         <UrgentCareCard
-          specialty={(section.fields.specialty as SpecialtyType[])[0].fields}
+          specialty={(section.fields.specialty as SpecialtyType[])[0]}
         />
       );
     default:

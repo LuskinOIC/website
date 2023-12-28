@@ -68,7 +68,7 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
       {location.fields.buttonTitle ? (
         <Button
           text={location.fields.buttonTitle}
-          href={location.fields.buttonLink ? location.fields.buttonLink : ""}
+          href={location.fields.buttonUrl ? location.fields.buttonUrl : ""}
           className="uppercase"
         />
       ) : (

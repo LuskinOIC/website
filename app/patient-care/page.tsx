@@ -10,6 +10,7 @@ export default async function PatientCare() {
   const locations = patientCarePage.pageSections[0].fields.locations;
   const tabs = patientCarePage.pageSections[1].fields.tabs;
 
+  // TODO: Replace hardcoding with map and PageSection components
   return (
     <main>
       {locations && <LocationsCard locations={locations} />}

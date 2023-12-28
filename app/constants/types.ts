@@ -182,7 +182,7 @@ export type LocationType = {
     streetAddress: string;
     cityStateZipcode: string;
     buttonTitle?: string;
-    buttonLink?: string;
+    buttonUrl?: string;
   };
 };
 
@@ -209,8 +209,7 @@ export type PageSectionType = {
     dividerText?: string;
     infoCards: CardType[];
     quadCards: CardType[];
-    specialty?: SpecialtyType[];
-    column?: ColumnType[];
+    specialty: SpecialtyType[];
     tabs?: TabType[];
     locations?: LocationType[];
     cardsLayout: CardType[];
@@ -295,9 +294,24 @@ export type SpecialtyTypeProps = {
 };
 
 export type SpecialtyType = {
-  id: string;
-  name: string;
-  fields: SpecialtyTypeProps;
+  fields: {
+    twoColumn: ColumnType;
+    name: string;
+    slug: string;
+    description: Document;
+    topSection: PageSectionType;
+    specialistsTitle?: string;
+    buttonText?: string;
+    buttonUrl?: string;
+    location: LocationType;
+    physicians: Array<{
+      fields: PhysicianBioType;
+    }>;
+    image: ImageType;
+    tabs: TabType[];
+    englishFormUrl: string;
+    spanishFormUrl: string;
+  };
 };
 
 export type OptionType = {
