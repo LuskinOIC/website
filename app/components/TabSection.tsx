@@ -20,7 +20,7 @@ import {
 import { useState } from "react";
 import Image from "next/image";
 import { Title3 } from "./ui/Typography/Title";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Text3 } from "./ui/Typography/Text";
 
 const styles = {
@@ -147,7 +147,7 @@ function DesktopTabSection({
         <TabsList className={styles.tabsList(tabCount)}>
           {tabs.map((tab, index) => (
             <TabsTrigger
-              key={index}
+              key={`TabsTrigger.${index}`}
               value={tab.fields.tabTitle}
               onClick={() => setSelectedTab(tab.fields.tabTitle)}
               className={styles.tabsTrigger(index, tabCount)}
@@ -160,7 +160,7 @@ function DesktopTabSection({
         </TabsList>
         {tabs.map((tab, index) => (
           <TabsContent
-            key={index}
+            key={`TabsContent.${index}`}
             value={tab.fields.tabTitle}
             className="flex flex-col items-center w-10/12"
           >
@@ -184,6 +184,7 @@ function MobileTabSection({
   setSelectedTab,
 }: MobileTabSectionType) {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     /* Only show on mobile */
@@ -208,14 +209,11 @@ function MobileTabSection({
           <DropdownMenuContent className="min-w-full w-[80vw]">
             {tabs.map((tab, index) => (
               <DropdownMenuItem
-                key={index}
+                key={`DropdownMenuItem.${index}`}
                 onSelect={() => {
                   setSelectedTab(tab.fields.tabTitle);
                   router.push(
-                    `/patient-care#${tab.fields.tabTitle.replace(
-                      /[^A-z]/g,
-                      "",
-                    )}`,
+                    `${pathname}#${tab.fields.tabTitle.replace(/[^A-z]/g, "")}`,
                   );
                 }}
               >
@@ -229,16 +227,19 @@ function MobileTabSection({
         {tabs.map((tab, index) => (
           <div
             id={tab.fields.tabTitle}
-            key={index}
+            key={`MobileTabsContent.${index}`}
             className="scroll-mt-[4.5rem]"
           >
             <Title3
-              key={index}
+              key={`MobileTabsTitle.${index}`}
               className="uppercase text-luskin-blue font-medium"
             >
               {tab.fields.tabTitle}
             </Title3>
-            <TabsTextOrCardContent key={index} fields={tab.fields} />
+            <TabsTextOrCardContent
+              key={`TabsTextOrCardContent.${index}`}
+              fields={tab.fields}
+            />
           </div>
         ))}
       </div>
@@ -255,7 +256,7 @@ function TabsTextOrCardContent({
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {cardContent.map((card, index) => (
           <Card
-            key={index}
+            key={`Card.${index}`}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
             <CardHeader className="p-0 md:pt-4 pb-5">
