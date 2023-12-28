@@ -33,12 +33,10 @@ export default async function PhysicianBio({
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
 
-  const physicianName = docBio.physicianName;
-  const physicianPortrait = docBio.physicianPortrait.fields.file.url;
-  const portraitWidth =
-    docBio.physicianPortrait.fields.file.details.image.width;
-  const portraitHeight =
-    docBio.physicianPortrait.fields.file.details.image.height;
+  const physicianName = docBio.name;
+  const physicianPortrait = docBio.portrait.fields.file.url;
+  const portraitWidth = docBio.portrait.fields.file.details.image.width;
+  const portraitHeight = docBio.portrait.fields.file.details.image.height;
 
   const generateTargetID = (title: string): string => {
     return `#${title.toLowerCase().split(" ").join("-")}`;
