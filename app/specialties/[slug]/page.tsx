@@ -16,7 +16,6 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
-
   return (
     <main>
       <TwoColumnLayout section={specialty.fields.twoColumn} />
