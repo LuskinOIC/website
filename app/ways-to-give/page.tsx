@@ -1,10 +1,11 @@
 import PageSection from "../components/PageSection/PageSection";
-import { PageSectionType, PageType } from "../constants/types";
-import { getWaysToGivePage } from "../utils/contentful";
+import { PageSectionType } from "../constants/types";
+import { PAGE_TYPES } from "../constants/entries"
+import { getPageByType } from "../utils/contentful";
 
 // This page represents the "ways to give" page.
 export default async function WaysToGive() {
-  const page: PageType = await getWaysToGivePage();
+  const page = await getPageByType(PAGE_TYPES.WAYS_TO_GIVE);
 
   return (
     <main>
