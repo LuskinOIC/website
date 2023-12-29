@@ -1,17 +1,17 @@
 // Next components
 import Image from "next/image";
 // Types
-
+import { SpecialtyType } from "@/app/constants/types";
 // Custom components
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
 import { Text1, Text2 } from "@/app/components/ui/Typography/Text";
+import { SAVE_MY_SPOT } from "@/app/constants/links";
 //Icons
 import phone from "@/public/phone.svg";
 import mapPin from "@/public/map-pin.svg";
 import clock from "@/public/clock.svg";
-import { SpecialtyType } from "../constants/types";
 
 const styles = {
   sectionLayout:
@@ -24,16 +24,8 @@ type SpecialtyCardProps = {
 };
 
 export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
-  const {
-    name,
-    description,
-    image,
-    englishFormUrl,
-    spanishFormUrl,
-    buttonUrl,
-    buttonText,
-    location,
-  } = specialty.fields;
+  const { name, description, image, englishFormUrl, spanishFormUrl, location } =
+    specialty.fields;
 
   const { title: imageTitle, file: imageFile } = image.fields;
 
@@ -54,14 +46,12 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
         <div className="grid gap-4 md:text-xl leading-[30px]">
           {descriptionContent}
         </div>
-        {buttonUrl && buttonText && (
-          <Button
-            className="my-3"
-            href={buttonUrl}
-            text={buttonText}
-            variant="blue"
-          />
-        )}
+        <Button
+          className="my-3"
+          href={SAVE_MY_SPOT}
+          text="SAVE MY SPOT"
+          variant="blue"
+        />
         <div className="flex flex-col gap-3">
           <div className="flex place-items-center gap-5">
             <div className="relative hidden md:block ">
@@ -71,11 +61,6 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
                 style={{ width: "100%", height: "auto" }}
               />
             </div>
-            {/* <Text2>
-              Monday - Friday: 8am - 4pm
-              <br />
-              Closed: Saturday and Sunday
-            </Text2> */}
             <div className="flex flex-col text-base md:text-xl font-arial leading-150">
               {hoursContent}
             </div>
