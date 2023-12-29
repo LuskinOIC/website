@@ -3,29 +3,48 @@ import { SpecialtyType } from "../../constants/types";
 //Custom Components
 import renderRichTextToReactComponent from "../../utils/rich-text";
 import { TitleComponent } from "../../components/ui/Typography/Title";
+import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
+import Button from "@/app/components/ui/Button";
+import PhysicianList from "@/app/components/PhysicianList";
 
 type SpecialtyCardProps = {
   specialty: SpecialtyType;
 };
 
 const styles = {
-  sectionLayout:
-    "grid gap-5 pl-5 md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-20",
-  boxStyling: "border border-zinc-300 rounded shadow-md md:w-9/12 xlg:w-6/12",
+  sectionLayout: "grid gap-2 md:gap-5 mx-2 md:mx-auto my-5 md:p-10",
+  boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
 };
 
 export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
+  const { name, description, location, slug, physicians } = specialty.fields;
+
   const descriptionContent =
-    specialty.fields.description &&
-    renderRichTextToReactComponent(specialty.fields.description);
+    description && renderRichTextToReactComponent(description);
 
   return (
     <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
-      <TitleComponent
-        title={specialty.fields.name}
-        titleSize={"Title Medium"}
-      />
-      {descriptionContent}
+      <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
+      <div className="flex gap-5">
+        <div className="basis-1/2">
+          {descriptionContent}
+          <Button
+            className="my-3"
+            href={`${slug}`}
+            text="LEARN MORE"
+            variant="blue"
+          />
+        </div>
+        <div className="basis-1/2">
+          <SpecialtyHoursLayout locationContent={location} />
+        </div>
+      </div>
+      {physicians && (
+        <PhysicianList
+          specialistsTitle={specialty.fields.specialistsTitle}
+          physicians={specialty.fields.physicians}
+        />
+      )}
     </section>
   );
 }
