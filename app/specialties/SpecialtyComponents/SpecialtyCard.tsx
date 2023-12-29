@@ -12,7 +12,7 @@ type SpecialtyCardProps = {
 };
 
 const styles = {
-  sectionLayout: "grid gap-2 md:gap-5 mx-2 md:mx-auto my-5 md:p-10",
+  sectionLayout: "grid gap-2 md:gap-5 mx-2 md:mx-auto my-5 p-5 md:p-10",
   boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
 };
 
@@ -25,7 +25,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
   return (
     <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
       <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
-      <div className="flex gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         <div className="basis-1/2">
           {descriptionContent}
           <Button
@@ -39,12 +39,15 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           <SpecialtyHoursLayout locationContent={location} />
         </div>
       </div>
-      {physicians && (
-        <PhysicianList
-          specialistsTitle={specialty.fields.specialistsTitle}
-          physicians={specialty.fields.physicians}
-        />
-      )}
+      <div className="flex">
+        {physicians && (
+          <PhysicianList
+            specialistsTitle={specialty.fields.specialistsTitle}
+            physicians={specialty.fields.physicians}
+            className={""}
+          />
+        )}
+      </div>
     </section>
   );
 }
