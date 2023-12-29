@@ -32,9 +32,15 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     spanishFormUrl,
     buttonUrl,
     buttonText,
+    location,
   } = specialty.fields;
 
   const { title: imageTitle, file: imageFile } = image.fields;
+
+  const { hours, phoneNumber, streetAddress, cityStateZipcode } =
+    location.fields;
+
+  const hoursContent = hours && renderRichTextToReactComponent(hours);
 
   const descriptionContent =
     description && renderRichTextToReactComponent(description);
@@ -65,11 +71,14 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
                 style={{ width: "100%", height: "auto" }}
               />
             </div>
-            <Text2>
+            {/* <Text2>
               Monday - Friday: 8am - 4pm
               <br />
               Closed: Saturday and Sunday
-            </Text2>
+            </Text2> */}
+            <div className="flex flex-col text-base md:text-xl font-arial leading-150">
+              {hoursContent}
+            </div>
           </div>
           <div className="block md:hidden">{walkIns}</div>
           <div className="flex place-items-center gap-5">
@@ -80,7 +89,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
                 style={{ width: "100%", height: "auto" }}
               />
             </div>
-            <Text2>(213) 742-1162</Text2>
+            <Text2>{phoneNumber}</Text2>
           </div>
           <div className="flex place-items-center gap-5">
             <div className="relative">
@@ -91,9 +100,9 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
               />
             </div>
             <Text2>
-              403 West Adams Boulevard
+              {streetAddress}
               <br />
-              Los Angeles, CA 90007
+              {cityStateZipcode}
             </Text2>
           </div>
         </div>
@@ -156,6 +165,3 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     </section>
   );
 }
-
-// To DO:
-// -Correct type declarations
