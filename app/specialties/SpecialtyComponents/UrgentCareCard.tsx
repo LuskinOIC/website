@@ -6,12 +6,9 @@ import { SpecialtyType } from "@/app/constants/types";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
-import { Text1, Text2 } from "@/app/components/ui/Typography/Text";
+import { Text1 } from "@/app/components/ui/Typography/Text";
 import { SAVE_MY_SPOT } from "@/app/constants/links";
-//Icons
-import phone from "@/public/phone.svg";
-import mapPin from "@/public/map-pin.svg";
-import clock from "@/public/clock.svg";
+import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 
 const styles = {
   sectionLayout:
@@ -28,11 +25,6 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     specialty.fields;
 
   const { title: imageTitle, file: imageFile } = image.fields;
-
-  const { hours, phoneNumber, streetAddress, cityStateZipcode } =
-    location.fields;
-
-  const hoursContent = hours && renderRichTextToReactComponent(hours);
 
   const descriptionContent =
     description && renderRichTextToReactComponent(description);
@@ -52,45 +44,8 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
           text="SAVE MY SPOT"
           variant="blue"
         />
-        <div className="flex flex-col gap-3">
-          <div className="flex place-items-center gap-5">
-            <div className="relative hidden md:block ">
-              <Image
-                src={clock}
-                alt="clock"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-            <div className="flex flex-col text-base md:text-xl font-arial leading-150">
-              {hoursContent}
-            </div>
-          </div>
-          <div className="block md:hidden">{walkIns}</div>
-          <div className="flex place-items-center gap-5">
-            <div className="relative">
-              <Image
-                src={phone}
-                alt="phone"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-            <Text2>{phoneNumber}</Text2>
-          </div>
-          <div className="flex place-items-center gap-5">
-            <div className="relative">
-              <Image
-                src={mapPin}
-                alt="mapPin"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-            <Text2>
-              {streetAddress}
-              <br />
-              {cityStateZipcode}
-            </Text2>
-          </div>
-        </div>
+        {walkIns}
+        <SpecialtyHoursLayout locationContent={location} />
       </div>
     );
   };
@@ -111,7 +66,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             />
           </div>
         )}
-        <div className="hidden md:flex flex-col gap-5 row-span-2">
+        <div className="md:flex flex-col gap-5 row-span-2">
           {walkIns}
           <a
             href={englishFormUrl}

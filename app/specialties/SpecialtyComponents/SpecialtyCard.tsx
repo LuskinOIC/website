@@ -1,8 +1,8 @@
 // Types
+import { SpecialtyType } from "../../constants/types";
 //Custom Components
-import renderRichTextToReactComponent from "../utils/rich-text";
-import { TitleComponent } from "./ui/Typography/Title";
-import { SpecialtyType } from "../constants/types";
+import renderRichTextToReactComponent from "../../utils/rich-text";
+import { TitleComponent } from "../../components/ui/Typography/Title";
 
 type SpecialtyCardProps = {
   specialty: SpecialtyType;

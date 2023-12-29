@@ -1,5 +1,5 @@
 // Components
-import UrgentCareCard from "@/app/components/UrgentCareCard";
+import UrgentCareCard from "@/app/specialties/SpecialtyComponents/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 import ColumnLayout from "./ColumnsLayout";
