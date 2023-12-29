@@ -340,3 +340,11 @@ export type MemberType = {
   slug: string;
   topSection: ColumnType;
 };
+
+export type PatientType = {
+  name: string;
+  portrait: ImageType;
+  slug: string;
+  topSection: ColumnType;
+  pageSections: PageSectionType[];
+};
