@@ -238,6 +238,7 @@ export type ButtonType = {
 
 export type ColumnType = {
   fields: {
+    socialMedia?: SocialMediaSectionType;
     title: string;
     titleSize: string;
     bold: boolean;
@@ -282,11 +283,24 @@ export type SocialMediaSectionPropsType = {
 };
 
 export type SocialMediaSectionType = {
-  title: string;
-  subtitle: string;
+  fields: {
+    title?: string;
+    facebook?: string;
+    instagram?: string;
+    linkedIn?: string;
+    x?: string;
+    yelp?: string;
+    youTube?: string;
+  };
 };
 
-// TODO: MAJOR TYPE REFACTOR
+export type SocialMediaKey =
+  | "facebook"
+  | "instagram"
+  | "linkedIn"
+  | "x"
+  | "yelp"
+  | "youTube";
 
 export type SpecialtyTypeProps = {
   name: string;
@@ -318,4 +332,11 @@ export type OptionType = {
   value: string;
   label: string;
   targetID: string;
+};
+
+export type MemberType = {
+  name: string;
+  portrait: ImageType;
+  slug: string;
+  topSection: ColumnType;
 };

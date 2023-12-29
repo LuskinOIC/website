@@ -1,9 +1,9 @@
 import { createClient } from "contentful";
 import {
   EventType,
+  MemberType,
   PageType,
   PhysicianBioType,
-  SocialMediaSectionType,
   SpecialtyType,
 } from "@/app/constants/types";
 
@@ -77,13 +77,6 @@ export async function getSpecialtyBySlug(slug: string) {
   return entry.items[0] as unknown as SpecialtyType;
 }
 
-/* SOCAL MEDIA */
-
-export async function getSocialMediaSection(): Promise<SocialMediaSectionType> {
-  const entry = await client.getEntry("6Mg6c3R91lEllwDWkYSkde");
-  return entry.fields as SocialMediaSectionType;
-}
-
 /* PHYSICIANS */
 
 export async function getPhysicians() {
@@ -104,4 +97,25 @@ export async function getPhysicianBioBySlug(slug: string) {
   });
 
   return entry.items[0].fields as unknown as PhysicianBioType;
+}
+
+/* LEADERSHIP MEMBERS */
+export async function getMembers() {
+  const entries = await client.getEntries({
+    content_type: "memberBio",
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getLeadershipBioBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "memberBio",
+    "fields.slug": slug,
+    locale: "en-US",
+    include: 4,
+  });
+
+  return entry.items[0].fields as unknown as MemberType;
 }
