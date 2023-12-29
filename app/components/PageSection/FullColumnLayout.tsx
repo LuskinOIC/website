@@ -21,7 +21,7 @@ export default function FullWidthImageLayout({
     section.fields.description as unknown as Document,
   );
   return (
-    <section className={`block ${bgColor} w-full`}>
+    <section className={`block ${bgColor} w-full text-white items-center px-10 py-10 `}>
       {section.fields.image && (
         <div className="">
           <Image
@@ -39,8 +39,8 @@ export default function FullWidthImageLayout({
         luskinHeader={section.fields.luskinHeader}
         bold={section.fields.bold}
       />
-      <div>{descriptionContent}</div>
-      <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
+      <div className="text-white w-full  items-center px-10 py-10 ">{descriptionContent}</div>
+      <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5 ">
         {section.fields.buttons &&
           section.fields.buttons.map((button) => (
             <Button
