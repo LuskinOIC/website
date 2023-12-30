@@ -10,9 +10,11 @@ import {
   NestedAssetType,
   MinimalCardType,
 } from "@/app/constants/types";
+// Import components
 import MinimalCard from "@/app/components/MinimalCard";
 import Slider from "@/app/components/Slider";
 import PageSection from "@/app/components/PageSection/PageSection";
+import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -47,7 +49,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
 
   // DEBUGGING
   // console.log("ORG EVENT:", orgEvent)
-  console.log("TRI-IMAGE", orgEvent.triImage.fields.images[0].fields)
+  // console.log("TRI-IMAGE", orgEvent.triImage.fields.images)
+  console.log("TRI-IMAGE TYPE", typeof orgEvent.triImage.fields.images)
 
 
 
@@ -156,18 +159,9 @@ export default async function Event({ params }: { params: { slug: string } }) {
       <div>
         <PageSection section={orgEvent.eventPageSections} />
       </div>
-      <div id="event-assets" className="hidden md:block md:flex">
-        {hasEventAssets &&
-          orgEvent.eventAsset.map((asset: NestedAssetType) => (
-            <DynamicImage
-              alt="event-assets"
-              key={asset.sys.id}
-              src={asset.fields.file.url}
-              width={asset.fields.file.details.image.width}
-              height={asset.fields.file.details.image.height}
-              className="mb-8"
-            />
-          ))}
+      {/* TRI-IMAGE LAYOUT */}
+      <div id="event-triImage" className="hidden md:block md:flex">
+        {<TriImageLayout section={orgEvent.triImage.fields.images} />}
       </div>
       <div id="event-assets-mobile" className="mb-10 md:hidden">
         {hasEventAssets && (
