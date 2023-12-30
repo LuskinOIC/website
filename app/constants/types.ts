@@ -132,11 +132,13 @@ export type EventType = {
   patientAmbassador: Array<{
     fields: MinimalCardType;
   }>;
+  eventPageSections: PageSectionType;
   eventDetails: string;
   eventDetailsPhoto: ImageType;
   eventCards: Array<{ fields: MinimalCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
+  triImage: TriImageType;
 };
 
 export type FileDetailsType = {
@@ -164,6 +166,21 @@ export type ImagesLayoutType = {
   fields: {
     type: string;
     images: ImageType[];
+  };
+};
+
+export type TriImageType = {
+  fields: {
+    type: string;
+    title: string;
+    images: Array<{
+      sys: {
+        id: string;
+      };
+      fields: {
+        file: FileDetailsType;
+      };
+    }>;
   };
 };
 

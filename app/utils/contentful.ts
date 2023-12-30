@@ -46,6 +46,7 @@ export async function getEventBySlug(slug: string) {
     content_type: "event",
     "fields.slug": slug,
     locale: "en-US",
+    include: 10,
   });
 
   return entry.items[0].fields as unknown as EventType;

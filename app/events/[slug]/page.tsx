@@ -10,8 +10,11 @@ import {
   NestedAssetType,
   MinimalCardType,
 } from "@/app/constants/types";
+// Import components
 import MinimalCard from "@/app/components/MinimalCard";
 import Slider from "@/app/components/Slider";
+import PageSection from "@/app/components/PageSection/PageSection";
+import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -39,11 +42,11 @@ const eventSummaryClassNames: ClassNames = {
 const buttonStyling =
   "md:rounded-lg md:no-underline md:bg-[#0076AD] uppercase md:text-white md:my-5 md:w-48 md:py-3 md:text-2xl md:font-semibold md:capitalize md:tracking-wide";
 
+// EVENT
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
-  const eventDetails = orgEvent?.eventDetailsPhoto;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
   const allEvents = (await getEvents()) as unknown as EventCardType[];
   const dateString = orgEvent.eventDate;
@@ -54,8 +57,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
     orgEvent.patientAmbassador.length > 0;
   const hasSponsors: boolean =
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
-  const hasEventAssets: boolean =
-    Array.isArray(orgEvent.eventAsset) && orgEvent.sponsor.length > 0;
 
   const sponsorsArray: object[] = [];
   const sponsors = orgEvent.sponsor;
@@ -144,51 +145,15 @@ export default async function Event({ params }: { params: { slug: string } }) {
             ),
           )}
       </div>
-      <div
-        id="event-details"
-        className="flex flex-col-reverse md:mb-20 md:flex-row md:justify-between 2xl:ml-64"
-      >
-        <p className="mx-6 mb-6 md:mt-48 md:w-2/5 md:text-2xl">
-          {orgEvent.eventDetails}
-        </p>
-
-        <DynamicImage
-          alt="Event Photo"
-          src={eventDetails?.fields?.file.url}
-          width={eventDetails?.fields?.file.details.image.width}
-          height={eventDetails?.fields?.file.details.image.height}
-          className="my-8 h-52 object-cover md:ml-10 md:h-full md:rounded-lg"
-        />
+      <div>
+        {orgEvent.eventPageSections && (
+          <PageSection section={orgEvent.eventPageSections} />
+        )}
       </div>
-      <div id="event-assets" className="hidden md:block md:flex">
-        {hasEventAssets &&
-          orgEvent.eventAsset.map((asset: NestedAssetType) => (
-            <DynamicImage
-              alt="event-assets"
-              key={asset.sys.id}
-              src={asset.fields.file.url}
-              width={asset.fields.file.details.image.width}
-              height={asset.fields.file.details.image.height}
-              className="mb-8"
-            />
-          ))}
-      </div>
-      <div id="event-assets-mobile" className="mb-10 md:hidden">
-        {hasEventAssets && (
-          <Slider
-            slides={
-              orgEvent.eventAsset.map((asset: NestedAssetType) => (
-                <DynamicImage
-                  alt="event-assets"
-                  key={asset.sys.id}
-                  src={asset.fields.file.url}
-                  width={asset.fields.file.details.image.width}
-                  height={asset.fields.file.details.image.height}
-                  className="mb-5"
-                />
-              )) as any
-            }
-          />
+      {/* TRI-IMAGE LAYOUT */}
+      <div id="event-triImage" className="">
+        {orgEvent.triImage?.fields?.images && (
+          <TriImageLayout section={orgEvent.triImage.fields.images} />
         )}
       </div>
       {/* Sponsors: MOBILE */}
