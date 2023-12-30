@@ -41,6 +41,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
     section.fields.description as unknown as Document,
     descriptionClassNames,
   );
+  const showTitle = section.fields.showTitle;
   return (
     <section className={`block ${bgColor}`}>
       <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
@@ -63,12 +64,14 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
         <div className={`basis-1/2 px-2 ${textPadding}`}>
           <div className="grid py-5">
             <div className={`grid gap-2 ${textColor}`}>
-              <TitleComponent
-                title={section.fields.title}
-                titleSize={section.fields.titleSize}
-                luskinHeader={section.fields.luskinHeader}
-                bold={section.fields.bold}
-              />
+              {showTitle && (
+                <TitleComponent
+                  title={section.fields.title}
+                  titleSize={section.fields.titleSize}
+                  luskinHeader={section.fields.luskinHeader}
+                  bold={section.fields.bold}
+                />
+              )}
               <div className={`text-base ${descriptionFontSize()}`}>
                 {descriptionContent}
               </div>

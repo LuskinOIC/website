@@ -3,6 +3,7 @@ import {
   EventType,
   MemberType,
   PageType,
+  PatientType,
   PhysicianBioType,
   SpecialtyType,
 } from "@/app/constants/types";
@@ -118,4 +119,25 @@ export async function getLeadershipBioBySlug(slug: string) {
   });
 
   return entry.items[0].fields as unknown as MemberType;
+}
+
+/* PATIENT BIOS */
+export async function getPatientStories() {
+  const entries = await client.getEntries({
+    content_type: "patientBio",
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getPatientStoryBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "patientBio",
+    "fields.slug": slug,
+    locale: "en-US",
+    include: 4,
+  });
+
+  return entry.items[0].fields as unknown as PatientType;
 }

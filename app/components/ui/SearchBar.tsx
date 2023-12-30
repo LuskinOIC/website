@@ -1,7 +1,7 @@
 export default function SearchBar() {
   return (
     <div className="flex justify-center my-4">
-      <div className="relative w-2/3">
+      <div className="relative md:w-2/3">
         <input
           type="text"
           placeholder="Search..."

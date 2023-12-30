@@ -240,6 +240,7 @@ export type ColumnType = {
   fields: {
     socialMedia?: SocialMediaSectionType;
     title: string;
+    showTitle?: boolean;
     titleSize: string;
     bold: boolean;
     subHeader: string;
@@ -339,4 +340,13 @@ export type MemberType = {
   portrait: ImageType;
   slug: string;
   topSection: ColumnType;
+};
+
+export type PatientType = {
+  name: string;
+  portrait: NestedAssetType;
+  slug: string;
+  summary: string;
+  topSection: ColumnType;
+  pageSections: PageSectionType[];
 };
