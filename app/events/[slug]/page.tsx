@@ -46,11 +46,6 @@ const buttonStyling =
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
 
-  // DEBUGGING
-  // console.log("ORG EVENT:", orgEvent)
-  // console.log("TRI-IMAGE", orgEvent.triImage.fields.images)
-  console.log("TRI-IMAGE TYPE", typeof orgEvent.triImage.fields.images);
-
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
   const allEvents = (await getEvents()) as unknown as EventCardType[];
@@ -62,8 +57,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
     orgEvent.patientAmbassador.length > 0;
   const hasSponsors: boolean =
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
-  const hasEventAssets: boolean =
-    Array.isArray(orgEvent.eventAsset) && orgEvent.sponsor.length > 0;
 
   const sponsorsArray: object[] = [];
   const sponsors = orgEvent.sponsor;
@@ -153,28 +146,14 @@ export default async function Event({ params }: { params: { slug: string } }) {
           )}
       </div>
       <div>
-        <PageSection section={orgEvent.eventPageSections} />
+        {orgEvent.eventPageSections && (
+          <PageSection section={orgEvent.eventPageSections} />
+        )}
       </div>
       {/* TRI-IMAGE LAYOUT */}
-      <div id="event-triImage" className="hidden md:block md:flex">
-        {<TriImageLayout section={orgEvent.triImage.fields.images} />}
-      </div>
-      <div id="event-assets-mobile" className="mb-10 md:hidden">
-        {hasEventAssets && (
-          <Slider
-            slides={
-              orgEvent.eventAsset.map((asset: NestedAssetType) => (
-                <DynamicImage
-                  alt="event-assets"
-                  key={asset.sys.id}
-                  src={asset.fields.file.url}
-                  width={asset.fields.file.details.image.width}
-                  height={asset.fields.file.details.image.height}
-                  className="mb-5"
-                />
-              )) as any
-            }
-          />
+      <div id="event-triImage" className="">
+        {orgEvent.triImage?.fields?.images && (
+          <TriImageLayout section={orgEvent.triImage.fields.images} />
         )}
       </div>
       {/* Sponsors: MOBILE */}
