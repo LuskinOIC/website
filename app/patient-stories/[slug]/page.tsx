@@ -1,11 +1,29 @@
-export function generateStaticParams() {
-  return [{ slug: "place-holder" }];
+import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
+import {
+  getPatientStories,
+  getPatientStoryBySlug,
+} from "@/app/utils/contentful";
+import PageSection from "@/app/components/PageSection/PageSection";
+import { PageSectionType } from "@/app/constants/types";
+
+export async function generateStaticParams() {
+  const patients = await getPatientStories();
+  return patients.map((patient) => ({ slug: patient.slug }));
 }
 
-export default function PatientStory({ params }: { params: { slug: string } }) {
+export default async function PatientStories({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const patient = await getPatientStoryBySlug(params.slug);
   return (
     <main>
-      <h1>Patient Story - {params.slug}</h1>
+      <TwoColumnLayout section={patient.topSection} />
+      {patient.pageSections &&
+        patient.pageSections.map((pageSection: PageSectionType) => (
+          <PageSection key={pageSection.fields.title} section={pageSection} />
+        ))}
     </main>
   );
 }

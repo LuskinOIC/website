@@ -128,6 +128,7 @@ export async function getPatientStories() {
     locale: "en-US",
   });
 
+  // return entries.items as unknown as PatientType[];
   return entries.items.map((entry) => entry.fields);
 }
 
