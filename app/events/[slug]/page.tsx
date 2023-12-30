@@ -46,16 +46,12 @@ const buttonStyling =
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
 
-
   // DEBUGGING
   // console.log("ORG EVENT:", orgEvent)
   // console.log("TRI-IMAGE", orgEvent.triImage.fields.images)
-  console.log("TRI-IMAGE TYPE", typeof orgEvent.triImage.fields.images)
-
-
+  console.log("TRI-IMAGE TYPE", typeof orgEvent.triImage.fields.images);
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
-  const eventDetails = orgEvent?.eventDetailsPhoto;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
   const allEvents = (await getEvents()) as unknown as EventCardType[];
   const dateString = orgEvent.eventDate;

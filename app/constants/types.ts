@@ -173,17 +173,16 @@ export type TriImageType = {
   fields: {
     type: string;
     title: string;
-    images: Array<
-    {
+    images: Array<{
       sys: {
         id: string;
-      },
+      };
       fields: {
         file: FileDetailsType;
       };
-    }>
-  }
-}
+    }>;
+  };
+};
 
 export type PageType = {
   metaData: string;
