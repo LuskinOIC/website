@@ -342,11 +342,10 @@ export type MemberType = {
 };
 
 export type PatientType = {
-  // fields: {
   name: string;
-  portrait: ImageType;
+  portrait: NestedAssetType;
   slug: string;
+  summary: string;
   topSection: ColumnType;
   pageSections: PageSectionType[];
-  // }
 };
