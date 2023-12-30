@@ -178,7 +178,9 @@ export type TriImageType = {
       sys: {
         id: string;
       },
-      fields: FileDetailsType;
+      fields: {
+        file: FileDetailsType;
+      };
     }>
   }
 }
