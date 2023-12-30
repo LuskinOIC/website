@@ -240,6 +240,7 @@ export type ColumnType = {
   fields: {
     socialMedia?: SocialMediaSectionType;
     title: string;
+    showTitle?: boolean;
     titleSize: string;
     bold: boolean;
     subHeader: string;
