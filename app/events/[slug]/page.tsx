@@ -12,6 +12,7 @@ import {
 } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
 import Slider from "@/app/components/Slider";
+import PageSection from "@/app/components/PageSection/PageSection";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -39,8 +40,16 @@ const eventSummaryClassNames: ClassNames = {
 const buttonStyling =
   "md:rounded-lg md:no-underline md:bg-[#0076AD] uppercase md:text-white md:my-5 md:w-48 md:py-3 md:text-2xl md:font-semibold md:capitalize md:tracking-wide";
 
+// EVENT
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
+
+
+  // DEBUGGING
+  // console.log("ORG EVENT:", orgEvent)
+  console.log("TRI-IMAGE", orgEvent.triImage.fields.images[0].fields)
+
+
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const eventDetails = orgEvent?.eventDetailsPhoto;
@@ -144,21 +153,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
             ),
           )}
       </div>
-      <div
-        id="event-details"
-        className="flex flex-col-reverse md:mb-20 md:flex-row md:justify-between 2xl:ml-64"
-      >
-        <p className="mx-6 mb-6 md:mt-48 md:w-2/5 md:text-2xl">
-          {orgEvent.eventDetails}
-        </p>
-
-        <DynamicImage
-          alt="Event Photo"
-          src={eventDetails?.fields?.file.url}
-          width={eventDetails?.fields?.file.details.image.width}
-          height={eventDetails?.fields?.file.details.image.height}
-          className="my-8 h-52 object-cover md:ml-10 md:h-full md:rounded-lg"
-        />
+      <div>
+        <PageSection section={orgEvent.eventPageSections} />
       </div>
       <div id="event-assets" className="hidden md:block md:flex">
         {hasEventAssets &&
