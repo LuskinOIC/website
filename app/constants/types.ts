@@ -369,3 +369,14 @@ export type PatientType = {
   topSection: ColumnType;
   pageSections: PageSectionType[];
 };
+
+export type NewsPostType = {
+  fields: any;
+};
+
+export type NewsPostCardType = {
+  title: string;
+  slug: string;
+  profileImage: NestedAssetType;
+  subTitle: string;
+};
