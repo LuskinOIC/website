@@ -165,19 +165,21 @@ export type ImageType = {
 export type ImagesLayoutType = {
   fields: {
     type: string;
-    images: ImageType[];
+    images: TriImageType[];
   };
 };
 
 export type TriImageType = {
   fields: {
+    file: FileDetailsType;
     type: string;
     title: string;
     images: Array<{
-      sys: {
+      sys?: {
         id: string;
       };
       fields: {
+        title: string;
         file: FileDetailsType;
       };
     }>;
