@@ -3,6 +3,7 @@ import { getNewsPosts, getNewsPostBySlug } from "@/app/utils/contentful";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionType } from "@/app/constants/types";
+import SocialMediaSection from "@/app/components/SocialMediaSection";
 
 export async function generateStaticParams() {
   const newsPosts = await getNewsPosts();
@@ -15,6 +16,7 @@ const styles = {
   postDetailsContainer: "flex flex-col md:flex-row md:gap-x-10 ",
   postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4",
   postDetailsFont: "font-normal md:font-bold",
+  socialMediaWrapper: "flex flex-col md:flex-row gap-2 py-1.5 md:py-4",
 };
 
 export default async function NewsArticle({
@@ -29,7 +31,7 @@ export default async function NewsArticle({
     subTitle,
     published,
     writtenBy,
-    // followOurStory,
+    followOurStory,
     mainImage,
     // profileImage,
     pageSections,
@@ -47,7 +49,7 @@ export default async function NewsArticle({
 
   return (
     <main className="flex flex-col">
-      <section className={`${styles.sectionWrapper}`}>
+      <section className={`${styles.sectionWrapper} py-1.5 md:py-4`}>
         <h1 className="text-2xl md:text-[40px] py-2 md:py-6">{title}</h1>
         {newsSubTitle}
       </section>
@@ -70,11 +72,18 @@ export default async function NewsArticle({
           <div className={`${styles.postDetailsFont}`}>Written By:</div>
           <div>{writtenBy}</div>
         </div>
+        {followOurStory && (
+          <div className={`${styles.socialMediaWrapper}`}>
+            <div className="font-bold">Follow Our Story</div>
+            {followOurStory && <SocialMediaSection section={followOurStory} />}
+          </div>
+        )}
       </section>
-
-      {pageSections.map((section: PageSectionType) => (
-        <PageSection key={section.fields.title} section={section} />
-      ))}
+      <section className="grid gap-3">
+        {pageSections.map((section: PageSectionType) => (
+          <PageSection key={section.fields.title} section={section} />
+        ))}
+      </section>
     </main>
   );
 }
