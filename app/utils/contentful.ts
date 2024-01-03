@@ -144,15 +144,6 @@ export async function getPatientStoryBySlug(slug: string) {
   return entry.items[0].fields as unknown as PatientType;
 }
 
-// export async function getNewsPosts(): Promise<NewsPostType[]> {
-//   const entries = await client.getEntries({
-//     content_type: "newsPost",
-//     locale: "en-US",
-//   });
-
-//   return entries.items as unknown as NewsPostType[];
-// }
-
 export async function getNewsPosts() {
   const entries = await client.getEntries({
     content_type: "newsPost",
@@ -162,7 +153,7 @@ export async function getNewsPosts() {
   return entries.items.map((entry) => entry.fields);
 }
 
-export async function getNewspostBySlug(slug: string) {
+export async function getNewsPostBySlug(slug: string) {
   const entry = await client.getEntries({
     content_type: "newsPost",
     "fields.slug": slug,
