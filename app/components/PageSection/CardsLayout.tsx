@@ -29,7 +29,7 @@ export default function ColumnLayout({
     return <QuadCard section={quadCards} />;
   }
   if (quadTextCards && quadTextCards.length > 0) {
-    return <QuadTextCard />;
+    return <QuadTextCard section={quadTextCards} />;
   }
   if (bioCards && bioCards.length > 0) {
     return (
