@@ -17,11 +17,26 @@ export default function FullWidthImageLayout({
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
+  const textColor =
+    section.fields.backgroundColor != "white" ? "text-white" : "text-black";
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
   );
+  const descriptionFontSize = () => {
+    const fontSizeMap = {
+      large: "md:text-2xl",
+      medium: "md:text-xl",
+      small: "md:text-lg",
+    };
+
+    return section.fields.descriptionFontSize
+      ? fontSizeMap[section.fields.descriptionFontSize]
+      : "md:text-lg";
+  };
   return (
-    <section className={`block ${bgColor} w-full`}>
+    <section
+      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-40 py-10  `}
+    >
       {section.fields.image && (
         <div className="">
           <Image
@@ -39,7 +54,9 @@ export default function FullWidthImageLayout({
         luskinHeader={section.fields.luskinHeader}
         bold={section.fields.bold}
       />
-      <div>{descriptionContent}</div>
+      <div className={`grid gap-2 md:gap-5 ${descriptionFontSize()}`}>
+        {descriptionContent}
+      </div>
       <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
         {section.fields.buttons &&
           section.fields.buttons.map((button) => (
