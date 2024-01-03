@@ -38,7 +38,7 @@ export default function FullWidthImageLayout({
       className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-40 py-10  `}
     >
       {section.fields.image && (
-        <div className=" my-8">
+        <div className="">
           <Image
             className=""
             src={`https:${section.fields.image.fields.file.url}`}
