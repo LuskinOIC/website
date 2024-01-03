@@ -33,7 +33,6 @@ export default async function NewsArticle({
     writtenBy,
     followOurStory,
     mainImage,
-    // profileImage,
     pageSections,
   } = newsPost.fields;
   const { url, details, fileName } = mainImage.fields.file;
@@ -79,7 +78,7 @@ export default async function NewsArticle({
           </div>
         )}
       </section>
-      <section className="grid gap-3">
+      <section className="grid gap-5">
         {pageSections.map((section: PageSectionType) => (
           <PageSection key={section.fields.title} section={section} />
         ))}

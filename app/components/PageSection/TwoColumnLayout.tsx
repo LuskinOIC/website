@@ -76,9 +76,9 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
                 {descriptionContent}
               </div>
             </div>
-            <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
-              {section.fields.buttons &&
-                section.fields.buttons.map((button) => (
+            {section.fields.buttons && (
+              <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
+                {section.fields.buttons.map((button) => (
                   <Button
                     key={button.sys.id}
                     href={button.fields.buttonUrl}
@@ -86,7 +86,8 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
                     variant={button.fields.type}
                   />
                 ))}
-            </div>
+              </div>
+            )}
           </div>
           {section.fields.socialMedia && (
             <SocialMediaSection section={section.fields.socialMedia} />
