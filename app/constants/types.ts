@@ -216,6 +216,7 @@ export type LocationType = {
     name: string;
     hours: Document;
     phoneNumber: string;
+    emailAddress: string;
     streetAddress: string;
     cityStateZipcode: string;
     button: ButtonType;
