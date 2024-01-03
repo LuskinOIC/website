@@ -4,7 +4,7 @@ import QuadCard from "../QuadComponent";
 
 //Components
 import InfoCardLayout from "./InfoCardLayout";
-import LegacyCard from "../LegacyCard";
+import QuadTextCard from "../QuadTextCard";
 import CardsRow from "../CardsRow";
 
 export default function ColumnLayout({
@@ -29,7 +29,7 @@ export default function ColumnLayout({
     return <QuadCard section={quadCards} />;
   }
   if (quadTextCards && quadTextCards.length > 0) {
-    return <LegacyCard />;
+    return <QuadTextCard />;
   }
   if (bioCards && bioCards.length > 0) {
     return (

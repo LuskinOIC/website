@@ -30,7 +30,7 @@ const cardContents = [
   },
 ];
 
-export default function LegacyCard() {
+export default function QuadTextCard() {
   return (
     <section className="flex justify-center">
       <div className="grid md:grid-cols-2 gap-6 justify-items-center p-5 md:p-10">
