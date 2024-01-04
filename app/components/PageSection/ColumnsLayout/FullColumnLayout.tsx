@@ -4,8 +4,8 @@ import Image from "next/image";
 import { ColumnType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
 //Local Components
-import { TitleComponent } from "../ui/Typography/Title";
-import Button from "../ui/Button";
+import { TitleComponent } from "../../ui/Typography/Title";
+import Button from "../../ui/Button";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 
