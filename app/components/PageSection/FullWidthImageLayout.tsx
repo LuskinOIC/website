@@ -2,6 +2,8 @@
 import Image from "next/image";
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
+// Components
+import Slider from "@/app/components/Slider";
 
 export default function FullWidthImageLayout({
   section,
