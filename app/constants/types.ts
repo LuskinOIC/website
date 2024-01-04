@@ -258,6 +258,7 @@ export type ButtonType = {
 
 export type ColumnType = {
   fields: {
+    video?: string;
     socialMedia?: SocialMediaSectionType;
     title: string;
     showTitle?: boolean;

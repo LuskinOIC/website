@@ -1,7 +1,7 @@
 // Components
 import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
 import FullColumnLayout from "@/app/components/PageSection/FullColumnLayout";
-
+import VideoWithText from "./VideoWithText";
 // Types
 import { PageSectionType } from "@/app/constants/types";
 
@@ -20,6 +20,8 @@ export default function ColumnsLayout({
     //Not created yet
     // case "Wide Image with Text":
     //   return <WideImageWithText section={section} />;
+    case "Video with Text":
+      return <VideoWithText section={ColumnLayout} />;
     default:
       return null;
   }
