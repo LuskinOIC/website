@@ -29,7 +29,7 @@ export default async function NewsArticle({
   const {
     title,
     subTitle,
-    published,
+    date,
     writtenBy,
     followOurStory,
     mainImage,
@@ -37,14 +37,14 @@ export default async function NewsArticle({
   } = newsPost.fields;
   const { url, details, fileName } = mainImage.fields.file;
   const newsSubTitle = renderRichTextToReactComponent(subTitle);
-  const publishedDate = new Date(published);
+  const dateDate = new Date(date);
   const formattedDate =
-    publishedDate.getMonth() +
+    dateDate.getMonth() +
     1 +
     "/" +
-    publishedDate.getDate() +
+    dateDate.getDate() +
     "/" +
-    publishedDate.getFullYear();
+    dateDate.getFullYear();
 
   return (
     <main className="flex flex-col">

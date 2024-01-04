@@ -1,7 +1,6 @@
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
-
 export interface AboutPageType {
   pageSections: PageSectionType[];
 }
@@ -397,7 +396,7 @@ export type NewsPostType = {
     title: string;
     profileImage: string;
     subTitle: Document;
-    published: Date;
+    date: Date;
     writtenBy: string;
     followOurStory: SocialMediaSectionType;
     mainImage: ImageType;
@@ -405,7 +404,8 @@ export type NewsPostType = {
   };
 };
 
-export type NewsPostCardType = {
+export type BlogCardsRowType = {
+  date: string;
   title: string;
   slug: string;
   profileImage: NestedAssetType;
