@@ -10,12 +10,7 @@ export default async function News() {
     <main className="grid mx-auto w-4/5">
       <BackToBrowse />
       <SearchBar />
-      <h1 className="mb-2 mt-8 text-xl font-bold text-[#0076AD] md:mb-4 md:text-3xl md:font-normal">
-        News
-      </h1>
-      <div className="flex flex-col flex-wrap md:flex-row">
-        <BlogCardsRow title="news" cards={news} variant="full" />
-      </div>
+      <BlogCardsRow title="news" cards={news} variant="full" />
     </main>
   );
 }

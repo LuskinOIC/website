@@ -11,4 +11,5 @@ export const PAGE_TYPES = {
   MEDICAL_PROFESSIONALS: "Medical Professionals Page",
   CORPORATE_SPONSORSHIP: "Corporate Sponsorship Page",
   LEADERSHIP: "Leadership Page",
+  BLOG: "Blog Page",
 };
