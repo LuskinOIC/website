@@ -189,7 +189,7 @@ export type TriImageType = {
 export type PageType = {
   metaData: string;
   pageType: string;
-  pageSections: PageSectionType[];
+  pageSections: PageSectionType;
   slug: string;
 };
 
@@ -221,6 +221,7 @@ export type FontSizeMap = {
 };
 
 export type PageSectionType = {
+  map: any;
   fields: {
     columnLayout: ColumnType;
     type: string;
@@ -257,6 +258,7 @@ export type ButtonType = {
 
 export type ColumnType = {
   fields: {
+    video?: string;
     socialMedia?: SocialMediaSectionType;
     title: string;
     showTitle?: boolean;
@@ -368,4 +370,25 @@ export type PatientType = {
   summary: string;
   topSection: ColumnType;
   pageSections: PageSectionType[];
+};
+
+export type NewsPostType = {
+  fields: {
+    slug: string;
+    title: string;
+    profileImage: string;
+    subTitle: Document;
+    published: Date;
+    writtenBy: string;
+    followOurStory: SocialMediaSectionType;
+    mainImage: ImageType;
+    pageSections: PageSectionType;
+  };
+};
+
+export type NewsPostCardType = {
+  title: string;
+  slug: string;
+  profileImage: NestedAssetType;
+  subTitle: string;
 };

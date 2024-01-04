@@ -2,7 +2,7 @@
 import UrgentCareCard from "@/app/specialties/SpecialtyComponents/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
-import ColumnLayout from "./ColumnsLayout";
+import ColumnLayout from "./ColumnsLayout/ColumnsLayout";
 import CardLayoutSection from "./CardsLayout";
 import ImagesLayout from "./ImagesLayout";
 
