@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
 interface Slide {
@@ -11,12 +11,6 @@ interface SliderProps {
   slides: Slide[];
   displayArrows?: boolean;
 }
-
-type DisplayArrows = {
-  display: boolean;
-};
-
-// const DisplayArrowsStyles = `${DisplayArrows === true ? "block" : "hidden"}`;
 
 const LeftArrow = () => (
   <svg
