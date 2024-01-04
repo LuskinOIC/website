@@ -1,4 +1,4 @@
-import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
+import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import { getLeadershipBioBySlug, getMembers } from "@/app/utils/contentful";
 
 export async function generateStaticParams() {

@@ -1,4 +1,4 @@
-import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
+import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import {
   getPatientStories,
   getPatientStoryBySlug,

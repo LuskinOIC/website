@@ -1,4 +1,4 @@
-import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
+import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import PhysicianList from "@/app/components/PhysicianList";
 import TabSection from "@/app/components/TabSection";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";

@@ -1,5 +1,5 @@
 // Components
-import TwoColumnLayout from "@/app/components/PageSection/TwoColumnLayout";
+import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import FullColumnLayout from "@/app/components/PageSection/FullColumnLayout";
 import VideoWithText from "./VideoWithText";
 // Types
