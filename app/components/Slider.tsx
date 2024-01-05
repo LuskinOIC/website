@@ -9,42 +9,46 @@ interface Slide {
 
 interface SliderProps {
   slides: Slide[];
-  displayArrow?: boolean;
+  indicatorStyle?: string;
 }
 
 const LeftArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="h-6 w-6">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15.75 19.5L8.25 12l7.5-7.5"
-    />
-  </svg>
+  <div className="hidden md:block">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="h-6 w-6">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 19.5L8.25 12l7.5-7.5"
+      />
+    </svg>
+  </div>
 );
 
 const RightArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="h-6 w-6">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-    />
-  </svg>
+  <div className="hidden md:block">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="h-6 w-6">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  </div>
 );
 
-const Slider: React.FC<SliderProps> = ({ slides, displayArrow = false }) => {
+const Slider: React.FC<SliderProps> = ({ slides, indicatorStyle }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
 
@@ -105,9 +109,7 @@ const Slider: React.FC<SliderProps> = ({ slides, displayArrow = false }) => {
         ))}
       </div>
       <div className="absolute bottom-0 left-0 right-0 mb-2 flex items-center justify-center">
-        <button
-          onClick={prevSlide}
-          className={`${displayArrow === true ? "block" : "hidden"}`}>
+        <button onClick={prevSlide} className="">
           <LeftArrow />
         </button>
         {slides.map((_, index) => (
@@ -119,9 +121,7 @@ const Slider: React.FC<SliderProps> = ({ slides, displayArrow = false }) => {
                 : "bg-gray-300 border-2 border-black w-2 h-2 opacity-20"
             }`}></span>
         ))}
-        <button
-          onClick={nextSlide}
-          className={`${displayArrow === true ? "block" : "hidden"}`}>
+        <button onClick={nextSlide} className="">
           <RightArrow />
         </button>
       </div>
