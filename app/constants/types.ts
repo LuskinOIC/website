@@ -186,6 +186,23 @@ export type TriImageType = {
   };
 };
 
+export type CarouselImageType = {
+  fields: {
+    file: FileDetailsType;
+    type: string;
+    title: string;
+    images: Array<{
+      sys?: {
+        id: string;
+      };
+      fields: {
+        title: string;
+        file: FileDetailsType;
+      };
+    }>;
+  };
+};
+
 export type PageType = {
   metaData: string;
   pageType: string;
