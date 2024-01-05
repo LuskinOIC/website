@@ -24,7 +24,7 @@ export default function FullWidthImageLayout({
                 alt={image.fields.file.fileName}
                 width={image.fields.file.details.image.width}
                 height={image.fields.file.details.image.height}
-                className="mb-10 max-h-96 w-full object-cover object-top"
+                className="mb-10 max-h-40 w-full object-cover object-top md:mb-4 md:max-h-96"
               />
             )) as any
           }
