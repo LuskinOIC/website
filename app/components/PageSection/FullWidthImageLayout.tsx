@@ -1,7 +1,6 @@
 // Next components
 import Image from "next/image";
 // Types
-import { ImagesLayoutType } from "@/app/constants/types";
 import { CarouselImageType } from "@/app/constants/types";
 // Components
 import Slider from "@/app/components/Slider";
@@ -13,7 +12,6 @@ type CarouselImageLayoutProps = {
 export default function FullWidthImageLayout({
   section,
 }: CarouselImageLayoutProps) {
-  console.log("FULL WIDTH SLIDER IMAGES:", section);
   return (
     <section>
       <div className="w-full overflow-hidden">
