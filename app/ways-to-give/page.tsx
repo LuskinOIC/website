@@ -1,6 +1,6 @@
 import PageSection from "../components/PageSection/PageSection";
 import { PageSectionType } from "../constants/types";
-import { PAGE_TYPES } from "../constants/entries"
+import { PAGE_TYPES } from "../constants/entries";
 import { getPageByType } from "../utils/contentful";
 
 // This page represents the "ways to give" page.
