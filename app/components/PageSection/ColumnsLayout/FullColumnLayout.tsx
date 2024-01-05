@@ -5,7 +5,7 @@ import { ColumnType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
 //Local Components
 import { TitleComponent } from "../../ui/Typography/Title";
-import Button from "../../ui/Button";
+import Button from "@/app/components/ui/Button";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 
@@ -65,6 +65,7 @@ export default function FullWidthImageLayout({
             <Button
               key={button.sys.id}
               href={button.fields.buttonUrl}
+              isExternal={button.fields.externalLink}
               text={button.fields.text}
               variant={button.fields.type}
             />

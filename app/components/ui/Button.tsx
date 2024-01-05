@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export type ButtonVariant = "blue" | "yellow" | "text" | "none";
+export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 
 export interface ButtonProps {
   href: string;
@@ -10,6 +10,7 @@ export interface ButtonProps {
   className?: string;
   text?: string;
   children?: React.ReactNode;
+  isExternal?: boolean;
 }
 
 const styles = {
@@ -24,6 +25,7 @@ const Button = ({
   className,
   children,
   text,
+  isExternal = false,
 }: ButtonProps) => {
   const classes = cn(
     styles.buttonContainer,
@@ -37,7 +39,18 @@ const Button = ({
     }[variant],
     className,
   );
-
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className={classes}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children || text}
+      </a>
+    );
+  }
   return (
     <Link href={href} className={classes}>
       {children || text}

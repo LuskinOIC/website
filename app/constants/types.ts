@@ -200,8 +200,7 @@ export type LocationType = {
     phoneNumber: string;
     streetAddress: string;
     cityStateZipcode: string;
-    buttonTitle?: string;
-    buttonUrl?: string;
+    button: ButtonType;
   };
 };
 
@@ -247,15 +246,18 @@ export type TextType = {
 };
 
 export type ButtonType = {
+  sys: any;
   fields: {
+    externalLink?: boolean;
     type: string;
     text: string;
     buttonUrl: string;
     logoImage: ImageType;
     columns: ColumnType[];
+    variant: string;
   };
 };
-
+export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
   fields: {
     video?: string;
