@@ -55,12 +55,12 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const hasPatientAmbassadors: boolean =
     Array.isArray(orgEvent.patientAmbassador) &&
     orgEvent.patientAmbassador.length > 0;
+
+  // Sponsors
   const hasSponsors: boolean =
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
-
   const sponsorsArray: object[] = [];
   const sponsors = orgEvent.sponsor;
-
   sponsors.map((sponsor: NestedAssetType) => {
     sponsorsArray.push({
       src: sponsor.fields.file.url,
@@ -68,9 +68,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
       height: sponsor.fields.file.details.image.height,
     });
   });
-
-  const imagesPerSlide = 3;
   const groupedImages: any[] = [];
+  const imagesPerSlide = 3;
   for (let i = 0; i < sponsorsArray.length; i += imagesPerSlide) {
     const slide = sponsorsArray.slice(i, i + imagesPerSlide);
     groupedImages.push(slide);
@@ -95,28 +94,25 @@ export default async function Event({ params }: { params: { slug: string } }) {
     <main>
       <div
         className="flex flex-col-reverse md:flex-row md:justify-between"
-        id="main-event"
-      >
+        id="main-event">
         <div className="mx-10 md:ml-36 md:mt-24 md:w-4/12" id="main-event-info">
           <h1 className="my-6 text-2xl font-bold md:mb-8 md:text-4xl md:font-normal">
             {orgEvent.eventName}
           </h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames,
+            eventSummaryClassNames
           )}
           <p className="mb-4 text-lg md:mb-6 md:text-2xl">
             Event Date: {formattedDateTime}
           </p>
           <div className="flex flex-col md:mb-32 md:flex-row">
             <button
-              className={`md:mr-6 mb-4 w-44 rounded-lg bg-[#0076AD] py-1 text-lg tracking-wide uppercase text-white ${buttonStyling}`}
-            >
+              className={`md:mr-6 mb-4 w-44 rounded-lg bg-[#0076AD] py-1 text-lg tracking-wide uppercase text-white ${buttonStyling}`}>
               attend event
             </button>
             <button
-              className={`text-left md:text-center mb-4 underline ${buttonStyling}`}
-            >
+              className={`text-left md:text-center mb-4 underline ${buttonStyling}`}>
               directions
             </button>
           </div>
@@ -142,7 +138,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                 key={patientObject.fields.title}
                 cardContent={patientObject.fields}
               />
-            ),
+            )
           )}
       </div>
       <div>
@@ -163,8 +159,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
         </p>
         <div
           id="sponsor-assets"
-          className="my-6 flex flex-wrap border md:border-0"
-        >
+          className="my-6 flex flex-wrap border md:border-0">
           {hasSponsors && <Slider slides={sliderSlides as any} />}
         </div>
 
