@@ -53,7 +53,7 @@ export type CardType = {
     title: string;
     subTitle: string;
     content: string;
-    cardContent: TextType;
+    cardContent?: TextType;
     image: ImageType;
   };
 };

@@ -36,7 +36,9 @@ export default function QuadTextCard({ section }: { section: CardType[] }) {
     <section className="flex justify-center">
       <div className="grid md:grid-cols-2 gap-6 justify-items-center p-5 md:p-10">
         {section.map((card, index) => {
-          const cardLocation = card.fields.cardContent.fields.location;
+          const cardLocation = card.fields.cardContent
+            ? card.fields.cardContent.fields.location
+            : null;
           return (
             <div key={index} className="bg-[#FFF2C0] rounded p-4">
               <h1>
