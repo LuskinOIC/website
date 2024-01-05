@@ -1,9 +1,10 @@
 // Components
 import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLayout";
+import TriImageLayout from "./TriImageLayout";
+import CarouselImageLayout from "./CarouselImageLayout";
 
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
-import TriImageLayout from "./TriImageLayout";
 
 type ImageLayoutPropsType = {
   fields: {
@@ -27,6 +28,8 @@ export default function ImagesLayout({
       return <FullWidthImageLayout section={ImagesLayout} />;
     case "Tri Image":
       return <TriImageLayout section={ImagesLayout.fields.images} />;
+    case "Carousel Image":
+      return <CarouselImageLayout section={ImagesLayout.fields.images} />;
     default:
       return null;
   }
