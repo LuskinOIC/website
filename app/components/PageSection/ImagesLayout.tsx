@@ -24,7 +24,7 @@ export default function ImagesLayout({
     section.fields.imagesLayout && section.fields.imagesLayout;
   switch (imagesType) {
     case "Full Width Image":
-      return <FullWidthImageLayout section={ImagesLayout} />;
+      return <FullWidthImageLayout section={ImagesLayout.fields.images} />;
     case "Tri Image":
       return <TriImageLayout section={ImagesLayout.fields.images} />;
     default:

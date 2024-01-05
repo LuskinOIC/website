@@ -2,25 +2,37 @@
 import Image from "next/image";
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
+import { CarouselImageType } from "@/app/constants/types";
 // Components
 import Slider from "@/app/components/Slider";
 
+type CarouselImageLayoutProps = {
+  section: CarouselImageType["fields"]["images"];
+};
+
 export default function FullWidthImageLayout({
   section,
-}: {
-  section: ImagesLayoutType;
-}) {
+}: CarouselImageLayoutProps) {
+  console.log("FULL WIDTH SLIDER IMAGES:", section);
   return (
-    <div>
-      {section.fields.images && (
-        <Image
-          className="w-full"
-          src={`https:${section.fields.images[0].fields.file.url}`}
-          alt={section.fields.images[0].fields.title}
-          width={section.fields.images[0].fields.file.details.image.width}
-          height={section.fields.images[0].fields.file.details.image.height}
+    <section>
+      <div className="w-full overflow-hidden">
+        <Slider
+          slides={
+            section.map((image, i) => (
+              <Image
+                key={i}
+                src={image.fields.file.url}
+                alt={image.fields.file.fileName}
+                width={image.fields.file.details.image.width}
+                height={image.fields.file.details.image.height}
+                className="mb-10 max-h-96 w-full object-cover object-top"
+              />
+            )) as any
+          }
+          displayArrows={true}
         />
-      )}
-    </div>
+      </div>
+    </section>
   );
 }
