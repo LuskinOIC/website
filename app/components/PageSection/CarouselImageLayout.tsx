@@ -15,7 +15,7 @@ export default function CarouselImageLayout({
 }: CarouselImageLayoutProps) {
   return (
     <section>
-      <div className="border-4 border-black md:w-full md:overflow-hidden">
+      <div className="md:w-full md:overflow-hidden">
         <Slider
           slides={
             section.map((image, i: number) => (
@@ -25,7 +25,7 @@ export default function CarouselImageLayout({
                 alt={image.fields.file.fileName}
                 width={image.fields.file.details.image.width}
                 height={image.fields.file.details.image.height}
-                className="mb-4 max-h-40 w-full border-4 border-[#BF40BF] object-cover object-top md:mb-10 md:max-h-96"
+                className="mb-4 max-h-40 w-full object-cover object-top md:mb-10 md:max-h-96"
               />
             )) as any
           }
