@@ -33,7 +33,6 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
       outerClassName +
       " border-b-[1px] md:border-b-0 md:border-r-[3px] border-luskin-green pb-7 mb-7 md:pb-[3.5rem] md:mb-0 md:mr-1";
   }
-
   return (
     <div className={outerClassName}>
       <Title2 className="md:text-xl leading-[30px] font-bold font-arial pt-0">
@@ -65,14 +64,14 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
           <Text4>{location.fields.cityStateZipcode}</Text4>
         </span>
       </div>
-      {location.fields.buttonTitle ? (
+      {location.fields.button && (
         <Button
-          text={location.fields.buttonTitle}
-          href={location.fields.buttonUrl ? location.fields.buttonUrl : ""}
-          className="uppercase"
+          key={location.fields.button.sys.id}
+          href={location.fields.button.fields.buttonUrl}
+          isExternal={location.fields.button.fields.externalLink}
+          text={location.fields.button.fields.text}
+          variant="blue"
         />
-      ) : (
-        <div />
       )}
     </div>
   );

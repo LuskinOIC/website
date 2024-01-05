@@ -57,6 +57,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
               <Button
                 key={button.sys.id}
                 href={button.fields.buttonUrl}
+                isExternal={button.fields.externalLink}
                 text={button.fields.text}
                 variant={button.fields.type}
               />

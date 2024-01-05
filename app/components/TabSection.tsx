@@ -1,7 +1,7 @@
 "use client";
 
 import { TabType } from "../constants/types";
-import Button from "./ui/Button";
+import Button from "@/app/components/ui/Button";
 import renderRichTextToReactComponent from "../utils/rich-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -274,6 +274,7 @@ function TabsTextOrCardContent({
                   href={card.fields.button.fields.buttonUrl}
                   text={card.fields.button.fields.text}
                   className="mb-3 md:mb-8"
+                  isExternal={card.fields.button.fields.externalLink}
                 />
               </CardFooter>
             )}

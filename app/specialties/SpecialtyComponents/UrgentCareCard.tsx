@@ -43,6 +43,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
           href={SAVE_MY_SPOT}
           text="SAVE MY SPOT"
           variant="blue"
+          isExternal={true}
         />
         {walkIns}
         <SpecialtyHoursLayout locationContent={location} />

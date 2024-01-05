@@ -33,6 +33,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
             href={`${slug}`}
             text="LEARN MORE"
             variant="blue"
+            isExternal={false}
           />
         </div>
         <div className="basis-1/2">
