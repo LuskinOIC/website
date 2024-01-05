@@ -1,3 +1,7 @@
+"use client";
+
+// Dependencies
+import { useState, useEffect } from "react";
 // Next components
 import Image from "next/image";
 // Types
@@ -12,6 +16,24 @@ type CarouselImageLayoutProps = {
 export default function FullWidthImageLayout({
   section,
 }: CarouselImageLayoutProps) {
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    // ATtach event listener for window resize
+    handleResize();
+
+    // Cleanup event listener on component unmount
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <section>
       <div className="w-full overflow-hidden">
@@ -24,11 +46,11 @@ export default function FullWidthImageLayout({
                 alt={image.fields.file.fileName}
                 width={image.fields.file.details.image.width}
                 height={image.fields.file.details.image.height}
-                className="mb-10 max-h-40 w-full object-cover object-top md:mb-4 md:max-h-96"
+                className="mb-6 max-h-40 w-full object-cover object-top md:mb-10 md:max-h-96"
               />
             )) as any
           }
-          displayArrows={true}
+          displayArrows={!isMobileView}
         />
       </div>
     </section>
