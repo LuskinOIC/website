@@ -19,19 +19,21 @@ export default function FullWidthImageLayout({
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 768);
-    };
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsMobileView(window.innerWidth <= 768);
+      };
 
-    // ATtach event listener for window resize
-    handleResize();
+      // ATtach event listener for window resize
+      handleResize();
 
-    // Cleanup event listener on component unmount
-    window.addEventListener("resize", handleResize);
+      // Cleanup event listener on component unmount
+      window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   return (
