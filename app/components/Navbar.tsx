@@ -61,15 +61,18 @@ export default function Navbar() {
       <div className="flex flex-row  w-full justify-between">
         {/* Container for Logo and Links */}
 
-        {/* Logo Container mx-8 mb-4 pt-5 */}
-        <div className="flex mx-8 mb-4 mt-4 pb-1">
+        {/* Logo Container*/}
+        <div className="self-center h-full pl-2 py-1 md:pl-8">
           <a href="/">
             <Image
-              src={"/logo.svg"}
+              src={"/LOIC_LOGO.svg"}
               alt={"Logo"}
               width={200}
-              height={170}
-              style={{}}
+              height={300}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
             />
           </a>
         </div>
