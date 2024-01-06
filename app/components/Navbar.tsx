@@ -58,11 +58,11 @@ export default function Navbar() {
 
   return (
     <NavigationMenu className="">
-      <div className="flex flex-row w-full justify-between">
+      <div className="flex flex-row  mx-2 w-full justify-between">
         {/* Container for Logo and Links */}
 
         {/* Logo Container */}
-        <div className="flex pt-5 pb-1">
+        <div className="flex mx-8 mb-4 pt-5 pb-1">
           <a href="/">
             <Image
               src={"/logo.svg"}
