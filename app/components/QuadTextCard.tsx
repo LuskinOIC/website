@@ -3,6 +3,7 @@ import Image from "next/image";
 import phone from "@/public/phone.svg";
 import email from "@/public/email.svg";
 import { CardType } from "../constants/types";
+import renderRichTextToReactComponent from "../utils/rich-text";
 
 // const cardContents = [
 //   {
@@ -35,17 +36,18 @@ export default function QuadTextCard({ section }: { section: CardType[] }) {
   console.dir(`section: ${section}`);
   return (
     <section className="flex justify-center">
-      <div className="grid md:grid-cols-2 gap-6 justify-items-center p-5 md:p-10">
+      <div className="grid md:w-[80%] md:grid-cols-2 gap-6 justify-items-center p-5 md:p-10">
         {section.map((card, index) => {
-          const cardLocation = card.fields.cardContent
-            ? card.fields.cardContent.fields.location
-            : null;
+          const cardContent = card.fields.cardContent;
+          const cardLocation = cardContent ? cardContent.fields.location : null;
           return (
-            <div key={index} className="bg-[#FFF2C0] rounded p-4">
+            <div key={index} className="w-full bg-[#FFF2C0] rounded p-4">
               <h1>
                 <b>{card.fields.title}</b>
               </h1>
-              <p>{card.fields.content}</p>
+              {cardContent &&
+                cardContent.fields.content &&
+                renderRichTextToReactComponent(cardContent.fields.content)}
               {cardLocation && (
                 <div>
                   {cardLocation.fields.phoneNumber && (
