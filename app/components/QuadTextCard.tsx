@@ -32,6 +32,7 @@ import { CardType } from "../constants/types";
 // ];
 
 export default function QuadTextCard({ section }: { section: CardType[] }) {
+  console.dir(`section: ${section}`);
   return (
     <section className="flex justify-center">
       <div className="grid md:grid-cols-2 gap-6 justify-items-center p-5 md:p-10">
@@ -47,14 +48,18 @@ export default function QuadTextCard({ section }: { section: CardType[] }) {
               <p>{card.fields.content}</p>
               {cardLocation && (
                 <div>
-                  <div className="flex space-x-4">
-                    <Image src={phone} alt="phone" height={20} width={20} />
-                    <span>{cardLocation.fields.phoneNumber}</span>
-                  </div>
-                  <div className="flex space-x-4">
-                    <Image src={email} alt="email" height={10} width={20} />
-                    <span>{cardLocation.fields.emailAddress}</span>
-                  </div>
+                  {cardLocation.fields.phoneNumber && (
+                    <div className="flex space-x-4">
+                      <Image src={phone} alt="phone" height={20} width={20} />
+                      <span>{cardLocation.fields.phoneNumber}</span>
+                    </div>
+                  )}
+                  {cardLocation.fields.emailAddress && (
+                    <div className="flex space-x-4">
+                      <Image src={email} alt="email" height={10} width={20} />
+                      <span>{cardLocation.fields.emailAddress}</span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

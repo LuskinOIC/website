@@ -214,12 +214,12 @@ export type PageType = {
 export type LocationType = {
   fields: {
     name: string;
-    hours: Document;
-    phoneNumber: string;
-    emailAddress: string;
-    streetAddress: string;
-    cityStateZipcode: string;
-    button: ButtonType;
+    hours?: Document;
+    phoneNumber?: string;
+    emailAddress?: string;
+    streetAddress?: string;
+    cityStateZipcode?: string;
+    button?: ButtonType;
   };
 };
 
