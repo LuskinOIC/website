@@ -33,11 +33,15 @@ export async function getPageByType(
 
 /* EVENTS */
 
-export async function getEvents() {
-  const entries = await client.getEntries({
+export async function getEvents(numberOfEntries: number | "all" = "all") {
+  let query = {
     content_type: "event",
+    order: "-fields.eventDate",
     locale: "en-US",
-  });
+    ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
+  };
+
+  const entries = await client.getEntries(query);
 
   return entries.items.map((entry) => entry.fields);
 }
@@ -144,11 +148,17 @@ export async function getPatientStoryBySlug(slug: string) {
   return entry.items[0].fields as unknown as PatientType;
 }
 
-export async function getNewsPosts() {
-  const entries = await client.getEntries({
+/* News Posts */
+
+export async function getNewsPosts(numberOfEntries: number | "all" = "all") {
+  let query = {
     content_type: "newsPost",
+    order: "-fields.date",
     locale: "en-US",
-  });
+    ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
+  };
+
+  const entries = await client.getEntries(query);
 
   return entries.items.map((entry) => entry.fields);
 }

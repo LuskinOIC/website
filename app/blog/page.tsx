@@ -6,14 +6,14 @@ import BlogCardsRow from "../components/BlogCardsRow";
 
 export default async function Blog() {
   const page = await getPageByType(PAGE_TYPES.BLOG);
-  const news = (await getNewsPosts()) as unknown as BlogCardsRowType[];
+  const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
   return (
     <main>
       {page.pageSections.map((pageSection: PageSectionType) => (
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
       <div className="grid mx-auto w-4/5">
-        <BlogCardsRow title="news" cards={news} variant="half" />
+        <BlogCardsRow type="news" cards={news} />
       </div>
     </main>
   );

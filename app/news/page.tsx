@@ -10,7 +10,7 @@ export default async function News() {
     <main className="grid mx-auto w-4/5">
       <BackToBrowse />
       <SearchBar />
-      <BlogCardsRow title="news" cards={news} variant="full" />
+      <BlogCardsRow type="news" cards={news} />
     </main>
   );
 }

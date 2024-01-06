@@ -269,8 +269,6 @@ export type ButtonType = {
     text: string;
     buttonUrl: string;
     logoImage: ImageType;
-    columns: ColumnType[];
-    variant: string;
   };
 };
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
