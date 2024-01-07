@@ -58,18 +58,21 @@ export default function Navbar() {
 
   return (
     <NavigationMenu className="">
-      <div className="flex flex-row w-full justify-between">
+      <div className="flex flex-row  w-full justify-between">
         {/* Container for Logo and Links */}
 
-        {/* Logo Container */}
-        <div className="flex pt-5 pb-1">
+        {/* Logo Container*/}
+        <div className="self-center h-full pl-2 py-1 md:pl-8">
           <a href="/">
             <Image
-              src={"/logo.svg"}
+              src={"/LOIC_LOGO.svg"}
               alt={"Logo"}
               width={200}
-              height={170}
-              style={{}}
+              height={300}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
             />
           </a>
         </div>
