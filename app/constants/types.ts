@@ -96,7 +96,7 @@ export type MinimalCardType = {
     id: string;
   };
   title: string;
-  cardPhoto: NestedAssetType;
+  cardPhoto: NestedAssetType | ImageType;
   summary?: string;
 };
 
@@ -141,6 +141,7 @@ export type EventType = {
 };
 
 export type FileDetailsType = {
+  sys: any;
   url: string;
   details: {
     size?: number;
@@ -154,6 +155,9 @@ export type FileDetailsType = {
 };
 
 export type ImageType = {
+  sys?: {
+    id: string;
+  };
   fields: {
     title: string;
     description: string;
@@ -403,6 +407,7 @@ export type NewsPostType = {
 };
 
 export type BlogCardsRowType = {
+  blogCard: CardType;
   date: string;
   title: string;
   slug: string;

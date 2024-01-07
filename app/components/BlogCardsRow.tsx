@@ -24,9 +24,9 @@ export default async function BlogCardsRow({
             <div>
               <MinimalCard
                 cardContent={{
-                  title: card.title,
-                  cardPhoto: card.profileImage,
-                  summary: card.subTitle || "",
+                  title: card.blogCard.fields.title,
+                  cardPhoto: card.blogCard.fields.image,
+                  summary: card.blogCard.fields.subTitle || "",
                 }}
               />
             </div>
