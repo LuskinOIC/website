@@ -1,12 +1,12 @@
 // Next components
 import Image from "next/image";
 // Types
-import { TriImageType } from "@/app/constants/types";
+import { MultiImageType } from "@/app/constants/types";
 // Import components
 import Slider from "@/app/components/Slider";
 
 type TriImageLayoutProps = {
-  section: TriImageType["fields"]["images"];
+  section: MultiImageType["fields"]["images"];
 };
 
 export default function TriImageLayout({ section }: TriImageLayoutProps) {

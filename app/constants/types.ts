@@ -138,7 +138,7 @@ export type EventType = {
   eventCards: Array<{ fields: MinimalCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
-  triImage: TriImageType;
+  triImage: MultiImageType;
 };
 
 export type FileDetailsType = {
@@ -165,11 +165,11 @@ export type ImageType = {
 export type ImagesLayoutType = {
   fields: {
     type: string;
-    images: TriImageType[];
+    images: MultiImageType[];
   };
 };
 
-export type TriImageType = {
+export type MultiImageType = {
   fields: {
     file: FileDetailsType;
     type: string;
@@ -185,6 +185,23 @@ export type TriImageType = {
     }>;
   };
 };
+
+// export type CarouselImageType = {
+//   fields: {
+//     file: FileDetailsType;
+//     type: string;
+//     title: string;
+//     images: Array<{
+//       sys?: {
+//         id: string;
+//       };
+//       fields: {
+//         title: string;
+//         file: FileDetailsType;
+//       };
+//     }>;
+//   };
+// };
 
 export type PageType = {
   metaData: string;
