@@ -88,3 +88,7 @@
     }
   }
 }
+
+.page-container {
+  max-width: 2000px;
+}

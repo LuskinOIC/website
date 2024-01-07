@@ -17,10 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-arial">
-        <Navbar />
-        {children}
-        <Footer />
+      <body className="font-arial block w-full">
+        <div className="w-full m-auto page-container">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
