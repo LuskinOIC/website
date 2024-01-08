@@ -382,8 +382,9 @@ export type OptionType = {
 export type MemberType = {
   name: string;
   portrait: ImageType;
-  slug: string;
+  overview: Document;
   topSection: ColumnType;
+  slug: string;
 };
 
 export type PatientType = {

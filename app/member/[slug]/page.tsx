@@ -17,10 +17,11 @@ export default async function MemberBio({
 }) {
   const memberBio = await getMemberBySlug(params.slug);
 
-  // const memberName = memberBio.name;
-  // const memberPortrait = memberBio.portrait.fields.file.url;
-  // const portraitWidth = memberBio.portrait.fields.file.details.image.width;
-  // const portraitHeight = memberBio.portrait.fields.file.details.image.height;
+  const memberName = memberBio.name;
+  const memberPortrait = memberBio.portrait.fields.file.url;
+  const portraitWidth = memberBio.portrait.fields.file.details.image.width;
+  const portraitHeight = memberBio.portrait.fields.file.details.image.height;
+  const memberOverview = memberBio.overview;
   const topSection = memberBio.topSection;
 
   return (
