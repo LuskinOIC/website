@@ -8,7 +8,7 @@ import renderRichTextToReactComponent, {
 import {
   EventCardType,
   NestedAssetType,
-  MinimalCardType,
+  PatientType,
 } from "@/app/constants/types";
 // Import components
 import MinimalCard from "@/app/components/MinimalCard";
@@ -45,6 +45,8 @@ const buttonStyling =
 // EVENT
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
+  console.log("PATIENT AMBASSADOR BIO:", orgEvent.patientAmbassador);
+  console.log("PATIENT NAME:", orgEvent.patientAmbassador[0].fields.name);
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
@@ -95,28 +97,25 @@ export default async function Event({ params }: { params: { slug: string } }) {
     <main>
       <div
         className="flex flex-col-reverse md:flex-row md:justify-between"
-        id="main-event"
-      >
+        id="main-event">
         <div className="mx-10 md:ml-36 md:mt-24 md:w-4/12" id="main-event-info">
           <h1 className="my-6 text-2xl font-bold md:mb-8 md:text-4xl md:font-normal">
             {orgEvent.eventName}
           </h1>
           {renderRichTextToReactComponent(
             orgEvent.eventSummary as unknown as Document,
-            eventSummaryClassNames,
+            eventSummaryClassNames
           )}
           <p className="mb-4 text-lg md:mb-6 md:text-2xl">
             Event Date: {formattedDateTime}
           </p>
           <div className="flex flex-col md:mb-32 md:flex-row">
             <button
-              className={`md:mr-6 mb-4 w-44 rounded-lg bg-[#0076AD] py-1 text-lg tracking-wide uppercase text-white ${buttonStyling}`}
-            >
+              className={`md:mr-6 mb-4 w-44 rounded-lg bg-[#0076AD] py-1 text-lg tracking-wide uppercase text-white ${buttonStyling}`}>
               attend event
             </button>
             <button
-              className={`text-left md:text-center mb-4 underline ${buttonStyling}`}
-            >
+              className={`text-left md:text-center mb-4 underline ${buttonStyling}`}>
               directions
             </button>
           </div>
@@ -136,14 +135,17 @@ export default async function Event({ params }: { params: { slug: string } }) {
       </h2>
       <div className="mx-6 grid grid-cols-1 place-items-center md:mx-auto md:flex md:justify-center md:gap-8">
         {hasPatientAmbassadors &&
-          orgEvent.patientAmbassador.map(
-            (patientObject: { fields: MinimalCardType }) => (
-              <MinimalCard
-                key={patientObject.fields.title}
-                cardContent={patientObject.fields}
-              />
-            ),
-          )}
+          orgEvent.patientAmbassador.map((patientObject) => (
+            <MinimalCard
+              key={patientObject.sys.id}
+              cardContent={{
+                title: patientObject.fields.name,
+                cardPhoto: patientObject.fields.portrait,
+                summary: patientObject.fields.summary,
+                slug: `patient-stories/${patientObject.fields.slug}`,
+              }}
+            />
+          ))}
       </div>
       <div>
         {orgEvent.eventPageSections && (
@@ -163,8 +165,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
         </p>
         <div
           id="sponsor-assets"
-          className="my-6 flex flex-wrap border md:border-0"
-        >
+          className="my-6 flex flex-wrap border md:border-0">
           {hasSponsors && <Slider slides={sliderSlides as any} />}
         </div>
 
