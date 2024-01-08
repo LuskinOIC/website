@@ -16,15 +16,17 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
     : "white";
   return (
     <section className={`block ${bgColor}`}>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
+      <div className="flex flex-col items-center gap-4 md:flex-row md:gap-x-14">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
           <div className={`basis-1/2 ${orderClass} w-full`}>
+            {/* <div className={`${orderClass} w-2/5`}> */}
             <Image
-              className="md:rounded-l-lg"
+              className="object-cover md:rounded-l-lg"
               src={`https:${section.fields.image.fields.file.url}`}
               alt={section.fields.image.fields.description}
               width={0}
+              // width={section.fields.image.fields.file.details.image.width}
               height={section.fields.image.fields.file.details.image.height}
               style={{
                 width: "100%",
