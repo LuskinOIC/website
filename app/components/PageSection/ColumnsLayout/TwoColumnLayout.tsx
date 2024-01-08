@@ -18,12 +18,12 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
     : "white";
   return (
     <section className={`block ${bgColor} border-4 border-[#088F8F]`}>
-      <div className="flex flex-col items-center gap-4 border-4 border-[#5D3FD3] md:flex-row md:gap-x-14">
+      <div className="flex flex-col items-center gap-4 border-4 border-[#5D3FD3] md:flex-row md:justify-center md:gap-x-14">
         {/* <div className="flex flex-col items-center gap-4 border-4 border-[#5D3FD3] md:flex-row md:gap-x-14"> */}
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
           <div
-            className={`${orderClass} md:max-h-[500px] md:max-w-[500px] md:flex md:justify-center basis-1/2 border-2 w-full border-[#FFA500]`}>
+            className={`${orderClass} md:max-h-[500px] md:flex md:justify-center basis-1/2 border-2 w-full border-[#FFA500]`}>
             {/* <div className={`basis-1/2 ${orderClass} w-full`}> */}
             {/* <div className={`${orderClass} w-2/5`}> */}
             <Image
