@@ -11,4 +11,8 @@ export const PAGE_TYPES = {
   MEDICAL_PROFESSIONALS: "Medical Professionals Page",
   CORPORATE_SPONSORSHIP: "Corporate Sponsorship Page",
   LEADERSHIP: "Leadership Page",
+  WAYS_TO_GIVE: "Ways to Give Page",
+  //Events and Specialty will likely be it's own contentful component
+  EVENT: "Event",
+  SPECIALTY: "Specialty",
 };
