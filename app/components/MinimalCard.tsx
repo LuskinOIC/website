@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
 import renderRichTextToReactComponent from "../utils/rich-text";
@@ -26,15 +27,13 @@ export default function MinimalCard({
   cardContent: MinimalCardType;
 }) {
   const title = cardContent.title;
+  const slug = cardContent.slug;
   const cardPhoto = cardContent.cardPhoto.fields.file;
-  const cardPhotoSource = cardPhoto.url;
-  const cardPhotoHeight = cardPhoto.details.image.height;
-  const cardPhotoWidth = cardPhoto.details.image.width;
   const summary =
     typeof cardContent.summary === "string"
       ? cardContent.summary
       : renderRichTextToReactComponent(
-          cardContent.summary as unknown as Document,
+          cardContent.summary as unknown as Document
         );
 
   const selectedStyles = summary
@@ -45,12 +44,16 @@ export default function MinimalCard({
     <div className={selectedStyles?.wrapperDiv}>
       <Image
         alt={title}
-        src={cardPhotoSource}
-        width={cardPhotoHeight}
-        height={cardPhotoWidth}
+        src={cardPhoto.url}
+        width={cardPhoto.details.image.height}
+        height={cardPhoto.details.image.width}
         className={selectedStyles.image}
       />
-      <h3 className={selectedStyles.header}>{title}</h3>
+      <h3>
+        <Link className={selectedStyles.header} href={`/${slug}`}>
+          {title}
+        </Link>
+      </h3>
       {summary ? <div className={selectedStyles.summary}>{summary}</div> : null}
     </div>
   );
