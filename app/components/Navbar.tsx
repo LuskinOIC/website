@@ -9,13 +9,11 @@ import MobileMenu from "./MobileMenu";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 
-import { dropdowns } from "./NavbarConstants";
 import Button from "@/app/components/ui/Button";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
 import NavbarDropdown from "@/app/components/NavbarDropdown";

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
 
@@ -9,6 +9,7 @@ interface NavbarDropDownProps {
   label: string;
   subItems: any[];
   isFocused: boolean;
+  // eslint-disable-next-line no-unused-vars
   onChange: (id: string) => void;
 }
 
@@ -46,7 +47,7 @@ function NavbarDropDown({
             </div>
             <div className="flex-col bg-luskin-blue border border-luskin-brightBlue divide-y divide-luskin-brightBlue rounded-md items-start">
               {subItems.map((item) => (
-                <div className="py-2 px-10">
+                <div key={item.url} className="py-2 px-10">
                   <Link
                     className="no-underline hover:underline font-light text-lg"
                     href={item.url}
