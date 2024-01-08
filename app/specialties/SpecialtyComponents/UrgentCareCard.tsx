@@ -52,7 +52,9 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
   };
 
   return (
-    <section className={`${styles.sectionLayout} ${styles.boxStyling}`}>
+    <section
+      className={`${styles.sectionLayout} ${styles.boxStyling} bg-white`}
+    >
       <div className="order-last md:order-first">{cardContent()}</div>
       {/* desktop image section */}
       <div className="hidden md:grid grid-rows-5 gap-5">

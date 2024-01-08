@@ -280,21 +280,22 @@ export type ButtonType = {
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
   fields: {
-    video?: string;
-    socialMedia?: SocialMediaSectionType;
-    title: string;
-    showTitle?: boolean;
-    titleSize: string;
+    backgroundColor: string;
     bold: boolean;
-    subHeader: string;
-    luskinHeader: boolean;
-    image: ImageType;
+    buttons: any[];
+    columnType: string;
     description: Document;
     descriptionFontSize: keyof FontSizeMap;
-    buttons: any[];
+    image: ImageType;
+    imageOrientation: string;
+    luskinHeader: boolean;
     reverseOrder: boolean;
-    backgroundColor: string;
-    columnType: string;
+    showTitle?: boolean;
+    socialMedia?: SocialMediaSectionType;
+    subHeader: string;
+    title: string;
+    titleSize: string;
+    video?: string;
   };
 };
 
