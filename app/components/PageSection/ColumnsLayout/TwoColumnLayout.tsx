@@ -27,7 +27,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
             {/* <div className={`basis-1/2 ${orderClass} w-full`}> */}
             {/* <div className={`${orderClass} w-2/5`}> */}
             <Image
-              className="h-auto border-2 border-[#FF0000] md:rounded-l-lg md:object-center"
+              className="h-auto border-2 border-[#FF0000] md:rounded-l-lg md:object-cover"
               src={`https:${section.fields.image.fields.file.url}`}
               alt={section.fields.image.fields.description}
               // width={0}
