@@ -1,7 +1,6 @@
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
-
 export interface AboutPageType {
   pageSections: PageSectionType[];
 }
@@ -98,7 +97,7 @@ export type MinimalCardType = {
     id: string;
   };
   title: string;
-  cardPhoto: NestedAssetType;
+  cardPhoto: NestedAssetType | ImageType;
   summary?: string;
 };
 
@@ -143,6 +142,7 @@ export type EventType = {
 };
 
 export type FileDetailsType = {
+  sys: any;
   url: string;
   details: {
     size?: number;
@@ -156,6 +156,9 @@ export type FileDetailsType = {
 };
 
 export type ImageType = {
+  sys?: {
+    id: string;
+  };
   fields: {
     title: string;
     description: string;
@@ -272,8 +275,6 @@ export type ButtonType = {
     text: string;
     buttonUrl: string;
     logoImage: ImageType;
-    columns: ColumnType[];
-    variant: string;
   };
 };
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
@@ -399,7 +400,7 @@ export type NewsPostType = {
     title: string;
     profileImage: string;
     subTitle: Document;
-    published: Date;
+    date: Date;
     writtenBy: string;
     followOurStory: SocialMediaSectionType;
     mainImage: ImageType;
@@ -407,7 +408,9 @@ export type NewsPostType = {
   };
 };
 
-export type NewsPostCardType = {
+export type BlogCardsRowType = {
+  blogCard: CardType;
+  date: string;
   title: string;
   slug: string;
   profileImage: NestedAssetType;
