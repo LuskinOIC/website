@@ -19,7 +19,8 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
       <div className="flex flex-col items-center gap-4 md:flex-row md:gap-x-14">
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
-          <div className={`basis-1/2 ${orderClass} w-full`}>
+          <div className={`${orderClass} basis-1/2`}>
+            {/* <div className={`basis-1/2 ${orderClass} w-full`}> */}
             {/* <div className={`${orderClass} w-2/5`}> */}
             <Image
               className="object-cover md:rounded-l-lg"
