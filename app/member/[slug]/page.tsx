@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getMemberBySlug, getMembers } from "@/app/utils/contentful";
 import ColumnsLayout from "@/app/components/PageSection/ColumnsLayout/ColumnsLayout";
+import renderRichTextToReactComponent, { ClassNames } from "@/app/utils/rich-text";
 
 export async function generateStaticParams() {
   const members = await getMembers();
@@ -9,6 +10,10 @@ export async function generateStaticParams() {
     slug: m.slug,
   }));
 }
+
+const richTextClassNames: ClassNames = {
+  paragraph: "text-base md:text-lg pb-8",
+};
 
 export default async function MemberBio({
   params,
@@ -43,6 +48,12 @@ export default async function MemberBio({
             <h1 className="mb-4 text-2xl font-semibold md:pb-1 md:text-3xl md:font-medium">
               {memberName}
             </h1>
+            <div className="pb-6 text-lg">
+              {renderRichTextToReactComponent(
+                memberOverview,
+                richTextClassNames,
+              )}
+            </div>
           </div>
         </div> */}
 
