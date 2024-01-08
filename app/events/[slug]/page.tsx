@@ -45,8 +45,6 @@ const buttonStyling =
 // EVENT
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
-  console.log("PATIENT AMBASSADOR BIO:", orgEvent.patientAmbassador);
-  console.log("PATIENT NAME:", orgEvent.patientAmbassador[0].fields.name);
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
@@ -135,9 +133,9 @@ export default async function Event({ params }: { params: { slug: string } }) {
       </h2>
       <div className="mx-6 grid grid-cols-1 place-items-center md:mx-auto md:flex md:justify-center md:gap-8">
         {hasPatientAmbassadors &&
-          orgEvent.patientAmbassador.map((patientObject) => (
+          orgEvent.patientAmbassador.map((patientObject: PatientType) => (
             <MinimalCard
-              key={patientObject.sys.id}
+              key={patientObject.name}
               cardContent={{
                 title: patientObject.fields.name,
                 cardPhoto: patientObject.fields.portrait,

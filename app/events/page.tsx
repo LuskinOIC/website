@@ -1,5 +1,3 @@
-// Import Next
-import Link from "next/link";
 import { getEvents } from "@/app/utils/contentful";
 // Import type
 import { EventCardType } from "@/app/constants/types";
@@ -8,6 +6,7 @@ import MinimalCard from "@/app/components/MinimalCard";
 
 export default async function Events() {
   const events = (await getEvents()) as unknown as EventCardType[];
+  console.log("EVENT FIELD TEST: ", events[0].eventPhoto);
   return (
     <main className="">
       {/* MOBILE Search Box */}

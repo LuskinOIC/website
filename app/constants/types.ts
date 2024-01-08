@@ -384,17 +384,12 @@ export type MemberType = {
 };
 
 export type PatientType = {
-  sys: {
-    id: string;
-  };
-  fields: {
-    name: string;
-    portrait: NestedAssetType;
-    slug: string;
-    summary: string;
-    topSection: ColumnType;
-    pageSections: PageSectionType[];
-  };
+  name: string;
+  portrait: NestedAssetType;
+  slug: string;
+  summary: string;
+  topSection: ColumnType;
+  pageSections: PageSectionType[];
 };
 
 export type NewsPostType = {
