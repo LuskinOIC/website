@@ -31,7 +31,7 @@ export default function SpecialtyHoursLayout({
             />
           </div>
 
-          <div className="flex flex-col text-base md:text-xl font-arial leading-150">
+          <div className="flex flex-col text-base md:text-lg font-arial">
             {hoursContent}
           </div>
         </div>

@@ -40,7 +40,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           <SpecialtyHoursLayout locationContent={location} />
         </div>
       </div>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         {physicians && (
           <PhysicianList
             specialistsTitle={specialty.fields.specialistsTitle}

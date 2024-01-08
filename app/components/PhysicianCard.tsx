@@ -8,7 +8,7 @@ export default function PhysicianCard({
   physician: PhysicianBioType;
 }) {
   return (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-fit h-fit">
+    <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
       <div className="flex flex-col items-center h-min px-5 py-5">
         <Image
           src={physician.portrait.fields.file.url}
