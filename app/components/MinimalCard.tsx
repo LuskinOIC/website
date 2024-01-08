@@ -33,7 +33,7 @@ export default function MinimalCard({
     typeof cardContent.summary === "string"
       ? cardContent.summary
       : renderRichTextToReactComponent(
-          cardContent.summary as unknown as Document
+          cardContent.summary as unknown as Document,
         );
 
   const selectedStyles = summary
