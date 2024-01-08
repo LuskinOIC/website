@@ -26,6 +26,7 @@ export default function MinimalCard({
   cardContent: MinimalCardType;
 }) {
   const title = cardContent.title;
+  if (cardContent.cardPhoto === undefined) return null;
   const cardPhoto = cardContent.cardPhoto.fields.file;
   const cardPhotoSource = cardPhoto.url;
   const cardPhotoHeight = cardPhoto.details.image.height;
