@@ -16,7 +16,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
     : "white";
   let orientationClass = "";
   const floatClass = section.fields.reverseOrder ? "float-right" : "float-left";
-  if (section.fields.imageOrientation === "vertical") {
+  if (section.fields.imageOrientation === "Center Align") {
     orientationClass = "mx-auto";
   } else {
     orientationClass += "md:rounded-l-lg";
@@ -30,10 +30,9 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
       >
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
-          <div className={`${orderClass} place-self-end`}>
+          <div className={`${orderClass} ${orientationClass}`}>
             <div style={{ maxWidth: "768px" }}>
               <Image
-                className={`${orientationClass}`}
                 src={`https:${section.fields.image.fields.file.url}`}
                 alt={section.fields.image.fields.description}
                 width={section.fields.image.fields.file.details.image.width}

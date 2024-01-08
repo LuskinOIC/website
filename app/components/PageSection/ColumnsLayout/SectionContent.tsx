@@ -11,7 +11,7 @@ interface SectionContentProps {
   section: ColumnType;
 }
 const descriptionClassNames: ClassNames = {
-  paragraph: "py-2 md:py-4 text-base md:text-lg leading-7",
+  paragraph: "py-2 md:py-4 text-base md:text-lg",
 };
 
 const SectionContent = ({ section }: SectionContentProps) => {
