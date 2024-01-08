@@ -31,13 +31,16 @@ export const Title0 = ({ children, className = "" }: TitleProps) => {
 };
 
 export const Title1 = ({ children, className = "" }: TitleProps) => {
-  const classes = cn("text-2xl md:text-3xl md:leading-[30px] py-2", className);
+  const classes = cn(
+    "text-[28px] md:text-[32px] leading-10 py-2 font-bold",
+    className,
+  );
   return <h1 className={classes}>{children}</h1>;
 };
 
 export const Title2 = ({ children, className = "" }: TitleProps) => {
   const classes = cn(
-    "text-xl md:text-2xl font-arial md:leading-[60px] py-2",
+    "text-xl md:text-2xl font-arial leading-7 py-2",
     className,
   );
   return <h1 className={classes}>{children}</h1>;
