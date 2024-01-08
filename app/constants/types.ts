@@ -97,6 +97,7 @@ export type MinimalCardType = {
     id: string;
   };
   title: string;
+  slug?: string;
   cardPhoto: NestedAssetType | ImageType;
   summary?: string;
 };
@@ -129,13 +130,10 @@ export type EventType = {
   eventSummary: object;
   eventDate: string;
   eventPhoto: ImageType;
-  patientAmbassador: Array<{
-    fields: MinimalCardType;
-  }>;
+  patientAmbassador: PatientType[];
   eventPageSections: PageSectionType;
   eventDetails: string;
   eventDetailsPhoto: ImageType;
-  eventCards: Array<{ fields: MinimalCardType }>;
   sponsor: NestedAssetType[];
   eventAsset: NestedAssetType[];
   triImage: MultiImageType;

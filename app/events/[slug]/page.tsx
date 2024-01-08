@@ -8,7 +8,7 @@ import renderRichTextToReactComponent, {
 import {
   EventCardType,
   NestedAssetType,
-  MinimalCardType,
+  PatientType,
 } from "@/app/constants/types";
 // Import components
 import MinimalCard from "@/app/components/MinimalCard";
@@ -136,14 +136,17 @@ export default async function Event({ params }: { params: { slug: string } }) {
       </h2>
       <div className="mx-6 grid grid-cols-1 place-items-center md:mx-auto md:flex md:justify-center md:gap-8">
         {hasPatientAmbassadors &&
-          orgEvent.patientAmbassador.map(
-            (patientObject: { fields: MinimalCardType }) => (
-              <MinimalCard
-                key={patientObject.fields.title}
-                cardContent={patientObject.fields}
-              />
-            ),
-          )}
+          orgEvent.patientAmbassador.map((patientObject: PatientType) => (
+            <MinimalCard
+              key={patientObject.name}
+              cardContent={{
+                title: patientObject.fields.name,
+                cardPhoto: patientObject.fields.portrait,
+                summary: patientObject.fields.summary,
+                slug: `patient-stories/${patientObject.fields.slug}`,
+              }}
+            />
+          ))}
       </div>
       <div>
         {orgEvent.eventPageSections && (
