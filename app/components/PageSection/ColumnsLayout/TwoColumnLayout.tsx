@@ -23,7 +23,8 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
           <div
-            className={`${orderClass} md:max-h-[500px] md:flex md:justify-center basis-1/2 border-2 w-full border-[#FFA500]`}>
+            className={`${orderClass} md:max-h-[500px] md:flex md:justify-center basis-1/2 border-2 w-full border-[#FFA500]`}
+          >
             {/* <div className={`basis-1/2 ${orderClass} w-full`}> */}
             {/* <div className={`${orderClass} w-2/5`}> */}
             <Image
