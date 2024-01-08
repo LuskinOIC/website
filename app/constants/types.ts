@@ -52,6 +52,7 @@ export type CardType = {
     title: string;
     subTitle: string;
     content: string;
+    cardContent?: TextType;
     image: ImageType;
   };
 };
@@ -216,11 +217,12 @@ export type PageType = {
 export type LocationType = {
   fields: {
     name: string;
-    hours: Document;
-    phoneNumber: string;
-    streetAddress: string;
-    cityStateZipcode: string;
-    button: ButtonType;
+    hours?: Document;
+    phoneNumber?: string;
+    emailAddress?: string;
+    streetAddress?: string;
+    cityStateZipcode?: string;
+    button?: ButtonType;
   };
 };
 

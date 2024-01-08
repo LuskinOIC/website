@@ -12,4 +12,7 @@ export const PAGE_TYPES = {
   CORPORATE_SPONSORSHIP: "Corporate Sponsorship Page",
   LEADERSHIP: "Leadership Page",
   BLOG: "Blog Page",
+  WAYS_TO_GIVE: "Ways to Give Page",
+  EVENT: "Event",
+  SPECIALTY: "Specialty",
 };
