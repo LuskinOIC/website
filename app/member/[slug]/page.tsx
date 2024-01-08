@@ -1,7 +1,7 @@
-import Image from "next/image";
+// import Image from "next/image";
 import { getMemberBySlug, getMembers } from "@/app/utils/contentful";
 import ColumnsLayout from "@/app/components/PageSection/ColumnsLayout/ColumnsLayout";
-import renderRichTextToReactComponent, { ClassNames } from "@/app/utils/rich-text";
+// import renderRichTextToReactComponent, { ClassNames } from "@/app/utils/rich-text";
 
 export async function generateStaticParams() {
   const members = await getMembers();
@@ -11,9 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-const richTextClassNames: ClassNames = {
-  paragraph: "text-base md:text-lg pb-8",
-};
+// const richTextClassNames: ClassNames = {
+//   paragraph: "text-base md:text-lg pb-8",
+// };
 
 export default async function MemberBio({
   params,
@@ -22,11 +22,11 @@ export default async function MemberBio({
 }) {
   const memberBio = await getMemberBySlug(params.slug);
 
-  const memberName = memberBio.name;
-  const memberPortrait = memberBio.portrait.fields.file.url;
-  const portraitWidth = memberBio.portrait.fields.file.details.image.width;
-  const portraitHeight = memberBio.portrait.fields.file.details.image.height;
-  const memberOverview = memberBio.overview;
+  // const memberName = memberBio.name;
+  // const memberPortrait = memberBio.portrait.fields.file.url;
+  // const portraitWidth = memberBio.portrait.fields.file.details.image.width;
+  // const portraitHeight = memberBio.portrait.fields.file.details.image.height;
+  // const memberOverview = memberBio.overview;
   const topSection = memberBio.topSection;
 
   return (
