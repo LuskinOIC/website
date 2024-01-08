@@ -16,6 +16,15 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
+  let orientationClass = "";
+  const floatClass = section.fields.reverseOrder ? "float-right" : "float-left";
+  if (section.fields.imageOrientation === "vertical") {
+    orientationClass = "mx-auto";
+  } else {
+    orientationClass += "md:rounded-l-lg";
+    orientationClass += ` ${floatClass}`;
+  }
+
   return (
     <section className={`block ${bgColor} border-4 border-[#088F8F]`}>
       <div className="flex flex-col items-center gap-4 border-4 border-[#5D3FD3] md:flex-row md:justify-center md:gap-x-14">

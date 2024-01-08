@@ -25,7 +25,7 @@ export default function CarouselImageLayout({
                 alt={image.fields.file.fileName}
                 width={image.fields.file.details.image.width}
                 height={image.fields.file.details.image.height}
-                className="mb-4 max-h-40 w-full object-cover object-top md:mb-10 md:max-h-96"
+                className="mb-4 max-h-40 w-full object-cover object-top md:mb-10 md:min-h-[560px]"
               />
             )) as any
           }
