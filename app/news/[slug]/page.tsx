@@ -2,8 +2,9 @@ import Image from "next/image";
 import { getNewsPosts, getNewsPostBySlug } from "@/app/utils/contentful";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import PageSection from "@/app/components/PageSection/PageSection";
-import { PageSectionType } from "@/app/constants/types";
+import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export async function generateStaticParams() {
   const newsPosts = await getNewsPosts();
@@ -25,6 +26,7 @@ export default async function NewsArticle({
   params: { slug: string };
 }) {
   const newsPost = await getNewsPostBySlug(params.slug);
+  const news = (await getNewsPosts(4)) as unknown as BlogCardsRowType[];
 
   const {
     title,
@@ -82,6 +84,9 @@ export default async function NewsArticle({
         {pageSections.map((section: PageSectionType) => (
           <PageSection key={section.fields.title} section={section} />
         ))}
+      </section>
+      <section className="mx-auto">
+        <BlogCardsRow type="news" cards={news} />
       </section>
     </main>
   );
