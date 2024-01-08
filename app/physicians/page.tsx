@@ -15,7 +15,7 @@ export default async function Physicians() {
     <main>
       <SearchBar />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 justify-items-center">
         {physicians.map((physician) => (
           <Link key={physician.name} href={`/physicians/${physician.slug}`}>
             <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10  flex flex-col md:flex-row items-center gap-5">
