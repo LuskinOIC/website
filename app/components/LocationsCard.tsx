@@ -27,15 +27,16 @@ export default function LocationsCard({ locations }: LocationsCardType) {
 type LocationContentType = { location: LocationType; lastLocation: boolean };
 
 function LocationContent({ location, lastLocation }: LocationContentType) {
-  let outerClassName = "flex flex-col h-full px-7 md:px-6";
+  // console.log(location.fields.button)
+  let outerClassName = "flex flex-col px-7 md:px-6";
   if (!lastLocation) {
     outerClassName =
       outerClassName +
-      " border-b-[1px] md:border-b-0 md:border-r-[3px] border-luskin-green pb-7 mb-7 md:pb-[3.5rem] md:mb-0 md:mr-1";
+      " border-b-[1px] md:border-b-0 md:border-r-[3px] border-luskin-green mb-7 pb-7 md:mb-0 md:pb-0 md:mr-1";
   }
   return (
     <div className={outerClassName}>
-      <Title2 className="md:text-xl leading-[30px] font-bold font-arial pt-0">
+      <Title2 className="md:basis-1/6 md:text-xl leading-[30px] font-bold font-arial pt-0">
         {location.fields.name}
       </Title2>
       {location.fields.hours && (
@@ -75,6 +76,8 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
           text={location.fields.button.fields.text}
           href={location.fields.button.fields.buttonUrl}
           className="uppercase"
+          variant="blue"
+          isExternal={location.fields.button.fields.externalLink}
         />
       )}
     </div>
