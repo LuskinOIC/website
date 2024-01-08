@@ -1,10 +1,12 @@
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import {
+  getNewsPosts,
   getPatientStories,
   getPatientStoryBySlug,
 } from "@/app/utils/contentful";
 import PageSection from "@/app/components/PageSection/PageSection";
-import { PageSectionType } from "@/app/constants/types";
+import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export async function generateStaticParams() {
   const patients = await getPatientStories();
@@ -17,6 +19,8 @@ export default async function PatientStories({
   params: { slug: string };
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
+  const news = (await getNewsPosts(4)) as unknown as BlogCardsRowType[];
+
   return (
     <main>
       <TwoColumnLayout section={patient.topSection} />
@@ -24,6 +28,9 @@ export default async function PatientStories({
         patient.pageSections.map((pageSection: PageSectionType) => (
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
+      <section className="flex justify-center">
+        <BlogCardsRow type="news" cards={news} />
+      </section>
     </main>
   );
 }
