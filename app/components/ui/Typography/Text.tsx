@@ -12,7 +12,7 @@ export function Text1({ children, className = "" }: TextProps) {
 }
 
 export function Text2({ children, className = "" }: TextProps) {
-  const classes = cn("text-base md:text-xl font-arial leading-150 ", className);
+  const classes = cn("text-base md:text-lg font-arial leading-150 ", className);
   return <p className={classes}>{children}</p>;
 }
 

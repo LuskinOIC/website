@@ -11,22 +11,10 @@ interface SectionContentProps {
   section: ColumnType;
 }
 const descriptionClassNames: ClassNames = {
-  paragraph: "py-2 leading-7 md:leading-10",
+  paragraph: "py-2 md:py-4 text-base md:text-lg",
 };
 
 const SectionContent = ({ section }: SectionContentProps) => {
-  const descriptionFontSize = () => {
-    const fontSizeMap = {
-      large: "md:text-2xl",
-      medium: "md:text-xl",
-      small: "md:text-lg",
-    };
-
-    return section.fields.descriptionFontSize
-      ? fontSizeMap[section.fields.descriptionFontSize]
-      : "md:text-lg";
-  };
-
   const textColor =
     section.fields.backgroundColor != "white" ? "text-white" : "text-black";
   const descriptionContent = renderRichTextToReactComponent(
@@ -47,9 +35,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
               bold={section.fields.bold}
             />
           )}
-          <div className={`text-base ${descriptionFontSize()}`}>
-            {descriptionContent}
-          </div>
+          <div>{descriptionContent}</div>
         </div>
         {section.fields.buttons && (
           <div className="grid grid-cols-2 gap-2">

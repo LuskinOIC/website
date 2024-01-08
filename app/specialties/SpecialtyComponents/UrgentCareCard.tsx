@@ -6,7 +6,7 @@ import { SpecialtyType } from "@/app/constants/types";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
-import { Text1 } from "@/app/components/ui/Typography/Text";
+import { Text2 } from "@/app/components/ui/Typography/Text";
 import { SAVE_MY_SPOT } from "@/app/constants/links";
 import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 
@@ -29,13 +29,13 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
   const descriptionContent =
     description && renderRichTextToReactComponent(description);
 
-  const walkIns = <Text1>Walk-ins welcome. No appointment necessary.</Text1>;
+  const walkIns = <Text2>Walk-ins welcome. No appointment necessary.</Text2>;
 
   const cardContent = () => {
     return (
       <div className="grid gap-4 md:gap-5 justify-items-start pl-5 pr-12 py-6 md:py-0">
         <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
-        <div className="grid gap-4 md:text-xl leading-[30px]">
+        <div className="grid gap-4 text-base md:text-lg leading-[30px]">
           {descriptionContent}
         </div>
         <Button
@@ -45,7 +45,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
           variant="blue"
           isExternal={true}
         />
-        {walkIns}
+        <div className="block md:hidden">{walkIns}</div>
         <SpecialtyHoursLayout locationContent={location} />
       </div>
     );
@@ -74,14 +74,14 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
           <a
             href={englishFormUrl}
             target="_blank"
-            className="underline text-base md:text-2xl font-arial leading-150 "
+            className="underline text-base md:text-lg font-arial leading-150 "
           >
             Urgent Care Registration Form - English
           </a>
           <a
             href={spanishFormUrl}
             target="_blank"
-            className="underline text-base md:text-2xl font-arial leading-150 "
+            className="underline text-base md:text-lg font-arial leading-150 "
           >
             Urgent Care Registration Form - Spanish
           </a>

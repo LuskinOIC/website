@@ -22,17 +22,6 @@ export default function FullWidthImageLayout({
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
   );
-  const descriptionFontSize = () => {
-    const fontSizeMap = {
-      large: "md:text-2xl",
-      medium: "md:text-xl",
-      small: "md:text-lg",
-    };
-
-    return section.fields.descriptionFontSize
-      ? fontSizeMap[section.fields.descriptionFontSize]
-      : "md:text-lg";
-  };
   return (
     <section
       className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-40 py-10  `}
@@ -56,7 +45,7 @@ export default function FullWidthImageLayout({
           bold={section.fields.bold}
         />
       )}
-      <div className={`grid gap-2 md:gap-5 ${descriptionFontSize()}`}>
+      <div className={`grid gap-2 md:gap-5 text-base md:text-lg leading-7`}>
         {descriptionContent}
       </div>
       {section.fields.buttons && (

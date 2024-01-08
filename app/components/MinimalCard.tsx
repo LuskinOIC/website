@@ -9,7 +9,7 @@ const titleImageComponentStyles = {
   wrapperDiv:
     "flex-reverse mb-3 flex h-28 w-full rounded-lg bg-[#0076AD] md:mb-8 md:h-full md:w-1/5 md:flex-col md:rounded-lg md:border md:bg-white",
   header:
-    "my-auto ml-6 text-3xl font-semibold tracking-wider text-white md:pb-6 md:pt-4 md:text-center md:text-2xl md:text-black",
+    "my-auto ml-6 text-3xl font-semibold tracking-wider text-white md:pb-6 md:pt-4 md:text-center md:text-lg md:text-black",
   summary: "",
 };
 

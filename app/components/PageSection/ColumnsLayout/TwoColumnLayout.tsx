@@ -11,12 +11,14 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   const textPadding = section.fields.reverseOrder
     ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
     : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
+  const verticalPadding =
+    section.fields.backgroundColor === "white" ? "py-12" : "py-0";
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
   let orientationClass = "";
   const floatClass = section.fields.reverseOrder ? "float-right" : "float-left";
-  if (section.fields.imageOrientation === "vertical") {
+  if (section.fields.imageOrientation === "Center Align") {
     orientationClass = "mx-auto";
   } else {
     orientationClass += "md:rounded-l-lg";
@@ -24,16 +26,15 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   }
 
   return (
-    <section className={`block py-12`}>
+    <section className={`block ${verticalPadding}`}>
       <div
         className={`flex flex-col md:flex-row items-center ${bgColor} justify-between`}
       >
         {/* TODO: Adjust image sizing */}
         {section.fields.image && (
-          <div className={`${orderClass} place-self-end`}>
+          <div className={`${orderClass} ${orientationClass}`}>
             <div style={{ maxWidth: "768px" }}>
               <Image
-                className={`${orientationClass}`}
                 src={`https:${section.fields.image.fields.file.url}`}
                 alt={section.fields.image.fields.description}
                 width={section.fields.image.fields.file.details.image.width}
