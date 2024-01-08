@@ -116,6 +116,15 @@ export async function getMembers() {
   return entries.items.map((entry) => entry.fields);
 }
 
+export async function getMemberBySlug() {
+  const entries = await client.getEntries({
+    content_type: "memberBio",
+    locale: "en-US",
+  });
+
+  return entries.items[0].fields as unknown as MemberType;
+}
+
 export async function getLeadershipBioBySlug(slug: string) {
   const entry = await client.getEntries({
     content_type: "memberBio",
