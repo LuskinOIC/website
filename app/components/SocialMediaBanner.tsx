@@ -33,7 +33,7 @@ export default function SocialMediaBanner() {
 
 function DesktopBanner() {
   return (
-    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] px-3 py-4">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] px-3 py-2">
       <div className="self-center row-span-3">
         <div className="flex flex-row min-h-[75%] justify-center items-center">
           <Image src={Ozzie} alt="Ozzie" />

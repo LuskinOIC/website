@@ -17,8 +17,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-arial block w-full">
-        <div className="w-full m-auto page-container">
+      <body className="font-arial block w-full bg-slate-200">
+        <div className="w-full m-auto page-container bg-white">
           <Navbar />
           {children}
           <Footer />

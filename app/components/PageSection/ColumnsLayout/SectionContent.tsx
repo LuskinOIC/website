@@ -52,9 +52,10 @@ const SectionContent = ({ section }: SectionContentProps) => {
           </div>
         </div>
         {section.fields.buttons && (
-          <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
+          <div className="grid grid-cols-2 gap-2">
             {section.fields.buttons.map((button) => (
               <Button
+                className="block grid-span-1 w-full text-center gap-2"
                 key={button.sys.id}
                 href={button.fields.buttonUrl}
                 isExternal={button.fields.externalLink}
