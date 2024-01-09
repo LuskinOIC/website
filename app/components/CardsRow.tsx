@@ -17,7 +17,7 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
             if ("affiliations" in card.fields) {
               href = `/physicians/${card.fields.slug}`;
             } else {
-              href = `/members/${card.fields.slug}`;
+              href = `/member/${card.fields.slug}`;
             }
             return (
               <Link key={`linkto:${card.sys.id}`} href={href} className="">
