@@ -127,8 +127,9 @@ export default function Navbar() {
 
       {/* MOBILE CONTAINER */}
       <div className="flex flex-row w-full justify-between items-center md:hidden">
-        <div className="block md:hiddenw-fit py-2">
-          {/* <Link href="/">
+        {/* Logo Container*/}
+        <div className="block md:hidden py-2">
+          <Link href="/">
             <Image
               className="ml-4"
               src={"/LOIC_LOGO.svg"}
@@ -136,9 +137,8 @@ export default function Navbar() {
               width={90}
               height={60}
             />
-          </Link> */}
+          </Link>
         </div>
-        {/* Logo Container*/}
 
         <NavigationMenuItem className="list-none">
           <button className="bg-transparent text-white rounded-full p-3 text-xl">
