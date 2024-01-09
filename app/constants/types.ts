@@ -110,6 +110,7 @@ export type CardsRowType = {
   fields: {
     name: string;
     portrait: NestedAssetType;
+    slug: string;
   };
   sys: {
     id: string;
