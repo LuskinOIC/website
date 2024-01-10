@@ -139,11 +139,17 @@ export async function getLeadershipBioBySlug(slug: string) {
 }
 
 /* PATIENT BIOS */
-export async function getPatientStories() {
-  const entries = await client.getEntries({
+export async function getPatientStories(
+  numberOfEntries: number | "all" = "all",
+) {
+  let query = {
     content_type: "patientBio",
+    order: "-fields.date",
     locale: "en-US",
-  });
+    ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
+  };
+
+  const entries = await client.getEntries(query);
 
   return entries.items.map((entry) => entry.fields);
 }

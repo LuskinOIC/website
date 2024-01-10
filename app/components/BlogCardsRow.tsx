@@ -3,7 +3,7 @@ import { BlogCardsRowType } from "../constants/types";
 import MinimalCard from "./MinimalCard";
 
 type BlogCardsRowPropsType = {
-  type: "news" | "patient stories" | "events";
+  type: "news" | "patient-stories" | "events";
   cards: BlogCardsRowType[];
 };
 
@@ -16,7 +16,7 @@ export default async function BlogCardsRow({
       <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4 px-5">
         <Link href={`/${type}`}>
           <h1 className="text-xl font-bold uppercase text-[#0076AD] md:text-3xl md:font-normal md:capitalize hover:underline">
-            {type}
+            {type === "patient-stories" ? "patient stories" : type}
           </h1>
         </Link>
         <Link href={`/${type}`}>
