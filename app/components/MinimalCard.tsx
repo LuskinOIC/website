@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
 import renderRichTextToReactComponent from "../utils/rich-text";
+import { cn } from "@/lib/utils";
 
 const titleImageComponentStyles = {
   image:
@@ -22,8 +23,10 @@ const titleImageSummaryComponentStyles = {
 };
 export default function MinimalCard({
   cardContent,
+  classNames,
 }: {
   cardContent: MinimalCardType;
+  classNames?: string;
 }) {
   const title = cardContent.title;
   if (cardContent.cardPhoto === undefined) return null;
@@ -43,7 +46,7 @@ export default function MinimalCard({
     : titleImageComponentStyles;
 
   return (
-    <div className={selectedStyles?.wrapperDiv}>
+    <div className={cn(selectedStyles?.wrapperDiv, classNames)}>
       <Image
         alt={title}
         src={cardPhotoSource}

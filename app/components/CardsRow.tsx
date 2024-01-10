@@ -20,13 +20,18 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
               href = `/member/${card.fields.slug}`;
             }
             return (
-              <Link key={`linkto:${card.sys.id}`} href={href} className="">
+              <Link
+                key={`linkto:${card.sys.id}`}
+                href={href}
+                className="md:w-1/5"
+              >
                 <MinimalCard
                   key={card.sys.id}
                   cardContent={{
                     title: card.fields.name,
                     cardPhoto: card.fields.portrait,
                   }}
+                  classNames="md:w-full"
                 />
               </Link>
             );
