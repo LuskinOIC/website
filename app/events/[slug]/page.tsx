@@ -6,15 +6,16 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import {
-  EventCardType,
   NestedAssetType,
   MinimalCardType,
+  BlogCardsRowType,
 } from "@/app/constants/types";
 // Import components
 import MinimalCard from "@/app/components/MinimalCard";
 import Slider from "@/app/components/Slider";
 import PageSection from "@/app/components/PageSection/PageSection";
 import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -45,10 +46,10 @@ const buttonStyling =
 // EVENT
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);
+  const allEvents = (await getEvents(4)) as unknown as BlogCardsRowType[];
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
   const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
-  const allEvents = (await getEvents()) as unknown as EventCardType[];
   const dateString = orgEvent.eventDate;
   const eventDate: Date = new Date(dateString);
   const formattedDateTime: string = formatDateTime(eventDate);
@@ -138,10 +139,9 @@ export default async function Event({ params }: { params: { slug: string } }) {
         {hasPatientAmbassadors &&
           orgEvent.patientAmbassador.map(
             (patientObject: { fields: MinimalCardType }) => (
-              <MinimalCard
-                key={patientObject.fields.title}
-                cardContent={patientObject.fields}
-              />
+              <div key={patientObject.fields.title}>
+                <MinimalCard cardContent={patientObject.fields} />
+              </div>
             ),
           )}
       </div>
@@ -204,27 +204,8 @@ export default async function Event({ params }: { params: { slug: string } }) {
           </button>
         </div>
       </div>
-      <div id="event-cards" className="mx-6">
-        <div className="mx-6 flex justify-between">
-          <h3 className="text-lg font-semibold uppercase text-[#FF7548] md:mb-3 md:text-3xl md:font-normal md:capitalize md:text-[#0076AD]">
-            events
-          </h3>
-          <p className="text-sm underline md:hidden">
-            <a className="">SEE ALL</a>
-          </p>
-        </div>
-        <div className="md:flex">
-          {allEvents.map((soleEvent) => (
-            <MinimalCard
-              key={soleEvent.slug}
-              cardContent={{
-                title: soleEvent.eventName,
-                cardPhoto: soleEvent.eventPhoto,
-                summary: soleEvent.eventSummary,
-              }}
-            />
-          ))}
-        </div>
+      <div id="event-cards" className="grid justify-center">
+        <BlogCardsRow type="events" cards={allEvents} />
       </div>
     </main>
   );
