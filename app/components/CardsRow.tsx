@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CardsRowPropsType, CardsRowType } from "../constants/types";
 import MinimalCard from "./MinimalCard";
 
@@ -10,15 +11,30 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
       </h1>
       <div className="flex flex-wrap md:flex-row-4 md:gap-10">
         {hasCards &&
-          cards.map((card: CardsRowType) => (
-            <MinimalCard
-              key={card.sys.id}
-              cardContent={{
-                title: card.fields.name,
-                cardPhoto: card.fields.portrait,
-              }}
-            />
-          ))}
+          cards.map((card: CardsRowType) => {
+            let href = "";
+            if ("affiliations" in card.fields) {
+              href = `/physicians/${card.fields.slug}`;
+            } else {
+              href = `/member/${card.fields.slug}`;
+            }
+            return (
+              <Link
+                key={`linkto:${card.sys.id}`}
+                href={href}
+                className="md:w-1/5"
+              >
+                <MinimalCard
+                  key={card.sys.id}
+                  cardContent={{
+                    title: card.fields.name,
+                    cardPhoto: card.fields.portrait,
+                  }}
+                  classNames="md:w-full"
+                />
+              </Link>
+            );
+          })}
       </div>
     </section>
   );
