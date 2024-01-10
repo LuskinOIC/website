@@ -12,7 +12,7 @@ export default async function BlogCardsRow({
   cards,
 }: BlogCardsRowPropsType) {
   return (
-    <section>
+    <section id={`${type}`}>
       <Link href={`/${type}`}>
         <h1 className="mb-2 mt-8 text-xl font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:text-3xl md:font-normal md:capitalize">
           {type}
