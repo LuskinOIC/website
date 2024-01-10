@@ -1,27 +1,18 @@
 import { getEvents } from "@/app/utils/contentful";
-import { EventCardType } from "@/app/constants/types";
-import MinimalCard from "@/app/components/MinimalCard";
+import { BlogCardsRowType } from "@/app/constants/types";
 import BackToBrowse from "../components/ui/BackToBrowse";
 import SearchBar from "../components/ui/SearchBar";
+import BlogCardsRow from "../components/BlogCardsRow";
 
 export default async function Events() {
-  const events = (await getEvents()) as unknown as EventCardType[];
+  const events = (await getEvents()) as unknown as BlogCardsRowType[];
   return (
     <main className="">
       <div className="mx-auto flex flex-col md:ml-16 md:justify-center">
         <BackToBrowse />
         <SearchBar />
         <div className="flex flex-col flex-wrap md:flex-row">
-          {events.map((eventObj) => (
-            <MinimalCard
-              key={eventObj.slug}
-              cardContent={{
-                title: eventObj.eventName,
-                cardPhoto: eventObj.eventPhoto,
-                summary: eventObj.eventSummary,
-              }}
-            />
-          ))}
+          <BlogCardsRow type="events" cards={events} />
         </div>
       </div>
     </main>
