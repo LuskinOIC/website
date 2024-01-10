@@ -4,7 +4,6 @@ import MinimalCard from "./MinimalCard";
 
 const CardsRow = ({ title, cards }: CardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
-  console.dir(cards);
   return (
     <section className="block px-5 md:px-32">
       <h1 className="mb-2 mt-8 text-xl font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:text-3xl md:font-normal md:capitalize">
