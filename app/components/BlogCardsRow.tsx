@@ -36,7 +36,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
 
   return (
     <section id={`${type}`}>
-      <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4 px-5">
+      <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4">
         <Link href={`/${type}`}>
           <h1 className="text-xl font-bold uppercase text-[#0076AD] md:text-3xl md:font-normal md:capitalize hover:underline">
             {type === "patient-stories" ? "patient stories" : type}

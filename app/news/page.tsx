@@ -7,7 +7,7 @@ import BlogCardsRow from "../components/BlogCardsRow";
 export default async function News() {
   const news = (await getNewsPosts()) as unknown as BlogCardsRowType[];
   return (
-    <main className="grid mx-auto w-4/5">
+    <main className="flex flex-col px-[5%] md:justify-center">
       <BackToBrowse />
       <SearchBar />
       <BlogCardsRow type="news" cards={news} />

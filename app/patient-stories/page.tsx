@@ -7,12 +7,10 @@ import { getPatientStories } from "../utils/contentful";
 export default async function PatientStories() {
   const patients = (await getPatientStories()) as unknown as BlogCardsRowType[];
   return (
-    <main className="mx-auto flex flex-col md:ml-16 md:justify-center">
+    <main className="flex flex-col px-[5%] md:justify-center">
       <BackToBrowse />
       <SearchBar />
-      <div className="flex flex-col flex-wrap md:flex-row">
-        <BlogCardsRow type="patient-stories" cards={patients} />
-      </div>
+      <BlogCardsRow type="patient-stories" cards={patients} />
     </main>
   );
 }
