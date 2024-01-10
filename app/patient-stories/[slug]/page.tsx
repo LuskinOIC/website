@@ -1,6 +1,5 @@
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import {
-  getNewsPosts,
   getPatientStories,
   getPatientStoryBySlug,
 } from "@/app/utils/contentful";
@@ -19,7 +18,9 @@ export default async function PatientStories({
   params: { slug: string };
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
-  const news = (await getNewsPosts(4)) as unknown as BlogCardsRowType[];
+  const patients = (await getPatientStories(
+    4,
+  )) as unknown as BlogCardsRowType[];
 
   return (
     <main>
@@ -29,7 +30,7 @@ export default async function PatientStories({
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
       <section className="flex justify-center">
-        <BlogCardsRow type="news" cards={news} />
+        <BlogCardsRow type="patient-stories" cards={patients} />
       </section>
     </main>
   );
