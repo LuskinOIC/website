@@ -13,11 +13,18 @@ export default async function BlogCardsRow({
 }: BlogCardsRowPropsType) {
   return (
     <section id={`${type}`}>
-      <Link href={`/${type}`}>
-        <h1 className="mb-2 mt-8 text-xl font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:text-3xl md:font-normal md:capitalize">
-          {type}
-        </h1>
-      </Link>
+      <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4 px-5">
+        <Link href={`/${type}`}>
+          <h1 className="text-xl font-bold uppercase text-[#0076AD] md:text-3xl md:font-normal md:capitalize hover:underline">
+            {type}
+          </h1>
+        </Link>
+        <Link href={`/${type}`}>
+          <h1 className="block md:hidden uppercase text-[#0076AD] text-xl underline">
+            See All
+          </h1>
+        </Link>
+      </div>
       <div className="flex flex-col md:flex-row md:flex-wrap">
         {cards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
