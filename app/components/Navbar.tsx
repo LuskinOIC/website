@@ -126,22 +126,37 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE CONTAINER */}
-      <NavigationMenuItem className="navbar justify-end relative container flex w-full md:hidden">
-        <button className="bg-transparent text-white rounded-full p-3 text-xl">
-          {" "}
-          {/* Increase padding and font size */}
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
+      <div className="flex flex-row w-full justify-between items-center md:hidden">
+        {/* Logo Container*/}
+        <div className="block md:hidden py-2">
+          <Link href="/">
+            <Image
+              className="ml-4"
+              src={"/LOIC_LOGO.svg"}
+              alt={"Logo"}
+              width={90}
+              height={60}
+            />
+          </Link>
+        </div>
 
-        <button
-          onClick={toggleHamburgerDropdown}
-          className="bg-transparent text-white rounded-full py-3 px-4 text-xl"
-        >
-          {" "}
-          {/* Increase padding and font size */}
-          <FontAwesomeIcon icon={faBars} />
-        </button>
-      </NavigationMenuItem>
+        <NavigationMenuItem className="list-none">
+          <button className="bg-transparent text-white rounded-full p-3 text-xl">
+            {" "}
+            {/* Increase padding and font size */}
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+
+          <button
+            onClick={toggleHamburgerDropdown}
+            className="bg-transparent text-white rounded-full py-3 px-4 text-xl"
+          >
+            {" "}
+            {/* Increase padding and font size */}
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        </NavigationMenuItem>
+      </div>
 
       <MobileMenu
         isHamburgerOpen={isHamburgerOpen}
