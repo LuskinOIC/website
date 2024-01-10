@@ -1,16 +1,39 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { BlogCardsRowType } from "../constants/types";
-import MinimalCard from "./MinimalCard";
+import { BlogCardsRowType } from "@/app/constants/types";
+import MinimalCard from "@/app/components/MinimalCard";
 
 type BlogCardsRowPropsType = {
   type: "news" | "patient-stories" | "events";
   cards: BlogCardsRowType[];
 };
 
-export default async function BlogCardsRow({
-  type,
-  cards,
-}: BlogCardsRowPropsType) {
+const isMobileScreen = () => window.innerWidth <= 768;
+
+export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
+  const [displayedCards, setDisplayedCards] = useState(cards);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (isMobileScreen()) {
+        if (cards.length === 8 || cards.length === 4) {
+          setDisplayedCards(cards.slice(0, cards.length / 2));
+        } else {
+          setDisplayedCards(cards);
+        }
+      } else {
+        setDisplayedCards(cards);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [cards]);
+
   return (
     <section id={`${type}`}>
       <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4 px-5">
@@ -26,7 +49,7 @@ export default async function BlogCardsRow({
         </Link>
       </div>
       <div className="flex flex-col md:flex-row md:flex-wrap">
-        {cards.map((card: BlogCardsRowType) => (
+        {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
             <div>
               <MinimalCard
