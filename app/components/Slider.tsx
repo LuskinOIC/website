@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSwipeable } from "react-swipeable";
 
 interface Slide {
@@ -30,6 +30,7 @@ const LeftArrow = () => (
   </div>
 );
 
+// functional component
 const RightArrow = () => (
   <div className="hidden md:block">
     <svg
@@ -61,7 +62,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
     trackMouse: true,
   });
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (currentSlide >= wrappedSlides.length - 1) {
       setTransitionEnabled(false);
       setCurrentSlide(0);
@@ -73,7 +74,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
     } else {
       setCurrentSlide((prev) => prev + 1);
     }
-  };
+  }, [currentSlide, wrappedSlides.length]);
 
   const prevSlide = () => {
     if (currentSlide === 0) {
@@ -89,6 +90,13 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
       setCurrentSlide((prev) => prev - 1);
     }
   };
+  
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(slideInterval);
+  }, [currentSlide, nextSlide]);
 
   const slideOffset = -currentSlide * 100; // 100% for each slide
   const indicatorPosition =
