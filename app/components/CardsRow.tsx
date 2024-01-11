@@ -24,14 +24,10 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
       </h1>
       <div className="flex flex-wrap md:flex-row-4 md:gap-10">
         {hasCards &&
-          cards.map((card: CardsRowType) => {
+          cards.map((card: CardsRowType, i: number) => {
             let cardHref = getCardHref(card);
             return (
-              <Link
-                key={`linkto:${card.sys.id}`}
-                href={cardHref}
-                className="md:w-1/5"
-              >
+              <Link key={i} href={cardHref} className="w-full md:w-1/5">
                 <MinimalCard
                   key={card.sys.id}
                   cardContent={{
