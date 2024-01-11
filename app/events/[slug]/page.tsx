@@ -13,7 +13,6 @@ import {
 // Import components
 import Slider from "@/app/components/Slider";
 import PageSection from "@/app/components/PageSection/PageSection";
-import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export async function generateStaticParams() {
@@ -128,18 +127,14 @@ export default async function Event({ params }: { params: { slug: string } }) {
           />
         </div>
       </div>
+
       <div>
         {orgEvent.pageSections &&
           orgEvent.pageSections.map((section: PageSectionType) => (
             <PageSection key={section.fields.title} section={section} />
           ))}
       </div>
-      {/* TRI-IMAGE LAYOUT */}
-      <div id="event-triImage" className="">
-        {orgEvent.triImage?.fields?.images && (
-          <TriImageLayout section={orgEvent.triImage.fields.images} />
-        )}
-      </div>
+
       {/* Sponsors: MOBILE */}
       <div className="md:hidden">
         <p className="ml-36 w-44 text-lg font-semibold">
