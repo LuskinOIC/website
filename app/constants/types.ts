@@ -113,6 +113,7 @@ export type CardsRowType = {
     slug: string;
   };
   sys: {
+    contentType: any;
     id: string;
   };
 };
@@ -125,6 +126,7 @@ export type EventCardType = {
 };
 
 export type EventType = {
+  pageSections: PageSectionType;
   eventName: string;
   slug: string;
   eventSummary: object;

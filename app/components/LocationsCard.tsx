@@ -27,7 +27,6 @@ export default function LocationsCard({ locations }: LocationsCardType) {
 type LocationContentType = { location: LocationType; lastLocation: boolean };
 
 function LocationContent({ location, lastLocation }: LocationContentType) {
-  // console.log(location.fields.button)
   let outerClassName = "flex flex-col px-7 md:px-6";
   if (!lastLocation) {
     outerClassName =
