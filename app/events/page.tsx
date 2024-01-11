@@ -7,13 +7,11 @@ import BlogCardsRow from "../components/BlogCardsRow";
 export default async function Events() {
   const events = (await getEvents()) as unknown as BlogCardsRowType[];
   return (
-    <main className="">
-      <div className="mx-auto flex flex-col md:ml-16 md:justify-center">
+    <main>
+      <div className="flex flex-col px-[5%] md:justify-center">
         <BackToBrowse />
         <SearchBar />
-        <div className="flex flex-col flex-wrap md:flex-row">
-          <BlogCardsRow type="events" cards={events} />
-        </div>
+        <BlogCardsRow type="events" cards={events} />
       </div>
     </main>
   );
