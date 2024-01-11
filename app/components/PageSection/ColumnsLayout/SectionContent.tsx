@@ -38,7 +38,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
           <div>{descriptionContent}</div>
         </div>
         {section.fields.buttons && (
-          <div className="grid grid-cols-1 md:cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {section.fields.buttons.map((button) => (
               <Button
                 className="block grid-span-1 w-full text-center gap-2"
