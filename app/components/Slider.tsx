@@ -90,7 +90,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
       setCurrentSlide((prev) => prev - 1);
     }
   };
-  
+
   useEffect(() => {
     const slideInterval = setInterval(() => {
       nextSlide();
