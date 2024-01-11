@@ -67,7 +67,7 @@ export default async function PhysicianBio({
               width={portraitWidth}
               height={portraitHeight}
               style={{ objectPosition: "center 20%" }}
-              className="h-full object-none sm:w-auto"
+              className="h-full rounded-lg object-none sm:w-auto"
             />
           </div>
 
