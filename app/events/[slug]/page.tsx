@@ -7,14 +7,12 @@ import renderRichTextToReactComponent, {
 } from "@/app/utils/rich-text";
 import {
   NestedAssetType,
-  MinimalCardType,
   BlogCardsRowType,
+  PageSectionType,
 } from "@/app/constants/types";
 // Import components
-import MinimalCard from "@/app/components/MinimalCard";
 import Slider from "@/app/components/Slider";
 import PageSection from "@/app/components/PageSection/PageSection";
-import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export async function generateStaticParams() {
@@ -53,9 +51,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const dateString = orgEvent.eventDate;
   const eventDate: Date = new Date(dateString);
   const formattedDateTime: string = formatDateTime(eventDate);
-  const hasPatientAmbassadors: boolean =
-    Array.isArray(orgEvent.patientAmbassador) &&
-    orgEvent.patientAmbassador.length > 0;
   const hasSponsors: boolean =
     Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
 
@@ -132,30 +127,14 @@ export default async function Event({ params }: { params: { slug: string } }) {
           />
         </div>
       </div>
-      <h2 className="mx-6 mb-4 text-lg font-semibold text-[#32B8DE] md:ml-40 md:text-2xl md:font-normal md:text-[#0076AD]">
-        PATIENT AMBASSADORS
-      </h2>
-      <div className="mx-6 grid grid-cols-1 place-items-center md:mx-auto md:flex md:justify-center md:gap-8">
-        {hasPatientAmbassadors &&
-          orgEvent.patientAmbassador.map(
-            (patientObject: { fields: MinimalCardType }) => (
-              <div key={patientObject.fields.title}>
-                <MinimalCard cardContent={patientObject.fields} />
-              </div>
-            ),
-          )}
-      </div>
+
       <div>
-        {orgEvent.eventPageSections && (
-          <PageSection section={orgEvent.eventPageSections} />
-        )}
+        {orgEvent.pageSections &&
+          orgEvent.pageSections.map((section: PageSectionType) => (
+            <PageSection key={section.fields.title} section={section} />
+          ))}
       </div>
-      {/* TRI-IMAGE LAYOUT */}
-      <div id="event-triImage" className="">
-        {orgEvent.triImage?.fields?.images && (
-          <TriImageLayout section={orgEvent.triImage.fields.images} />
-        )}
-      </div>
+
       {/* Sponsors: MOBILE */}
       <div className="md:hidden">
         <p className="ml-36 w-44 text-lg font-semibold">

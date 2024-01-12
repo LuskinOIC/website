@@ -2,6 +2,19 @@ import Link from "next/link";
 import { CardsRowPropsType, CardsRowType } from "../constants/types";
 import MinimalCard from "./MinimalCard";
 
+function getCardHref(card: CardsRowType) {
+  switch (card.sys.contentType.sys.id) {
+    case "patientBio":
+      return `/patient-stories/${card.fields.slug}`;
+    case "memberBio":
+      return `/member/${card.fields.slug}`;
+    case "physicianBio":
+      return `/physicians/${card.fields.slug}`;
+    default:
+      return "/";
+  }
+}
+
 const CardsRow = ({ title, cards }: CardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
   return (
@@ -11,19 +24,10 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
       </h1>
       <div className="flex flex-wrap md:flex-row-4 md:gap-10">
         {hasCards &&
-          cards.map((card: CardsRowType) => {
-            let href = "";
-            if ("affiliations" in card.fields) {
-              href = `/physicians/${card.fields.slug}`;
-            } else {
-              href = `/member/${card.fields.slug}`;
-            }
+          cards.map((card: CardsRowType, i: number) => {
+            let cardHref = getCardHref(card);
             return (
-              <Link
-                key={`linkto:${card.sys.id}`}
-                href={href}
-                className="md:w-1/5"
-              >
+              <Link key={i} href={cardHref} className="w-full md:w-1/5">
                 <MinimalCard
                   key={card.sys.id}
                   cardContent={{
