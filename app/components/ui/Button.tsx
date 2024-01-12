@@ -16,7 +16,8 @@ export interface ButtonProps {
 const styles = {
   buttonContainer: "flex w-fit rounded-[10px]",
   buttonAlignment: "px-2 lg:px-4 py-3 justify-center items-center inline-flex",
-  buttonText: "text-base text-white font-bold leading-[28.8px]",
+  buttonText:
+    "text-base text-white font-bold leading-[20px] uppercase tracking-wide",
 };
 
 const Button = ({
