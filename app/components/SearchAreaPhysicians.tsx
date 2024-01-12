@@ -10,7 +10,7 @@ import { PhysicianBioType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
 import SearchBar from "./ui/SearchBar";
 
-export default function SearchArea({
+export default function SearchAreaPhysicians({
   physicians,
 }: {
   physicians: PhysicianBioType[];
