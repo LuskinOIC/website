@@ -40,8 +40,6 @@ function filterPhysicians(
   const filteredPhysicians: PhysicianBioType[] = [];
 
   const searchTerms = searchString.split(/\s/);
-  console.log(`searchString: ${searchString}`);
-  console.dir(searchTerms);
 
   for (let i = 0; i < physicians.length; i++) {
     const p = physicians[i];
@@ -49,19 +47,20 @@ function filterPhysicians(
 
     for (let j = 0; j < searchTerms.length; j++) {
       const s = searchTerms[j].toLowerCase();
-      if (s == "") continue;
-
       let searchTermHit = false;
-      // Check if there's a hit anywhere
-      searchTermHit = searchTermHit || p.name.toLowerCase().includes(s);
-      searchTermHit = searchTermHit || searchDocument(s, p.specialties);
-      searchTermHit = searchTermHit || searchDocument(s, p.affiliations);
 
-      console.log(`searchTerm: ${s} searchTermHit: ${searchTermHit}`);
+      if (s == "") {
+        searchTermHit = true;
+      } else {
+        // Check if there's a hit anywhere
+        searchTermHit = searchTermHit || p.name.toLowerCase().includes(s);
+        searchTermHit = searchTermHit || searchDocument(s, p.specialties);
+        searchTermHit = searchTermHit || searchDocument(s, p.affiliations);
+      }
+
       // Check that the search finds all terms
       searchHit = (j == 0 || searchHit) && searchTermHit;
     }
-    console.log(`searchString: ${searchString} searchHit: ${searchHit}`);
 
     if (searchHit) filteredPhysicians.push(p);
   }
