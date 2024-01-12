@@ -23,10 +23,10 @@ export default function SearchArea({
     <div>
       <SearchBar
         value={searchString}
-        onChange={(evt) => {
-          setSearchString(evt.target.value);
-          filteredPhysicians = filterPhysicians(evt.target.value, physicians);
-        }}
+        onChange={(evt) => setSearchString(evt.target.value)}
+        onSearch={() =>
+          (filteredPhysicians = filterPhysicians(searchString, physicians))
+        }
       />
       <SearchResults filteredPhysicians={filteredPhysicians} />
     </div>

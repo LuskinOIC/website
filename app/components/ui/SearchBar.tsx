@@ -3,9 +3,11 @@ import { ChangeEventHandler } from "react";
 export default function SearchBar({
   value,
   onChange,
+  onSearch,
 }: {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  onSearch: () => void;
 }) {
   return (
     <div className="flex justify-center my-4">
@@ -17,7 +19,10 @@ export default function SearchBar({
           value={value}
           onChange={onChange}
         />
-        <button className="absolute right-0 top-0 px-4 py-2 bg-blue-500 text-white rounded-r-md border border-blue-500">
+        <button
+          className="absolute right-0 top-0 px-4 py-2 bg-blue-500 text-white rounded-r-md border border-blue-500"
+          onClick={onSearch}
+        >
           Search
         </button>
       </div>
