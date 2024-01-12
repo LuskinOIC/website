@@ -1,6 +1,6 @@
 import React from "react";
 // Components
-import { Text1 } from "./ui/Typography/Text";
+import { Text } from "./ui/Typography/Text";
 import { Title1 } from "./ui/Typography/Title";
 // Icons + Images
 import FB from "../../public/fb.svg";
@@ -65,10 +65,10 @@ function MobileBanner() {
         </Title1>
         <Image src={OzzieMobile} alt="Ozzie" />
       </div>
-      <Text1 className="px-10">
+      <Text className="px-10">
         Join us in our mission to transform musculoskeletal care for all, one
         child at a time, through education, research, and unwavering support.
-      </Text1>
+      </Text>
       <SocialMediaIcons />
     </div>
   );
