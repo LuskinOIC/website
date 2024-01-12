@@ -16,19 +16,21 @@ export default function SearchAreaPhysicians({
   physicians: PhysicianBioType[];
 }) {
   const [searchString, setSearchString] = useState("");
-
-  let filteredPhysicians = filterPhysicians(searchString, physicians);
+  const [searchResults, setSearchResults] = useState(physicians);
 
   return (
     <div>
       <SearchBar
         value={searchString}
-        onChange={(evt) => setSearchString(evt.target.value)}
+        onChange={(evt) => {
+          setSearchString(evt.target.value);
+          // setSearchResults([...filterPhysicians(evt.target.value, physicians)]);
+        }}
         onSearch={() =>
-          (filteredPhysicians = filterPhysicians(searchString, physicians))
+          setSearchResults([...filterPhysicians(searchString, physicians)])
         }
       />
-      <SearchResults filteredPhysicians={filteredPhysicians} />
+      <SearchResults filteredPhysicians={searchResults} />
     </div>
   );
 }
