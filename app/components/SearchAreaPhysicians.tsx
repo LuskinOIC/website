@@ -17,26 +17,73 @@ export default function SearchArea({
 }) {
   const [searchString, setSearchString] = useState("");
 
-  const filteredPhysicians: PhysicianBioType[] = [];
-
-  for (let i = 0; i < physicians.length; i++) {
-    const p = physicians[i];
-    let searchHit = false;
-
-    // TODO: Filter search
-
-    if (searchHit) filteredPhysicians.push(p);
-  }
+  let filteredPhysicians = filterPhysicians(searchString, physicians);
 
   return (
     <div>
       <SearchBar
         value={searchString}
-        onChange={(evt) => setSearchString(evt.target.value)}
+        onChange={(evt) => {
+          setSearchString(evt.target.value);
+          filteredPhysicians = filterPhysicians(evt.target.value, physicians);
+        }}
       />
       <SearchResults filteredPhysicians={filteredPhysicians} />
     </div>
   );
+}
+
+function filterPhysicians(
+  searchString: string,
+  physicians: PhysicianBioType[],
+): PhysicianBioType[] {
+  const filteredPhysicians: PhysicianBioType[] = [];
+
+  const searchTerms = searchString.split(/\s/);
+  console.log(`searchString: ${searchString}`);
+  console.dir(searchTerms);
+
+  for (let i = 0; i < physicians.length; i++) {
+    const p = physicians[i];
+    let searchHit = false;
+
+    for (let j = 0; j < searchTerms.length; j++) {
+      const s = searchTerms[j].toLowerCase();
+      if (s == "") continue;
+
+      let searchTermHit = false;
+      // Check if there's a hit anywhere
+      searchTermHit = searchTermHit || p.name.toLowerCase().includes(s);
+      searchTermHit = searchTermHit || searchDocument(s, p.specialties);
+      searchTermHit = searchTermHit || searchDocument(s, p.affiliations);
+
+      console.log(`searchTerm: ${s} searchTermHit: ${searchTermHit}`);
+      // Check that the search finds all terms
+      searchHit = (j == 0 || searchHit) && searchTermHit;
+    }
+    console.log(`searchString: ${searchString} searchHit: ${searchHit}`);
+
+    if (searchHit) filteredPhysicians.push(p);
+  }
+
+  return filteredPhysicians;
+}
+
+/*
+ * Recurse through the nodes of a document until finding a text node.
+ * Then check if text node includes the search string.
+ * Returns true if any child node includes the search string.
+ */
+function searchDocument(searchString: string, node: any): boolean {
+  if (node.nodeType == "text")
+    return node.value.toLowerCase().includes(searchString);
+  else {
+    let searchHit = false;
+    for (let i = 0; i < node.content.length; i++) {
+      searchHit = searchHit || searchDocument(searchString, node.content[i]);
+    }
+    return searchHit;
+  }
 }
 
 function SearchResults({
