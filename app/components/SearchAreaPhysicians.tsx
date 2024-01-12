@@ -51,7 +51,7 @@ function filterPhysicians(
       const s = searchTerms[j].toLowerCase();
       let searchTermHit = false;
 
-      if (s == "") {
+      if (s === "") {
         searchTermHit = true;
       } else {
         // Check if there's a hit anywhere
@@ -61,7 +61,7 @@ function filterPhysicians(
       }
 
       // Check that the search finds all terms
-      searchHit = (j == 0 || searchHit) && searchTermHit;
+      searchHit = (j === 0 || searchHit) && searchTermHit;
     }
 
     if (searchHit) filteredPhysicians.push(p);
@@ -76,7 +76,7 @@ function filterPhysicians(
  * Returns true if any child node includes the search string.
  */
 function searchDocument(searchString: string, node: any): boolean {
-  if (node.nodeType == "text")
+  if (node.nodeType === "text")
     return node.value.toLowerCase().includes(searchString);
   else {
     let searchHit = false;
