@@ -2,12 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import facebook from "../../public/facebook.svg";
 import linkedin from "../../public/linkedin.svg";
-import twitter from "../../public/twitter.svg";
 import youtube from "../../public/youtube.svg";
 import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
 import newsLetter from "../../public/Newsletter.svg";
-import xlogo from "@/public/XLogo.svg"
+import xlogo from "@/public/XLogo.svg";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
