@@ -7,6 +7,7 @@ import youtube from "../../public/youtube.svg";
 import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
 import newsLetter from "../../public/Newsletter.svg";
+import xlogo from "@/public/XLogo.svg"
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
@@ -76,7 +77,7 @@ export default function Footer() {
                 </li>
                 <li className="pr-3">
                   <Link href={TWITTER_URL}>
-                    <Image src={twitter} alt="twitter" className="" />
+                    <Image src={xlogo} alt="twitter" className="" />
                   </Link>
                 </li>
                 <li className="pr-3">
