@@ -48,7 +48,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
           </h1>
         </Link>
       </div>
-      <div className="flex flex-col md:flex-row md:flex-wrap">
+      <div className="grid grid-cols-1 md:grid-cols-4 md:flex-row md:flex-wrap md:gap-4">
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
             <div>
