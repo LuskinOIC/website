@@ -286,6 +286,7 @@ export type ButtonType = {
 };
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
+  imageOrientation: string | undefined;
   fields: {
     backgroundColor: string;
     bold: boolean;
