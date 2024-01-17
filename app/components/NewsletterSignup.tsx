@@ -15,7 +15,7 @@ export default function NewsletterSignup() {
   );
 
   return (
-    <div className="w-full flex flex-col items-center mb-14">
+    <div className="w-full flex flex-col items-center m-14">
       <div className="flex items-center h-[227px] w-[227px] border-2 border-luskin-green rounded-full mb-[-110px] bg-white z-10">
         <Image src={ozzie} alt="Ozzie" className="mx-auto" />
       </div>
