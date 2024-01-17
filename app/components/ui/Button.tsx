@@ -13,7 +13,7 @@ export interface ButtonProps {
   isExternal?: boolean;
 }
 
-const styles = {
+export const styles = {
   buttonContainer: "flex w-fit rounded-[10px]",
   buttonAlignment: "px-2 lg:px-4 py-3 justify-center items-center inline-flex",
   buttonText:
