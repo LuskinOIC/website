@@ -47,6 +47,9 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    bold: boolean | undefined;
+    fontSize: string;
+    titleSize: string;
     bioCards: CardsRowType[];
     cardType: string;
     title: string;

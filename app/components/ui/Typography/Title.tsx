@@ -45,8 +45,8 @@ export const Title3 = ({ children, className = "" }: TitleProps) => {
 
 export function TitleComponent({
   title,
-  titleSize,
-  bold,
+  titleSize = "Title Medium",
+  bold = false,
   luskinHeader = false,
 }: TitleProps) {
   const boldClass = bold ? "font-bold" : "font-normal";
@@ -62,6 +62,6 @@ export function TitleComponent({
     case "Title Small":
       return <Title3 className={boldClass}>{title}</Title3>;
     default:
-      return <Title1 className={boldClass}>{title}</Title1>;
+      return <Title2 className={boldClass}>{title}</Title2>;
   }
 }

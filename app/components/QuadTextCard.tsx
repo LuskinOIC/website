@@ -2,8 +2,9 @@ import React from "react";
 import Image from "next/image";
 import phone from "@/public/phone.svg";
 import email from "@/public/email.svg";
-import { CardType } from "../constants/types";
-import renderRichTextToReactComponent from "../utils/rich-text";
+import { CardType } from "@/app/constants/types";
+import renderRichTextToReactComponent from "@/app/utils/rich-text";
+import { TitleComponent } from "@/app/components/ui/Typography/Title";
 
 export default function QuadTextCard({ section }: { section: CardType[] }) {
   return (
@@ -17,9 +18,13 @@ export default function QuadTextCard({ section }: { section: CardType[] }) {
               key={index}
               className="flex flex-col flex-grow w-full h-full bg-[#FFF2C0] rounded p-7"
             >
-              <h1 className="mb-2">
-                <b>{card.fields.title}</b>
-              </h1>
+              <TitleComponent
+                title={card.fields.title}
+                bold={card.fields.bold}
+                titleSize={
+                  card.fields.titleSize ? card.fields.titleSize : "Title Medium"
+                }
+              />
               {cardContent &&
                 cardContent.fields.content &&
                 renderRichTextToReactComponent(cardContent.fields.content)}
