@@ -264,6 +264,7 @@ export type PageSectionType = {
 export type TextType = {
   fields: {
     title: string;
+    subTitle?: string;
     content?: Document;
     location?: LocationType;
     button?: ButtonType;

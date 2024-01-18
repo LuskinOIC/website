@@ -2,9 +2,29 @@
 import Image from "next/image";
 
 // Types
-import { CardType } from "@/app/constants/types";
+import { CardType, TextType } from "@/app/constants/types";
 import { Text2 } from "../ui/Typography/Text";
 import { Title2 } from "../ui/Typography/Title";
+import renderRichTextToReactComponent, {
+  ClassNames,
+} from "@/app/utils/rich-text";
+
+export function InfoCardContent(cardContent: TextType) {
+  const { title, subTitle, content } = cardContent.fields;
+  const descriptionClassNames: ClassNames = {
+    paragraph: "py-2 text-base md:text-lg",
+  };
+  return (
+    <>
+      <div className="font-arial leading-[30px] py-4 ">
+        <Title2>{title}</Title2>
+        {subTitle && <Text2>{subTitle}</Text2>}
+      </div>
+      {content &&
+        renderRichTextToReactComponent(content, descriptionClassNames)}
+    </>
+  );
+}
 
 export default function InfoCardLayout({ section }: { section: CardType[] }) {
   return (
@@ -26,11 +46,8 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
               />
             </div>
             <div className="md:h-min-[242px] px-5 md:px-0 flex-col ">
-              <div className="font-arial leading-[30px] py-4 ">
-                <Title2>{card.fields.title}</Title2>
-                <Text2>{card.fields.subTitle}</Text2>
-              </div>
-              <Text2>{card.fields.content}</Text2>
+              {card.fields.cardContent &&
+                InfoCardContent(card.fields.cardContent)}
             </div>
           </div>
         );
