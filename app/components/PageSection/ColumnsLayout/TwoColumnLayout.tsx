@@ -16,7 +16,9 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
-  const numberOfButtons = section.fields.buttons ? section.fields.buttons.length : 0;
+  const numberOfButtons = section.fields.buttons
+    ? section.fields.buttons.length
+    : 0;
   const basisClass = numberOfButtons === 1 ? "basis-full" : "basis-1/2";
 
   let orientationClass = "";
