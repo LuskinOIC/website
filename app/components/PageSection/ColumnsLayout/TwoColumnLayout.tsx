@@ -16,6 +16,9 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
+  const numberOfButtons = section.fields.buttons ? section.fields.buttons.length : 0;
+  const basisClass = numberOfButtons === 1 ? "basis-full" : "basis-1/2";
+
   let orientationClass = "";
   const floatClass = section.fields.reverseOrder ? "float-right" : "float-left";
   if (section.fields.imageOrientation === "Center Align") {
@@ -43,7 +46,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
             </div>
           </div>
         )}
-        <div className={`basis-1/2 px-2 ${textPadding}`}>
+        <div className={`${basisClass} px-2 ${textPadding}`}>
           <SectionContent section={section} />
         </div>
       </div>
