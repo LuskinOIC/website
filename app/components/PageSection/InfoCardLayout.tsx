@@ -3,7 +3,7 @@ import Image from "next/image";
 
 // Types
 import { CardType, TextType } from "@/app/constants/types";
-import { Text2 } from "../ui/Typography/Text";
+import { Text } from "../ui/Typography/Text";
 import { Title2 } from "../ui/Typography/Title";
 import renderRichTextToReactComponent, {
   ClassNames,
@@ -18,7 +18,7 @@ export function InfoCardContent(cardContent: TextType) {
     <>
       <div className="font-arial leading-[30px] py-4 ">
         <Title2>{title}</Title2>
-        {subTitle && <Text2>{subTitle}</Text2>}
+        {subTitle && <Text>{subTitle}</Text>}
       </div>
       {content &&
         renderRichTextToReactComponent(content, descriptionClassNames)}
