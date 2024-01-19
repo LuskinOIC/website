@@ -44,7 +44,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
             </div>
           </div>
         )}
-         <div className={`basis-1/2 px-2 ${textPadding}`}>
+        <div className={`basis-1/2 px-2 ${textPadding}`}>
           <SectionContent section={section} />
         </div>
       </div>
