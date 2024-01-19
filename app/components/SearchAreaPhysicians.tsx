@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Fuse from "fuse.js";
 // LOCAL COMPONENTS
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 // TYPES
@@ -18,15 +19,50 @@ export default function SearchAreaPhysicians({
   const [searchString, setSearchString] = useState("");
   const [searchResults, setSearchResults] = useState(physicians);
 
+  const fuseOptions = {
+    // isCaseSensitive: false,
+    // includeScore: false,
+    // shouldSort: true,
+    // includeMatches: false,
+    // findAllMatches: false,
+    // minMatchCharLength: 1,
+    // location: 0,
+    // threshold: 0.6,
+    // distance: 100,
+    // useExtendedSearch: false,
+    // ignoreLocation: false,
+    // ignoreFieldNorm: false,
+    // fieldNormWeight: 1,
+    keys: [
+      "name",
+      {
+        name: "specialties",
+        getFn: (phys: PhysicianBioType) =>
+          unorderedListToString(phys.specialties.content[0]),
+      },
+      {
+        name: "affiliations",
+        getFn: (phys: PhysicianBioType) =>
+          paragraphsToString(phys.affiliations),
+      },
+    ],
+  };
+  const fuse = new Fuse(physicians, fuseOptions);
+  console.dir(physicians[0].affiliations);
+  console.dir(paragraphsToString(physicians[0].affiliations));
+
   return (
     <div>
       <SearchBar
         value={searchString}
         onChange={(evt) => {
           setSearchString(evt.target.value);
+          // setSearchResults([...filterPhysicians(evt.target.value, physicians)]);
         }}
         onSearch={() =>
-          setSearchResults([...filterPhysicians(searchString, physicians)])
+          setSearchResults([
+            ...fuse.search(searchString).map((result) => result.item),
+          ])
         }
       />
       <SearchResults filteredPhysicians={searchResults} />
@@ -34,56 +70,24 @@ export default function SearchAreaPhysicians({
   );
 }
 
-function filterPhysicians(
-  searchString: string,
-  physicians: PhysicianBioType[],
-): PhysicianBioType[] {
-  const filteredPhysicians: PhysicianBioType[] = [];
+function unorderedListToString(listNode: any): string {
+  let str = "";
 
-  const searchTerms = searchString.split(/\s/);
-
-  for (let i = 0; i < physicians.length; i++) {
-    const p = physicians[i];
-    let searchHit = false;
-
-    for (let j = 0; j < searchTerms.length; j++) {
-      const s = searchTerms[j].toLowerCase();
-      let searchTermHit = false;
-
-      if (s === "") {
-        searchTermHit = true;
-      } else {
-        // Check if there's a hit anywhere
-        searchTermHit = searchTermHit || p.name.toLowerCase().includes(s);
-        searchTermHit = searchTermHit || searchDocument(s, p.specialties);
-        searchTermHit = searchTermHit || searchDocument(s, p.affiliations);
-      }
-
-      // Check that the search finds all terms
-      searchHit = (j === 0 || searchHit) && searchTermHit;
-    }
-
-    if (searchHit) filteredPhysicians.push(p);
+  for (let i = 0; i < listNode.content.length; i++) {
+    str += listNode.content[i].content[0].content[0].value + " ";
   }
 
-  return filteredPhysicians;
+  return str;
 }
 
-/*
- * Recurse through the nodes of a document until finding a text node.
- * Then check if text node includes the search string.
- * Returns true if any child node includes the search string.
- */
-function searchDocument(searchString: string, node: any): boolean {
-  if (node.nodeType === "text")
-    return node.value.toLowerCase().includes(searchString);
-  else {
-    let searchHit = false;
-    for (let i = 0; i < node.content.length; i++) {
-      searchHit = searchHit || searchDocument(searchString, node.content[i]);
-    }
-    return searchHit;
+function paragraphsToString(parentNode: any): string {
+  let str = "";
+
+  for (let i = 0; i < parentNode.content.length; i++) {
+    str += parentNode.content[i].content[0].value + " ";
   }
+
+  return str;
 }
 
 function SearchResults({
