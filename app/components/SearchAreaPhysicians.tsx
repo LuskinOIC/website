@@ -48,8 +48,6 @@ export default function SearchAreaPhysicians({
     ],
   };
   const fuse = new Fuse(physicians, fuseOptions);
-  console.dir(physicians[0].affiliations);
-  console.dir(paragraphsToString(physicians[0].affiliations));
 
   return (
     <div>
