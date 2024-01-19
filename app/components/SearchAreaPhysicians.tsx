@@ -24,7 +24,6 @@ export default function SearchAreaPhysicians({
         value={searchString}
         onChange={(evt) => {
           setSearchString(evt.target.value);
-          // setSearchResults([...filterPhysicians(evt.target.value, physicians)]);
         }}
         onSearch={() =>
           setSearchResults([...filterPhysicians(searchString, physicians)])
