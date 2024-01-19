@@ -1,36 +1,36 @@
 // Next components
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic'
 // Types
-import { ColumnType } from "@/app/constants/types";
+import { ColumnType } from '@/app/constants/types'
 // Custom components
-import getBackgroundColor from "@/app/components/ui/BackgroundColor";
-import SectionContent from "./SectionContent";
-import Slider from "../../Slider";
+import getBackgroundColor from '@/app/components/ui/BackgroundColor'
+import SectionContent from './SectionContent'
+import Slider from '../../Slider'
 
 export default function SponsorshipsColumnLayout({
   section,
 }: {
-  section: ColumnType;
+  section: ColumnType
 }) {
-  const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
+  const orderClass = section.fields.reverseOrder ? 'md:order-1' : ''
   const textPadding = section.fields.reverseOrder
-    ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
-    : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
+    ? 'px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]'
+    : 'px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]'
   const verticalPadding =
-    section.fields.backgroundColor === "white" ? "py-12" : "py-0";
+    section.fields.backgroundColor === 'white' ? 'py-12' : 'py-0'
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
-    : "white";
+    : 'white'
 
-  const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
+  const DynamicImage = dynamic(() => import('next/image'), { ssr: false })
 
-  const sponsors = section.fields.sponsorships;
+  const sponsors = section.fields.sponsorships
 
-  const imagesPerSlide = 3;
-  const groupedImages: any[] = [];
+  const imagesPerSlide = 3
+  const groupedImages: any[] = []
   for (let i = 0; i < sponsors.length; i += imagesPerSlide) {
-    const slide = sponsors.slice(i, i + imagesPerSlide);
-    groupedImages.push(slide);
+    const slide = sponsors.slice(i, i + imagesPerSlide)
+    groupedImages.push(slide)
   }
 
   const sliderSlides = groupedImages.map((groupedImage: any, index: number) => (
@@ -53,7 +53,7 @@ export default function SponsorshipsColumnLayout({
         </a>
       ))}
     </div>
-  ));
+  ))
 
   return (
     <section className={`block ${verticalPadding}`}>
@@ -65,11 +65,11 @@ export default function SponsorshipsColumnLayout({
           >
             <Slider slides={sliderSlides as any} />
           </div>
-        </div>
-        <div className={`basis-1/2 px-2 ${textPadding}`}>
-          <SectionContent section={section} />
+          <div className={`basis-1/2 px-2 ${textPadding}`}>
+            <SectionContent section={section} />
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
