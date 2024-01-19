@@ -288,6 +288,7 @@ export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
   imageOrientation: string | undefined;
   fields: {
+    sponsorships: ButtonType[];
     backgroundColor: string;
     bold: boolean;
     buttons: any[];

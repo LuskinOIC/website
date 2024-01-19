@@ -1,17 +1,11 @@
 import { getEvents, getEventBySlug } from "@/app/utils/contentful";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { Document } from "@contentful/rich-text-types";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
-import {
-  NestedAssetType,
-  BlogCardsRowType,
-  PageSectionType,
-} from "@/app/constants/types";
+import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 // Import components
-import Slider from "@/app/components/Slider";
 import PageSection from "@/app/components/PageSection/PageSection";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 
@@ -47,45 +41,9 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const allEvents = (await getEvents(4)) as unknown as BlogCardsRowType[];
 
   const eventPhoto = orgEvent.eventPhoto.fields.file;
-  const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
   const dateString = orgEvent.eventDate;
   const eventDate: Date = new Date(dateString);
   const formattedDateTime: string = formatDateTime(eventDate);
-  const hasSponsors: boolean =
-    Array.isArray(orgEvent.sponsor) && orgEvent.sponsor.length > 0;
-
-  const sponsorsArray: object[] = [];
-  const sponsors = orgEvent.sponsor;
-
-  sponsors.map((sponsor: NestedAssetType) => {
-    sponsorsArray.push({
-      src: sponsor.fields.file.url,
-      width: sponsor.fields.file.details.image.width,
-      height: sponsor.fields.file.details.image.height,
-    });
-  });
-
-  const imagesPerSlide = 3;
-  const groupedImages: any[] = [];
-  for (let i = 0; i < sponsorsArray.length; i += imagesPerSlide) {
-    const slide = sponsorsArray.slice(i, i + imagesPerSlide);
-    groupedImages.push(slide);
-  }
-
-  const sliderSlides = groupedImages.map((groupedImage: any, index: number) => (
-    <div key={index} className="mb-4 flex justify-center">
-      {groupedImage.map((asset: any, assetIndex: number) => (
-        <DynamicImage
-          key={assetIndex}
-          alt={`sponsor-${assetIndex}`}
-          src={asset.src}
-          width={asset.width}
-          height={asset.height}
-          className="mx-4 my-4 h-20 w-20 object-contain"
-        />
-      ))}
-    </div>
-  ));
 
   return (
     <main>
@@ -135,54 +93,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
           ))}
       </div>
 
-      {/* Sponsors: MOBILE */}
-      <div className="md:hidden">
-        <p className="ml-36 w-44 text-lg font-semibold">
-          {`THANK YOU TO OUR ${dateString.slice(0, 4)} SPONSORS`}
-        </p>
-        <div
-          id="sponsor-assets"
-          className="my-6 flex flex-wrap border md:border-0"
-        >
-          {hasSponsors && <Slider slides={sliderSlides as any} />}
-        </div>
-
-        <div className="mx-6 flex flex-col items-center">
-          <h3 className="mb-3 ml-14 w-48 text-xl font-normal">
-            Interested in becoming a sponsor?
-          </h3>
-          <button className="mb-8 rounded-md bg-[#0076AD] px-3 py-1 text-sm font-medium text-white">
-            SPONSOR EVENT
-          </button>
-        </div>
-      </div>
-      {/* Sponsors: DESKTOP */}
-      <div className="mt-10 hidden md:block md:flex">
-        <div id="sponsor-assets" className="flex px-36 md:flex-wrap">
-          {hasSponsors &&
-            orgEvent.sponsor.map((asset: NestedAssetType) => (
-              <DynamicImage
-                alt="sponsors"
-                key={asset.sys.id}
-                src={asset.fields.file.url}
-                width={asset.fields.file.details.image.width}
-                height={asset.fields.file.details.image.height}
-                className="mx-6 my-6 flex object-contain"
-              />
-            ))}
-        </div>
-        <div className="">
-          <p className="mb-8 text-4xl">
-            {`THANK YOU TO OUR ${dateString.slice(0, 4)} SPONSORS`}
-          </p>
-          <h3 className="mb-8 text-2xl font-normal">
-            Interested in becoming a sponsor?
-          </h3>
-          <button className="rounded-md bg-[#0076AD] px-6 py-3 text-2xl font-medium text-white">
-            SPONSOR EVENT
-          </button>
-        </div>
-      </div>
       <div id="event-cards" className="grid justify-center">
         <BlogCardsRow type="events" cards={allEvents} />
       </div>
