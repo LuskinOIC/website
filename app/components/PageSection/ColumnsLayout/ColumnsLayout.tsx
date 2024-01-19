@@ -3,6 +3,7 @@ import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColum
 import FullColumnLayout from "@/app/components/PageSection/ColumnsLayout/FullColumnLayout";
 import VideoWithText from "@/app/components/PageSection/ColumnsLayout/VideoWithText";
 import WideImageWithText from "@/app/components/PageSection/ColumnsLayout/WideImageWithText";
+import SponsorshipsTwoColumn from "@/app/components/PageSection/ColumnsLayout/SponsorshipsTwoColumn";
 // Types
 import { PageSectionType } from "@/app/constants/types";
 
@@ -22,6 +23,8 @@ export default function ColumnsLayout({
       return <WideImageWithText section={ColumnLayout} />;
     case "Video with Text":
       return <VideoWithText section={ColumnLayout} />;
+    case "Sponsorships Two Column":
+      return <SponsorshipsTwoColumn section={ColumnLayout} />;
     default:
       return null;
   }

@@ -284,6 +284,7 @@ export type ButtonType = {
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
   fields: {
+    sponsorships: ButtonType[];
     backgroundColor: string;
     bold: boolean;
     buttons: any[];
