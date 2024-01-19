@@ -1,30 +1,27 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
+export type TextSize = "regular" | "small" | undefined;
+
 type TextProps = {
   children: React.ReactNode;
   className?: string;
+  size?: TextSize;
 };
 
-export function Text1({ children, className = "" }: TextProps) {
-  const classes = cn("text-base md:text-2xl font-arial leading-150", className);
-  return <p className={classes}>{children}</p>;
-}
+const styles = {
+  textSize: {
+    regular: "text-base md:text-lg",
+    small: "text-base",
+  },
+  font: "font-arial",
+};
 
-export function Text2({ children, className = "" }: TextProps) {
-  const classes = cn("text-base md:text-lg font-arial leading-150 ", className);
-  return <p className={classes}>{children}</p>;
-}
-
-export function Text3({ children, className = "" }: TextProps) {
-  const classes = cn("text-base md:text-lg font-arial leading-150 ", className);
-  return <p className={classes}>{children}</p>;
-}
-
-export function Text4({ children, className = "" }: TextProps) {
-  const classes = cn(
-    "text-base md:text-base font-arial leading-150 ",
-    className,
-  );
+export function Text({
+  children,
+  className = "",
+  size = "regular",
+}: TextProps) {
+  const classes = cn(styles.textSize[size], styles.font, className);
   return <p className={classes}>{children}</p>;
 }

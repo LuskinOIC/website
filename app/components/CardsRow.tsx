@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { CardsRowPropsType, CardsRowType } from "../constants/types";
-import MinimalCard from "./MinimalCard";
+import { CardsRowPropsType, CardsRowType } from "@/app/constants/types";
+import MinimalCard from "@/app/components/MinimalCard";
+import { Title3 } from "@/app/components/ui/Typography/Title";
 
 function getCardHref(card: CardsRowType) {
   switch (card.sys.contentType.sys.id) {
@@ -19,9 +20,9 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
   return (
     <section className="block px-5 md:px-32">
-      <h1 className="mb-2 mt-8 text-xl font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:text-3xl md:font-normal md:capitalize">
+      <Title3 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
         {title}
-      </h1>
+      </Title3>
       <div className="flex flex-wrap md:flex-row-4 md:gap-10">
         {hasCards &&
           cards.map((card: CardsRowType, i: number) => {

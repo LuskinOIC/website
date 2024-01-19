@@ -2,7 +2,7 @@
 import Image from "next/image";
 // Custom components
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
-import { Text2 } from "@/app/components/ui/Typography/Text";
+import { Text } from "@/app/components/ui/Typography/Text";
 //Icons
 import phone from "@/public/phone.svg";
 import mapPin from "@/public/map-pin.svg";
@@ -45,7 +45,7 @@ export default function SpecialtyHoursLayout({
               style={{ width: "100%", height: "auto" }}
             />
           </div>
-          <Text2>{phoneNumber}</Text2>
+          <Text>{phoneNumber}</Text>
         </div>
       )}
       {streetAddress && (
@@ -57,11 +57,11 @@ export default function SpecialtyHoursLayout({
               style={{ width: "100%", height: "auto" }}
             />
           </div>
-          <Text2>
+          <Text>
             {streetAddress}
             <br />
             {cityStateZipcode}
-          </Text2>
+          </Text>
         </div>
       )}
     </div>

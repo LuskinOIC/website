@@ -10,13 +10,13 @@ import { ColumnType } from "@/app/constants/types";
 interface SectionContentProps {
   section: ColumnType;
 }
-const descriptionClassNames: ClassNames = {
-  paragraph: "py-2 md:py-4 text-base md:text-lg",
-};
 
 const SectionContent = ({ section }: SectionContentProps) => {
   const textColor =
     section.fields.backgroundColor != "white" ? "text-white" : "text-black";
+  const descriptionClassNames: ClassNames = {
+    paragraph: "py-2 md:py-4 text-base md:text-lg",
+  };
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
     descriptionClassNames,

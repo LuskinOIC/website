@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { BlogCardsRowType } from "@/app/constants/types";
 import MinimalCard from "@/app/components/MinimalCard";
+import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
 
 type BlogCardsRowPropsType = {
   type: "news" | "patient-stories" | "events";
@@ -38,14 +39,14 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
     <section id={`${type}`}>
       <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4">
         <Link href={`/${type}`}>
-          <h1 className="text-xl font-bold uppercase text-[#0076AD] md:text-3xl md:font-normal md:capitalize hover:underline">
+          <Title1 className="font-bold md:font-normal uppercase text-[#0076AD] md:capitalize">
             {type === "patient-stories" ? "patient stories" : type}
-          </h1>
+          </Title1>
         </Link>
         <Link href={`/${type}`}>
-          <h1 className="block md:hidden uppercase text-[#0076AD] text-xl underline">
+          <Title3 className="block md:hidden uppercase text-[#0076AD] underline">
             See All
-          </h1>
+          </Title3>
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">

@@ -47,6 +47,9 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    bold: boolean | undefined;
+    fontSize: string;
+    titleSize: string;
     bioCards: CardsRowType[];
     cardType: string;
     title: string;
@@ -283,6 +286,7 @@ export type ButtonType = {
 };
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
+  imageOrientation: string | undefined;
   fields: {
     backgroundColor: string;
     bold: boolean;
