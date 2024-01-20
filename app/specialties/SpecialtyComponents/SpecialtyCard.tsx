@@ -45,7 +45,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           <PhysicianList
             specialistsTitle={specialty.fields.specialistsTitle}
             physicians={specialty.fields.physicians}
-            className={""}
+            className=""
           />
         )}
       </div>
