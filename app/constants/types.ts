@@ -47,6 +47,9 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    bold: boolean | undefined;
+    fontSize: string;
+    titleSize: string;
     bioCards: CardsRowType[];
     cardType: string;
     title: string;
@@ -264,6 +267,7 @@ export type PageSectionType = {
 export type TextType = {
   fields: {
     title: string;
+    subTitle?: string;
     content?: Document;
     location?: LocationType;
     button?: ButtonType;
@@ -282,7 +286,9 @@ export type ButtonType = {
 };
 export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
 export type ColumnType = {
+  imageOrientation: string | undefined;
   fields: {
+    sponsorships: ButtonType[];
     backgroundColor: string;
     bold: boolean;
     buttons: any[];
@@ -305,15 +311,7 @@ export type ColumnType = {
 export type PhysicianBioType = {
   name: string;
   slug: string;
-  specialties: Array<{
-    nodeType: string;
-    data: object;
-    content: Array<{
-      nodeType: string;
-      data: object;
-      content: Array<object>;
-    }>;
-  }>;
+  specialties: Document;
   portrait: ImageType;
   overview: object;
   asset: AssetType;

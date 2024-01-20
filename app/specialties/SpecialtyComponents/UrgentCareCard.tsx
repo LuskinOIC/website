@@ -6,7 +6,7 @@ import { SpecialtyType } from "@/app/constants/types";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
-import { Text2 } from "@/app/components/ui/Typography/Text";
+import { Text } from "@/app/components/ui/Typography/Text";
 import { SAVE_MY_SPOT } from "@/app/constants/links";
 import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 
@@ -29,7 +29,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
   const descriptionContent =
     description && renderRichTextToReactComponent(description);
 
-  const walkIns = <Text2>Walk-ins welcome. No appointment necessary.</Text2>;
+  const walkIns = <Text>Walk-ins welcome. No appointment necessary.</Text>;
 
   const cardContent = () => {
     return (

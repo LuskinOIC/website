@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "contentful": "^10.6.5",
+    "fuse.js": "^7.0.0",
     "lucide-react": "^0.291.0",
     "next": "13.5.4",
     "react": "^18",

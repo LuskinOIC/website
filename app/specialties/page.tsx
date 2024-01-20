@@ -1,14 +1,15 @@
 import { getSpecialties } from "@/app/utils/contentful";
-import SearchBar from "@/app/components/ui/SearchBar";
+// import SearchBar from "@/app/components/ui/SearchBar";
 import UrgentCareCard from "./SpecialtyComponents/UrgentCareCard";
 import SpecialtyCard from "./SpecialtyComponents/SpecialtyCard";
 
+// TODO: Replace SearchBar with a dedicated SearchAreaSpecialties component
 export default async function Specialties() {
   const specialties = await getSpecialties();
 
   return (
     <main>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="grid">
         {specialties.map((specialty) => {
           const specialtyName = specialty.fields.name;

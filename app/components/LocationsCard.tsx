@@ -2,7 +2,7 @@ import { LocationType } from "../constants/types";
 import { Card } from "@/components/ui/card";
 import Button from "../components/ui/Button";
 import Image from "next/image";
-import { Text4 } from "../components/ui/Typography/Text";
+import { Text } from "../components/ui/Typography/Text";
 import { Title2 } from "../components/ui/Typography/Title";
 import renderRichTextToReactComponent from "../utils/rich-text";
 
@@ -52,7 +52,7 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
             alt="Phone number"
             className="mr-5"
           />
-          <Text4>{location.fields.phoneNumber}</Text4>
+          <Text size="small">{location.fields.phoneNumber}</Text>
         </div>
       )}
       {location.fields.streetAddress && location.fields.cityStateZipcode && (
@@ -65,8 +65,8 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
             className="mr-5"
           />
           <span>
-            <Text4>{location.fields.streetAddress}</Text4>
-            <Text4>{location.fields.cityStateZipcode}</Text4>
+            <Text size="small">{location.fields.streetAddress}</Text>
+            <Text size="small">{location.fields.cityStateZipcode}</Text>
           </span>
         </div>
       )}

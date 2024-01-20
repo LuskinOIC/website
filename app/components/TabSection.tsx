@@ -21,7 +21,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Title3 } from "./ui/Typography/Title";
 import { usePathname, useRouter } from "next/navigation";
-import { Text3 } from "./ui/Typography/Text";
+import { Text } from "./ui/Typography/Text";
 
 const styles = {
   tabsList: (tabCount: number) => {
@@ -189,9 +189,9 @@ function MobileTabSection({
   return (
     /* Only show on mobile */
     <div className="relative flex md:hidden flex-col items-center w-full mt-6">
-      <Text3 className="w-4/5]">
+      <Text className="w-4/5" size="regular">
         Choose a section you would like to review
-      </Text3>
+      </Text>
       <div className="sticky top-0 flex flex-col items-center w-full pt-3 pb-1 bg-white">
         <DropdownMenu>
           <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
