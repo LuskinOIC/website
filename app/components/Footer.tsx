@@ -5,7 +5,6 @@ import linkedin from "../../public/linkedin.svg";
 import youtube from "../../public/youtube.svg";
 import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
-import newsLetter from "../../public/Newsletter.svg";
 import xlogo from "@/public/XLogo.svg";
 import {
   FACEBOOK_URL,
@@ -16,14 +15,13 @@ import {
   TWITTER_URL,
   YOUTUBE_URL,
 } from "../constants/links";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
   // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
   return (
     <>
-      <div className="flex justify-center px-5">
-        <Image src={newsLetter} alt="newsletter stand in" />
-      </div>
+      <NewsletterSignup />
       {/* footer container */}
       <div
         id="container"
