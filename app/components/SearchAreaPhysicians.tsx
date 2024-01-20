@@ -40,11 +40,12 @@ export default function SearchAreaPhysicians({
         getFn: (phys: PhysicianBioType) =>
           unorderedListToString(phys.specialties.content[0]),
       },
-      {
-        name: "affiliations",
-        getFn: (phys: PhysicianBioType) =>
-          paragraphsToString(phys.affiliations),
-      },
+      // TODO: Add this back.
+      // {
+      //   name: "affiliations",
+      //   getFn: (phys: PhysicianBioType) =>
+      //     paragraphsToString(phys.affiliations),
+      // },
     ],
   };
   const fuse = new Fuse(physicians, fuseOptions);
@@ -56,11 +57,15 @@ export default function SearchAreaPhysicians({
         onChange={(evt) => {
           setSearchString(evt.target.value);
         }}
-        onSearch={() =>
-          setSearchResults([
-            ...fuse.search(searchString).map((result) => result.item),
-          ])
-        }
+        onSearch={() => {
+          if (searchString === "") {
+            setSearchResults(physicians);
+          } else {
+            setSearchResults([
+              ...fuse.search(searchString).map((result) => result.item),
+            ]);
+          }
+        }}
       />
       <SearchResults filteredPhysicians={searchResults} />
     </div>
@@ -71,21 +76,24 @@ function unorderedListToString(listNode: any): string {
   let str = "";
 
   for (let i = 0; i < listNode.content.length; i++) {
-    str += listNode.content[i].content[0].content[0].value + " ";
+    if (listNode.content[i].content) {
+      str += listNode.content[i].content[0].content[0].value + " ";
+    }
   }
 
   return str;
 }
 
-function paragraphsToString(parentNode: any): string {
-  let str = "";
+// TODO: Add back code.
+// function paragraphsToString(parentNode: any): string {
+//   let str = "";
 
-  for (let i = 0; i < parentNode.content.length; i++) {
-    str += parentNode.content[i].content[0].value + " ";
-  }
+//   for (let i = 0; i < parentNode.content.length; i++) {
+//     str += parentNode.content[i].content[0].value + " ";
+//   }
 
-  return str;
-}
+//   return str;
+// }
 
 function SearchResults({
   filteredPhysicians,
