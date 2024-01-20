@@ -311,15 +311,7 @@ export type ColumnType = {
 export type PhysicianBioType = {
   name: string;
   slug: string;
-  specialties: Array<{
-    nodeType: string;
-    data: object;
-    content: Array<{
-      nodeType: string;
-      data: object;
-      content: Array<object>;
-    }>;
-  }>;
+  specialties: Document;
   portrait: ImageType;
   overview: object;
   asset: AssetType;
