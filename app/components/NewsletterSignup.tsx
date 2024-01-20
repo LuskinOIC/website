@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import ozzie from "../../public/ozzie-wheelchair.png";
-import { Title0 } from "./ui/Typography/Title";
-import { Text4 } from "./ui/Typography/Text";
+import { Title1 } from "./ui/Typography/Title";
+import { Text } from "./ui/Typography/Text";
 import { styles } from "./ui/Button";
 
 export default function NewsletterSignup() {
@@ -20,11 +20,11 @@ export default function NewsletterSignup() {
         <Image src={ozzie} alt="Ozzie" className="mx-auto" />
       </div>
       <div className="flex flex-col justify-center items-center w-[45%] h-[40vh] border border-luskin-green rounded-[20px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] z-0 pt-[113px]">
-        <Title0 className="">Join Our Newsletter!</Title0>
-        <Text4 className="w-[60%] text-center">
+        <Title1 className="">Join Our Newsletter!</Title1>
+        <Text className="w-[60%] text-center">
           To receive our latest news and events information join our newsletter
           today.
-        </Text4>
+        </Text>
         <div className="w-full flex justify-center mt-8 mb-12">
           <input
             type="text"
