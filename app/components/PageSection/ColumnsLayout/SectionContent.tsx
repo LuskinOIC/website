@@ -38,10 +38,10 @@ const SectionContent = ({ section }: SectionContentProps) => {
           <div>{descriptionContent}</div>
         </div>
         {section.fields.buttons && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex flex-wrap md:flex-nowrap gap-3">
             {section.fields.buttons.map((button) => (
               <Button
-                className="block grid-span-1 w-full text-center gap-2"
+                className="w-full sm:w-auto text-center gap-2"
                 key={button.sys.id}
                 href={button.fields.buttonUrl}
                 isExternal={button.fields.externalLink}

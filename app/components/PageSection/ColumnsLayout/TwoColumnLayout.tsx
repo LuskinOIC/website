@@ -18,6 +18,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
+
   let orientationClass = "";
   const floatClass = section.fields.reverseOrder ? "float-right" : "float-left";
   if (section.fields.imageOrientation === "Center Align") {
