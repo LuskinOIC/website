@@ -139,7 +139,7 @@ export default async function PhysicianBio({
         </h2>
 
         <div className="grid gap-6 pb-6 md:grid-cols-2">
-          {docBio.bioPageSection.map(
+          {docBio.bioPageSection && docBio.bioPageSection.map(
             (section: BioPageSectionType): React.ReactNode => {
               return <BioPageSection key={section.sys.id} section={section} />;
             },
