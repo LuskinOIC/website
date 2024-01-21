@@ -142,7 +142,7 @@ function DesktopTabSection({
       {" "}
       <Tabs
         value={selectedTab}
-        className="flex flex-col items-center w-full h-fit mb-12"
+        className=""
       >
         <TabsList className={styles.tabsList(tabCount)}>
           {tabs.map((tab, index) => (
@@ -152,21 +152,23 @@ function DesktopTabSection({
               onClick={() => setSelectedTab(tab.fields.tabTitle)}
               className={styles.tabsTrigger(index, tabCount)}
             >
-              <p className="max-w-full uppercase text-base two-line-ellipsis">
+              <p className="uppercase text-base two-line-ellipsis">
                 {tab.fields.tabTitle}
               </p>{" "}
             </TabsTrigger>
           ))}
         </TabsList>
-        {tabs.map((tab, index) => (
-          <TabsContent
-            key={`TabsContent.${index}`}
-            value={tab.fields.tabTitle}
-            className="flex flex-col items-center w-10/12"
-          >
-            <TabsTextOrCardContent fields={tab.fields} />
-          </TabsContent>
-        ))}
+        <div className="">
+          {tabs.map((tab, index) => (
+            <TabsContent
+              key={`TabsContent.${index}`}
+              value={tab.fields.tabTitle}
+              className=""
+            >
+              <TabsTextOrCardContent fields={tab.fields} />
+            </TabsContent>
+          ))}
+        </div>
       </Tabs>
     </div>
   );
@@ -265,8 +267,8 @@ function TabsTextOrCardContent({
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0 ">
-              {card.fields.content &&
-                renderRichTextToReactComponent(card.fields.content)}
+              {card.fields.richContent &&
+                renderRichTextToReactComponent(card.fields.richContent)}
             </CardContent>
             {card.fields.button && (
               <CardFooter className="p-0 pt-6">

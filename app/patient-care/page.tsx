@@ -3,8 +3,6 @@ import { PAGE_TYPES } from "../constants/entries";
 import TabSection from "../components/TabSection";
 import LocationsCard from "../components/LocationsCard";
 import { PageSectionType } from "../constants/types";
-// TODO: Test or remove
-// import InfoCardLayout from "../components/PageSection/InfoCardLayout";
 
 export default async function PatientCare() {
   const patientCarePage = await getPageByType(PAGE_TYPES.PATIENT_CARE, 10);

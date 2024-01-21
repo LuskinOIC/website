@@ -55,6 +55,7 @@ export type CardType = {
     title: string;
     subTitle: string;
     content: string;
+    richContent?: Document;
     cardContent?: TextType;
     image: ImageType;
   };
@@ -238,6 +239,7 @@ export type TabType = {
     tabTitle: string;
     richTextContent?: Document;
     cardContent?: TextType[];
+    richContent?: Document;
   };
 };
 
@@ -271,6 +273,7 @@ export type TextType = {
     content?: Document;
     location?: LocationType;
     button?: ButtonType;
+    richContent?: Document;
   };
 };
 
@@ -371,6 +374,10 @@ export type SpecialtyType = {
     tabs: TabType[];
     englishFormUrl: string;
     spanishFormUrl: string;
+    patientPage: {
+      fields: PageType;
+    };
+    medicalProfessionalsPage: PageType;
   };
 };
 

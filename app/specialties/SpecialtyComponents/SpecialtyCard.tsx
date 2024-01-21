@@ -30,8 +30,15 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           {descriptionContent}
           <Button
             className="my-3"
+            href={`/patient-care/specialties/${slug}`}
+            text="PATIENTS"
+            variant="blue"
+            isExternal={false}
+          />
+          <Button
+            className="my-3"
             href={`${slug}`}
-            text="LEARN MORE"
+            text="PHYSICIANS"
             variant="blue"
             isExternal={false}
           />
