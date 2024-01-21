@@ -140,10 +140,7 @@ function DesktopTabSection({
     /* Only show on desktop */
     <div className="hidden md:block mt-6 max-w-4/5 mx-[10%]">
       {" "}
-      <Tabs
-        value={selectedTab}
-        className=""
-      >
+      <Tabs value={selectedTab} className="">
         <TabsList className={styles.tabsList(tabCount)}>
           {tabs.map((tab, index) => (
             <TabsTrigger
