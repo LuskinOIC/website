@@ -1,5 +1,4 @@
 import Page from "@/app/components/Page";
-import { PageType } from "@/app/constants/types";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 
 export async function generateStaticParams() {
