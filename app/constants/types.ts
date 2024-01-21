@@ -259,7 +259,7 @@ export type PageSectionType = {
     infoCards: CardType[];
     quadCards: CardType[];
     specialty: SpecialtyType[];
-    tabs?: TabType[];
+    tabs: TabType[];
     locations?: LocationType[];
     cardsLayout: CardType[];
     imagesLayout: ImagesLayoutType;
