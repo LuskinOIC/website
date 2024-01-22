@@ -14,5 +14,10 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
+
+  if (!specialty || !specialty.fields.medicalProfessionalPage) {
+    return <h1>Add Page Sections</h1>
+  }
+
   return <Page page={specialty.fields.medicalProfessionalPage.fields} />;
 }
