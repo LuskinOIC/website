@@ -16,19 +16,15 @@ export default function NewsletterSignup() {
     // "hidden md:flex bg-luskin-blue ml-4",
   );
 
-  const mobileButtonClass = cn(
-    styles.buttonAlignment,
-    styles.buttonContainer,
-    "md:hidden bg-luskin-blue ml-4", // flex already included in buttonAlignment
-  );
-
   return (
     <div className="w-full flex flex-col items-center p-10 md:p-10">
       <div className="flex items-center h-[36vw] w-[36vw] md:h-[13vw] md:w-[13vw] border-2 border-luskin-green rounded-full mb-[-18vw] md:mb-[-6.5vw] px-[0.9rem] bg-white z-10">
         <Image src={ozzie} alt="Ozzie" className="mx-auto" />
       </div>
       <div className="flex flex-col justify-center items-center w-fit h-fit border border-luskin-green rounded-[20px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] z-0 pt-[20vw] md:pt-[7.5vw]">
-        <Title1 className="font-medium">Join Our Newsletter!</Title1>
+        <Title1 className="text-[24px] md:text-[32px] font-medium">
+          Join Our Newsletter!
+        </Title1>
         <Text className="w-[70%] md:w-[75%] text-center mt-1">
           To receive our latest news and events information join our newsletter
           today.
