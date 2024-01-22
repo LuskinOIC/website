@@ -1,3 +1,4 @@
+import Page from "@/app/components/Page";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 
 export async function generateStaticParams() {
@@ -13,9 +14,5 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
-  return (
-    <main>
-      <h1>{specialty.fields.name}</h1>
-    </main>
-  );
+  return <Page page={specialty.fields.medicalProfessionalPage.fields} />;
 }

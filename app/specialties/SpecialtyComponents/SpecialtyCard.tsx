@@ -37,7 +37,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           />
           <Button
             className="my-3"
-            href={`${slug}`}
+            href={`/medical-professionals/specialties/${slug}`}
             text="PHYSICIANS"
             variant="blue"
             isExternal={false}

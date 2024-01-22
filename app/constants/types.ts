@@ -377,7 +377,9 @@ export type SpecialtyType = {
     patientPage: {
       fields: PageType;
     };
-    medicalProfessionalsPage: PageType;
+    medicalProfessionalPage: {
+      fields: PageType;
+    };
   };
 };
 
