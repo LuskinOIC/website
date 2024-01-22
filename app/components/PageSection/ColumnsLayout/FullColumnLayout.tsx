@@ -24,7 +24,7 @@ export default function FullWidthImageLayout({
   );
   return (
     <section
-      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-40 py-10  `}
+      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-10`}
     >
       {section.fields.image && (
         <div className="">

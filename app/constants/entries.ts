@@ -15,4 +15,5 @@ export const PAGE_TYPES = {
   WAYS_TO_GIVE: "Ways to Give Page",
   EVENT: "Event",
   SPECIALTY: "Specialty",
+  STYLE_GUIDE: "Style Guide Page",
 };
