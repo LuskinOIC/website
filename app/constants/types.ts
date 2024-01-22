@@ -312,6 +312,7 @@ export type ColumnType = {
 };
 
 export type PhysicianBioType = {
+  topSummary: ColumnType;
   name: string;
   slug: string;
   specialties: Document;

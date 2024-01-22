@@ -3,13 +3,12 @@ import { getPhysicians, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { Document } from "@contentful/rich-text-types";
 import { BioPageSectionType } from "@/app/constants/types";
 import Dropdown from "@/app/components/ui/Dropdown";
-import Image from "next/image";
-import phone from "@/public/phone.svg";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import BioPageSection from "@/app/components/BioPageSection";
 import PageSection from "@/app/components/PageSection/PageSection";
+import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
@@ -33,11 +32,6 @@ export default async function PhysicianBio({
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
 
-  const physicianName = docBio.name;
-  const physicianPortrait = docBio.portrait.fields.file.url;
-  const portraitWidth = docBio.portrait.fields.file.details.image.width;
-  const portraitHeight = docBio.portrait.fields.file.details.image.height;
-
   const generateTargetID = (title: string): string => {
     return `#${title.toLowerCase().split(" ").join("-")}`;
   };
@@ -55,59 +49,10 @@ export default async function PhysicianBio({
       targetID: generateTargetID("Research Insights And Publications"),
     },
   ];
-
   return (
     <main className="">
       <div className="mx-auto w-10/12 md:w-4/5">
-        <div className="gap-2 pt-12 md:grid md:grid-cols-3">
-          <div className="mb-3 h-72 md:mr-4 md:h-96">
-            <Image
-              src={physicianPortrait}
-              alt={physicianName}
-              width={portraitWidth}
-              height={portraitHeight}
-              style={{ objectPosition: "center 20%" }}
-              className="h-full rounded-lg object-none sm:w-auto"
-            />
-          </div>
-
-          <div className="">
-            <h1 className="mb-4 text-2xl font-semibold md:pb-1 md:text-3xl md:font-medium">
-              {physicianName}
-            </h1>
-            <h3 className="md:text-md mb-2 text-base">Specializes in:</h3>
-
-            <div className="md:text-md mb-4 pl-4 text-base">
-              {renderRichTextToReactComponent(
-                docBio.specialties as unknown as Document,
-              )}
-            </div>
-          </div>
-          {/* contact mobile */}
-          <div className="mb-6 md:hidden">
-            <p className="mb-5 text-base md:mb-2">To make an appointment:</p>
-            <div className="flex text-lg">
-              <Image src={phone} alt="phone" className="mb-6 mr-4 md:mb-0" />
-              <p className="">{docBio.appointmentNumber}</p>
-            </div>
-          </div>
-          {/* contact desktop */}
-          <div className="mt-16 hidden md:ml-20 md:block md:text-lg">
-            <div className="row-span-2">
-              <p className="pb-2">Patient Appointment:</p>
-              <p className="mb-4 flex">
-                <Image src={phone} alt="phone" className="mr-4" />
-                {docBio.appointmentNumber}
-              </p>
-            </div>
-
-            <p className="pb-2">For Physician:</p>
-            <p className="flex">
-              <Image src={phone} alt="phone" className="mr-4" />
-              {docBio.physicianNumber}
-            </p>
-          </div>
-        </div>
+        {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
 
         <div className="mb-12 md:hidden">
           <p className="px-1 pb-4">Choose a section you would like to review</p>
