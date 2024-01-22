@@ -15,13 +15,13 @@ export default function NewsletterSignup() {
   );
 
   return (
-    <div className="w-full flex flex-col items-center m-14">
-      <div className="flex items-center h-[13vw] w-[13vw] border-2 border-luskin-green rounded-full mb-[-6.5vw] px-[0.9rem] bg-white z-10">
+    <div className="w-full flex flex-col items-center my-14 mx-3 m:m-14">
+      <div className="flex items-center h-[36vw] w-[36vw] m:h-[13vw] m:w-[13vw] border-2 border-luskin-green rounded-full mb-[-18vw] m:mb-[-6.5vw] px-[0.9rem] bg-white z-10">
         <Image src={ozzie} alt="Ozzie" className="mx-auto" />
       </div>
-      <div className="flex flex-col justify-center items-center w-fit h-fit border border-luskin-green rounded-[20px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] z-0 pt-[7.5vw]">
+      <div className="flex flex-col justify-center items-center w-fit h-fit border border-luskin-green rounded-[20px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] z-0 pt-[20vw] m:pt-[7.5vw]">
         <Title1 className="">Join Our Newsletter!</Title1>
-        <Text className="w-[60%] text-center">
+        <Text className="w-[60%] text-center mt-1">
           To receive our latest news and events information join our newsletter
           today.
         </Text>
