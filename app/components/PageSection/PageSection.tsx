@@ -5,6 +5,7 @@ import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 import ColumnLayout from "./ColumnsLayout/ColumnsLayout";
 import CardLayoutSection from "./CardsLayout";
 import ImagesLayout from "./ImagesLayout";
+import TabSection from "@/app/components/TabSection";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -23,6 +24,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       return <SocialMediaBanner />;
     case "Card Layout":
       return <CardLayoutSection section={section} />;
+    case "Tab Section":
+      return <TabSection tabs={section.fields.tabs} />;
     case "Specialty":
       return (
         <UrgentCareCard
