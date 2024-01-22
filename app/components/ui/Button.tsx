@@ -2,7 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
+export type ButtonVariant =
+  | "blue"
+  | "yellow"
+  | "text"
+  | "none"
+  | "purple"
+  | undefined;
 
 export interface ButtonProps {
   href: string;
@@ -34,6 +40,7 @@ const Button = ({
     styles.buttonText,
     {
       blue: "bg-[#0076AD]",
+      purple: "bg-[#825AA4]",
       yellow: "bg-amber-200 text-neutral-900",
       text: "p-0 underline",
       none: "",

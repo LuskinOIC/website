@@ -160,7 +160,7 @@ function DesktopTabSection({
             <TabsContent
               key={`TabsContent.${index}`}
               value={tab.fields.tabTitle}
-              className=""
+              className="tab-container"
             >
               <TabsTextOrCardContent fields={tab.fields} />
             </TabsContent>

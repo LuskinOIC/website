@@ -92,3 +92,8 @@
 .page-container {
   max-width: 1600px;
 }
+
+.tab-container a {
+  text-decoration: underline;
+  color: blue;
+}

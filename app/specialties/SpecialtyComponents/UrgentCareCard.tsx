@@ -38,13 +38,21 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
         <div className="grid gap-4 text-base md:text-lg leading-[30px]">
           {descriptionContent}
         </div>
-        <Button
-          className="my-3"
-          href={SAVE_MY_SPOT}
-          text="SAVE MY SPOT"
-          variant="blue"
-          isExternal={true}
-        />
+        <div className="grid md:grid-cols-2 gap-2">
+          <Button
+            className="my-3"
+            href={SAVE_MY_SPOT}
+            text="SAVE MY SPOT"
+            variant="purple"
+            isExternal={true}
+          />
+          <Button
+            className="my-3"
+            href="/patient-care/specialties/urgent-care"
+            text="Learn More"
+            variant="blue"
+          />
+        </div>
         <div className="block md:hidden">{walkIns}</div>
         <SpecialtyHoursLayout locationContent={location} />
       </div>
