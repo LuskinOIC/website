@@ -29,7 +29,7 @@ export default function NewsletterSignup() {
       </div>
       <div className="flex flex-col justify-center items-center w-fit h-fit border border-luskin-green rounded-[20px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] z-0 pt-[20vw] md:pt-[7.5vw]">
         <Title1 className="font-medium">Join Our Newsletter!</Title1>
-        <Text className="w-[60%] text-center mt-1">
+        <Text className="w-[70%] md:w-[75%] text-center mt-1">
           To receive our latest news and events information join our newsletter
           today.
         </Text>
@@ -37,7 +37,7 @@ export default function NewsletterSignup() {
           <input
             type="text"
             placeholder="Enter your email address"
-            className="w-fit text-left md:text-center border border-luskin-blue rounded-[5px] py-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.9rem] md:placeholder:text-base"
+            className="w-fit text-left md:text-center border border-luskin-blue rounded-[5px] py-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.92rem] md:placeholder:text-base"
           />
           <button className={desktopButtonClass}>
             <span className="hidden md:block">Submit</span>
