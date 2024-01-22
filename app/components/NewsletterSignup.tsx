@@ -17,7 +17,6 @@ export default function NewsletterSignup() {
     styles.buttonContainer,
     styles.buttonText,
     "bg-luskin-blue ml-[0.6rem] md:ml-4",
-    // "hidden md:flex bg-luskin-blue ml-4",
   );
 
   return (
