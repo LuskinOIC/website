@@ -93,7 +93,7 @@
   max-width: 1600px;
 }
 
-.tab-container a {
+.rich-text-wrapper a {
   text-decoration: underline;
-  color: blue;
+  color: #0076AD;
 }
