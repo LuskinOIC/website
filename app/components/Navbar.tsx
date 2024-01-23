@@ -140,12 +140,12 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* To be implemented later*/}
         <NavigationMenuItem className="list-none">
-          <button className="bg-transparent text-white rounded-full p-3 text-xl">
+          {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}
             {" "}
-            {/* Increase padding and font size */}
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
+            {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
+          {/* </button> */}
 
           <button
             onClick={toggleHamburgerDropdown}
