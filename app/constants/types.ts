@@ -16,7 +16,7 @@ export type AssetType = {
   };
 };
 
-export type BioPageSectionType = {
+export type GridSectionType = {
   sys: {
     id: string;
   };
@@ -319,10 +319,11 @@ export type PhysicianBioType = {
   specialties: Document;
   portrait: ImageType;
   overview: object;
-  asset: AssetType;
-  appointmentNumber: string;
-  physicianNumber: string;
-  bioPageSection: BioPageSectionType[];
+  // TO BE CLEARED AFTER CONTENTFUL CHANGES
+  // asset: AssetType;
+  // appointmentNumber: string;
+  // physicianNumber: string;
+  // BioPageSection: BioPageSectionType[];
   affiliations: Document;
   awardsAndRecognition: PageSectionType;
   researchInsights: Document;

@@ -31,7 +31,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
   return (
     <section className={`block ${verticalPadding}`}>
       <div
-        className={`flex flex-col md:flex-row items-center ${bgColor} ${paddingImageBased} justify-between`}
+        className={`flex flex-col md:flex-row md:items-center ${bgColor} ${paddingImageBased} justify-between`}
       >
         {section.fields.image && (
           <div className={`${orderClass} ${orientationClass}`}>
