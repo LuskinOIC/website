@@ -6,6 +6,7 @@ import ColumnLayout from "./ColumnsLayout/ColumnsLayout";
 import CardLayoutSection from "./CardsLayout";
 import ImagesLayout from "./ImagesLayout";
 import TabSection from "@/app/components/TabSection";
+import GridLayoutSection from "../GridLayoutSection";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -26,6 +27,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       return <CardLayoutSection section={section} />;
     case "Tab Section":
       return <TabSection tabs={section.fields.tabs} />;
+    case "Grid Layout":
+      return <GridLayoutSection section={section} />;
     case "Specialty":
       return (
         <UrgentCareCard

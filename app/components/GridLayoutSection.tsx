@@ -1,6 +1,7 @@
+import React from "react";
 import renderRichTextToReactComponent from "../utils/rich-text";
 import { Document } from "@contentful/rich-text-types";
-import { BioPageSectionType } from "../constants/types";
+import { GridSectionType } from "../constants/types";
 
 const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
   return (
@@ -11,10 +12,10 @@ const ContentParagraph = ({ contentItem }: { contentItem: any }) => {
 };
 
 interface SectionProps {
-  section: BioPageSectionType;
+  section: GridSectionType;
 }
 
-export default function BioPageSection({ section }: SectionProps) {
+function GridSection({ section }: SectionProps) {
   return (
     <div key={section.sys.id}>
       <h2 className="text-xl lg:text-2xl font-bold pb-4">
@@ -29,6 +30,21 @@ export default function BioPageSection({ section }: SectionProps) {
             <ContentParagraph key={contentIndex} contentItem={contentItem} />
           ),
         )}
+      </div>
+    </div>
+  );
+}
+
+export default function GridLayoutSection({ section }: any) {
+  return (
+    <div className="block mx-auto px-5 md:px-0 md:w-4/5">
+      <div className="grid gap-6 pb-6 md:grid-cols-2">
+        {section.fields.gridLayout &&
+          section.fields.gridLayout.map(
+            (grid: GridSectionType): React.ReactNode => {
+              return <GridSection key={grid.sys.id} section={grid} />;
+            },
+          )}
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ export type AssetType = {
   };
 };
 
-export type BioPageSectionType = {
+export type GridSectionType = {
   sys: {
     id: string;
   };
@@ -250,6 +250,7 @@ export type FontSizeMap = {
 };
 
 export type PageSectionType = {
+  filter: any;
   map: any;
   fields: {
     columnLayout: ColumnType;
@@ -312,19 +313,22 @@ export type ColumnType = {
 };
 
 export type PhysicianBioType = {
+  pageSections: PageSectionType;
+  topSummary: ColumnType;
   name: string;
   slug: string;
   specialties: Document;
   portrait: ImageType;
-  overview: object;
-  asset: AssetType;
-  appointmentNumber: string;
-  physicianNumber: string;
-  bioPageSection: BioPageSectionType[];
-  affiliations: Document;
-  awardsAndRecognition: PageSectionType;
-  researchInsights: Document;
-  publications: Document;
+  // overview: object;
+  // TO BE CLEARED AFTER CONTENTFUL CHANGES
+  // asset: AssetType;
+  // appointmentNumber: string;
+  // physicianNumber: string;
+  // BioPageSection: BioPageSectionType[];
+  // affiliations: Document;
+  // awardsAndRecognition: PageSectionType;
+  // researchInsights: Document;
+  // publications: Document;
 };
 
 export type SocialMediaSectionPropsType = {

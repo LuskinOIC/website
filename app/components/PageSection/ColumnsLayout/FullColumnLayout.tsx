@@ -6,7 +6,9 @@ import { Document } from "@contentful/rich-text-types";
 //Local Components
 import { TitleComponent } from "../../ui/Typography/Title";
 import Button from "@/app/components/ui/Button";
-import renderRichTextToReactComponent from "@/app/utils/rich-text";
+import renderRichTextToReactComponent, {
+  ClassNames,
+} from "@/app/utils/rich-text";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 
 export default function FullWidthImageLayout({
@@ -19,12 +21,16 @@ export default function FullWidthImageLayout({
     : "white";
   const textColor =
     section.fields.backgroundColor != "white" ? "text-white" : "text-black";
+  const descriptionClassNames: ClassNames = {
+    paragraph: "py-2 md:py-4 text-base md:text-lg",
+  };
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
+    descriptionClassNames,
   );
   return (
     <section
-      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-10`}
+      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-5 md:py-10`}
     >
       {section.fields.image && (
         <div className="">

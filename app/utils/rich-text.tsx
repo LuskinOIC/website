@@ -34,7 +34,11 @@ export default function renderRichTextToReactComponent(
       ),
     },
   };
-  return documentToReactComponents(richText, { ...defaultOptions, ...options });
+  return (
+    <div className="rich-text-wrapper">
+      {documentToReactComponents(richText, { ...defaultOptions, ...options })}
+    </div>
+  );
 }
 
 // more examples: https://github.com/contentful/rich-text/blob/master/packages/rich-text-react-renderer/src/index.tsx

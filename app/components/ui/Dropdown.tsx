@@ -54,22 +54,18 @@ export default function Dropdown(props: DropdownProps) {
 
   return (
     <>
-      <div className="DROPDOWN-MENU-CONTAINER text-left border border-solid border border-[#0076AD] relative rounded">
+      <div className="text-left border border-solid border border-[#0076AD] relative rounded">
         <div
           onClick={handleInputClick}
-          className="DROPDOWN-INPUT p-1 py-4 flex items-center justify-between select-none"
+          className="p-1 py-4 flex items-center justify-between select-none"
         >
-          <div className="DROPDOWN-SELECTED-VALUE pl-4 text-[#9A9A9A]">
-            {getDisplay()}
-          </div>
-          <div className="DROPDOWN-TOOLS">
-            <div className="DROPDOWN-TOOL pr-1">
-              <Image alt="chevron-down" src={chevronDown} />
-            </div>
+          <div className="pl-4 text-[#9A9A9A]">{getDisplay()}</div>
+          <div className="pr-1">
+            <Image alt="chevron-down" src={chevronDown} />
           </div>
         </div>
         {showMenu && (
-          <div className="text-[#9A9A9A] DROPDOWN-MENU absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
+          <div className="text-black absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
             {props.options.map((option) => (
               <div
                 key={option.value}
