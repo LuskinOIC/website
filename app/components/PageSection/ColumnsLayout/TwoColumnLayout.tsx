@@ -12,7 +12,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
     ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
     : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
   const verticalPadding =
-    section.fields.backgroundColor === "white" ? "py-12" : "";
+    section.fields.backgroundColor === "white" ? "py-5 md:py-12" : "";
   const paddingImageBased =
     section.fields.imageOrientation === "Center Align" ? "py-10" : "";
   const bgColor = section.fields.backgroundColor
