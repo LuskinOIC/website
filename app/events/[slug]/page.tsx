@@ -1,9 +1,4 @@
 import { getEvents, getEventBySlug } from "@/app/utils/contentful";
-import Image from "next/image";
-import { Document } from "@contentful/rich-text-types";
-import renderRichTextToReactComponent, {
-  ClassNames,
-} from "@/app/utils/rich-text";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 // Import components
 import PageSection from "@/app/components/PageSection/PageSection";
