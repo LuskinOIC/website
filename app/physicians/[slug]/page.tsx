@@ -1,7 +1,7 @@
 import React from "react";
 import { getPhysicians, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { PageSectionType } from "@/app/constants/types";
-// import Dropdown from "@/app/components/ui/Dropdown";
+import Dropdown from "@/app/components/ui/Dropdown";
 import PageSection from "@/app/components/PageSection/PageSection";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 
@@ -19,39 +19,31 @@ export default async function PhysicianBio({
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
 
-  //TO BE ADDED LATER
-  // const generateTargetID = (title: string): string => {
-  //   return `#${title.toLowerCase().split(" ").join("-")}`;
-  // };
+  const options = docBio.pageSections
+    .filter(
+      (pageSection: { fields: { type: string } }) =>
+        pageSection.fields.type === "Divider",
+    )
+    .map((pageSection: { fields: { dividerText: string } }) => {
+      return {
+        value: pageSection.fields.dividerText,
+        targetID: `${pageSection.fields.dividerText}`,
+        label: pageSection.fields.dividerText,
+      };
+    });
 
-  // const options = [
-  //   { value: "overview", label: "Overview", targetID: "#overview" },
-  //   {
-  //     value: "educationAndCertifications",
-  //     label: "Education And Certifications",
-  //     targetID: generateTargetID("Education And Certificates"),
-  //   },
-  //   {
-  //     value: "researchInsightsAndPublications",
-  //     label: "Research Insights And Publications",
-  //     targetID: generateTargetID("Research Insights And Publications"),
-  //   },
-  // ];
   return (
     <main className="">
-      <div className="">
-        {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
+      {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
 
-        {/* TO BE CORRECTED LATER */}
-        {/* <div className="mb-12 md:hidden">
-          <p className="px-1 pb-4">Choose a section you would like to review</p>
-          <Dropdown placeHolder="Overview" options={options} />
-        </div> */}
-        {docBio.pageSections &&
-          docBio.pageSections.map((section: PageSectionType) => (
-            <PageSection key={section.fields.title} section={section} />
-          ))}
+      <div className="mb-12 md:hidden px-5">
+        <p className="px-1 pb-4">Choose a section you would like to review</p>
+        <Dropdown placeHolder="Overview" options={options} />
       </div>
+      {docBio.pageSections &&
+        docBio.pageSections.map((section: PageSectionType) => (
+          <PageSection key={section.fields.title} section={section} />
+        ))}
     </main>
   );
 }

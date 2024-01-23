@@ -250,6 +250,7 @@ export type FontSizeMap = {
 };
 
 export type PageSectionType = {
+  filter: any;
   map: any;
   fields: {
     columnLayout: ColumnType;
@@ -318,16 +319,16 @@ export type PhysicianBioType = {
   slug: string;
   specialties: Document;
   portrait: ImageType;
-  overview: object;
+  // overview: object;
   // TO BE CLEARED AFTER CONTENTFUL CHANGES
   // asset: AssetType;
   // appointmentNumber: string;
   // physicianNumber: string;
   // BioPageSection: BioPageSectionType[];
-  affiliations: Document;
-  awardsAndRecognition: PageSectionType;
-  researchInsights: Document;
-  publications: Document;
+  // affiliations: Document;
+  // awardsAndRecognition: PageSectionType;
+  // researchInsights: Document;
+  // publications: Document;
 };
 
 export type SocialMediaSectionPropsType = {
