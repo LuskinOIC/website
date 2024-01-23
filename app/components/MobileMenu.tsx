@@ -82,7 +82,7 @@ function MobileMenu({
               href={MYCHART_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-luskin-yellow w-full text-black font-semibold text-center pt-4 pb-0"
+              className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center pt-4 pb-0"
             >
               MYCHART
             </a>

@@ -75,7 +75,7 @@ function LocationContent({ location, lastLocation }: LocationContentType) {
           text={location.fields.button.fields.text}
           href={location.fields.button.fields.buttonUrl}
           className="uppercase"
-          variant="blue"
+          variant="bluePrimary"
           isExternal={location.fields.button.fields.externalLink}
         />
       )}

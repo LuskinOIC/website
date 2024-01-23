@@ -117,7 +117,7 @@ export default function Navbar() {
               <Button
                 href={DONATE_URL}
                 text={"Donate"}
-                variant={"yellow"}
+                variant={"yellowPrimary"}
                 className="lg:h-[53px]"
               />
             </div>

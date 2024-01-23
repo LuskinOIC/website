@@ -287,7 +287,7 @@ export type ButtonType = {
     logoImage: ImageType;
   };
 };
-export type ButtonVariant = "blue" | "yellow" | "text" | "none" | undefined;
+export type ButtonVariant = "bluePrimary" | "yellowPrimary" | "blueSecondary" | "text" | "none" | "physicians" | undefined;
 export type ColumnType = {
   imageOrientation: string | undefined;
   fields: {

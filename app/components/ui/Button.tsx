@@ -3,11 +3,13 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export type ButtonVariant =
-  | "blue"
-  | "yellow"
+  | "bluePrimary"
+  | "yellowPrimary"
   | "text"
   | "none"
   | "purple"
+  | "blueSecondary"
+  | "physicians"
   | undefined;
 
 export interface ButtonProps {
@@ -39,11 +41,13 @@ const Button = ({
     styles.buttonAlignment,
     styles.buttonText,
     {
-      blue: "bg-[#0076AD]",
+      bluePrimary: "bg-[#0076AD]",
       purple: "bg-[#825AA4]",
-      yellow: "bg-amber-200 text-neutral-900",
+      yellowPrimary: "bg-amber-200 text-neutral-900",
       text: "p-0 underline",
       none: "",
+      blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
+      physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]"
     }[variant],
     className,
   );
