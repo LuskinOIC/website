@@ -260,7 +260,7 @@ function TabsTextOrCardContent({
             <CardHeader className="p-0 pb-5">
               <Title2 className="font-semibold">{card.fields.title}</Title2>
             </CardHeader>
-            <CardContent className="p-0 ">
+            <CardContent className="p-0">
               {card.fields.richContent &&
                 renderRichTextToReactComponent(card.fields.richContent)}
             </CardContent>

@@ -34,13 +34,13 @@ export default function renderRichTextToReactComponent(
         <p className={classNames?.paragraph || ""}>{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node: any, children: React.ReactNode) => (
-        <Title1 className="font-bold">{children}</Title1>
+        <Title1 className="font-bold pb-5">{children}</Title1>
       ),
       [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => (
-        <Title2 className="font-bold">{children}</Title2>
+        <Title2 className="font-bold pb-5">{children}</Title2>
       ),
       [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
-        <Title2 className="font-semibold">{children}</Title2>
+        <Title2 className="font-semibold pb-5">{children}</Title2>
       ),
       [BLOCKS.HEADING_4]: (node: any, children: React.ReactNode) => (
         <Title3 className="font-medium">{children}</Title3>
