@@ -81,7 +81,7 @@ export default function Navbar() {
                 isFocused={selectedDropdown === "patientCare"}
                 subItems={[
                   { label: "Patient Care", url: "/patient-care" },
-                  { label: "Urgent Care", url: "/urgent-care" },
+                  { label: "Urgent Care", url: SAVE_MY_SPOT },
                   { label: "Specialties", url: "/specialties" },
                 ]}
               />
