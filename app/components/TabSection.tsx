@@ -224,7 +224,7 @@ function MobileTabSection({
       <div className="pt-2 w-4/5">
         {tabs.map((tab, index) => (
           <div
-            id={tab.fields.tabTitle}
+            id={tab.fields.tabTitle.replace(/[^A-z]/g, "")}
             key={`MobileTabsContent.${index}`}
             className="scroll-mt-[4.5rem]"
           >
