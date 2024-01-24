@@ -15,11 +15,10 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "../../components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
-import { Title3 } from "./ui/Typography/Title";
+import { Title2, Title3 } from "./ui/Typography/Title";
 import { usePathname, useRouter } from "next/navigation";
 import { Text } from "./ui/Typography/Text";
 
@@ -258,10 +257,8 @@ function TabsTextOrCardContent({
             key={`Card.${index}`}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
-            <CardHeader className="p-0 md:pt-4 pb-5">
-              <CardTitle className="font-semibold">
-                {card.fields.title}
-              </CardTitle>
+            <CardHeader className="p-0 pb-5">
+              <Title2 className="font-semibold">{card.fields.title}</Title2>
             </CardHeader>
             <CardContent className="p-0 ">
               {card.fields.richContent &&
