@@ -1,6 +1,7 @@
 import React from "react";
 import { BLOCKS, Document } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { Title1, Title2, Title3 } from "../components/ui/Typography/Title";
 
 export interface ClassNames {
   ul?: string;
@@ -31,6 +32,18 @@ export default function renderRichTextToReactComponent(
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
         <p className={classNames?.paragraph || ""}>{children}</p>
+      ),
+      [BLOCKS.HEADING_1]: (node: any, children: React.ReactNode) => (
+        <Title1 className="font-bold">{children}</Title1>
+      ),
+      [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => (
+        <Title2 className="font-bold">{children}</Title2>
+      ),
+      [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
+        <Title2 className="font-semibold">{children}</Title2>
+      ),
+      [BLOCKS.HEADING_4]: (node: any, children: React.ReactNode) => (
+        <Title3 className="font-medium">{children}</Title3>
       ),
     },
   };
