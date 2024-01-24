@@ -50,7 +50,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             className="my-3"
             href="/patient-care/specialties/urgent-care"
             text="Learn More"
-            variant="blue"
+            variant="bluePrimary"
           />
         </div>
         <div className="block md:hidden">{walkIns}</div>
