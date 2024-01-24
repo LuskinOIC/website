@@ -29,7 +29,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
         <div className="basis-1/2">
           {descriptionContent}
           <Button
-            className="my-3"
+            className="my-3 mr-2"
             href={`/patient-care/specialties/${slug}`}
             text="PATIENTS"
             variant="bluePrimary"
