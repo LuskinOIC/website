@@ -1,4 +1,4 @@
-import { DONATE_URL } from "../constants/links";
+import { DONATE_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
 export const dropdowns = [
   {
@@ -7,7 +7,7 @@ export const dropdowns = [
 
     subItems: [
       { label: "Patient Care", url: "/patient-care" },
-      { label: "Urgent Care", url: "/urgent-care" },
+      { label: "Urgent Care", url: SAVE_MY_SPOT },
       { label: "Specialties", url: "/specialties" },
     ],
   },
@@ -45,7 +45,7 @@ export const MobileDropdowns = [
 
     subItems: [
       { label: "PATIENT CARE", url: "/patient-care", type: "link" },
-      { label: "URGENT CARE", url: "/urgent-care", type: "link" },
+      { label: "URGENT CARE", url: SAVE_MY_SPOT, type: "link" },
       { label: "SPECIALTIES", url: "/specialties", type: "link" },
       { label: "PLAN YOUR VISIT", url: "/plan-your-visit", type: "link" },
       { label: "BILLING & INSURANCE", url: "/billing", type: "link" },
