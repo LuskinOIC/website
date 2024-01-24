@@ -1,12 +1,12 @@
 import { Document } from "@contentful/rich-text-types";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import Button from "@/app/components/ui/Button";
-import SocialMediaSection from "../../SocialMediaSection";
+import SocialMediaSection from "@/app/components/SocialMediaSection";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import { ColumnType } from "@/app/constants/types";
-
+import { Text } from "@/app/components/ui/Typography/Text";
 interface SectionContentProps {
   section: ColumnType;
 }
@@ -35,6 +35,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
               bold={section.fields.bold}
             />
           )}
+          {section.fields.subHeader && <Text>{section.fields.subHeader}</Text>}
           <div>{descriptionContent}</div>
         </div>
         {section.fields.buttons && (

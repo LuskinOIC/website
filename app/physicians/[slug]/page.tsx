@@ -19,27 +19,31 @@ export default async function PhysicianBio({
 }) {
   const docBio = await getPhysicianBioBySlug(params.slug);
 
-  const options = docBio.pageSections
-    .filter(
-      (pageSection: { fields: { type: string } }) =>
-        pageSection.fields.type === "Divider",
-    )
-    .map((pageSection: { fields: { dividerText: string } }) => {
-      return {
-        value: pageSection.fields.dividerText,
-        targetID: `${pageSection.fields.dividerText}`,
-        label: pageSection.fields.dividerText,
-      };
-    });
+  const options =
+    docBio.pageSections &&
+    docBio.pageSections
+      .filter(
+        (pageSection: { fields: { type: string } }) =>
+          pageSection.fields.type === "Divider",
+      )
+      .map((pageSection: { fields: { dividerText: string } }) => {
+        return {
+          value: pageSection.fields.dividerText,
+          targetID: `${pageSection.fields.dividerText}`,
+          label: pageSection.fields.dividerText,
+        };
+      });
 
   return (
     <main className="">
       {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
 
-      <div className="mb-12 md:hidden px-5">
-        <p className="px-1 pb-4">Choose a section you would like to review</p>
-        <Dropdown placeHolder="Overview" options={options} />
-      </div>
+      {docBio.pageSections && (
+        <div className="mb-12 md:hidden px-5">
+          <p className="px-1 pb-4">Choose a section you would like to review</p>
+          <Dropdown placeHolder="Overview" options={options} />
+        </div>
+      )}
       {docBio.pageSections &&
         docBio.pageSections.map((section: PageSectionType) => (
           <PageSection key={section.fields.title} section={section} />

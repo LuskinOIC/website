@@ -13,18 +13,18 @@ export default function ColumnsLayout({
   section: PageSectionType;
 }) {
   const columnType = section.fields.columnLayout.fields.columnType;
-  const ColumnLayout = section.fields.columnLayout;
+  const columnLayout = section.fields.columnLayout;
   switch (columnType) {
     case "Two Column":
-      return <TwoColumnLayout section={ColumnLayout} />;
+      return <TwoColumnLayout section={columnLayout} />;
     case "Full Column (image or text)":
-      return <FullColumnLayout section={ColumnLayout} />;
+      return <FullColumnLayout section={columnLayout} />;
     case "Wide Image with Text":
-      return <WideImageWithText section={ColumnLayout} />;
+      return <WideImageWithText section={columnLayout} />;
     case "Video with Text":
-      return <VideoWithText section={ColumnLayout} />;
+      return <VideoWithText section={columnLayout} />;
     case "Sponsorships Two Column":
-      return <SponsorshipsTwoColumn section={ColumnLayout} />;
+      return <SponsorshipsTwoColumn section={columnLayout} />;
     default:
       return null;
   }
