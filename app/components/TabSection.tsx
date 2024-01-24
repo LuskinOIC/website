@@ -61,7 +61,7 @@ const styles = {
       default:
         gridColCount = "grid-cols-0";
     }
-    return `grid ${gridColCount} h-16 min-w-fit w-4/5 mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
+    return `grid ${gridColCount} h-16 min-w-fit mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
     // Set left margin of first item and right margin of last item to 0
