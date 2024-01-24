@@ -47,7 +47,7 @@ const Button = ({
       text: "p-0 underline",
       none: "",
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
-      physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]"
+      physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]",
     }[variant],
     className,
   );
