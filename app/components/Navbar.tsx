@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+// import { faMagnifyingGlass,} from "@fortawesome/free-solid-svg-icons";
 
 import Button from "@/app/components/ui/Button";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
@@ -140,13 +141,11 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* To be implemented later*/}
         <NavigationMenuItem className="list-none">
-          <button className="bg-transparent text-white rounded-full p-3 text-xl">
-            {" "}
-            {/* Increase padding and font size */}
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-
+          {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
+          {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
+          {/* </button> */}
           <button
             onClick={toggleHamburgerDropdown}
             className="bg-transparent text-white rounded-full py-3 px-4 text-xl"
