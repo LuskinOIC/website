@@ -28,22 +28,23 @@ export function InfoCardContent(cardContent: TextType) {
 
 export default function InfoCardLayout({ section }: { section: CardType[] }) {
   return (
-    <section className="grid md:grid-cols-2 gap-6 md:m-auto justify-items-center md:w-[80%] px-2 py-8 md:py-10">
+    <section className="grid md:grid-cols-2 gap-6 md:m-auto justify-items-stretch md:w-[80%] px-2 py-8 md:py-10">
       {section.map((card, i) => {
         return (
           <div
             key={i}
-            className="col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
+            className="flex flex-col col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
           >
-            <div className="relative md:rounded-[10px] overflow-hidden h-[250px] w-full">
+            <div className="relative md:rounded-[10px] overflow-hidden h-[350px] w-7/8 mx-auto">
               <Image
-                className="object-cover"
+                className="w-full h-full object-cover"
                 src={`https:${card.fields.image.fields.file.url}`}
                 alt={card.fields.image.fields.description}
-                layout="fill"
+                width={500}
+                height={400}
               />
             </div>
-            <div className="md:h-min-[242px] px-5 md:px-0 flex-col ">
+            <div className="flex-grow px-5 md:px-0 ">
               {card.fields.cardContent &&
                 InfoCardContent(card.fields.cardContent)}
             </div>
