@@ -15,11 +15,10 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "../../components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
-import { Title3 } from "./ui/Typography/Title";
+import { Title2, Title3 } from "./ui/Typography/Title";
 import { usePathname, useRouter } from "next/navigation";
 import { Text } from "./ui/Typography/Text";
 
@@ -61,7 +60,7 @@ const styles = {
       default:
         gridColCount = "grid-cols-0";
     }
-    return `grid ${gridColCount} h-16 min-w-fit w-4/5 mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
+    return `grid ${gridColCount} h-16 min-w-fit mt-[24px] mb-4 justify-items-stretch rounded-none bg-white border-b-[0.188rem] border-[#5F7A9D] p-[0]`;
   },
   tabsTrigger: (index: number, tabCount: number) => {
     // Set left margin of first item and right margin of last item to 0
@@ -225,7 +224,7 @@ function MobileTabSection({
       <div className="pt-2 w-4/5">
         {tabs.map((tab, index) => (
           <div
-            id={tab.fields.tabTitle}
+            id={tab.fields.tabTitle.replace(/[^A-z]/g, "")}
             key={`MobileTabsContent.${index}`}
             className="scroll-mt-[4.5rem]"
           >
@@ -252,18 +251,16 @@ function TabsTextOrCardContent({
   if (type == "Double Column" && cardContent) {
     // Render two columns of cards
     return (
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:pt-7 pb-7">
         {cardContent.map((card, index) => (
           <Card
             key={`Card.${index}`}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
-            <CardHeader className="p-0 md:pt-4 pb-5">
-              <CardTitle className="font-semibold">
-                {card.fields.title}
-              </CardTitle>
+            <CardHeader className="p-0 pb-5">
+              <Title2 className="font-semibold">{card.fields.title}</Title2>
             </CardHeader>
-            <CardContent className="p-0 ">
+            <CardContent className="p-0">
               {card.fields.richContent &&
                 renderRichTextToReactComponent(card.fields.richContent)}
             </CardContent>
