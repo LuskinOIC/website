@@ -28,6 +28,23 @@ export const styles = {
     "text-base text-white font-bold leading-[20px] uppercase tracking-wide",
 };
 
+const convertVariant = (variantFromContentful: string) => {
+  switch (variantFromContentful) {
+    case "primary blue":
+      return "bluePrimary";
+    case "secondary blue":
+      return "blueSecondary";
+    case "primary yellow":
+      return "yellowPrimary";
+    case "blue":
+      return "bluePrimary";
+    case "yellow":
+      return "yellowPrimary";
+    default:
+      return variantFromContentful ? variantFromContentful : "none";
+  }
+};
+
 const Button = ({
   href,
   variant = "none",
@@ -36,6 +53,7 @@ const Button = ({
   text,
   isExternal = false,
 }: ButtonProps) => {
+  const convertedVariant = convertVariant(variant);
   const classes = cn(
     styles.buttonContainer,
     styles.buttonAlignment,
@@ -48,7 +66,7 @@ const Button = ({
       none: "",
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
       physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]",
-    }[variant],
+    }[convertedVariant],
     className,
   );
   if (isExternal) {
