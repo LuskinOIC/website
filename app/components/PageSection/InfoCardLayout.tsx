@@ -37,7 +37,7 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
           >
             <div className="relative md:rounded-[10px] overflow-hidden h-[300px] md:h-[325px] w-7/8 mx-auto">
               <Image
-                className="w-full h-full object-cover rounded-[10px]"
+                className="w-full h-full object-cover rounded-t-lg md:rounded-[10px]"
                 src={`https:${card.fields.image.fields.file.url}`}
                 alt={card.fields.image.fields.description}
                 width={400}
