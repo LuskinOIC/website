@@ -35,13 +35,13 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
             key={i}
             className="flex flex-col col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
           >
-            <div className="relative md:rounded-[10px] overflow-hidden h-[350px] w-7/8 mx-auto">
+            <div className="relative md:rounded-[10px] overflow-hidden h-[300px] md:h-[325px] w-7/8 mx-auto">
               <Image
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-[10px]"
                 src={`https:${card.fields.image.fields.file.url}`}
                 alt={card.fields.image.fields.description}
-                width={500}
-                height={400}
+                width={400}
+                height={300}
               />
             </div>
             <div className="flex-grow px-5 md:px-0 ">
