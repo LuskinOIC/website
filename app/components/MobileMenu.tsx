@@ -41,14 +41,14 @@ function MobileMenu({
               href={SAVE_MY_SPOT}
               target="_blank"
               rel="noopener noreferrer"
-              className=" bg-luskin-purple w-full text-white text-center pt-4 pb-0"
+              className=" bg-luskin-purple w-full text-white text-center py-2"
             >
               URGENT CARE - SAVE MY SPOT
             </a>
             {MobileDropdowns.map((item, index) => (
               <li
                 key={index}
-                className={`${item.cssClasses} w-full text-center pt-4 pb-0`}
+                className={`${item.cssClasses} w-full text-center py-2`}
               >
                 <button onClick={() => toggleMobileMenu(index)}>
                   {item.label}
@@ -82,13 +82,13 @@ function MobileMenu({
               href={MYCHART_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center pt-4 pb-0"
+              className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center py-2"
             >
               MYCHART
             </a>
             <button
               onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-              className="bg-gray-100 w-full text-luskin-blue text-center pt-4 pb-0"
+              className="bg-gray-100 w-full text-luskin-blue text-center py-2"
             >
               CLOSE
             </button>
