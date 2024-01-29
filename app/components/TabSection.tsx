@@ -19,7 +19,7 @@ import {
 import { useState } from "react";
 import Image from "next/image";
 import { Title2, Title3 } from "./ui/Typography/Title";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Text } from "./ui/Typography/Text";
 
 const styles = {
@@ -88,13 +88,24 @@ export default function TabSection({
   tabs: TabType[];
   className?: string;
 }) {
+  // Check path for tab selection
+  const params = useSearchParams();
+  const queriedTab = params.get("tab");
+  // Create list of trimmed tab names
+  const abbrvTabs = tabs.map((tab) =>
+    tab.fields.tabTitle.replace(/[^A-z]/g, ""),
+  );
   // Use state to switch tabs with the dropdown menu
-  const [selectedTab, setSelectedTab] = useState(tabs[0].fields.tabTitle);
+  const [selectedTab, setSelectedTab] = useState(
+    queriedTab ? queriedTab : abbrvTabs[0],
+  );
+
   // Use state to trigger component refresh once tabs fully load
   const [tabCount, setTabCount] = useState(tabs.length);
   if (tabCount != tabs.length) {
-    setSelectedTab(tabs[0].fields.tabTitle);
     setTabCount(tabs.length);
+    // Set selected tab to first tab if there is no pathname selection
+    if (selectedTab === "") setSelectedTab(abbrvTabs[0]);
   }
 
   return (
@@ -102,12 +113,14 @@ export default function TabSection({
       <DesktopTabSection
         styles={styles}
         tabs={tabs}
+        abbrvTabs={abbrvTabs}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
         tabCount={tabCount}
       />
       <MobileTabSection
         tabs={tabs}
+        abbrvTabs={abbrvTabs}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
@@ -123,6 +136,7 @@ type DesktopTabSectionType = {
     tabsTrigger: (index: number, tabCount: number) => string;
   };
   tabs: any[];
+  abbrvTabs: string[];
   selectedTab: string;
   setSelectedTab: any;
   tabCount: number;
@@ -131,10 +145,14 @@ type DesktopTabSectionType = {
 function DesktopTabSection({
   styles,
   tabs,
+  abbrvTabs,
   selectedTab,
   setSelectedTab,
   tabCount,
 }: DesktopTabSectionType) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   return (
     /* Only show on desktop */
     <div className="hidden md:block mt-6 max-w-4/5 mx-[10%]">
@@ -144,8 +162,12 @@ function DesktopTabSection({
           {tabs.map((tab, index) => (
             <TabsTrigger
               key={`TabsTrigger.${index}`}
-              value={tab.fields.tabTitle}
-              onClick={() => setSelectedTab(tab.fields.tabTitle)}
+              value={abbrvTabs[index]}
+              onClick={() => {
+                const newTab = abbrvTabs[index];
+                setSelectedTab(newTab);
+                router.push(`${pathname}?tab=${newTab}#${newTab}`);
+              }}
               className={styles.tabsTrigger(index, tabCount)}
             >
               <p className="uppercase text-base two-line-ellipsis">
@@ -158,7 +180,7 @@ function DesktopTabSection({
           {tabs.map((tab, index) => (
             <TabsContent
               key={`TabsContent.${index}`}
-              value={tab.fields.tabTitle}
+              value={abbrvTabs[index]}
               className="tab-container"
             >
               <TabsTextOrCardContent fields={tab.fields} />
@@ -172,17 +194,22 @@ function DesktopTabSection({
 
 type MobileTabSectionType = {
   tabs: any[];
+  abbrvTabs: string[];
   selectedTab: string;
   setSelectedTab: any;
 };
 
 function MobileTabSection({
   tabs,
+  abbrvTabs,
   selectedTab,
   setSelectedTab,
 }: MobileTabSectionType) {
   const router = useRouter();
   const pathname = usePathname();
+
+  const selectedTabFullName =
+    tabs[abbrvTabs.indexOf(selectedTab)].fields.tabTitle;
 
   return (
     /* Only show on mobile */
@@ -194,7 +221,9 @@ function MobileTabSection({
         <DropdownMenu>
           <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
             <div className="flex flex-row w-full">
-              <p className={styles.dropdownSelectedItem}>{selectedTab}</p>
+              <p className={styles.dropdownSelectedItem}>
+                {selectedTabFullName}
+              </p>
               <Image
                 src="/dropdownarrow.svg"
                 width={20}
@@ -209,10 +238,9 @@ function MobileTabSection({
               <DropdownMenuItem
                 key={`DropdownMenuItem.${index}`}
                 onSelect={() => {
-                  setSelectedTab(tab.fields.tabTitle);
-                  router.push(
-                    `${pathname}#${tab.fields.tabTitle.replace(/[^A-z]/g, "")}`,
-                  );
+                  const newTab = abbrvTabs[index];
+                  setSelectedTab(newTab);
+                  router.push(`${pathname}?tab=${newTab}#${newTab}`);
                 }}
               >
                 <p className={styles.dropdownMenuItem}>{tab.fields.tabTitle}</p>
@@ -224,7 +252,7 @@ function MobileTabSection({
       <div className="pt-2 w-4/5">
         {tabs.map((tab, index) => (
           <div
-            id={tab.fields.tabTitle.replace(/[^A-z]/g, "")}
+            id={abbrvTabs[index]}
             key={`MobileTabsContent.${index}`}
             className="scroll-mt-[4.5rem]"
           >
