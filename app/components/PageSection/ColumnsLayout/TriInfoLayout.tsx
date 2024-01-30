@@ -1,11 +1,8 @@
-import { Document } from "@contentful/rich-text-types";
-import renderRichTextToReactComponent, {
-  ClassNames,
-} from "@/app/utils/rich-text";
-import { CardType, TriCardContent } from "@/app/constants/types";
+import renderRichTextToReactComponent from "@/app/utils/rich-text";
+import { TriCardContent } from "@/app/constants/types";
 
 const divider = "w-0.5 bg-[#825AA4]";
-const className = "text-center";
+
 export default function TriInfo({ section }: any) {
   const cardContents: TriCardContent[] = [];
   // console.log(section);
@@ -22,7 +19,8 @@ export default function TriInfo({ section }: any) {
             <h1
               className={`my-2 text-lg ${
                 cardContent.bold ? "font-semibold" : ""
-              }`}>
+              }`}
+            >
               {cardContent.title}
             </h1>
             <div className="pb-5">
