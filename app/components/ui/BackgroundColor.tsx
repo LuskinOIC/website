@@ -11,6 +11,6 @@ export default function getBackgroundColor(colorName: string) {
     case "bright-blue":
       return "bg-[#32B8DE]";
     case "green":
-      return "bg-[#99C221]"
+      return "bg-[#99C221]";
   }
 }

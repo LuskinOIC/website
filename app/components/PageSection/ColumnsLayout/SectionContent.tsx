@@ -13,7 +13,10 @@ interface SectionContentProps {
 
 const SectionContent = ({ section }: SectionContentProps) => {
   const textColor =
-    section.fields.backgroundColor === "purple" || section.fields.backgroundColor === "blue" ? "text-white" : "text-black";
+    section.fields.backgroundColor === "purple" ||
+    section.fields.backgroundColor === "blue"
+      ? "text-white"
+      : "text-black";
   const descriptionClassNames: ClassNames = {
     paragraph: "py-2 md:py-4 text-base md:text-lg",
   };
