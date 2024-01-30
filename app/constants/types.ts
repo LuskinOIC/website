@@ -432,3 +432,10 @@ export type BlogCardsRowType = {
   profileImage: NestedAssetType;
   subTitle: string;
 };
+
+export type TriCardContent = {
+  title: string;
+  titleSize: string;
+  bold: boolean;
+  richContent: Document;
+};
