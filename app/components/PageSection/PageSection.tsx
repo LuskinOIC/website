@@ -7,6 +7,7 @@ import CardLayoutSection from "./CardsLayout";
 import ImagesLayout from "./ImagesLayout";
 import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "../GridLayoutSection";
+import TriInfoLayout from "@/app/components/PageSection/ColumnsLayout/TriInfoLayout";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -35,6 +36,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
           specialty={(section.fields.specialty as SpecialtyType[])[0]}
         />
       );
+    case "Tri-Info Layout":
+      return <TriInfoLayout section={section.fields.cardsLayout} />;
     default:
       return null;
   }
