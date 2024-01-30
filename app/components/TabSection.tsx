@@ -296,6 +296,7 @@ function TabsTextOrCardContent({
               <CardFooter className="p-0 pt-6">
                 <Button
                   href={card.fields.button.fields.buttonUrl}
+                  variant={card.fields.button.fields.type}
                   text={card.fields.button.fields.text}
                   className="mb-3 md:mb-8"
                   isExternal={card.fields.button.fields.externalLink}
