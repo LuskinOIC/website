@@ -33,18 +33,18 @@ export default function SocialMediaBanner() {
 
 function DesktopBanner() {
   return (
-    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] px-3 py-2">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-12 md:grid-flow-col w-[65%] px-3 py-2">
       <div className="self-center row-span-3">
         <div className="flex flex-row min-h-[75%] justify-center items-center">
-          <Image src={Ozzie} alt="Ozzie" />
+          <Image src={Ozzie} alt="Ozzie" className="scale-[85%]"/>
         </div>
       </div>
       <div className="hidden md:block col-span-1">
-        <div className="text-4xl flex flex-row min-h-[50%] justify-center items-center text-center">
+        <div className="text-3xl flex flex-row min-h-[50%] justify-center items-center text-center">
           <h1>Follow our story on social media!</h1>
         </div>
         <div className="flex items-center justify-center text-md text-center">
-          <p className="w-5/6">
+          <p className="w-full">
             Join us in our mission to transform musculoskeletal care for all,
             one child at a time, through education, research, and unwavering
             support.
@@ -77,7 +77,7 @@ function MobileBanner() {
 function SocialMediaIcons() {
   return (
     <div className="row-span-1 pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
-      <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4">
+      <div className="flex flex-row min-h-[75%] justify-center items-center space-x-8 scale-[85%]">
         <a href={FACEBOOK_URL}>
           <Image src={FB} alt="Facebook Logo" />
         </a>
