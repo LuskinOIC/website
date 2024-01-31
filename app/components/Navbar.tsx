@@ -35,7 +35,7 @@ export default function Navbar() {
           <Link href="/">
             <Image
               className="ml-4"
-              src={"/LOIC_LOGO.svg"}
+              src={"/LOIC_LOGO.png"}
               alt={"Logo"}
               width={150}
               height={250}
