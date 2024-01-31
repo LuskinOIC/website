@@ -42,7 +42,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
           <div>{descriptionContent}</div>
         </div>
         {section.fields.buttons && (
-          <div className="flex flex-wrap md:flex-nowrap gap-3">
+          <div className="flex flex-wrap md:flex-nowrap gap-3 py-2">
             {section.fields.buttons.map((button) => (
               <Button
                 className="w-full sm:w-auto text-center gap-2"
