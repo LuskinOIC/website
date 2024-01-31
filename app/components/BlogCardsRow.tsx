@@ -43,13 +43,14 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
             {type === "patient-stories" ? "patient stories" : type}
           </Title1>
         </Link>
-        <Link href={`/${type}`}>
+          <Link href={`/${type}`}>
           <Title3 className="block uppercase text-[#0076AD] underline">
             See All
           </Title3>
         </Link>
+
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
             <div>
