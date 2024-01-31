@@ -282,12 +282,13 @@ export type ButtonType = {
   sys: any;
   fields: {
     externalLink?: boolean;
-    type: string;
+    type: ButtonVariant;
     text: string;
     buttonUrl: string;
     logoImage: ImageType;
   };
 };
+
 export type ButtonVariant =
   | "bluePrimary"
   | "yellowPrimary"
@@ -296,6 +297,7 @@ export type ButtonVariant =
   | "none"
   | "physicians"
   | undefined;
+
 export type ColumnType = {
   imageOrientation: string | undefined;
   fields: {
