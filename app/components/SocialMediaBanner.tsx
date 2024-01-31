@@ -44,13 +44,13 @@ function DesktopBanner() {
           <h1>Follow our story on social media!</h1>
         </div>
         <div className="flex items-center justify-center text-md text-center">
-          <p className="w-full">
+          <p className="w-5/6">
             Join us in our mission to transform musculoskeletal care for all,
             one child at a time, through education, research, and unwavering
             support.
           </p>
         </div>
-      <SocialMediaIcons />
+        <SocialMediaIcons />
       </div>
     </div>
   );
