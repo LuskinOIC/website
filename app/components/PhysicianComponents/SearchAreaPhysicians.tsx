@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import Fuse from "fuse.js";
-// LOCAL COMPONENTS
-import renderRichTextToReactComponent from "@/app/utils/rich-text";
 // TYPES
 import { PhysicianBioType } from "@/app/constants/types";
-import { Document } from "@contentful/rich-text-types";
-import SearchBar from "./ui/SearchBar";
+import SearchBar from "@/app/components/ui/SearchBar";
+import PhysiciansGridLayout from "@/app/components/PhysicianComponents/PhysiciansGridLayoutSection";
+
+interface SortedPhysicians {
+  mdPhysicians: PhysicianBioType[];
+  paNpPhysicians: PhysicianBioType[];
+}
 
 export default function SearchAreaPhysicians({
   physicians,
@@ -67,7 +68,11 @@ export default function SearchAreaPhysicians({
           }
         }}
       />
-      <SearchResults filteredPhysicians={searchResults} />
+      {searchString === "" ? (
+        <AllResults physicians={physicians} />
+      ) : (
+        <SearchResults filteredPhysicians={searchResults} />
+      )}
     </div>
   );
 }
@@ -101,32 +106,32 @@ function SearchResults({
   filteredPhysicians: PhysicianBioType[];
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-24">
-      {filteredPhysicians.map((physician) => (
-        <Link key={physician.name} href={`/physicians/${physician.slug}`}>
-          <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12">
-            <div className="">
-              <Image
-                src={physician.portrait.fields.file.url}
-                alt=""
-                width={physician.portrait.fields.file.details.image.width}
-                height={physician.portrait.fields.file.details.image.height}
-              />
-            </div>
-            <div className="">
-              <h2 className="text-lg font-bold">{physician.name}</h2>
-              <h5>Specializes in:</h5>
-              <div className="md:text-md md:mb-4  md:pl-4 text-base">
-                {renderRichTextToReactComponent(
-                  physician.specialties as unknown as Document,
-                )}
-              </div>
-              {/* <p>For Patients: {physician.appointmentNumber}</p>
-              <p>For Physicians: {physician.physicianNumber}</p> */}
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <PhysiciansGridLayout
+      title="SEARCH RESULTS"
+      physicians={filteredPhysicians}
+    />
+  );
+}
+
+function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
+  const { mdPhysicians, paNpPhysicians } = physicians.reduce<SortedPhysicians>(
+    (acc, physician) => {
+      const category =
+        physician.providerType === "PA/NP" ? "paNpPhysicians" : "mdPhysicians";
+
+      acc[category].push(physician);
+
+      return acc;
+    },
+    { mdPhysicians: [], paNpPhysicians: [] },
+  );
+  return (
+    <>
+      <PhysiciansGridLayout title="OUR PHYSICIANS" physicians={mdPhysicians} />
+      <PhysiciansGridLayout
+        title="OUR PHYSICIAN'S ASSISTANTS & NURSE PRACTIONERS"
+        physicians={paNpPhysicians}
+      />
+    </>
   );
 }

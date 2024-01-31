@@ -89,6 +89,7 @@ export async function getSpecialtyBySlug(slug: string) {
 export async function getPhysicians() {
   const entries = await client.getEntries({
     content_type: "physicianBio",
+    order: ["sys.createdAt"],
     locale: "en-US",
   });
 

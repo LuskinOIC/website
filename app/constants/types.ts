@@ -328,16 +328,7 @@ export type PhysicianBioType = {
   slug: string;
   specialties: Document;
   portrait: ImageType;
-  // overview: object;
-  // TO BE CLEARED AFTER CONTENTFUL CHANGES
-  // asset: AssetType;
-  // appointmentNumber: string;
-  // physicianNumber: string;
-  // BioPageSection: BioPageSectionType[];
-  // affiliations: Document;
-  // awardsAndRecognition: PageSectionType;
-  // researchInsights: Document;
-  // publications: Document;
+  providerType?: string;
 };
 
 export type SocialMediaSectionPropsType = {

@@ -2,7 +2,7 @@
 import { getPhysicians } from "@/app/utils/contentful";
 // TYPES
 import { PhysicianBioType } from "@/app/constants/types";
-import SearchAreaPhysicians from "../components/SearchAreaPhysicians";
+import SearchAreaPhysicians from "@/app/components/PhysicianComponents/SearchAreaPhysicians";
 
 export default async function Physicians() {
   const physicians = (await getPhysicians()) as unknown as PhysicianBioType[];
