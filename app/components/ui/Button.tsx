@@ -40,6 +40,8 @@ const convertVariant = (variantFromContentful: string) => {
       return "bluePrimary";
     case "yellow":
       return "yellowPrimary";
+    case "save my spot":
+      return "purple";
     default:
       return variantFromContentful ? variantFromContentful : "none";
   }

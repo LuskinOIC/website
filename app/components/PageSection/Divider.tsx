@@ -5,7 +5,7 @@ export default function Divider({ section }: { section: PageSectionType }) {
   return (
     <div
       id={section.fields.dividerText}
-      className="md:grid grid-col px-1 md:px-32 my-4 md:my-6 mx-auto"
+      className="md:grid grid-col px-1 md:px-32 my-8 mx-auto"
     >
       <hr className="md:block h-[4px] bg-[#99C221]" />
       {section.fields.dividerText && (

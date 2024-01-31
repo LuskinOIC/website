@@ -30,7 +30,7 @@ export default function FullWidthImageLayout({
   );
   return (
     <section
-      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-5 md:py-10`}
+      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-5`}
     >
       {section.fields.image && (
         <div className="">
@@ -55,7 +55,7 @@ export default function FullWidthImageLayout({
         {descriptionContent}
       </div>
       {section.fields.buttons && (
-        <div className="flex flex-col w-full md:flex-row md:justify-between gap-2 py-5">
+        <div className="flex flex-col w-full md:flex-row md:justify-between gap-2">
           {section.fields.buttons.map((button) => (
             <Button
               key={button.sys.id}
