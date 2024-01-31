@@ -11,6 +11,11 @@ import { PhysicianBioType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
 import SearchBar from "./ui/SearchBar";
 
+interface SortedPhysicians {
+  mdPhysicians: PhysicianBioType[];
+  paNpPhysicians: PhysicianBioType[];
+}
+
 export default function SearchAreaPhysicians({
   physicians,
 }: {
@@ -67,7 +72,11 @@ export default function SearchAreaPhysicians({
           }
         }}
       />
-      <SearchResults filteredPhysicians={searchResults} />
+      {searchString === "" ? (
+        <AllResults physicians={physicians} />
+      ) : (
+        <SearchResults filteredPhysicians={searchResults} />
+      )}
     </div>
   );
 }
@@ -121,12 +130,27 @@ function SearchResults({
                   physician.specialties as unknown as Document,
                 )}
               </div>
-              {/* <p>For Patients: {physician.appointmentNumber}</p>
-              <p>For Physicians: {physician.physicianNumber}</p> */}
             </div>
           </div>
         </Link>
       ))}
     </div>
   );
+}
+
+function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
+  const { mdPhysicians, paNpPhysicians } = physicians.reduce<SortedPhysicians>(
+    (acc, physician) => {
+      const category =
+        physician.providerType === "PA/NP" ? "paNpPhysicians" : "mdPhysicians";
+
+      acc[category].push(physician);
+
+      return acc;
+    },
+    { mdPhysicians: [], paNpPhysicians: [] },
+  );
+  console.log(paNpPhysicians);
+  console.log(mdPhysicians);
+  return <div>HELLOOO</div>;
 }
