@@ -4,8 +4,8 @@ import { useState } from "react";
 import Fuse from "fuse.js";
 // TYPES
 import { PhysicianBioType } from "@/app/constants/types";
-import SearchBar from "./ui/SearchBar";
-import PhysiciansGridLayout from "./PhysiciansGridLayoutSection";
+import SearchBar from "@/app/components/ui/SearchBar";
+import PhysiciansGridLayout from "@/app/components/PhysicianComponents/PhysiciansGridLayoutSection";
 
 interface SortedPhysicians {
   mdPhysicians: PhysicianBioType[];

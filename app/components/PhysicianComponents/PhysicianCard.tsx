@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { PhysicianBioType } from "../constants/types";
-import { Title3 } from "./ui/Typography/Title";
+import { PhysicianBioType } from "@/app/constants/types";
+import { Title3 } from "@/app/components/ui/Typography/Title";
 
 export default function PhysicianCard({
   physician,

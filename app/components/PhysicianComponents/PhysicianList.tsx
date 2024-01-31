@@ -1,6 +1,6 @@
-import { PhysicianBioType } from "../constants/types";
-import PhysicianCard from "./PhysicianCard";
-import { Title3 } from "./ui/Typography/Title";
+import { PhysicianBioType } from "@/app/constants/types";
+import PhysicianCard from "@/app/components/PhysicianComponents/PhysicianCard";
+import { Title3 } from "@/app/components/ui/Typography/Title";
 
 export default function PhysicianList({
   specialistsTitle,

@@ -20,11 +20,11 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
       <div className="text-sky-700 text-xl font-normal font-['Arial'] leading-[30px] px-5 md:px-24 py-4 md:py-10">
         {title}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-5 md:px-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center px-5 md:px-24">
         {physicians.map((physician) => (
           <Link key={physician.name} href={`/physicians/${physician.slug}`}>
-            <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12">
-              <div className="">
+            <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12 md:h-full justify-items-center">
+              <div style={{ maxWidth: "280px" }}>
                 <Image
                   src={physician.portrait.fields.file.url}
                   alt=""
@@ -32,10 +32,10 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
                   height={physician.portrait.fields.file.details.image.height}
                 />
               </div>
-              <div className="">
+              <div className="flex flex-col gap-1 md:gap-4 place-self-start">
                 <h2 className="text-lg font-bold">{physician.name}</h2>
                 <h5>Specializes in:</h5>
-                <div className="md:text-md md:mb-4  md:pl-4 text-base">
+                <div className="md:text-md md:mb-4 text-base">
                   {renderRichTextToReactComponent(
                     physician.specialties as unknown as Document,
                   )}
