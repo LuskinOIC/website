@@ -19,6 +19,8 @@ export default function ColumnsLayout({
       return <TwoColumnLayout section={columnLayout} />;
     case "Full Column (image or text)":
       return <FullColumnLayout section={columnLayout} />;
+    case "Full Column":
+      return <FullColumnLayout section={columnLayout} />;
     case "Wide Image with Text":
       return <WideImageWithText section={columnLayout} />;
     case "Video with Text":
