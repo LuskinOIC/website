@@ -1,15 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import Fuse from "fuse.js";
-// LOCAL COMPONENTS
-import renderRichTextToReactComponent from "@/app/utils/rich-text";
 // TYPES
 import { PhysicianBioType } from "@/app/constants/types";
-import { Document } from "@contentful/rich-text-types";
 import SearchBar from "./ui/SearchBar";
+import PhysiciansGridLayout from "./PhysiciansGridLayoutSection";
 
 interface SortedPhysicians {
   mdPhysicians: PhysicianBioType[];
@@ -110,31 +106,10 @@ function SearchResults({
   filteredPhysicians: PhysicianBioType[];
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-24">
-      {filteredPhysicians.map((physician) => (
-        <Link key={physician.name} href={`/physicians/${physician.slug}`}>
-          <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12">
-            <div className="">
-              <Image
-                src={physician.portrait.fields.file.url}
-                alt=""
-                width={physician.portrait.fields.file.details.image.width}
-                height={physician.portrait.fields.file.details.image.height}
-              />
-            </div>
-            <div className="">
-              <h2 className="text-lg font-bold">{physician.name}</h2>
-              <h5>Specializes in:</h5>
-              <div className="md:text-md md:mb-4  md:pl-4 text-base">
-                {renderRichTextToReactComponent(
-                  physician.specialties as unknown as Document,
-                )}
-              </div>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <PhysiciansGridLayout
+      title="SEARCH RESULTS"
+      physicians={filteredPhysicians}
+    />
   );
 }
 
@@ -150,7 +125,13 @@ function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
     },
     { mdPhysicians: [], paNpPhysicians: [] },
   );
-  console.log(paNpPhysicians);
-  console.log(mdPhysicians);
-  return <div>HELLOOO</div>;
+  return (
+    <>
+      <PhysiciansGridLayout title="OUR PHYSICIANS" physicians={mdPhysicians} />
+      <PhysiciansGridLayout
+        title="OUR PHYSICIANS ASSISTANTS & NURSE PRACTIONERS"
+        physicians={paNpPhysicians}
+      />
+    </>
+  );
 }
