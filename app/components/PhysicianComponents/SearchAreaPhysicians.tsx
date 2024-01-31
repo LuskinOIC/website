@@ -129,7 +129,7 @@ function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
     <>
       <PhysiciansGridLayout title="OUR PHYSICIANS" physicians={mdPhysicians} />
       <PhysiciansGridLayout
-        title="OUR PHYSICIANS ASSISTANTS & NURSE PRACTIONERS"
+        title="OUR PHYSICIAN'S ASSISTANTS & NURSE PRACTIONERS"
         physicians={paNpPhysicians}
       />
     </>
