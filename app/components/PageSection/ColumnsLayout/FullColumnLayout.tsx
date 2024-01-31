@@ -67,6 +67,16 @@ export default function FullWidthImageLayout({
           ))}
         </div>
       )}
+       {section.fields.video && (
+            <div className="aspect-video">
+              <iframe
+                src={section.fields.video}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          )}
     </section>
   );
 }
