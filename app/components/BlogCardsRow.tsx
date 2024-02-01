@@ -39,17 +39,17 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
     <section id={`${type}`}>
       <div className="flex flex-row justify-between mb-2 mt-8 md:mb-4">
         <Link href={`/${type}`}>
-          <Title1 className="font-bold md:font-normal uppercase text-[#0076AD] md:capitalize">
+          <Title1 className="font-bold md:font-normal uppercase text-[#0076AD] md:capitalize hover:underline">
             {type === "patient-stories" ? "patient stories" : type}
           </Title1>
         </Link>
         <Link href={`/${type}`}>
-          <Title3 className="block md:hidden uppercase text-[#0076AD] underline">
+          <Title3 className="block uppercase text-[#0076AD] underline">
             See All
           </Title3>
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
+      <div className="sm:grid grid-cols-1 gap-4 md:grid-cols-4">
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
             <div>
