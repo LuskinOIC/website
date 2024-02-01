@@ -43,7 +43,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
             {type === "patient-stories" ? "patient stories" : type}
           </Title1>
         </Link>
-          <Link href={`/${type}`}>
+        <Link href={`/${type}`}>
           <Title3 className="block uppercase text-[#0076AD] underline">
             See All
           </Title3>
