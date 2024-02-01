@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
 import Link from "next/link";
 
 interface NavbarDropDownProps {
@@ -9,6 +8,7 @@ interface NavbarDropDownProps {
   label: string;
   subItems: any[];
   isFocused: boolean;
+  // TODO: Figure out why this lint is failing.
   // eslint-disable-next-line no-unused-vars
   onChange: (id: string) => void;
 }
@@ -21,6 +21,9 @@ function NavbarDropDown({
   isFocused,
 }: NavbarDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
+  const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
+  const [timeoutPid, setTimeoutPid] = useState(null);
 
   function handleFocus() {
     setIsOpen(true);
@@ -30,17 +33,46 @@ function NavbarDropDown({
   useEffect(() => {
     if (!isFocused) {
       setIsOpen(false);
+      setHasNavigatedFromButton(false);
+      setIsHoveringOverDropdown(false);
     }
   }, [isFocused]);
 
+  useEffect(() => {
+    if (hasNavigatedFromButton) {
+      const pid = setTimeout(() => {
+        setIsOpen(false);
+      }, 1000);
+      setTimeoutPid(pid as any);
+    }
+  }, [hasNavigatedFromButton]);
+
+  useEffect(() => {
+    if (isHoveringOverDropdown && timeoutPid) {
+      clearTimeout(timeoutPid);
+    }
+  }, [isHoveringOverDropdown, timeoutPid]);
+
   return (
     <div className="text-white text-xl">
-      <button onMouseEnter={handleFocus}>{label}</button>
+      <button
+        onMouseEnter={handleFocus}
+        onMouseLeave={() => setHasNavigatedFromButton(true)}
+      >
+        {label}
+      </button>
       {isOpen && (
         <>
           <div
             className="absolute z-10 mt-6"
-            onMouseLeave={() => setIsOpen(false)}
+            onMouseLeave={() => {
+              setIsOpen(false);
+              setHasNavigatedFromButton(false);
+              setIsHoveringOverDropdown(false);
+            }}
+            onMouseEnter={() => {
+              setIsHoveringOverDropdown(true);
+            }}
           >
             <div className="w-10">
               <div className="absolute z-10 border-b-[15px] border-b-luskin-brightBlue border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full"></div>
