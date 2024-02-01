@@ -23,7 +23,7 @@ export interface ButtonProps {
 
 export const styles = {
   buttonContainer: "flex w-fit rounded-[10px]",
-  buttonAlignment: "px-2 lg:px-4 py-3 justify-center items-center inline-flex",
+  buttonAlignment: "px-2 md:px-4 py-3 justify-center items-center inline-flex",
   buttonText:
     "text-base text-white font-bold leading-[20px] uppercase tracking-wide",
 };
@@ -64,7 +64,7 @@ const Button = ({
       bluePrimary: "bg-[#0076AD]",
       purple: "bg-[#825AA4]",
       yellowPrimary: "bg-amber-200 text-neutral-900",
-      text: "p-0 underline",
+      text: "p-0 underline md:px-0",
       none: "",
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
       physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]",
