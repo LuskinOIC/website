@@ -33,7 +33,7 @@ export default function FullWidthImageLayout({
       className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-5`}
     >
       {section.fields.image && (
-        <div className="">
+        <div className="justify-self-center">
           <Image
             className=""
             src={`https:${section.fields.image.fields.file.url}`}
@@ -51,9 +51,11 @@ export default function FullWidthImageLayout({
           bold={section.fields.bold}
         />
       )}
-      <div className={`grid gap-2 md:gap-5 text-base md:text-lg leading-7`}>
-        {descriptionContent}
-      </div>
+      {section.fields.description && (
+        <div className={`grid gap-2 md:gap-5 text-base md:text-lg leading-7`}>
+          {descriptionContent}
+        </div>
+      )}
       {section.fields.buttons && (
         <div className="flex flex-col w-full md:flex-row md:justify-between gap-2">
           {section.fields.buttons.map((button) => (
