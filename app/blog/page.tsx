@@ -1,5 +1,9 @@
 import PageSection from "@/app/components/PageSection/PageSection";
-import { PageSectionType, BlogCardsRowType, OptionType} from "@/app/constants/types";
+import {
+  PageSectionType,
+  BlogCardsRowType,
+  OptionType,
+} from "@/app/constants/types";
 import {
   getPageByType,
   getNewsPosts,
@@ -21,7 +25,11 @@ export default async function Blog() {
   const dropdownOptions: OptionType[] = [
     { label: "News", value: "news", targetID: "news" },
     { label: "Events", value: "events", targetID: "events" },
-    { label: "Patient Stories", value: "patient-stories", targetID: "patient-stories" },
+    {
+      label: "Patient Stories",
+      value: "patient-stories",
+      targetID: "patient-stories",
+    },
   ];
 
   return (
@@ -30,9 +38,9 @@ export default async function Blog() {
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
       <div className="mb-12 md:hidden px-5">
-          <p className="px-1 pb-4">Choose a section you would like to review</p>
-          <Dropdown placeHolder="News" options={dropdownOptions} />
-        </div>
+        <p className="px-1 pb-4">Choose a section you would like to review</p>
+        <Dropdown placeHolder="News" options={dropdownOptions} />
+      </div>
       <div className="mx-5 md:mx-[5%]">
         <BlogCardsRow type="news" cards={news} />
         <BlogCardsRow type="events" cards={events} />

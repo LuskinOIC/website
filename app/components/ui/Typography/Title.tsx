@@ -39,7 +39,10 @@ export const Title2 = ({ children, className = "" }: TitleProps) => {
 };
 
 export const Title3 = ({ children, className = "" }: TitleProps) => {
-  const classes = cn("text-[14px] md:text-[28px] font-arial leading-[60px]", className);
+  const classes = cn(
+    "text-[14px] md:text-[28px] font-arial leading-[60px]",
+    className,
+  );
   return <h1 className={classes}>{children}</h1>;
 };
 
