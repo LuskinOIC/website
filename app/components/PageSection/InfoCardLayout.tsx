@@ -28,7 +28,7 @@ export function InfoCardContent(cardContent: TextType) {
 
 export default function InfoCardLayout({ section }: { section: CardType[] }) {
   return (
-    <section className="grid md:grid-cols-2 gap-6 md:m-auto justify-items-center md:w-[80%] py-2">
+    <section className="grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12 md:px-32">
       {section.map((card, i) => {
         return (
           <div
