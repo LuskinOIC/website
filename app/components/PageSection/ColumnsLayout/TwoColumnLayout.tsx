@@ -1,14 +1,12 @@
-// Next components
 import Image from "next/image";
-// Types
 import { ColumnType } from "@/app/constants/types";
-// Custom components
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import SectionContent from "./SectionContent";
 
 export default function ColumnLayout({ section }: { section: ColumnType }) {
-  const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
-  const textPadding = section.fields.reverseOrder
+  const isReversedOrder = section.fields.reverseOrder;
+  const orderClass = isReversedOrder ? "md:order-1" : "";
+  const textPadding = isReversedOrder
     ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
     : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
   const verticalPadding =
@@ -19,14 +17,10 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
 
-  let orientationClass = "";
-  const floatClass = section.fields.reverseOrder ? "float-right" : "float-left";
-  if (section.fields.imageOrientation === "Center Align") {
-    orientationClass = "mx-auto";
-  } else {
-    orientationClass += "md:rounded-l-lg";
-    orientationClass += ` ${floatClass}`;
-  }
+  const orientationClass =
+    section.fields.imageOrientation === "Center Align"
+      ? "mx-auto"
+      : `md:rounded-l-lg ${isReversedOrder ? "float-right" : "float-left"}`;
 
   return (
     <section className={`block ${verticalPadding}`}>
