@@ -20,7 +20,6 @@ export default function TriInfo({ section }: any) {
   section.map((sec: any) => {
     cardContents.push(sec.fields.cardContent.fields);
   });
-  console.log(cardContents);
 
   if (cardContents.length < 3)
     return "Tri-Info page section requires 3 card layout entries";
