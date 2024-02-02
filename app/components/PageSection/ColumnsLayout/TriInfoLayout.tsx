@@ -1,43 +1,45 @@
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { TriCardContent } from "@/app/constants/types";
+import {Title1, Title2, Title3} from "@/app/components/ui/Typography/Title"
 
-const divider = "w-0.5 bg-[#825AA4]";
+const divider = "border-[#825AA4] border-b-[3px] md:border-b-0 md:border-r-[3px] mb-8 md:mb-0 md:mr-12"
+
+const titleSizes = (titleSize: string) => {
+ switch(titleSize) {
+  case "Title Large":
+    return "text-[28px] md:text-[32px]"
+  case "Title Medium":
+    return "text-xl md:text-2xl"
+  case "Title Small":
+    return "text-xl"
+ }
+}
+
 
 export default function TriInfo({ section }: any) {
   const cardContents: TriCardContent[] = [];
-  // console.log(section);
   section.map((sec: any) => {
-    // console.log(sec.fields.cardContent.fields);
     cardContents.push(sec.fields.cardContent.fields);
   });
-  console.log(cardContents.length - 1);
+  console.log(cardContents)
   return (
-    <div className="flex justify-center gap-20 py-10">
+    <div className="mx-4 grid py-10 md:mx-10 md:grid-cols-3 md:justify-around">
       {cardContents.map((cardContent: TriCardContent, i: number) => (
-        <div key={i} className="flex max-w-xs">
-          <div>
+          <div key={i} className={`flex justify-center mx-6 ${i < 2 ? divider : ""}`}>
+          <div className="w-4/5">
             <h1
-              className={`my-2 text-lg ${
-                cardContent.bold ? "font-semibold" : ""
-              }`}
-            >
+              className={`py-3 ${
+                cardContent.bold ? "font-semibold" : "font-normal"
+              } ${cardContent.titleSize } ${titleSizes(cardContent.titleSize)}`}>
               {cardContent.title}
             </h1>
-            <div className="pb-5">
+            <div className="pb-11 leading-relaxed md:pb-5">
               {cardContent.richContent &&
                 renderRichTextToReactComponent(cardContent.richContent)}
             </div>
           </div>
-          <div className={`ml-16 ${i < 2 ? divider : ""}`}></div>
         </div>
       ))}
     </div>
   );
 }
-
-// 3 columns containing title and unordered lists
-// 2 borders, one between first and 2nd, then 2nd and 3rd
-
-// div containing 3 divs and 2 span
-
-//
