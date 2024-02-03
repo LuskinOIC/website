@@ -4,6 +4,8 @@ import FullColumnLayout from "@/app/components/PageSection/ColumnsLayout/FullCol
 import VideoWithText from "@/app/components/PageSection/ColumnsLayout/VideoWithText";
 import WideImageWithText from "@/app/components/PageSection/ColumnsLayout/WideImageWithText";
 import SponsorshipsTwoColumn from "@/app/components/PageSection/ColumnsLayout/SponsorshipsTwoColumn";
+import TriInfoLayout from "@/app/components/PageSection/ColumnsLayout/TriInfoLayout";
+
 // Types
 import { PageSectionType } from "@/app/constants/types";
 
@@ -14,6 +16,7 @@ export default function ColumnsLayout({
 }) {
   const columnType = section.fields.columnLayout.fields.columnType;
   const columnLayout = section.fields.columnLayout;
+  console.log("column layout", columnLayout);
   switch (columnType) {
     case "Two Column":
       return <TwoColumnLayout section={columnLayout} />;
@@ -27,6 +30,9 @@ export default function ColumnsLayout({
       return <VideoWithText section={columnLayout} />;
     case "Sponsorships Two Column":
       return <SponsorshipsTwoColumn section={columnLayout} />;
+    case "Tri Column":
+      console.log(columnLayout);
+      return <TriInfoLayout section={columnLayout} />;
     default:
       return null;
   }
