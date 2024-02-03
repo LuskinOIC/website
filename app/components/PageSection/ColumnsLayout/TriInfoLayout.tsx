@@ -17,7 +17,6 @@ const titleSizes = (titleSize: string) => {
 
 export default function TriInfo({ section }: any) {
   const cardContents: TriCardContent[] = [];
-  console.log("tri info", section.fields.cardLayout[0]);
   const cardSection = section.fields.cardLayout;
   cardSection.map((sec: any) => {
     cardContents.push(sec.fields.cardContent.fields);
