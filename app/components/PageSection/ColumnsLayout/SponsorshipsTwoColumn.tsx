@@ -40,7 +40,7 @@ export default function SponsorshipsColumnLayout({
           href={s.fields.buttonUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${orderClass} mx-4 my-4 h-20 w-20 md:flex md:h-auto md:w-auto`}
+          className={`${orderClass} w-20 md:flex h-auto md:w-auto md:h-[150px]  mx-4 my-4`}
         >
           <DynamicImage
             alt="sponsors"
@@ -57,7 +57,9 @@ export default function SponsorshipsColumnLayout({
   return (
     <section className={`block ${verticalPadding}`}>
       <div className={`${orderClass}`}>
-        <div className={`flex flex-col md:flex-row ${bgColor} justify-between`}>
+        <div
+          className={`flex flex-col md:flex-row ${bgColor} justify-between  items-center`}
+        >
           <div
             id="sponsor-assets"
             className=" flex flex-wrap border md:border-0 md:w-[60%]"
