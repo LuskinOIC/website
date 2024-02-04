@@ -80,12 +80,12 @@ export default async function NewsArticle({
           </div>
         )}
       </section>
-      <section className="grid gap-5">
+      <section className="grid">
         {pageSections.map((section: PageSectionType) => (
           <PageSection key={section.fields.title} section={section} />
         ))}
       </section>
-      <section className="mx-auto">
+      <section className="block mx-5 md:mx-[5%]">
         <BlogCardsRow type="news" cards={news} />
       </section>
     </main>
