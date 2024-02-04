@@ -22,10 +22,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
             <PageSection key={section.fields.title} section={section} />
           ))}
       </div>
-
-      <div id="event-cards" className="grid justify-center">
-        <BlogCardsRow type="events" cards={allEvents} />
-      </div>
+      <BlogCardsRow type="events" cards={allEvents} />
     </main>
   );
 }

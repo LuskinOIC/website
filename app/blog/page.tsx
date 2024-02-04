@@ -41,11 +41,9 @@ export default async function Blog() {
         <p className="px-1 pb-4">Choose a section you would like to review</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
-      <div className="mx-5 md:mx-[5%]">
-        <BlogCardsRow type="news" cards={news} />
-        <BlogCardsRow type="events" cards={events} />
-        <BlogCardsRow type="patient-stories" cards={patientStories} />
-      </div>
+      <BlogCardsRow type="news" cards={news} />
+      <BlogCardsRow type="events" cards={events} />
+      <BlogCardsRow type="patient-stories" cards={patientStories} />
     </main>
   );
 }

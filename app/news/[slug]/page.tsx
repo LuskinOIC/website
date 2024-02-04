@@ -85,9 +85,7 @@ export default async function NewsArticle({
           <PageSection key={section.fields.title} section={section} />
         ))}
       </section>
-      <section className="block mx-5 md:mx-[5%]">
-        <BlogCardsRow type="news" cards={news} />
-      </section>
+      <BlogCardsRow type="news" cards={news} />
     </main>
   );
 }
