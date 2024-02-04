@@ -44,7 +44,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
           </Title1>
         </Link>
         <Link href={`/${type}`}>
-          <Title3 className="block uppercase text-[#0076AD] underline">
+          <Title3 className="block uppercase text-[#0076AD] underline md:no-underline md:hover:underline pr-5">
             See All
           </Title3>
         </Link>
@@ -52,15 +52,13 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
       <div className="sm:grid grid-cols-1 gap-4 md:grid-cols-4">
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
-            <div>
-              <MinimalCard
-                cardContent={{
-                  title: card.blogCard.fields.title,
-                  cardPhoto: card.blogCard.fields.image,
-                  summary: card.blogCard.fields.subTitle || "",
-                }}
-              />
-            </div>
+            <MinimalCard
+              cardContent={{
+                title: card.blogCard.fields.title,
+                cardPhoto: card.blogCard.fields.image,
+                summary: card.blogCard.fields.subTitle || "",
+              }}
+            />
           </Link>
         ))}
       </div>
