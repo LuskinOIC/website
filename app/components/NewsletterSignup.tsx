@@ -49,7 +49,7 @@ export default function NewsletterSignup() {
               <input
                 type="text"
                 placeholder="Enter your email"
-                className="w-fit text-center md:text-center border border-luskin-blue rounded-[5px] pt-2 pb-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.92rem] md:placeholder:text-base"
+                className="w-fit text-left md:text-center border border-luskin-blue rounded-[5px] pt-2 pb-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.92rem] md:placeholder:text-base"
               />
               <button
                 className={desktopButtonClass}
