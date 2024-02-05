@@ -109,7 +109,6 @@ export default function Navbar() {
                   { label: "About Us", url: "/about" },
                   { label: "Leadership", url: "/leadership" },
                   { label: "Blog", url: "/blog" },
-                  { label: "Partnerships", url: "/partnerships" },
                 ]}
               />
               <Link className="block text-white text-xl" href="/ways-to-give">
