@@ -16,7 +16,8 @@ const titleImageComponentStyles = {
 
 const titleImageSummaryComponentStyles = {
   image: "place-self-center rounded-xl w-80 h-[280px] object-cover",
-  wrapperDiv: "max-w-xs md:max-w-sm flex flex-col mb-10 hover:underline",
+  wrapperDiv:
+    "mx-auto max-w-xs md:max-w-sm flex flex-col mb-10 hover:underline",
   header: "md:text-center py-4 text-xl font-bold",
   summary: "mb-4 line-clamp-4 overflow-hidden leading-tight",
 };

@@ -29,9 +29,7 @@ export default async function PatientStories({
         patient.pageSections.map((pageSection: PageSectionType) => (
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
-      <section className="flex justify-center">
-        <BlogCardsRow type="patient-stories" cards={patients} />
-      </section>
+      <BlogCardsRow type="patient-stories" cards={patients} />
     </main>
   );
 }
