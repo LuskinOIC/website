@@ -33,7 +33,7 @@ export default function Footer() {
         >
           <h1
             id="organization-header"
-            className="text-lg font-semibold tracking-wide text-center"
+            className="text-lg font-semibold tracking-wide text-left"
           >
             LuskinOIC Pediatric Orthopedic
           </h1>
