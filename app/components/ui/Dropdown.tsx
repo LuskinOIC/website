@@ -55,19 +55,20 @@ export default function Dropdown(props: DropdownProps) {
   return (
     <>
       <div className="text-left border border-solid border border-[#0076AD] relative rounded">
-        <div
+        <button
           onClick={handleInputClick}
+          onKeyDown={handleInputClick}
           className="p-1 py-4 flex items-center justify-between select-none"
         >
           <div className="pl-4 text-[#9A9A9A]">{getDisplay()}</div>
           <div className="pr-1">
             <Image alt="chevron-down" src={chevronDown} />
           </div>
-        </div>
+        </button>
         {showMenu && (
           <div className="text-black absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
             {props.options.map((option) => (
-              <div
+              <button
                 key={option.value}
                 onClick={() => {
                   onItemClick(option);
@@ -78,7 +79,7 @@ export default function Dropdown(props: DropdownProps) {
                 }`}
               >
                 {option.label.toUpperCase()}
-              </div>
+              </button>
             ))}
           </div>
         )}

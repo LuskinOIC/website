@@ -41,6 +41,7 @@ function MobileMenu({
               href={SAVE_MY_SPOT}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Urgent Care - Save My Spot (opens new tab)"
               className=" bg-luskin-purple w-full text-white text-center py-2"
             >
               URGENT CARE - SAVE MY SPOT
@@ -81,6 +82,7 @@ function MobileMenu({
             <a
               href={MYCHART_URL}
               target="_blank"
+              aria-label="MYCHART (opens new tab)"
               rel="noopener noreferrer"
               className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center py-2"
             >
