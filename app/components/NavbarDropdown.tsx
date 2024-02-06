@@ -56,7 +56,11 @@ function NavbarDropDown({
   return (
     <div className="text-white text-xl">
       <button
+        aria-label={label}
+        role="menu"
+        onKeyDown={handleFocus}
         onMouseEnter={handleFocus}
+        onClick={handleFocus}
         onMouseLeave={() => setHasNavigatedFromButton(true)}
       >
         {label}
@@ -83,6 +87,7 @@ function NavbarDropDown({
                   <Link
                     className="no-underline hover:underline font-light text-lg"
                     href={item.url}
+                    aria-label={item.label}
                   >
                     {item.label}
                   </Link>

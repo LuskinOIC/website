@@ -72,6 +72,7 @@ export default function FullWidthImageLayout({
       {section.fields.video && (
         <div className="aspect-video">
           <iframe
+            title={section.fields.title}
             src={section.fields.video}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

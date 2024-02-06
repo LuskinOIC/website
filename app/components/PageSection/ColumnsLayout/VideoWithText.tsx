@@ -17,6 +17,7 @@ export default function VideoWithText({ section }: { section: ColumnType }) {
             <div className="aspect-video">
               <iframe
                 src={section.fields.video}
+                title={`Video for ${section.fields.title}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
