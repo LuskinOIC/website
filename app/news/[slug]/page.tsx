@@ -5,6 +5,7 @@ import PageSection from "@/app/components/PageSection/PageSection";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
+import { Title1 } from "@/app/components/ui/Typography/Title";
 
 export async function generateStaticParams() {
   const newsPosts = await getNewsPosts();
@@ -51,7 +52,9 @@ export default async function NewsArticle({
   return (
     <main className="flex flex-col">
       <section className={`${styles.sectionWrapper} py-1.5 md:py-4`}>
-        <h1 className="text-2xl md:text-[40px] py-2 md:py-6">{title}</h1>
+        <Title1 className="text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-10">
+          {title}
+        </Title1>
         {newsSubTitle}
       </section>
       <Image
