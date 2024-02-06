@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import React from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 export const metadata: Metadata = {
   title:
