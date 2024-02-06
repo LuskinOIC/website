@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PhysicianBioType } from "@/app/constants/types";
 import { Title3 } from "@/app/components/ui/Typography/Title";
+import Link from "next/link";
 
 export default function PhysicianCard({
   physician,
@@ -8,16 +9,22 @@ export default function PhysicianCard({
   physician: PhysicianBioType;
 }) {
   return (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
-      <div className="flex flex-col items-center h-min px-5 py-5">
+    <Link
+      href={`/physicians/${physician.slug}`}
+      className="md:min-h-[273px] bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground shadow-sm hover:shadow-lg"
+    >
+      <div className="flex flex-row md:flex-col items-center ">
         <Image
           src={physician.portrait.fields.file.url}
           width={219}
           height={273}
           alt={physician.portrait.fields.description}
+          className="w-28 h-28 p-1.5 md:w-auto md:h-auto"
         />
-        <Title3 className="leading-[30px]">{physician.name}</Title3>
+        <Title3 className="pl-3 md:px-2 text-center leading-[30px] text-white md:text-black">
+          {physician.name}
+        </Title3>
       </div>
-    </div>
+    </Link>
   );
 }
