@@ -12,9 +12,7 @@ export default async function CorporateSponsorship() {
       {page.pageSections.map((section: PageSectionType) => (
         <PageSection key={section.fields.title} section={section} />
       ))}
-      <section className="flex justify-center">
-        <BlogCardsRow type="news" cards={news} />
-      </section>
+      <BlogCardsRow type="news" cards={news} />
     </main>
   );
 }
