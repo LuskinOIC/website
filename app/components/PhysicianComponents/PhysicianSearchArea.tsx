@@ -12,7 +12,7 @@ interface SortedPhysicians {
   paNpPhysicians: PhysicianBioType[];
 }
 
-export default function SearchAreaPhysicians({
+export default function PhysicianSearchArea({
   physicians,
 }: {
   physicians: PhysicianBioType[];
@@ -28,7 +28,7 @@ export default function SearchAreaPhysicians({
     // findAllMatches: false,
     // minMatchCharLength: 1,
     // location: 0,
-    // threshold: 0.6,
+    threshold: 0.6,
     // distance: 100,
     // useExtendedSearch: false,
     // ignoreLocation: false,
