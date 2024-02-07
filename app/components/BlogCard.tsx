@@ -11,7 +11,7 @@ const style = {
   header: "md:text-center py-4 text-xl font-bold",
   summary: "mb-4 line-clamp-4 overflow-hidden leading-tight",
 };
-export default function MinimalCard({
+export default function BlogCard({
   cardContent,
   classNames,
 }: {
