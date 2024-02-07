@@ -108,14 +108,14 @@ export default function Footer() {
               <ul id="about" className="">
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="/about" className="hover:underline">
                       Mission & Purpose
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link className="hover:underline" href="#">
+                    <Link role="button" className="hover:underline" href="/news">
                       News
                     </Link>
                   </p>
@@ -129,28 +129,28 @@ export default function Footer() {
               <ul id="patient-support" className="">
                 <li>
                   <p>
-                    <Link href={SAVE_MY_SPOT} className="hover:underline">
+                    <Link role="button" href="/patient-care/urgent-care" className="hover:underline">
                       Urgent Care
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="/specialties" className="hover:underline">
                       Specialty Treatment
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="/patient-care" className="hover:underline">
                       Billing & Insurance
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href={MYCHART_URL} className="hover:underline">
+                    <Link role="button" href={MYCHART_URL} className="hover:underline">
                       MyChart
                     </Link>
                   </p>
@@ -167,35 +167,35 @@ export default function Footer() {
               <ul id="health-professionals" className="">
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="/physicians" className="hover:underline">
                       LuskinOIC Physicians
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="/medical-professions" className="hover:underline">
                       Refer a Patient
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1fe50326-beac-4a7c-a564-f8a14f9c5bb0&ccId=19000101_000001&type=MP&lang=en_US" className="hover:underline">
                       Careers
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="#" className="hover:underline">
                       Volunteer
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="#" className="hover:underline">
                       Research
                     </Link>
                   </p>
@@ -209,21 +209,21 @@ export default function Footer() {
               <ul id="get-involved" className="">
                 <li>
                   <p>
-                    <Link href="/ways-to-give" className="hover:underline">
+                    <Link role="button" href="/ways-to-give" className="hover:underline">
                       Donate
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="#" className="hover:underline">
                       Events
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link href="#" className="hover:underline">
+                    <Link role="button" href="#" className="hover:underline">
                       Volunteer
                     </Link>
                   </p>
