@@ -29,7 +29,13 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setIsScrolled(scrollY > 220);
+      if (!isScrolled && scrollY > 220) {
+        setIsScrolled(true);
+      } else if (isScrolled && scrollY <= 300) {
+        setIsScrolled(false);
+      } else {
+        setIsScrolled(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,7 +46,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const widgetClass = isScrolled ? "-translate-y-full" : "";
+  const widgetTransformClass = isScrolled ? "transform -translate-y-full" : "transform translate-y-0";
   const transitionClass = isScrolled
     ? "transition-all duration-300 ease-out"
     : "transition-all duration-300 ease-out";
@@ -49,7 +55,7 @@ export default function Navbar() {
   const logoWidthClass = isScrolled ? "w-24" : "w-40";
 
   return (
-    <NavigationMenu className={`fixed top-0 ${transitionClass} ${navbarClass}`}>
+    <NavigationMenu className={`z-50 fixed top-0 ${transitionClass} ${navbarClass}`}>
       <div className="flex flex-row w-full items-center">
         {/* Container for Logo and Links */}
 
@@ -69,7 +75,7 @@ export default function Navbar() {
         <div className="w-full">
           <div className="basis-3/4 text-lg absolute top-0 right-0">
             <div
-              className={`flex flex-row justify-end h-fit transition-transform ease-out transform translate-y-0 ${widgetClass}`}
+              className={`flex flex-row justify-end h-fit transition-transform ease-out ${widgetTransformClass}`}
             >
               <div className="hidden md:flex bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg hover:underline">
                 <a
