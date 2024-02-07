@@ -29,13 +29,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      if (!isScrolled && scrollY > 220) {
-        setIsScrolled(true);
-      } else if (isScrolled && scrollY <= 300) {
-        setIsScrolled(false);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(scrollY > 500);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -46,7 +40,9 @@ export default function Navbar() {
     };
   }, []);
 
-  const widgetTransformClass = isScrolled ? "transform -translate-y-full" : "transform translate-y-0";
+  const widgetTransformClass = isScrolled
+    ? "transform -translate-y-full"
+    : "transform translate-y-0";
   const transitionClass = isScrolled
     ? "transition-all duration-300 ease-out"
     : "transition-all duration-300 ease-out";
@@ -55,7 +51,9 @@ export default function Navbar() {
   const logoWidthClass = isScrolled ? "w-24" : "w-40";
 
   return (
-    <NavigationMenu className={`z-50 fixed top-0 ${transitionClass} ${navbarClass}`}>
+    <NavigationMenu
+      className={`z-50 fixed top-0 ${transitionClass} ${navbarClass}`}
+    >
       <div className="flex flex-row w-full items-center">
         {/* Container for Logo and Links */}
 
