@@ -4,6 +4,7 @@ import React from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
@@ -26,11 +27,7 @@ export default function RootLayout({
         </div>
       </body>
       <GoogleAnalytics gaId="G-7HE98BYBD0" />
-      <script
-        async
-        type="text/javascript"
-        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
-      ></script>
+      <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
     </html>
   );
 }
