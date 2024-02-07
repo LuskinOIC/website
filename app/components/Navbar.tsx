@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 import Image from "next/image";
@@ -20,21 +20,48 @@ import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
 import NavbarDropdown from "@/app/components/NavbarDropdown";
 
 export default function Navbar() {
-  const [isHamburgerOpen, setIsHamburgerOpen] = React.useState(false);
-  const [selectedDropdown, setSelectedDropdown] = React.useState("");
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [selectedDropdown, setSelectedDropdown] = useState("");
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
   const resetNavigationMenu = () => setIsHamburgerOpen(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setIsScrolled(scrollY > 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const widgetTransformClass = isScrolled
+    ? "transform -translate-y-full"
+    : "transform translate-y-0";
+  const transitionClass = isScrolled
+    ? "transition-all duration-300 ease-out"
+    : "transition-all duration-300 ease-out";
+  const navbarClass = isScrolled ? "h-[102px]" : "h-[166px]";
+  const paddingClass = isScrolled ? "py-2" : "py-4";
+  const logoWidthClass = isScrolled ? "w-24" : "w-40";
 
   return (
-    <NavigationMenu className="">
+    <NavigationMenu
+      className={`z-50 fixed top-0 ${transitionClass} ${navbarClass}`}
+    >
       <div className="flex flex-row w-full items-center">
         {/* Container for Logo and Links */}
 
         {/* Logo Container*/}
-        <div className="hidden md:block w-fit py-4">
+        <div className={`hidden md:block w-fit ${paddingClass}`}>
           <Link href="/">
             <Image
-              className="ml-4"
+              className={`ml-4 ${transitionClass} ${logoWidthClass}`}
               src={"/LOIC_LOGO.png"}
               alt={"Logo"}
               width={150}
@@ -45,7 +72,9 @@ export default function Navbar() {
 
         <div className="w-full">
           <div className="basis-3/4 text-lg absolute top-0 right-0">
-            <div className="flex flex-row justify-end h-fit">
+            <div
+              className={`flex flex-row justify-end h-fit transition-transform ease-out ${widgetTransformClass}`}
+            >
               <div className="hidden md:flex bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg hover:underline">
                 <a
                   href={SAVE_MY_SPOT}
