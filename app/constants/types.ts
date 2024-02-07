@@ -139,19 +139,7 @@ export type EventType = {
   pageSections: PageSectionType;
   eventName: string;
   slug: string;
-  eventSummary: object;
-  eventDate: string;
   eventPhoto: ImageType;
-  patientAmbassador: Array<{
-    fields: MinimalCardType;
-  }>;
-  eventPageSections: PageSectionType;
-  eventDetails: string;
-  eventDetailsPhoto: ImageType;
-  eventCards: Array<{ fields: MinimalCardType }>;
-  sponsor: NestedAssetType[];
-  eventAsset: NestedAssetType[];
-  triImage: MultiImageType;
 };
 
 export type FileDetailsType = {
