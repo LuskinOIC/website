@@ -7,11 +7,11 @@ import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
 import xlogo from "@/public/XLogo.svg";
 import {
+  CAREERS_URL,
   FACEBOOK_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
   MYCHART_URL,
-  SAVE_MY_SPOT,
   TWITTER_URL,
   YOUTUBE_URL,
 } from "../constants/links";
@@ -108,14 +108,22 @@ export default function Footer() {
               <ul id="about" className="">
                 <li>
                   <p>
-                    <Link role="button" href="/about" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/about"
+                      className="hover:underline"
+                    >
                       Mission & Purpose
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" className="hover:underline" href="/news">
+                    <Link
+                      role="button"
+                      className="hover:underline"
+                      href="/news"
+                    >
                       News
                     </Link>
                   </p>
@@ -129,28 +137,44 @@ export default function Footer() {
               <ul id="patient-support" className="">
                 <li>
                   <p>
-                    <Link role="button" href="/patient-care/urgent-care" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/patient-care/urgent-care"
+                      className="hover:underline"
+                    >
                       Urgent Care
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="/specialties" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/specialties"
+                      className="hover:underline"
+                    >
                       Specialty Treatment
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="/patient-care" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/patient-care"
+                      className="hover:underline"
+                    >
                       Billing & Insurance
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href={MYCHART_URL} className="hover:underline">
+                    <Link
+                      role="button"
+                      href={MYCHART_URL}
+                      className="hover:underline"
+                    >
                       MyChart
                     </Link>
                   </p>
@@ -167,21 +191,33 @@ export default function Footer() {
               <ul id="health-professionals" className="">
                 <li>
                   <p>
-                    <Link role="button" href="/physicians" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/physicians"
+                      className="hover:underline"
+                    >
                       LuskinOIC Physicians
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="/medical-professions" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/medical-professions"
+                      className="hover:underline"
+                    >
                       Refer a Patient
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1fe50326-beac-4a7c-a564-f8a14f9c5bb0&ccId=19000101_000001&type=MP&lang=en_US" className="hover:underline">
+                    <Link
+                      role="button"
+                      href={CAREERS_URL}
+                      className="hover:underline"
+                    >
                       Careers
                     </Link>
                   </p>
@@ -209,7 +245,11 @@ export default function Footer() {
               <ul id="get-involved" className="">
                 <li>
                   <p>
-                    <Link role="button" href="/ways-to-give" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/ways-to-give"
+                      className="hover:underline"
+                    >
                       Donate
                     </Link>
                   </p>
