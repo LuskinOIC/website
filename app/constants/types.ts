@@ -105,7 +105,13 @@ export type MinimalCardType = {
   summary?: string;
 };
 
-export type CardsRowPropsType = {
+export type BioCardType = {
+  name: string;
+  portrait: NestedAssetType;
+  classNames?: string;
+};
+
+export type BioCardsRowPropsType = {
   title: string;
   cards: CardsRowType[];
 };
@@ -133,19 +139,7 @@ export type EventType = {
   pageSections: PageSectionType;
   eventName: string;
   slug: string;
-  eventSummary: object;
-  eventDate: string;
   eventPhoto: ImageType;
-  patientAmbassador: Array<{
-    fields: MinimalCardType;
-  }>;
-  eventPageSections: PageSectionType;
-  eventDetails: string;
-  eventDetailsPhoto: ImageType;
-  eventCards: Array<{ fields: MinimalCardType }>;
-  sponsor: NestedAssetType[];
-  eventAsset: NestedAssetType[];
-  triImage: MultiImageType;
 };
 
 export type FileDetailsType = {
@@ -396,7 +390,6 @@ export type OptionType = {
 export type MemberType = {
   name: string;
   portrait: ImageType;
-  overview: Document;
   topSection: ColumnType;
   slug: string;
 };

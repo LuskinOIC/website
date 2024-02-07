@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { BlogCardsRowType } from "@/app/constants/types";
-import MinimalCard from "@/app/components/MinimalCard";
+import BlogCard from "@/app/components/BlogCard";
 import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
 
 type BlogCardsRowPropsType = {
@@ -52,7 +52,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
       <div className="sm:grid grid-cols-1 gap-4 md:grid-cols-4">
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
-            <MinimalCard
+            <BlogCard
               cardContent={{
                 title: card.blogCard.fields.title,
                 cardPhoto: card.blogCard.fields.image,
