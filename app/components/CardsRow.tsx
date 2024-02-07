@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CardsRowPropsType, CardsRowType } from "@/app/constants/types";
-import MinimalCard from "@/app/components/MinimalCard";
 import { Title3 } from "@/app/components/ui/Typography/Title";
+import BioCard from "./BioCard";
 
 function getCardHref(card: CardsRowType) {
   switch (card.sys.contentType.sys.id) {
@@ -18,6 +18,7 @@ function getCardHref(card: CardsRowType) {
 
 const CardsRow = ({ title, cards }: CardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
+
   return (
     <section className="block px-5 md:px-32">
       <Title3 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
@@ -29,13 +30,10 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
             let cardHref = getCardHref(card);
             return (
               <Link key={i} href={cardHref} className="w-full md:w-1/5">
-                <MinimalCard
-                  key={card.sys.id}
-                  cardContent={{
-                    title: card.fields.name,
-                    cardPhoto: card.fields.portrait,
-                  }}
-                  classNames="md:w-full"
+                <BioCard
+                  name={card.fields.name}
+                  portrait={card.fields.portrait}
+                  classNames="h-full"
                 />
               </Link>
             );

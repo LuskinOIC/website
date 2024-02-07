@@ -105,6 +105,12 @@ export type MinimalCardType = {
   summary?: string;
 };
 
+export type BioCardType = {
+  name: string;
+  portrait: NestedAssetType;
+  classNames?: string;
+};
+
 export type CardsRowPropsType = {
   title: string;
   cards: CardsRowType[];
@@ -396,7 +402,6 @@ export type OptionType = {
 export type MemberType = {
   name: string;
   portrait: ImageType;
-  overview: Document;
   topSection: ColumnType;
   slug: string;
 };
