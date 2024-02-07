@@ -20,6 +20,7 @@ export default function PhysicianSearchArea({
   const [searchString, setSearchString] = useState("");
   const [searchResults, setSearchResults] = useState(physicians);
 
+  /* https://www.fusejs.io/api/options.html */
   const fuseOptions = {
     // isCaseSensitive: false,
     // includeScore: false,
@@ -28,10 +29,10 @@ export default function PhysicianSearchArea({
     // findAllMatches: false,
     // minMatchCharLength: 1,
     // location: 0,
-    threshold: 0.6,
+    threshold: 0.35,
     // distance: 100,
     // useExtendedSearch: false,
-    // ignoreLocation: false,
+    ignoreLocation: true,
     // ignoreFieldNorm: false,
     // fieldNormWeight: 1,
     keys: [
