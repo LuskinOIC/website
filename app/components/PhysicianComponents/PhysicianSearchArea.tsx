@@ -58,8 +58,13 @@ export default function PhysicianSearchArea({
         value={searchString}
         onChange={(evt) => {
           setSearchString(evt.target.value);
+          // If the searchString becomes "", reset the results
+          if (evt.target.value === "") {
+            setSearchResults(physicians);
+          }
         }}
         onSearch={() => {
+          console.log("onSearch()"); // TODO: Remove.
           if (searchString === "") {
             setSearchResults(physicians);
           } else {
