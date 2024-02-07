@@ -4,7 +4,6 @@ import React from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
