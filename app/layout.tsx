@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className="font-arial block w-full bg-slate-200">
         <div className="w-full m-auto page-container bg-white">
           <Navbar />
-          {children}
+          <main className="mt-36">{children}</main>
           <Footer />
         </div>
       </body>
