@@ -14,14 +14,16 @@ const styles = {
 export default function BioCard({ name, portrait, classNames }: BioCardType) {
   return (
     <div className={cn(styles.container, styles.wrapperDiv, classNames)}>
-      <Image
-        alt={`portrait-${name}`}
-        src={portrait.fields.file.url}
-        width={219}
-        height={273}
-        className={styles.image}
-      />
-      <Title3 className={styles.header}>{name}</Title3>
+      {portrait && (
+        <Image
+          alt={`portrait-${name}`}
+          src={portrait.fields.file.url}
+          width={219}
+          height={273}
+          className={styles.image}
+        />
+      )}
+      {name && <Title3 className={styles.header}>{name}</Title3>}
     </div>
   );
 }
