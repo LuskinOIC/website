@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import ozzie from "@/public/ozzie-wheelchair.png";
@@ -16,6 +16,13 @@ export default function NewsletterSignup() {
     styles.buttonText,
     "bg-luskin-blue ml-[0.6rem] md:ml-4",
   );
+
+  useEffect(() => {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    window.fnames[0] = "EMAIL";
+    window.ftypes[0] = "email";
+  }, []);
 
   return (
     <div className="w-full flex flex-col items-center p-6 pb-10 md:p-10">
@@ -55,12 +62,15 @@ export default function NewsletterSignup() {
                 name="EMAIL"
                 id="mce-EMAIL"
                 required
+                aria-required="true"
+                aria-label="Email Address"
                 placeholder="Enter your email address"
                 className="w-fit text-left md:text-center border border-luskin-blue rounded-[5px] pt-2 pb-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.92rem] md:placeholder:text-base"
               />
               <button
                 type="submit"
                 name="subscribe"
+                aria-label="Subscribe Button"
                 id="mc-embedded-subscribe"
                 className={desktopButtonClass}
                 value="Subscribe"
