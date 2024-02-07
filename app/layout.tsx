@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Head from 'next/head'
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
@@ -19,11 +19,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        {/* <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css"> */}
-        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-        {/* <script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script> */}
-      </Head>
       <body className="font-arial block w-full bg-slate-200">
         <div className="w-full m-auto page-container bg-white">
           <Navbar />
@@ -32,6 +27,10 @@ export default function RootLayout({
         </div>
       </body>
       <GoogleAnalytics gaId="G-7HE98BYBD0" />
+      <Script
+        type="text/javascript"
+        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+      ></Script>
     </html>
   );
 }
