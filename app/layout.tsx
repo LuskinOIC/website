@@ -26,6 +26,11 @@ export default function RootLayout({
         </div>
       </body>
       <GoogleAnalytics gaId="G-7HE98BYBD0" />
+      <script
+        async
+        type="text/javascript"
+        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+      ></script>
     </html>
   );
 }
