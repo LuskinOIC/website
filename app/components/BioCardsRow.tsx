@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { CardsRowPropsType, CardsRowType } from "@/app/constants/types";
+import { BioCardsRowPropsType, CardsRowType } from "@/app/constants/types";
 import { Title3 } from "@/app/components/ui/Typography/Title";
-import BioCard from "./BioCard";
+import BioCard from "@/app/components/BioCard";
 
 function getCardHref(card: CardsRowType) {
   switch (card.sys.contentType.sys.id) {
@@ -16,7 +16,7 @@ function getCardHref(card: CardsRowType) {
   }
 }
 
-const CardsRow = ({ title, cards }: CardsRowPropsType) => {
+const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
 
   return (
@@ -43,4 +43,4 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
   );
 };
 
-export default CardsRow;
+export default BioCardsRow;

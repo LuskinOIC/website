@@ -111,7 +111,7 @@ export type BioCardType = {
   classNames?: string;
 };
 
-export type CardsRowPropsType = {
+export type BioCardsRowPropsType = {
   title: string;
   cards: CardsRowType[];
 };

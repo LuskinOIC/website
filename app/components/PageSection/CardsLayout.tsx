@@ -1,11 +1,11 @@
 //Types
 import { PageSectionType } from "@/app/constants/types";
-import QuadCard from "../QuadComponent";
+import QuadCard from "@/app/components/QuadComponent";
 
 //Components
-import InfoCardLayout from "./InfoCardLayout";
-import QuadTextCard from "../QuadTextCard";
-import CardsRow from "../CardsRow";
+import InfoCardLayout from "@/app/components/PageSection/InfoCardLayout";
+import QuadTextCard from "@/app/components/QuadTextCard";
+import BioCardsRow from "@/app/components/BioCardsRow";
 
 export default function ColumnLayout({
   section,
@@ -33,7 +33,7 @@ export default function ColumnLayout({
   }
   if (bioCards && bioCards.length > 0) {
     return (
-      <CardsRow
+      <BioCardsRow
         title={bioCards[0].fields.title}
         cards={bioCards[0].fields.bioCards}
       />

@@ -4,17 +4,7 @@ import { MinimalCardType } from "@/app/constants/types";
 import renderRichTextToReactComponent from "../utils/rich-text";
 import { cn } from "@/lib/utils";
 
-const titleImageComponentStyles = {
-  image:
-    "h-28 w-28 rounded-xl object-cover p-1.5 md:mx-auto md:h-5/6 md:w-10/12 md:rounded-sm md:px-4 md:pt-6",
-  wrapperDiv:
-    "flex-reverse mb-3 flex h-28 w-full rounded-lg bg-[#0076AD] md:mb-8 md:h-full md:w-1/5 md:flex-col md:rounded-lg md:border md:bg-white hover:underline",
-  header:
-    "my-auto px-2 text-3xl font-semibold tracking-wider text-white md:pb-6 md:pt-4 md:text-center md:text-lg md:text-black",
-  summary: "",
-};
-
-const titleImageSummaryComponentStyles = {
+const style = {
   image: "place-self-center rounded-xl w-80 h-[280px] object-cover",
   wrapperDiv:
     "mx-auto max-w-xs md:max-w-sm flex flex-col mb-10 hover:underline",
@@ -41,21 +31,17 @@ export default function MinimalCard({
           cardContent.summary as unknown as Document,
         );
 
-  const selectedStyles = summary
-    ? titleImageSummaryComponentStyles
-    : titleImageComponentStyles;
-
   return (
-    <div className={cn(selectedStyles?.wrapperDiv, classNames)}>
+    <div className={cn(style.wrapperDiv, classNames)}>
       <Image
         alt={title}
         src={cardPhotoSource}
         width={cardPhotoHeight}
         height={cardPhotoWidth}
-        className={selectedStyles.image}
+        className={style.image}
       />
-      <h3 className={selectedStyles.header}>{title}</h3>
-      {summary ? <div className={selectedStyles.summary}>{summary}</div> : null}
+      <h3 className={style.header}>{title}</h3>
+      {summary ? <div className={style.summary}>{summary}</div> : null}
     </div>
   );
 }
