@@ -24,12 +24,12 @@ const CardsRow = ({ title, cards }: CardsRowPropsType) => {
       <Title3 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
         {title}
       </Title3>
-      <div className="flex flex-wrap md:flex-row-4 md:gap-10">
+      <div className="grid grid-rows md:grid-cols-4 gap-y-2 md:gap-x-2">
         {hasCards &&
           cards.map((card: CardsRowType, i: number) => {
             let cardHref = getCardHref(card);
             return (
-              <Link key={i} href={cardHref} className="w-full md:w-1/5">
+              <Link key={i} href={cardHref}>
                 <BioCard
                   name={card.fields.name}
                   portrait={card.fields.portrait}
