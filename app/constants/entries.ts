@@ -16,4 +16,5 @@ export const PAGE_TYPES = {
   EVENT: "Event",
   SPECIALTY: "Specialty",
   STYLE_GUIDE: "Style Guide Page",
+  ESPANOL: "Espanol Page",
 };
