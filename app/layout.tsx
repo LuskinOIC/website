@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import Navbar from "@/app/components/Navbar";
+import Navbar from "@/app/components/NabarLayout/Navbar";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";

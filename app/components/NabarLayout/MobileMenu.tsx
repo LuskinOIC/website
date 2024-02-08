@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { NavigationMenuList } from "@/components/ui/navigation-menu";
-import { MobileDropdowns } from "./NavbarConstants";
-import { MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
+import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
+import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
 interface MobileMenuProps {
   closeMenu: () => void;

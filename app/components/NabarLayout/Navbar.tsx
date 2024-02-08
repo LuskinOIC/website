@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 import Image from "next/image";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "@/app/components/NabarLayout/MobileMenu";
 // import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
@@ -16,8 +16,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faMagnifyingGlass,} from "@fortawesome/free-solid-svg-icons";
 
 import Button from "@/app/components/ui/Button";
-import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
-import NavbarDropdown from "@/app/components/NavbarDropdown";
+import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../../constants/links";
+import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
 
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
