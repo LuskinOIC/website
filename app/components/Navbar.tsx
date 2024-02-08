@@ -96,7 +96,9 @@ export default function Navbar() {
                       MyChart
                     </a>
                   </li>
-                  <li className="mr-4">Espanol</li>
+                  <li className="mr-4 hover:underline">
+                    <a href="/espanol">Español</a>
+                  </li>
                 </ul>
               </div>
             </div>
