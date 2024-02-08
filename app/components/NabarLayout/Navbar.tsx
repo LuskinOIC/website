@@ -46,7 +46,7 @@ export default function Navbar() {
   const transitionClass = isScrolled
     ? "transition-all duration-300 ease-out"
     : "transition-all duration-300 ease-out";
-  const navbarClass = isScrolled ? "h-[102px]" : "h-[166px]";
+  const navbarClass = isScrolled ? "md:h-[102px]" : "md:h-[166px]";
   const paddingClass = isScrolled ? "py-2" : "py-4";
   const logoWidthClass = isScrolled ? "w-24" : "w-40";
 
@@ -175,7 +175,7 @@ export default function Navbar() {
         </div>
 
         {/* To be implemented later*/}
-        <NavigationMenuItem className="list-none">
+        <NavigationMenuItem className="block md:hidden list-none">
           {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
           {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
           {/* </button> */}

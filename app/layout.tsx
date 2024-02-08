@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className="font-arial block w-full bg-slate-200">
         <div className="w-full m-auto page-container bg-white">
           <Navbar />
-          <div className="h-[166px]"></div>
+          <div className="h-[95px] md:h-[166px]"></div>
           <main className="">{children}</main>
           <Footer />
         </div>

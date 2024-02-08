@@ -33,71 +33,69 @@ function MobileMenu({
   };
 
   return (
-    <div>
-      <NavigationMenuList className="md:hidden">
-        {isHamburgerOpen && (
-          <ul className="text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0">
-            <a
-              href={SAVE_MY_SPOT}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Urgent Care - Save My Spot (opens new tab)"
-              className=" bg-luskin-purple w-full text-white text-center py-2"
+    <NavigationMenuList className="block md:hidden bg-[#0076AD]">
+      {isHamburgerOpen && (
+        <ul className="text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0">
+          <a
+            href={SAVE_MY_SPOT}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Urgent Care - Save My Spot (opens new tab)"
+            className=" bg-luskin-purple w-full text-white text-center py-2"
+          >
+            URGENT CARE - SAVE MY SPOT
+          </a>
+          {MobileDropdowns.map((item, index) => (
+            <li
+              key={index}
+              className={`${item.cssClasses} w-full text-center py-2`}
             >
-              URGENT CARE - SAVE MY SPOT
-            </a>
-            {MobileDropdowns.map((item, index) => (
-              <li
-                key={index}
-                className={`${item.cssClasses} w-full text-center py-2`}
-              >
-                <button onClick={() => toggleMobileMenu(index)}>
-                  {item.label}
-                </button>
+              <button onClick={() => toggleMobileMenu(index)}>
+                {item.label}
+              </button>
 
-                {mobileMenuOpenStates[index] && (
-                  <ul className="bg-gray-100 text-luskin-blue w-full text-sm flex flex-col py-2">
-                    {item.subItems.map((subItem, subIndex) => (
-                      <li
-                        key={subIndex}
-                        className={`${subItem} w-full text-center py-2`}
-                      >
-                        {subItem.type === "link" ? (
-                          subItem.url && (
-                            <Link href={subItem.url} onClick={closeMenu}>
-                              {subItem.label}
-                            </Link>
-                          )
-                        ) : (
-                          <button onClick={() => toggleMobileMenu(index)}>
+              {mobileMenuOpenStates[index] && (
+                <ul className="bg-gray-100 text-luskin-blue w-full text-sm flex flex-col py-2">
+                  {item.subItems.map((subItem, subIndex) => (
+                    <li
+                      key={subIndex}
+                      className={`${subItem} w-full text-center py-2`}
+                    >
+                      {subItem.type === "link" ? (
+                        subItem.url && (
+                          <Link href={subItem.url} onClick={closeMenu}>
                             {subItem.label}
-                          </button>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-            <a
-              href={MYCHART_URL}
-              target="_blank"
-              aria-label="MYCHART (opens new tab)"
-              rel="noopener noreferrer"
-              className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center py-2"
-            >
-              MYCHART
-            </a>
-            <button
-              onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-              className="bg-gray-100 w-full text-luskin-blue text-center py-2"
-            >
-              CLOSE
-            </button>
-          </ul>
-        )}
-      </NavigationMenuList>
-    </div>
+                          </Link>
+                        )
+                      ) : (
+                        <button onClick={() => toggleMobileMenu(index)}>
+                          {subItem.label}
+                        </button>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+          <a
+            href={MYCHART_URL}
+            target="_blank"
+            aria-label="MYCHART (opens new tab)"
+            rel="noopener noreferrer"
+            className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center py-2"
+          >
+            MYCHART
+          </a>
+          <button
+            onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
+            className="bg-gray-100 w-full text-luskin-blue text-center py-2"
+          >
+            CLOSE
+          </button>
+        </ul>
+      )}
+    </NavigationMenuList>
   );
 }
 
