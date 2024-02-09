@@ -1,4 +1,4 @@
-import { DONATE_URL, SAVE_MY_SPOT } from "@/app/constants/links";
+import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
 export const dropdowns = [
   {
@@ -8,6 +8,7 @@ export const dropdowns = [
     subItems: [
       { label: "Patient Care", url: "/patient-care" },
       { label: "Urgent Care", url: SAVE_MY_SPOT },
+      { label: "MyChart", url: MYCHART_URL },
       { label: "Specialties", url: "/specialties" },
     ],
   },
@@ -46,20 +47,33 @@ export const MobileDropdowns = [
     subItems: [
       { label: "PATIENT CARE", url: "/patient-care", type: "link" },
       { label: "URGENT CARE", url: SAVE_MY_SPOT, type: "link" },
+      { label: "MYCHART", url: MYCHART_URL, type: "link" },
       { label: "SPECIALTIES", url: "/specialties", type: "link" },
-      // { label: "PLAN YOUR VISIT", url: "/plan-your-visit", type: "link" },
-      // { label: "BILLING & INSURANCE", url: "/billing", type: "link" },
-      // {
-      //   label: "PATIENT RIGHTS & RESPONSIBILITIES",
-      //   url: "/patient-rights",
-      //   type: "link",
-      // },
-      // {
-      //   label: "APPOINTMENT PREPARATION",
-      //   url: "/appointment-preparation",
-      //   type: "link",
-      // },
-      // { label: "PATIENT FORMS", url: "/patient-forms", type: "link" },
+      {
+        label: "PLAN YOUR VISIT",
+        url: "patient-care/?tab=PlanYourVisit#PlanYourVisit",
+        type: "link",
+      },
+      {
+        label: "BILLING & INSURANCE",
+        url: "patient-care/?tab=BillingInsurance#BillingInsurance",
+        type: "link",
+      },
+      {
+        label: "PATIENT RIGHTS & RESPONSIBILITIES",
+        url: "patient-care/?tab=PatientRightsResponsibilities#PatientRightsResponsibilities",
+        type: "link",
+      },
+      {
+        label: "APPOINTMENT PREPARATION",
+        url: "patient-care/?tab=AppointmentPreparation#AppointmentPreparation",
+        type: "link",
+      },
+      {
+        label: "PATIENT FORMS",
+        url: "/patient-care/?tab=PatientForms#PatientForms",
+        type: "link",
+      },
     ],
   },
   {
@@ -79,7 +93,7 @@ export const MobileDropdowns = [
     type: "button",
     cssClasses: "",
     subItems: [
-      // { label: "ABOUT", url: "/about-luskin", type: "link" },
+      { label: "ABOUT", url: "/about", type: "link" },
       { label: "NEWS/BLOG", url: "/blog", type: "link" },
     ],
     stateKey: "about",

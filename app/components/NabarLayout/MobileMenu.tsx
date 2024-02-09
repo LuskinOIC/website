@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { NavigationMenuList } from "@/components/ui/navigation-menu";
 import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
-import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
+import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
 interface MobileMenuProps {
   closeMenu: () => void;
@@ -83,9 +83,18 @@ function MobileMenu({
             target="_blank"
             aria-label="MYCHART (opens new tab)"
             rel="noopener noreferrer"
-            className="bg-luskin-yellowPrimary w-full text-black font-semibold text-center py-2"
+            className="w-full text-white font-semibold text-center py-2"
           >
             MYCHART
+          </a>
+          <a
+            href={DONATE_URL}
+            target="_blank"
+            aria-label="DONATE (opens new tab)"
+            rel="noopener noreferrer"
+            className="w-full bg-amber-200 text-black font-semibold text-center py-2"
+          >
+            DONATE
           </a>
           <button
             onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click

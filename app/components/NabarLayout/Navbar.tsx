@@ -117,6 +117,10 @@ export default function Navbar() {
                     label: "Urgent Care",
                     url: "/patient-care/specialties/urgent-care",
                   },
+                  {
+                    label: "MyChart",
+                    url: MYCHART_URL,
+                  },
                   { label: "Specialties", url: "/specialties" },
                 ]}
               />
@@ -145,7 +149,10 @@ export default function Navbar() {
                   { label: "Blog", url: "/blog" },
                 ]}
               />
-              <Link className="block text-white text-xl" href="/ways-to-give">
+              <Link
+                className="block text-white text-xl hover:underline"
+                href="/ways-to-give"
+              >
                 Ways to Give
               </Link>
               <Button
