@@ -12,6 +12,7 @@ import {
   INSTAGRAM_URL,
   LINKEDIN_URL,
   MYCHART_URL,
+  SAVE_MY_SPOT,
   TWITTER_URL,
   YOUTUBE_URL,
 } from "../constants/links";
@@ -139,7 +140,7 @@ export default function Footer() {
                   <p>
                     <Link
                       role="button"
-                      href="/patient-care/urgent-care"
+                      href={SAVE_MY_SPOT}
                       className="hover:underline"
                     >
                       Urgent Care
@@ -204,7 +205,7 @@ export default function Footer() {
                   <p>
                     <Link
                       role="button"
-                      href="/medical-professions"
+                      href="/medical-professionals"
                       className="hover:underline"
                     >
                       Refer a Patient
@@ -224,14 +225,22 @@ export default function Footer() {
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="#" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/ways-to-give"
+                      className="hover:underline"
+                    >
                       Volunteer
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="#" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/news/orthopaedic-hospital-research-center-ucla-westwood/"
+                      className="hover:underline"
+                    >
                       Research
                     </Link>
                   </p>
@@ -256,14 +265,22 @@ export default function Footer() {
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="#" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/events"
+                      className="hover:underline"
+                    >
                       Events
                     </Link>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <Link role="button" href="#" className="hover:underline">
+                    <Link
+                      role="button"
+                      href="/ways-to-give"
+                      className="hover:underline"
+                    >
                       Volunteer
                     </Link>
                   </p>
