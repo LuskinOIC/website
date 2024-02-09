@@ -63,7 +63,7 @@ const Button = ({
     {
       bluePrimary: "bg-[#0076AD]",
       purple: "bg-[#825AA4]",
-      yellowPrimary: "bg-amber-200 text-neutral-900",
+      yellowPrimary: "bg-amber-200 text-neutral-900 hover:bg-amber-400",
       text: "p-0 underline md:px-0",
       none: "",
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",

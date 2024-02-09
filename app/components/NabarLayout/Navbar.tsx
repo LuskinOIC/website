@@ -75,7 +75,7 @@ export default function Navbar() {
             <div
               className={`flex flex-row justify-end h-fit transition-transform ease-out ${widgetTransformClass}`}
             >
-              <div className="hidden md:flex bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg hover:underline">
+              <div className="hidden md:flex bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline hover:text-slate-200">
                 <a
                   href={SAVE_MY_SPOT}
                   target="_blank"
@@ -87,7 +87,7 @@ export default function Navbar() {
               <div>
                 <ul className="hidden md:flex font-bold bg-luskin-brightBlue text-black py-1 px-3">
                   <li className="mr-4">(213) 742 - 1000</li>
-                  <li className="mr-4 hover:underline">
+                  <li className="mr-4 underline hover:text-slate-200">
                     <a
                       href={MYCHART_URL}
                       target="_blank"
@@ -96,7 +96,7 @@ export default function Navbar() {
                       MyChart
                     </a>
                   </li>
-                  <li className="mr-4 hover:underline">
+                  <li className="mr-4 underline hover:text-slate-200">
                     <a href="/espanol">Español</a>
                   </li>
                 </ul>
@@ -105,7 +105,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:block w-full">
-            <div className="flex justify-evenly items-center w-full">
+            <div className="flex justify-evenly items-center w-full underline hover:text-slate-200">
               <NavbarDropdown
                 id="patientCare"
                 label="Patient Care"
@@ -154,7 +154,7 @@ export default function Navbar() {
                 ]}
               />
               <Link
-                className="block text-white text-xl hover:underline"
+                className="block text-white text-xl underline hover:text-slate-200"
                 href="/ways-to-give"
               >
                 Ways to Give
