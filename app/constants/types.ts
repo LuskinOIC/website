@@ -108,6 +108,7 @@ export type MinimalCardType = {
 export type BioCardType = {
   name: string;
   portrait: NestedAssetType;
+  linked: boolean;
   classNames?: string;
 };
 
@@ -121,6 +122,8 @@ export type CardsRowType = {
     name: string;
     portrait: NestedAssetType;
     slug: string;
+    topSection?: ColumnType;
+    topSummary?: ColumnType;
   };
   sys: {
     contentType: any;
