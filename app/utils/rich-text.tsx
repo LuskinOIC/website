@@ -36,7 +36,7 @@ export default function renderRichTextToReactComponent(
         );
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p className={cn(classNames?.paragraph, "py-[0.16rem] md:py-1")}>
+        <p className={cn(classNames?.paragraph, "py-[0.3rem] md:py-1")}>
           {children}
         </p>
       ),

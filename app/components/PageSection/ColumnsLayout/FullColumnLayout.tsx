@@ -30,7 +30,7 @@ export default function FullWidthImageLayout({
   );
   return (
     <section
-      className={`grid gap-2 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-5`}
+      className={`grid gap-3 md:gap-5 ${bgColor} ${textColor} w-full items-center px-5 md:px-32 py-5`}
     >
       {section.fields.image && (
         <div className="justify-self-center">
