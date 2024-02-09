@@ -2,7 +2,7 @@ import PageSection from "@/app/components/PageSection/PageSection";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import { getNewsPosts, getPageByType } from "@/app/utils/contentful";
 import { PAGE_TYPES } from "@/app/constants/entries";
-import BlogCardsRow from "../components/BlogCardsRow";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export default async function CorporatePartnership() {
   const page = await getPageByType(PAGE_TYPES.CORPORATE_PARTNERSHIP);

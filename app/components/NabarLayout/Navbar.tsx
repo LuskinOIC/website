@@ -16,7 +16,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faMagnifyingGlass,} from "@fortawesome/free-solid-svg-icons";
 
 import Button from "@/app/components/ui/Button";
-import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../../constants/links";
+import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
 
 export default function Navbar() {
