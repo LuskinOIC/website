@@ -28,20 +28,24 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
       <div className="flex flex-col md:flex-row gap-5">
         <div className="basis-1/2">
           {descriptionContent}
-          <Button
-            className="my-3 mr-2"
-            href={`/patient-care/specialties/${slug}`}
-            text="PATIENTS"
-            variant="bluePrimary"
-            isExternal={false}
-          />
-          <Button
-            className="my-3"
-            href={`/medical-professionals/specialties/${slug}`}
-            text="PHYSICIANS"
-            variant="physicians"
-            isExternal={false}
-          />
+          {specialty.fields.patientPage && (
+            <Button
+              className="my-3 mr-2"
+              href={`/patient-care/specialties/${slug}`}
+              text="PATIENTS"
+              variant="bluePrimary"
+              isExternal={false}
+            />
+          )}
+          {specialty.fields.medicalProfessionalPage && (
+            <Button
+              className="my-3"
+              href={`/medical-professionals/specialties/${slug}`}
+              text="PHYSICIANS"
+              variant="physicians"
+              isExternal={false}
+            />
+          )}
         </div>
         <div className="basis-1/2">
           <SpecialtyHoursLayout locationContent={location} />
