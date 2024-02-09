@@ -9,7 +9,7 @@ export const PAGE_TYPES = {
   PATIENT_CARE: "Patient Care Page",
   ABOUT: "About Page",
   MEDICAL_PROFESSIONALS: "Medical Professionals Page",
-  CORPORATE_SPONSORSHIP: "Corporate Sponsorship Page",
+  CORPORATE_PARTNERSHIP: "Corporate Partnership Page",
   LEADERSHIP: "Leadership Page",
   BLOG: "Blog Page",
   WAYS_TO_GIVE: "Ways to Give Page",

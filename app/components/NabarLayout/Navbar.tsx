@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 import Image from "next/image";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "@/app/components/NabarLayout/MobileMenu";
 // import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
@@ -16,8 +16,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faMagnifyingGlass,} from "@fortawesome/free-solid-svg-icons";
 
 import Button from "@/app/components/ui/Button";
-import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "../constants/links";
-import NavbarDropdown from "@/app/components/NavbarDropdown";
+import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
+import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
 
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
@@ -46,13 +46,13 @@ export default function Navbar() {
   const transitionClass = isScrolled
     ? "transition-all duration-300 ease-out"
     : "transition-all duration-300 ease-out";
-  const navbarClass = isScrolled ? "h-[102px]" : "h-[166px]";
+  const navbarClass = isScrolled ? "md:h-[102px]" : "md:h-[166px]";
   const paddingClass = isScrolled ? "py-2" : "py-4";
   const logoWidthClass = isScrolled ? "w-24" : "w-40";
 
   return (
     <NavigationMenu
-      className={`z-50 fixed top-0 ${transitionClass} ${navbarClass}`}
+      className={`z-50 fixed max-w-[1600px] top-0 ${transitionClass} ${navbarClass}`}
     >
       <div className="flex flex-row w-full items-center">
         {/* Container for Logo and Links */}
@@ -117,6 +117,10 @@ export default function Navbar() {
                     label: "Urgent Care",
                     url: "/patient-care/specialties/urgent-care",
                   },
+                  {
+                    label: "MyChart",
+                    url: MYCHART_URL,
+                  },
                   { label: "Specialties", url: "/specialties" },
                 ]}
               />
@@ -142,10 +146,17 @@ export default function Navbar() {
                 subItems={[
                   { label: "About Us", url: "/about" },
                   { label: "Leadership", url: "/leadership" },
+                  {
+                    label: "Corporate Partnership",
+                    url: "/corporate-partnership",
+                  },
                   { label: "Blog", url: "/blog" },
                 ]}
               />
-              <Link className="block text-white text-xl" href="/ways-to-give">
+              <Link
+                className="block text-white text-xl hover:underline"
+                href="/ways-to-give"
+              >
                 Ways to Give
               </Link>
               <Button
@@ -175,7 +186,7 @@ export default function Navbar() {
         </div>
 
         {/* To be implemented later*/}
-        <NavigationMenuItem className="list-none">
+        <NavigationMenuItem className="block md:hidden list-none">
           {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
           {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
           {/* </button> */}
