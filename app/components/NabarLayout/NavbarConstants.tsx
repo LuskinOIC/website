@@ -106,11 +106,11 @@ export const MobileDropdowns = [
         url: DONATE_URL,
         type: "link",
       },
-      // {
-      //   label: "CORPORATE PARTNERSHIPS",
-      //   url: "/corporate-partnerships",
-      //   type: "link",
-      // },
+      {
+        label: "CORPORATE PARTNERSHIP",
+        url: "/corporate-partnership",
+        type: "link",
+      },
       { label: "EVENTS", url: "/events", type: "link" },
       // { label: "VOLUNTEER", url: "/volunteer", type: "link" },
     ],

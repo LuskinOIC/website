@@ -146,6 +146,10 @@ export default function Navbar() {
                 subItems={[
                   { label: "About Us", url: "/about" },
                   { label: "Leadership", url: "/leadership" },
+                  {
+                    label: "Corporate Partnership",
+                    url: "/corporate-partnership",
+                  },
                   { label: "Blog", url: "/blog" },
                 ]}
               />

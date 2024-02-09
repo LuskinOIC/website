@@ -4,7 +4,6 @@ import { Title3 } from "@/app/components/ui/Typography/Title";
 import BioCard from "@/app/components/BioCard";
 
 function getCardHref(card: CardsRowType) {
-  // console.log(card.fields.name, card.sys.contentType.sys.id)
   switch (card.sys.contentType.sys.id) {
     case "patientBio":
       return `/patient-stories/${card.fields.slug}`;
