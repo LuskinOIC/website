@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <NavigationMenu
-      className={`z-50 fixed top-0 ${transitionClass} ${navbarClass}`}
+      className={`z-50 fixed max-w-[1600px] top-0 ${transitionClass} ${navbarClass}`}
     >
       <div className="flex flex-row w-full items-center">
         {/* Container for Logo and Links */}
