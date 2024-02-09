@@ -108,7 +108,7 @@ export type MinimalCardType = {
 export type BioCardType = {
   name: string;
   portrait: NestedAssetType;
-  linked: boolean;
+  linked?: boolean;
   classNames?: string;
 };
 
