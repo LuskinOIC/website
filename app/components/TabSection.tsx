@@ -285,7 +285,7 @@ function TabsTextOrCardContent({
             key={`Card.${index}`}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
-            <CardHeader className="p-0 pb-5">
+            <CardHeader className="space-y-0 md:space-y-1.5 p-0 md:pb-5">
               <Title2 className="font-semibold">{card.fields.title}</Title2>
             </CardHeader>
             <CardContent className="p-0">
