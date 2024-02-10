@@ -279,13 +279,13 @@ function TabsTextOrCardContent({
   if (type == "Double Column" && cardContent) {
     // Render two columns of cards
     return (
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:pt-7 pb-7">
+      <div className="grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-2 md:pt-7 pb-7">
         {cardContent.map((card, index) => (
           <Card
             key={`Card.${index}`}
             className="col-span-1 shadow-none border-none pb-3 pr-10"
           >
-            <CardHeader className="p-0 pb-5">
+            <CardHeader className="space-y-0 md:space-y-1.5 p-0 md:pb-5">
               <Title2 className="font-semibold">{card.fields.title}</Title2>
             </CardHeader>
             <CardContent className="p-0">
@@ -310,7 +310,7 @@ function TabsTextOrCardContent({
   } else if (type == "Single Column" && richTextContent) {
     // Render one column of rich text
     return (
-      <div className="md:pt-7 pb-7">
+      <div className="md:pt-7 md:pb-7">
         {renderRichTextToReactComponent(richTextContent)}
       </div>
     );

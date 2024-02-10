@@ -13,9 +13,6 @@ export default function SponsorshipsColumnLayout({
   section: ColumnType;
 }) {
   const orderClass = section.fields.reverseOrder ? "md:order-1" : "";
-  const textPadding = section.fields.reverseOrder
-    ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
-    : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
   const verticalPadding = "py-5";
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
@@ -64,7 +61,7 @@ export default function SponsorshipsColumnLayout({
           >
             <Slider slides={sliderSlides as any} />
           </div>
-          <div className={`basis-1/2 px-2 ${textPadding}`}>
+          <div className={`basis-1/2 px-5`}>
             <SectionContent section={section} />
           </div>
         </div>

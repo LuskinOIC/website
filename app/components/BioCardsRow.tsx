@@ -20,7 +20,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
 
   return (
-    <section className="block px-5 md:px-32">
+    <section className="block px-5 md:px-32 py-2 md:py-4">
       <Title3 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
         {title}
       </Title3>
