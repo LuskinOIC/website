@@ -120,6 +120,7 @@ export default function Navbar() {
                   {
                     label: "MyChart",
                     url: MYCHART_URL,
+                    isExternal: true,
                   },
                   { label: "Specialties", url: "/specialties" },
                 ]}
