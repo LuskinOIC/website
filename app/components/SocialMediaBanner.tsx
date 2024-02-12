@@ -1,16 +1,16 @@
 import React from "react";
-// Components
-import { Text } from "./ui/Typography/Text";
-import { Title1 } from "./ui/Typography/Title";
-// Icons + Images
-import FB from "../../public/fb.svg";
 import Image from "next/image";
-import LinkedIN from "../../public/libanner.svg";
-import Ozzie from "../../public/ozzie-crutches.png";
-import OzzieMobile from "../../public/ozzie-peeking-in.png";
-import TwitterX from "../../public/TwitterX.svg";
-import Yelp from "../../public/yelpbanner.svg";
-import Youtube from "../../public/youtubebanner.svg";
+// Components
+import { Text } from "@/app/components/ui/Typography/Text";
+import { Title1 } from "@/app/components/ui/Typography/Title";
+// Icons + Images
+import FB from "@/public/fb.svg";
+import LinkedIN from "@/public/libanner.svg";
+import Ozzie from "@/public/ozzie-crutches.png";
+import OzzieMobile from "@/public/ozzie-peeking-in.png";
+import TwitterX from "@/public/TwitterX.svg";
+import Yelp from "@/public/yelpbanner.svg";
+import Youtube from "@/public/youtubebanner.svg";
 // Links
 import {
   FACEBOOK_URL,
@@ -18,7 +18,15 @@ import {
   TWITTER_URL,
   YELP_URL,
   YOUTUBE_URL,
-} from "../constants/links";
+} from "@/app/constants/links";
+
+const socialMediaLinks = [
+  { url: FACEBOOK_URL, src: FB, alt: "Facebook Logo" },
+  { url: LINKEDIN_URL, src: LinkedIN, alt: "LinkedIn Logo" },
+  { url: TWITTER_URL, src: TwitterX, alt: "Twitter Logo" },
+  { url: YOUTUBE_URL, src: Youtube, alt: "Youtube Logo" },
+  { url: YELP_URL, src: Yelp, alt: "Yelp Logo" },
+];
 
 export default function SocialMediaBanner() {
   return (
@@ -78,21 +86,11 @@ function SocialMediaIcons() {
   return (
     <div className="row-span-1 pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
       <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 scale-[85%]">
-        <a href={FACEBOOK_URL}>
-          <Image src={FB} alt="Facebook Logo" />
-        </a>
-        <a href={LINKEDIN_URL}>
-          <Image src={LinkedIN} alt="LinkedIn Logo" />
-        </a>
-        <a href={TWITTER_URL}>
-          <Image src={TwitterX} alt="Twitter Logo" />
-        </a>
-        <a href={YOUTUBE_URL}>
-          <Image src={Youtube} alt="Youtube Logo" />
-        </a>
-        <a href={YELP_URL}>
-          <Image src={Yelp} alt="Yelp Logo" />
-        </a>
+        {socialMediaLinks.map(({ url, src, alt }) => (
+          <a key={url} href={url} target="blank">
+            <Image src={src} alt={alt} />
+          </a>
+        ))}
       </div>
     </div>
   );

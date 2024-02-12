@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import external_icon_white from "@/public/external-link-icon-white.svg";
 
 interface NavbarDropDownProps {
   id: string;
@@ -84,14 +86,31 @@ function NavbarDropDown({
             </div>
             <div className="flex-col bg-luskin-blue border border-luskin-brightBlue divide-y divide-luskin-brightBlue rounded-md items-start">
               {subItems.map((item) => (
-                <div key={item.url} className="py-2 px-10">
-                  <Link
-                    className="no-underline hover:underline font-light text-lg"
-                    href={item.url}
-                    aria-label={item.label}
-                  >
-                    {item.label}
-                  </Link>
+                <div key={item.url} className="py-2 px-10 flex items-center">
+                  {item.isExternal ? (
+                    <a
+                      className="no-underline hover:underline font-light text-lg flex items-center"
+                      href={item.url}
+                      aria-label={item.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.label}
+                      <Image
+                        src={external_icon_white}
+                        alt="External Link"
+                        width={16}
+                        height={16}
+                        className="text-white px-0.5"
+                      />
+                    </a>
+                  ) : (
+                    <Link href={item.url} aria-label={item.label}>
+                      <div className="no-underline hover:underline font-light text-lg">
+                        {item.label}
+                      </div>
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>

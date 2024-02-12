@@ -13,6 +13,9 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+import external_icon_white from "@/public/external-link-icon-white.svg";
+import external_icon_black from "@/public/external-link-icon-black.svg";
 // import { faMagnifyingGlass,} from "@fortawesome/free-solid-svg-icons";
 
 import Button from "@/app/components/ui/Button";
@@ -71,19 +74,25 @@ export default function Navbar() {
         </div>
 
         <div className="w-full">
-          <div className="basis-3/4 text-lg absolute top-0 right-0">
+          <div className="text-lg absolute top-0 right-0">
             <div
               className={`flex flex-row justify-end h-fit transition-transform ease-out ${widgetTransformClass}`}
             >
-              <div className="hidden md:flex bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200">
-                <a
-                  href={SAVE_MY_SPOT}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Urgent Care - Save My Spot
-                </a>
-              </div>
+              <a
+                href={SAVE_MY_SPOT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex flex-row bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200"
+              >
+                Urgent Care - Save My Spot
+                <Image
+                  src={external_icon_white}
+                  alt="External Link"
+                  width={16}
+                  height={16}
+                  className="text-white px-0.5"
+                />
+              </a>
               <div>
                 <ul className="hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3">
                   <li className="mr-4">(213) 742 - 1000</li>
@@ -92,8 +101,16 @@ export default function Navbar() {
                       href={MYCHART_URL}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex flex-row"
                     >
                       MyChart
+                      <Image
+                        src={external_icon_black}
+                        alt="External Link"
+                        width={16}
+                        height={16}
+                        className="text-white px-0.5"
+                      />
                     </a>
                   </li>
                   <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
@@ -120,6 +137,7 @@ export default function Navbar() {
                   {
                     label: "MyChart",
                     url: MYCHART_URL,
+                    isExternal: true,
                   },
                   { label: "Specialties", url: "/specialties" },
                 ]}

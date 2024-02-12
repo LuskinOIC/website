@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { NavigationMenuList } from "@/components/ui/navigation-menu";
 import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
+import external_icon_white from "@/public/external-link-icon-white.svg";
 
 interface MobileMenuProps {
   closeMenu: () => void;
@@ -41,9 +43,16 @@ function MobileMenu({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Urgent Care - Save My Spot (opens new tab)"
-            className=" bg-luskin-purple w-full text-white text-center py-2"
+            className="flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2"
           >
-            URGENT CARE - SAVE MY SPOT
+            URGENT CARE - SAVE MY SPOT MYCHART
+            <Image
+              src={external_icon_white}
+              alt="External Link"
+              width={16}
+              height={16}
+              className="text-white px-0.5"
+            />
           </a>
           {MobileDropdowns.map((item, index) => (
             <li
@@ -86,9 +95,16 @@ function MobileMenu({
             target="_blank"
             aria-label="MYCHART (opens new tab)"
             rel="noopener noreferrer"
-            className="w-full text-white font-semibold text-center py-2"
+            className="flex flex-row justify-center w-full text-white font-semibold text-center py-2"
           >
             MYCHART
+            <Image
+              src={external_icon_white}
+              alt="External Link"
+              width={16}
+              height={16}
+              className="text-white px-0.5"
+            />
           </a>
           <a
             href={DONATE_URL}
