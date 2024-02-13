@@ -97,3 +97,5 @@
   text-decoration: underline;
   color: #0076AD;
 }
+
+.rich-text-wrapper > p:empty { display:none; }
