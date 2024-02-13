@@ -258,7 +258,7 @@ export type PageSectionType = {
     locations?: LocationType[];
     cardsLayout: CardType[];
     imagesLayout: ImagesLayoutType;
-    eventBanner: EventBannerType[];
+    eventBanner: EventBannerType;
   };
 };
 
