@@ -258,6 +258,7 @@ export type PageSectionType = {
     locations?: LocationType[];
     cardsLayout: CardType[];
     imagesLayout: ImagesLayoutType;
+    eventBanner: EventBannerType[];
   };
 };
 
@@ -431,4 +432,14 @@ export type TriCardContent = {
   titleSize: string;
   bold: boolean;
   richContent: Document;
+};
+
+export type EventBannerType = {
+  fields: {
+    title: string;
+    content: Document;
+    image: ImageType;
+    colorVariant: string;
+    buttonLink: string;
+  };
 };

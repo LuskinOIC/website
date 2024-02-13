@@ -7,6 +7,7 @@ import CardLayoutSection from "./CardsLayout";
 import ImagesLayout from "./ImagesLayout";
 import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "../GridLayoutSection";
+import EventBanner from "../EventBanner";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -35,6 +36,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
           specialty={(section.fields.specialty as SpecialtyType[])[0]}
         />
       );
+    case "Event Banner":
+      return <EventBanner section={section} />;
     default:
       return null;
   }
