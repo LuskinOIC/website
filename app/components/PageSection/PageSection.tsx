@@ -2,12 +2,12 @@
 import UrgentCareCard from "@/app/specialties/SpecialtyComponents/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
-import ColumnLayout from "./ColumnsLayout/ColumnsLayout";
-import CardLayoutSection from "./CardsLayout";
+import ColumnLayout from "@/app/components/PageSection/ColumnsLayout/ColumnsLayout";
+import CardLayoutSection from "@/app/components/PageSection/CardsLayout";
 import ImagesLayout from "./ImagesLayout";
 import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "../GridLayoutSection";
-import EventBanner from "../EventBanner";
+import EventBanner from "@/app/components/EventBanner";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
