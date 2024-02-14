@@ -12,7 +12,7 @@ interface SortedPhysicians {
   paNpPhysicians: PhysicianBioType[];
 }
 
-export default function SearchAreaPhysicians({
+export default function PhysicianSearchArea({
   physicians,
 }: {
   physicians: PhysicianBioType[];
@@ -20,6 +20,7 @@ export default function SearchAreaPhysicians({
   const [searchString, setSearchString] = useState("");
   const [searchResults, setSearchResults] = useState(physicians);
 
+  /* https://www.fusejs.io/api/options.html */
   const fuseOptions = {
     // isCaseSensitive: false,
     // includeScore: false,
@@ -28,10 +29,10 @@ export default function SearchAreaPhysicians({
     // findAllMatches: false,
     // minMatchCharLength: 1,
     // location: 0,
-    // threshold: 0.6,
+    threshold: 0.32,
     // distance: 100,
     // useExtendedSearch: false,
-    // ignoreLocation: false,
+    ignoreLocation: true,
     // ignoreFieldNorm: false,
     // fieldNormWeight: 1,
     keys: [
@@ -57,8 +58,13 @@ export default function SearchAreaPhysicians({
         value={searchString}
         onChange={(evt) => {
           setSearchString(evt.target.value);
+          // If the searchString becomes "", reset the results
+          if (evt.target.value === "") {
+            setSearchResults(physicians);
+          }
         }}
         onSearch={() => {
+          console.log("onSearch()"); // TODO: Remove.
           if (searchString === "") {
             setSearchResults(physicians);
           } else {
