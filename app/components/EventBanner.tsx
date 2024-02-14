@@ -15,14 +15,12 @@ const styles = {
 const eventVariantStyles = {
   blue: "bg-[#0076AD] text-white",
   purple: "bg-[#825AA4] text-white",
-  "white with red outline":
-    "bg-[#E7F0F3] border-2 md:border-[6px] border-[#DD5061]  text-black",
+  gray: "bg-[#E7F0F3] border-2 md:border-[6px] border-[#DD5061]  text-black",
 };
 
 export default function EventBanner({ section }: { section: PageSectionType }) {
   const eventBanner = section.fields.eventBanner;
   const eventBannerImage = eventBanner.fields.image;
-  // console.log(eventBannerImage.fields.file.details.image)
   const imageSize = eventBannerImage.fields.file.details.image;
   const variant = eventBanner.fields.colorVariant;
   const bgColorClass =
