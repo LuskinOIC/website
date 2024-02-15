@@ -2,32 +2,32 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
 import Image from "next/image";
+
 import MobileMenu from "@/app/components/NabarLayout/MobileMenu";
-// import { Icons } from "@/components/icons"
+import NavigationItem from "@/app/components/NabarLayout/NavigationItem";
 import {
   NavigationMenu,
   NavigationMenuItem,
 } from "@/components/ui/navigation-menu";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavigationBarType } from "@/app/constants/types";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import external_icon_white from "@/public/external-link-icon-white.svg";
-import external_icon_black from "@/public/external-link-icon-black.svg";
-// import { faMagnifyingGlass,} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import externalIconWhite from "@/public/external-link-icon-white.svg";
+import externalIconBlack from "@/public/external-link-icon-black.svg";
+import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
-import Button from "@/app/components/ui/Button";
-import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
-import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
-
-export default function Navbar() {
+export default function Navbar({
+  navigationBar,
+}: {
+  navigationBar: NavigationBarType;
+}) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [selectedDropdown, setSelectedDropdown] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
   const resetNavigationMenu = () => setIsHamburgerOpen(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,15 +57,14 @@ export default function Navbar() {
     <NavigationMenu
       className={`z-50 fixed max-w-[1600px] top-0 ${transitionClass} ${navbarClass}`}
     >
+      {/* DESKTOP CONTAINER */}
       <div className="flex flex-row w-full items-center">
-        {/* Container for Logo and Links */}
-
-        {/* Logo Container*/}
+        {/* LOGO CONTAINER */}
         <div className={`hidden md:block w-fit ${paddingClass}`}>
           <Link href="/">
             <Image
               className={`ml-4 ${transitionClass} ${logoWidthClass}`}
-              src={"/LOIC_LOGO.png"}
+              src={navigationBar.logo.fields.file.url}
               alt={"Logo"}
               width={150}
               height={250}
@@ -73,6 +72,7 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* SECONDARY MENU CONTAINER */}
         <div className="w-full">
           <div className="text-lg absolute top-0 right-0">
             <div
@@ -86,7 +86,7 @@ export default function Navbar() {
               >
                 Urgent Care - Save My Spot
                 <Image
-                  src={external_icon_white}
+                  src={externalIconWhite}
                   alt="External Link"
                   width={16}
                   height={16}
@@ -105,7 +105,7 @@ export default function Navbar() {
                     >
                       MyChart
                       <Image
-                        src={external_icon_black}
+                        src={externalIconBlack}
                         alt="External Link"
                         width={16}
                         height={16}
@@ -123,66 +123,16 @@ export default function Navbar() {
 
           <div className="hidden md:block w-full">
             <div className="flex justify-evenly items-center w-full underline-offset-4 hover:text-slate-200">
-              <NavbarDropdown
-                id="patientCare"
-                label="Patient Care"
-                onChange={setSelectedDropdown}
-                isFocused={selectedDropdown === "patientCare"}
-                subItems={[
-                  { label: "Patient Care", url: "/patient-care" },
-                  {
-                    label: "Urgent Care",
-                    url: "/patient-care/specialties/urgent-care",
-                  },
-                  {
-                    label: "MyChart",
-                    url: MYCHART_URL,
-                    isExternal: true,
-                  },
-                  { label: "Specialties", url: "/specialties" },
-                ]}
-              />
-              <NavbarDropdown
-                id="medicalProfessionals"
-                label="Medical Professionals"
-                isFocused={selectedDropdown === "medicalProfessionals"}
-                onChange={setSelectedDropdown}
-                subItems={[
-                  {
-                    label: "Medical Professionals",
-                    url: "/medical-professionals",
-                  },
-                  { label: "Physicians", url: "/physicians" },
-                  { label: "Specialties", url: "/specialties" },
-                ]}
-              />
-              <NavbarDropdown
-                id="about"
-                label="About"
-                onChange={setSelectedDropdown}
-                isFocused={selectedDropdown === "about"}
-                subItems={[
-                  { label: "About Us", url: "/about" },
-                  { label: "Leadership", url: "/leadership" },
-                  {
-                    label: "Corporate Partnership",
-                    url: "/corporate-partnership",
-                  },
-                  { label: "Blog", url: "/blog" },
-                ]}
-              />
-              <Link
-                className="block text-white text-xl underline underline-offset-4 hover:text-slate-200"
-                href="/ways-to-give"
-              >
-                Ways to Give
-              </Link>
-              <Button
-                href={DONATE_URL}
-                text={"Donate"}
-                variant={"yellowPrimary"}
-                className="lg:h-[53px] no-underline "
-              />
+              {navigationBar.navigationItems.map((item) => {
+                return (
+                  <NavigationItem
+                    key={item.sys.id}
+                    item={item}
+                    selectedDropdown={selectedDropdown}
+                    setSelectedDropdown={setSelectedDropdown}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
@@ -190,7 +140,7 @@ export default function Navbar() {
 
       {/* MOBILE CONTAINER */}
       <div className="flex flex-row w-full justify-between items-center md:hidden">
-        {/* Logo Container*/}
+        {/* LOGO CONTAINER */}
         <div className="block md:hidden py-2">
           <Link href="/">
             <Image
@@ -203,7 +153,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* To be implemented later*/}
+        {/* To be implemented later */}
         <NavigationMenuItem className="block md:hidden list-none">
           {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
           {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}

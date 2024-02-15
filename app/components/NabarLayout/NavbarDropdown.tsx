@@ -86,16 +86,19 @@ function NavbarDropDown({
             </div>
             <div className="flex-col bg-luskin-blue border border-luskin-brightBlue divide-y divide-luskin-brightBlue rounded-md items-start">
               {subItems.map((item) => (
-                <div key={item.url} className="py-2 px-10 flex items-center">
-                  {item.isExternal ? (
+                <div
+                  key={item.fields.url}
+                  className="py-2 px-10 flex items-center"
+                >
+                  {item.fields.isExternal ? (
                     <a
                       className="no-underline hover:underline font-light text-lg flex items-center"
-                      href={item.url}
-                      aria-label={item.label}
+                      href={item.fields.url}
+                      aria-label={item.fields.text}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {item.label}
+                      {item.fields.text}
                       <Image
                         src={external_icon_white}
                         alt="External Link"
@@ -105,9 +108,9 @@ function NavbarDropDown({
                       />
                     </a>
                   ) : (
-                    <Link href={item.url} aria-label={item.label}>
+                    <Link href={item.fields.url} aria-label={item.fields.text}>
                       <div className="no-underline hover:underline font-light text-lg">
-                        {item.label}
+                        {item.fields.text}
                       </div>
                     </Link>
                   )}

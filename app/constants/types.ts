@@ -273,7 +273,14 @@ export type TextType = {
 };
 
 export type ButtonType = {
-  sys: any;
+  sys: {
+    id: string;
+    contentType: {
+      sys: {
+        id: string;
+      };
+    };
+  };
   fields: {
     externalLink?: boolean;
     type: ButtonVariant;
@@ -352,6 +359,45 @@ export type SocialMediaKey =
 export type SpecialtyTypeProps = {
   name: string;
   fields: SpecialtyType;
+};
+
+export type NavigationLinkType = {
+  fields: {
+    text: string;
+    url: string;
+    isExternal: boolean;
+  };
+  sys: {
+    id: string;
+    contentType: {
+      sys: {
+        id: string;
+      };
+    };
+  };
+};
+
+export type DropdownType = {
+  fields: {
+    text: string;
+    navigationLinks: NavigationLink[];
+  };
+  sys: {
+    id: string;
+    contentType: {
+      sys: {
+        id: string;
+      };
+    };
+  };
+};
+
+export type NavigationItemType = DropdownType | NavigationLinkType | ButtonType;
+
+export type NavigationBarType = {
+  logo: ImageType;
+  dropdowns: DropdownType[];
+  navigationItems: NavigationItemType[];
 };
 
 export type SpecialtyType = {

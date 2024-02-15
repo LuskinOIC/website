@@ -2,11 +2,12 @@ import { createClient } from "contentful";
 import {
   EventType,
   MemberType,
+  NavigationBarType,
+  NewsPostType,
   PageType,
   PatientType,
   PhysicianBioType,
   SpecialtyType,
-  NewsPostType,
 } from "@/app/constants/types";
 
 // Create the Contentful Client
@@ -19,7 +20,7 @@ const client = createClient({
 
 export async function getPageByType(
   pageType: string,
-  include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4,
+  include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4
 ) {
   const entry = await client.getEntries({
     content_type: "page",
@@ -141,7 +142,7 @@ export async function getLeadershipBioBySlug(slug: string) {
 
 /* PATIENT BIOS */
 export async function getPatientStories(
-  numberOfEntries: number | "all" = "all",
+  numberOfEntries: number | "all" = "all"
 ) {
   let query = {
     content_type: "patientBio",
@@ -189,4 +190,14 @@ export async function getNewsPostBySlug(slug: string) {
   });
 
   return entry.items[0] as unknown as NewsPostType;
+}
+
+export async function getNavigationBar(): Promise<NavigationBarType> {
+  const entry = await client.getEntries({
+    content_type: "navigationBar",
+    include: 2,
+    locale: "en-US",
+  });
+
+  return entry.items[0].fields as unknown as NavigationBarType;
 }
