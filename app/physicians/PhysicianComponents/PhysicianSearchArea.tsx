@@ -4,6 +4,7 @@ import { useState } from "react";
 import Fuse from "fuse.js";
 // TYPES
 import { PhysicianBioType } from "@/app/constants/types";
+// LOCAL COMPONENTS
 import SearchBar from "@/app/components/ui/SearchBar";
 import PhysiciansGridLayout from "@/app/physicians/PhysicianComponents/PhysiciansGridLayoutSection";
 
