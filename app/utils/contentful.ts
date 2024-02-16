@@ -236,3 +236,14 @@ export async function getConditionTerms() {
 
   return entries.items.map((entry) => entry.fields);
 }
+
+export async function getConditionBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "condition",
+    "fields.slug": slug,
+    include: 4,
+    locale: "en-US",
+  });
+
+  return entry.items[0] as unknown as any;
+}
