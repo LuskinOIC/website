@@ -20,7 +20,7 @@ const client = createClient({
 
 export async function getPageByType(
   pageType: string,
-  include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4
+  include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4,
 ) {
   const entry = await client.getEntries({
     content_type: "page",
@@ -142,7 +142,7 @@ export async function getLeadershipBioBySlug(slug: string) {
 
 /* PATIENT BIOS */
 export async function getPatientStories(
-  numberOfEntries: number | "all" = "all"
+  numberOfEntries: number | "all" = "all",
 ) {
   let query = {
     content_type: "patientBio",
