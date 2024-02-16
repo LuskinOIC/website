@@ -222,3 +222,17 @@ export async function getNavigationBar(): Promise<NavigationBarType> {
 
   return entry.items[0].fields as NavigationBarType;
 }
+
+/* CONDITIONS */
+export async function getConditionTerms() {
+  let query = {
+    content_type: "condition",
+    order: "fields.term",
+    locale: "en-US",
+    include: 5,
+  };
+
+  const entries = await client.getEntries(query);
+
+  return entries.items.map((entry) => entry.fields);
+}

@@ -12,6 +12,7 @@ import NewsletterBanner from "@/app/components/NewsletterBanner";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
+import ConditionsIndexLayout from "@/app/conditions/ConditionsIndexLayout";
 
 export default function PageSection({ section }: { section: PageSectionType }) {
   if (!section) return null;
@@ -41,6 +42,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       return <EventBanner section={section} />;
     case "Newsletter Banner":
       return <NewsletterBanner />;
+    case "Conditions":
+      return <ConditionsIndexLayout />;
     default:
       return null;
   }
