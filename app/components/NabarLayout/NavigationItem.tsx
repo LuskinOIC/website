@@ -11,8 +11,10 @@ function NavigationItem({
 }: {
   item: NavigationItemType;
   selectedDropdown: string;
+  /* eslint-disable no-unused-vars */
   setSelectedDropdown: (id: string) => void;
-}): JSX.Element | null {
+  /* eslint-enable no-unused-vars */
+}) {
   if (item.sys.contentType.sys.id === "navigationLink") {
     return (
       <Link
