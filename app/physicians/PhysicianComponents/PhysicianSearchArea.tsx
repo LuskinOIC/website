@@ -65,7 +65,6 @@ export default function PhysicianSearchArea({
           }
         }}
         onSearch={() => {
-          console.log("onSearch()"); // TODO: Remove.
           if (searchString === "") {
             setSearchResults(physicians);
           } else {
