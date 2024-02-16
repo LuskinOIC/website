@@ -380,7 +380,7 @@ export type NavigationLinkType = {
 export type DropdownType = {
   fields: {
     text: string;
-    navigationLinks: NavigationLink[];
+    navigationLinks: NavigationLinkType[];
   };
   sys: {
     id: string;
