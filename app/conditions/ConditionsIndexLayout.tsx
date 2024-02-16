@@ -1,9 +1,9 @@
 import { getConditionTerms } from "@/app/utils/contentful";
-import { PageSectionType, SpecialtyType } from "../constants/types";
-// import SearchBar from "@/app/components/ui/SearchBar";
-import { Title3 } from "../components/ui/Typography/Title";
-import RelatedSpecialtiesComponent from "./RelatedSpecialties";
+import { PageSectionType, SpecialtyType } from "@/app/constants/types";
+import ConditionDetails from "@/app/conditions/ConditionDetails";
+import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
 import Button from "@/app/components/ui/Button";
+// import SearchBar from "@/app/components/ui/SearchBar";
 
 export type ConditionsType = {
   slug: string;
@@ -27,18 +27,14 @@ export default async function ConditionsIndexLayout() {
           </button>
         ))}
       </div>
-      <div className="grid grid-col">
+      <div className="grid grid-col gap-5">
         {conditions.map((condition) => (
           <div
             key={condition.slug}
+            id={condition.term}
             className="grid grid-row-3 border rounded px-[27px] py-[30px]"
           >
-            <Title3 className="text-[#0076AD] md:leading-0 py-0">
-              {" "}
-              {condition.term}{" "}
-            </Title3>
-            <p> {condition.definition} </p>
-
+            <ConditionDetails condition={condition} />
             <div className="flex flex-rows">
               {condition.relatedSpecialties && (
                 <RelatedSpecialtiesComponent
@@ -61,13 +57,6 @@ export default async function ConditionsIndexLayout() {
 //Main letter header (eg: A, B)
 //Filter by first letter
 //Place in main letter section
-//Get information on term
-//ID for anchoring the page to that term
-//display name
-//display definition
-//display specialties
-//IF there is a 'learn more' option, there is a learn more button
-//Each term needs an ID
 
 // import React, { useRef } from 'react';
 // function App() {

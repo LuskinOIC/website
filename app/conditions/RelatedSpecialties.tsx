@@ -14,7 +14,7 @@ const RelatedSpecialtiesComponent = ({ relatedSpecialties }: any) => {
         return (
           <Link
             key={specialty.fields.name}
-            href={`patient-care/specialties/${specialty.fields.slug}`}
+            href={`/patient-care/specialties/${specialty.fields.slug}`}
             passHref
             className={` px-4`}
           >
