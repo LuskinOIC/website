@@ -16,18 +16,6 @@ export type AssetType = {
   };
 };
 
-export type GridSectionType = {
-  sys: {
-    id: string;
-  };
-  fields: {
-    title: string;
-    content: {
-      content: Array<{ content: Array<{ value: string }> }>;
-    };
-  };
-};
-
 export type ButtonProps = {
   href: string;
   text: string;
@@ -75,6 +63,18 @@ export type CarouselSlideType = {
   };
 };
 
+export type GridSectionType = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    content: {
+      content: Array<{ content: Array<{ value: string }> }>;
+    };
+  };
+};
+
 export type PatientAssetDetails = {
   size: number;
   image: {
@@ -82,6 +82,7 @@ export type PatientAssetDetails = {
     height: number;
   };
 };
+
 export type NestedAssetType = {
   sys: {
     id: string;
@@ -190,23 +191,6 @@ export type MultiImageType = {
     }>;
   };
 };
-
-// export type CarouselImageType = {
-//   fields: {
-//     file: FileDetailsType;
-//     type: string;
-//     title: string;
-//     images: Array<{
-//       sys?: {
-//         id: string;
-//       };
-//       fields: {
-//         title: string;
-//         file: FileDetailsType;
-//       };
-//     }>;
-//   };
-// };
 
 export type PageType = {
   metaData: string;
