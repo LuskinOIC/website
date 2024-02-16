@@ -377,7 +377,7 @@ export type NavigationLinkType = {
   };
 };
 
-export type DropdownType = {
+export type NavigationDropdownType = {
   fields: {
     text: string;
     navigationLinks: NavigationLinkType[];
@@ -392,11 +392,14 @@ export type DropdownType = {
   };
 };
 
-export type NavigationItemType = DropdownType | NavigationLinkType | ButtonType;
+export type NavigationItemType =
+  | NavigationDropdownType
+  | NavigationLinkType
+  | ButtonType;
 
 export type NavigationBarType = {
   logo: ImageType;
-  dropdowns: DropdownType[];
+  dropdowns: NavigationDropdownType[];
   navigationItems: NavigationItemType[];
 };
 
