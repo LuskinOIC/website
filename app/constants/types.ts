@@ -16,18 +16,6 @@ export type AssetType = {
   };
 };
 
-export type GridSectionType = {
-  sys: {
-    id: string;
-  };
-  fields: {
-    title: string;
-    content: {
-      content: Array<{ content: Array<{ value: string }> }>;
-    };
-  };
-};
-
 export type ButtonProps = {
   href: string;
   text: string;
@@ -75,6 +63,18 @@ export type CarouselSlideType = {
   };
 };
 
+export type GridSectionType = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    content: {
+      content: Array<{ content: Array<{ value: string }> }>;
+    };
+  };
+};
+
 export type PatientAssetDetails = {
   size: number;
   image: {
@@ -82,6 +82,7 @@ export type PatientAssetDetails = {
     height: number;
   };
 };
+
 export type NestedAssetType = {
   sys: {
     id: string;
@@ -191,23 +192,6 @@ export type MultiImageType = {
   };
 };
 
-// export type CarouselImageType = {
-//   fields: {
-//     file: FileDetailsType;
-//     type: string;
-//     title: string;
-//     images: Array<{
-//       sys?: {
-//         id: string;
-//       };
-//       fields: {
-//         title: string;
-//         file: FileDetailsType;
-//       };
-//     }>;
-//   };
-// };
-
 export type PageType = {
   metaData: string;
   pageType: string;
@@ -273,7 +257,14 @@ export type TextType = {
 };
 
 export type ButtonType = {
-  sys: any;
+  sys: {
+    id: string;
+    contentType: {
+      sys: {
+        id: string;
+      };
+    };
+  };
   fields: {
     externalLink?: boolean;
     type: ButtonVariant;
@@ -352,6 +343,48 @@ export type SocialMediaKey =
 export type SpecialtyTypeProps = {
   name: string;
   fields: SpecialtyType;
+};
+
+export type NavigationLinkType = {
+  fields: {
+    text: string;
+    url: string;
+    isExternal: boolean;
+  };
+  sys: {
+    id: string;
+    contentType: {
+      sys: {
+        id: string;
+      };
+    };
+  };
+};
+
+export type NavigationDropdownType = {
+  fields: {
+    text: string;
+    navigationLinks: NavigationLinkType[];
+  };
+  sys: {
+    id: string;
+    contentType: {
+      sys: {
+        id: string;
+      };
+    };
+  };
+};
+
+export type NavigationItemType =
+  | NavigationDropdownType
+  | NavigationLinkType
+  | ButtonType;
+
+export type NavigationBarType = {
+  logo: ImageType;
+  dropdowns: NavigationDropdownType[];
+  navigationItems: NavigationItemType[];
 };
 
 export type SpecialtyType = {
