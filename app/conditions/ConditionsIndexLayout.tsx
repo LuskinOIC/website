@@ -17,7 +17,7 @@ export default async function ConditionsIndexLayout() {
   const conditions = (await getConditionTerms()) as unknown as ConditionsType[];
 
   return (
-    <main className="flex flex-cols gap-5">
+    <main className="flex flex-cols gap-6 w-5/6 mx-auto">
       {/* <SearchBar /> */}
       <div className="">
         {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
@@ -27,20 +27,23 @@ export default async function ConditionsIndexLayout() {
           </button>
         ))}
       </div>
-      <div className="grid grid-col gap-5">
+      <div className="grid grid-col gap-5 w-[95%]">
         {conditions.map((condition) => (
           <div
             key={condition.slug}
             id={condition.term}
-            className="grid grid-row-3 border rounded px-[27px] py-[30px]"
+            className="grid grid-cols-5 border rounded px-[27px] py-[30px]"
           >
-            <ConditionDetails condition={condition} />
-            <div className="flex flex-rows">
+            <div className="col-span-4 flex flex-col gap-y-3 px-2">
+              <ConditionDetails condition={condition} />
               {condition.relatedSpecialties && (
                 <RelatedSpecialtiesComponent
                   relatedSpecialties={condition.relatedSpecialties}
                 />
               )}
+            </div>
+
+            <div className="col-span-1 self-end">
               <Button
                 text="Learn More"
                 href={`/conditions/${condition.slug}/learn-more`}

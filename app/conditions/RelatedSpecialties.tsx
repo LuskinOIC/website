@@ -9,7 +9,8 @@ const RelatedSpecialtiesComponent = ({ relatedSpecialties }: any) => {
   // console.log("background Color", colors)
 
   return (
-    <div>
+    <div className="flex flex-row pt-6">
+      <p>Related Specialties:</p>
       {relatedSpecialties.map((specialty: SpecialtyType) => {
         return (
           <Link
