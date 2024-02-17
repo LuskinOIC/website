@@ -58,6 +58,17 @@ export async function getEventBySlug(slug: string) {
   return entry.items[0].fields as unknown as EventType;
 }
 
+export async function getPageBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "page",
+    "fields.slug": slug,
+    locale: "en-US",
+    include: 10,
+  });
+
+  return entry.items[0].fields as unknown as PageType;
+}
+
 /* SPECIALTIES */
 
 export async function getSpecialties(): Promise<SpecialtyType[]> {
@@ -192,6 +203,15 @@ export async function getNewsPostBySlug(slug: string) {
   return entry.items[0] as unknown as NewsPostType;
 }
 
+export async function getPages(): Promise<PageType[]> {
+  const entries = await client.getEntries({
+    content_type: "page",
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields as unknown as PageType);
+}
+
 export async function getNavigationBar(): Promise<NavigationBarType> {
   const entry = await client.getEntries({
     content_type: "navigationBar",
@@ -199,5 +219,5 @@ export async function getNavigationBar(): Promise<NavigationBarType> {
     locale: "en-US",
   });
 
-  return entry.items[0].fields as unknown as NavigationBarType;
+  return entry.items[0].fields as NavigationBarType;
 }
