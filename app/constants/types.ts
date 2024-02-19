@@ -110,6 +110,7 @@ export type BioCardType = {
   name: string;
   portrait: NestedAssetType;
   classNames?: string;
+  leadershipRole: string;
 };
 
 export type BioCardsRowPropsType = {
@@ -119,6 +120,7 @@ export type BioCardsRowPropsType = {
 
 export type CardsRowType = {
   fields: {
+    leadershipRole: string;
     name: string;
     portrait: NestedAssetType;
     slug: string;
