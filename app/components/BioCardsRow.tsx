@@ -24,7 +24,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
       <Title2 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
         {title}
       </Title2>
-      <div className="grid grid-rows md:grid-cols-4 gap-y-3 md:gap-x-3">
+      <div className="grid grid-rows md:grid-cols-3 gap-y-3 md:gap-x-20 md:gap-y-10">
         {hasCards &&
           cards.map((card: CardsRowType, i: number) => {
             let cardHref = getCardHref(card);
@@ -36,7 +36,6 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
                   leadershipRole={
                     card.fields.leadershipRole ? card.fields.leadershipRole : ""
                   }
-                  classNames="h-full"
                 />
               </Link>
             );
