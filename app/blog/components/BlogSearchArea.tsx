@@ -40,7 +40,6 @@ export default function BlogSearchArea({
           }
         }}
         onSearch={() => {
-          console.log("onSearch()"); // TODO: Remove.
           if (searchString === "") {
             setSearchResults(defaultResults);
           } else {
