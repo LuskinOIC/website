@@ -37,7 +37,6 @@ export default async function Blog() {
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
       <BlogSearchArea
-        page={page}
         news={news}
         events={events}
         patientStories={patientStories}
