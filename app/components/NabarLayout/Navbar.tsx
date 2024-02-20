@@ -122,7 +122,7 @@ export default function Navbar({
           </div>
 
           <div className="hidden md:block w-full">
-            <div className="flex justify-evenly items-center w-full underline-offset-4 hover:text-slate-200">
+            <div className="flex justify-evenly items-center w-full hover:text-slate-200">
               {navigationBar.navigationItems.map((item) => {
                 return (
                   <NavigationItem

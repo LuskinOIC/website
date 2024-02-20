@@ -25,7 +25,7 @@ function NavigationItem({
     return (
       <Link
         href={navigationLink.fields.url}
-        className="block text-white text-xl underline underline-offset-4 hover:text-slate-200"
+        className="block text-white text-xl hover:text-slate-200 hover:underline hover:underline-offset-4"
       >
         {navigationLink.fields.text}
       </Link>

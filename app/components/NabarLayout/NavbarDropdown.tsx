@@ -64,7 +64,7 @@ function NavbarDropDown({
         onMouseEnter={handleFocus}
         onClick={handleFocus}
         onMouseLeave={() => setHasNavigatedFromButton(true)}
-        className="underline underline-offset-4 hover:text-slate-200"
+        className="hover:text-slate-200"
       >
         {label}
       </button>
