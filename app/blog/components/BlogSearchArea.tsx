@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 // LOCAL COMPONENTS
 import BlogCardsRow from "../../components/BlogCardsRow";
 import Dropdown from "../../components/ui/Dropdown";
@@ -28,6 +29,11 @@ export default function BlogSearchArea({
   const [searchString, setSearchString] = useState("");
   const [searchResults, setSearchResults] = useState(defaultResults);
 
+  // Set up session to get server-side Contentful access token
+  const { data: session } = useSession();
+  const contentfulSpaceId = session?.user.spaceId;
+  const contentfulAccessToken = session?.user.token;
+
   return (
     <div>
       <SearchBar
@@ -44,7 +50,11 @@ export default function BlogSearchArea({
             setSearchResults(defaultResults);
           } else {
             // Search Contentful. Update searchResults once the search completes.
-            searchNewsPosts(searchString).then((newsPosts) => {
+            searchNewsPosts(
+              searchString,
+              contentfulSpaceId,
+              contentfulAccessToken,
+            ).then((newsPosts) => {
               setSearchResults({
                 news: [...(newsPosts as unknown as BlogCardsRowType[])],
                 events: events,

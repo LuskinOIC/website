@@ -6,6 +6,8 @@ import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
+import { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title:
@@ -29,19 +31,23 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  pageProps,
 }: {
   children: React.ReactNode;
+  pageProps: { session: Session };
 }) {
   const navigationBar = await getNavigationBar();
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200">
-        <div className="w-full m-auto page-container bg-white">
-          <Navbar navigationBar={navigationBar} />
-          <div className="h-[95px] md:h-[166px]"></div>
-          <main className="">{children}</main>
-          <Footer />
-        </div>
+        <SessionProvider session={pageProps.session}>
+          <div className="w-full m-auto page-container bg-white">
+            <Navbar navigationBar={navigationBar} />
+            <div className="h-[95px] md:h-[166px]"></div>
+            <main className="">{children}</main>
+            <Footer />
+          </div>
+        </SessionProvider>
       </body>
       <GoogleAnalytics gaId="G-7HE98BYBD0" />
       <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
