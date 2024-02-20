@@ -1,4 +1,4 @@
-import { createClient } from "contentful";
+import { ContentfulClientApi, createClient } from "contentful";
 import {
   EventType,
   MemberType,
@@ -11,10 +11,14 @@ import {
 } from "@/app/constants/types";
 
 // Create the Contentful Client
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID as string,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
-});
+const client = process.env.CONTENTFUL_SPACE_ID
+  ? createClient({
+      space: process.env.CONTENTFUL_SPACE_ID as string,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
+    })
+  : null;
+
+var localClient: undefined | ContentfulClientApi<undefined>;
 
 /* PAGE */
 
@@ -22,7 +26,7 @@ export async function getPageByType(
   pageType: string,
   include: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 4,
 ) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "page",
     "fields.pageType": pageType,
     locale: "en-US",
@@ -42,13 +46,13 @@ export async function getEvents(numberOfEntries: number | "all" = "all") {
     ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
   };
 
-  const entries = await client.getEntries(query);
+  const entries = await client!!.getEntries(query);
 
   return entries.items.map((entry) => entry.fields);
 }
 
 export async function getEventBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "event",
     "fields.slug": slug,
     locale: "en-US",
@@ -59,7 +63,7 @@ export async function getEventBySlug(slug: string) {
 }
 
 export async function getPageBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "page",
     "fields.slug": slug,
     locale: "en-US",
@@ -72,7 +76,7 @@ export async function getPageBySlug(slug: string) {
 /* SPECIALTIES */
 
 export async function getSpecialties(): Promise<SpecialtyType[]> {
-  const entries = await client.getEntries({
+  const entries = await client!!.getEntries({
     content_type: "specialty",
     locale: "en-US",
   });
@@ -81,12 +85,12 @@ export async function getSpecialties(): Promise<SpecialtyType[]> {
 }
 
 export async function getSpecialty(): Promise<SpecialtyType> {
-  const entry = await client.getEntry("sMgfuWhT7qUqMKUwRcsD2");
+  const entry = await client!!.getEntry("sMgfuWhT7qUqMKUwRcsD2");
   return entry.fields as unknown as SpecialtyType;
 }
 
 export async function getSpecialtyBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "specialty",
     "fields.slug": slug,
     include: 10, // TODO: Change
@@ -99,7 +103,7 @@ export async function getSpecialtyBySlug(slug: string) {
 /* PHYSICIANS */
 
 export async function getPhysicians() {
-  const entries = await client.getEntries({
+  const entries = await client!!.getEntries({
     content_type: "physicianBio",
     order: ["sys.createdAt"],
     locale: "en-US",
@@ -109,7 +113,7 @@ export async function getPhysicians() {
 }
 
 export async function getPhysicianBioBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "physicianBio",
     "fields.slug": slug,
     locale: "en-US",
@@ -121,7 +125,7 @@ export async function getPhysicianBioBySlug(slug: string) {
 
 /* LEADERSHIP MEMBERS */
 export async function getMembers() {
-  const entries = await client.getEntries({
+  const entries = await client!!.getEntries({
     content_type: "memberBio",
     locale: "en-US",
   });
@@ -130,7 +134,7 @@ export async function getMembers() {
 }
 
 export async function getMemberBySlug(slug: string) {
-  const entries = await client.getEntries({
+  const entries = await client!!.getEntries({
     content_type: "memberBio",
     "fields.slug": slug,
     locale: "en-US",
@@ -141,7 +145,7 @@ export async function getMemberBySlug(slug: string) {
 }
 
 export async function getLeadershipBioBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "memberBio",
     "fields.slug": slug,
     locale: "en-US",
@@ -161,13 +165,13 @@ export async function getPatientStories(
     ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
   };
 
-  const entries = await client.getEntries(query);
+  const entries = await client!!.getEntries(query);
 
   return entries.items.map((entry) => entry.fields);
 }
 
 export async function getPatientStoryBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "patientBio",
     "fields.slug": slug,
     locale: "en-US",
@@ -187,13 +191,13 @@ export async function getNewsPosts(numberOfEntries: number | "all" = "all") {
     ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
   };
 
-  const entries = await client.getEntries(query);
+  const entries = await client!!.getEntries(query);
 
   return entries.items.map((entry) => entry.fields);
 }
 
 export async function getNewsPostBySlug(slug: string) {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "newsPost",
     "fields.slug": slug,
     include: 4,
@@ -203,19 +207,8 @@ export async function getNewsPostBySlug(slug: string) {
   return entry.items[0] as unknown as NewsPostType;
 }
 
-export async function searchNewsPosts(searchString: string) {
-  const entries = await client.getEntries({
-    content_type: "newsPost",
-    query: searchString,
-    include: 1,
-    locale: "en-US",
-  });
-
-  return entries.items.map((entry) => entry.fields);
-}
-
 export async function getPages(): Promise<PageType[]> {
-  const entries = await client.getEntries({
+  const entries = await client!!.getEntries({
     content_type: "page",
     locale: "en-US",
   });
@@ -224,11 +217,40 @@ export async function getPages(): Promise<PageType[]> {
 }
 
 export async function getNavigationBar(): Promise<NavigationBarType> {
-  const entry = await client.getEntries({
+  const entry = await client!!.getEntries({
     content_type: "navigationBar",
     include: 2,
     locale: "en-US",
   });
 
   return entry.items[0].fields as NavigationBarType;
+}
+
+// CLIENT-SIDE REQUESTS
+
+/* Create the local client if it has not been initialized yet */
+function createLocalClient(spaceId: string, accessToken: string) {
+  if (!localClient)
+    localClient = createClient({
+      space: spaceId,
+      accessToken: accessToken,
+    });
+}
+
+export async function searchNewsPosts(
+  searchString: string,
+  spaceId?: string,
+  accessToken?: string,
+) {
+  if (!accessToken || !spaceId) return [];
+  createLocalClient(spaceId, accessToken);
+
+  const entries = await localClient!!.getEntries({
+    content_type: "newsPost",
+    query: searchString,
+    include: 1,
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields);
 }
