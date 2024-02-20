@@ -18,13 +18,21 @@ function getCardHref(card: CardsRowType) {
 
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
+  const gridClass =
+    title === "Senior Leaders" ||
+    title === "Board of Directors" ||
+    title === "Board of Trustees"
+      ? "md:grid-cols-3"
+      : "md:grid-cols-4";
 
   return (
     <section id="BioCardsRow" className="block px-5 md:px-32 py-2 md:py-4">
       <Title2 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
         {title}
       </Title2>
-      <div className="grid grid-rows md:grid-cols-3 gap-y-3 md:gap-x-20 md:gap-y-10">
+      <div
+        className={`grid grid-rows ${gridClass} gap-y-3 md:gap-x-20 md:gap-y-10`}
+      >
         {hasCards &&
           cards.map((card: CardsRowType, i: number) => {
             let cardHref = getCardHref(card);
