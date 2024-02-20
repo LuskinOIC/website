@@ -203,6 +203,17 @@ export async function getNewsPostBySlug(slug: string) {
   return entry.items[0] as unknown as NewsPostType;
 }
 
+export async function searchNewsPosts(searchString: string) {
+  const entries = await client.getEntries({
+    content_type: "newsPost",
+    query: searchString,
+    include: 1,
+    locale: "en-US",
+  });
+
+  return entries.items.map((entry) => entry.fields);
+}
+
 export async function getPages(): Promise<PageType[]> {
   const entries = await client.getEntries({
     content_type: "page",

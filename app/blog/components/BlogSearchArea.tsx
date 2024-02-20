@@ -6,27 +6,21 @@ import BlogCardsRow from "../../components/BlogCardsRow";
 import Dropdown from "../../components/ui/Dropdown";
 import SearchBar from "@/app/components/ui/SearchBar";
 // TYPES
-import {
-  BlogCardsRowType,
-  OptionType,
-  PageType,
-} from "@/app/constants/types";
+import { BlogCardsRowType, OptionType } from "@/app/constants/types";
+import { searchNewsPosts } from "@/app/utils/contentful";
 
 export default function BlogSearchArea({
-  page,
   news,
   events,
   patientStories,
   dropdownOptions,
 }: {
-  page: PageType;
   news: BlogCardsRowType[];
   events: BlogCardsRowType[];
   patientStories: BlogCardsRowType[];
   dropdownOptions: OptionType[];
 }) {
   const defaultResults = {
-    page: page,
     news: news,
     events: events,
     patientStories: patientStories,
@@ -50,9 +44,14 @@ export default function BlogSearchArea({
           if (searchString === "") {
             setSearchResults(defaultResults);
           } else {
-            // setSearchResults([
-            //   ...fuse.search(searchString).map((result) => result.item),
-            // ]);
+            // Search Contentful. Update searchResults once the search completes.
+            searchNewsPosts(searchString).then((newsPosts) => {
+              setSearchResults({
+                news: [...(newsPosts as unknown as BlogCardsRowType[])],
+                events: events,
+                patientStories: patientStories,
+              });
+            });
           }
         }}
       />
@@ -60,7 +59,7 @@ export default function BlogSearchArea({
         <p className="px-1 pb-4">Choose a section you would like to review</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
-      <BlogCardsRow type="news" cards={news} />
+      <BlogCardsRow type="news" cards={searchResults.news} />
       <BlogCardsRow type="events" cards={events} />
       <BlogCardsRow type="patient-stories" cards={patientStories} />
     </div>
