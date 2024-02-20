@@ -37,7 +37,7 @@ function MobileMenu({
   return (
     <NavigationMenuList className="block md:hidden bg-[#0076AD]">
       {isHamburgerOpen && (
-        <ul className="text-white underline w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0">
+        <ul className="text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0">
           <a
             href={SAVE_MY_SPOT}
             target="_blank"
@@ -59,10 +59,7 @@ function MobileMenu({
               key={index}
               className={`${item.cssClasses} w-full text-center py-2`}
             >
-              <button
-                onClick={() => toggleMobileMenu(index)}
-                className="underline"
-              >
+              <button onClick={() => toggleMobileMenu(index)}>
                 {item.label}
               </button>
 
