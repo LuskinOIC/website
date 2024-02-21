@@ -8,6 +8,7 @@ import ImagesLayout from "./ImagesLayout";
 import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "../GridLayoutSection";
 import EventBanner from "@/app/components/EventBanner";
+import NewsletterBanner from "@/app/components/NewsletterBanner";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -38,6 +39,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       );
     case "Event Banner":
       return <EventBanner section={section} />;
+    case "Newsletter Banner":
+      return <NewsletterBanner />;
     default:
       return null;
   }
