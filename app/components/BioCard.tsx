@@ -1,19 +1,29 @@
 import Image from "next/image";
 import { BioCardType } from "@/app/constants/types";
-import { Title3 } from "./ui/Typography/Title";
+import { Title2 } from "./ui/Typography/Title";
 import { cn } from "@/lib/utils";
 
 const styles = {
   container:
-    "md:min-h-[273px] bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground shadow-sm hover:shadow-lg",
-  header: "pl-3 md:px-2 text-center leading-[30px] text-white md:text-black",
-  image: "w-28 h-28 p-1.5 md:w-auto md:h-auto",
-  wrapperDiv: "flex flex-row md:flex-col items-center",
+    "md:min-h-[250px] bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground shadow-sm hover:shadow-lg flex flex-row md:flex-col justify-start",
+  header:
+    "md:pb-0 md:self-center md:text-center text-white md:text-black leading-0 md:leading-0 md:min-h-[50px]",
+  paragraph:
+    "text-sm md:flex md:min-h-[30px] md:text-lg md:text-center md:items-center md:mx-auto text-white md:text-black ",
+  image: "w-28 h-28 md:w-auto md:h-auto md:mx-auto p-2 md:p-6",
+  textDesktop: "hidden md:flex flex-col justify-center pb-4 px-2",
+  textMobile: "flex flex-col justify-center md:hidden",
 };
 
-export default function BioCard({ name, portrait, classNames }: BioCardType) {
+export default function BioCard({
+  name,
+  portrait,
+  leadershipRole,
+  classNames,
+}: BioCardType) {
+  const desktopLeadershipRole = leadershipRole ? leadershipRole : "\u00A0";
   return (
-    <div className={cn(styles.container, styles.wrapperDiv, classNames)}>
+    <div id="BioCard" className={cn(styles.container, classNames)}>
       {portrait && (
         <Image
           alt={`portrait-${name}`}
@@ -23,7 +33,20 @@ export default function BioCard({ name, portrait, classNames }: BioCardType) {
           className={styles.image}
         />
       )}
-      {name && <Title3 className={styles.header}>{name}</Title3>}
+      <div className={styles.textDesktop}>
+        {name && <Title2 className={styles.header}>{name}</Title2>}
+        {leadershipRole && (
+          <p className={styles.paragraph}> {desktopLeadershipRole} </p>
+        )}
+      </div>
+      <div className={styles.textMobile}>
+        {name && <Title2 className={styles.header}>{name}</Title2>}
+        {leadershipRole ? (
+          <p className={`${styles.paragraph}`}>{leadershipRole}</p>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }

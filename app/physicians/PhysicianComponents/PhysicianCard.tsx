@@ -21,7 +21,7 @@ export default function PhysicianCard({
           alt={physician.portrait.fields.description}
           className="w-28 h-28 p-1.5 md:w-auto md:h-auto"
         />
-        <Title3 className="pl-3 md:px-2 text-center leading-[30px] text-white md:text-black">
+        <Title3 className="md:px-2 md:py-4 text-center md:leading-none text-white md:text-black">
           {physician.name}
         </Title3>
       </div>
