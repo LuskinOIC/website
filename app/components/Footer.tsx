@@ -82,11 +82,10 @@ const styles = {
     "text-2xl font-semibold tracking-wide text-left pb-2 md:self-center",
   baseText: "text-lg",
   contactInfoContainer: "flex flex-row gap-x-8 pl-4",
-  contactInfoSection: "flex flex-col gap-2",
-  contactInfoSectionTop: "basis-2/3 pb-2",
-  contactInfoSectionBottom: "basis-1/3",
+  contactInfoSection: "grid grid-row-4",
   border:
     "inline-block w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 hidden lg:block",
+  iconsContainer: "flex flex-row py-2",
 };
 
 const FooterItemsSection = ({
@@ -121,7 +120,7 @@ export default function Footer() {
           className={styles.leftContainer}
         >
           <h1 id="organization-header" className={styles.mainHeader}>
-            LuskinOIC Pediatric Orthopedic
+            LuskinOIC Pediatric Orthopaedic
           </h1>
           <div
             id="contact-info-container"
@@ -131,31 +130,31 @@ export default function Footer() {
               id="contact-info-hospital-uc"
               className={styles.contactInfoSection}
             >
-              <div className={styles.contactInfoSectionTop}>
-                <h3 className={styles.subHeader}>
-                  Medical Pavilion & <br /> Ambulatory Surgery Center
-                </h3>
-                <div className="flex flex-row ">
-                  <Image
-                    src={pin}
-                    width={20}
-                    height={20}
-                    alt="Address"
-                    className="mr-5"
-                  />
-                  <a
-                    href="https://maps.app.goo.gl/8N6bo3GfA2oV26qm8"
-                    id="hospital-uc-address"
-                    className="hover:underline"
-                    target="_blank"
-                  >
-                    <p>
-                      403 West Adams Boulevard <br /> Los Angeles, CA 90007
-                    </p>
-                  </a>
-                </div>
+              <h3 className={styles.subHeader}>
+                Medical Pavilion & <br /> Ambulatory Surgery Center
+              </h3>
+
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={pin}
+                  width={20}
+                  height={20}
+                  alt="Address"
+                  className="mr-5"
+                />
+                <a
+                  href="https://maps.app.goo.gl/8N6bo3GfA2oV26qm8"
+                  id="hospital-uc-address"
+                  className="hover:underline"
+                  target="_blank"
+                >
+                  <p>
+                    403 West Adams Boulevard <br /> Los Angeles, CA 90007
+                  </p>
+                </a>
               </div>
-              <div className="flex flex-row">
+
+              <div className={styles.iconsContainer}>
                 <Image
                   src={phone}
                   width={20}
@@ -165,10 +164,7 @@ export default function Footer() {
                 />
                 <p>(213) 742-1000</p>
               </div>
-              <div
-                id="contact-info-hours"
-                className={styles.contactInfoSectionBottom}
-              >
+              <div id="contact-info-hours">
                 <h3 className={styles.subHeader}>Urgent Care Center Hours</h3>
                 <div id="hours">
                   <p>Monday - Friday 8am - 4pm</p>
@@ -183,46 +179,42 @@ export default function Footer() {
               id="contact-info-clinic"
               className={`hidden md:${styles.contactInfoSection}`}
             >
-              <div id="clinic-address" className={styles.contactInfoSectionTop}>
-                <h3 className={`${styles.subHeader} mb-3`}>
-                  Luskin Children&apos;s Clinic
-                </h3>
+              <h3 className={`${styles.subHeader} py-3`}>
+                Luskin Children&apos;s Clinic
+              </h3>
 
-                <div className="flex flex-row">
-                  <Image
-                    src={pin}
-                    width={20}
-                    height={20}
-                    alt="Address"
-                    className="mr-5"
-                  />
-                  <a
-                    href="https://maps.app.goo.gl/NuSaJeMuo5Eq3kDQ7"
-                    id="childrens-clinic-address"
-                    className="hover:underline"
-                    target="_blank"
-                  >
-                    <p>
-                      1250 16th Street, Suite 2100B <br /> Santa Monica, CA
-                      90404
-                    </p>
-                  </a>
-                </div>
-                <div className="flex flex-row">
-                  <Image
-                    src={phone}
-                    width={20}
-                    height={20}
-                    alt="Phone number"
-                    className="mr-5"
-                  />
-                  <p>(310) 395-4814</p>
-                </div>
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={pin}
+                  width={20}
+                  height={20}
+                  alt="Address"
+                  className="mr-5"
+                />
+                <a
+                  href="https://maps.app.goo.gl/NuSaJeMuo5Eq3kDQ7"
+                  id="childrens-clinic-address"
+                  className="hover:underline"
+                  target="_blank"
+                >
+                  <p>
+                    1250 16th Street, Suite 2100B <br /> Santa Monica, CA 90404
+                  </p>
+                </a>
               </div>
-              <div
-                id="follow-container"
-                className={styles.contactInfoSectionBottom}
-              >
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={phone}
+                  width={20}
+                  height={20}
+                  alt="Phone number"
+                  className="mr-5"
+                />
+                <p>(310) 395-4814</p>
+              </div>
+
+              {/* FOLLOW CONTAINER */}
+              <div id="follow-container">
                 <h3 className={styles.subHeader}>Follow LuskinOIC!</h3>
                 <div id="social-media">
                   <ul className="flex pt-3">
