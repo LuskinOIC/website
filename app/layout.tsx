@@ -35,9 +35,10 @@ export default async function RootLayout({
   const navigationBar = await getNavigationBar();
   return (
     <html lang="en">
-      <body className="font-arial block w-full bg-slate-200">
+      <body className="font-arial block w-full bg-slate-200 overscroll-none">
         <div className="w-full m-auto page-container bg-white">
           <Navbar navigationBar={navigationBar} />
+          {/* This div provides margin for the main layout since the navbar is stick */}
           <div className="h-[95px] md:h-[166px]"></div>
           <main className="">{children}</main>
           <Footer />
