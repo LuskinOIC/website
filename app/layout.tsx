@@ -6,6 +6,7 @@ import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
+import { BACKGROUND_COLORS } from "@/app/constants/background-colors";
 
 export const metadata: Metadata = {
   title:
@@ -33,13 +34,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const navigationBar = await getNavigationBar();
+  const backgroundColorClass = `bg-[${BACKGROUND_COLORS["blue"]}]`;
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200 overscroll-none">
         <div className="w-full m-auto page-container bg-white">
           <Navbar navigationBar={navigationBar} />
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className="h-[95px] md:h-[166px]"></div>
+          <div
+            className={`h-[95px] md:h-[166px] ${backgroundColorClass}`}
+          ></div>
           <main className="">{children}</main>
           <Footer />
         </div>

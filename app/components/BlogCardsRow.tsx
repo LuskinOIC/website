@@ -36,7 +36,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
   }, [cards]);
 
   return (
-    <section id={`${type}`} className="block mx-5 md:mx-[5%]">
+    <section id={`${type}`}>
       <div className="flex flex-row justify-between items-center mb-2 mt-8 md:mb-4">
         <Link href={`/${type}`}>
           <Title1 className="font-bold md:font-normal uppercase text-[#0076AD] md:capitalize hover:underline">
@@ -49,10 +49,11 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
           </Title3>
         </Link>
       </div>
-      <div className="sm:grid grid-cols-1 gap-4 md:grid-cols-4">
+      <div className="sm:grid grid-cols-1 gap-12 md:grid-cols-4">
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
             <BlogCard
+              type={type}
               cardContent={{
                 title: card.blogCard.fields.title,
                 cardPhoto: card.blogCard.fields.image,

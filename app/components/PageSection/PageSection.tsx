@@ -6,16 +6,16 @@ import ColumnLayout from "@/app/components/PageSection/ColumnsLayout/ColumnsLayo
 import CardLayoutSection from "@/app/components/PageSection/CardsLayout";
 import ImagesLayout from "./ImagesLayout";
 import TabSection from "@/app/components/TabSection";
-import GridLayoutSection from "../GridLayoutSection";
 import EventBanner from "@/app/components/EventBanner";
+import GridLayoutSection from "@/app/components/GridLayoutSection";
 import NewsletterBanner from "@/app/components/NewsletterBanner";
+import SectionStyles from "@/app/components/PageSection/PageSection.module.css";
 
-// Types
+// Constants & Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
+import { BACKGROUND_COLORS } from "@/app/constants/background-colors";
 
-export default function PageSection({ section }: { section: PageSectionType }) {
-  if (!section) return null;
-
+export function PageSectionContent({ section }: { section: PageSectionType }) {
   switch (section.fields.type) {
     case "Column Layout":
       return <ColumnLayout section={section} />;
@@ -41,7 +41,44 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       return <EventBanner section={section} />;
     case "Newsletter Banner":
       return <NewsletterBanner />;
-    default:
-      return null;
+    default: {
+      // TODO: See if we need to handle this gracefully.
+      return <section></section>;
+    }
   }
+}
+
+interface BackgroundColorType {
+  [key: string]: string;
+}
+
+export default function PageSection({
+  section,
+}: {
+  section: PageSectionType | null;
+}) {
+  if (!section) return null;
+
+  const sectionClassName =
+    section.fields.width === "FULL_WIDTH"
+      ? SectionStyles.pageSectionFullWidth
+      : SectionStyles.pageSection;
+
+  const backgroundColor =
+    BACKGROUND_COLORS[
+      section.fields.backgroundColor as keyof BackgroundColorType
+    ] || "";
+
+  const marginClass =
+    section.fields.marginVisible || section.fields.marginVisible === undefined
+      ? "mb-10"
+      : "";
+
+  return (
+    <div style={{ backgroundColor }}>
+      <section className={`${sectionClassName} ${marginClass}`}>
+        <PageSectionContent section={section} />
+      </section>
+    </div>
+  );
 }

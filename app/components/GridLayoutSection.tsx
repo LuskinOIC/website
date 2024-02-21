@@ -37,7 +37,7 @@ function GridSection({ section }: SectionProps) {
 
 export default function GridLayoutSection({ section }: any) {
   return (
-    <div className="block mx-auto px-5 md:px-0 md:w-4/5">
+    <div className="block mx-auto px-5">
       <div className="grid gap-6 pb-6 md:grid-cols-2">
         {section.fields.gridLayout &&
           section.fields.gridLayout.map(

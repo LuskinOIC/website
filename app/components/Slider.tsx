@@ -118,7 +118,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
           </div>
         ))}
       </div>
-      <div className="absolute bottom-0 left-0 right-0 mb-2 flex items-center justify-center">
+      <div className="flex absolute bottom-0 left-0 right-0 mb-0 p-3 items-center justify-center h-[50px]">
         <button onClick={prevSlide} className="">
           <LeftArrow />
         </button>

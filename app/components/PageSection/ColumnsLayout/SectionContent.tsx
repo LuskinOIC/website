@@ -17,18 +17,21 @@ const SectionContent = ({ section }: SectionContentProps) => {
     section.fields.backgroundColor === "blue"
       ? "text-white"
       : "text-black";
+
   const descriptionClassNames: ClassNames = {
-    paragraph: "py-2 md:py-4 text-base md:text-lg",
+    paragraph: "py-2 md:py-12 md:my-4 text-base md:text-xl",
   };
+
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
-    descriptionClassNames,
+    descriptionClassNames
   );
+
   const showTitle = section.fields.showTitle;
 
   return (
     <>
-      <div className="grid py-5">
+      <div className="mx-auto my-6 md:mb-12">
         <div className={`grid gap-2 ${textColor}`}>
           {showTitle && (
             <TitleComponent

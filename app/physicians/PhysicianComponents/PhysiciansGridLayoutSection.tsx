@@ -17,10 +17,10 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
 }) => {
   return (
     <>
-      <div className="text-sky-700 text-xl font-normal font-['Arial'] leading-[30px] px-5 md:px-24 py-4 md:py-10">
+      <div className="text-sky-700 text-xl font-normal font-['Arial'] leading-[30px]">
         {title}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center px-5 md:px-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
         {physicians.map((physician) => (
           <Link key={physician.name} href={`/physicians/${physician.slug}`}>
             <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12 md:h-full justify-items-center">

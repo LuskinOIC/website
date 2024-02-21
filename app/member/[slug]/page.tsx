@@ -18,7 +18,7 @@ export default async function MemberBio({
 
   return (
     <main className="">
-      <TwoColumnLayout section={memberBio.topSection} />
+      <TwoColumnLayout columnLayout={memberBio.topSection} />
     </main>
   );
 }

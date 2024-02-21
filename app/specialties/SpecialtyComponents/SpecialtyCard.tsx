@@ -12,8 +12,9 @@ type SpecialtyCardProps = {
 };
 
 const styles = {
-  sectionLayout: "grid gap-2 md:gap-5 mx-2 md:mx-auto my-5 p-5 md:p-10",
-  boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
+  sectionLayout:
+    "grid gap-2 mx-2 p-5 md:mx-auto md:px-14 md:py-6 md:gap-5 md:mb-12",
+  boxStyling: "border border-zinc-300 rounded shadow-md",
 };
 
 export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {

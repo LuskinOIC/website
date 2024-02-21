@@ -9,7 +9,7 @@ import { TitleComponent } from "@/app/components/ui/Typography/Title";
 export default function QuadTextCard({ section }: { section: CardType[] }) {
   return (
     <section className="flex justify-center">
-      <div className="grid w-[80%] md:grid-cols-2 gap-6 justify-items-center py-5 md:py-10">
+      <div className="grid md:grid-cols-2 gap-6 justify-items-center">
         {section.map((card, index) => {
           const cardContent = card.fields.cardContent;
           const cardLocation = cardContent ? cardContent.fields.location : null;

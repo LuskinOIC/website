@@ -26,7 +26,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
       : "md:grid-cols-4";
 
   return (
-    <section id="BioCardsRow" className="block px-5 md:px-32 py-2 md:py-4">
+    <div id="BioCardsRow" className="block px-5 md:px-32 py-2 md:py-4">
       <Title2 className="mb-2 mt-8 font-bold uppercase text-[#0076AD] md:mb-4 md:ml-4 md:font-normal md:capitalize">
         {title}
       </Title2>
@@ -49,7 +49,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
             );
           })}
       </div>
-    </section>
+    </div>
   );
 };
 

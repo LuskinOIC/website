@@ -36,7 +36,9 @@ export default async function PhysicianBio({
 
   return (
     <main className="">
-      {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
+      {docBio.topSummary && (
+        <TwoColumnLayout columnLayout={docBio.topSummary} />
+      )}
 
       {docBio.pageSections && (
         <div className="mb-12 md:hidden px-5">
