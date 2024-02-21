@@ -31,7 +31,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
 
   return (
     <>
-      <div className="mx-auto my-6 md:mb-12">
+      <div className="mx-auto w-10/12 my-6 md:mb-12">
         <div className={`grid gap-2 ${textColor}`}>
           {showTitle && (
             <TitleComponent
