@@ -4,8 +4,9 @@ import { useState } from "react";
 import Fuse from "fuse.js";
 // TYPES
 import { PhysicianBioType } from "@/app/constants/types";
+// LOCAL COMPONENTS
 import SearchBar from "@/app/components/ui/SearchBar";
-import PhysiciansGridLayout from "@/app/components/PhysicianComponents/PhysiciansGridLayoutSection";
+import PhysiciansGridLayout from "@/app/physicians/PhysicianComponents/PhysiciansGridLayoutSection";
 
 interface SortedPhysicians {
   mdPhysicians: PhysicianBioType[];
@@ -64,7 +65,6 @@ export default function PhysicianSearchArea({
           }
         }}
         onSearch={() => {
-          console.log("onSearch()"); // TODO: Remove.
           if (searchString === "") {
             setSearchResults(physicians);
           } else {

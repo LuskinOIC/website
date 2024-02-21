@@ -1,17 +1,25 @@
 import { ChangeEventHandler } from "react";
+import { cn } from "@/lib/utils";
 
 export default function SearchBar({
   value,
   onChange,
   onSearch,
+  className,
 }: {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   onSearch: () => void;
+  className?: string;
 }) {
+  const outerStyling = cn(
+    "flex justify-center my-2 md:my-2 mt-6 md:mt-10",
+    className,
+  );
+
   return (
-    <div className="flex justify-center my-4">
-      <div className="relative md:w-2/3">
+    <div className={outerStyling}>
+      <div className="relative w-4/5 md:w-2/3">
         <input
           type="text"
           placeholder="Search..."
