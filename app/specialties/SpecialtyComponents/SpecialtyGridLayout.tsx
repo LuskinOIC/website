@@ -13,7 +13,7 @@ export default function SpecialtyGridLayout({
 }) {
   return (
     <>
-      <div className="grid justify-items-center">
+      <div className="grid justify-items-center mt-12">
         {showingSearchResults && (
           <div className="order-first text-sky-700 text-lg md:text-xl font-normal font-['Arial'] leading-[30px] text-left w-full md:w-4/5 px-2 md:px-0 pt-4 md:pt-10 pb-0 md:pb-4">
             SEARCH RESULTS

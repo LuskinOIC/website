@@ -17,10 +17,10 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
 }) => {
   return (
     <>
-      <div className="text-sky-700 text-xl font-normal font-['Arial'] leading-[30px]">
+      <div className="text-sky-700 text-xl font-normal font-['Arial'] leading-[30px] mb-6">
         {title}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {physicians.map((physician) => (
           <Link key={physician.name} href={`/physicians/${physician.slug}`}>
             <div className="border rounded-lg p-4 shadow-md border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12 md:h-full justify-items-center">
@@ -37,7 +37,7 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
                 <h5>Specializes in:</h5>
                 <div className="md:text-md md:mb-4 text-base">
                   {renderRichTextToReactComponent(
-                    physician.specialties as unknown as Document,
+                    physician.specialties as unknown as Document
                   )}
                 </div>
               </div>

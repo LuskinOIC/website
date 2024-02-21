@@ -54,7 +54,7 @@ export default function PhysicianSearchArea({
   const fuse = new Fuse(physicians, fuseOptions);
 
   return (
-    <div className="mt-10">
+    <div>
       <SearchBar
         value={searchString}
         onChange={(evt) => {
@@ -129,7 +129,7 @@ function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
 
       return acc;
     },
-    { mdPhysicians: [], paNpPhysicians: [] },
+    { mdPhysicians: [], paNpPhysicians: [] }
   );
   return (
     <>

@@ -64,7 +64,7 @@ export default function SpecialtySearchArea({
   const fuse = new Fuse(specialties, fuseOptions);
 
   return (
-    <div>
+    <div className="">
       <SearchBar
         value={searchString}
         onChange={(evt) => {

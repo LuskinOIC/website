@@ -12,10 +12,7 @@ export default function SearchBar({
   onSearch: () => void;
   className?: string;
 }) {
-  const outerStyling = cn(
-    "flex justify-center my-2 md:my-2 mt-6 md:mt-10",
-    className,
-  );
+  const outerStyling = cn("flex justify-center my-6 md:my-12 mt-6", className);
 
   return (
     <div className={outerStyling}>
