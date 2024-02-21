@@ -6,6 +6,8 @@ import youtube from "../../public/youtube.svg";
 import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
 import xlogo from "@/public/XLogo.svg";
+import phone from "@/public/phone-white.svg";
+import pin from "@/public/map-pin-white.svg";
 import {
   CAREERS_URL,
   FACEBOOK_URL,
@@ -17,6 +19,17 @@ import {
   YOUTUBE_URL,
 } from "../constants/links";
 import NewsletterSignup from "./NewsletterSignup";
+
+type FooterItem = {
+  text: string;
+  href: string;
+};
+
+type FooterItemsSectionProps = {
+  title: string;
+  id: string;
+  menuItems: FooterItem[];
+};
 
 const socialMediaLinks = [
   { url: FACEBOOK_URL, src: facebook, alt: "facebook" },
@@ -31,275 +44,229 @@ const socialMediaLinks = [
   },
 ];
 
+const aboutMenuItems = [
+  { text: "Mission & Purpose", href: "/about" },
+  { text: "News", href: "/news" },
+];
+
+const patientSupportMenuItems = [
+  { text: "Urgent Care", href: SAVE_MY_SPOT },
+  { text: "Specialty Treatment", href: "/specialties" },
+  { text: "Billing & Insurance", href: "/patient-care" },
+  { text: "MyChart", href: MYCHART_URL },
+];
+
+const healthProfessionalsMenuItems = [
+  { text: "LuskinOIC Physicians", href: "/physicians" },
+  { text: "Refer a Patient", href: "/medical-professionals" },
+  { text: "Careers", href: CAREERS_URL },
+  { text: "Volunteer", href: "/ways-to-give" },
+  {
+    text: "Research",
+    href: "/news/orthopaedic-hospital-research-center-ucla-westwood/",
+  },
+];
+
+const getInvolvedMenuItems = [
+  { text: "Donate", href: "/ways-to-give" },
+  { text: "Events", href: "/events" },
+  { text: "Volunteer", href: "/ways-to-give" },
+];
+
+const styles = {
+  footerContainer: "flex justify-evenly bg-[#0076AD] text-white py-8",
+  leftContainer: "flex flex-col tracking-wide gap-2 md:pl-4",
+  rightContainer: "hidden md:flex flex-row gap-x-20",
+  subHeader: "font-semibold text-lg text-[#FCE385] tracking-wide",
+  mainHeader:
+    "text-2xl font-semibold tracking-wide text-left pb-2 md:self-center",
+  baseText: "text-lg",
+  contactInfoContainer: "flex flex-row gap-x-8 pl-4",
+  contactInfoSection: "grid grid-row-4",
+  border:
+    "inline-block w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 hidden lg:block",
+  iconsContainer: "flex flex-row py-2",
+};
+
+const FooterItemsSection = ({
+  title,
+  id,
+  menuItems,
+}: FooterItemsSectionProps) => (
+  <>
+    <h3 className={styles.subHeader}>{title}</h3>
+    <ul id={id} className="">
+      {menuItems.map((item, index) => (
+        <li key={index}>
+          <p>
+            <Link role="button" href={item.href} className={"hover:underline"}>
+              {item.text}
+            </Link>
+          </p>
+        </li>
+      ))}
+    </ul>
+  </>
+);
+
 export default function Footer() {
-  // TODO: ensure appropriate divs/spans/etc elements placed appropriately for smoothest possible layout styling
   return (
     <>
       <NewsletterSignup />
       {/* footer container */}
-      <div
-        id="container"
-        className="flex justify-around bg-[#0076AD] text-white py-8"
-      >
+      <div id="container" className={styles.footerContainer}>
         <div
           id="footer-left-content-container"
-          className="flex flex-col p-2 tracking-wide"
+          className={styles.leftContainer}
         >
-          <h1
-            id="organization-header"
-            className="text-lg font-semibold tracking-wide text-left pb-2"
-          >
-            LuskinOIC Pediatric Orthopedic
+          <h1 id="organization-header" className={styles.mainHeader}>
+            LuskinOIC Pediatric Orthopaedic
           </h1>
-          <div className="text-sm font-medium">
-            <div id="contact-info-container" className="flex">
-              <div className="flex flex-col">
-                <div id="contact-info-hospital-uc" className="pr-10 pb-2.5">
-                  <h3 className="text-base pb-2.5">
-                    Medical Pavilion & <br /> Ambulatory Surgery Center
-                  </h3>
-                  <div id="hospital-uc-address" className="pb-4">
-                    <p>403 West Adams Boulevard</p>
-                    <p>Los Angeles, CA 90007</p>
-                  </div>
-                  <p>(213) 742-1000</p>
-                </div>
-                <div id="contact-info-hours" className="pr-10">
-                  <h3 className="text-base pb-2.5">Urgent Care Center Hours</h3>
-                  <div id="hours" className="pb-4">
-                    <p>Monday - Friday 8am - 4pm</p>
-                    <p>Closed Saturday & Sunday</p>
-                  </div>
-                </div>
+          <div
+            id="contact-info-container"
+            className={`${styles.contactInfoContainer} ${styles.baseText}`}
+          >
+            <div
+              id="contact-info-hospital-uc"
+              className={styles.contactInfoSection}
+            >
+              <h3 className={styles.subHeader}>
+                Medical Pavilion & <br /> Ambulatory Surgery Center
+              </h3>
+
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={pin}
+                  width={20}
+                  height={20}
+                  alt="Address"
+                  className="mr-5"
+                />
+                <a
+                  href="https://maps.app.goo.gl/8N6bo3GfA2oV26qm8"
+                  id="hospital-uc-address"
+                  className="hover:underline"
+                  target="_blank"
+                >
+                  <p>
+                    403 West Adams Boulevard <br /> Los Angeles, CA 90007
+                  </p>
+                </a>
               </div>
 
-              <div className="inline-block w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 hidden lg:block"></div>
-
-              <div id="contact-info-clinic" className="hidden lg:block pl-10">
-                <h3 className="text-base pb-2.5">
-                  Luskin Children&apos;s Clinic
-                </h3>
-                <div id="clinic-address" className="pb-4">
-                  <p>1250 16th Street, Suite 2100B</p>
-                  <p>Santa Monica, CA 90404</p>
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={phone}
+                  width={20}
+                  height={20}
+                  alt="Phone number"
+                  className="mr-5"
+                />
+                <p>(213) 742-1000</p>
+              </div>
+              <div id="contact-info-hours">
+                <h3 className={styles.subHeader}>Urgent Care Center Hours</h3>
+                <div id="hours">
+                  <p>Monday - Friday 8am - 4pm</p>
+                  <p>Closed Saturday & Sunday</p>
                 </div>
-                <p className="pb-2.5">(310) 395-4814</p>
-                <div id="follow-container">
-                  <h3 className="text-sm pt-4">Follow LuskinOIC!</h3>
-                  <div id="social-media">
-                    <ul className="flex pt-3.5">
-                      {socialMediaLinks.map(({ url, src, alt }) => (
-                        <li key={alt} className="pr-3">
-                          <a href={url} target="_blank">
-                            <Image
-                              src={src}
-                              alt={alt}
-                              className=""
-                              width={32}
-                            />
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              </div>
+            </div>
+
+            <div className={styles.border}></div>
+
+            <div
+              id="contact-info-clinic"
+              className={`hidden md:${styles.contactInfoSection}`}
+            >
+              <h3 className={`${styles.subHeader} py-3`}>
+                Luskin Children&apos;s Clinic
+              </h3>
+
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={pin}
+                  width={20}
+                  height={20}
+                  alt="Address"
+                  className="mr-5"
+                />
+                <a
+                  href="https://maps.app.goo.gl/NuSaJeMuo5Eq3kDQ7"
+                  id="childrens-clinic-address"
+                  className="hover:underline"
+                  target="_blank"
+                >
+                  <p>
+                    1250 16th Street, Suite 2100B <br /> Santa Monica, CA 90404
+                  </p>
+                </a>
+              </div>
+              <div className={styles.iconsContainer}>
+                <Image
+                  src={phone}
+                  width={20}
+                  height={20}
+                  alt="Phone number"
+                  className="mr-5"
+                />
+                <p>(310) 395-4814</p>
+              </div>
+
+              {/* FOLLOW CONTAINER */}
+              <div id="follow-container">
+                <h3 className={styles.subHeader}>Follow LuskinOIC!</h3>
+                <div id="social-media">
+                  <ul className="flex pt-3">
+                    {socialMediaLinks.map(({ url, src, alt }) => (
+                      <li key={alt} className="pr-3">
+                        <a href={url} target="_blank">
+                          <Image src={src} alt={alt} className="" width={44} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* right section of footer */}
         <div
           id="footer-right-content-container"
-          className="hidden md:flex flex-row"
+          className={`${styles.rightContainer} ${styles.baseText}`}
         >
           {/* left section of footer-right */}
-          <div id="about-support-container" className="pr-24">
-            <span id="about-container" className="flex flex-col pb-4">
-              <h2 className="font-semibold text-lg text-[#FCE385] tracking-wide pb-0.5">
-                About
-              </h2>
-              <ul id="about" className="">
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/about"
-                      className="hover:underline"
-                    >
-                      Mission & Purpose
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      className="hover:underline"
-                      href="/news"
-                    >
-                      News
-                    </Link>
-                  </p>
-                </li>
-              </ul>
-            </span>
-            <span id="support-container" className="flex flex-col">
-              <h2 className="font-semibold text-xl text-[#FCE385] tracking-wide pb-0.5">
-                Patient Support
-              </h2>
-              <ul id="patient-support" className="">
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href={SAVE_MY_SPOT}
-                      className="hover:underline"
-                    >
-                      Urgent Care
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/specialties"
-                      className="hover:underline"
-                    >
-                      Specialty Treatment
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/patient-care"
-                      className="hover:underline"
-                    >
-                      Billing & Insurance
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href={MYCHART_URL}
-                      className="hover:underline"
-                    >
-                      MyChart
-                    </Link>
-                  </p>
-                </li>
-              </ul>
-            </span>
+          <div
+            id="about-support-container"
+            className={styles.contactInfoSection}
+          >
+            <FooterItemsSection
+              title="About"
+              id="about"
+              menuItems={aboutMenuItems}
+            />
+            <FooterItemsSection
+              title="Patient Support"
+              id="patient-support"
+              menuItems={patientSupportMenuItems}
+            />
           </div>
           {/* right section of footer-left */}
-          <div id="prof-involvement-container" className="">
-            <span id="health-pro-container" className="flex flex-col pb-4">
-              <h3 className="font-semibold text-xl text-[#FCE385] tracking-wide pb-0.5">
-                Health Professionals
-              </h3>
-              <ul id="health-professionals" className="">
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/physicians"
-                      className="hover:underline"
-                    >
-                      LuskinOIC Physicians
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/medical-professionals"
-                      className="hover:underline"
-                    >
-                      Refer a Patient
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href={CAREERS_URL}
-                      className="hover:underline"
-                    >
-                      Careers
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/ways-to-give"
-                      className="hover:underline"
-                    >
-                      Volunteer
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/news/orthopaedic-hospital-research-center-ucla-westwood/"
-                      className="hover:underline"
-                    >
-                      Research
-                    </Link>
-                  </p>
-                </li>
-              </ul>
-            </span>
-            <span id="involvement-container" className="flex flex-col">
-              <h3 className="font-semibold text-xl text-[#FCE385] tracking-wide pb-0.5">
-                Get Involved
-              </h3>
-              <ul id="get-involved" className="">
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/ways-to-give"
-                      className="hover:underline"
-                    >
-                      Donate
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/events"
-                      className="hover:underline"
-                    >
-                      Events
-                    </Link>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <Link
-                      role="button"
-                      href="/ways-to-give"
-                      className="hover:underline"
-                    >
-                      Volunteer
-                    </Link>
-                  </p>
-                </li>
-              </ul>
-            </span>
+          <div
+            id="prof-involvement-container"
+            className={styles.contactInfoSection}
+          >
+            <FooterItemsSection
+              title="Health Professionals"
+              id="health-professionals"
+              menuItems={healthProfessionalsMenuItems}
+            />
+            <FooterItemsSection
+              title="Get Involved"
+              id="get-involved"
+              menuItems={getInvolvedMenuItems}
+            />
           </div>
         </div>
       </div>
