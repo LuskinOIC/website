@@ -11,8 +11,9 @@ import {
   getPatientStories,
 } from "@/app/utils/contentful";
 import { PAGE_TYPES } from "@/app/constants/entries";
-import BlogCardsRow from "../components/BlogCardsRow";
-import Dropdown from "../components/ui/Dropdown";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
+import Dropdown from "@/app/components/ui/Dropdown";
+import PageSectionContainer from "@/app/components/PageSection/PageSectionContainer";
 
 export default async function Blog() {
   const page = await getPageByType(PAGE_TYPES.BLOG);
@@ -41,9 +42,11 @@ export default async function Blog() {
         <p className="px-1 pb-4">Choose a section you would like to review</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
-      <BlogCardsRow type="news" cards={news} />
-      <BlogCardsRow type="events" cards={events} />
-      <BlogCardsRow type="patient-stories" cards={patientStories} />
+      <PageSectionContainer>
+        <BlogCardsRow type="news" cards={news} />
+        <BlogCardsRow type="events" cards={events} />
+        <BlogCardsRow type="patient-stories" cards={patientStories} />
+      </PageSectionContainer>
     </main>
   );
 }

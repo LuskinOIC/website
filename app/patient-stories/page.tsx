@@ -1,6 +1,7 @@
 import BlogCardsRow from "../components/BlogCardsRow";
 import BackToBrowse from "../components/ui/BackToBrowse";
 // import SearchBar from "../components/ui/SearchBar";
+import PageSectionContainer from "../components/PageSection/PageSectionContainer";
 import { BlogCardsRowType } from "../constants/types";
 import { getPatientStories } from "../utils/contentful";
 
@@ -8,10 +9,10 @@ import { getPatientStories } from "../utils/contentful";
 export default async function PatientStories() {
   const patients = (await getPatientStories()) as unknown as BlogCardsRowType[];
   return (
-    <main className="flex flex-col px-[5%] md:justify-center">
+    <PageSectionContainer>
       <BackToBrowse />
       {/* <SearchBar /> */}
       <BlogCardsRow type="patient-stories" cards={patients} />
-    </main>
+    </PageSectionContainer>
   );
 }

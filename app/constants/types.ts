@@ -1,6 +1,10 @@
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
+
+export interface BackgroundColorType {
+  [key: string]: string;
+}
 export interface AboutPageType {
   pageSections: PageSectionType[];
 }
@@ -233,18 +237,21 @@ export type PageSectionType = {
   filter: any;
   map: any;
   fields: {
+    backgroundColor: string;
+    cardsLayout: CardType[];
     columnLayout: ColumnType;
-    type: string;
-    title: string;
     dividerText?: string;
+    eventBanner: EventBannerType;
+    imagesLayout: ImagesLayoutType;
     infoCards: CardType[];
+    locations?: LocationType[];
+    marginVisible: boolean;
     quadCards: CardType[];
     specialty: SpecialtyType[];
     tabs: TabType[];
-    locations?: LocationType[];
-    cardsLayout: CardType[];
-    imagesLayout: ImagesLayoutType;
-    eventBanner: EventBannerType;
+    title: string;
+    type: string;
+    width: string;
   };
 };
 
@@ -392,28 +399,22 @@ export type NavigationBarType = {
 
 export type SpecialtyType = {
   fields: {
-    twoColumn: ColumnType;
-    name: string;
-    slug: string;
-    description: Document;
-    topSection: PageSectionType;
-    specialistsTitle?: string;
     buttonText?: string;
     buttonUrl?: string;
-    location: LocationType;
-    physicians: Array<{
-      fields: PhysicianBioType;
-    }>;
-    image: ImageType;
-    tabs: TabType[];
+    description: Document;
     englishFormUrl: string;
+    image: ImageType;
+    location: LocationType;
+    medicalProfessionalPage: { fields: PageType };
+    name: string;
+    patientPage: { fields: PageType };
+    physicians: Array<{ fields: PhysicianBioType }>;
+    slug: string;
     spanishFormUrl: string;
-    patientPage: {
-      fields: PageType;
-    };
-    medicalProfessionalPage: {
-      fields: PageType;
-    };
+    specialistsTitle?: string;
+    tabs: TabType[];
+    topSection: PageSectionType;
+    twoColumn: ColumnType;
   };
 };
 

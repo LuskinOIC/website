@@ -57,6 +57,7 @@ const config: Config = {
           brightBlue: "#32B8DE",
           green: "#99C221",
           purple: "#825AA4",
+          yellow: "#FFD100",
         },
       },
       borderRadius: {

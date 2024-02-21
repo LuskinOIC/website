@@ -11,7 +11,7 @@ type LocationsCardType = { locations: LocationType[] };
 export default function LocationsCard({ locations }: LocationsCardType) {
   return (
     <div className="flex flex-row w-full items-center justify-center">
-      <Card className="flex flex-col md:flex-row w-4/5 md:w-9/12 mt-10 mb-5 md:my-10 py-7 md:py-10">
+      <Card className="flex flex-col md:flex-row w-4/5  mt-10 mb-5 md:my-10 py-7 md:py-10">
         {locations.map((location, index) => (
           <LocationContent
             key={index}

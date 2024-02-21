@@ -2,10 +2,12 @@ import Image from "next/image";
 import { getNewsPosts, getNewsPostBySlug } from "@/app/utils/contentful";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import PageSection from "@/app/components/PageSection/PageSection";
+import PageSectionContainer from "@/app/components/PageSection/PageSectionContainer";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { Title1 } from "@/app/components/ui/Typography/Title";
+import SectionStyles from "@/app/components/PageSection/PageSection.module.css";
 
 export async function generateStaticParams() {
   const newsPosts = await getNewsPosts();
@@ -14,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 const styles = {
-  sectionWrapper: "mx-auto w-4/5 py-1.5",
+  sectionWrapper: "mx-auto py-1.5 text-center",
   postDetailsContainer: "flex flex-col md:flex-row md:gap-x-10 ",
   postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4",
   postDetailsFont: "font-normal md:font-bold",
@@ -51,12 +53,13 @@ export default async function NewsArticle({
 
   return (
     <main className="flex flex-col">
-      <section className={`${styles.sectionWrapper} py-1.5 md:py-4`}>
+      <PageSectionContainer className="mb-6 md:mb-12">
         <Title1 className="text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-10">
           {title}
         </Title1>
         {newsSubTitle}
-      </section>
+      </PageSectionContainer>
+
       <Image
         className="w-full -order-1 md:order-none"
         src={url}
@@ -65,30 +68,36 @@ export default async function NewsArticle({
         height={details.image.height}
       />
 
-      <section
-        className={`${styles.postDetailsContainer}, ${styles.sectionWrapper}`}
-      >
-        <div className={`${styles.postDetailsWrapper}`}>
-          <div className={`${styles.postDetailsFont}`}>Published On:</div>
-          <div>{formattedDate}</div>
-        </div>
-        <div className={`${styles.postDetailsWrapper}`}>
-          <div className={`${styles.postDetailsFont}`}>Written By:</div>
-          <div>{writtenBy}</div>
-        </div>
-        {followOurStory && (
-          <div className={`${styles.socialMediaWrapper}`}>
-            <div className="font-bold">Follow Our Story</div>
-            {followOurStory && <SocialMediaSection section={followOurStory} />}
+      <PageSectionContainer className="my-6">
+        <section
+          className={`${styles.postDetailsContainer} ${styles.sectionWrapper}`}
+        >
+          <div className={`${styles.postDetailsWrapper}`}>
+            <div className={`${styles.postDetailsFont}`}>Published On:</div>
+            <div>{formattedDate}</div>
           </div>
-        )}
-      </section>
-      <section className="grid">
-        {pageSections.map((section: PageSectionType) => (
-          <PageSection key={section.fields.title} section={section} />
-        ))}
-      </section>
-      <BlogCardsRow type="news" cards={news} />
+          <div className={`${styles.postDetailsWrapper}`}>
+            <div className={`${styles.postDetailsFont}`}>Written By:</div>
+            <div>{writtenBy}</div>
+          </div>
+          {followOurStory && (
+            <div className={`${styles.socialMediaWrapper}`}>
+              <div className="font-bold">Follow Our Story</div>
+              {followOurStory && (
+                <SocialMediaSection section={followOurStory} />
+              )}
+            </div>
+          )}
+        </section>
+      </PageSectionContainer>
+
+      {pageSections.map((section: PageSectionType) => (
+        <PageSection key={section.fields.title} section={section} />
+      ))}
+
+      <PageSectionContainer>
+        <BlogCardsRow type="news" cards={news} />
+      </PageSectionContainer>
     </main>
   );
 }

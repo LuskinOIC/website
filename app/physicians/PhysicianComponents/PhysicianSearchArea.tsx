@@ -129,7 +129,7 @@ function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
 
       return acc;
     },
-    { mdPhysicians: [], paNpPhysicians: [] },
+    { mdPhysicians: [], paNpPhysicians: [] }
   );
   return (
     <>

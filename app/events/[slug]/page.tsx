@@ -3,6 +3,7 @@ import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 // Import components
 import PageSection from "@/app/components/PageSection/PageSection";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
+import PageSectionContainer from "@/app/components/PageSection/PageSectionContainer";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -16,13 +17,13 @@ export default async function Event({ params }: { params: { slug: string } }) {
 
   return (
     <main>
-      <div>
-        {orgEvent.pageSections &&
-          orgEvent.pageSections.map((section: PageSectionType) => (
-            <PageSection key={section.fields.title} section={section} />
-          ))}
-      </div>
-      <BlogCardsRow type="events" cards={allEvents} />
+      {orgEvent.pageSections &&
+        orgEvent.pageSections.map((section: PageSectionType) => (
+          <PageSection key={section.fields.title} section={section} />
+        ))}
+      <PageSectionContainer>
+        <BlogCardsRow type="events" cards={allEvents} />
+      </PageSectionContainer>
     </main>
   );
 }

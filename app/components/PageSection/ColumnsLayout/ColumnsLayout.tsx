@@ -9,16 +9,18 @@ import TriInfoLayout from "@/app/components/PageSection/ColumnsLayout/TriInfoLay
 // Types
 import { PageSectionType } from "@/app/constants/types";
 
-export default function ColumnsLayout({
-  section,
-}: {
-  section: PageSectionType;
-}) {
+function ColumnsLayoutComponent({ section }: { section: PageSectionType }) {
   const columnType = section.fields.columnLayout.fields.columnType;
   const columnLayout = section.fields.columnLayout;
+
   switch (columnType) {
     case "Two Column":
-      return <TwoColumnLayout section={columnLayout} />;
+      return (
+        <TwoColumnLayout
+          columnLayout={columnLayout}
+          width={section.fields.width}
+        />
+      );
     case "Full Column (image or text)":
       return <FullColumnLayout section={columnLayout} />;
     case "Full Column":
@@ -34,4 +36,12 @@ export default function ColumnsLayout({
     default:
       return null;
   }
+}
+
+export default function ColumnsLayout({
+  section,
+}: {
+  section: PageSectionType;
+}) {
+  return <ColumnsLayoutComponent section={section} />;
 }

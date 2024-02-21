@@ -4,7 +4,7 @@ import TriImageLayout from "./TriImageLayout";
 import CarouselImageLayout from "./CarouselImageLayout";
 
 // Types
-import { ImagesLayoutType } from "@/app/constants/types";
+import { PageSectionType, ImagesLayoutType } from "@/app/constants/types";
 
 type ImageLayoutPropsType = {
   fields: {
@@ -17,7 +17,7 @@ type ImageLayoutPropsType = {
 export default function ImagesLayout({
   section,
 }: {
-  section: ImageLayoutPropsType;
+  section: PageSectionType;
 }) {
   const imagesType =
     section.fields.imagesLayout && section.fields.imagesLayout.fields.type;

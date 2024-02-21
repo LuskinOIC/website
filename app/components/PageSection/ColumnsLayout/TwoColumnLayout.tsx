@@ -3,45 +3,56 @@ import { ColumnType } from "@/app/constants/types";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import SectionContent from "./SectionContent";
 
-export default function ColumnLayout({ section }: { section: ColumnType }) {
-  const isReversedOrder = section.fields.reverseOrder;
+export default function TwoColumnLayout({
+  columnLayout,
+  width,
+}: {
+  columnLayout: ColumnType;
+  width?: string;
+}) {
+  const isReversedOrder = columnLayout.fields.reverseOrder;
   const orderClass = isReversedOrder ? "md:order-1" : "";
-  const textPadding = isReversedOrder
-    ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
-    : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
-  const verticalPadding =
-    section.fields.backgroundColor === "white" ? "md:py-5" : "py-0";
-  const paddingImageBased =
-    section.fields.imageOrientation === "Center Align" ? "md:py-5" : "";
-  const bgColor = section.fields.backgroundColor
-    ? getBackgroundColor(section.fields.backgroundColor)
+
+  let textPadding = "";
+  if (width === "FULL_WIDTH") {
+    textPadding = isReversedOrder
+      ? "pl-0 pr-12 md:ml-[20%]"
+      : "pr-0 pl-12 md:mr-[20%]";
+  }
+
+  const bgColor = columnLayout.fields.backgroundColor
+    ? getBackgroundColor(columnLayout.fields.backgroundColor)
     : "white";
 
   const orientationClass =
-    section.fields.imageOrientation === "Center Align"
+    columnLayout.fields.imageOrientation === "Center Align"
       ? "mx-auto"
       : `md:rounded-l-lg ${isReversedOrder ? "float-right" : "float-left"}`;
 
+  const imageClass = isReversedOrder ? "md:float-right" : "md:float-left";
+
   return (
-    <section className={`block ${verticalPadding}`}>
-      <div
-        className={`flex flex-col md:flex-row md:items-center ${bgColor} ${paddingImageBased} justify-between`}
-      >
-        {section.fields.image && (
-          <div className={`${orderClass} ${orientationClass}`}>
-            <div style={{ maxWidth: "768px" }}>
-              <Image
-                src={`https:${section.fields.image.fields.file.url}`}
-                alt={section.fields.image.fields.description}
-                width={section.fields.image.fields.file.details.image.width}
-                height={section.fields.image.fields.file.details.image.height}
-              />
-            </div>
+    <section
+      className={`relative grid md:grid-cols-2 items-center justify-between ${bgColor}`}
+    >
+      {columnLayout.fields.image && (
+        <div className={`${orderClass} ${orientationClass}`}>
+          <div style={{ maxWidth: "768px" }} className={`${imageClass}`}>
+            <Image
+              className={`${imageClass}`}
+              src={`https:${columnLayout.fields.image.fields.file.url}`}
+              alt={columnLayout.fields.image.fields.description}
+              width={columnLayout.fields.image.fields.file.details.image.width}
+              height={
+                columnLayout.fields.image.fields.file.details.image.height
+              }
+            />
           </div>
-        )}
-        <div className={`basis-1/2 px-2 ${textPadding}`}>
-          <SectionContent section={section} />
         </div>
+      )}
+
+      <div className={`basis-1/2 ${textPadding}`}>
+        <SectionContent section={columnLayout} />
       </div>
     </section>
   );

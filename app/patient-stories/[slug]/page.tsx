@@ -4,6 +4,7 @@ import {
   getPatientStoryBySlug,
 } from "@/app/utils/contentful";
 import PageSection from "@/app/components/PageSection/PageSection";
+import PageSectionContainer from "@/app/components/PageSection/PageSectionContainer";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 
@@ -19,17 +20,21 @@ export default async function PatientStories({
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
   const patients = (await getPatientStories(
-    4,
+    4
   )) as unknown as BlogCardsRowType[];
 
   return (
-    <main>
-      <TwoColumnLayout section={patient.topSection} />
+    <main className="w-full pt-12">
+      <TwoColumnLayout columnLayout={patient.topSection} width="FULL_WIDTH" />
+
       {patient.pageSections &&
         patient.pageSections.map((pageSection: PageSectionType) => (
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
-      <BlogCardsRow type="patient-stories" cards={patients} />
+
+      <PageSectionContainer>
+        <BlogCardsRow type="patient-stories" cards={patients} />
+      </PageSectionContainer>
     </main>
   );
 }

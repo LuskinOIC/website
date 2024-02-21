@@ -12,8 +12,8 @@ import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 
 const styles = {
   sectionLayout:
-    "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto my-5 md:my-10 md:p-10",
-  boxStyling: "border border-zinc-300 rounded shadow-md md:w-4/5",
+    "grid md:grid-cols-2 gap-2 md:gap-20 mx-2 md:mx-auto md:p-10 md:mb-6",
+  boxStyling: "border border-zinc-300 rounded shadow-md",
 };
 
 type SpecialtyCardProps = {

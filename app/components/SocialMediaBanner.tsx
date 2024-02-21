@@ -28,20 +28,9 @@ const socialMediaLinks = [
   { url: YELP_URL, src: Yelp, alt: "Yelp Logo" },
 ];
 
-export default function SocialMediaBanner() {
-  return (
-    <div className="bg-[#FCE385]">
-      <div className="md:py-4 flex flex-row justify-center">
-        <DesktopBanner />
-        <MobileBanner />
-      </div>
-    </div>
-  );
-}
-
 function DesktopBanner() {
   return (
-    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] px-3 py-2">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col px-3 py-2">
       <div className="self-center row-span-3">
         <div className="flex flex-row min-h-[75%] justify-center items-center scale-[85%]">
           <Image src={Ozzie} alt="Ozzie" />
@@ -92,6 +81,15 @@ function SocialMediaIcons() {
           </a>
         ))}
       </div>
+    </div>
+  );
+}
+
+export default function SocialMediaBanner() {
+  return (
+    <div className="flex flex-row justify-center">
+      <DesktopBanner />
+      <MobileBanner />
     </div>
   );
 }
