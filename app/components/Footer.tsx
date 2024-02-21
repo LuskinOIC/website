@@ -6,6 +6,8 @@ import youtube from "../../public/youtube.svg";
 import instagram from "../../public/instagram.svg";
 import yelp from "../../public/yelp.svg";
 import xlogo from "@/public/XLogo.svg";
+import phone from "@/public/phone-white.svg";
+import pin from "@/public/map-pin-white.svg";
 import {
   CAREERS_URL,
   FACEBOOK_URL,
@@ -81,7 +83,7 @@ const styles = {
   baseText: "text-lg",
   contactInfoContainer: "flex flex-row gap-x-8 pl-4",
   contactInfoSection: "flex flex-col gap-2",
-  contactInfoSectionTop: "basis-2/3",
+  contactInfoSectionTop: "basis-2/3 pb-2",
   contactInfoSectionBottom: "basis-1/3",
   border:
     "inline-block w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 hidden lg:block",
@@ -133,16 +135,34 @@ export default function Footer() {
                 <h3 className={styles.subHeader}>
                   Medical Pavilion & <br /> Ambulatory Surgery Center
                 </h3>
-                <a
-                  href="https://maps.app.goo.gl/8N6bo3GfA2oV26qm8"
-                  id="hospital-uc-address"
-                  className=""
-                  target="_blank"
-                >
-                  <p>
-                    403 West Adams Boulevard <br /> Los Angeles, CA 90007
-                  </p>
-                </a>
+                <div className="flex flex-row ">
+                  <Image
+                    src={pin}
+                    width={20}
+                    height={20}
+                    alt="Address"
+                    className="mr-5"
+                  />
+                  <a
+                    href="https://maps.app.goo.gl/8N6bo3GfA2oV26qm8"
+                    id="hospital-uc-address"
+                    className="hover:underline"
+                    target="_blank"
+                  >
+                    <p>
+                      403 West Adams Boulevard <br /> Los Angeles, CA 90007
+                    </p>
+                  </a>
+                </div>
+              </div>
+              <div className="flex flex-row">
+                <Image
+                  src={phone}
+                  width={20}
+                  height={20}
+                  alt="Phone number"
+                  className="mr-5"
+                />
                 <p>(213) 742-1000</p>
               </div>
               <div
@@ -164,14 +184,39 @@ export default function Footer() {
               className={`hidden md:${styles.contactInfoSection}`}
             >
               <div id="clinic-address" className={styles.contactInfoSectionTop}>
-                <h3 className={styles.subHeader}>
+                <h3 className={`${styles.subHeader} mb-3`}>
                   Luskin Children&apos;s Clinic
                 </h3>
-                <div>
-                  <p>
-                    1250 16th Street, Suite 2100B <br /> Santa Monica, CA 90404
-                  </p>
-                  <p className="">(310) 395-4814</p>
+
+                <div className="flex flex-row">
+                  <Image
+                    src={pin}
+                    width={20}
+                    height={20}
+                    alt="Address"
+                    className="mr-5"
+                  />
+                  <a
+                    href="https://maps.app.goo.gl/NuSaJeMuo5Eq3kDQ7"
+                    id="childrens-clinic-address"
+                    className="hover:underline"
+                    target="_blank"
+                  >
+                    <p>
+                      1250 16th Street, Suite 2100B <br /> Santa Monica, CA
+                      90404
+                    </p>
+                  </a>
+                </div>
+                <div className="flex flex-row">
+                  <Image
+                    src={phone}
+                    width={20}
+                    height={20}
+                    alt="Phone number"
+                    className="mr-5"
+                  />
+                  <p>(310) 395-4814</p>
                 </div>
               </div>
               <div
