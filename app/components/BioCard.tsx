@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 
 const styles = {
   container:
-    "md:min-h-[250px] bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground shadow-sm hover:shadow-lg flex flex-row md:flex-col justify-start",
+    " bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground shadow-sm hover:shadow-lg flex flex-row md:flex-col justify-start",
   header:
     "md:pb-0 md:self-center md:text-center text-white md:text-black leading-0 md:leading-0 md:min-h-[50px]",
   paragraph:
     "text-sm md:flex md:min-h-[30px] md:text-lg md:text-center md:items-center md:mx-auto text-white md:text-black ",
-  image: "w-28 h-28 md:w-auto md:h-auto md:mx-auto p-2 md:p-6",
+  image: "w-28 h-28 md:w-full md:h-auto md:mx-auto p-2 md:p-6",
   textDesktop: "hidden md:flex flex-col justify-center pb-4 px-2",
   textMobile: "flex flex-col justify-center md:hidden",
 };
