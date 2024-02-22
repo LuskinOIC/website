@@ -17,7 +17,14 @@ const styles = {
 };
 
 export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
-  const { name, description, location, slug, physicians } = specialty.fields;
+  const {
+    name,
+    description,
+    location,
+    slug,
+    physicians,
+    medicalProfessionalPage,
+  } = specialty.fields;
 
   const descriptionContent =
     description && renderRichTextToReactComponent(description);
@@ -35,13 +42,15 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
             variant="bluePrimary"
             isExternal={false}
           />
-          <Button
-            className="my-3"
-            href={`/medical-professionals/specialties/${slug}`}
-            text="PHYSICIANS"
-            variant="physicians"
-            isExternal={false}
-          />
+          {medicalProfessionalPage && (
+            <Button
+              className="my-3"
+              href={`/medical-professionals/specialties/${slug}`}
+              text="PHYSICIANS"
+              variant="physicians"
+              isExternal={false}
+            />
+          )}
         </div>
         <div className="basis-1/2">
           <SpecialtyHoursLayout locationContent={location} />

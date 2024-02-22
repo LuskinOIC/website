@@ -74,6 +74,7 @@ export async function getPageBySlug(slug: string) {
 export async function getSpecialties(): Promise<SpecialtyType[]> {
   const entries = await client.getEntries({
     content_type: "specialty",
+    order: ["fields.order"],
     locale: "en-US",
   });
 
