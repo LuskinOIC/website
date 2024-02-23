@@ -66,7 +66,7 @@ export default function Dropdown(props: DropdownProps) {
           </div>
         </button>
         {showMenu && (
-          <div className="text-black absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
+          <div className="flex flex-col text-luskin-blue underline absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
             {props.options.map((option) => (
               <button
                 key={option.value}
