@@ -1,7 +1,8 @@
 // Components
 import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLayout";
-import TriImageLayout from "./TriImageLayout";
-import CarouselImageLayout from "./CarouselImageLayout";
+import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
+import CarouselImageLayout from "@/app/components/PageSection/CarouselImageLayout";
+import CarouselImageSlider from "@/app/components/PageSection/CarouselImageSlider";
 
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
@@ -30,6 +31,10 @@ export default function ImagesLayout({
       return <TriImageLayout section={ImagesLayout.fields.images} />;
     case "Carousel Image":
       return <CarouselImageLayout section={ImagesLayout.fields.images} />;
+    case "Carousel":
+      return (
+        <CarouselImageSlider section={ImagesLayout.fields.carouselSlides} />
+      );
     default:
       return null;
   }
