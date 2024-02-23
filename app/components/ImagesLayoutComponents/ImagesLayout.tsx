@@ -1,8 +1,8 @@
 // Components
-import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLayout";
-import TriImageLayout from "@/app/components/PageSection/TriImageLayout";
-import CarouselImageLayout from "@/app/components/PageSection/CarouselImageLayout";
-import CarouselImageSlider from "@/app/components/PageSection/CarouselImageSlider";
+import FullWidthImageLayout from "@/app/components/ImagesLayoutComponents/FullWidthImageLayout";
+import TriImageLayout from "@/app/components/ImagesLayoutComponents/TriImageLayout";
+import CarouselImageLayout from "@/app/components/ImagesLayoutComponents/CarouselImageOnlyLayout";
+import CarouselImageSlider from "@/app/components/ImagesLayoutComponents/CarouselImageOverlay";
 
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
@@ -27,8 +27,17 @@ export default function ImagesLayout({
   switch (imagesType) {
     case "Full Width Image":
       return <FullWidthImageLayout section={ImagesLayout} />;
+    case "Full Width Image with Overlay":
+      return <FullWidthImageLayout section={ImagesLayout} />;
     case "Tri Image":
       return <TriImageLayout section={ImagesLayout.fields.images} />;
+    case "Carousel Images Only":
+      return <CarouselImageLayout section={ImagesLayout.fields.images} />;
+    case "Carousel Images and Overlays":
+      return (
+        <CarouselImageSlider section={ImagesLayout.fields.carouselSlides} />
+      );
+    //to be removed?
     case "Carousel Image":
       return <CarouselImageLayout section={ImagesLayout.fields.images} />;
     case "Carousel":

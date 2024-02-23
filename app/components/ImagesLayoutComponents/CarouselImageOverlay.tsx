@@ -5,8 +5,9 @@ import Image from "next/image";
 import { ButtonType, CarouselSlideType } from "@/app/constants/types";
 // Components
 import Slider from "@/app/components/Slider";
-import Button from "../ui/Button";
-import { Title1 } from "../ui/Typography/Title";
+import Button from "@/app/components/ui/Button";
+import { Title1 } from "@/app/components/ui/Typography/Title";
+import { styles } from "@/app/components/ImagesLayoutComponents/styles";
 
 type OverlayComponentProps = {
   overlayTitle?: string;
@@ -16,16 +17,6 @@ type OverlayComponentProps = {
 
 type CarouselImageLayoutProps = {
   section: CarouselSlideType[];
-};
-
-const styles = {
-  container:
-    "flex flex-col w-full h-[275px] md:block md:relative md:min-h-[560px] md:overflow-hidden mb-4 md:mb-10 md:text-left",
-  image: "h-full",
-  btn: "md:w-full text-center my-2 md:mx-0",
-  overlayDesktop:
-    "md:absolute md:left-0 md:top-[25%] md:left-[7%] md:max-w-[500px] md:transform bg-white md:bg-opacity-75 md:rounded md:p-6",
-  title: "font-normal lg:text-[48px] leading-snug",
 };
 
 const OverlayComponent = ({

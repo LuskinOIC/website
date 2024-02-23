@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MultiImageType } from "@/app/constants/types";
 // Components
 import Slider from "@/app/components/Slider";
+import { styles } from "@/app/components/ImagesLayoutComponents/styles";
 
 type CarouselImageLayoutProps = {
   section: MultiImageType["fields"]["images"];
@@ -15,22 +16,21 @@ export default function CarouselImageLayout({
 }: CarouselImageLayoutProps) {
   return (
     <section>
-      <div className="md:w-full md:overflow-hidden">
-        <Slider
-          slides={
-            section.map((image, i: number) => (
+      <Slider
+        slides={
+          section.map((image, i: number) => (
+            <div className={styles.container} key={i}>
               <Image
-                key={i}
                 src={image.fields.file.url}
                 alt={image.fields.file.fileName}
                 width={image.fields.file.details.image.width}
                 height={image.fields.file.details.image.height}
-                className="mb-4 max-h-40 w-full object-cover object-top md:mb-10 md:min-h-[560px]"
+                className={styles.image}
               />
-            )) as any
-          }
-        />
-      </div>
+            </div>
+          )) as any
+        }
+      />
     </section>
   );
 }
