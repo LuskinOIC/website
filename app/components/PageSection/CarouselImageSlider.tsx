@@ -2,11 +2,17 @@
 // Next components
 import Image from "next/image";
 // Types
-import { CarouselSlideType } from "@/app/constants/types";
+import { ButtonType, CarouselSlideType } from "@/app/constants/types";
 // Components
 import Slider from "@/app/components/Slider";
 import Button from "../ui/Button";
 import { Title1 } from "../ui/Typography/Title";
+
+type OverlayComponentProps = {
+  overlayTitle?: string;
+  overlayButton?: ButtonType;
+  btnStyle?: string;
+};
 
 type CarouselImageLayoutProps = {
   section: CarouselSlideType[];
@@ -22,7 +28,11 @@ const styles = {
   title: "font-normal lg:text-[48px] leading-snug",
 };
 
-const OverlayComponent = ({ overlayTitle, overlayButton, btnStyle }: any) => (
+const OverlayComponent = ({
+  overlayTitle,
+  overlayButton,
+  btnStyle,
+}: OverlayComponentProps) => (
   <>
     {overlayTitle && <Title1 className={styles.title}>{overlayTitle}</Title1>}
     {overlayButton && (
