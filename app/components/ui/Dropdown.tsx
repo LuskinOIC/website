@@ -66,7 +66,7 @@ export default function Dropdown(props: DropdownProps) {
           </div>
         </button>
         {showMenu && (
-          <div className="flex flex-col text-luskin-blue underline absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
+          <div className="flex flex-col text-luskin-blue absolute translate-y-1 w-full border border-solid border-[#ccc] rounded overflow-auto max-h-36 bg-[#fff]">
             {props.options.map((option) => (
               <button
                 key={option.value}
@@ -74,7 +74,7 @@ export default function Dropdown(props: DropdownProps) {
                   onItemClick(option);
                   resetSelectedValue();
                 }}
-                className={`p-2 cursor-pointer :bg-[#9fc3f870] ${
+                className={`p-2 font-arial font-bold leading-[19.2px]  cursor-pointer :bg-[#9fc3f870] ${
                   isSelected(option) ? "bg-[#0d6efd] text-white" : ""
                 }`}
               >
