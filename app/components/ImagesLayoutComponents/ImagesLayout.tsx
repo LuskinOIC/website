@@ -27,8 +27,6 @@ export default function ImagesLayout({
   switch (imagesType) {
     case "Full Width Image":
       return <FullWidthImageLayout section={ImagesLayout} />;
-    case "Full Width Image with Overlay":
-      return <FullWidthImageLayout section={ImagesLayout} />;
     case "Tri Image":
       return <TriImageLayout section={ImagesLayout.fields.images} />;
     case "Carousel Images Only":
@@ -37,13 +35,9 @@ export default function ImagesLayout({
       return (
         <CarouselImageSlider section={ImagesLayout.fields.carouselSlides} />
       );
-    //to be removed?
+    //to be removed after text-overlay-carousel branch push
     case "Carousel Image":
       return <CarouselImageLayout section={ImagesLayout.fields.images} />;
-    case "Carousel":
-      return (
-        <CarouselImageSlider section={ImagesLayout.fields.carouselSlides} />
-      );
     default:
       return null;
   }
