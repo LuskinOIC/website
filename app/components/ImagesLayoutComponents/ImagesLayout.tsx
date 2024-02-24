@@ -1,7 +1,8 @@
 // Components
-import FullWidthImageLayout from "@/app/components/PageSection/FullWidthImageLayout";
-import TriImageLayout from "./TriImageLayout";
-import CarouselImageLayout from "./CarouselImageLayout";
+import FullWidthImageLayout from "@/app/components/ImagesLayoutComponents/FullWidthImageLayout";
+import TriImageLayout from "@/app/components/ImagesLayoutComponents/TriImageLayout";
+import CarouselImageLayout from "@/app/components/ImagesLayoutComponents/CarouselImageOnlyLayout";
+import CarouselImageSlider from "@/app/components/ImagesLayoutComponents/CarouselImageOverlay";
 
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
@@ -28,6 +29,13 @@ export default function ImagesLayout({
       return <FullWidthImageLayout section={ImagesLayout} />;
     case "Tri Image":
       return <TriImageLayout section={ImagesLayout.fields.images} />;
+    case "Carousel Images Only":
+      return <CarouselImageLayout section={ImagesLayout.fields.images} />;
+    case "Carousel Images and Overlays":
+      return (
+        <CarouselImageSlider section={ImagesLayout.fields.carouselSlides} />
+      );
+    //to be removed after text-overlay-carousel branch push
     case "Carousel Image":
       return <CarouselImageLayout section={ImagesLayout.fields.images} />;
     default:

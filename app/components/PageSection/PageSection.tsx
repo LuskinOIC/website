@@ -4,9 +4,9 @@ import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 import ColumnLayout from "@/app/components/PageSection/ColumnsLayout/ColumnsLayout";
 import CardLayoutSection from "@/app/components/PageSection/CardsLayout";
-import ImagesLayout from "./ImagesLayout";
+import ImagesLayout from "@/app/components/ImagesLayoutComponents/ImagesLayout";
 import TabSection from "@/app/components/TabSection";
-import GridLayoutSection from "../GridLayoutSection";
+import GridLayoutSection from "@/app/components/GridLayoutSection";
 import EventBanner from "@/app/components/EventBanner";
 import NewsletterBanner from "@/app/components/NewsletterBanner";
 
