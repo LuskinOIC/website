@@ -8,6 +8,8 @@ import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 
+const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
+
 export const metadata: Metadata = {
   title:
     "Pediatric Orthopedic Specialists - Luskin Orthopaedic Institute for Children",
@@ -42,11 +44,12 @@ export default async function RootLayout({
           <Navbar navigationBar={navigationBar} />
           {/* This div provides margin for the main layout since the navbar is stick */}
           <div className={`h-[95px] md:h-[166px] ${bgColor}`}></div>
-          <main className="">{children}</main>
+          <main id="main">{children}</main>
           <Footer />
         </div>
       </body>
       <GoogleAnalytics gaId="G-E5WLP3Z0RQ" />
+      {process.env.NODE_ENV === "development" ? <AxeDevTools /> : null}
       <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
     </html>
   );

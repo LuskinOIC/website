@@ -33,7 +33,7 @@ export default async function Blog() {
   ];
 
   return (
-    <main>
+    <div>
       {page.pageSections.map((pageSection: PageSectionType) => (
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
@@ -44,6 +44,6 @@ export default async function Blog() {
       <BlogCardsRow type="news" cards={news} />
       <BlogCardsRow type="events" cards={events} />
       <BlogCardsRow type="patient-stories" cards={patientStories} />
-    </main>
+    </div>
   );
 }

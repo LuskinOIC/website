@@ -94,7 +94,7 @@ const FooterItemsSection = ({
   menuItems,
 }: FooterItemsSectionProps) => (
   <>
-    <h3 className={styles.subHeader}>{title}</h3>
+    <h4 className={styles.subHeader}>{title}</h4>
     <ul id={id} className="">
       {menuItems.map((item, index) => (
         <li key={index}>
@@ -111,7 +111,7 @@ const FooterItemsSection = ({
 
 export default function Footer() {
   return (
-    <>
+    <footer>
       <NewsletterSignup />
       {/* footer container */}
       <div id="container" className={styles.footerContainer}>
@@ -130,9 +130,9 @@ export default function Footer() {
               id="contact-info-hospital-uc"
               className={styles.contactInfoSection}
             >
-              <h3 className={styles.subHeader}>
+              <h4 className={styles.subHeader}>
                 Medical Pavilion & <br /> Ambulatory Surgery Center
-              </h3>
+              </h4>
 
               <div className={styles.iconsContainer}>
                 <Image
@@ -165,7 +165,7 @@ export default function Footer() {
                 <p>(213) 742-1000</p>
               </div>
               <div id="contact-info-hours">
-                <h3 className={styles.subHeader}>Urgent Care Center Hours</h3>
+                <h4 className={styles.subHeader}>Urgent Care Center Hours</h4>
                 <div id="hours">
                   <p>Monday - Friday 8am - 4pm</p>
                   <p>Closed Saturday & Sunday</p>
@@ -179,9 +179,9 @@ export default function Footer() {
               id="contact-info-clinic"
               className={`hidden md:${styles.contactInfoSection}`}
             >
-              <h3 className={`${styles.subHeader} py-3`}>
+              <h4 className={`${styles.subHeader} py-3`}>
                 Luskin Children&apos;s Clinic
-              </h3>
+              </h4>
 
               <div className={styles.iconsContainer}>
                 <Image
@@ -215,7 +215,7 @@ export default function Footer() {
 
               {/* FOLLOW CONTAINER */}
               <div id="follow-container">
-                <h3 className={styles.subHeader}>Follow LuskinOIC!</h3>
+                <h4 className={styles.subHeader}>Follow LuskinOIC!</h4>
                 <div id="social-media">
                   <ul className="flex pt-3">
                     {socialMediaLinks.map(({ url, src, alt }) => (
@@ -270,6 +270,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 }

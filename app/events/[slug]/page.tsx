@@ -15,7 +15,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
   const allEvents = (await getEvents(4)) as unknown as BlogCardsRowType[];
 
   return (
-    <main>
+    <div>
       <div>
         {orgEvent.pageSections &&
           orgEvent.pageSections.map((section: PageSectionType) => (
@@ -23,6 +23,6 @@ export default async function Event({ params }: { params: { slug: string } }) {
           ))}
       </div>
       <BlogCardsRow type="events" cards={allEvents} />
-    </main>
+    </div>
   );
 }

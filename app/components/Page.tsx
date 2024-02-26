@@ -8,10 +8,10 @@ interface PagePropsType {
 // A resuable component that renders a page with sections.
 export default function Page({ page }: PagePropsType) {
   return (
-    <main>
+    <div>
       {page.pageSections.map((pageSection: PageSectionType) => (
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
-    </main>
+    </div>
   );
 }

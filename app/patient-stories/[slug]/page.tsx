@@ -23,13 +23,13 @@ export default async function PatientStories({
   )) as unknown as BlogCardsRowType[];
 
   return (
-    <main>
+    <div>
       <TwoColumnLayout section={patient.topSection} />
       {patient.pageSections &&
         patient.pageSections.map((pageSection: PageSectionType) => (
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
       <BlogCardsRow type="patient-stories" cards={patients} />
-    </main>
+    </div>
   );
 }
