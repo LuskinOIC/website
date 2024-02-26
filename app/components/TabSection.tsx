@@ -8,7 +8,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/app/components/ui/tabs";
+} from "@/app/components/ui/Tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
