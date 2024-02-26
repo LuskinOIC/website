@@ -122,10 +122,12 @@ export type BioCardsRowPropsType = {
 
 export type CardsRowType = {
   fields: {
+    topSummary: ColumnType;
     leadershipRole: string;
     name: string;
     portrait: NestedAssetType;
     slug: string;
+    topSection?: MemberType | PhysicianBioType | PatientType;
   };
   sys: {
     contentType: any;

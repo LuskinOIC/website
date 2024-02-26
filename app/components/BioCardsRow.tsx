@@ -11,6 +11,7 @@ const styles = {
   gridLastRow: "md:grid-cols-2",
   gridPadding: "py-2 md:justify-items-center",
   title: "mb-2 mt-8 font-bold text-[#0076AD] md:mb-4 md:ml-4 md:font-normal",
+  clickableStyle: "shadow-2xl md:shadow-md hover:shadow-lg rounded-lg",
 };
 
 function getCardHref(card: CardsRowType) {
@@ -28,18 +29,25 @@ function getCardHref(card: CardsRowType) {
 
 const renderCards = (cards: CardsRowType[]) => {
   return cards.map((card, i) => {
-    let cardHref = getCardHref(card); // Ensure 'getCardHref' is defined and accessible
-    return (
-      <Link key={i} href={cardHref}>
-        <BioCard
-          name={card.fields.name}
-          portrait={card.fields.portrait}
-          leadershipRole={
-            card.fields.leadershipRole ? card.fields.leadershipRole : ""
-          }
-          classNames="md:w-[258px] md:h-full"
-        />
+    const cardContent = (
+      <BioCard
+        name={card.fields.name}
+        portrait={card.fields.portrait}
+        leadershipRole={
+          card.fields.leadershipRole ? card.fields.leadershipRole : ""
+        }
+        classNames="md:w-[258px] md:h-full"
+      />
+    );
+
+    const shouldWrapWithLink = card.fields.topSection || card.fields.topSummary;
+
+    return shouldWrapWithLink ? (
+      <Link key={i} href={getCardHref(card)} className={styles.clickableStyle}>
+        {cardContent}
       </Link>
+    ) : (
+      <div key={i}>{cardContent}</div>
     );
   });
 };
@@ -57,7 +65,6 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
     lastRow = lastFewCards.splice(-2);
     secondRow = lastFewCards;
   }
-
   return (
     <section id="BioCardsRow" className={styles.container}>
       <Title2 className={styles.title}>{title}</Title2>

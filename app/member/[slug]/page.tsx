@@ -18,7 +18,9 @@ export default async function MemberBio({
 
   return (
     <div className="">
-      <TwoColumnLayout section={memberBio.topSection} />
+      {memberBio.topSection && (
+        <TwoColumnLayout section={memberBio.topSection} />
+      )}
     </div>
   );
 }
