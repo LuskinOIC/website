@@ -119,7 +119,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         ))}
       </div>
       <div className="absolute bottom-0 left-0 right-0 mb-2 flex items-center justify-center">
-        <button onClick={prevSlide} className="">
+        <button aria-label="left arrow" onClick={prevSlide}>
           <LeftArrow />
         </button>
         {slides.map((_, index) => (
@@ -132,7 +132,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
             }`}
           ></span>
         ))}
-        <button onClick={nextSlide} className="">
+        <button aria-label="Right arrow" onClick={nextSlide}>
           <RightArrow />
         </button>
       </div>
