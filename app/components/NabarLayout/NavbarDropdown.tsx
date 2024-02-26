@@ -59,7 +59,6 @@ function NavbarDropDown({
     <div className="text-white text-xl">
       <button
         aria-label={label}
-        role="menu"
         onKeyDown={handleFocus}
         onMouseEnter={handleFocus}
         onClick={handleFocus}
