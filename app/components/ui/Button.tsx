@@ -74,18 +74,6 @@ const Button = ({
     }[convertedVariant],
     className,
   );
-  if (isExternal) {
-    return (
-      <a
-        href={href}
-        className={classes}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children || text}
-      </a>
-    );
-  }
 
   const handleClick = () => {
     sendGAEvent({
@@ -93,6 +81,20 @@ const Button = ({
       value: text,
     });
   };
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className={classes}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+      >
+        {children || text}
+      </a>
+    );
+  }
 
   return (
     <Link href={href} className={classes} onClick={handleClick}>
