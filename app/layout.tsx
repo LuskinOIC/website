@@ -46,7 +46,7 @@ export default async function RootLayout({
           <Footer />
         </div>
       </body>
-      <GoogleAnalytics gaId="G-7HE98BYBD0" />
+      <GoogleAnalytics gaId="G-E5WLP3Z0RQ" />
       <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
     </html>
   );
