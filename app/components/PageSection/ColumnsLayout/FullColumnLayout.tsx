@@ -3,7 +3,7 @@ import Image from "next/image";
 // Types
 import { ColumnType } from "@/app/constants/types";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
-import SectionContent from "./SectionContent";
+import SectionContent from "@/app/components/PageSection/ColumnsLayout/SectionContent";
 
 export default function FullWidthImageLayout({
   section,
