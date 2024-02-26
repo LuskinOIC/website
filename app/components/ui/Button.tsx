@@ -72,20 +72,8 @@ const Button = ({
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
       physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]",
     }[convertedVariant],
-    className,
+    className
   );
-  if (isExternal) {
-    return (
-      <a
-        href={href}
-        className={classes}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children || text}
-      </a>
-    );
-  }
 
   const handleClick = () => {
     sendGAEvent({
@@ -93,6 +81,20 @@ const Button = ({
       value: text,
     });
   };
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className={classes}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+      >
+        {children || text}
+      </a>
+    );
+  }
 
   return (
     <Link href={href} className={classes} onClick={handleClick}>
