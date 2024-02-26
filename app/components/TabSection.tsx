@@ -3,19 +3,19 @@
 import { TabType } from "../constants/types";
 import Button from "@/app/components/ui/Button";
 import renderRichTextToReactComponent from "../utils/rich-text";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/app/components/ui/tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "../../components/ui/card";
+} from "@/app/components/ui/DropdownMenu";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/Card";
 import { useState } from "react";
 import Image from "next/image";
 import { Title2, Title3 } from "./ui/Typography/Title";
@@ -93,11 +93,11 @@ export default function TabSection({
   const queriedTab = params.get("tab");
   // Create list of trimmed tab names
   const abbrvTabs = tabs.map((tab) =>
-    tab.fields.tabTitle.replace(/[^A-z]/g, ""),
+    tab.fields.tabTitle.replace(/[^A-z]/g, "")
   );
   // Use state to switch tabs with the dropdown menu
   const [selectedTab, setSelectedTab] = useState(
-    queriedTab ? queriedTab : abbrvTabs[0],
+    queriedTab ? queriedTab : abbrvTabs[0]
   );
 
   // Use state to trigger component refresh once tabs fully load

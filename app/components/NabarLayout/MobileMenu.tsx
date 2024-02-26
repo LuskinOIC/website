@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { NavigationMenuList } from "@/components/ui/navigation-menu";
+import { NavigationMenuList } from "@/app/components/ui/NavigationMenu";
 import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 import external_icon_white from "@/public/external-link-icon-white.svg";
@@ -18,7 +18,7 @@ function MobileMenu({
   toggleHamburgerDropdown,
 }: MobileMenuProps) {
   const [mobileMenuOpenStates, setMobileMenuOpenStates] = useState(
-    MobileDropdowns.map(() => false),
+    MobileDropdowns.map(() => false)
   );
 
   useEffect(() => {
