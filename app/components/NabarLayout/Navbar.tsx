@@ -65,7 +65,7 @@ export default function Navbar({
             <Image
               className={`ml-4 ${transitionClass} ${logoWidthClass}`}
               src={navigationBar.logo.fields.file.url}
-              alt={"Logo"}
+              alt="Logo for Luskin Orthopaedic Institute for Children"
               width={150}
               height={250}
             />

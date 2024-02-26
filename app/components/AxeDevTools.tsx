@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, lazy } from "react";
 import ReactDOM from "react-dom";
-import axe from "@axe-core/react";
 
 export default function AxeDevTools() {
   useEffect(() => {
-    axe(React, ReactDOM, 1000);
+    if (typeof window !== "undefined") {
+      const axe = require("@axe-core/react");
+      axe(React, ReactDOM, 1000);
+    }
   }, []);
-
   return null;
 }

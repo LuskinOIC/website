@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import React from "react";
 import Navbar from "@/app/components/NabarLayout/Navbar";
 import Footer from "@/app/components/Footer";
-// import AxeDevTools from "@/app/components/AxeDevTools";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
