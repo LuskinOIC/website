@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, lazy } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 export default function AxeDevTools() {

@@ -19,7 +19,7 @@ export default async function Blog() {
   const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
   const events = (await getEvents(8)) as unknown as BlogCardsRowType[];
   const patientStories = (await getPatientStories(
-    8
+    8,
   )) as unknown as BlogCardsRowType[];
 
   const dropdownOptions: OptionType[] = [

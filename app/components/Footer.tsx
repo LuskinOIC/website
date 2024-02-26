@@ -94,7 +94,7 @@ const FooterItemsSection = ({
   menuItems,
 }: FooterItemsSectionProps) => (
   <>
-    <label className={styles.subHeader}>{title}</label>
+    <h4 className={styles.subHeader}>{title}</h4>
     <ul id={id} className="">
       {menuItems.map((item, index) => (
         <li key={index}>
@@ -130,9 +130,9 @@ export default function Footer() {
               id="contact-info-hospital-uc"
               className={styles.contactInfoSection}
             >
-              <label className={styles.subHeader}>
+              <h4 className={styles.subHeader}>
                 Medical Pavilion & <br /> Ambulatory Surgery Center
-              </label>
+              </h4>
 
               <div className={styles.iconsContainer}>
                 <Image
@@ -165,9 +165,7 @@ export default function Footer() {
                 <p>(213) 742-1000</p>
               </div>
               <div id="contact-info-hours">
-                <label className={styles.subHeader}>
-                  Urgent Care Center Hours
-                </label>
+                <h4 className={styles.subHeader}>Urgent Care Center Hours</h4>
                 <div id="hours">
                   <p>Monday - Friday 8am - 4pm</p>
                   <p>Closed Saturday & Sunday</p>
@@ -181,9 +179,9 @@ export default function Footer() {
               id="contact-info-clinic"
               className={`hidden md:${styles.contactInfoSection}`}
             >
-              <label className={`${styles.subHeader} py-3`}>
+              <h4 className={`${styles.subHeader} py-3`}>
                 Luskin Children&apos;s Clinic
-              </label>
+              </h4>
 
               <div className={styles.iconsContainer}>
                 <Image
@@ -217,7 +215,7 @@ export default function Footer() {
 
               {/* FOLLOW CONTAINER */}
               <div id="follow-container">
-                <label className={styles.subHeader}>Follow LuskinOIC!</label>
+                <h4 className={styles.subHeader}>Follow LuskinOIC!</h4>
                 <div id="social-media">
                   <ul className="flex pt-3">
                     {socialMediaLinks.map(({ url, src, alt }) => (

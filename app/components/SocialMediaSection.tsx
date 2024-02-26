@@ -37,7 +37,7 @@ const SocialMediaSection = ({ section }: SocialMediaSectionPropsType) => {
             >
               <Image src={src} alt={alt} />
             </a>
-          )
+          ),
       )}
     </div>
   );
