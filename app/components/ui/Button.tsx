@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export type ButtonVariant =
   | "bluePrimary"
@@ -69,7 +72,7 @@ const Button = ({
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
       physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]",
     }[convertedVariant],
-    className,
+    className
   );
   if (isExternal) {
     return (
@@ -83,8 +86,16 @@ const Button = ({
       </a>
     );
   }
+
+  const handleClick = () => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
+  };
+
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} onClick={handleClick}>
       {children || text}
     </Link>
   );
