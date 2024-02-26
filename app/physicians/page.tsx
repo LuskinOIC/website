@@ -8,8 +8,8 @@ export default async function Physicians() {
   const physicians = (await getPhysicians()) as unknown as PhysicianBioType[];
 
   return (
-    <main>
+    <div>
       <PhysicianSearchArea physicians={physicians} />
-    </main>
+    </div>
   );
 }

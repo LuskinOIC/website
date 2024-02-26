@@ -5,8 +5,8 @@ export default async function Specialties() {
   const specialties = await getSpecialties();
 
   return (
-    <main>
+    <div>
       <SpecialtySearchArea specialties={specialties} />
-    </main>
+    </div>
   );
 }

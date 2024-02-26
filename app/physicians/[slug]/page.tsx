@@ -24,7 +24,7 @@ export default async function PhysicianBio({
     docBio.pageSections
       .filter(
         (pageSection: { fields: { type: string } }) =>
-          pageSection.fields.type === "Divider",
+          pageSection.fields.type === "Divider"
       )
       .map((pageSection: { fields: { dividerText: string } }) => {
         return {
@@ -35,7 +35,7 @@ export default async function PhysicianBio({
       });
 
   return (
-    <main className="">
+    <div>
       {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
 
       {docBio.pageSections && (
@@ -48,6 +48,6 @@ export default async function PhysicianBio({
         docBio.pageSections.map((section: PageSectionType) => (
           <PageSection key={section.fields.title} section={section} />
         ))}
-    </main>
+    </div>
   );
 }

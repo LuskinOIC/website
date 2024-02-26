@@ -17,8 +17,8 @@ export default async function MemberBio({
   const memberBio = await getMemberBySlug(params.slug);
 
   return (
-    <main className="">
+    <div className="">
       <TwoColumnLayout section={memberBio.topSection} />
-    </main>
+    </div>
   );
 }

@@ -50,7 +50,7 @@ export default async function NewsArticle({
     dateDate.getFullYear();
 
   return (
-    <main className="flex flex-col">
+    <div className="flex flex-col">
       <section className={`${styles.sectionWrapper} py-1.5 md:py-4`}>
         <Title1 className="text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-10">
           {title}
@@ -89,6 +89,6 @@ export default async function NewsArticle({
         ))}
       </section>
       <BlogCardsRow type="news" cards={news} />
-    </main>
+    </div>
   );
 }

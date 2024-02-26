@@ -13,9 +13,9 @@ export default async function PatientCare() {
 
   // TODO: Replace hardcoding with map and PageSection components
   return (
-    <main>
+    <div>
       {locations && <LocationsCard locations={locations} />}
       {tabs && <TabSection tabs={tabs} />}
-    </main>
+    </div>
   );
 }

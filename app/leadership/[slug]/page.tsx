@@ -13,8 +13,8 @@ export default async function LeadershipMember({
 }) {
   const member = await getLeadershipBioBySlug(params.slug);
   return (
-    <main>
+    <div>
       <TwoColumnLayout section={member.topSection} />
-    </main>
+    </div>
   );
 }

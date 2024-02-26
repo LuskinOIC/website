@@ -3,10 +3,13 @@ import type { Metadata } from "next";
 import React from "react";
 import Navbar from "@/app/components/NabarLayout/Navbar";
 import Footer from "@/app/components/Footer";
+// import AxeDevTools from "@/app/components/AxeDevTools";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
+
+const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
 
 export const metadata: Metadata = {
   title:
@@ -42,11 +45,12 @@ export default async function RootLayout({
           <Navbar navigationBar={navigationBar} />
           {/* This div provides margin for the main layout since the navbar is stick */}
           <div className={`h-[95px] md:h-[166px] ${bgColor}`}></div>
-          <main className="">{children}</main>
+          <main id="main">{children}</main>
           <Footer />
         </div>
       </body>
       <GoogleAnalytics gaId="G-E5WLP3Z0RQ" />
+      {process.env.NODE_ENV === "development" ? <AxeDevTools /> : null}
       <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
     </html>
   );
