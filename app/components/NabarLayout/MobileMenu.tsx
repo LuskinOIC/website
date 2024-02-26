@@ -18,7 +18,7 @@ function MobileMenu({
   toggleHamburgerDropdown,
 }: MobileMenuProps) {
   const [mobileMenuOpenStates, setMobileMenuOpenStates] = useState(
-    MobileDropdowns.map(() => false)
+    MobileDropdowns.map(() => false),
   );
 
   useEffect(() => {
