@@ -9,7 +9,7 @@ import NavigationItem from "@/app/components/NabarLayout/NavigationItem";
 import {
   NavigationMenu,
   NavigationMenuItem,
-} from "@/components/ui/navigation-menu";
+} from "@/app/components/ui/NavigationMenu";
 import { NavigationBarType } from "@/app/constants/types";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 

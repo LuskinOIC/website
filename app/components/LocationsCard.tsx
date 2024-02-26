@@ -1,5 +1,5 @@
 import { LocationType } from "../constants/types";
-import { Card } from "@/components/ui/card";
+import { Card } from "@/app/components/ui/Card";
 import Button from "../components/ui/Button";
 import Image from "next/image";
 import { Text } from "../components/ui/Typography/Text";

@@ -3,19 +3,19 @@
 import { TabType } from "../constants/types";
 import Button from "@/app/components/ui/Button";
 import renderRichTextToReactComponent from "../utils/rich-text";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/app/components/ui/Tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "../../components/ui/card";
+} from "@/app/components/ui/DropdownMenu";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/Card";
 import { useState } from "react";
 import Image from "next/image";
 import { Title2, Title3 } from "./ui/Typography/Title";
