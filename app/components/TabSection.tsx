@@ -73,7 +73,7 @@ const styles = {
       horizontalMargin = "mx-1";
     }
 
-    return `flex flex-col h-[3.812rem] rounded-t-lg rounded-b-none ${horizontalMargin} px-2 text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#5F7A9D] data-[state=active]:text-white`;
+    return `flex flex-col h-[3.812rem] rounded-t-lg rounded-b-none ${horizontalMargin} px-2 text-[1rem] font-bold bg-slate-200 text-black data-[state=active]:bg-[#546A88] data-[state=active]:text-white`;
   },
   dropdownSelectedItem:
     "py-4 grow self-start text-start align-middle overflow-hidden whitespace-nowrap text-ellipsis uppercase text-sm text-gray-400 font-medium",

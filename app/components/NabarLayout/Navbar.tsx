@@ -139,9 +139,9 @@ export default function Navbar({
       </div>
 
       {/* MOBILE CONTAINER */}
-      <div className="flex flex-row w-full justify-between items-center md:hidden">
+      <ul className="flex flex-row w-full justify-between items-center md:hidden">
         {/* LOGO CONTAINER */}
-        <div className="block md:hidden py-2">
+        <li className="block md:hidden py-2">
           <Link href="/">
             <Image
               className="ml-4"
@@ -151,7 +151,7 @@ export default function Navbar({
               height={60}
             />
           </Link>
-        </div>
+        </li>
 
         {/* To be implemented later */}
         <NavigationMenuItem className="block md:hidden list-none">
@@ -160,6 +160,7 @@ export default function Navbar({
           {/* </button> */}
           <button
             onClick={toggleHamburgerDropdown}
+            aria-label="Open Navigation Menu"
             className="bg-transparent text-white rounded-full py-3 px-4 text-xl"
           >
             {" "}
@@ -167,7 +168,7 @@ export default function Navbar({
             <FontAwesomeIcon icon={faBars} />
           </button>
         </NavigationMenuItem>
-      </div>
+      </ul>
 
       <MobileMenu
         isHamburgerOpen={isHamburgerOpen}
