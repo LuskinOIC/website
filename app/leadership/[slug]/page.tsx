@@ -14,7 +14,7 @@ export default async function LeadershipMember({
   const member = await getLeadershipBioBySlug(params.slug);
   return (
     <div>
-      <TwoColumnLayout section={member.topSection} />
+      {member.topSection && <TwoColumnLayout section={member.topSection} />}
     </div>
   );
 }
