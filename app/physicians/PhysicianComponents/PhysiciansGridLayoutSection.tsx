@@ -40,7 +40,7 @@ const PhysicianCard = ({ physician }: PhysicianCardProps) => {
       </div>
       <div className={styles.physicianDetailsContainer}>
         <h2 className={styles.physicianName}>{physician.name}</h2>
-        <h5>Specializes in:</h5>
+        <h2>Specializes in:</h2>
         <div className={styles.physicianDetails}>
           {renderRichTextToReactComponent(
             physician.specialties as unknown as Document,

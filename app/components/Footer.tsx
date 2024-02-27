@@ -94,7 +94,7 @@ const FooterItemsSection = ({
   menuItems,
 }: FooterItemsSectionProps) => (
   <>
-    <h4 className={styles.subHeader}>{title}</h4>
+    <h2 className={styles.subHeader}>{title}</h2>
     <ul id={id} className="">
       {menuItems.map((item, index) => (
         <li key={index}>
@@ -130,9 +130,9 @@ export default function Footer() {
               id="contact-info-hospital-uc"
               className={styles.contactInfoSection}
             >
-              <h4 className={styles.subHeader}>
+              <h2 className={styles.subHeader}>
                 Medical Pavilion & <br /> Ambulatory Surgery Center
-              </h4>
+              </h2>
 
               <div className={styles.iconsContainer}>
                 <Image
@@ -165,7 +165,7 @@ export default function Footer() {
                 <p>(213) 742-1000</p>
               </div>
               <div id="contact-info-hours">
-                <h4 className={styles.subHeader}>Urgent Care Center Hours</h4>
+                <h2 className={styles.subHeader}>Urgent Care Center Hours</h2>
                 <div id="hours">
                   <p>Monday - Friday 8am - 4pm</p>
                   <p>Closed Saturday & Sunday</p>
@@ -179,9 +179,9 @@ export default function Footer() {
               id="contact-info-clinic"
               className={`hidden md:${styles.contactInfoSection}`}
             >
-              <h4 className={`${styles.subHeader} py-3`}>
+              <h2 className={`${styles.subHeader} py-3`}>
                 Luskin Children&apos;s Clinic
-              </h4>
+              </h2>
 
               <div className={styles.iconsContainer}>
                 <Image
@@ -215,7 +215,7 @@ export default function Footer() {
 
               {/* FOLLOW CONTAINER */}
               <div id="follow-container">
-                <h4 className={styles.subHeader}>Follow LuskinOIC!</h4>
+                <h2 className={styles.subHeader}>Follow LuskinOIC!</h2>
                 <div id="social-media">
                   <ul className="flex pt-3">
                     {socialMediaLinks.map(({ url, src, alt }) => (
