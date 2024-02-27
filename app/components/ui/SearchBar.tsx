@@ -33,7 +33,7 @@ export default function SearchBar({
           }}
         />
         <button
-          className="absolute right-0 top-0 px-4 py-2 bg-blue-500 text-white rounded-r-md border border-blue-500"
+          className="absolute right-0 top-0 px-4 py-2 bg-[#1868F1] text-white rounded-r-md border border-[#1868F1]"
           onClick={onSearch}
         >
           Search
