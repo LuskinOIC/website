@@ -53,9 +53,9 @@ function DesktopBanner() {
         </div>
         <div className="flex items-center justify-center text-md text-center">
           <p className="w-5/6">
-            Join us in our mission to transform musculoskeletal care for all,
-            one child at a time, through education, research, and unwavering
-            support.
+            Join us in our mission to transform musculoskeletal care for all
+            kids, one child at a time, through education, research, and
+            unwavering support.
           </p>
         </div>
         <SocialMediaIcons />
@@ -74,8 +74,9 @@ function MobileBanner() {
         <Image src={OzzieMobile} alt="Ozzie" />
       </div>
       <Text className="px-10">
-        Join us in our mission to transform musculoskeletal care for all, one
-        child at a time, through education, research, and unwavering support.
+        Join us in our mission to transform musculoskeletal care for all kids,
+        one child at a time, through education, research, and unwavering
+        support.
       </Text>
       <SocialMediaIcons />
     </div>
