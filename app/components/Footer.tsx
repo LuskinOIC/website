@@ -192,13 +192,13 @@ export default function Footer() {
                   className="mr-5"
                 />
                 <a
-                  href="https://maps.app.goo.gl/NuSaJeMuo5Eq3kDQ7"
+                  href="https://maps.app.goo.gl/NYAiQVcfWpYMt2f99"
                   id="childrens-clinic-address"
                   className="hover:underline"
                   target="_blank"
                 >
                   <p>
-                    1250 16th Street, Suite 2100B <br /> Santa Monica, CA 90404
+                    1225 15th Street, Suite 2100B <br /> Santa Monica, CA 90404
                   </p>
                 </a>
               </div>
