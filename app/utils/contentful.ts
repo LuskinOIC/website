@@ -227,6 +227,7 @@ export async function getNavigationBar(): Promise<NavigationBarType> {
 export async function getConditionTerms() {
   let query = {
     content_type: "condition",
+    limit: 300,
     order: "fields.term",
     locale: "en-US",
     include: 5,

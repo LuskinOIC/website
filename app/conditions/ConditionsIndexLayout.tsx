@@ -1,20 +1,16 @@
 import { getConditionTerms } from "@/app/utils/contentful";
-import { PageSectionType, SpecialtyType } from "@/app/constants/types";
 import ConditionDetails from "@/app/conditions/ConditionDetails";
-import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
-import Button from "@/app/components/ui/Button";
+import { ConditionsType } from "@/app/constants/types";
 // import SearchBar from "@/app/components/ui/SearchBar";
-
-export type ConditionsType = {
-  slug: string;
-  term: string;
-  definition: string;
-  relatedSpecialties: SpecialtyType[];
-  learnMore: PageSectionType[];
-};
 
 type GroupedConditions = {
   [key: string]: ConditionsType[];
+};
+
+const styles = {
+  conditionsContainer: "flex flex-cols gap-6 w-5/6 mx-auto",
+  letter: "flex flex-cols px-2",
+  termsContainer: "grid grid-col gap-5 w-[95%]",
 };
 
 export default async function ConditionsIndexLayout() {
@@ -42,28 +38,8 @@ export default async function ConditionsIndexLayout() {
           <div key={index}>
             <h1>{key.toUpperCase()}</h1>
             {conditions.map((condition: ConditionsType) => (
-              <div
-                key={condition.slug}
-                id={condition.term}
-                className="grid grid-cols-5 border rounded px-[27px] py-[30px]"
-              >
-                <div className="col-span-4 flex flex-col gap-y-3 px-2">
-                  <ConditionDetails condition={condition} />
-                  {condition.relatedSpecialties && (
-                    <RelatedSpecialtiesComponent
-                      relatedSpecialties={condition.relatedSpecialties}
-                    />
-                  )}
-                </div>
-
-                <div className="col-span-1 self-end">
-                  <Button
-                    text="Learn More"
-                    href={`/conditions/${condition.slug}/learn-more`}
-                    className="uppercase"
-                    variant="bluePrimary"
-                  />
-                </div>
+              <div key={condition.term}>
+                <ConditionDetails condition={condition} />
               </div>
             ))}
           </div>
@@ -73,18 +49,18 @@ export default async function ConditionsIndexLayout() {
   };
 
   return (
-    <main className="flex flex-cols gap-6 w-5/6 mx-auto">
+    <section className={styles.conditionsContainer}>
       {/* <SearchBar /> */}
       <div className="">
         {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
           // <button key={letter} onClick={() => setFilterLetter(letter)}>
-          <button key={letter} className="flex flex-cols px-2">
+          <button key={letter} className={styles.letter}>
             {letter}
           </button>
         ))}
       </div>
-      <div className="grid grid-col gap-5 w-[95%]">{GlossarySection()}</div>
-    </main>
+      <div className={styles.termsContainer}>{GlossarySection()}</div>
+    </section>
   );
 }
 //Main letter header (eg: A, B)
