@@ -53,14 +53,15 @@ export default async function ConditionsIndexLayout() {
 
   return (
     <section className={styles.conditionsContainer}>
+      {/* TO DO: Search + Glossary Index BTN */}
       {/* <SearchBar /> */}
-      <div className={styles.lettersContainer}>
+      {/* <div className={styles.lettersContainer}>
         {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
           <button key={letter} className={styles.letter}>
             {letter}
           </button>
         ))}
-      </div>
+      </div> */}
       <div className={styles.termsContainer}>{GlossarySection()}</div>
     </section>
   );
