@@ -3,7 +3,8 @@ import { SPECIALTY_COLORS } from "@/app/constants/specialtyColors";
 import { SpecialtyType } from "@/app/constants/types";
 
 const styles = {
-  container: "flex flex-row items-center pt-6 space-x-2",
+  container:
+    "flex flex-col gap-4 md:gap-0 md:flex-row md:items-center pt-6 md:space-x-2",
   defaultBgColor: "#D3D3D3",
   linkContainer: "hover:underline px-4 py-1 text-black rounded-full",
 };

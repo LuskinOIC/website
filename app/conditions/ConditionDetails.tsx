@@ -1,6 +1,7 @@
 import { Title3 } from "@/app/components/ui/Typography/Title";
 import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
 import { ConditionsType } from "@/app/constants/types";
+import Link from "next/link";
 
 const styles = {
   desktopTermBox:
@@ -37,9 +38,12 @@ const ConditionItem = ({ condition }: ConditionItemProps) => {
         )}
       </div>
 
-      <div className={styles.mobileTermBox}>
+      <Link
+        href={`/conditions/${condition.slug}/learn-more`}
+        className={styles.mobileTermBox}
+      >
         <Title3 className={styles.title}>{condition.term}</Title3>
-      </div>
+      </Link>
     </>
   );
 };
