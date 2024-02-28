@@ -1,13 +1,15 @@
 import { Title3 } from "@/app/components/ui/Typography/Title";
-import Button from "@/app/components/ui/Button";
 import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
 import { ConditionsType } from "@/app/constants/types";
 
 const styles = {
-  termBox: "grid grid-cols-5 border rounded px-[27px] py-[30px] my-3",
-  detailsColumn: "col-span-4 flex flex-col gap-y-3 px-2",
-  learnMore: "col-span-1 self-end",
-  title: "text-[#0076AD] md:leading-0 py-0",
+  desktopTermBox:
+    "hidden md:grid grid-rows gap-y-3 h-full border rounded px-[27px] py-[30px] my-5",
+  mobileTermBox:
+    "flex justify-center text-center w-full bg-[#0076AD] my-4 p-6 rounded-xl md:hidden",
+  learnMore: "underline underline-offset-4 hover:text-[#0076AD]",
+  title: "text-white font-semibold md:text-[#0076AD] md:leading-0 py-0",
+  definition: "line-clamp-2",
 };
 
 interface ConditionItemProps {
@@ -16,10 +18,18 @@ interface ConditionItemProps {
 
 const ConditionItem = ({ condition }: ConditionItemProps) => {
   return (
-    <div id={condition.term} className={styles.termBox}>
-      <div className={styles.detailsColumn}>
+    <>
+      <div id={condition.term} className={styles.desktopTermBox}>
         <Title3 className={styles.title}>{condition.term}</Title3>
-        <p>{condition.definition}</p>
+        <p className={styles.definition}>{condition.definition}</p>
+        <p>
+          <a
+            href={`/conditions/${condition.slug}/learn-more`}
+            className={styles.learnMore}
+          >
+            Learn More
+          </a>
+        </p>
         {condition.relatedSpecialties && (
           <RelatedSpecialtiesComponent
             relatedSpecialties={condition.relatedSpecialties}
@@ -27,15 +37,10 @@ const ConditionItem = ({ condition }: ConditionItemProps) => {
         )}
       </div>
 
-      <div className={styles.learnMore}>
-        <Button
-          text="Learn More"
-          href={`/conditions/${condition.slug}/learn-more`}
-          className="uppercase"
-          variant="bluePrimary"
-        />
+      <div className={styles.mobileTermBox}>
+        <Title3 className={styles.title}>{condition.term}</Title3>
       </div>
-    </div>
+    </>
   );
 };
 

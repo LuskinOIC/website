@@ -1,8 +1,8 @@
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionType } from "@/app/constants/types";
 import { getConditionBySlug, getConditionTerms } from "@/app/utils/contentful";
-import ConditionDetails from "@/app/conditions/ConditionDetails";
 import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
+import { Title3 } from "@/app/components/ui/Typography/Title";
 
 export async function generateStaticParams() {
   const conditions = await getConditionTerms();
@@ -20,7 +20,7 @@ export default async function LearnMorePage({
   const condition = await getConditionBySlug(params.slug);
 
   return (
-    <main>
+    <section>
       {condition.fields.learnMore ? (
         <div>
           {condition.fields.learnMore.map((pageSection: PageSectionType) => (
@@ -28,8 +28,9 @@ export default async function LearnMorePage({
           ))}
         </div>
       ) : (
-        <div className="grid grid-col gap-5">
-          <ConditionDetails condition={condition.fields} />
+        <div className="grid grid-col gap-5 p-5">
+          <Title3 className="text-[#0076AD]">{condition.fields.term}</Title3>
+          <p>{condition.fields.definition}</p>
           {condition.fields.relatedSpecialties && (
             <RelatedSpecialtiesComponent
               relatedSpecialties={condition.fields.relatedSpecialties}
@@ -37,6 +38,6 @@ export default async function LearnMorePage({
           )}
         </div>
       )}
-    </main>
+    </section>
   );
 }

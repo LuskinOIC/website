@@ -1,6 +1,7 @@
 import { getConditionTerms } from "@/app/utils/contentful";
 import ConditionDetails from "@/app/conditions/ConditionDetails";
 import { ConditionsType } from "@/app/constants/types";
+import { Title1 } from "@/app/components/ui/Typography/Title";
 // import SearchBar from "@/app/components/ui/SearchBar";
 
 type GroupedConditions = {
@@ -8,9 +9,11 @@ type GroupedConditions = {
 };
 
 const styles = {
-  conditionsContainer: "flex flex-cols gap-6 w-5/6 mx-auto",
-  letter: "flex flex-cols px-2",
-  termsContainer: "grid grid-col gap-5 w-[95%]",
+  conditionsContainer: "flex flex-cols md:justify-around w-5/6 mx-auto",
+  lettersContainer:
+    "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded",
+  letter: "flex flex-cols p-1 bold hover:text-[#0076AD] hover:underline",
+  termsContainer: "grid grid-col gap-5 md:w-[80%]",
 };
 
 export default async function ConditionsIndexLayout() {
@@ -36,7 +39,7 @@ export default async function ConditionsIndexLayout() {
       <>
         {Object.entries(groupedConditions).map(([key, conditions], index) => (
           <div key={index}>
-            <h1>{key.toUpperCase()}</h1>
+            <Title1>{key.toUpperCase()}</Title1>
             {conditions.map((condition: ConditionsType) => (
               <div key={condition.term}>
                 <ConditionDetails condition={condition} />
@@ -51,9 +54,8 @@ export default async function ConditionsIndexLayout() {
   return (
     <section className={styles.conditionsContainer}>
       {/* <SearchBar /> */}
-      <div className="">
+      <div className={styles.lettersContainer}>
         {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
-          // <button key={letter} onClick={() => setFilterLetter(letter)}>
           <button key={letter} className={styles.letter}>
             {letter}
           </button>
@@ -63,32 +65,3 @@ export default async function ConditionsIndexLayout() {
     </section>
   );
 }
-//Main letter header (eg: A, B)
-//Filter by first letter
-//Place in main letter section
-
-// import React, { useRef } from 'react';
-// function App() {
-//   const section1Ref = useRef(null);
-//   const section2Ref = useRef(null);
-//   const scrollToSection = (sectionRef) => {
-//     sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-//   };
-//   return (
-//     <div>
-//       <h1>Page Title</h1>
-//       <nav>
-//         <button onClick={() => scrollToSection(section1Ref)}>Go to Section 1</button>
-//         <button onClick={() => scrollToSection(section2Ref)}>Go to Section 2</button>
-//       </nav>
-//       <div ref={section1Ref} style={{ marginTop: '100vh' }}>
-//         <h2>Section 1</h2>
-//         <p>This is the content of Section 1.</p>
-//       </div>
-//       <div ref={section2Ref} style={{ marginTop: '100vh' }}>
-//         <h2>Section 2</h2>
-//         <p>This is the content of Section 2.</p>
-//       </div>
-//     </div>
-//   );
-// }
