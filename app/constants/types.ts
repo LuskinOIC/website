@@ -1,7 +1,7 @@
 // NOTE: We will probably want to move these into separate
 // files as the app grows.
 import { Document } from "@contentful/rich-text-types";
-export interface AboutPageType {
+export interface About {
   pageSections: PageSectionType[];
 }
 
@@ -482,4 +482,12 @@ export type EventBannerType = {
     colorVariant: string;
     buttonLink: string;
   };
+};
+
+export type ConditionsType = {
+  slug: string;
+  term: string;
+  definition: string;
+  relatedSpecialties: SpecialtyType[];
+  learnMore: PageSectionType[];
 };

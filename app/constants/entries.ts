@@ -17,4 +17,5 @@ export const PAGE_TYPES = {
   SPECIALTY: "Specialty",
   STYLE_GUIDE: "Style Guide Page",
   ESPANOL: "Espanol Page",
+  CONDITIONS: "Conditions",
 };

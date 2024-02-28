@@ -222,3 +222,29 @@ export async function getNavigationBar(): Promise<NavigationBarType> {
 
   return entry.items[0].fields as NavigationBarType;
 }
+
+/* CONDITIONS */
+export async function getConditionTerms() {
+  let query = {
+    content_type: "condition",
+    limit: 300,
+    order: "fields.term",
+    locale: "en-US",
+    include: 5,
+  };
+
+  const entries = await client.getEntries(query);
+
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getConditionBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "condition",
+    "fields.slug": slug,
+    include: 4,
+    locale: "en-US",
+  });
+
+  return entry.items[0] as unknown as any;
+}
