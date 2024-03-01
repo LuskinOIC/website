@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { sendGAEvent } from "@next/third-parties/google";
 import external_icon_white from "@/public/external-link-icon-white.svg";
 
 interface NavbarDropDownProps {
@@ -26,6 +27,13 @@ function NavbarDropDown({
   const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
   const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
   const [timeoutPid, setTimeoutPid] = useState(null);
+
+  const handleClick = (text: string) => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
+  };
 
   function handleFocus() {
     setIsOpen(true);
@@ -96,6 +104,9 @@ function NavbarDropDown({
                       aria-label={item.fields.text}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        handleClick(`Nav dropdown ${item.fields.text}`)
+                      }
                     >
                       {item.fields.text}
                       <Image
@@ -107,7 +118,13 @@ function NavbarDropDown({
                       />
                     </a>
                   ) : (
-                    <Link href={item.fields.url} aria-label={item.fields.text}>
+                    <Link
+                      href={item.fields.url}
+                      onClick={() =>
+                        handleClick(`Nav dropdown ${item.fields.text}`)
+                      }
+                      aria-label={item.fields.text}
+                    >
                       <div className="no-underline hover:underline font-light text-lg">
                         {item.fields.text}
                       </div>
