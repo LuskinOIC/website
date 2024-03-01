@@ -48,7 +48,7 @@ export default function NewsletterSignup() {
             newsletter today.
           </Text>
           <form
-            action="https://luskinoic.us9.list-manage.com/subscribe/post?u=37e11b1c16da9aeab639769a6&amp;id=6ede087f13&amp;f_id=00dfece1f0"
+            action="https://luskinoic.us9.list-manage.com/subscribe/post?u=37e11b1c16da9aeab639769a6&amp;id=e7eac1cc23&amp;f_id=00c7ece1f0"
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
