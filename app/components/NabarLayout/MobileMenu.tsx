@@ -5,6 +5,7 @@ import { NavigationMenuList } from "@/app/components/ui/NavigationMenu";
 import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 import external_icon_white from "@/public/external-link-icon-white.svg";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface MobileMenuProps {
   closeMenu: () => void;
@@ -34,12 +35,20 @@ function MobileMenu({
     setMobileMenuOpenStates(newMobileMenuOpenStates);
   };
 
+  const handleClick = (text: string) => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
+  };
+
   return (
     <NavigationMenuList className="block md:hidden bg-[#0076AD]">
       {isHamburgerOpen && (
         <ul className="text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0">
           <a
             href={SAVE_MY_SPOT}
+            onClick={() => handleClick("Mobile Nav Save My Spot")}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Urgent Care - Save My Spot (opens new tab)"
@@ -72,12 +81,23 @@ function MobileMenu({
                     >
                       {subItem.type === "link" ? (
                         subItem.url && (
-                          <Link href={subItem.url} onClick={closeMenu}>
+                          <Link
+                            href={subItem.url}
+                            onClick={() => {
+                              handleClick(`Mobile Nav ${subItem.label}`);
+                              closeMenu;
+                            }}
+                          >
                             {subItem.label}
                           </Link>
                         )
                       ) : (
-                        <button onClick={() => toggleMobileMenu(index)}>
+                        <button
+                          onClick={() => {
+                            handleClick(`Mobile Nav ${subItem.label}`);
+                            toggleMobileMenu(index);
+                          }}
+                        >
                           {subItem.label}
                         </button>
                       )}
@@ -89,6 +109,7 @@ function MobileMenu({
           ))}
           <a
             href={MYCHART_URL}
+            onClick={() => handleClick("Mobile Nav MyChart")}
             target="_blank"
             aria-label="MYCHART (opens new tab)"
             rel="noopener noreferrer"
@@ -105,6 +126,7 @@ function MobileMenu({
           </a>
           <a
             href={DONATE_URL}
+            onClick={() => handleClick("Mobile Nav Donate")}
             target="_blank"
             aria-label="DONATE (opens new tab)"
             rel="noopener noreferrer"

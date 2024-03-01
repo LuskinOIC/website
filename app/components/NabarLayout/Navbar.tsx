@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { sendGAEvent } from "@next/third-parties/google";
 
 import MobileMenu from "@/app/components/NabarLayout/MobileMenu";
 import NavigationItem from "@/app/components/NabarLayout/NavigationItem";
@@ -53,6 +54,13 @@ export default function Navbar({
   const paddingClass = isScrolled ? "py-2" : "py-4";
   const logoWidthClass = isScrolled ? "w-24" : "w-40";
 
+  const handleClick = (text: string) => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
+  };
+
   return (
     <NavigationMenu
       className={`z-50 fixed max-w-[1600px] top-0 ${transitionClass} ${navbarClass}`}
@@ -61,7 +69,7 @@ export default function Navbar({
       <div className="flex flex-row w-full items-center">
         {/* LOGO CONTAINER */}
         <div className={`hidden md:block w-fit ${paddingClass}`}>
-          <Link href="/">
+          <Link href="/" onClick={() => handleClick("Logo Home")}>
             <Image
               className={`ml-4 ${transitionClass} ${logoWidthClass}`}
               src={navigationBar.logo.fields.file.url}
@@ -80,6 +88,7 @@ export default function Navbar({
             >
               <a
                 href={SAVE_MY_SPOT}
+                onClick={() => handleClick("Nav Save My Spot")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex flex-row bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200"
@@ -99,6 +108,7 @@ export default function Navbar({
                   <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
                     <a
                       href={MYCHART_URL}
+                      onClick={() => handleClick("Nav MyChart")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex flex-row"
@@ -114,7 +124,12 @@ export default function Navbar({
                     </a>
                   </li>
                   <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
-                    <a href="/espanol">Español</a>
+                    <a
+                      href="/espanol"
+                      onClick={() => handleClick("Nav Spanish Page")}
+                    >
+                      Español
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -142,7 +157,7 @@ export default function Navbar({
       <ul className="flex flex-row w-full justify-between items-center md:hidden">
         {/* LOGO CONTAINER */}
         <li className="block md:hidden py-2">
-          <Link href="/">
+          <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
             <Image
               className="ml-4"
               src={"/LOIC_LOGO.svg"}

@@ -8,6 +8,7 @@ import {
 } from "@/app/constants/types";
 import Button from "@/app/components/ui/Button";
 import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
+import { sendGAEvent } from "@next/third-parties/google";
 
 function NavigationItem({
   item,
@@ -20,11 +21,19 @@ function NavigationItem({
   setSelectedDropdown: (id: string) => void;
   /* eslint-enable no-unused-vars */
 }) {
+  const handleClick = (text: string) => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
+  };
+
   if (item.sys.contentType.sys.id === "navigationLink") {
     const navigationLink = item as NavigationLinkType;
     return (
       <Link
         href={navigationLink.fields.url}
+        onClick={() => handleClick(`Nav Menu ${navigationLink.fields.text}`)}
         className="block text-white text-xl hover:text-slate-200 hover:underline hover:underline-offset-4"
       >
         {navigationLink.fields.text}
