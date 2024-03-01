@@ -8,13 +8,14 @@ import arrow from "@/public/submit-arrow.png";
 import { Title1 } from "./ui/Typography/Title";
 import { Text } from "./ui/Typography/Text";
 import { styles } from "./ui/Button";
+import { MAIL_CHIMP_URL } from "@/app/constants/mailchimp";
 
 export default function NewsletterSignup() {
   const desktopButtonClass = cn(
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "bg-luskin-blue ml-[0.6rem] md:ml-4",
+    "bg-luskin-blue ml-[0.6rem] md:ml-4"
   );
 
   useEffect(() => {
@@ -48,7 +49,7 @@ export default function NewsletterSignup() {
             newsletter today.
           </Text>
           <form
-            action="https://luskinoic.us9.list-manage.com/subscribe/post?u=37e11b1c16da9aeab639769a6&amp;id=e7eac1cc23&amp;f_id=00c7ece1f0"
+            action={MAIL_CHIMP_URL}
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"

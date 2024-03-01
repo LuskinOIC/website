@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Title1 } from "@/app/components/ui/Typography/Title";
 import arrow from "@/public/banner-send-arrow.svg";
 import ozzie_banner from "@/public/ozzie-in-circle.svg";
+import { MAIL_CHIMP_URL } from "@/app/constants/mailchimp";
 
 const styles = {
   wrapper: "w-full md:h-32 bg-[#FCE385]",
@@ -31,7 +32,7 @@ export default function NewsletterBanner() {
         </div>
         <div>
           <form
-            action="https://luskinoic.us9.list-manage.com/subscribe/post?u=37e11b1c16da9aeab639769a6&amp;id=6ede087f13&amp;f_id=00dfece1f0"
+            action={MAIL_CHIMP_URL}
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
