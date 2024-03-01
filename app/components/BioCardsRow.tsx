@@ -68,7 +68,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
   return (
     <section id="BioCardsRow" className={styles.container}>
       <Title2 className={styles.title}>{title}</Title2>
-      {hasCards && (
+      {hasCards && remainder !== 1 && (
         <div
           className={`${styles.grid} ${styles.gridFull} ${styles.gridPadding}`}
         >
