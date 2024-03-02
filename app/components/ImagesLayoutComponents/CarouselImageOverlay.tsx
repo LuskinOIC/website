@@ -42,6 +42,19 @@ const OverlayComponent = ({
 export default function CarouselImageSlider({
   section,
 }: CarouselImageLayoutProps) {
+  const alignmentClass = (alignment: string) => {
+    switch (alignment) {
+      case "left":
+        return "md:left-1/4";
+      case "center":
+        return "md:left-1/2";
+      case "right":
+        return "md:left-2/3";
+      default:
+        return "md:left-1/4";
+    }
+  };
+
   return (
     <section className="py-4">
       <Slider
@@ -57,7 +70,11 @@ export default function CarouselImageSlider({
                   className={styles.image}
                 />
                 {(slide.fields.overlayTitle || slide.fields.overlayButton) && (
-                  <div className={styles.overlayDesktop}>
+                  <div
+                    className={`${styles.overlayDesktop} ${alignmentClass(
+                      slide.fields.overlayAlignment,
+                    )}`}
+                  >
                     <OverlayComponent
                       overlayTitle={slide.fields.overlayTitle}
                       overlayButton={slide.fields.overlayButton}

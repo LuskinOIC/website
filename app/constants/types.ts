@@ -60,7 +60,7 @@ export type CarouselSlideType = {
   fields: {
     image: ImageType;
     overlayTitle?: string;
-    overlayAlignment?: string;
+    overlayAlignment: string;
     overlayButton?: ButtonType;
   };
 };
