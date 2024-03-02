@@ -43,27 +43,29 @@ export default function CarouselImageSlider({
   section,
 }: CarouselImageLayoutProps) {
   return (
-    <section>
+    <section className="py-4">
       <Slider
         slides={
           section.map((slide, i) => (
-            <div key={i} className={styles.container}>
-              <Image
-                src={slide.fields.image.fields.file.url}
-                alt={slide.fields.image.fields.file.fileName}
-                width={slide.fields.image.fields.file.details.image.width}
-                height={slide.fields.image.fields.file.details.image.height}
-                className={styles.image}
-              />
-              {(slide.fields.overlayTitle || slide.fields.overlayButton) && (
-                <div className={styles.overlayDesktop}>
-                  <OverlayComponent
-                    overlayTitle={slide.fields.overlayTitle}
-                    overlayButton={slide.fields.overlayButton}
-                    btnStyle={styles.btn}
-                  />
-                </div>
-              )}
+            <div key={i} className="flex items-center h-full">
+              <div className={styles.container}>
+                <Image
+                  src={slide.fields.image.fields.file.url}
+                  alt={slide.fields.image.fields.file.fileName}
+                  width={slide.fields.image.fields.file.details.image.width}
+                  height={slide.fields.image.fields.file.details.image.height}
+                  className={styles.image}
+                />
+                {(slide.fields.overlayTitle || slide.fields.overlayButton) && (
+                  <div className={styles.overlayDesktop}>
+                    <OverlayComponent
+                      overlayTitle={slide.fields.overlayTitle}
+                      overlayButton={slide.fields.overlayButton}
+                      btnStyle={styles.btn}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           )) as any
         }

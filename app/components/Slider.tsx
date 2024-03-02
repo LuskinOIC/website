@@ -109,16 +109,16 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
           transitionEnabled
             ? "transition-transform duration-500 ease-in-out"
             : ""
-        } h-full`}
+        }`}
         style={{ transform: `translateX(${slideOffset}%)` }}
       >
         {wrappedSlides.map((slide: any, index) => (
-          <div key={index} className="mb-3 w-full flex-shrink-0 text-center">
+          <div key={index} className="w-full flex-shrink-0 text-center">
             {slide}
           </div>
         ))}
       </div>
-      <div className="absolute bottom-0 left-0 right-0 mb-2 flex items-center justify-center">
+      <div className="flex h-full items-center justify-center py-2">
         <button aria-label="left arrow" onClick={prevSlide}>
           <LeftArrow />
         </button>
