@@ -21,6 +21,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             cd ${{ secrets.TARGET_DIRECTORY }}
+            git fetch
+            git checkout deploy
             git pull origin deploy
             npm install
             npm run build
