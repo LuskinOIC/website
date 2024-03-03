@@ -40,6 +40,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200 overscroll-none">
+        <div data-testid="build-test" className="hidden"></div>
         <div className="w-full m-auto page-container bg-white">
           <Navbar navigationBar={navigationBar} />
           {/* This div provides margin for the main layout since the navbar is stick */}
