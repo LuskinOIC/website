@@ -1,0 +1,29 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - deploy # Adjust this if you use a different branch for production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
+            cd ${{ secrets.TARGET_DIRECTORY }}
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart all # Assuming you use PM2 to manage your Next.js process
+            sudo systemctl restart nginx  # Restart Nginx to apply any potential configuration changes
+          EOF

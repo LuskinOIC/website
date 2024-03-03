@@ -2,9 +2,9 @@ name: Linter CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "deploy"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "deploy"]
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Install dependencies
         run: npm install
 
