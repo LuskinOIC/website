@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - main # Adjust this if you use a different branch for production
+      - deploy # Adjust this if you use a different branch for production
 
 jobs:
   deploy:
@@ -24,6 +24,6 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            pm2 restart all  # Assuming you use PM2 to manage your Next.js process
+            pm2 restart all # Assuming you use PM2 to manage your Next.js process
             sudo systemctl restart nginx  # Restart Nginx to apply any potential configuration changes
           EOF
