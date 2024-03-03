@@ -20,7 +20,7 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
-            cd /path/to/your/nextjs/app
+            cd ${{ secrets.TARGET_DIRECTORY }}
             git pull origin main
             npm install
             npm run build
