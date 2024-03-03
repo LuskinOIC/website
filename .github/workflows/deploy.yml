@@ -19,11 +19,7 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             cd ${{ secrets.TARGET_DIRECTORY }}
-            git pull origin main
-            npm install
-            npm run build
-            pm2 restart all # Assuming you use PM2 to manage your Next.js process
-            sudo systemctl restart nginx  # Restart Nginx to apply any potential configuration changes
+            echo "Hello world" > test.txt
           EOF
