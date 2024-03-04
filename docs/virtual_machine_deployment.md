@@ -30,6 +30,8 @@ To check on the status of the process running the website server you can run the
 pm2 status
 ```
 
+Starting the pm2 process to start the application server.
+
 ```
 pm2 start npm --name "website" -- start
 ```
