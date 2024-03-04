@@ -45,18 +45,18 @@ export default function CarouselImageSlider({
   const alignmentClass = (alignment: string) => {
     switch (alignment) {
       case "left":
-        return "md:left-1/4";
+        return "left-1/2 md:left-1/4";
       case "center":
-        return "md:left-1/2";
+        return "left-1/2 md:left-1/2";
       case "right":
-        return "md:left-2/3";
+        return "left-1/2 md:left-2/3";
       default:
-        return "md:left-1/4";
+        return "left-1/2 md:left-1/4";
     }
   };
 
   return (
-    <section className="py-4">
+    <section>
       <Slider
         slides={
           section.map((slide, i) => (
