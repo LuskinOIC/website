@@ -7,6 +7,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
+import packageJson from "../package.json";
 
 const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
 
@@ -40,6 +41,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200 overscroll-none">
+        <div data-testid={packageJson.version} className="hidden"></div>
         <div className="w-full m-auto page-container bg-white">
           <Navbar navigationBar={navigationBar} />
           {/* This div provides margin for the main layout since the navbar is stick */}

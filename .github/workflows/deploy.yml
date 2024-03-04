@@ -1,0 +1,33 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main # This ensures the workflow runs only on pushes to the main branch
+  workflow_dispatch: # This line adds support for manual triggers
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+            cd ${{ secrets.TARGET_DIRECTORY }}
+            git fetch
+            # Here, we directly checkout to the main branch since this workflow is configured to run only for the main branch
+            git checkout main
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart all
+            sudo systemctl restart nginx
+          EOF
