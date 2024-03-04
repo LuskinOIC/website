@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint --fix",
     "format": "prettier --write .",
-    "ssh": "./bin/ssh"
+    "ssh": "./bin/ssh",
+    "test:performance": "./bin/load_test"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.2",
