@@ -2,9 +2,9 @@ name: Linter CI
 
 on:
   push:
-    branches: ["main", "deploy"]
+    branches: ["main"]
   pull_request:
-    branches: ["main", "deploy"]
+    branches: ["main"]
 
 jobs:
   build:
