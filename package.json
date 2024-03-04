@@ -1,13 +1,14 @@
 {
   "name": "luskin",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "ssh": "./bin/ssh"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.2",

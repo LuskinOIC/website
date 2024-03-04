@@ -1,0 +1,3 @@
+source .env.local
+
+ssh -i $SSH_KEY_PATH $SSH_USERNAME@$IP_ADDRESS
