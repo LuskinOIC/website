@@ -29,3 +29,19 @@ To check on the status of the process running the website server you can run the
 ```Shell
 pm2 status
 ```
+
+```
+pm2 start npm --name "website" -- start
+```
+
+## Load Testing
+
+To load test the droplet for high traffic we have an [Artillery][https://www.artillery.io/docs/get-started/get-artillery] config file named load\_
+
+## Deployment
+
+The site is deployed via Github Actions which are triggers by merging code into the main branch or workflows trigged by webhooks.
+
+## Resizing the droplet
+
+The droplet can be resized with minimal downtime. From the Digital Ocean from `luskinoic-droplet` turn off the droplet. Go to the resize image table. Select the image size and click resize. Once the resizing is complete turn the power back on. PM2 and Nginx will start up automatically.
