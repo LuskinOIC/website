@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - deploy # Adjust this if you use a different branch for production
+      - main # This ensures the workflow runs only on pushes to the main branch
   workflow_dispatch: # This line adds support for manual triggers
 
 jobs:
@@ -23,10 +23,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             cd ${{ secrets.TARGET_DIRECTORY }}
             git fetch
-            # Optionally, you can use ${{ github.ref }} to checkout to the branch that triggered the workflow
-            # For workflow_dispatch, it will be the branch you select when manually triggering the action
-            git checkout ${{ github.ref_name }} || git checkout deploy
-            git pull origin ${{ github.ref_name }} || git pull origin deploy
+            # Here, we directly checkout to the main branch since this workflow is configured to run only for the main branch
+            git checkout main
+            git pull origin main
             npm install
             npm run build
             pm2 restart all
