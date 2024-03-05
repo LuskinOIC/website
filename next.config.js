@@ -18,8 +18,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/patient-care/specialties/urgent-care/",
-        destination: "/about",
+        source: "/patient-care/urgent-care/",
+        destination: "/patient-care/specialties/urgent-care/",
         permanent: true,
       },
       {
