@@ -39,6 +39,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/plan-your-visit/billing-insurance/",
+        destination: "/patient-care/?tab=BillingInsurance#BillingInsurance",
+        permanent: true,
+      },
+      {
         source: "/education/",
         destination: "/",
         permanent: true,
