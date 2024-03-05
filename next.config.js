@@ -9,6 +9,10 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/_error",
+        destination: "/",
+      },
+      {
         source: "/about-oic/",
         destination: "/about",
         permanent: true,
@@ -32,6 +36,11 @@ const nextConfig = {
       {
         source: "/ways-to-give/volunteer/",
         destination: "/volunteer",
+        permanent: true,
+      },
+      {
+        source: "/education/",
+        destination: "/",
         permanent: true,
       },
     ];
