@@ -11,6 +11,7 @@ const nextConfig = {
       {
         source: "/_error",
         destination: "/",
+        permanent: true,
       },
       {
         source: "/about-oic/",
@@ -34,8 +35,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/ways-to-give/volunteer/",
-        destination: "/volunteer",
+        source: "/volunteer/",
+        destination: "/ways-to-give/",
         permanent: true,
       },
       {
