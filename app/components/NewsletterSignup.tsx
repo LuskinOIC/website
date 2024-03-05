@@ -8,6 +8,7 @@ import arrow from "@/public/submit-arrow.png";
 import { Title1 } from "./ui/Typography/Title";
 import { Text } from "./ui/Typography/Text";
 import { styles } from "./ui/Button";
+import { NEWSLETTER_URL } from "../constants/links";
 
 export default function NewsletterSignup() {
   const desktopButtonClass = cn(
@@ -48,7 +49,7 @@ export default function NewsletterSignup() {
             newsletter today.
           </Text>
           <form
-            action="https://luskinoic.us9.list-manage.com/subscribe/post?u=37e11b1c16da9aeab639769a6&amp;id=e7eac1cc23&amp;f_id=00c7ece1f0"
+            action={NEWSLETTER_URL}
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
@@ -65,7 +66,7 @@ export default function NewsletterSignup() {
                 aria-required="true"
                 aria-label="Email Address"
                 placeholder="Enter your email address"
-                className="w-fit text-left md:text-center border border-luskin-blue rounded-[5px] pt-2 pb-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.92rem] md:placeholder:text-base"
+                className="w-fit text-left border border-luskin-blue rounded-[5px] pt-2 pb-3 px-3 md:px-6 placeholder:opacity-50 placeholder:text-black placeholder:text-[0.92rem] md:placeholder:text-base"
               />
               <button
                 type="submit"

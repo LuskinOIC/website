@@ -15,3 +15,5 @@ export const SAVE_MY_SPOT =
   "https://my.uclahealth.org/MyChartConnect/openscheduling/standalone?vt=5320&id=652124&dept=500010200";
 export const CAREERS_URL =
   "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1fe50326-beac-4a7c-a564-f8a14f9c5bb0&ccId=19000101_000001&type=MP&lang=en_US";
+export const NEWSLETTER_URL =
+  "https://luskinoic.us9.list-manage.com/subscribe/post?u=37e11b1c16da9aeab639769a6&amp;id=e7eac1cc23&amp;f_id=00c7ece1f0";
