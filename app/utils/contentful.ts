@@ -66,6 +66,10 @@ export async function getPageBySlug(slug: string) {
     include: 10,
   });
 
+  if (entry.items.length === 0) {
+    return null;
+  }
+
   return entry.items[0].fields as unknown as PageType;
 }
 
