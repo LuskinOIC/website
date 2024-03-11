@@ -1,0 +1,88 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const path = require("path");
+
+const appDirectory = "./.next/server/app"; // Adjust as necessary
+const baseUrl = "https://luskinoic.org";
+
+// Function to walk through the directory recursively and find all files
+function readDirectory(directory) {
+  const entries = fs.readdirSync(directory, { withFileTypes: true });
+  const files = entries.flatMap((entry) => {
+    const entryPath = path.resolve(directory, entry.name);
+    return entry.isDirectory() ? readDirectory(entryPath) : entryPath;
+  });
+  return files.filter((file) => file.endsWith(".html"));
+}
+
+function priorityForPath(path) {
+  if (path === "/") {
+    return 1.0;
+  }
+  if (path.includes("patient-care")) {
+    return 0.8;
+  }
+  if (path.includes("medical-professionals")) {
+    return 0.8;
+  }
+  if (path.includes("about")) {
+    return 0.7;
+  }
+  if (path.includes("plan-your-visit")) {
+    return 0.6;
+  }
+  if (path.includes("ways-to-give")) {
+    return 0.5;
+  }
+  return 0.4;
+}
+
+// Function to map file paths to sitemap objects
+function createSitemap(files) {
+  return files.map((filePath) => {
+    const relativePath = filePath
+      .substring(appDirectory.length)
+      .replace(/\\/g, "/")
+      .replace(/\.html$/, "")
+      .split("/.next/server/app")[1];
+    return {
+      url: `${baseUrl}${relativePath}/`,
+      lastModified: new Date().toISOString(), // Last modified time
+      changeFrequency: "monthly", // Example value, adjust as needed
+      priority: priorityForPath(filePath), // Example value, adjust as needed
+    };
+  });
+}
+
+// Main function to generate the sitemap data
+function generateSitemap() {
+  const files = readDirectory(appDirectory);
+  const siteMapData = createSitemap(files);
+
+  siteMapData.push({
+    url: `${baseUrl}/`,
+    lastModified: new Date().toISOString(), // Last modified time
+    changeFrequency: "monthly", // Example value, adjust as needed
+    priority: 1.0, // Example value, adjust as needed
+  });
+
+  console.log(
+    "export const siteMapData =",
+    JSON.stringify(siteMapData, null, 2)
+  );
+
+  fs.writeFile(
+    "app/sitemap.json",
+    JSON.stringify(siteMapData, null, 2),
+    "utf8",
+    (err) => {
+      if (err) {
+        console.error("Error writing the JSON file:", err);
+      } else {
+        console.log("Site map JSON has been saved.");
+      }
+    }
+  );
+}
+
+generateSitemap();
