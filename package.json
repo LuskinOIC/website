@@ -3,12 +3,13 @@
   "version": "1.0.7",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint --fix",
+    "dev": "NODE_ENV=development next dev",
     "format": "prettier --write .",
+    "lint": "next lint --fix",
+    "seo:generate:sitemap": "./bin/generate_sitemap",
     "ssh": "./bin/ssh",
+    "start": "next start",
     "test:performance": "./bin/load_test",
     "version:patch": "npm version patch"
   },
