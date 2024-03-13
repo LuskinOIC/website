@@ -1,6 +1,6 @@
 {
   "name": "luskinoic",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development next dev",
