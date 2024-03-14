@@ -17,8 +17,8 @@ interface NavbarDropDownProps {
 }
 
 const styles = {
-  container: "text-white text-xl",
-  button: "hover:text-slate-200",
+  container: "text-[#171515] text-xl font-bold",
+  button: "hover:underline decoration-[#0076AD] underline-offset-4",
   dropdownContainer: "absolute z-10 mt-6",
   arrow:
     "absolute z-10 border-b-[15px] border-b-luskin-brightBlue border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full",

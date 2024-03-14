@@ -14,7 +14,7 @@ interface MobileMenuProps {
 }
 
 const styles = {
-  navigationMenuList: "block md:hidden bg-[#0076AD]",
+  navigationMenuList: "block md:hidden",
   menuList:
     "text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0",
   menuItem:
