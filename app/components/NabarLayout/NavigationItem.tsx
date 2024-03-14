@@ -10,6 +10,11 @@ import Button from "@/app/components/ui/Button";
 import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
 import { sendGAEvent } from "@next/third-parties/google";
 
+const styles = {
+  link: "block text-white text-xl hover:text-slate-200 hover:underline hover:underline-offset-4",
+  button: "w-full sm:w-auto text-center gap-2",
+};
+
 function NavigationItem({
   item,
   selectedDropdown,
@@ -34,7 +39,7 @@ function NavigationItem({
       <Link
         href={navigationLink.fields.url}
         onClick={() => handleClick(`Nav Menu ${navigationLink.fields.text}`)}
-        className="block text-white text-xl hover:text-slate-200 hover:underline hover:underline-offset-4"
+        className={styles.link}
       >
         {navigationLink.fields.text}
       </Link>
@@ -55,7 +60,7 @@ function NavigationItem({
     const navigationButton = item as ButtonType;
     return (
       <Button
-        className="w-full sm:w-auto text-center gap-2"
+        className={styles.button}
         key={navigationButton.sys.id}
         href={navigationButton.fields.buttonUrl}
         isExternal={navigationButton.fields.externalLink}

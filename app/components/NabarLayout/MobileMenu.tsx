@@ -13,6 +13,23 @@ interface MobileMenuProps {
   toggleHamburgerDropdown: () => void;
 }
 
+const styles = {
+  navigationMenuList: "block md:hidden bg-[#0076AD]",
+  menuList:
+    "text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0",
+  menuItem:
+    "flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2",
+  externalLinkIcon: "text-white px-0.5",
+  mobileDropdown: "w-full text-center py-2",
+  mobileDropdownMenu:
+    "bg-gray-100 text-luskin-blue underline w-full text-sm flex flex-col py-2",
+  mobileDropdownMenuItem: "w-full text-center py-2",
+  myChartLink:
+    "flex flex-row justify-center w-full text-white font-semibold text-center py-2",
+  donateButton: "w-full bg-amber-200 text-black font-semibold text-center py-2",
+  closeButton: "bg-gray-100 w-full text-luskin-blue text-center py-2",
+};
+
 function MobileMenu({
   closeMenu,
   isHamburgerOpen,
@@ -43,16 +60,16 @@ function MobileMenu({
   };
 
   return (
-    <NavigationMenuList className="block md:hidden bg-[#0076AD]">
+    <NavigationMenuList className={styles.navigationMenuList}>
       {isHamburgerOpen && (
-        <ul className="text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0">
+        <ul className={styles.menuList}>
           <a
             href={SAVE_MY_SPOT}
             onClick={() => handleClick("Mobile Nav Save My Spot")}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Urgent Care - Save My Spot (opens new tab)"
-            className="flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2"
+            className={styles.menuItem}
           >
             URGENT CARE - SAVE MY SPOT MYCHART
             <Image
@@ -60,24 +77,24 @@ function MobileMenu({
               alt="External Link"
               width={16}
               height={16}
-              className="text-white px-0.5"
+              className={styles.externalLinkIcon}
             />
           </a>
           {MobileDropdowns.map((item, index) => (
             <li
               key={index}
-              className={`${item.cssClasses} w-full text-center py-2`}
+              className={`${item.cssClasses} ${styles.mobileDropdown}`}
             >
               <button onClick={() => toggleMobileMenu(index)}>
                 {item.label}
               </button>
 
               {mobileMenuOpenStates[index] && (
-                <ul className="bg-gray-100 text-luskin-blue underline w-full text-sm flex flex-col py-2">
+                <ul className={styles.mobileDropdownMenu}>
                   {item.subItems.map((subItem, subIndex) => (
                     <li
                       key={subIndex}
-                      className={`${subItem} w-full text-center py-2`}
+                      className={`${subItem} ${styles.mobileDropdownMenuItem}`}
                     >
                       {subItem.type === "link" ? (
                         subItem.url && (
@@ -113,7 +130,7 @@ function MobileMenu({
             target="_blank"
             aria-label="MYCHART (opens new tab)"
             rel="noopener noreferrer"
-            className="flex flex-row justify-center w-full text-white font-semibold text-center py-2"
+            className={styles.myChartLink}
           >
             MYCHART
             <Image
@@ -121,7 +138,7 @@ function MobileMenu({
               alt="External Link"
               width={16}
               height={16}
-              className="text-white px-0.5"
+              className={styles.externalLinkIcon}
             />
           </a>
           <a
@@ -130,13 +147,13 @@ function MobileMenu({
             target="_blank"
             aria-label="DONATE (opens new tab)"
             rel="noopener noreferrer"
-            className="w-full bg-amber-200 text-black font-semibold text-center py-2"
+            className={styles.donateButton}
           >
             DONATE
           </a>
           <button
             onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-            className="bg-gray-100 w-full text-luskin-blue text-center py-2"
+            className={styles.closeButton}
           >
             CLOSE
           </button>

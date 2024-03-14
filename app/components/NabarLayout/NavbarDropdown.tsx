@@ -16,6 +16,19 @@ interface NavbarDropDownProps {
   onChange: (id: string) => void;
 }
 
+const styles = {
+  container: "text-white text-xl",
+  button: "hover:text-slate-200",
+  dropdownContainer: "absolute z-10 mt-6",
+  arrow:
+    "absolute z-10 border-b-[15px] border-b-luskin-brightBlue border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full",
+  dropdown:
+    "flex-col bg-luskin-blue border border-luskin-brightBlue divide-y divide-luskin-brightBlue rounded-md items-start",
+  item: "py-2 px-10 flex items-center",
+  link: "no-underline hover:underline font-light text-lg flex items-center",
+  linkIcon: "text-white px-0.5",
+};
+
 function NavbarDropDown({
   id,
   label,
@@ -64,21 +77,21 @@ function NavbarDropDown({
   }, [isHoveringOverDropdown, timeoutPid]);
 
   return (
-    <div className="text-white text-xl">
+    <div className={styles.container}>
       <button
         aria-label={label}
         onKeyDown={handleFocus}
         onMouseEnter={handleFocus}
         onClick={handleFocus}
         onMouseLeave={() => setHasNavigatedFromButton(true)}
-        className="hover:text-slate-200"
+        className={styles.button}
       >
         {label}
       </button>
       {isOpen && (
         <>
           <div
-            className="absolute z-10 mt-6"
+            className={styles.dropdownContainer}
             onMouseLeave={() => {
               setIsOpen(false);
               setHasNavigatedFromButton(false);
@@ -89,17 +102,14 @@ function NavbarDropDown({
             }}
           >
             <div className="w-10">
-              <div className="absolute z-10 border-b-[15px] border-b-luskin-brightBlue border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full"></div>
+              <div className={styles.arrow}></div>
             </div>
-            <div className="flex-col bg-luskin-blue border border-luskin-brightBlue divide-y divide-luskin-brightBlue rounded-md items-start">
+            <div className={styles.dropdown}>
               {subItems.map((item) => (
-                <div
-                  key={item.fields.url}
-                  className="py-2 px-10 flex items-center"
-                >
+                <div key={item.fields.url} className={styles.item}>
                   {item.fields.isExternal ? (
                     <a
-                      className="no-underline hover:underline font-light text-lg flex items-center"
+                      className={styles.link}
                       href={item.fields.url}
                       aria-label={item.fields.text}
                       target="_blank"
@@ -114,7 +124,7 @@ function NavbarDropDown({
                         alt="External Link"
                         width={16}
                         height={16}
-                        className="text-white px-0.5"
+                        className={styles.linkIcon}
                       />
                     </a>
                   ) : (
@@ -125,9 +135,7 @@ function NavbarDropDown({
                       }
                       aria-label={item.fields.text}
                     >
-                      <div className="no-underline hover:underline font-light text-lg">
-                        {item.fields.text}
-                      </div>
+                      <div className={styles.link}>{item.fields.text}</div>
                     </Link>
                   )}
                 </div>

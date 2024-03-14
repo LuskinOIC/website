@@ -19,6 +19,42 @@ import externalIconWhite from "@/public/external-link-icon-white.svg";
 import externalIconBlack from "@/public/external-link-icon-black.svg";
 import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
+const styles = {
+  navigationMenu: (isScrolled: boolean) =>
+    `z-50 fixed max-w-[1600px] top-0 ${
+      isScrolled
+        ? "transition-all duration-300 ease-out md:h-[102px]"
+        : "transition-all duration-300 ease-out md:h-[166px]"
+    }`,
+  desktopContainer: "flex flex-row w-full items-center",
+  logoContainer: (isScrolled: boolean) =>
+    `hidden md:block w-fit ${isScrolled ? "py-2" : "py-4"}`,
+  logoImage: (isScrolled: boolean) =>
+    `ml-4 ${
+      isScrolled
+        ? "transition-all duration-300 ease-out w-24"
+        : "transition-all duration-300 ease-out w-40"
+    }`,
+  secondaryMenuContainer: "w-full",
+  widgetContainer: (isScrolled: boolean) =>
+    `flex flex-row justify-end h-fit transition-transform ease-out ${
+      isScrolled ? "transform -translate-y-full" : "transform translate-y-0"
+    }`,
+  urgentCareLink:
+    "hidden md:flex flex-row bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200",
+  infoList:
+    "hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3",
+  listItem: "mr-4 underline underline-offset-4 hover:text-slate-200",
+  navigationItemsContainer: "hidden md:block w-full",
+  navigationItemsSubContainer:
+    "flex justify-evenly items-center w-full hover:text-slate-200",
+  mobileContainer:
+    "flex flex-row w-full justify-between items-center md:hidden",
+  mobileLogoContainer: "block md:hidden py-2",
+  navigationMenuItem: "block md:hidden list-none",
+  mobileMenuButton: "bg-transparent text-white rounded-full py-3 px-4 text-xl",
+};
+
 export default function Navbar({
   navigationBar,
 }: {
@@ -44,16 +80,6 @@ export default function Navbar({
     };
   }, []);
 
-  const widgetTransformClass = isScrolled
-    ? "transform -translate-y-full"
-    : "transform translate-y-0";
-  const transitionClass = isScrolled
-    ? "transition-all duration-300 ease-out"
-    : "transition-all duration-300 ease-out";
-  const navbarClass = isScrolled ? "md:h-[102px]" : "md:h-[166px]";
-  const paddingClass = isScrolled ? "py-2" : "py-4";
-  const logoWidthClass = isScrolled ? "w-24" : "w-40";
-
   const handleClick = (text: string) => {
     sendGAEvent({
       event: "buttonClicked",
@@ -62,16 +88,14 @@ export default function Navbar({
   };
 
   return (
-    <NavigationMenu
-      className={`z-50 fixed max-w-[1600px] top-0 ${transitionClass} ${navbarClass}`}
-    >
+    <NavigationMenu className={styles.navigationMenu(isScrolled)}>
       {/* DESKTOP CONTAINER */}
-      <div className="flex flex-row w-full items-center">
+      <div className={styles.desktopContainer}>
         {/* LOGO CONTAINER */}
-        <div className={`hidden md:block w-fit ${paddingClass}`}>
+        <div className={styles.logoContainer(isScrolled)}>
           <Link href="/" onClick={() => handleClick("Logo Home")}>
             <Image
-              className={`ml-4 ${transitionClass} ${logoWidthClass}`}
+              className={styles.logoImage(isScrolled)}
               src={navigationBar.logo.fields.file.url}
               alt="Logo for Luskin Orthopaedic Institute for Children"
               width={150}
@@ -81,17 +105,15 @@ export default function Navbar({
         </div>
 
         {/* SECONDARY MENU CONTAINER */}
-        <div className="w-full">
+        <div className={styles.secondaryMenuContainer}>
           <div className="text-lg absolute top-0 right-0">
-            <div
-              className={`flex flex-row justify-end h-fit transition-transform ease-out ${widgetTransformClass}`}
-            >
+            <div className={styles.widgetContainer(isScrolled)}>
               <a
                 href={SAVE_MY_SPOT}
                 onClick={() => handleClick("Nav Save My Spot")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex flex-row bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200"
+                className={styles.urgentCareLink}
               >
                 Urgent Care - Save My Spot
                 <Image
@@ -103,9 +125,9 @@ export default function Navbar({
                 />
               </a>
               <div>
-                <ul className="hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3">
+                <ul className={styles.infoList}>
                   <li className="mr-4">(213) 742 - 1000</li>
-                  <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
+                  <li className={styles.infoList}>
                     <a
                       href={MYCHART_URL}
                       onClick={() => handleClick("Nav MyChart")}
@@ -123,7 +145,7 @@ export default function Navbar({
                       />
                     </a>
                   </li>
-                  <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
+                  <li className={styles.listItem}>
                     <a
                       href="/espanol"
                       onClick={() => handleClick("Nav Spanish Page")}
@@ -136,8 +158,8 @@ export default function Navbar({
             </div>
           </div>
 
-          <div className="hidden md:block w-full">
-            <div className="flex justify-evenly items-center w-full hover:text-slate-200">
+          <div className={styles.navigationItemsContainer}>
+            <div className={styles.navigationItemsSubContainer}>
               {navigationBar.navigationItems.map((item) => {
                 return (
                   <NavigationItem
@@ -154,9 +176,9 @@ export default function Navbar({
       </div>
 
       {/* MOBILE CONTAINER */}
-      <ul className="flex flex-row w-full justify-between items-center md:hidden">
+      <ul className={styles.mobileContainer}>
         {/* LOGO CONTAINER */}
-        <li className="block md:hidden py-2">
+        <li className={styles.mobileLogoContainer}>
           <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
             <Image
               className="ml-4"
@@ -169,14 +191,14 @@ export default function Navbar({
         </li>
 
         {/* To be implemented later */}
-        <NavigationMenuItem className="block md:hidden list-none">
+        <NavigationMenuItem className={styles.navigationMenuItem}>
           {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
           {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
           {/* </button> */}
           <button
             onClick={toggleHamburgerDropdown}
             aria-label="Open Navigation Menu"
-            className="bg-transparent text-white rounded-full py-3 px-4 text-xl"
+            className={styles.mobileMenuButton}
           >
             {" "}
             {/* Increase padding and font size */}
