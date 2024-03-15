@@ -21,23 +21,23 @@ import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
-    `bg-red-500 fixed max-w-[1600px] top-0 ${
+    `bg-white fixed max-w-[1600px] ${
       isScrolled
         ? "transition-all duration-300 ease-out md:h-[102px]"
-        : "transition-all duration-300 ease-out md:h-[166px]"
+        : "transition-all duration-300 ease-out md:h-[180px]"
     }`,
   // desktopContainer: 'flex flex-col w-full h-full items-center ',
   // topContainer: 'z-10 w-full relative top-0 right-0',
   // middleContainer:
   //   'relative z-50 flex flex-row w-full h-full items-center gap-x-40 bg-yellow-200',
-  // logoContainer: (isScrolled: boolean) =>
-  //   `hidden md:block w-fit ${isScrolled ? 'py-2' : 'py-4'}`,
-  // logoImage: (isScrolled: boolean) =>
-  //   `ml-4 ${
-  //     isScrolled
-  //       ? 'transition-all duration-300 ease-out w-24'
-  //       : 'transition-all duration-300 ease-out w-40'
-  //   }`,
+  logoContainer: (isScrolled: boolean) =>
+    `hidden md:block w-fit h-fit bg-pink-500 ${isScrolled ? "py-2" : "py-4"}`,
+  logoImage: (isScrolled: boolean) =>
+    `${
+      isScrolled
+        ? "transition-all duration-300 ease-out w-24"
+        : "transition-all duration-300 ease-out w-30"
+    }`,
   // secondaryMenuContainer: 'w-full h-full bg-yellow-200',
   widgetContainer: (isScrolled: boolean) =>
     `flex flex-row gap-10 justify-end w-full pr-8 text-white bg-[#0076AD] h-10  text-base transition-transform ease-out ${
@@ -46,6 +46,10 @@ const styles = {
   overlapTab: (isScrolled: boolean) =>
     `hidden md:flex flex-col text-center justify-center z-50 px-7 py-4 rounded-b-2xl hover:underline transition-all duration-500 ease-in-out ${
       isScrolled ? "max-h-0 overflow-hidden" : "max-h-[5rem] h-20"
+    }`,
+  mainNavScrollWrapper: (isScrolled: boolean) =>
+    `w-full z-50 md:flex  h-full transition-opacity duration-500 ease-out ${
+      isScrolled ? "absolute inset-x-0 top-0" : ""
     }`,
   infoList:
     "hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3",
@@ -108,28 +112,34 @@ export default function Navbar({
         </div>
       </div>
 
-      {/* <div className={styles.desktopContainer}>
-        <div className={styles.middleContainer}>
-          <div className={styles.logoContainer(isScrolled)}>
-            <Link href="/" onClick={() => handleClick('Logo Home')}>
-              <Image
-                className={styles.logoImage(isScrolled)}
-                src={navigationBar.logo.fields.file.url}
-                alt="Logo for Luskin Orthopaedic Institute for Children"
-                width={150}
-                height={250}
-              />
-            </Link>
-          </div>
+      <div className={`${styles.mainNavScrollWrapper(isScrolled)}`}>
+        <div className={`h-fit ml-20 ${styles.logoContainer(isScrolled)}`}>
+          <Link href="/" onClick={() => handleClick("Logo Home")}>
+            <Image
+              className={styles.logoImage(isScrolled)}
+              src={navigationBar.logo.fields.file.url}
+              alt="Logo for Luskin Orthopaedic Institute for Children"
+              width={150}
+              height={250}
+            />
+          </Link>
         </div>
-      </div> */}
+        <div className="flex flex-row justify-evenly w-full items-center">
+          <div className="item-end">LOGO</div>
+          <div className="item-end">LOGO</div>
+          <div className="item-end">LOGO</div>
+          <div className="item-end">LOGO</div>
+          <div className="item-end">LOGO</div>
+          <div className="item-end">LOGO</div>
+        </div>
+      </div>
 
-      {/* <div
+      <div
         id="navdropdown"
-        className="absolute z-40 w-full left-0 right-0 mt-6 top-full bg-red-500"
+        className="absolute z-40 w-full left-0 right-0 top-full bg-red-500"
       >
         HELLLOOO
-      </div> */}
+      </div>
     </NavigationMenu>
   );
 }

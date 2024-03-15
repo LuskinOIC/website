@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import Navbar from "@/app/components/NabarLayout/Navbar";
+import NavbarNew from "@/app/components/NabarLayout/NavbarNew";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
@@ -45,9 +45,10 @@ export default async function RootLayout({
       <body className="font-arial block w-full bg-slate-200 overscroll-none">
         <div data-testid={packageJson.version} className="hidden"></div>
         <div className="w-full m-auto page-container bg-white">
-          <Navbar navigationBar={navigationBar} />
+          {/* <Navbar navigationBar={navigationBar} /> */}
+          <NavbarNew navigationBar={navigationBar} />
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className={`h-[95px] md:h-[166px] ${bgColor}`}></div>
+          <div className={`h-[95px] md:h-[180px] ${bgColor}`}></div>
           <main id="main">{children}</main>
           <Footer />
         </div>
