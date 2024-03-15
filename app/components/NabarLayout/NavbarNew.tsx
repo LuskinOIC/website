@@ -40,11 +40,11 @@ const styles = {
   //   }`,
   // secondaryMenuContainer: 'w-full h-full bg-yellow-200',
   widgetContainer: (isScrolled: boolean) =>
-    `flex flex-row gap-10 justify-end w-full bg-[#0076AD] h-10 transition-transform ease-out ${
+    `flex flex-row gap-10 justify-end w-full pr-8 text-white bg-[#0076AD] h-10  text-base transition-transform ease-out ${
       isScrolled ? "transform -translate-y-full" : "transform translate-y-0"
     }`,
-  urgentCareLink: (isScrolled: boolean) =>
-    `hidden md:block z-50 bg-purple-500 px-5 rounded-b-2xl transition-all duration-500 ease-in-out ${
+  overlapTab: (isScrolled: boolean) =>
+    `hidden md:flex flex-col text-center justify-center z-50 px-7 py-4 rounded-b-2xl hover:underline transition-all duration-500 ease-in-out ${
       isScrolled ? "max-h-0 overflow-hidden" : "max-h-[5rem] h-20"
     }`,
   infoList:
@@ -86,13 +86,26 @@ export default function Navbar({
 
   return (
     <NavigationMenu className={styles.navigationMenu(isScrolled)}>
-      {/* DESKTOP CONTAINER */}
       <div className={`${styles.widgetContainer(isScrolled)}`}>
-        <div className={styles.urgentCareLink(isScrolled)}>
-          Your content here...
+        <div className={`${styles.overlapTab(isScrolled)} bg-[#825AA4]`}>
+          Urgent Care <strong>Save My Spot</strong>
         </div>
-        <div className="">HELLLOOO</div>
-        <div className="">HELLLOOO</div>
+        <div className="py-2">(213) 742 - 1000</div>
+        <div className="py-2"> | </div>
+        <a
+          href="/espanol"
+          onClick={() => handleClick("Nav Spanish Page")}
+          className="py-2 font-semibold hover:underline"
+        >
+          Español
+        </a>
+        <div
+          className={`${styles.overlapTab(
+            isScrolled,
+          )} bg-[#FCE385] text-black font-semibold text-lg`}
+        >
+          DONATE
+        </div>
       </div>
 
       {/* <div className={styles.desktopContainer}>
