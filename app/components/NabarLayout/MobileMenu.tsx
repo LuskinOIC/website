@@ -20,12 +20,12 @@ const styles = {
   menuItem:
     "flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2",
   externalLinkIcon: "text-white px-0.5",
-  mobileDropdown: "w-full text-center py-2",
+  mobileDropdown: "w-full text-center py-2 text-black",
   mobileDropdownMenu:
-    "bg-gray-100 text-luskin-blue underline w-full text-sm flex flex-col py-2",
+    "bg-gray-100 text-luskin-blue underline w-full text-sm flex flex-col py-2 ",
   mobileDropdownMenuItem: "w-full text-center py-2",
   myChartLink:
-    "flex flex-row justify-center w-full text-white font-semibold text-center py-2",
+    "flex flex-row justify-center w-full text-black font-semibold text-center py-2",
   donateButton: "w-full bg-amber-200 text-black font-semibold text-center py-2",
   closeButton: "bg-gray-100 w-full text-luskin-blue text-center py-2",
 };

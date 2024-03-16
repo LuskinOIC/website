@@ -13,46 +13,36 @@ import {
 } from "@/app/components/ui/NavigationMenu";
 import { NavigationBarType } from "@/app/constants/types";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import externalIconWhite from "@/public/external-link-icon-white.svg";
-import externalIconBlack from "@/public/external-link-icon-black.svg";
-import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
+// import externalIconWhite from "@/public/external-link-icon-white.svg";
+// import externalIconBlack from "@/public/external-link-icon-black.svg";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
-    `z-50 fixed max-w-[1600px] top-0 ${
+    `bg-white fixed max-w-[1600px] border border-b-2 border-x-2 border-[#0076AD] ${
       isScrolled
         ? "transition-all duration-300 ease-out md:h-[102px]"
-        : "transition-all duration-300 ease-out md:h-[166px]"
+        : "transition-all duration-300 ease-out md:h-[180px]"
     }`,
-  desktopContainer: "flex flex-row w-full items-center",
-  logoContainer: (isScrolled: boolean) =>
-    `hidden md:block w-fit ${isScrolled ? "py-2" : "py-4"}`,
+  mainNavScrollWrapper: (isScrolled: boolean) =>
+    `hidden md:flex z-50 w-full h-full mx-10  transition-opacity duration-500 ease-out ${
+      isScrolled ? "absolute inset-x-0 top-0" : ""
+    }`,
+  logoContainer: "hidden md:block w-fit  h-fit h-fit bg-pink-200 py-2",
   logoImage: (isScrolled: boolean) =>
-    `ml-4 ${
+    `${
       isScrolled
         ? "transition-all duration-300 ease-out w-24"
-        : "transition-all duration-300 ease-out w-40"
+        : "transition-all duration-300 ease-out w-30"
     }`,
-  secondaryMenuContainer: "w-full",
-  widgetContainer: (isScrolled: boolean) =>
-    `flex flex-row justify-end h-fit transition-transform ease-out ${
-      isScrolled ? "transform -translate-y-full" : "transform translate-y-0"
-    }`,
-  urgentCareLink:
-    "hidden md:flex flex-row bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200",
-  infoList:
-    "hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3",
-  listItem: "mr-4 underline underline-offset-4 hover:text-slate-200",
-  navigationItemsContainer: "hidden md:block w-full",
-  navigationItemsSubContainer:
-    "flex justify-evenly items-center w-full hover:text-slate-200",
+  navigationItems: "hidden md:flex flex-row justify-evenly w-full items-center",
   mobileContainer:
-    "flex flex-row w-full justify-between items-center md:hidden",
+    "flex flex-row w-full justify-between items-center md:hidden text-black",
   mobileLogoContainer: "block md:hidden py-2",
   navigationMenuItem: "block md:hidden list-none",
-  mobileMenuButton: "bg-transparent text-white rounded-full py-3 px-4 text-xl",
+  mobileMenuButton: "bg-transparent text-black rounded-full py-3 px-4 text-xl",
 };
 
 export default function Navbar({
@@ -90,9 +80,10 @@ export default function Navbar({
   return (
     <NavigationMenu className={styles.navigationMenu(isScrolled)}>
       {/* DESKTOP CONTAINER */}
-      <div className={styles.desktopContainer}>
-        {/* LOGO CONTAINER */}
-        <div className={styles.logoContainer(isScrolled)}>
+      <SupportWidget isScrolled={isScrolled} />
+
+      <div className={styles.mainNavScrollWrapper(isScrolled)}>
+        <div className={styles.logoContainer}>
           <Link href="/" onClick={() => handleClick("Logo Home")}>
             <Image
               className={styles.logoImage(isScrolled)}
@@ -104,74 +95,17 @@ export default function Navbar({
           </Link>
         </div>
 
-        {/* SECONDARY MENU CONTAINER */}
-        <div className={styles.secondaryMenuContainer}>
-          <div className="text-lg absolute top-0 right-0">
-            <div className={styles.widgetContainer(isScrolled)}>
-              <a
-                href={SAVE_MY_SPOT}
-                onClick={() => handleClick("Nav Save My Spot")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.urgentCareLink}
-              >
-                Urgent Care - Save My Spot
-                <Image
-                  src={externalIconWhite}
-                  alt="External Link"
-                  width={16}
-                  height={16}
-                  className="text-white px-0.5"
-                />
-              </a>
-              <div>
-                <ul className={styles.infoList}>
-                  <li className="mr-4">(213) 742 - 1000</li>
-                  <li className={styles.infoList}>
-                    <a
-                      href={MYCHART_URL}
-                      onClick={() => handleClick("Nav MyChart")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-row"
-                    >
-                      MyChart
-                      <Image
-                        src={externalIconBlack}
-                        alt="External Link"
-                        width={16}
-                        height={16}
-                        className="text-white px-0.5"
-                      />
-                    </a>
-                  </li>
-                  <li className={styles.listItem}>
-                    <a
-                      href="/espanol"
-                      onClick={() => handleClick("Nav Spanish Page")}
-                    >
-                      Español
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.navigationItemsContainer}>
-            <div className={styles.navigationItemsSubContainer}>
-              {navigationBar.navigationItems.map((item) => {
-                return (
-                  <NavigationItem
-                    key={item.sys.id}
-                    item={item}
-                    selectedDropdown={selectedDropdown}
-                    setSelectedDropdown={setSelectedDropdown}
-                  />
-                );
-              })}
-            </div>
-          </div>
+        <div className={styles.navigationItems}>
+          {navigationBar.navigationItems.map((item) => {
+            return (
+              <NavigationItem
+                key={item.sys.id}
+                item={item}
+                selectedDropdown={selectedDropdown}
+                setSelectedDropdown={setSelectedDropdown}
+              />
+            );
+          })}
         </div>
       </div>
 

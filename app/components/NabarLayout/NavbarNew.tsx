@@ -17,7 +17,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import externalIconWhite from "@/public/external-link-icon-white.svg";
 import externalIconBlack from "@/public/external-link-icon-black.svg";
-import SupportWidget from "./SupportWidget";
+import SupportWidget from "@/app/components/NabarLayout/SupportWidget";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>

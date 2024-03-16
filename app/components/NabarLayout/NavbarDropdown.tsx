@@ -18,9 +18,9 @@ interface NavbarDropDownProps {
 
 const styles = {
   container: "hidden md:block text-[#171515] text-xl font-bold",
-  button: "hover:underline decoration-[#0076AD] underline-offset-4",
+  button: "hover:underline decoration-[#0076AD] underline-offset-4 text-black",
   dropdownContainer:
-    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-9",
+    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-9 border border-t-2 border-[#0076AD]",
   linksWrapper: "basis-2/3 h-1/2",
   linksGrid: "hidden md:grid grid-rows-3 grid-cols-2 items-start",
   item: "py-2 px-10 flex items-center",
