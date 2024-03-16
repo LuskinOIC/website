@@ -26,20 +26,18 @@ const styles = {
         ? "transition-all duration-300 ease-out md:h-[102px]"
         : "transition-all duration-300 ease-out md:h-[180px]"
     }`,
-  logoContainer: (isScrolled: boolean) =>
-    `hidden md:block w-fit h-fit h-fit ml-20 bg-pink-500 ${
-      isScrolled ? "py-2" : "py-4"
+  mainNavScrollWrapper: (isScrolled: boolean) =>
+    `hidden md:flex z-50 w-full h-full mx-10  transition-opacity duration-500 ease-out ${
+      isScrolled ? "absolute inset-x-0 top-0" : ""
     }`,
+  logoContainer: "hidden md:block w-fit  h-fit h-fit bg-pink-200 py-2",
   logoImage: (isScrolled: boolean) =>
     `${
       isScrolled
         ? "transition-all duration-300 ease-out w-24"
         : "transition-all duration-300 ease-out w-30"
     }`,
-  mainNavScrollWrapper: (isScrolled: boolean) =>
-    `w-full z-50 md:flex  h-full transition-opacity duration-500 ease-out ${
-      isScrolled ? "absolute inset-x-0 top-0" : ""
-    }`,
+  navigationItems: "hidden md:flex flex-row justify-evenly w-full items-center",
   // infoList:
   //   "hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3",
   // listItem: "mr-4 underline underline-offset-4 hover:text-slate-200",
@@ -76,13 +74,12 @@ export default function Navbar({
       value: text,
     });
   };
-
   return (
     <NavigationMenu className={styles.navigationMenu(isScrolled)}>
       <SupportWidget isScrolled={isScrolled} />
 
       <div className={styles.mainNavScrollWrapper(isScrolled)}>
-        <div className={styles.logoContainer(isScrolled)}>
+        <div className={styles.logoContainer}>
           <Link href="/" onClick={() => handleClick("Logo Home")}>
             <Image
               className={styles.logoImage(isScrolled)}
@@ -94,21 +91,18 @@ export default function Navbar({
           </Link>
         </div>
 
-        <div className="flex flex-row justify-evenly w-full items-center">
-          <div className="item-end">LOGO</div>
-          <div className="item-end">LOGO</div>
-          <div className="item-end">LOGO</div>
-          <div className="item-end">LOGO</div>
-          <div className="item-end">LOGO</div>
-          <div className="item-end">LOGO</div>
+        <div className={styles.navigationItems}>
+          {navigationBar.navigationItems.map((item) => {
+            return (
+              <NavigationItem
+                key={item.sys.id}
+                item={item}
+                selectedDropdown={selectedDropdown}
+                setSelectedDropdown={setSelectedDropdown}
+              />
+            );
+          })}
         </div>
-      </div>
-
-      <div
-        id="navdropdown"
-        className="absolute z-40 w-full left-0 right-0 top-full bg-red-500"
-      >
-        HELLLOOO
       </div>
     </NavigationMenu>
   );

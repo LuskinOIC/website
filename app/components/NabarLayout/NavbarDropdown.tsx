@@ -17,15 +17,14 @@ interface NavbarDropDownProps {
 }
 
 const styles = {
-  container: "text-[#171515] text-xl font-bold",
+  container: "hidden md:block text-[#171515] text-xl font-bold",
   button: "hover:underline decoration-[#0076AD] underline-offset-4",
-  dropdownContainer: "absolute z-10 mt-6",
-  arrow:
-    "absolute z-10 border-b-[15px] border-b-luskin-brightBlue border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent left-2 bottom-full",
-  dropdown:
-    "flex-col bg-luskin-blue border border-luskin-brightBlue divide-y divide-luskin-brightBlue rounded-md items-start",
+  dropdownContainer:
+    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-9",
+  linksWrapper: "basis-2/3 h-1/2",
+  linksGrid: "hidden md:grid grid-rows-3 grid-cols-2 items-start",
   item: "py-2 px-10 flex items-center",
-  link: "no-underline hover:underline font-light text-lg flex items-center",
+  link: "no-underline hover:underline text-[#0076AD] font-bold text-lg flex items-center",
   linkIcon: "text-white px-0.5",
 };
 
@@ -101,46 +100,46 @@ function NavbarDropDown({
               setIsHoveringOverDropdown(true);
             }}
           >
-            <div className="w-10">
-              <div className={styles.arrow}></div>
+            <div className={styles.linksWrapper}>
+              <div className={styles.linksGrid}>
+                {subItems.map((item) => (
+                  <div key={item.fields.url} className={styles.item}>
+                    {item.fields.isExternal ? (
+                      <a
+                        className={styles.link}
+                        href={item.fields.url}
+                        aria-label={item.fields.text}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          handleClick(`Nav dropdown ${item.fields.text}`)
+                        }
+                      >
+                        {item.fields.text}
+                        <Image
+                          src={external_icon_white}
+                          alt="External Link"
+                          width={16}
+                          height={16}
+                          className={styles.linkIcon}
+                        />
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.fields.url}
+                        onClick={() =>
+                          handleClick(`Nav dropdown ${item.fields.text}`)
+                        }
+                        aria-label={item.fields.text}
+                      >
+                        <div className={styles.link}>{item.fields.text}</div>
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className={styles.dropdown}>
-              {subItems.map((item) => (
-                <div key={item.fields.url} className={styles.item}>
-                  {item.fields.isExternal ? (
-                    <a
-                      className={styles.link}
-                      href={item.fields.url}
-                      aria-label={item.fields.text}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        handleClick(`Nav dropdown ${item.fields.text}`)
-                      }
-                    >
-                      {item.fields.text}
-                      <Image
-                        src={external_icon_white}
-                        alt="External Link"
-                        width={16}
-                        height={16}
-                        className={styles.linkIcon}
-                      />
-                    </a>
-                  ) : (
-                    <Link
-                      href={item.fields.url}
-                      onClick={() =>
-                        handleClick(`Nav dropdown ${item.fields.text}`)
-                      }
-                      aria-label={item.fields.text}
-                    >
-                      <div className={styles.link}>{item.fields.text}</div>
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </div>
+            <div className="">IMAGE Container</div>
           </div>
         </>
       )}
