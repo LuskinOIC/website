@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     "Pediatric Orthopedic Specialists - Luskin Orthopaedic Institute for Children",
   description:
     "Luskin Orthopaedic Institute for Children provides the highest levels of specialized care in pediatric orthopedics. Your child will receive exceptional care & treatment for their pediatric orthopedic needs.",
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION as string,
+  },
   robots: {
     index: true,
     follow: true,
