@@ -4,12 +4,40 @@ import {
   getPatientStoryBySlug,
 } from "@/app/utils/contentful";
 import PageSection from "@/app/components/PageSection/PageSection";
-import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
+import {
+  BlogCardsRowType,
+  PageSectionType,
+  ColumnType,
+} from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 
 export async function generateStaticParams() {
   const patients = await getPatientStories();
   return patients.map((patient) => ({ slug: patient.slug }));
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const patients = await getPatientStories();
+
+  return patients.map((patient) => {
+    const columnLayout = patient.topSection as ColumnType;
+    return {
+      title: String(columnLayout.fields.title),
+    };
+  });
+
+  if (!page) {
+    return {
+      title: "Page Not Found",
+    };
+  }
+
+  return {
+    title: page.pageType,
+  };
 }
 
 export default async function PatientStories({
@@ -19,7 +47,7 @@ export default async function PatientStories({
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
   const patients = (await getPatientStories(
-    4,
+    4
   )) as unknown as BlogCardsRowType[];
 
   return (
