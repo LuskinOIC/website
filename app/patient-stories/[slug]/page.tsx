@@ -4,12 +4,11 @@ import {
   getPatientStoryBySlug,
 } from "@/app/utils/contentful";
 import PageSection from "@/app/components/PageSection/PageSection";
-import {
-  BlogCardsRowType,
-  PageSectionType,
-  ColumnType,
-} from "@/app/constants/types";
+import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
+import type { Metadata } from "next";
+import { SEO_DEFAULTS } from "@/app/constants/seo";
+import { PagePropsType } from "@/app/constants/types";
 
 export async function generateStaticParams() {
   const patients = await getPatientStories();
@@ -17,26 +16,17 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
+  { params }: PagePropsType,
+  // parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const patients = await getPatientStories();
+  const patient = await getPatientStoryBySlug(params.slug);
 
-  return patients.map((patient) => {
-    const columnLayout = patient.topSection as ColumnType;
-    return {
-      title: String(columnLayout.fields.title),
-    };
-  });
-
-  if (!page) {
-    return {
-      title: "Page Not Found",
-    };
-  }
-
+  // Temporary generate. Add new metadata fields.
   return {
-    title: page.pageType,
+    title: patient.name
+      ? `Patient Story - ${patient.name}`
+      : SEO_DEFAULTS.TITLE,
+    description: SEO_DEFAULTS.DESCRIPTION,
   };
 }
 
@@ -47,7 +37,7 @@ export default async function PatientStories({
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
   const patients = (await getPatientStories(
-    4
+    4,
   )) as unknown as BlogCardsRowType[];
 
   return (

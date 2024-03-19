@@ -1,6 +1,9 @@
 import { getPages, getPageBySlug } from "@/app/utils/contentful";
 import Page from "@/app/components/Page";
 import { redirect } from "next/navigation";
+import { SEO_DEFAULTS } from "@/app/constants/seo";
+import type { Metadata } from "next";
+import { PagePropsType } from "@/app/constants/types";
 
 export async function generateStaticParams() {
   const pages = await getPages();
@@ -10,27 +13,22 @@ export async function generateStaticParams() {
     .map((page) => ({ slug: page.slug }));
 }
 
-import type { Metadata, ResolvingMetadata } from "next";
-
-type Props = {
-  params: { slug: string };
-};
-
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
   const pages = await getPages();
   const page = pages.find((page) => page.slug === params.slug);
 
   if (!page) {
     return {
-      title: "Page Not Found",
+      title: SEO_DEFAULTS.TITLE,
+      description: SEO_DEFAULTS.DESCRIPTION,
     };
   }
 
   return {
-    title: page.pageType,
+    title: page.seoTitle || SEO_DEFAULTS.TITLE,
+    description: page.seoDescription || SEO_DEFAULTS.DESCRIPTION,
   };
 }
 

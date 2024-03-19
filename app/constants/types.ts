@@ -201,8 +201,10 @@ export type MultiImageType = {
 
 export type PageType = {
   metaData: string;
-  pageType: string;
   pageSections: PageSectionType;
+  pageType: string;
+  seoDescription: string;
+  seoTitle: string;
   slug: string;
 };
 
@@ -492,3 +494,7 @@ export type ConditionsType = {
   relatedSpecialties: SpecialtyType[];
   learnMore: PageSectionType[];
 };
+
+export interface PagePropsType {
+  params: { slug: string };
+}
