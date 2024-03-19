@@ -20,7 +20,7 @@ export default async function ConditionsIndexLayout() {
   const conditions = (await getConditionTerms()) as unknown as ConditionsType[];
 
   function groupTermsByFirstLetter(
-    conditions: ConditionsType[],
+    conditions: ConditionsType[]
   ): GroupedConditions {
     return conditions.reduce((acc, condition) => {
       const firstLetter = condition.term[0].toLowerCase();
@@ -38,7 +38,7 @@ export default async function ConditionsIndexLayout() {
     return (
       <>
         {Object.entries(groupedConditions).map(([key, conditions], index) => (
-          <div key={index}>
+          <div key={index} id={key.toUpperCase()} className="scroll-mt-[100px]">
             <Title1>{key.toUpperCase()}</Title1>
             {conditions.map((condition: ConditionsType) => (
               <div key={condition.term}>
@@ -55,13 +55,13 @@ export default async function ConditionsIndexLayout() {
     <section className={styles.conditionsContainer}>
       {/* TO DO: Search + Glossary Index BTN */}
       {/* <SearchBar /> */}
-      {/* <div className={styles.lettersContainer}>
+      <div className={styles.lettersContainer}>
         {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
-          <button key={letter} className={styles.letter}>
+          <a href={`#${letter}`} key={letter} className={styles.letter}>
             {letter}
-          </button>
+          </a>
         ))}
-      </div> */}
+      </div>
       <div className={styles.termsContainer}>{GlossarySection()}</div>
     </section>
   );
