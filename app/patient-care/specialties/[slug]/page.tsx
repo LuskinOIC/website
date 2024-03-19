@@ -8,6 +8,21 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const specialties = await getSpecialties();
+
+  return specialties.map((specialty) => {
+    return {
+      title:
+        specialty.fields.seoTitle ||
+        "Pediatric Orthopedic Doctor - Luskin Orthopaedic Institute for Children",
+    };
+  });
+}
+
 export default async function Specialty({
   params,
 }: {

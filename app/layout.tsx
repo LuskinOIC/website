@@ -13,7 +13,7 @@ const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
 
 export const metadata: Metadata = {
   title:
-    "Pediatric Orthopedic Specialists - Luskin Orthopaedic Institute for Children",
+    "Pediatric Orthopedic Doctor - Luskin Orthopaedic Institute for Children",
   description:
     "Luskin Orthopaedic Institute for Children provides the highest levels of specialized care in pediatric orthopedics. Your child will receive exceptional care & treatment for their pediatric orthopedic needs.",
   verification: {

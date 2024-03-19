@@ -416,6 +416,7 @@ export type SpecialtyType = {
     patientPage: {
       fields: PageType;
     };
+    seoTitle: string;
     medicalProfessionalPage: {
       fields: PageType;
     };
