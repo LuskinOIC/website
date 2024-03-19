@@ -8,14 +8,13 @@ import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import packageJson from "../package.json";
+import { SEO_DEFAULTS } from "@/app/constants/seo";
 
 const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
 
 export const metadata: Metadata = {
-  title:
-    "Pediatric Orthopedic Specialists - Luskin Orthopaedic Institute for Children",
-  description:
-    "Luskin Orthopaedic Institute for Children provides the highest levels of specialized care in pediatric orthopedics. Your child will receive exceptional care & treatment for their pediatric orthopedic needs.",
+  title: SEO_DEFAULTS.TITLE,
+  description: SEO_DEFAULTS.DESCRIPTION,
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION as string,
   },

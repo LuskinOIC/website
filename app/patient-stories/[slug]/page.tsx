@@ -6,10 +6,28 @@ import {
 import PageSection from "@/app/components/PageSection/PageSection";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
+import type { Metadata } from "next";
+import { SEO_DEFAULTS } from "@/app/constants/seo";
+import { PagePropsType } from "@/app/constants/types";
 
 export async function generateStaticParams() {
   const patients = await getPatientStories();
   return patients.map((patient) => ({ slug: patient.slug }));
+}
+
+export async function generateMetadata(
+  { params }: PagePropsType,
+  // parent: ResolvingMetadata
+): Promise<Metadata> {
+  const patient = await getPatientStoryBySlug(params.slug);
+
+  // Temporary generate. Add new metadata fields.
+  return {
+    title: patient.name
+      ? `Patient Story - ${patient.name}`
+      : SEO_DEFAULTS.TITLE,
+    description: SEO_DEFAULTS.DESCRIPTION,
+  };
 }
 
 export default async function PatientStories({
