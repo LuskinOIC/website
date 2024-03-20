@@ -1,8 +1,8 @@
 # LuskinOIC
+
 Front end app for LuskinOIC powered by [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and integrated with [Contenful](https://www.contentful.com/developers/).
 
 Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/).
-
 
 ## Getting Started
 
@@ -30,6 +30,7 @@ Reach out to a project admin to fill in the variables as needed.
 ## Site structure
 
 Root directory
+
 ```
 .
 ├── README.md
@@ -49,6 +50,7 @@ Root directory
 ```
 
 App directory
+
 ```
 .
 ├── about
@@ -71,9 +73,10 @@ App directory
 ├── utils
 └── ways-to-give
 ```
+
 ## Running linters
 
-To run ESLINT use the command 
+To run ESLINT use the command
 
 ```
 npm run lint
@@ -96,4 +99,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deployment
 
-This project is deployed on [DigitalOcean](https://www.digitalocean.com/). 
+This project is deployed on [DigitalOcean](https://www.digitalocean.com/) using App Platform.
