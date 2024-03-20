@@ -2,7 +2,11 @@ import Page from "@/app/components/Page";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 
 export async function generateStaticParams() {
-  const specialties = await getSpecialties();
+  let specialties = await getSpecialties();
+  specialties = specialties.filter(
+    (specialty) => specialty.fields.medicalProfessionalPage,
+  );
+
   return specialties.map((specialty) => ({
     slug: specialty.fields.slug,
   }));
@@ -14,10 +18,6 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
-
-  if (!specialty || !specialty.fields.medicalProfessionalPage) {
-    return <h1>Add Page Sections</h1>;
-  }
 
   return <Page page={specialty.fields.medicalProfessionalPage.fields} />;
 }
