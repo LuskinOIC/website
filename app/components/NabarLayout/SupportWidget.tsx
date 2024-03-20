@@ -1,4 +1,4 @@
-import { SAVE_MY_SPOT } from "@/app/constants/links";
+import { SAVE_MY_SPOT, MYCHART_URL } from "@/app/constants/links";
 import { sendGAEvent } from "@next/third-parties/google";
 
 const styles = {
@@ -35,7 +35,9 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
       >
         Urgent Care <strong>Save My Spot</strong>
       </a>
-      <div className="py-2">(213) 742 - 1000</div>
+      <a href={MYCHART_URL} className="py-2 hover:underline">
+        MYCHART
+      </a>
       <div className="py-2"> | </div>
       <a
         href="/espanol"

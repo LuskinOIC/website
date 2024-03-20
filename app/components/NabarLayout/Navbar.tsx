@@ -16,6 +16,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SearchDropdown from "./SearchContainer";
 // import externalIconWhite from "@/public/external-link-icon-white.svg";
 // import externalIconBlack from "@/public/external-link-icon-black.svg";
 
@@ -106,6 +107,8 @@ export default function Navbar({
               />
             );
           })}
+          {/* SEARCH CONTAINER */}
+          <SearchDropdown />
         </div>
       </div>
 
