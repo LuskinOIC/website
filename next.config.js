@@ -24,6 +24,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/patient-care/orthopedic-specialties/",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/contact-locations/",
         destination: "/about",
         permanent: true,
@@ -53,9 +58,9 @@ const nextConfig = {
   },
 };
 
-if (process.env.EXPORT_STATIC === "true") {
-  nextConfig.output = "export";
-  nextConfig.distDir = "_static";
-}
+// if (process.env.EXPORT_STATIC === "true") {
+//   nextConfig.output = "export";
+//   nextConfig.distDir = "_static";
+// }
 
 module.exports = nextConfig;
