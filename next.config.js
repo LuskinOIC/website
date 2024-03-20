@@ -29,6 +29,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/patient-care/specialties/",
+        destination: "/specialties",
+        permanent: true,
+      },
+      {
         source: "/contact-locations/",
         destination: "/about",
         permanent: true,
