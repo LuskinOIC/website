@@ -1,30 +1,90 @@
-// SearchDropdown.js
+"use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const SearchDropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface SearchContainerProps {
+  isFocused: boolean;
+  // eslint-disable-next-line no-unused-vars
+  onChange: (id: string) => void;
+}
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+const styles = {
+  button: "bg-transparent p-2 rounded-full text-lg hover:text-[#0076AD]",
+  container: "hidden md:block",
+  inputContainer:
+    "absolute z-40 w-full left-0 right-0 top-full h-[78px] py-9 bg-[#EBEBEB] border border-t-2 border-[#0076AD] flex justify-center items-center",
+  input: "w-1/2 pl-4 pr-20 py-2 rounded-l-md border border-r-0 w-full",
+  searchBtn:
+    "px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
+};
+
+const SearchDropdown = ({ isFocused, onChange }: SearchContainerProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
+  const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
+  const [timeoutPid, setTimeoutPid] = useState(null);
+
+  function handleFocus() {
+    setIsOpen(true);
+    onChange("search");
+  }
+
+  useEffect(() => {
+    if (!isFocused) {
+      setIsOpen(false);
+      setHasNavigatedFromButton(false);
+      setIsHoveringOverDropdown(false);
+    }
+  }, [isFocused]);
+
+  useEffect(() => {
+    if (hasNavigatedFromButton) {
+      const pid = setTimeout(() => {
+        setIsOpen(false);
+      }, 1000);
+      setTimeoutPid(pid as any);
+    }
+  }, [hasNavigatedFromButton]);
+
+  useEffect(() => {
+    if (isHoveringOverDropdown && timeoutPid) {
+      clearTimeout(timeoutPid);
+    }
+  }, [isHoveringOverDropdown, timeoutPid]);
 
   return (
-    <div className="">
+    <div className={styles.container}>
       <button
-        onClick={toggleDropdown}
-        className="bg-transparent text-black bg-pink-500 p-2 rounded-full text-lg hover:bg-gray-700"
+        onKeyDown={handleFocus}
+        onMouseEnter={handleFocus}
+        onClick={handleFocus}
+        onMouseLeave={() => setHasNavigatedFromButton(true)}
+        className={styles.button}
         aria-label="Search"
       >
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-red-500 shadow-md rounded-md">
-          <input
-            type="text"
-            className="w-full p-2 rounded-md border border-gray-300"
-            placeholder="Search..."
-          />
+        <div
+          className={styles.inputContainer}
+          onMouseLeave={() => {
+            setIsOpen(false);
+            setHasNavigatedFromButton(false);
+            setIsHoveringOverDropdown(false);
+          }}
+          onMouseEnter={() => {
+            setIsHoveringOverDropdown(true);
+          }}
+        >
+          <input type="text" className={styles.input} placeholder="Search..." />
+          <button
+            className={styles.searchBtn}
+            // onClick={}
+          >
+            Search
+          </button>
         </div>
       )}
     </div>

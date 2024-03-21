@@ -17,12 +17,12 @@ import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchDropdown from "./SearchContainer";
-// import externalIconWhite from "@/public/external-link-icon-white.svg";
+import bluePhone from "@/public/blue-phone-icon.svg";
 // import externalIconBlack from "@/public/external-link-icon-black.svg";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
-    `bg-white fixed max-w-[1600px] border border-b-2 border-x-2 border-[#0076AD] ${
+    `bg-white fixed max-w-[1600px] border-b-2 border-x-2 border-[#0076AD] ${
       isScrolled
         ? "transition-all duration-300 ease-out md:h-[102px]"
         : "transition-all duration-300 ease-out md:h-[180px]"
@@ -52,7 +52,7 @@ export default function Navbar({
   navigationBar: NavigationBarType;
 }) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const [selectedDropdown, setSelectedDropdown] = useState("");
+  const [selectedDropdown, setSelectedDropdown] = useState("helloo");
   const [isScrolled, setIsScrolled] = useState(false);
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
   const resetNavigationMenu = () => setIsHamburgerOpen(false);
@@ -108,7 +108,14 @@ export default function Navbar({
             );
           })}
           {/* SEARCH CONTAINER */}
-          <SearchDropdown />
+          <div className="flex flex-row gap-2 text-[#171515] font-bold text-xl">
+            <Image src={bluePhone} alt="Phone Icon" width={20} height={20} />
+            <span> 213-742-1000 </span>
+          </div>
+          <SearchDropdown
+            isFocused={selectedDropdown === "search"}
+            onChange={setSelectedDropdown}
+          />
         </div>
       </div>
 

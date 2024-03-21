@@ -10,6 +10,7 @@ const styles = {
     `hidden md:flex flex-col text-center justify-center z-50 px-7 py-4 rounded-b-2xl hover:underline transition-all duration-500 ease-in-out ${
       isScrolled ? "max-h-0 overflow-hidden" : "max-h-[5rem] h-20"
     }`,
+  links: "py-2 font-semibold  hover:underline",
 };
 
 type SupportWidgetProps = {
@@ -35,14 +36,14 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
       >
         Urgent Care <strong>Save My Spot</strong>
       </a>
-      <a href={MYCHART_URL} className="py-2 hover:underline">
+      <a href={MYCHART_URL} className={styles.links}>
         MYCHART
       </a>
       <div className="py-2"> | </div>
       <a
         href="/espanol"
         onClick={() => handleClick("Nav Spanish Page")}
-        className="py-2 font-semibold hover:underline"
+        className={styles.links}
       >
         Español
       </a>
