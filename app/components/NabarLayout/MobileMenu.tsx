@@ -5,12 +5,15 @@ import { NavigationMenuList } from "@/app/components/ui/NavigationMenu";
 import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 import external_icon_white from "@/public/external-link-icon-white.svg";
+import external_icon_black from "@/public/external-link-icon-black.svg";
 import { sendGAEvent } from "@next/third-parties/google";
+import { NavigationDropdownType } from "@/app/constants/types";
 
 interface MobileMenuProps {
   closeMenu: () => void;
   isHamburgerOpen: boolean;
   toggleHamburgerDropdown: () => void;
+  dropdowns: NavigationDropdownType[];
 }
 
 const styles = {
@@ -34,11 +37,11 @@ function MobileMenu({
   closeMenu,
   isHamburgerOpen,
   toggleHamburgerDropdown,
+  dropdowns,
 }: MobileMenuProps) {
   const [mobileMenuOpenStates, setMobileMenuOpenStates] = useState(
     MobileDropdowns.map(() => false),
   );
-
   useEffect(() => {
     // Reset all mobileMenuOpenStates to false when isHamburgerOpen becomes false
     if (!isHamburgerOpen) {
@@ -80,43 +83,40 @@ function MobileMenu({
               className={styles.externalLinkIcon}
             />
           </a>
-          {MobileDropdowns.map((item, index) => (
-            <li
-              key={index}
-              className={`${item.cssClasses} ${styles.mobileDropdown}`}
-            >
+          {dropdowns.map((item, index) => (
+            <li key={index} className={`${styles.mobileDropdown}`}>
               <button onClick={() => toggleMobileMenu(index)}>
-                {item.label}
+                {item.fields.text}
               </button>
 
               {mobileMenuOpenStates[index] && (
                 <ul className={styles.mobileDropdownMenu}>
-                  {item.subItems.map((subItem, subIndex) => (
+                  {item.fields.navigationLinks.map((subItem, subIndex) => (
                     <li
                       key={subIndex}
-                      className={`${subItem} ${styles.mobileDropdownMenuItem}`}
+                      className={`${styles.mobileDropdownMenuItem}`}
                     >
-                      {subItem.type === "link" ? (
-                        subItem.url && (
-                          <Link
-                            href={subItem.url}
-                            onClick={() => {
-                              handleClick(`Mobile Nav ${subItem.label}`);
-                              closeMenu;
-                            }}
-                          >
-                            {subItem.label}
-                          </Link>
-                        )
-                      ) : (
+                      {subItem.fields.isExternal ? (
                         <button
                           onClick={() => {
-                            handleClick(`Mobile Nav ${subItem.label}`);
+                            handleClick(`Mobile Nav ${subItem.fields.text}}`);
                             toggleMobileMenu(index);
                           }}
                         >
-                          {subItem.label}
+                          {subItem.fields.text}
                         </button>
+                      ) : (
+                        subItem.fields.url && (
+                          <Link
+                            href={subItem.fields.url}
+                            onClick={() => {
+                              handleClick(`Mobile Nav ${subItem.fields.text}`);
+                              closeMenu;
+                            }}
+                          >
+                            {subItem.fields.text}
+                          </Link>
+                        )
                       )}
                     </li>
                   ))}
@@ -134,7 +134,7 @@ function MobileMenu({
           >
             MYCHART
             <Image
-              src={external_icon_white}
+              src={external_icon_black}
               alt="External Link"
               width={16}
               height={16}

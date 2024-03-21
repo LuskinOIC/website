@@ -41,7 +41,7 @@ const styles = {
   navigationItems: "hidden md:flex flex-row justify-evenly w-full items-center",
   mobileContainer:
     "flex flex-row w-full justify-between items-center md:hidden text-black",
-  mobileLogoContainer: "block md:hidden py-2",
+  mobileLogoContainer: "block md:hidden py-2 bg-pink-200",
   navigationMenuItem: "block md:hidden list-none",
   mobileMenuButton: "bg-transparent text-black rounded-full py-3 px-4 text-xl",
 };
@@ -121,7 +121,6 @@ export default function Navbar({
 
       {/* MOBILE CONTAINER */}
       <ul className={styles.mobileContainer}>
-        {/* LOGO CONTAINER */}
         <li className={styles.mobileLogoContainer}>
           <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
             <Image
@@ -155,6 +154,7 @@ export default function Navbar({
         isHamburgerOpen={isHamburgerOpen}
         toggleHamburgerDropdown={toggleHamburgerDropdown}
         closeMenu={resetNavigationMenu}
+        dropdowns={navigationBar.dropdowns}
       />
     </NavigationMenu>
   );
