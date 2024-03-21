@@ -17,7 +17,7 @@ interface MobileMenuProps {
 }
 
 const styles = {
-  navigationMenuList: "block md:hidden",
+  navigationMenu: "block md:hidden",
   menuList:
     "text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0",
   menuItem:
@@ -63,7 +63,7 @@ function MobileMenu({
   };
 
   return (
-    <NavigationMenuList className={styles.navigationMenuList}>
+    <NavigationMenuList className={styles.navigationMenu}>
       {isHamburgerOpen && (
         <ul className={styles.menuList}>
           <a

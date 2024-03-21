@@ -16,7 +16,7 @@ const styles = {
   container: "hidden md:block",
   inputContainer:
     "absolute z-40 w-full left-0 right-0 top-full h-[78px] py-9 bg-[#EBEBEB] border border-t-2 border-[#0076AD] flex justify-center items-center",
-  input: "w-1/2 pl-4 pr-20 py-2 rounded-l-md border border-r-0 w-full",
+  input: "w-[50%] pl-4 pr-20 py-2 rounded-l-md border border-r-0 w-full",
   searchBtn:
     "px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
 };

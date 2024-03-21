@@ -12,13 +12,13 @@ import {
   NavigationMenuItem,
 } from "@/app/components/ui/NavigationMenu";
 import { NavigationBarType } from "@/app/constants/types";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchDropdown from "./SearchContainer";
 import bluePhone from "@/public/blue-phone-icon.svg";
-// import externalIconBlack from "@/public/external-link-icon-black.svg";
+import logo from "@/public/Luskin_OIC_v2.png";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
@@ -28,12 +28,12 @@ const styles = {
         : "transition-all duration-300 ease-out md:h-[180px]"
     }`,
   mainNavScrollWrapper: (isScrolled: boolean) =>
-    `hidden md:flex z-50 w-full h-full mx-10  transition-opacity duration-500 ease-out ${
+    `hidden md:flex z-50 w-full h-full transition-opacity duration-500 ease-out ${
       isScrolled ? "absolute inset-x-0 top-0" : ""
     }`,
-  logoContainer: "hidden md:block w-fit  h-fit h-fit bg-pink-200 py-2",
+  logoContainer: "hidden md:block w-fit h-fit h-fit mx-10 pt-4",
   logoImage: (isScrolled: boolean) =>
-    `${
+    ` h-auto ${
       isScrolled
         ? "transition-all duration-300 ease-out w-24"
         : "transition-all duration-300 ease-out w-30"
@@ -41,7 +41,7 @@ const styles = {
   navigationItems: "hidden md:flex flex-row justify-evenly w-full items-center",
   mobileContainer:
     "flex flex-row w-full justify-between items-center md:hidden text-black",
-  mobileLogoContainer: "block md:hidden py-2 bg-pink-200",
+  mobileLogoContainer: "block md:hidden py-2",
   navigationMenuItem: "block md:hidden list-none",
   mobileMenuButton: "bg-transparent text-black rounded-full py-3 px-4 text-xl",
 };
@@ -88,7 +88,7 @@ export default function Navbar({
           <Link href="/" onClick={() => handleClick("Logo Home")}>
             <Image
               className={styles.logoImage(isScrolled)}
-              src={navigationBar.logo.fields.file.url}
+              src={logo}
               alt="Logo for Luskin Orthopaedic Institute for Children"
               width={150}
               height={250}
@@ -124,8 +124,8 @@ export default function Navbar({
         <li className={styles.mobileLogoContainer}>
           <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
             <Image
-              className="ml-4"
-              src={"/LOIC_LOGO.svg"}
+              className="ml-4 w-contain h-auto"
+              src={logo}
               alt={"Logo"}
               width={90}
               height={60}
@@ -135,9 +135,9 @@ export default function Navbar({
 
         {/* To be implemented later */}
         <NavigationMenuItem className={styles.navigationMenuItem}>
-          {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
-          {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
-          {/* </button> */}
+          <button className="bg-transparent text-black rounded-full p-3 text-xl">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
           <button
             onClick={toggleHamburgerDropdown}
             aria-label="Open Navigation Menu"
