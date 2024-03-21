@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
 import external_icon_white from "@/public/external-link-icon-white.svg";
+import NavImageContainer from "@/app/components/NabarLayout/NavImageContainer";
 
 interface NavbarDropDownProps {
   id: string;
@@ -14,13 +15,15 @@ interface NavbarDropDownProps {
   // TODO: Figure out why this lint is failing.
   // eslint-disable-next-line no-unused-vars
   onChange: (id: string) => void;
+  /* eslint-enable no-unused-vars */
+  imageContainer: any;
 }
 
 const styles = {
   container: "hidden md:block text-[#171515] text-xl font-bold",
   button: "hover:underline decoration-[#0076AD] underline-offset-4 text-black",
   dropdownContainer:
-    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-9 border border-t-2 border-[#0076AD]",
+    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 border border-t-2 border-[#0076AD]",
   linksWrapper: "basis-2/3 h-1/2",
   linksGrid: "hidden md:grid grid-rows-3 grid-cols-2 items-start",
   item: "py-2 px-10 flex items-center",
@@ -34,12 +37,12 @@ function NavbarDropDown({
   subItems,
   onChange,
   isFocused,
+  imageContainer,
 }: NavbarDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
   const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
   const [timeoutPid, setTimeoutPid] = useState(null);
-
   const handleClick = (text: string) => {
     sendGAEvent({
       event: "buttonClicked",
@@ -139,7 +142,7 @@ function NavbarDropDown({
                 ))}
               </div>
             </div>
-            <div className="">IMAGE Container</div>
+            <NavImageContainer imageContainer={imageContainer} />
           </div>
         </>
       )}

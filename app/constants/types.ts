@@ -371,10 +371,19 @@ export type NavigationLinkType = {
   };
 };
 
+export type NavImageContainer = {
+  dropdownImage: ImageType;
+  dropdownOverlayText: string;
+  overlayLink: string;
+};
+
 export type NavigationDropdownType = {
   fields: {
     text: string;
     navigationLinks: NavigationLinkType[];
+    dropdownImage: ImageType;
+    dropdownOverlayText: string;
+    overlayLink: string;
   };
   sys: {
     id: string;

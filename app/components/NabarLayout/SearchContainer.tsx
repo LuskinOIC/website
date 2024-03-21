@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchContainerProps {
   isFocused: boolean;
-  // eslint-disable-next-line no-unused-vars
+  /* eslint-disable no-unused-vars */
   onChange: (id: string) => void;
+  /* eslint-enable no-unused-vars */
 }
 
 const styles = {
