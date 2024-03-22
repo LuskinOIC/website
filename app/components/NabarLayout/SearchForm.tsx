@@ -12,16 +12,25 @@ const styles = {
     "px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
   result:
     "p-4 border-b border-[#0076AD] last:border-b-0 text-[#171515] font-bold text-lg hover:underline underline-offset-4",
+  noResults: "p-4 text-center text-sm text-[#171515]",
 };
 
 const SearchForm = () => {
   const [searchResults, setSearchResults] = useState<
     Array<{ path: string; title: string }>
   >([]);
-  let results: any = [];
+  const [searchAttempted, setSearchAttempted] = useState(false);
+
+  let results: Array<{ path: string; title: string }> = [];
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchAttempted(false);
     const query = String(e.target.value).toLowerCase().trim();
+
+    if (query === "") {
+      setSearchResults([]);
+      return;
+    }
 
     const partialMatch = Object.keys(searchIndex).filter((key) =>
       key.includes(query),
@@ -42,8 +51,13 @@ const SearchForm = () => {
     setSearchResults(Array.from(new Set(results)));
   }
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSearchAttempted(true);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-row">
         <input
           type="text"
@@ -54,6 +68,9 @@ const SearchForm = () => {
         />
         <button className={styles.searchBtn}>Search</button>
       </div>
+      {searchAttempted && searchResults.length === 0 && (
+        <div className={styles.noResults}>No results found.</div>
+      )}
       {searchResults.length > 0 && (
         <div id="search" className={styles.inputResults}>
           {searchResults.map((result, i) => (
