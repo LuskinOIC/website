@@ -7,13 +7,13 @@
     "dev": "NODE_ENV=development next dev",
     "format": "prettier --write .",
     "lint": "next lint --fix",
-    "seo:generate:sitemap": "./bin/generate_sitemap",
+    "seo:generate:sitemap": "./bin/generate-sitemap",
     "ssh": "./bin/ssh",
     "start": "next start",
     "test:performance": "./bin/load_test",
-    "search:generate:index": "./bin/generate_search_index",
+    "search:generate:index": "./bin/generate-search-index",
     "version:patch": "npm version patch",
-    "contentful:list:pages": "./bin/list_pages"
+    "contentful:list:pages": "./bin/list-pages"
   },
   "dependencies": {
     "@contentful/rich-text-plain-text-renderer": "^16.0.13",
