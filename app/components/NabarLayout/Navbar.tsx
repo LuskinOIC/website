@@ -56,7 +56,9 @@ export default function Navbar({
   const [selectedDropdown, setSelectedDropdown] = useState("helloo");
   const [isScrolled, setIsScrolled] = useState(false);
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
-  const resetNavigationMenu = () => setIsHamburgerOpen(false);
+  const resetNavigationMenu = () => {
+    setIsHamburgerOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -131,11 +133,7 @@ export default function Navbar({
           </Link>
         </li>
 
-        {/* To be implemented later */}
         <NavigationMenuItem className={styles.navigationMenuItem}>
-          {/* <button className="bg-transparent text-black rounded-full p-3 text-xl">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button> */}
           <SearchContainer />
           <button
             onClick={toggleHamburgerDropdown}
@@ -143,7 +141,6 @@ export default function Navbar({
             className={styles.mobileMenuButton}
           >
             {" "}
-            {/* Increase padding and font size */}
             <FontAwesomeIcon icon={faBars} />
           </button>
         </NavigationMenuItem>

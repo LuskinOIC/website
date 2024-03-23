@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NavigationMenuList } from "@/app/components/ui/NavigationMenu";
@@ -42,12 +42,26 @@ function MobileMenu({
   const [mobileMenuOpenStates, setMobileMenuOpenStates] = useState(
     MobileDropdowns.map(() => false),
   );
+  const menuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Reset all mobileMenuOpenStates to false when isHamburgerOpen becomes false
     if (!isHamburgerOpen) {
       setMobileMenuOpenStates(MobileDropdowns.map(() => false));
     }
-  }, [isHamburgerOpen]);
+
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    }
+
+    if (isHamburgerOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isHamburgerOpen, closeMenu]);
 
   const toggleMobileMenu = (index: number) => {
     const newMobileMenuOpenStates = [...mobileMenuOpenStates];
@@ -63,103 +77,107 @@ function MobileMenu({
   };
 
   return (
-    <NavigationMenuList className={styles.navigationMenu}>
-      {isHamburgerOpen && (
-        <ul className={styles.menuList}>
-          <a
-            href={SAVE_MY_SPOT}
-            onClick={() => handleClick("Mobile Nav Save My Spot")}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Urgent Care - Save My Spot (opens new tab)"
-            className={styles.menuItem}
-          >
-            URGENT CARE - SAVE MY SPOT MYCHART
-            <Image
-              src={external_icon_white}
-              alt="External Link"
-              width={16}
-              height={16}
-              className={styles.externalLinkIcon}
-            />
-          </a>
-          {dropdowns.map((item, index) => (
-            <li key={index} className={`${styles.mobileDropdown}`}>
-              <button onClick={() => toggleMobileMenu(index)}>
-                {item.fields.text}
-              </button>
+    <div ref={menuRef}>
+      <NavigationMenuList className={styles.navigationMenu}>
+        {isHamburgerOpen && (
+          <ul className={styles.menuList}>
+            <a
+              href={SAVE_MY_SPOT}
+              onClick={() => handleClick("Mobile Nav Save My Spot")}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Urgent Care - Save My Spot (opens new tab)"
+              className={styles.menuItem}
+            >
+              URGENT CARE - SAVE MY SPOT MYCHART
+              <Image
+                src={external_icon_white}
+                alt="External Link"
+                width={16}
+                height={16}
+                className={styles.externalLinkIcon}
+              />
+            </a>
+            {dropdowns.map((item, index) => (
+              <li key={index} className={`${styles.mobileDropdown}`}>
+                <button onClick={() => toggleMobileMenu(index)}>
+                  {item.fields.text}
+                </button>
 
-              {mobileMenuOpenStates[index] && (
-                <ul className={styles.mobileDropdownMenu}>
-                  {item.fields.navigationLinks.map((subItem, subIndex) => (
-                    <li
-                      key={subIndex}
-                      className={`${styles.mobileDropdownMenuItem}`}
-                    >
-                      {subItem.fields.isExternal ? (
-                        <button
-                          onClick={() => {
-                            handleClick(`Mobile Nav ${subItem.fields.text}}`);
-                            toggleMobileMenu(index);
-                          }}
-                        >
-                          {subItem.fields.text}
-                        </button>
-                      ) : (
-                        subItem.fields.url && (
-                          <Link
-                            href={subItem.fields.url}
+                {mobileMenuOpenStates[index] && (
+                  <ul className={styles.mobileDropdownMenu}>
+                    {item.fields.navigationLinks.map((subItem, subIndex) => (
+                      <li
+                        key={subIndex}
+                        className={`${styles.mobileDropdownMenuItem}`}
+                      >
+                        {subItem.fields.isExternal ? (
+                          <button
                             onClick={() => {
-                              handleClick(`Mobile Nav ${subItem.fields.text}`);
-                              closeMenu;
+                              handleClick(`Mobile Nav ${subItem.fields.text}}`);
+                              toggleMobileMenu(index);
                             }}
                           >
                             {subItem.fields.text}
-                          </Link>
-                        )
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-          <a
-            href={MYCHART_URL}
-            onClick={() => handleClick("Mobile Nav MyChart")}
-            target="_blank"
-            aria-label="MYCHART (opens new tab)"
-            rel="noopener noreferrer"
-            className={styles.myChartLink}
-          >
-            MYCHART
-            <Image
-              src={external_icon_black}
-              alt="External Link"
-              width={16}
-              height={16}
-              className={styles.externalLinkIcon}
-            />
-          </a>
-          <a
-            href={DONATE_URL}
-            onClick={() => handleClick("Mobile Nav Donate")}
-            target="_blank"
-            aria-label="DONATE (opens new tab)"
-            rel="noopener noreferrer"
-            className={styles.donateButton}
-          >
-            DONATE
-          </a>
-          <button
-            onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
-            className={styles.closeButton}
-          >
-            CLOSE
-          </button>
-        </ul>
-      )}
-    </NavigationMenuList>
+                          </button>
+                        ) : (
+                          subItem.fields.url && (
+                            <Link
+                              href={subItem.fields.url}
+                              onClick={() => {
+                                handleClick(
+                                  `Mobile Nav ${subItem.fields.text}`,
+                                );
+                                closeMenu;
+                              }}
+                            >
+                              {subItem.fields.text}
+                            </Link>
+                          )
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+            <a
+              href={MYCHART_URL}
+              onClick={() => handleClick("Mobile Nav MyChart")}
+              target="_blank"
+              aria-label="MYCHART (opens new tab)"
+              rel="noopener noreferrer"
+              className={styles.myChartLink}
+            >
+              MYCHART
+              <Image
+                src={external_icon_black}
+                alt="External Link"
+                width={16}
+                height={16}
+                className={styles.externalLinkIcon}
+              />
+            </a>
+            <a
+              href={DONATE_URL}
+              onClick={() => handleClick("Mobile Nav Donate")}
+              target="_blank"
+              aria-label="DONATE (opens new tab)"
+              rel="noopener noreferrer"
+              className={styles.donateButton}
+            >
+              DONATE
+            </a>
+            <button
+              onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
+              className={styles.closeButton}
+            >
+              CLOSE
+            </button>
+          </ul>
+        )}
+      </NavigationMenuList>
+    </div>
   );
 }
 

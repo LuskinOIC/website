@@ -46,7 +46,6 @@ export default async function RootLayout({
         <div data-testid={packageJson.version} className="hidden"></div>
         <div className="w-full m-auto page-container bg-white">
           <Navbar navigationBar={navigationBar} />
-          {/* <NavbarNew navigationBar={navigationBar} /> */}
           {/* This div provides margin for the main layout since the navbar is stick */}
           <div className={`h-[89px] md:h-[180px] md:${bgColor}`}></div>
           <main id="main">{children}</main>
