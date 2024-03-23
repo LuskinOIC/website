@@ -12,13 +12,14 @@ import {
   NavigationMenuItem,
 } from "@/app/components/ui/NavigationMenu";
 import { NavigationBarType } from "@/app/constants/types";
-import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchDropdown from "./SearchContainer";
 import bluePhone from "@/public/blue-phone-icon.svg";
 import logo from "@/public/Luskin_OIC_v2.png";
+import SearchContainer from "./SearchContainer";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
@@ -42,8 +43,8 @@ const styles = {
   mobileContainer:
     "flex flex-row w-full justify-between items-center md:hidden text-black",
   mobileLogoContainer: "block md:hidden py-2",
-  navigationMenuItem: "block md:hidden list-none",
-  mobileMenuButton: "bg-transparent text-black rounded-full py-3 px-4 text-xl",
+  navigationMenuItem: "block flex flex-row md:hidden list-none",
+  mobileMenuButton: "bg-transparent text-black rounded-full px-4 text-xl",
 };
 
 export default function Navbar({
@@ -132,9 +133,10 @@ export default function Navbar({
 
         {/* To be implemented later */}
         <NavigationMenuItem className={styles.navigationMenuItem}>
-          <button className="bg-transparent text-black rounded-full p-3 text-xl">
+          {/* <button className="bg-transparent text-black rounded-full p-3 text-xl">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
+          </button> */}
+          <SearchContainer />
           <button
             onClick={toggleHamburgerDropdown}
             aria-label="Open Navigation Menu"

@@ -48,7 +48,7 @@ export default async function RootLayout({
           <Navbar navigationBar={navigationBar} />
           {/* <NavbarNew navigationBar={navigationBar} /> */}
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className={`h-[95px] md:h-[180px] ${bgColor}`}></div>
+          <div className={`h-[89px] md:h-[180px] md:${bgColor}`}></div>
           <main id="main">{children}</main>
           <Footer />
         </div>
