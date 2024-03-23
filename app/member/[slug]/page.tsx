@@ -20,7 +20,7 @@ export async function generateMetadata({
   const memberBio = await getMemberBySlug(params.slug);
 
   return {
-    title: `${memberBio.name} - LuskinOIC`,
+    title: `LuskinOIC Member - ${memberBio.name}`,
     description: "",
   };
 }

@@ -2,7 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { searchIndex } from "./searchIndex";
+import searchIndexData from "@/app/data/searchIndex.json";
+
+interface SearchIndex {
+  [key: string]: Array<{ path: string; title: string }>;
+}
 
 const styles = {
   input: "w-full pl-4 pr-20 py-2 rounded-l-md border border-r-0 bg-white",
@@ -15,7 +19,13 @@ const styles = {
   noResults: "p-4 text-center text-sm text-[#171515]",
 };
 
-const SearchForm = () => {
+const searchIndex = searchIndexData as SearchIndex;
+
+interface SearchFormProps {
+  onSelect: () => void;
+}
+
+const SearchForm = ({ onSelect }: SearchFormProps) => {
   const [searchResults, setSearchResults] = useState<
     Array<{ path: string; title: string }>
   >([]);
@@ -33,27 +43,59 @@ const SearchForm = () => {
     }
 
     const partialMatch = Object.keys(searchIndex).filter((key) =>
-      key.includes(query),
+      key.includes(query)
     );
     const exactMatch = Object.keys(searchIndex).filter((key) => key === query);
+    const key = query as keyof typeof searchIndex;
 
-    if (exactMatch.length > 0) {
-      results = searchIndex[query as keyof typeof searchIndex].map((item) => ({
+    if (exactMatch.length > 0 && searchIndex[key].length > 0) {
+      results = searchIndex[key].map((item) => ({
         path: item.path,
         title: item.title,
       }));
-    } else if (partialMatch.length > 0) {
-      results = partialMatch
+    }
+    if (partialMatch.length > 0) {
+      const partialMatches = partialMatch
         .flatMap((key) => searchIndex[key as keyof typeof searchIndex])
         .map((item) => ({ path: item.path, title: item.title }));
+      results.concat(partialMatches);
     }
 
-    setSearchResults(Array.from(new Set(results)));
+    results = Array.from(new Set(results));
+
+    // Sort the search results so paths with title that includes the query term are shown first
+    results = results.sort((a, b) => {
+      const aContains = a.title.toLowerCase().includes(query);
+      const bContains = b.title.toLowerCase().includes(query);
+
+      // Prioritize titles with the match word
+      if (aContains && !bContains) return -1;
+      if (!aContains && bContains) return 1;
+
+      // Next priority is the length of the title, shorter titles come first
+      if (a.title.length !== b.title.length) {
+        return a.title.length - b.title.length;
+      }
+
+      // Finally, sort alphabetically
+      return a.title.localeCompare(b.title);
+    });
+
+    results = results.slice(0, 5);
+
+    console.log(results);
+
+    setSearchResults([...results]);
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSearchAttempted(true);
+  }
+
+  function closeSearchResults() {
+    setSearchResults([]);
+    onSelect();
   }
 
   return (
@@ -74,7 +116,12 @@ const SearchForm = () => {
       {searchResults.length > 0 && (
         <div id="search" className={styles.inputResults}>
           {searchResults.map((result, i) => (
-            <Link key={i} href={result.path} className={styles.result}>
+            <Link
+              key={i}
+              href={result.path}
+              className={styles.result}
+              onClick={closeSearchResults}
+            >
               {result.title}
             </Link>
           ))}

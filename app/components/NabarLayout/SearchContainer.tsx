@@ -36,6 +36,10 @@ const SearchDropdown = () => {
     };
   }, [containerRef]);
 
+  function closeSearch() {
+    setIsOpen(false);
+  }
+
   return (
     <div className={styles.container} ref={containerRef}>
       <button
@@ -54,7 +58,7 @@ const SearchDropdown = () => {
       </button>
       {isOpen && (
         <div className={styles.inputContainer}>
-          <SearchForm />
+          <SearchForm onSelect={closeSearch} />
         </div>
       )}
     </div>

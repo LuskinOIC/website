@@ -53,7 +53,7 @@ export default function Navbar({
   navigationBar: NavigationBarType;
 }) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const [selectedDropdown, setSelectedDropdown] = useState("helloo");
+  const [selectedDropdown, setSelectedDropdown] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
   const resetNavigationMenu = () => {

@@ -1,0 +1,123 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const cheerio = require("cheerio");
+const { convert } = require("html-to-text");
+const { removeStopwords, eng, fra } = require("stopword");
+
+const options = {
+  wordwrap: 130,
+};
+
+function extractText(html) {
+  const $ = cheerio.load(html);
+  return convert($("main").html(), options);
+}
+
+function getIndicesOf(searchStr, str) {
+  const indices = [];
+  let startIndex = 0;
+
+  while (true) {
+    const index = str.indexOf(searchStr, startIndex);
+    if (index === -1) {
+      break;
+    }
+    indices.push(index);
+    startIndex = index + searchStr.length;
+  }
+
+  return indices;
+}
+
+async function createSearchIndex(directoryPath) {
+  const { stemmer } = await import("stemmer");
+  const searchIndex = {};
+
+  function traverseDirectory(currentPath) {
+    const files = fs.readdirSync(currentPath);
+
+    files.forEach((file) => {
+      const filePath = path.join(currentPath, file);
+      const stats = fs.statSync(filePath);
+
+      if (stats.isDirectory()) {
+        traverseDirectory(filePath);
+      } else if (stats.isFile() && path.extname(file) === ".html") {
+        const html = fs.readFileSync(filePath, "utf8");
+        const text = extractText(html);
+        let words = text
+          .split(/\s+/)
+          .filter((word) => word.match(/^[a-zA-Z]+$/))
+          .map((word) => word.toLowerCase());
+
+        const $ = cheerio.load(html);
+        const title = $("title").text();
+
+        if (
+          title ===
+          "Pediatric Orthopedic Doctor - Luskin Orthopaedic Institute for Children"
+        ) {
+          console.log(filePath);
+        } else {
+          console.log("Has valid title");
+        }
+
+        words = Array.from(new Set(words));
+        words = removeStopwords(words, eng);
+
+        words.forEach((word) => {
+          const filePathBase = filePath
+            .replace(".next/server/app", "")
+            .replace(".html", "");
+          if (searchIndex[word]) {
+            searchIndex[word].push({ path: filePathBase, title });
+          } else {
+            searchIndex[word] = [
+              {
+                path: filePathBase,
+                title,
+              },
+            ];
+          }
+
+          const stemmedWord = stemmer(word);
+          if (stemmedWord !== word) {
+            if (searchIndex[stemmedWord]) {
+              searchIndex[word].push({
+                path: filePathBase,
+                title,
+              });
+            } else {
+              searchIndex[word] = [
+                {
+                  path: filePathBase,
+                  title,
+                },
+              ];
+            }
+          }
+        });
+      }
+    });
+  }
+
+  traverseDirectory(directoryPath);
+
+  return searchIndex;
+}
+
+(async () => {
+  const outDir = "./.next/server/app";
+  const searchIndex = await createSearchIndex(outDir);
+
+  Object.keys(searchIndex).forEach((key) => {
+    searchIndex[key] = Array.from(new Set(searchIndex[key]));
+  });
+
+  fs.writeFileSync(
+    path.join("./data", "searchIndex.json"),
+    JSON.stringify(searchIndex)
+  );
+})();

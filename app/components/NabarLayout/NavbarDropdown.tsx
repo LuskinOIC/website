@@ -43,11 +43,13 @@ function NavbarDropDown({
   const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
   const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
   const [timeoutPid, setTimeoutPid] = useState(null);
+
   const handleClick = (text: string) => {
     sendGAEvent({
       event: "buttonClicked",
       value: text,
     });
+    setIsOpen(false);
   };
 
   function handleFocus() {

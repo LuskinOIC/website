@@ -16,7 +16,7 @@ export async function generateMetadata({
   const member = await getLeadershipBioBySlug(params.slug);
 
   return {
-    title: `${member.name} - LuskinOIC`,
+    title: `${member.name} - LuskinOIC Leadership Team`,
     description: "",
   };
 }
