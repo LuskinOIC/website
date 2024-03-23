@@ -1,17 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import { getNewsPosts, getNewsPostBySlug } from "@/app/utils/contentful";
+import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
+
+import { getNewsPosts, getNewsPostBySlug } from "@/app/utils/contentful";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { Title1 } from "@/app/components/ui/Typography/Title";
-
-export async function generateStaticParams() {
-  const newsPosts = await getNewsPosts();
-
-  return newsPosts.map((post) => ({ slug: post.slug }));
-}
+import { SEO_DEFAULTS } from "@/app/constants/seo";
 
 const styles = {
   sectionWrapper: "mx-auto w-4/5 py-1.5",
@@ -20,6 +18,27 @@ const styles = {
   postDetailsFont: "font-normal md:font-bold",
   socialMediaWrapper: "flex flex-col md:flex-row gap-2 py-1.5 md:py-4",
 };
+
+interface PagePropsType {
+  params: { slug: string };
+}
+
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
+  const newsPost = await getNewsPostBySlug(params.slug);
+
+  return {
+    title: `${newsPost.fields.title || SEO_DEFAULTS.TITLE} - LuskinOIC`,
+    description: documentToPlainTextString(newsPost.fields.subTitle),
+  };
+}
+
+export async function generateStaticParams() {
+  const newsPosts = await getNewsPosts();
+
+  return newsPosts.map((post) => ({ slug: post.slug }));
+}
 
 export default async function NewsArticle({
   params,
