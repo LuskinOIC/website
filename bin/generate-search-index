@@ -53,16 +53,16 @@ async function createSearchIndex(directoryPath) {
           .map((word) => word.toLowerCase());
 
         const $ = cheerio.load(html);
-        const title = $("title").text();
+        let title = $("title").text();
 
-        if (
-          title ===
-          "Pediatric Orthopedic Doctor - Luskin Orthopaedic Institute for Children"
-        ) {
+        if (title.toLocaleLowerCase().match(/anthony/)) {
           console.log(filePath);
-        } else {
-          console.log("Has valid title");
         }
+
+        title = title
+          .replace(" - Orthopaedic Institute for Children", "")
+          .replace(" - Luskin Orthopaedic Institute for Children", "")
+          .replace(" - LuskinOIC", "");
 
         words = Array.from(new Set(words));
         words = removeStopwords(words, eng);
@@ -71,6 +71,11 @@ async function createSearchIndex(directoryPath) {
           const filePathBase = filePath
             .replace(".next/server/app", "")
             .replace(".html", "");
+
+          if (word.match(/anthony/)) {
+            console.log(searchIndex[word]);
+          }
+
           if (searchIndex[word]) {
             searchIndex[word].push({ path: filePathBase, title });
           } else {
@@ -85,12 +90,12 @@ async function createSearchIndex(directoryPath) {
           const stemmedWord = stemmer(word);
           if (stemmedWord !== word) {
             if (searchIndex[stemmedWord]) {
-              searchIndex[word].push({
+              searchIndex[stemmedWord].push({
                 path: filePathBase,
                 title,
               });
             } else {
-              searchIndex[word] = [
+              searchIndex[stemmedWord] = [
                 {
                   path: filePathBase,
                   title,
@@ -117,7 +122,7 @@ async function createSearchIndex(directoryPath) {
   });
 
   fs.writeFileSync(
-    path.join("./data", "searchIndex.json"),
+    path.join("./app/data", "searchIndex.json"),
     JSON.stringify(searchIndex)
   );
 })();
