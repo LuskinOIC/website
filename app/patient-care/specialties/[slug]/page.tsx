@@ -12,17 +12,22 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata(
-  { params }: PagePropsType,
-  // parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
   const specialty = await getSpecialtyBySlug(params.slug);
-  const patientPage = specialty?.fields?.patientPage;
+  const page = specialty?.fields?.patientPage;
+  const seoMetaTagFields = page?.fields.seoMetaTagFields;
 
   return {
-    title: patientPage?.fields?.seoTitle || SEO_DEFAULTS.TITLE,
+    title:
+      seoMetaTagFields?.fields.title ||
+      page?.fields?.seoTitle ||
+      SEO_DEFAULTS.TITLE,
     description:
-      patientPage?.fields?.seoDescription || SEO_DEFAULTS.DESCRIPTION,
+      seoMetaTagFields?.fields?.description ||
+      page?.fields?.seoDescription ||
+      SEO_DEFAULTS.DESCRIPTION,
   };
 }
 

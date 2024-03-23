@@ -5,7 +5,6 @@ import { getPageByType } from "@/app/utils/contentful";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { PAGE_TYPES } from "@/app/constants/entries";
 
-// TODO: Move in Page component structure.
 export async function generateMetadata(): Promise<Metadata> {
   const specialtyPage = await getPageByType(PAGE_TYPES.SPECIALTY_LIST_PAGE, 1);
   const seoMetaTagFields = specialtyPage.seoMetaTagFields;

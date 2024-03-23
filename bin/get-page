@@ -1,0 +1,16 @@
+const { createClient } = require("contentful");
+
+require("dotenv").config();
+
+const apiClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  host: process.env.CONTENTFUL_HOST || "cdn.contentful.com",
+});
+
+async function loadData() {
+  const object = await apiClient.getEntry("3QWab03BRpgy49miMQkLKm");
+  console.log(object);
+}
+
+loadData();
