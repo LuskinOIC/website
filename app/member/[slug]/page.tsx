@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getMemberBySlug, getMembers } from "@/app/utils/contentful";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 
@@ -7,6 +8,21 @@ export async function generateStaticParams() {
   return members.map((m) => ({
     slug: m.slug,
   }));
+}
+
+interface PagePropsType {
+  params: { slug: string };
+}
+
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
+  const memberBio = await getMemberBySlug(params.slug);
+
+  return {
+    title: `${memberBio.name} - LuskinOIC`,
+    description: "",
+  };
 }
 
 export default async function MemberBio({

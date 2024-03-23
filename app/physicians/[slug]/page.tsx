@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import { getPhysicians, getPhysicianBioBySlug } from "@/app/utils/contentful";
 import { PageSectionType } from "@/app/constants/types";
@@ -10,6 +11,21 @@ import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColum
 export async function generateStaticParams() {
   const physicians = await getPhysicians();
   return physicians.map((evt) => ({ slug: evt.slug }));
+}
+
+interface PagePropsType {
+  params: { slug: string };
+}
+
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
+  const docBio = await getPhysicianBioBySlug(params.slug);
+
+  return {
+    title: `${docBio.name} - LuskinOIC`,
+    description: "",
+  };
 }
 
 export default async function PhysicianBio({

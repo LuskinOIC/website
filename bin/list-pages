@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const { createClient } = require("contentful");
+const {
+  documentToPlainTextString,
+} = require("@contentful/rich-text-plain-text-renderer");
+
+require("dotenv").config();
+
+const apiClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  host: process.env.CONTENTFUL_HOST || "cdn.contentful.com",
+});
+
+function removePageSuffix(str) {
+  // This regular expression matches " Page" or " Specialty Page" at the end of the string
+  const regex = /(?: Specialty)? Page$/;
+  return str.replace(regex, "");
+}
+
+function truncateDescription(str) {
+  return str.slice(0, 160);
+}
+
+async function getPages() {
+  const entries = await apiClient.getEntries({
+    content_type: "page",
+    locale: "en-US",
+    include: 4,
+  });
+
+  return entries.items;
+}
+
+async function getSearchData() {
+  const pages = await getPages();
+  const searchData = [];
+
+  console.log("Total Pages: ", pages.length);
+
+  const filteredPages = pages.filter((page) => {
+    const { pageName, slug } = page.fields;
+    const description = documentToPlainTextString(
+      page.fields.pageSections[0].fields?.columnLayout?.fields?.description
+    );
+    // console.log("ID", page.sys.id);
+    // console.log("Title", pageName);
+    // console.log("Slug", slug);
+    // console.log("Description", description);
+    // console.log("SEO Meta Tag Fields", page.fields.seoMetaTagFields);
+
+    // console.log("-------------------");
+
+    searchData.push({
+      pageId: page.sys.id,
+      title: removePageSuffix(pageName),
+      slug,
+      description: truncateDescription(description),
+      searchResultPreview: description,
+    });
+
+    return page.fields.seoMetaTagFields === undefined;
+  });
+
+  console.log("Pages Missing SEO: ", filteredPages.length);
+
+  // Write data to file
+  fs.writeFileSync(
+    "bin/data/pageMetaData.json",
+    JSON.stringify(searchData, null, 2)
+  );
+}
+
+getSearchData();

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getEvents, getEventBySlug } from "@/app/utils/contentful";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 // Import components
@@ -7,6 +8,21 @@ import BlogCardsRow from "@/app/components/BlogCardsRow";
 export async function generateStaticParams() {
   const events = await getEvents();
   return events.map((evt) => ({ slug: evt.slug }));
+}
+
+interface PagePropsType {
+  params: { slug: string };
+}
+
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
+  const orgEvent = await getEventBySlug(params.slug);
+
+  return {
+    title: `${orgEvent.eventName} - LuskinOIC`,
+    description: "",
+  };
 }
 
 // EVENT

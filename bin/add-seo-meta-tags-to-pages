@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const contentfulManagement = require("contentful-management");
+
+require("dotenv").config();
+
+const managementClient = contentfulManagement.createClient({
+  accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
+});
+
+const seoMetaTagFieldsData = fs.readFileSync("./data/seoMetaTagFieldData.json");
+
+const seoMetaTagFields = JSON.parse(seoMetaTagFieldsData);
+
+let intervalId;
+let index = 0;
+
+async function addSeoMetaTagFieldToPage(seoMetaTagField) {
+  const space = await managementClient.getSpace(
+    process.env.CONTENTFUL_SPACE_ID
+  );
+  const environment = await space.getEnvironment("master");
+  const pageEntry = await environment.getEntry(seoMetaTagField.pageId);
+
+  if (!pageEntry) {
+    console.log("entry not found");
+    return;
+  }
+
+  if (pageEntry.fields.seoMetaTagFields) {
+    console.log("SEO Meta Tag Field already exists. Skipping...");
+    return;
+  }
+
+  pageEntry.fields.seoMetaTagFields = {
+    "en-US": {
+      sys: {
+        type: "Link",
+        linkType: "Entry",
+        id: seoMetaTagField.sys.id,
+      },
+    },
+  };
+
+  console.log(`Updating ${seoMetaTagField.fields.title["en-US"]} Page`);
+
+  await pageEntry.update();
+
+  return pageEntry;
+}
+
+async function addSeoMetaTagsToPages() {
+  if (index < seoMetaTagFields.length) {
+    const { pageId } = seoMetaTagFields[index];
+    console.log(`Preparing to add SEO for ${pageId} Page`);
+    await addSeoMetaTagFieldToPage(seoMetaTagFields[index]);
+    index++;
+  } else {
+    clearInterval(intervalId);
+  }
+}
+
+intervalId = setInterval(addSeoMetaTagsToPages, 1000);

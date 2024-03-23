@@ -26,9 +26,12 @@ export async function generateMetadata({
     };
   }
 
+  const seoMetaTagFields = page.seoMetaTagFields;
+
   return {
-    title: page.seoTitle || SEO_DEFAULTS.TITLE,
-    description: page.seoDescription || SEO_DEFAULTS.DESCRIPTION,
+    title: seoMetaTagFields.fields.title || SEO_DEFAULTS.TITLE,
+    description:
+      seoMetaTagFields.fields.description || SEO_DEFAULTS.DESCRIPTION,
   };
 }
 

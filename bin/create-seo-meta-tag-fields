@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const contentfulManagement = require("contentful-management");
+
+require("dotenv").config();
+
+const managementClient = contentfulManagement.createClient({
+  accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
+});
+
+const pageMetaData = fs.readFileSync("./bin/data/pageMetaData.json");
+const pages = JSON.parse(pageMetaData);
+const existingSeoMetaFieldTagsData = fs.readFileSync(
+  "./bin/data/seoMetaTagFieldData.json"
+);
+const existingSeoMetaFieldTags = JSON.parse(existingSeoMetaFieldTagsData);
+const newSeoMetaFieldTags = [];
+
+let intervalId;
+let index = 0;
+
+async function createEntry(page) {
+  if (existingSeoMetaFieldTags.some((tag) => tag.pageId === page.pageId)) {
+    console.log("SEO Meta Tag Field already exists. Skipping...");
+    return;
+  }
+
+  console.log("Creating SEO Meta Tag Field for", page.title);
+  const space = await managementClient.getSpace(
+    process.env.CONTENTFUL_SPACE_ID
+  );
+  const environment = await space.getEnvironment("master");
+  const data = {
+    fields: {
+      title: {
+        "en-US": `${page.title} - Orthopaedic Institute for Children`,
+      },
+      description: {
+        "en-US": page.description,
+      },
+      keywords: {
+        "en-US": "",
+      },
+      searchResultPreview: {
+        "en-US": page.searchResultPreview,
+      },
+    },
+  };
+
+  const result = await environment.createEntry("seoMetaTagFields", data);
+  newSeoMetaFieldTags.push({
+    ...result,
+    pageId: page.pageId,
+  });
+}
+
+async function createSeoMetaTagFields() {
+  if (index < pages.length) {
+    const { title } = pages[index];
+    await createEntry(pages[index]);
+    index++;
+  } else {
+    console.log("Finished creating SEO meta tag fields");
+    clearInterval(intervalId);
+    fs.writeFileSync(
+      `./bin/data/seoMetaTagFieldData.json`,
+      JSON.stringify(newSeoMetaFieldTags, null, 2)
+    );
+  }
+}
+
+intervalId = setInterval(createSeoMetaTagFields, 2000);

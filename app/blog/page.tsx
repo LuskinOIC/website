@@ -14,6 +14,14 @@ import { PAGE_TYPES } from "@/app/constants/entries";
 import BlogCardsRow from "../components/BlogCardsRow";
 import Dropdown from "../components/ui/Dropdown";
 
+export function generateMetadata() {
+  return {
+    title: "LuskinOIC Blog",
+    description:
+      "Read the Luskin OICblog to browse patient stories, explore insights, news & events as they relate to the Luskin Orthopaedic Institute for Children.",
+  };
+}
+
 export default async function Blog() {
   const page = await getPageByType(PAGE_TYPES.BLOG);
   const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
