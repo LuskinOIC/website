@@ -1,8 +1,22 @@
+import type { Metadata } from "next";
+import { PAGE_TYPES } from "@/app/constants/entries";
+import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { getPageByType } from "@/app/utils/contentful";
-import { PAGE_TYPES } from "../constants/entries";
-import TabSection from "../components/TabSection";
-import LocationsCard from "../components/LocationsCard";
-import { PageSectionType } from "../constants/types";
+
+import TabSection from "@/app/components/TabSection";
+import LocationsCard from "@/app/components/LocationsCard";
+import { PageSectionType } from "@/app/constants/types";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const patientCarePage = await getPageByType(PAGE_TYPES.PATIENT_CARE, 10);
+  const seoMetaTagFields = patientCarePage.seoMetaTagFields;
+
+  return {
+    title: seoMetaTagFields?.fields?.title || SEO_DEFAULTS.TITLE,
+    description:
+      seoMetaTagFields?.fields?.description || SEO_DEFAULTS.DESCRIPTION,
+  };
+}
 
 export default async function PatientCare() {
   const patientCarePage = await getPageByType(PAGE_TYPES.PATIENT_CARE, 10);

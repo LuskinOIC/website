@@ -18,4 +18,6 @@ export const PAGE_TYPES = {
   STYLE_GUIDE: "Style Guide Page",
   ESPANOL: "Espanol Page",
   CONDITIONS: "Conditions",
+  SPECIALTY_LIST_PAGE: "Specialty List Page",
+  PHYSICIAN_LIST_PAGE: "Physician List Page",
 };
