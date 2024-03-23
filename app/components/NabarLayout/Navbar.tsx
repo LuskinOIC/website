@@ -61,6 +61,8 @@ export default function Navbar({
   };
 
   useEffect(() => {
+    window.document.scrollingElement?.scrollTo(0, 0);
+
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       setIsScrolled(scrollY > 500);

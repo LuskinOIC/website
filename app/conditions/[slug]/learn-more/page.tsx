@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionType } from "@/app/constants/types";
 import { getConditionBySlug, getConditionTerms } from "@/app/utils/contentful";
 import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
 import { Title3 } from "@/app/components/ui/Typography/Title";
+import { SEO_DEFAULTS } from "@/app/constants/seo";
 
 export async function generateStaticParams() {
   const conditions = await getConditionTerms();
@@ -10,6 +12,23 @@ export async function generateStaticParams() {
   return conditions.map((c) => ({
     slug: c.slug,
   }));
+}
+
+interface PagePropsType {
+  params: { slug: string };
+}
+
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
+  const condition = await getConditionBySlug(params.slug);
+
+  return {
+    title: `${
+      condition.fields.term || SEO_DEFAULTS.TITLE
+    } - Orthopaedic Institute for Children`,
+    description: condition.fields.definition || SEO_DEFAULTS.DESCRIPTION,
+  };
 }
 
 export default async function LearnMorePage({

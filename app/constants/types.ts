@@ -22,6 +22,15 @@ export type ButtonProps = {
   className?: string;
 };
 
+export type SEOMetaTagFields = {
+  fields: {
+    title: string;
+    description: string;
+    keywords: string;
+    searchResultPreview: string;
+  };
+};
+
 export type CardLayoutProps = {
   title: string;
   bold: boolean;
@@ -206,6 +215,7 @@ export type PageType = {
   seoDescription: string;
   seoTitle: string;
   slug: string;
+  seoMetaTagFields: SEOMetaTagFields;
 };
 
 export type LocationType = {

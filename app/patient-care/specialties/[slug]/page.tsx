@@ -3,26 +3,31 @@ import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 import type { Metadata } from "next";
 import { PagePropsType } from "@/app/constants/types";
-import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
-  const specialties = await getSpecialties();
+  let specialties = await getSpecialties();
+  specialties = specialties.filter((specialty) => specialty.fields.patientPage);
   return specialties.map((specialty) => ({
     slug: specialty.fields.slug,
   }));
 }
 
-export async function generateMetadata(
-  { params }: PagePropsType,
-  // parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
   const specialty = await getSpecialtyBySlug(params.slug);
-  const patientPage = specialty?.fields?.patientPage;
+  const page = specialty?.fields?.patientPage;
+  const seoMetaTagFields = page?.fields.seoMetaTagFields;
 
   return {
-    title: patientPage?.fields?.seoTitle || SEO_DEFAULTS.TITLE,
+    title:
+      seoMetaTagFields?.fields.title ||
+      page?.fields?.seoTitle ||
+      SEO_DEFAULTS.TITLE,
     description:
-      patientPage?.fields?.seoDescription || SEO_DEFAULTS.DESCRIPTION,
+      seoMetaTagFields?.fields?.description ||
+      page?.fields?.seoDescription ||
+      SEO_DEFAULTS.DESCRIPTION,
   };
 }
 
@@ -32,10 +37,6 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
-
-  if (!specialty?.fields?.patientPage) {
-    return redirect("/specialties");
-  }
 
   return <Page page={specialty.fields.patientPage.fields} />;
 }

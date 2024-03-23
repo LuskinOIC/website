@@ -15,10 +15,9 @@ export async function generateStaticParams() {
   return patients.map((patient) => ({ slug: patient.slug }));
 }
 
-export async function generateMetadata(
-  { params }: PagePropsType,
-  // parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PagePropsType): Promise<Metadata> {
   const patient = await getPatientStoryBySlug(params.slug);
 
   // Temporary generate. Add new metadata fields.

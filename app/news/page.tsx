@@ -1,10 +1,16 @@
 import { getNewsPosts } from "@/app/utils/contentful";
 import { BlogCardsRowType } from "@/app/constants/types";
-// import SearchBar from "@/app/components/ui/SearchBar";
 import BackToBrowse from "../components/ui/BackToBrowse";
 import BlogCardsRow from "../components/BlogCardsRow";
 
-// TODO: Replace SearchBar with a dedicated SearchAreaNews component
+export function generateMetadata() {
+  return {
+    title: "News Archives - LuskinOIC",
+    description:
+      "Stay informed with the latest news and updates from Luskin OIC. Read about our groundbreaking research, medical advancements, and inspiring patient stories.",
+  };
+}
+
 export default async function News() {
   const news = (await getNewsPosts()) as unknown as BlogCardsRowType[];
   return (
