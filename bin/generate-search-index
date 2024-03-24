@@ -72,11 +72,7 @@ async function createSearchIndex(directoryPath) {
             .replace(".next/server/app", "")
             .replace(".html", "");
 
-          if (word.match(/anthony/)) {
-            console.log(searchIndex[word]);
-          }
-
-          if (searchIndex[word]) {
+          if (searchIndex[word] && filePathBase !== "/index") {
             searchIndex[word].push({ path: filePathBase, title });
           } else {
             searchIndex[word] = [
@@ -119,6 +115,7 @@ async function createSearchIndex(directoryPath) {
 
   Object.keys(searchIndex).forEach((key) => {
     searchIndex[key] = Array.from(new Set(searchIndex[key]));
+    console.log(key, searchIndex[key].length);
   });
 
   fs.writeFileSync(

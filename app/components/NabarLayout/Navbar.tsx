@@ -20,6 +20,7 @@ import SearchDropdown from "./SearchContainer";
 import bluePhone from "@/public/blue-phone-icon.svg";
 import logo from "@/public/Luskin_OIC_v2.png";
 import SearchContainer from "./SearchContainer";
+import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
@@ -49,8 +50,10 @@ const styles = {
 
 export default function Navbar({
   navigationBar,
+  searchIndex,
 }: {
   navigationBar: NavigationBarType;
+  searchIndex: SearchIndex;
 }) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [selectedDropdown, setSelectedDropdown] = useState("");
@@ -117,7 +120,7 @@ export default function Navbar({
             <Image src={bluePhone} alt="Phone Icon" width={20} height={20} />
             <span> 213-742-1000 </span>
           </div>
-          <SearchDropdown />
+          <SearchDropdown searchIndex={searchIndex} />
         </div>
       </div>
 
@@ -136,7 +139,7 @@ export default function Navbar({
         </li>
 
         <NavigationMenuItem className={styles.navigationMenuItem}>
-          <SearchContainer />
+          <SearchContainer searchIndex={searchIndex} />
           <button
             onClick={toggleHamburgerDropdown}
             aria-label="Open Navigation Menu"
