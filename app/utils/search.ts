@@ -1,6 +1,6 @@
 import { SearchIndex } from "@/app/constants/types";
 export function getUniqueByTitle(
-  objects: Array<{ title: string; path: string }>
+  objects: Array<{ title: string; path: string }>,
 ): Array<{ title: string; path: string }> {
   const seenTitles = new Set();
   return objects.filter((obj) => {
@@ -18,7 +18,7 @@ export function filterSearchResults(query: string, searchIndex: SearchIndex) {
   const key = query as keyof typeof searchIndex;
   const exactMatch = Object.keys(searchIndex).filter((key) => key === query);
   const partialMatch = Object.keys(searchIndex).filter((key) =>
-    key.includes(query)
+    key.includes(query),
   );
 
   if (exactMatch.length > 0 && searchIndex[key].length > 0) {
