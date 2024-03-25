@@ -27,8 +27,6 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   >([]);
   const [searchAttempted, setSearchAttempted] = useState(false);
 
-  let results: Array<{ path: string; title: string }> = [];
-
   useEffect(() => {
     document.body.style.overflow = "hidden";
   }, []);
