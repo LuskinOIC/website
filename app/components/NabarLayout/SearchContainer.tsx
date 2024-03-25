@@ -14,7 +14,7 @@ const styles = {
     "flex items-center space-x-2 bg-red-500 p-2 rounded-full text-lg hover:bg-red-600",
   icon: "text-white",
   inputContainer:
-    "absolute z-40 left-0 right-0 top-full min-h-[78px] py-9 px-5 md:px-20 bg-[#EBEBEB] border border-t-2 border-[#0076AD]",
+    "absolute z-40 left-0 right-0 top-full min-h-[78px] py-9 px-5 md:px-20 bg-[#EBEBEB]",
 };
 
 interface SearchDropdownProps {

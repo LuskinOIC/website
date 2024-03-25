@@ -25,7 +25,7 @@ const styles = {
   dropdownContainer:
     "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 border border-t-2 border-[#0076AD]",
   linksWrapper: "basis-2/3 h-1/2",
-  linksGrid: "hidden md:grid grid-rows-3 grid-cols-2 items-start",
+  linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10",
   item: "py-2 px-10 flex items-center",
   link: "no-underline hover:underline text-[#0076AD] font-bold text-lg flex items-center",
   linkIcon: "text-white px-0.5",
