@@ -21,9 +21,12 @@ interface NavbarDropDownProps {
 
 const styles = {
   container: "hidden md:block text-[#171515] text-xl font-bold",
-  button: "hover:underline decoration-[#0076AD] underline-offset-4 text-black",
+  button: (isOpen: boolean) =>
+    `text-black hover:underline ${
+      isOpen ? "underline" : ""
+    } decoration-[#0076AD] underline-offset-4 `,
   dropdownContainer:
-    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 border border-t-2 border-[#0076AD]",
+    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 border-b-2 border-[#E0E0E0]",
   linksWrapper: "basis-2/3 h-1/2",
   linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10",
   item: "py-2 px-10 flex items-center",
@@ -88,7 +91,7 @@ function NavbarDropDown({
         onMouseEnter={handleFocus}
         onClick={handleFocus}
         onMouseLeave={() => setHasNavigatedFromButton(true)}
-        className={styles.button}
+        className={`${styles.button(isOpen)}`}
       >
         {label}
       </button>
