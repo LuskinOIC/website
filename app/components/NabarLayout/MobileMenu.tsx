@@ -169,7 +169,7 @@ function MobileMenu({
               DONATE
             </a>
             <button
-              onClick={toggleHamburgerDropdown} // Toggle the dropdown on button click
+              onClick={toggleHamburgerDropdown}
               className={styles.closeButton}
             >
               CLOSE

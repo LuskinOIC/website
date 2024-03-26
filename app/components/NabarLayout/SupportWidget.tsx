@@ -1,5 +1,8 @@
-import { SAVE_MY_SPOT, MYCHART_URL } from "@/app/constants/links";
+import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
+import external_icon_white from "@/public/external-link-icon-white.svg";
+
+import { SAVE_MY_SPOT, MYCHART_URL } from "@/app/constants/links";
 
 const styles = {
   widgetContainer: (isScrolled: boolean) =>
@@ -10,7 +13,7 @@ const styles = {
     `hidden md:flex flex-col text-center justify-center z-50 px-7 py-4 rounded-b-2xl hover:underline transition-all duration-500 ease-in-out ${
       isScrolled ? "max-h-0 overflow-hidden" : "max-h-[5rem] h-20"
     }`,
-  links: "py-2 font-semibold  hover:underline",
+  links: "py-2 font-semibold  hover:underline ",
 };
 
 type SupportWidgetProps = {
@@ -36,9 +39,18 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
       >
         Urgent Care <strong>Save My Spot</strong>
       </a>
-      <a href={MYCHART_URL} className={styles.links}>
-        MYCHART
-      </a>
+      <div className="flex flex-row">
+        <a href={MYCHART_URL} className={styles.links}>
+          MYCHART
+        </a>
+        <Image
+          src={external_icon_white}
+          alt="External Link"
+          width={16}
+          height={16}
+          // className={styles.linkIcon}
+        />
+      </div>
       <div className="py-2"> | </div>
       <a
         href="/espanol"

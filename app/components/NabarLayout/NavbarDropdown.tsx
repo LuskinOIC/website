@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
-import external_icon_white from "@/public/external-link-icon-white.svg";
+import external_icon_blue from "@/public/external-link-icon-blue.svg";
 import NavImageContainer from "@/app/components/NabarLayout/NavImageContainer";
 
 interface NavbarDropDownProps {
@@ -16,9 +16,6 @@ interface NavbarDropDownProps {
   // eslint-disable-next-line no-unused-vars
   onChange: (id: string) => void;
   /* eslint-enable no-unused-vars */
-
-  // THIS SHOULD BE DELETED
-  // imageContainer: any;
 }
 
 const styles = {
@@ -33,7 +30,7 @@ const styles = {
   linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10 pl-10",
   item: "py-2 px-10 flex items-center",
   link: "no-underline hover:underline text-[#0076AD] font-bold text-lg flex items-center",
-  linkIcon: "text-white px-0.5",
+  linkIcon: "px-0.5 text-blue-500",
 };
 
 function NavbarDropDown({
@@ -143,7 +140,7 @@ function NavbarDropDown({
                       >
                         {item.fields.text}
                         <Image
-                          src={external_icon_white}
+                          src={external_icon_blue}
                           alt="External Link"
                           width={16}
                           height={16}
