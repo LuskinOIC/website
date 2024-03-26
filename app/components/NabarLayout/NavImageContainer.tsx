@@ -14,10 +14,10 @@ export default function NavImageContainer({ imageContainer }: any) {
       {overlayLink && (
         <Link href={overlayLink} className="rounded-lg overflow-hidden rounded">
           <div
-            className="rounded-lg overflow-hidden"
+            className="rounded-lg overflow-hidden h-fit"
             style={{
-              maxWidth: "425px",
-              maxHeight: "500px",
+              width: "407px",
+              height: "300px",
             }}
           >
             {hasImage && (
@@ -26,11 +26,11 @@ export default function NavImageContainer({ imageContainer }: any) {
                 alt={image.fields.title}
                 width={image.fields.file.details.image.width}
                 height={image.fields.file.details.image.height}
-                className="transition-opacity duration-300 ease-in-out group-hover:opacity-75"
+                className="transition-opacity duration-300 ease-in-out group-hover:opacity-75 rounded-lg"
               />
             )}
           </div>
-          <div className="absolute bottom-0 left-0 m-4 text-white bg-opacity-50 p-2 ">
+          <div className="absolute bottom-[10%] left-0 m-4 text-white bg-opacity-50 p-1">
             {overlayText}
           </div>
         </Link>

@@ -16,7 +16,9 @@ interface NavbarDropDownProps {
   // eslint-disable-next-line no-unused-vars
   onChange: (id: string) => void;
   /* eslint-enable no-unused-vars */
-  imageContainer: any;
+
+  // THIS SHOULD BE DELETED
+  // imageContainer: any;
 }
 
 const styles = {
@@ -28,7 +30,7 @@ const styles = {
   dropdownContainer:
     "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 border-b-2 border-[#E0E0E0]",
   linksWrapper: "basis-2/3 h-1/2",
-  linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10",
+  linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10 pl-10",
   item: "py-2 px-10 flex items-center",
   link: "no-underline hover:underline text-[#0076AD] font-bold text-lg flex items-center",
   linkIcon: "text-white px-0.5",
@@ -39,13 +41,17 @@ function NavbarDropDown({
   label,
   subItems,
   onChange,
-  isFocused,
-  imageContainer,
+  isFocused, // imageContainer,
 }: NavbarDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
   const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
   const [timeoutPid, setTimeoutPid] = useState(null);
+  const [imageContainer, setImageContainer] = useState({
+    image: subItems[0]?.fields.image || "",
+    overlayText: subItems[0]?.fields.text || "",
+    overlayLink: subItems[0]?.fields.url || "",
+  });
 
   const handleClick = (text: string) => {
     sendGAEvent({
@@ -83,6 +89,14 @@ function NavbarDropDown({
     }
   }, [isHoveringOverDropdown, timeoutPid]);
 
+  const handleItemHover = (item: any) => {
+    setImageContainer({
+      image: item.fields.image,
+      overlayText: item.fields.text,
+      overlayLink: item.fields.url,
+    });
+  };
+
   return (
     <div className={styles.container}>
       <button
@@ -111,7 +125,11 @@ function NavbarDropDown({
             <div className={styles.linksWrapper}>
               <div className={styles.linksGrid}>
                 {subItems.map((item) => (
-                  <div key={item.fields.url} className={styles.item}>
+                  <div
+                    key={item.fields.url}
+                    className={styles.item}
+                    onMouseEnter={() => handleItemHover(item)}
+                  >
                     {item.fields.isExternal ? (
                       <a
                         className={styles.link}

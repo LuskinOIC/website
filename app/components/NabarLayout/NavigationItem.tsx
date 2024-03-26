@@ -45,17 +45,17 @@ function NavigationItem({
   } else if (item.sys.contentType.sys.id === "navigationDropdown") {
     const navigationDropdown = item as NavigationDropdownType;
 
-    const {
-      dropdownImage = {},
-      dropdownOverlayText = "",
-      overlayLink = "#",
-    } = navigationDropdown.fields;
+    // const {
+    //   dropdownImage = {},
+    //   dropdownOverlayText = "",
+    //   overlayLink = "#",
+    // } = navigationDropdown.fields;
 
-    const imageContainer = {
-      image: dropdownImage,
-      overlayText: dropdownOverlayText,
-      overlayLink: overlayLink,
-    };
+    // const imageContainer = {
+    //   image: dropdownImage,
+    //   overlayText: dropdownOverlayText,
+    //   overlayLink: overlayLink,
+    // };
     return (
       <NavbarDropdown
         key={navigationDropdown.sys.id}
@@ -64,7 +64,8 @@ function NavigationItem({
         onChange={setSelectedDropdown}
         isFocused={selectedDropdown === navigationDropdown.sys.id}
         subItems={navigationDropdown.fields.navigationLinks}
-        imageContainer={imageContainer}
+        //to be removed
+        // imageContainer={imageContainer}
       />
     );
   } else {
