@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
@@ -6,8 +7,7 @@ import { cn } from "@/lib/utils";
 
 const style = {
   image: "place-self-center rounded-xl w-80 object-cover",
-  wrapperDiv:
-    "mx-auto max-w-xs md:max-w-sm flex flex-col mb-10 hover:underline",
+  wrapperDiv: "mx-auto max-w-xs md:max-w-sm flex flex-col mb-10",
   header: "md:text-center py-4 text-xl font-bold",
   summary: "mb-4 line-clamp-4 overflow-hidden leading-tight",
 };
@@ -20,6 +20,7 @@ export default function BlogCard({
   cardContent: MinimalCardType;
   classNames?: string;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
   const title = cardContent.title;
   if (cardContent.cardPhoto === undefined) return null;
   const cardPhoto = cardContent.cardPhoto.fields.file;
@@ -32,9 +33,14 @@ export default function BlogCard({
       : renderRichTextToReactComponent(
           cardContent.summary as unknown as Document,
         );
+  const hoverClass = isHovered ? "text-[#04577D]" : "";
 
   return (
-    <div className={cn(style.wrapperDiv, classNames)}>
+    <div
+      className={cn(style.wrapperDiv, classNames)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Image
         alt={title}
         src={cardPhotoSource}
@@ -45,9 +51,9 @@ export default function BlogCard({
         }`}
       />
       <h3
-        className={`${type === "patient-stories" ? "text-center" : ""} ${
-          style.header
-        } `}
+        className={`${style.header} ${hoverClass} ${
+          type === "patient-stories" ? "text-center" : ""
+        }`}
       >
         {title}
       </h3>
