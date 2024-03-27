@@ -6,10 +6,9 @@ import renderRichTextToReactComponent from "../utils/rich-text";
 import { cn } from "@/lib/utils";
 
 const style = {
-  image: "place-self-center rounded-xl w-80 object-cover",
-  wrapperDiv:
-    "mx-auto max-w-xs md:max-w-sm flex flex-col gap-y-2 mb-5 md:mb-10",
-  header: "line-clamp-2 py-4 text-xl font-bold md:text-center leading-normal",
+  image: "place-self-center rounded-xl w-80 object-cover hover:opacity-80",
+  wrapperDiv: "mx-auto max-w-xs md:max-w-sm flex flex-col gap-y-2 mb-10",
+  header: "line-clamp-3 text-xl font-bold text-center leading-normal pt-2",
   summary: "line-clamp-4 overflow-hidden leading-tight",
 };
 export default function BlogCard({
@@ -51,14 +50,10 @@ export default function BlogCard({
           type === "patient-stories" ? "h-auto md:h-[280px]" : "h-[280px]"
         }`}
       />
-      <h3
-        className={`${style.header} ${hoverClass} ${
-          type === "patient-stories" ? "text-center" : "md:h-20"
-        }`}
-      >
-        {title}
-      </h3>
-      {summary ? <div className={style.summary}>{summary}</div> : null}
+      <h3 className={`${style.header} ${hoverClass}`}>{title}</h3>
+      {summary && type === "patient-stories" ? (
+        <div className={style.summary}>{summary}</div>
+      ) : null}
     </div>
   );
 }
