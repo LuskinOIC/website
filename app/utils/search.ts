@@ -1,6 +1,6 @@
 import { SearchIndex } from "@/app/constants/types";
 export function getUniqueByTitle(
-  objects: Array<{ title: string; path: string }>
+  objects: Array<{ title: string; path: string }>,
 ): Array<{ title: string; path: string }> {
   const seenTitles = new Set();
   return objects.filter((obj) => {
@@ -62,7 +62,7 @@ export function filterSearchResults(query: string, searchIndex: SearchIndex) {
   words.forEach((word) => {
     const exactMatch = Object.keys(searchIndex).filter((key) => key === word);
     const partialMatch = Object.keys(searchIndex).filter((key) =>
-      key.includes(word)
+      key.includes(word),
     );
 
     if (exactMatch.length > 0) {
@@ -71,7 +71,7 @@ export function filterSearchResults(query: string, searchIndex: SearchIndex) {
           (item) => ({
             path: item.path,
             title: item.title,
-          })
+          }),
         );
         results = [...results, ...exactResults];
       });
@@ -87,10 +87,10 @@ export function filterSearchResults(query: string, searchIndex: SearchIndex) {
 
   results = results.sort((a, b) => {
     const aContains = words.every((word) =>
-      a.title.toLowerCase().includes(word)
+      a.title.toLowerCase().includes(word),
     );
     const bContains = words.every((word) =>
-      b.title.toLowerCase().includes(word)
+      b.title.toLowerCase().includes(word),
     );
 
     // Prioritize titles with all the match words
