@@ -5,16 +5,18 @@ import renderRichTextToReactComponent from "../utils/rich-text";
 import { cn } from "@/lib/utils";
 
 const style = {
-  image: "place-self-center rounded-xl w-80 h-[280px] object-cover",
+  image: "place-self-center rounded-xl w-80 object-cover",
   wrapperDiv:
     "mx-auto max-w-xs md:max-w-sm flex flex-col mb-10 hover:underline",
   header: "md:text-center py-4 text-xl font-bold",
   summary: "mb-4 line-clamp-4 overflow-hidden leading-tight",
 };
 export default function BlogCard({
+  type,
   cardContent,
   classNames,
 }: {
+  type: string;
   cardContent: MinimalCardType;
   classNames?: string;
 }) {
@@ -38,9 +40,17 @@ export default function BlogCard({
         src={cardPhotoSource}
         width={cardPhotoHeight}
         height={cardPhotoWidth}
-        className={style.image}
+        className={`${style.image} ${
+          type === "patient-stories" ? "h-auto md:h-[280px]" : "h-[280px]"
+        }`}
       />
-      <h3 className={style.header}>{title}</h3>
+      <h3
+        className={`${type === "patient-stories" ? "text-center" : ""} ${
+          style.header
+        } `}
+      >
+        {title}
+      </h3>
       {summary ? <div className={style.summary}>{summary}</div> : null}
     </div>
   );
