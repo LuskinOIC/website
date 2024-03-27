@@ -9,8 +9,9 @@ import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import packageJson from "../package.json";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
-import searchIndexData from "@/app/data/searchIndex.json";
+// import searchIndexData from "@/app/data/searchIndex.json";
 import { SearchIndex } from "@/app/constants/types";
+import { promises as fs } from "fs";
 
 const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
 
@@ -41,6 +42,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const navigationBar = await getNavigationBar();
+  const searchIndexDataString = await fs.readFile(
+    process.cwd() + "/app/data/searchIndex.json",
+    "utf8"
+  );
+  const searchIndexData = JSON.parse(searchIndexDataString);
+
   const bgColor = getBackgroundColor("blue");
   return (
     <html lang="en">
