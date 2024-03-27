@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils";
 
 const style = {
   image: "place-self-center rounded-xl w-80 object-cover",
-  wrapperDiv: "mx-auto max-w-xs md:max-w-sm flex flex-col mb-10",
-  header: "md:text-center py-4 text-xl font-bold",
-  summary: "mb-4 line-clamp-4 overflow-hidden leading-tight",
+  wrapperDiv:
+    "mx-auto max-w-xs md:max-w-sm flex flex-col gap-y-2 mb-5 md:mb-10",
+  header: "line-clamp-2 py-4 text-xl font-bold md:text-center leading-normal",
+  summary: "line-clamp-4 overflow-hidden leading-tight",
 };
 export default function BlogCard({
   type,
@@ -52,7 +53,7 @@ export default function BlogCard({
       />
       <h3
         className={`${style.header} ${hoverClass} ${
-          type === "patient-stories" ? "text-center" : ""
+          type === "patient-stories" ? "text-center" : "md:h-20"
         }`}
       >
         {title}
