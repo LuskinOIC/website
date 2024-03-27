@@ -40,7 +40,8 @@ const styles = {
         ? "transition-all duration-300 ease-out w-24"
         : "transition-all duration-300 ease-out w-30"
     }`,
-  navigationItems: "hidden md:flex flex-row justify-evenly w-full items-center",
+  navigationItems:
+    "hidden md:flex flex-row justify-evenly w-full items-center z-1",
   mobileContainer:
     "flex flex-row w-full justify-between items-center md:hidden text-black",
   mobileLogoContainer: "block md:hidden py-2",

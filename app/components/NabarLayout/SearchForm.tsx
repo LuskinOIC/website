@@ -27,10 +27,6 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   >([]);
   const [searchAttempted, setSearchAttempted] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-  }, []);
-
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchAttempted(false);
     const query = String(e.target.value).toLowerCase().trim();
@@ -51,7 +47,6 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   }
 
   function closeSearchResults() {
-    document.body.style.overflow = "";
     setSearchResults([]);
     onSelect();
   }

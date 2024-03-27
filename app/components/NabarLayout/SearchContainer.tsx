@@ -8,7 +8,7 @@ import SearchForm from "@/app/components/NabarLayout/SearchForm";
 import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
-  container: "block",
+  container: "block z-10",
   button: "bg-transparent p-2 rounded-full text-lg hover:text-[#0076AD]",
   buttonOpen:
     "flex items-center space-x-2 bg-red-500 p-2 rounded-full text-lg hover:bg-red-600",
