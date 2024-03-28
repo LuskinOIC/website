@@ -47,7 +47,7 @@ export default function BlogCard({
         width={cardPhotoHeight}
         height={cardPhotoWidth}
         className={`${style.image} ${
-          type === "patient-stories" ? "h-auto md:h-[280px]" : "h-[280px]"
+          type === "patient-stories" ? "h-auto md:h-full" : "h-[280px]"
         }`}
       />
       <h3 className={`${style.header} ${hoverClass}`}>{title}</h3>
