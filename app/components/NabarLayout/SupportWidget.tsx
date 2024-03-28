@@ -2,7 +2,7 @@ import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
 import external_icon_white from "@/public/external-link-icon-white.svg";
 
-import { SAVE_MY_SPOT, MYCHART_URL } from "@/app/constants/links";
+import { SAVE_MY_SPOT, MYCHART_URL, DONATE_URL } from "@/app/constants/links";
 
 const styles = {
   widgetContainer: (isScrolled: boolean) =>
@@ -60,12 +60,12 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
         Español
       </a>
       <a
-        href={SAVE_MY_SPOT}
-        onClick={() => handleClick("Nav Save My Spot")}
+        href={DONATE_URL}
+        onClick={() => handleClick("Nav Donate")}
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.overlapTab(
-          isScrolled,
+          isScrolled
         )} bg-[#FCE385] text-black font-semibold text-lg`}
       >
         DONATE
