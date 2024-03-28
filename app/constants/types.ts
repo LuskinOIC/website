@@ -381,10 +381,19 @@ export type NavigationLinkType = {
   };
 };
 
+export type NavImageContainer = {
+  dropdownImage: ImageType;
+  dropdownOverlayText: string;
+  overlayLink: string;
+};
+
 export type NavigationDropdownType = {
   fields: {
     text: string;
     navigationLinks: NavigationLinkType[];
+    dropdownImage: ImageType;
+    dropdownOverlayText: string;
+    overlayLink: string;
   };
   sys: {
     id: string;
@@ -507,4 +516,8 @@ export type ConditionsType = {
 
 export interface PagePropsType {
   params: { slug: string };
+}
+
+export interface SearchIndex {
+  [key: string]: Array<{ path: string; title: string }>;
 }

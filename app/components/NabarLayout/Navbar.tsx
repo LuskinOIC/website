@@ -13,22 +13,56 @@ import {
 } from "@/app/components/ui/NavigationMenu";
 import { NavigationBarType } from "@/app/constants/types";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import externalIconWhite from "@/public/external-link-icon-white.svg";
-import externalIconBlack from "@/public/external-link-icon-black.svg";
-import { MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
+import SearchDropdown from "./SearchContainer";
+import bluePhone from "@/public/blue-phone-icon.svg";
+import logo from "@/public/Luskin_OIC_v2.png";
+import SearchContainer from "./SearchContainer";
+import { SearchIndex } from "@/app/constants/types";
+
+const styles = {
+  navigationMenu: (isScrolled: boolean) =>
+    `bg-white fixed max-w-[1600px] border-b-2 border-[#E0E0E0] ${
+      isScrolled
+        ? "transition-all duration-300 ease-out md:h-[102px]"
+        : "transition-all duration-300 ease-out md:h-[180px]"
+    }`,
+  mainNavScrollWrapper: (isScrolled: boolean) =>
+    `hidden md:flex z-50 w-full h-full transition-opacity duration-500 ease-out ${
+      isScrolled ? "absolute inset-x-0 top-0" : ""
+    }`,
+  logoContainer: "hidden md:block w-fit h-fit h-fit mx-10 pt-4",
+  logoImage: (isScrolled: boolean) =>
+    ` h-auto ${
+      isScrolled
+        ? "transition-all duration-300 ease-out w-24"
+        : "transition-all duration-300 ease-out w-30"
+    }`,
+  navigationItems:
+    "hidden md:flex flex-row justify-evenly w-full items-center z-1",
+  mobileContainer:
+    "flex flex-row w-full justify-between items-center md:hidden text-black",
+  mobileLogoContainer: "block md:hidden py-2",
+  navigationMenuItem: "block flex flex-row md:hidden list-none",
+  mobileMenuButton: "bg-transparent text-black rounded-full px-4 text-xl",
+};
 
 export default function Navbar({
   navigationBar,
+  searchIndex,
 }: {
   navigationBar: NavigationBarType;
+  searchIndex: SearchIndex;
 }) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [selectedDropdown, setSelectedDropdown] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
-  const resetNavigationMenu = () => setIsHamburgerOpen(false);
+  const resetNavigationMenu = () => {
+    setIsHamburgerOpen(false);
+  };
 
   useEffect(() => {
     window.document.scrollingElement?.scrollTo(0, 0);
@@ -46,16 +80,6 @@ export default function Navbar({
     };
   }, []);
 
-  const widgetTransformClass = isScrolled
-    ? "transform -translate-y-full"
-    : "transform translate-y-0";
-  const transitionClass = isScrolled
-    ? "transition-all duration-300 ease-out"
-    : "transition-all duration-300 ease-out";
-  const navbarClass = isScrolled ? "md:h-[102px]" : "md:h-[166px]";
-  const paddingClass = isScrolled ? "py-2" : "py-4";
-  const logoWidthClass = isScrolled ? "w-24" : "w-40";
-
   const handleClick = (text: string) => {
     sendGAEvent({
       event: "buttonClicked",
@@ -64,17 +88,16 @@ export default function Navbar({
   };
 
   return (
-    <NavigationMenu
-      className={`z-50 fixed max-w-[1600px] top-0 ${transitionClass} ${navbarClass}`}
-    >
+    <NavigationMenu className={styles.navigationMenu(isScrolled)}>
       {/* DESKTOP CONTAINER */}
-      <div className="flex flex-row w-full items-center">
-        {/* LOGO CONTAINER */}
-        <div className={`hidden md:block w-fit ${paddingClass}`}>
+      <SupportWidget isScrolled={isScrolled} />
+
+      <div className={styles.mainNavScrollWrapper(isScrolled)}>
+        <div className={styles.logoContainer}>
           <Link href="/" onClick={() => handleClick("Logo Home")}>
             <Image
-              className={`ml-4 ${transitionClass} ${logoWidthClass}`}
-              src={navigationBar.logo.fields.file.url}
+              className={styles.logoImage(isScrolled)}
+              src={logo}
               alt="Logo for Luskin Orthopaedic Institute for Children"
               width={150}
               height={250}
@@ -82,87 +105,33 @@ export default function Navbar({
           </Link>
         </div>
 
-        {/* SECONDARY MENU CONTAINER */}
-        <div className="w-full">
-          <div className="text-lg absolute top-0 right-0">
-            <div
-              className={`flex flex-row justify-end h-fit transition-transform ease-out ${widgetTransformClass}`}
-            >
-              <a
-                href={SAVE_MY_SPOT}
-                onClick={() => handleClick("Nav Save My Spot")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:flex flex-row bg-luskin-purple px-3 py-1 font-medium text-white rounded-bl-lg underline underline-offset-4 hover:text-slate-200"
-              >
-                Urgent Care - Save My Spot
-                <Image
-                  src={externalIconWhite}
-                  alt="External Link"
-                  width={16}
-                  height={16}
-                  className="text-white px-0.5"
-                />
-              </a>
-              <div>
-                <ul className="hidden md:flex h-full bg-luskin-brightBlue text-black text-base font-medium py-1 px-3">
-                  <li className="mr-4">(213) 742 - 1000</li>
-                  <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
-                    <a
-                      href={MYCHART_URL}
-                      onClick={() => handleClick("Nav MyChart")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-row"
-                    >
-                      MyChart
-                      <Image
-                        src={externalIconBlack}
-                        alt="External Link"
-                        width={16}
-                        height={16}
-                        className="text-white px-0.5"
-                      />
-                    </a>
-                  </li>
-                  <li className="mr-4 underline underline-offset-4 hover:text-slate-200">
-                    <a
-                      href="/espanol"
-                      onClick={() => handleClick("Nav Spanish Page")}
-                    >
-                      Español
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div className={styles.navigationItems}>
+          {navigationBar.navigationItems.map((item) => {
+            return (
+              <NavigationItem
+                key={item.sys.id}
+                item={item}
+                selectedDropdown={selectedDropdown}
+                setSelectedDropdown={setSelectedDropdown}
+              />
+            );
+          })}
+          {/* SEARCH CONTAINER */}
+          <div className="flex flex-row gap-2 text-[#171515] font-bold text-xl">
+            <Image src={bluePhone} alt="Phone Icon" width={20} height={20} />
+            <span> 213-742-1000 </span>
           </div>
-
-          <div className="hidden md:block w-full">
-            <div className="flex justify-evenly items-center w-full hover:text-slate-200">
-              {navigationBar.navigationItems.map((item) => {
-                return (
-                  <NavigationItem
-                    key={item.sys.id}
-                    item={item}
-                    selectedDropdown={selectedDropdown}
-                    setSelectedDropdown={setSelectedDropdown}
-                  />
-                );
-              })}
-            </div>
-          </div>
+          <SearchDropdown searchIndex={searchIndex} />
         </div>
       </div>
 
       {/* MOBILE CONTAINER */}
-      <ul className="flex flex-row w-full justify-between items-center md:hidden">
-        {/* LOGO CONTAINER */}
-        <li className="block md:hidden py-2">
+      <ul className={styles.mobileContainer}>
+        <li className={styles.mobileLogoContainer}>
           <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
             <Image
-              className="ml-4"
-              src={"/LOIC_LOGO.svg"}
+              className="ml-4 w-contain h-auto"
+              src={logo}
               alt={"Logo"}
               width={90}
               height={60}
@@ -170,18 +139,14 @@ export default function Navbar({
           </Link>
         </li>
 
-        {/* To be implemented later */}
-        <NavigationMenuItem className="block md:hidden list-none">
-          {/* <button className="bg-transparent text-white rounded-full p-3 text-xl"> */}{" "}
-          {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
-          {/* </button> */}
+        <NavigationMenuItem className={styles.navigationMenuItem}>
+          <SearchContainer searchIndex={searchIndex} />
           <button
             onClick={toggleHamburgerDropdown}
             aria-label="Open Navigation Menu"
-            className="bg-transparent text-white rounded-full py-3 px-4 text-xl"
+            className={styles.mobileMenuButton}
           >
             {" "}
-            {/* Increase padding and font size */}
             <FontAwesomeIcon icon={faBars} />
           </button>
         </NavigationMenuItem>
@@ -191,6 +156,7 @@ export default function Navbar({
         isHamburgerOpen={isHamburgerOpen}
         toggleHamburgerDropdown={toggleHamburgerDropdown}
         closeMenu={resetNavigationMenu}
+        dropdowns={navigationBar.dropdowns}
       />
     </NavigationMenu>
   );

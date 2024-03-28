@@ -9,6 +9,9 @@ import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import packageJson from "../package.json";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
+// import searchIndexData from "@/app/data/searchIndex.json";
+import { SearchIndex } from "@/app/constants/types";
+import { promises as fs } from "fs";
 
 const AxeDevTools = React.lazy(() => import("@/app/components/AxeDevTools"));
 
@@ -39,15 +42,24 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const navigationBar = await getNavigationBar();
+  const searchIndexDataString = await fs.readFile(
+    process.cwd() + "/app/data/searchIndex.json",
+    "utf8",
+  );
+  const searchIndexData = JSON.parse(searchIndexDataString);
+
   const bgColor = getBackgroundColor("blue");
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200 overscroll-none">
         <div data-testid={packageJson.version} className="hidden"></div>
         <div className="w-full m-auto page-container bg-white">
-          <Navbar navigationBar={navigationBar} />
+          <Navbar
+            navigationBar={navigationBar}
+            searchIndex={searchIndexData as SearchIndex}
+          />
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className={`h-[95px] md:h-[166px] ${bgColor}`}></div>
+          <div className={`h-[89px] md:h-[180px] md:${bgColor}`}></div>
           <main id="main">{children}</main>
           <Footer />
         </div>
