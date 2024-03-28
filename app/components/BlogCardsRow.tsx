@@ -49,10 +49,15 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
           </Title3>
         </Link>
       </div>
-      <div className="sm:grid grid-cols-1 gap-4 md:grid-cols-4">
+      <div
+        className={`sm:grid grid-cols-1 md:grid-cols-4 ${
+          type === "patient-stories" ? "gap-20" : "gap-4"
+        }`}
+      >
         {displayedCards.map((card: BlogCardsRowType) => (
           <Link key={card.slug} href={`/${type}/${card.slug}`}>
             <BlogCard
+              type={type}
               cardContent={{
                 title: card.blogCard.fields.title,
                 cardPhoto: card.blogCard.fields.image,
