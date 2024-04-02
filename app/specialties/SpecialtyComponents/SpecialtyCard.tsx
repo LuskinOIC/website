@@ -38,7 +38,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           <Button
             className="my-3 mr-2"
             href={`/patient-care/specialties/${slug}`}
-            text="PATIENTS"
+            text={slug == "hand-trauma" ? "TRAUMA" : "PATIENTS"}
             variant="bluePrimary"
             isExternal={false}
           />
@@ -46,7 +46,7 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
             <Button
               className="my-3"
               href={`/medical-professionals/specialties/${slug}`}
-              text="PHYSICIANS"
+              text={slug == "hand-trauma" ? "CONGENITAL/MICROSURGERY" : "PHYSICIANS"}
               variant="physicians"
               isExternal={false}
             />
