@@ -67,6 +67,11 @@ export default async function RootLayout({
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID as string} />
       {process.env.NODE_ENV === "development" ? <AxeDevTools /> : null}
       <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
+      <Script
+        id="hs-script-loader"
+        src="//js.hs-scripts.com/45202079.js"
+        strategy="afterInteractive"
+      />
     </html>
   );
 }
