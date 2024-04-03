@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Page from "@/app/components/Page";
 import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
+import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
   let specialties = await getSpecialties();
   specialties = specialties.filter(
-    (specialty) => specialty.fields.medicalProfessionalPage,
+    (specialty) => specialty.fields.medicalProfessionalPage
   );
 
   return specialties.map((specialty) => ({
@@ -43,6 +44,11 @@ export default async function Specialty({
   params: { slug: string };
 }) {
   const specialty = await getSpecialtyBySlug(params.slug);
+
+  // TODO: Invalid pages shouldn't cause build failures.
+  if (!specialty?.fields?.patientPage) {
+    return redirect("/specialties");
+  }
 
   return <Page page={specialty.fields.medicalProfessionalPage.fields} />;
 }
