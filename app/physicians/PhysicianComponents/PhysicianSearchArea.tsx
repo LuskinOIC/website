@@ -3,20 +3,21 @@
 import { useState } from "react";
 import Fuse from "fuse.js";
 // TYPES
-import { PhysicianBioType } from "@/app/constants/types";
+import {
+  PhysicianBioType,
+  PhysicianPageSectionType,
+} from "@/app/constants/types";
 // LOCAL COMPONENTS
 import SearchBar from "@/app/components/ui/SearchBar";
 import PhysiciansGridLayout from "@/app/physicians/PhysicianComponents/PhysiciansGridLayoutSection";
-
-interface SortedPhysicians {
-  mdPhysicians: PhysicianBioType[];
-  paNpPhysicians: PhysicianBioType[];
-}
+import AllPhysicians from "@/app/physicians/PhysicianComponents/AllSortedPhysicians";
 
 export default function PhysicianSearchArea({
   physicians,
+  sortedPhysicians,
 }: {
   physicians: PhysicianBioType[];
+  sortedPhysicians: PhysicianPageSectionType[];
 }) {
   const [searchString, setSearchString] = useState("");
   const [searchResults, setSearchResults] = useState(physicians);
@@ -75,7 +76,7 @@ export default function PhysicianSearchArea({
         }}
       />
       {searchString === "" ? (
-        <AllResults physicians={physicians} />
+        <AllPhysicians sortedPhysicians={sortedPhysicians} />
       ) : (
         <SearchResults filteredPhysicians={searchResults} />
       )}
@@ -116,28 +117,5 @@ function SearchResults({
       title="SEARCH RESULTS"
       physicians={filteredPhysicians}
     />
-  );
-}
-
-function AllResults({ physicians }: { physicians: PhysicianBioType[] }) {
-  const { mdPhysicians, paNpPhysicians } = physicians.reduce<SortedPhysicians>(
-    (acc, physician) => {
-      const category =
-        physician.providerType === "PA/NP" ? "paNpPhysicians" : "mdPhysicians";
-
-      acc[category].push(physician);
-
-      return acc;
-    },
-    { mdPhysicians: [], paNpPhysicians: [] },
-  );
-  return (
-    <>
-      <PhysiciansGridLayout title="OUR PHYSICIANS" physicians={mdPhysicians} />
-      <PhysiciansGridLayout
-        title="OUR PHYSICIAN'S ASSISTANTS & NURSE PRACTIONERS"
-        physicians={paNpPhysicians}
-      />
-    </>
   );
 }

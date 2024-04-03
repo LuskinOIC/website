@@ -6,7 +6,11 @@ import { getPageByType } from "@/app/utils/contentful";
 // LOCAL COMPONENTS
 import { getPhysicians } from "@/app/utils/contentful";
 // TYPES
-import { PhysicianBioType } from "@/app/constants/types";
+import {
+  PageType,
+  PhysicianBioType,
+  PhysicianPageSectionType,
+} from "@/app/constants/types";
 import PhysicianSearchArea from "@/app/physicians/PhysicianComponents/PhysicianSearchArea";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,10 +24,19 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Physicians() {
   const physicians = (await getPhysicians()) as unknown as PhysicianBioType[];
+  const page = (await getPageByType(
+    PAGE_TYPES.PHYSICIAN_LIST_PAGE,
+    4,
+  )) as unknown as PageType;
+  const sortedPhysicians: PhysicianPageSectionType[] =
+    page.pageSections as unknown as PhysicianPageSectionType[];
 
   return (
     <div>
-      <PhysicianSearchArea physicians={physicians} />
+      <PhysicianSearchArea
+        physicians={physicians}
+        sortedPhysicians={sortedPhysicians}
+      />
     </div>
   );
 }
