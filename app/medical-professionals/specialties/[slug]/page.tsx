@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 export async function generateStaticParams() {
   let specialties = await getSpecialties();
   specialties = specialties.filter(
-    (specialty) => specialty.fields.medicalProfessionalPage
+    (specialty) => specialty.fields.medicalProfessionalPage,
   );
 
   return specialties.map((specialty) => ({
