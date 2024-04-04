@@ -3,7 +3,7 @@ import {
   EventType,
   MemberType,
   NavigationBarType,
-  NewsPostType,
+  BlogPostType,
   PageType,
   PatientType,
   PhysicianBioType,
@@ -206,7 +206,32 @@ export async function getNewsPostBySlug(slug: string) {
     locale: "en-US",
   });
 
-  return entry.items[0] as unknown as NewsPostType;
+  return entry.items[0] as unknown as BlogPostType;
+}
+/* Blog Posts, currently only Insights */
+
+export async function getBlogPosts(numberOfEntries: number | "all" = "all") {
+  let query = {
+    content_type: "blogPost",
+    order: "-fields.date",
+    locale: "en-US",
+    ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
+  };
+
+  const entries = await client.getEntries(query);
+
+  return entries.items.map((entry) => entry.fields);
+}
+
+export async function getBlogPostBySlug(slug: string) {
+  const entry = await client.getEntries({
+    content_type: "blogPost",
+    "fields.slug": slug,
+    include: 4,
+    locale: "en-US",
+  });
+
+  return entry.items[0] as unknown as BlogPostType;
 }
 
 export async function getPages(): Promise<PageType[]> {
