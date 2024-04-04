@@ -37,7 +37,7 @@ export const Title1 = ({ id, children, className = "" }: TitleProps) => {
 
 export const Title2 = ({ children, className = "" }: TitleProps) => {
   const classes = cn(
-    "text-xl md:text-2xl font-arial leading-[36px] py-2",
+    "text-xl md:text-2xl font-arial leading-[36px] md:leading-[45px] py-2",
     className,
   );
   return <h1 className={classes}>{children}</h1>;
