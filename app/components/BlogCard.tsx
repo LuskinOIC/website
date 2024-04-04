@@ -6,7 +6,7 @@ import renderRichTextToReactComponent from "../utils/rich-text";
 import { cn } from "@/lib/utils";
 
 const style = {
-  image: "place-self-center rounded-xl w-80 object-cover hover:opacity-80",
+  image: "place-self-center rounded-xl w-80 object-cover",
   wrapperDiv: "mx-auto max-w-xs md:max-w-sm flex flex-col gap-y-2 mb-10",
   header: "line-clamp-3 text-xl font-bold text-center leading-normal pt-2",
   summary: "line-clamp-4 overflow-hidden leading-tight",
@@ -48,7 +48,7 @@ export default function BlogCard({
         height={cardPhotoWidth}
         className={`${style.image} ${
           type === "patient-stories" ? "h-auto md:h-full" : "h-[280px]"
-        }`}
+        } ${isHovered ? "opacity-80" : ""}`}
       />
       <h3 className={`${style.header} ${hoverClass}`}>{title}</h3>
       {summary && type === "patient-stories" ? (
