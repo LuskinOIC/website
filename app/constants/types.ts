@@ -521,3 +521,23 @@ export interface PagePropsType {
 export interface SearchIndex {
   [key: string]: Array<{ path: string; title: string }>;
 }
+
+export interface AllPhysiciansProps {
+  sortedPhysicians: PhysicianPageSectionType[];
+}
+
+export interface PhysicianCardType extends CardType {
+  fields: CardType["fields"] & {
+    bioCards: Array<{
+      fields: PhysicianBioType;
+    }>;
+  };
+}
+
+// Specific type for the physician sections
+export interface PhysicianPageSectionType
+  extends Omit<PageSectionType, "cardsLayout"> {
+  fields: Omit<PageSectionType["fields"], "cardsLayout"> & {
+    cardsLayout: PhysicianCardType[];
+  };
+}
