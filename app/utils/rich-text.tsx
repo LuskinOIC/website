@@ -47,7 +47,7 @@ export default function renderRichTextToReactComponent(
         <Title2 className="font-bold pb-5">{children}</Title2>
       ),
       [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
-        <Title2 className="font-semibold pb-5">{children}</Title2>
+        <Title2 className="pb-5">{children}</Title2>
       ),
       [BLOCKS.HEADING_4]: (node: any, children: React.ReactNode) => (
         <Title3 className="font-medium">{children}</Title3>
