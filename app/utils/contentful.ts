@@ -210,9 +210,11 @@ export async function getNewsPostBySlug(slug: string) {
 }
 /* Blog Posts, currently only Insights */
 
-export async function getBlogPosts(numberOfEntries: number | "all" = "all") {
+export async function getInsightsPosts(
+  numberOfEntries: number | "all" = "all",
+) {
   let query = {
-    content_type: "blogPost",
+    content_type: "insightsPost",
     order: "-fields.date",
     locale: "en-US",
     ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
@@ -223,9 +225,9 @@ export async function getBlogPosts(numberOfEntries: number | "all" = "all") {
   return entries.items.map((entry) => entry.fields);
 }
 
-export async function getBlogPostBySlug(slug: string) {
+export async function getInsightsPostBySlug(slug: string) {
   const entry = await client.getEntries({
-    content_type: "blogPost",
+    content_type: "insightsPost",
     "fields.slug": slug,
     include: 4,
     locale: "en-US",

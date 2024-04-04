@@ -3,7 +3,10 @@ import Image from "next/image";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 
-import { getBlogPosts, getBlogPostBySlug } from "@/app/utils/contentful";
+import {
+  getInsightsPosts,
+  getInsightsPostBySlug,
+} from "@/app/utils/contentful";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
@@ -26,7 +29,7 @@ interface PagePropsType {
 export async function generateMetadata({
   params,
 }: PagePropsType): Promise<Metadata> {
-  const blogPost = await getBlogPostBySlug(params.slug);
+  const blogPost = await getInsightsPostBySlug(params.slug);
 
   return {
     title: `${blogPost.fields.title || SEO_DEFAULTS.TITLE} - LuskinOIC`,
@@ -35,7 +38,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const blogPost = await getBlogPosts();
+  const blogPost = await getInsightsPosts();
 
   return blogPost.map((post) => ({ slug: post.slug }));
 }
@@ -45,8 +48,8 @@ export default async function Article({
 }: {
   params: { slug: string };
 }) {
-  const blogPost = await getBlogPostBySlug(params.slug);
-  const insights = (await getBlogPosts(4)) as unknown as BlogCardsRowType[];
+  const blogPost = await getInsightsPostBySlug(params.slug);
+  const insights = (await getInsightsPosts(4)) as unknown as BlogCardsRowType[];
 
   const {
     title,

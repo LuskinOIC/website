@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@/app/utils/contentful";
+import { getInsightsPosts } from "@/app/utils/contentful";
 import { BlogCardsRowType } from "@/app/constants/types";
 import BackToBrowse from "@/app/components/ui/BackToBrowse";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
@@ -12,7 +12,7 @@ export function generateMetadata() {
 }
 
 export default async function Insights() {
-  const insights = (await getBlogPosts()) as unknown as BlogCardsRowType[];
+  const insights = (await getInsightsPosts()) as unknown as BlogCardsRowType[];
   return (
     <div className="flex flex-col px-[5%] md:justify-center">
       <BackToBrowse />

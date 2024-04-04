@@ -9,7 +9,7 @@ import {
   getNewsPosts,
   getEvents,
   getPatientStories,
-  getBlogPosts,
+  getInsightsPosts,
 } from "@/app/utils/contentful";
 import { PAGE_TYPES } from "@/app/constants/entries";
 import BlogCardsRow from "../components/BlogCardsRow";
@@ -26,7 +26,7 @@ export function generateMetadata() {
 export default async function Blog() {
   const page = await getPageByType(PAGE_TYPES.BLOG);
   const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
-  const insights = (await getBlogPosts(8)) as unknown as BlogCardsRowType[];
+  const insights = (await getInsightsPosts(8)) as unknown as BlogCardsRowType[];
   const events = (await getEvents(8)) as unknown as BlogCardsRowType[];
   const patientStories = (await getPatientStories(
     8,
