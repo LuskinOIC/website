@@ -10,10 +10,10 @@ type PostComponentProps = {
 };
 
 const styles = {
-  sectionWrapper: "mx-auto w-4/5 py-1.5",
-  postDetailsContainer: "flex flex-col md:flex-row md:gap-x-10 ",
+  sectionWrapper: "px-5 md:mx-auto md:w-4/5 py-1.5 md:py-4",
+  postDetailsContainer: "flex flex-col md:flex-row md:gap-x-10",
   postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4",
-  postDetailsFont: "font-normal md:font-bold",
+  postDetailsFont: "font-bold",
   socialMediaWrapper: "flex flex-col md:flex-row gap-2 py-1.5 md:py-4",
 };
 
@@ -37,11 +37,13 @@ const PostComponent = ({ postData }: PostComponentProps) => {
 
   return (
     <>
-      <section className={`${styles.sectionWrapper} py-1.5 md:py-4`}>
-        <Title1 className="text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-10">
+      <section className={styles.sectionWrapper}>
+        <Title1 className="text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-relaxed">
           {title}
         </Title1>
-        {newsSubTitle}
+        <div className="text-xl md:text-2xl font-arial leading-[36px] md:leading-[45px] py-2">
+          {newsSubTitle}
+        </div>
       </section>
       <Image
         className="w-full -order-1 md:order-none"
@@ -69,8 +71,18 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         )}
       </section>
       <section className="grid">
-        {pageSections.map((section: PageSectionType) => (
-          <PageSection key={section.fields.title} section={section} />
+        {pageSections.map((section: PageSectionType, i: string) => (
+          <div
+            key={i}
+            className={`${
+              section.fields.columnLayout &&
+              section.fields.columnLayout.fields.columnType === "Full Column"
+                ? "md:px-[100px]"
+                : ""
+            }`}
+          >
+            <PageSection key={section.fields.title} section={section} />
+          </div>
         ))}
       </section>
     </>
