@@ -208,7 +208,6 @@ export async function getNewsPostBySlug(slug: string) {
 
   return entry.items[0] as unknown as BlogPostType;
 }
-/* Blog Posts, currently only Insights */
 
 export async function getInsightsPosts(
   numberOfEntries: number | "all" = "all",

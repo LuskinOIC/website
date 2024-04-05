@@ -15,6 +15,11 @@ const styles = {
   postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4",
   postDetailsFont: "font-bold",
   socialMediaWrapper: "flex flex-col md:flex-row gap-2 py-1.5 md:py-4",
+  postTitle:
+    "text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-relaxed",
+  postSubTitle:
+    "text-xl md:text-2xl font-arial leading-[36px] md:leading-[45px] py-2",
+  postImage: "w-full -order-1 md:order-none",
 };
 
 const PostComponent = ({ postData }: PostComponentProps) => {
@@ -38,15 +43,11 @@ const PostComponent = ({ postData }: PostComponentProps) => {
   return (
     <>
       <section className={styles.sectionWrapper}>
-        <Title1 className="text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-relaxed">
-          {title}
-        </Title1>
-        <div className="text-xl md:text-2xl font-arial leading-[36px] md:leading-[45px] py-2">
-          {newsSubTitle}
-        </div>
+        <Title1 className={styles.postTitle}>{title}</Title1>
+        <div className={styles.postSubTitle}>{newsSubTitle}</div>
       </section>
       <Image
-        className="w-full -order-1 md:order-none"
+        className={styles.postImage}
         src={url}
         alt={fileName}
         width={details.image.width}
