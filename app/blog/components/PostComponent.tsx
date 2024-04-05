@@ -11,8 +11,8 @@ type PostComponentProps = {
 
 const styles = {
   sectionWrapper: "px-5 md:mx-auto md:w-4/5 py-1.5 md:py-4",
-  postDetailsContainer: "flex flex-col md:flex-row md:gap-x-10",
-  postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4",
+  postDetailsContainer: "flex flex-col md:flex-row md:gap-x-12",
+  postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4 md:px-2",
   postDetailsFont: "font-bold",
   socialMediaWrapper: "flex flex-col md:flex-row gap-2 py-1.5 md:py-4",
   postTitle:
@@ -78,7 +78,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
             className={`${
               section.fields.columnLayout &&
               section.fields.columnLayout.fields.columnType === "Full Column"
-                ? "md:px-[100px]"
+                ? "md:w-10/12 mx-auto"
                 : ""
             }`}
           >
