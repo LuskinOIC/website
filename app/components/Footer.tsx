@@ -75,11 +75,11 @@ const getInvolvedMenuItems = [
 
 const styles = {
   footerContainer: "flex justify-evenly bg-[#0076AD] text-white py-8",
-  leftContainer: "flex flex-col tracking-wide gap-2 md:pl-4",
+  leftContainer: "flex flex-col tracking-wide gap-2 pl-10 md:pl-4",
   rightContainer: "hidden md:flex flex-row gap-x-20",
   subHeader: "font-semibold text-lg text-[#FFF5C6] tracking-wide",
   mainHeader:
-    "text-2xl font-semibold tracking-wide text-left pb-2 md:self-center",
+    "text-2xl font-semibold tracking-wide text-left pb-2 pl-4 md:pl-0 md:self-center",
   baseText: "text-lg",
   contactInfoContainer: "flex flex-row gap-x-8 pl-4",
   contactInfoSection: "grid grid-row-4",
