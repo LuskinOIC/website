@@ -68,12 +68,10 @@ function MobileBanner() {
   return (
     <div className="block md:hidden min-h-[75%]">
       <div className="flex flex-row items-center justify-between">
-        <Title1 className="pl-10 pt-4">
-          Follow our story on social media!
-        </Title1>
+        <Title1 className="pl-6 pt-4">Follow our story on social media!</Title1>
         <Image src={OzzieMobile} alt="Ozzie" />
       </div>
-      <Text className="px-10">
+      <Text className="px-6">
         Join us in our mission to transform musculoskeletal care for all kids,
         one child at a time, through education, research, and unwavering
         support.
