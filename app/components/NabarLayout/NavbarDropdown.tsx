@@ -6,6 +6,8 @@ import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
 import external_icon_blue from "@/public/external-link-icon-blue.svg";
 import NavImageContainer from "@/app/components/NabarLayout/NavImageContainer";
+import closeIcon from "@/public/close-icon.svg";
+import dropdownIcon from "@/public/dropdown-icon.svg";
 
 interface NavbarDropDownProps {
   id: string;
@@ -31,6 +33,8 @@ const styles = {
   item: "py-2 px-10 flex items-center",
   link: "no-underline hover:underline text-[#0076AD] font-bold text-lg flex items-center",
   linkIcon: "px-0.5 text-blue-500",
+  closeIcon: "inline-block ml-1",
+  openIcon: "inline-block ml-1",
 };
 
 function NavbarDropDown({
@@ -43,7 +47,6 @@ function NavbarDropDown({
   const [isOpen, setIsOpen] = useState(false);
   const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
   const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
-  const [timeoutPid, setTimeoutPid] = useState(null);
   const [imageContainer, setImageContainer] = useState({
     image: subItems[0]?.fields.image || "",
     overlayText: subItems[0]?.fields.text || "",
@@ -59,32 +62,21 @@ function NavbarDropDown({
   };
 
   function handleFocus() {
-    setIsOpen(true);
-    onChange(id);
+    if (isOpen) {
+      setIsOpen(false);
+      onChange("");
+      return;
+    } else {
+      setIsOpen(true);
+      onChange(id);
+    }
   }
 
   useEffect(() => {
     if (!isFocused) {
       setIsOpen(false);
-      setHasNavigatedFromButton(false);
-      setIsHoveringOverDropdown(false);
     }
   }, [isFocused]);
-
-  useEffect(() => {
-    if (hasNavigatedFromButton) {
-      const pid = setTimeout(() => {
-        setIsOpen(false);
-      }, 1000);
-      setTimeoutPid(pid as any);
-    }
-  }, [hasNavigatedFromButton]);
-
-  useEffect(() => {
-    if (isHoveringOverDropdown && timeoutPid) {
-      clearTimeout(timeoutPid);
-    }
-  }, [isHoveringOverDropdown, timeoutPid]);
 
   const handleItemHover = (item: any) => {
     setImageContainer({
@@ -99,22 +91,36 @@ function NavbarDropDown({
       <button
         aria-label={label}
         onKeyDown={handleFocus}
-        onMouseEnter={handleFocus}
+        // onMouseEnter={handleFocus}
         onClick={handleFocus}
         onMouseLeave={() => setHasNavigatedFromButton(true)}
         className={`${styles.button(isOpen)}`}
       >
-        {label}
+        <span>
+          {label}
+          {isOpen ? (
+            <Image
+              src={closeIcon}
+              alt="Close Dropwdown"
+              width={16}
+              height={16}
+              className={styles.closeIcon}
+            />
+          ) : (
+            <Image
+              src={dropdownIcon}
+              alt="Open Dropdown"
+              width={16}
+              height={16}
+              className={styles.openIcon}
+            />
+          )}
+        </span>
       </button>
       {isOpen && (
         <>
           <div
             className={styles.dropdownContainer}
-            onMouseLeave={() => {
-              setIsOpen(false);
-              setHasNavigatedFromButton(false);
-              setIsHoveringOverDropdown(false);
-            }}
             onMouseEnter={() => {
               setIsHoveringOverDropdown(true);
             }}
