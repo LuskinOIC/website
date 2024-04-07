@@ -75,7 +75,7 @@ const getInvolvedMenuItems = [
 
 const styles = {
   footerContainer: "flex justify-evenly bg-[#0076AD] text-white py-8",
-  leftContainer: "flex flex-col tracking-wide gap-2 pl-10 md:pl-4",
+  leftContainer: "flex flex-col tracking-wide gap-2 pl-4 md:pl-4",
   rightContainer: "hidden md:flex flex-row gap-x-20",
   subHeader: "font-semibold text-lg text-[#FFF5C6] tracking-wide",
   mainHeader:
