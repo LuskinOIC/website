@@ -45,8 +45,6 @@ function NavbarDropDown({
   isFocused, // imageContainer,
 }: NavbarDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasNavigatedFromButton, setHasNavigatedFromButton] = useState(false);
-  const [isHoveringOverDropdown, setIsHoveringOverDropdown] = useState(false);
   const [imageContainer, setImageContainer] = useState({
     image: subItems[0]?.fields.image || "",
     overlayText: subItems[0]?.fields.text || "",
@@ -93,7 +91,6 @@ function NavbarDropDown({
         onKeyDown={handleFocus}
         // onMouseEnter={handleFocus}
         onClick={handleFocus}
-        onMouseLeave={() => setHasNavigatedFromButton(true)}
         className={`${styles.button(isOpen)}`}
       >
         <span>
@@ -119,12 +116,7 @@ function NavbarDropDown({
       </button>
       {isOpen && (
         <>
-          <div
-            className={styles.dropdownContainer}
-            onMouseEnter={() => {
-              setIsHoveringOverDropdown(true);
-            }}
-          >
+          <div className={styles.dropdownContainer}>
             <div className={styles.linksWrapper}>
               <div className={styles.linksGrid}>
                 {subItems.map((item) => (
