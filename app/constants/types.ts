@@ -466,7 +466,7 @@ export type PatientType = {
   pageSections: PageSectionType[];
 };
 
-export type NewsPostType = {
+export type BlogPostType = {
   fields: {
     slug: string;
     title: string;

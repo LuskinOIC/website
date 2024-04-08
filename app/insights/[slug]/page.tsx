@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 
-import { getNewsPosts, getNewsPostBySlug } from "@/app/utils/contentful";
+import {
+  getInsightsPosts,
+  getInsightsPostBySlug,
+} from "@/app/utils/contentful";
 import { BlogCardsRowType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
@@ -14,32 +17,31 @@ interface PagePropsType {
 export async function generateMetadata({
   params,
 }: PagePropsType): Promise<Metadata> {
-  const newsPost = await getNewsPostBySlug(params.slug);
+  const blogPost = await getInsightsPostBySlug(params.slug);
 
   return {
-    title: `${newsPost.fields.title || SEO_DEFAULTS.TITLE} - LuskinOIC`,
-    description: documentToPlainTextString(newsPost.fields.subTitle),
+    title: `${blogPost.fields.title || SEO_DEFAULTS.TITLE} - LuskinOIC`,
+    description: documentToPlainTextString(blogPost.fields.subTitle),
   };
 }
 
 export async function generateStaticParams() {
-  const newsPosts = await getNewsPosts();
+  const blogPost = await getInsightsPosts();
 
-  return newsPosts.map((post) => ({ slug: post.slug }));
+  return blogPost.map((post) => ({ slug: post.slug }));
 }
 
-export default async function NewsArticle({
+export default async function Article({
   params,
 }: {
   params: { slug: string };
 }) {
-  const newsPost = await getNewsPostBySlug(params.slug);
-  const news = (await getNewsPosts(4)) as unknown as BlogCardsRowType[];
-
+  const blogPost = await getInsightsPostBySlug(params.slug);
+  const insights = (await getInsightsPosts(4)) as unknown as BlogCardsRowType[];
   return (
     <div className="flex flex-col">
-      <PostComponent postData={newsPost} />
-      <BlogCardsRow type="news" cards={news} />
+      <PostComponent postData={blogPost} />
+      <BlogCardsRow type="insights" cards={insights} />
     </div>
   );
 }

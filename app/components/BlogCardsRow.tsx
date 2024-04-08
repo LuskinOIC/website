@@ -7,7 +7,7 @@ import BlogCard from "@/app/components/BlogCard";
 import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
 
 type BlogCardsRowPropsType = {
-  type: "news" | "patient-stories" | "events";
+  type: "news" | "patient-stories" | "events" | "insights";
   cards: BlogCardsRowType[];
 };
 
