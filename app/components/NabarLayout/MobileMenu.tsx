@@ -8,6 +8,7 @@ import external_icon_white from "@/public/external-link-icon-white.svg";
 import external_icon_black from "@/public/external-link-icon-black.svg";
 import { sendGAEvent } from "@next/third-parties/google";
 import { NavigationDropdownType } from "@/app/constants/types";
+import translations from "@/public/locales/en.json";
 
 interface MobileMenuProps {
   closeMenu: () => void;
@@ -89,7 +90,7 @@ function MobileMenu({
               aria-label="Urgent Care - Save My Spot (opens new tab)"
               className={styles.menuItem}
             >
-              URGENT CARE - SAVE MY SPOT MYCHART
+              {translations.mobileMenu.urgentCareSaveMySpot}
               <Image
                 src={external_icon_white}
                 alt="External Link"
@@ -149,7 +150,7 @@ function MobileMenu({
               rel="noopener noreferrer"
               className={styles.myChartLink}
             >
-              MYCHART
+              {translations.mobileMenu.myChart}
               <Image
                 src={external_icon_black}
                 alt="External Link"
@@ -166,13 +167,13 @@ function MobileMenu({
               rel="noopener noreferrer"
               className={styles.donateButton}
             >
-              DONATE
+              {translations.mobileMenu.donate}
             </a>
             <button
               onClick={toggleHamburgerDropdown}
               className={styles.closeButton}
             >
-              CLOSE
+              {translations.mobileMenu.close}
             </button>
           </ul>
         )}

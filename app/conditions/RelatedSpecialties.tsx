@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SPECIALTY_COLORS } from "@/app/constants/specialtyColors";
 import { SpecialtyType } from "@/app/constants/types";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   container:
@@ -16,7 +17,7 @@ const RelatedSpecialtiesComponent = ({
 }) => {
   return (
     <div className={styles.container}>
-      <p>Related Specialties:</p>
+      <p>{translations.healthInformationLibrary.relatedSpecialtiesHeading}</p>
       {relatedSpecialties.map((specialty) => {
         const backgroundColor =
           SPECIALTY_COLORS[specialty.fields.slug] || styles.defaultBgColor;

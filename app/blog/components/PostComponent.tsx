@@ -4,6 +4,7 @@ import { BlogPostType, PageSectionType } from "@/app/constants/types";
 import { Title1 } from "@/app/components/ui/Typography/Title";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
 import PageSection from "@/app/components/PageSection/PageSection";
+import translations from "@/public/locales/en.json";
 
 type PostComponentProps = {
   postData: BlogPostType;
@@ -57,16 +58,20 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         className={`${styles.postDetailsContainer}, ${styles.sectionWrapper}`}
       >
         <div className={`${styles.postDetailsWrapper}`}>
-          <div className={`${styles.postDetailsFont}`}>Published On:</div>
+          <div className={`${styles.postDetailsFont}`}>
+            {translations.blog.publishedOn}
+          </div>
           <div>{formattedDate}</div>
         </div>
         <div className={`${styles.postDetailsWrapper}`}>
-          <div className={`${styles.postDetailsFont}`}>Written By:</div>
+          <div className={`${styles.postDetailsFont}`}>
+            {translations.blog.writtenBy}
+          </div>
           <div>{writtenBy}</div>
         </div>
         {followOurStory && (
           <div className={`${styles.socialMediaWrapper}`}>
-            <div className="font-bold">Follow Our Story</div>
+            <div className="font-bold">{translations.blog.followOurStory}</div>
             {followOurStory && <SocialMediaSection section={followOurStory} />}
           </div>
         )}

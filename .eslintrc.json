@@ -7,6 +7,8 @@
     "plugin:jsx-a11y/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error"
-  }
+    "prettier/prettier": "error",
+    "i18next/no-literal-string": 2
+  },
+  "plugins": ["i18next"]
 }

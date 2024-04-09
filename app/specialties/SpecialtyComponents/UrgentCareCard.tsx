@@ -9,6 +9,7 @@ import Button from "@/app/components/ui/Button";
 import { Text } from "@/app/components/ui/Typography/Text";
 import { SAVE_MY_SPOT } from "@/app/constants/links";
 import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   sectionLayout:
@@ -29,7 +30,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
   const descriptionContent =
     description && renderRichTextToReactComponent(description);
 
-  const walkIns = <Text>Walk-ins welcome. No appointment necessary.</Text>;
+  const walkIns = <Text>{translations.urgentCareCard.walkinsWelcome}</Text>;
 
   const cardContent = () => {
     return (
@@ -92,14 +93,14 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             target="_blank"
             className="underline text-base md:text-lg font-arial leading-150 "
           >
-            Urgent Care Registration Form - English
+            {translations.urgentCareCard.englishRegistrationFormText}
           </a>
           <a
             href={spanishFormUrl}
             target="_blank"
             className="underline text-base md:text-lg font-arial leading-150 "
           >
-            Urgent Care Registration Form - Spanish
+            {translations.urgentCareCard.spanishRegistrationFormText}
           </a>
         </div>
       </div>

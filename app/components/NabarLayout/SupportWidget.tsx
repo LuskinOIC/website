@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
 import external_icon_white from "@/public/external-link-icon-white.svg";
-
 import { SAVE_MY_SPOT, MYCHART_URL, DONATE_URL } from "@/app/constants/links";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   widgetContainer: (isScrolled: boolean) =>
@@ -37,18 +37,18 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
         rel="noopener noreferrer"
         className={`${styles.overlapTab(isScrolled)} bg-[#825AA4]`}
       >
-        Urgent Care <strong>Save My Spot</strong>
+        {translations.supportWidget.urgentCare}&nbsp;
+        <strong>{translations.supportWidget.saveMySpot}</strong>
       </a>
       <div className="flex flex-row">
         <a href={MYCHART_URL} className={styles.links}>
-          MYCHART
+          {translations.mobileMenu.myChart}
         </a>
         <Image
           src={external_icon_white}
           alt="External Link"
           width={16}
           height={16}
-          // className={styles.linkIcon}
         />
       </div>
       <div className="py-2"> | </div>
@@ -57,7 +57,7 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
         onClick={() => handleClick("Nav Spanish Page")}
         className={styles.links}
       >
-        Español
+        {translations.supportWidget.espanol}
       </a>
       <a
         href={DONATE_URL}
@@ -68,7 +68,7 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
           isScrolled,
         )} bg-[#FCE385] text-black font-semibold text-lg`}
       >
-        DONATE
+        {translations.supportWidget.donate}
       </a>
     </div>
   );

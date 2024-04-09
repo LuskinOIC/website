@@ -9,6 +9,7 @@ import { Title1 } from "./ui/Typography/Title";
 import { Text } from "./ui/Typography/Text";
 import { styles } from "./ui/Button";
 import { NEWSLETTER_URL } from "../constants/links";
+import translations from "@/public/locales/en.json";
 
 export default function NewsletterSignup() {
   const desktopButtonClass = cn(
@@ -31,22 +32,12 @@ export default function NewsletterSignup() {
         <Image src={ozzie} alt="Ozzie" className="mx-auto" />
       </div>
       <div className="flex flex-col justify-center items-center h-fit border border-luskin-green rounded-[20px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] z-0 pt-[88px] md:pt-[92px] lg:pt-[103px]">
-        {/* <Title1 className="text-[24px] md:text-[32px] text-center font-medium">
-          Thank You for
-          <br />
-          Unlocking the Magic!
-        </Title1>
-        <Text className="w-[70%] md:w-[75%] text-center mt-1 mb-16">
-          Stay tuned for LuskinOIC&apos;s latest news and events.
-        </Text> */}
-
         <>
           <Title1 className="text-[24px] md:text-[32px] font-medium">
-            Join Our Newsletter!
+            {translations.newsletter.joinOurNewsletter}
           </Title1>
           <Text className="w-[70%] md:w-[75%] lg:w-[55%] text-center mt-1">
-            To receive our latest news and events information join our
-            newsletter today.
+            {translations.newsletter.joinOurNewsletterDescription}
           </Text>
           <form
             action={NEWSLETTER_URL}
@@ -76,7 +67,9 @@ export default function NewsletterSignup() {
                 className={desktopButtonClass}
                 value="Subscribe"
               >
-                <span className="hidden md:block">Submit</span>
+                <span className="hidden md:block">
+                  {translations.newsletter.submit}
+                </span>
                 <Image src={arrow} alt="Submit" className="md:hidden mx-3" />
               </button>
             </div>

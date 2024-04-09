@@ -3,6 +3,7 @@ import { Title1 } from "@/app/components/ui/Typography/Title";
 import arrow from "@/public/banner-send-arrow.svg";
 import ozzie_banner from "@/public/ozzie-in-circle.svg";
 import { NEWSLETTER_URL } from "@/app/constants/links";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   wrapper: "w-full md:h-32 bg-[#FCE385]",
@@ -27,7 +28,7 @@ export default function NewsletterBanner() {
             height={80}
           />
           <Title1 className="text-[24px] md:text-[32px] font-normal">
-            Join Our Newsletter!
+            {translations.newsletter.joinOurNewsletter}
           </Title1>
         </div>
         <div>

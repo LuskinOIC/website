@@ -14,6 +14,7 @@ import {
 import { PAGE_TYPES } from "@/app/constants/entries";
 import BlogCardsRow from "../components/BlogCardsRow";
 import Dropdown from "../components/ui/Dropdown";
+import translations from "@/public/locales/en.json";
 
 export function generateMetadata() {
   return {
@@ -49,7 +50,7 @@ export default async function Blog() {
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
       <div className="mb-12 md:hidden px-5">
-        <p className="px-1 pb-4">Choose a section you would like to review</p>
+        <p className="px-1 pb-4">{translations.blog.sectionReviewText}</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
       <BlogCardsRow type="news" cards={news} />

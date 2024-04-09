@@ -5,6 +5,7 @@ import Image from "next/image";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { PhysicianBioType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
+import translations from "@/public/locales/en.json";
 
 interface PhysiciansGridLayoutProps {
   title: string;
@@ -40,7 +41,7 @@ const PhysicianCard = ({ physician }: PhysicianCardProps) => {
       </div>
       <div className={styles.physicianDetailsContainer}>
         <h2 className={styles.physicianName}>{physician.name}</h2>
-        <h2>Specializes in:</h2>
+        <h2>{translations.physicians.gridLayoutSection.specialtyHeading}</h2>
         <div className={styles.physicianDetails}>
           {renderRichTextToReactComponent(
             physician.specialties as unknown as Document,

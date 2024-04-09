@@ -19,6 +19,7 @@ import {
   YOUTUBE_URL,
 } from "../constants/links";
 import NewsletterSignup from "./NewsletterSignup";
+import translations from "@/public/locales/en.json";
 
 type FooterItem = {
   text: string;
@@ -120,7 +121,7 @@ export default function Footer() {
           className={styles.leftContainer}
         >
           <h1 id="organization-header" className={styles.mainHeader}>
-            LuskinOIC Pediatric Orthopaedic
+            {translations.organization.name}
           </h1>
           <div
             id="contact-info-container"
@@ -131,7 +132,7 @@ export default function Footer() {
               className={styles.contactInfoSection}
             >
               <h2 className={styles.subHeader}>
-                Medical Pavilion & <br /> Ambulatory Surgery Center
+                {translations.organization.functionalAreas}
               </h2>
 
               <div className={styles.iconsContainer}>
@@ -148,9 +149,7 @@ export default function Footer() {
                   className="hover:underline"
                   target="_blank"
                 >
-                  <p>
-                    403 West Adams Boulevard <br /> Los Angeles, CA 90007
-                  </p>
+                  <p>{translations.organization.address}</p>
                 </a>
               </div>
 
@@ -162,13 +161,15 @@ export default function Footer() {
                   alt="Phone number"
                   className="mr-5"
                 />
-                <p>(213) 742-1000</p>
+                <p>{translations.organization.phoneNumber}</p>
               </div>
               <div id="contact-info-hours">
-                <h2 className={styles.subHeader}>Urgent Care Center Hours</h2>
+                <h2 className={styles.subHeader}>
+                  {translations.organization.urgentCareHoursHeading}
+                </h2>
                 <div id="hours">
-                  <p>Monday - Friday 8am - 4pm</p>
-                  <p>Closed Saturday & Sunday</p>
+                  <p>{translations.organization.urgentCareOpenHours}</p>
+                  <p>{translations.organization.urgentCareClosedHours}</p>
                 </div>
               </div>
             </div>
@@ -180,7 +181,7 @@ export default function Footer() {
               className={`hidden md:${styles.contactInfoSection}`}
             >
               <h2 className={`${styles.subHeader} py-3`}>
-                Luskin Children&apos;s Clinic
+                {translations.organization.childrensClinic}
               </h2>
 
               <div className={styles.iconsContainer}>
@@ -197,9 +198,7 @@ export default function Footer() {
                   className="hover:underline"
                   target="_blank"
                 >
-                  <p>
-                    1225 15th Street, Suite 2100B <br /> Santa Monica, CA 90404
-                  </p>
+                  <p>{translations.organization.childrensClinicAddress}</p>
                 </a>
               </div>
               <div className={styles.iconsContainer}>
@@ -210,12 +209,14 @@ export default function Footer() {
                   alt="Phone number"
                   className="mr-5"
                 />
-                <p>(310) 395-4814</p>
+                <p>{translations.organization.childrensClinicPhoneNumber}</p>
               </div>
 
               {/* FOLLOW CONTAINER */}
               <div id="follow-container">
-                <h2 className={styles.subHeader}>Follow LuskinOIC!</h2>
+                <h2 className={styles.subHeader}>
+                  {translations.socialMedia.followLuskinOIC}
+                </h2>
                 <div id="social-media">
                   <ul className="flex pt-3">
                     {socialMediaLinks.map(({ url, src, alt }) => (

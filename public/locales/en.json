@@ -1,0 +1,73 @@
+{
+  "events": {
+    "viewEvent": "VIEW EVENT"
+  },
+  "urgentCareCard": {
+    "englishRegistrationFormText": "Urgent Care Registration Form - English",
+    "spanishRegistrationFormText": "Urgent Care Registration Form - Spanish",
+    "walkinsWelcome": "Walk-ins welcome. No appointment necessary."
+  },
+  "physicians": {
+    "gridLayoutSection": {
+      "specialtyHeading": "Specializes in:"
+    },
+    "bio": {
+      "sectionReviewText": "Choose a section you would like to review"
+    }
+  },
+  "healthInformationLibrary": {
+    "relatedSpecialtiesHeading": "Related Specialties:",
+    "learnMore": "Learn More"
+  },
+  "searchBar": {
+    "searchButton": "Search",
+    "searchLabel": "Search",
+    "noResultsFound": "No results found."
+  },
+  "specialties": {
+    "searchResults": "SEARCH RESULTS"
+  },
+  "socialMedia": {
+    "followOurStory": "Follow our story on social media!",
+    "followOurStoryDescription": "Join us in our mission to transform musculoskeletal care for all kids, one child at a time, through education, research, and unwavering support.",
+    "followLuskinOIC": "Follow LuskinOIC!"
+  },
+  "blog": {
+    "publishedOn": "Published On:",
+    "writtenBy": "Written By:",
+    "followOurStory": "Follow Our Story",
+    "backToBrowse": "Back to Browse",
+    "sectionReviewText": "Choose a section you would like to review",
+    "viewAll": "View All"
+  },
+  "newsletter": {
+    "joinOurNewsletter": "Join Our Newsletter!",
+    "joinOurNewsletterDescription": "To receive our latest news and events information join our newsletter today.",
+    "submit": "Submit"
+  },
+  "supportWidget": {
+    "myChart": "MYCHART",
+    "urgentCare": "Urgent Care ",
+    "saveMySpot": "Save My Spot",
+    "espanol": "Español",
+    "donate": "DONATE"
+  },
+  "mobileMenu": {
+    "urgentCareSaveMySpot": "URGENT CARE - SAVE MY SPOT",
+    "myChart": "MYCHART",
+    "donate": "DONATE",
+    "close": "CLOSE"
+  },
+  "organization": {
+    "name": "LuskinOIC Pediatric Orthopaedic",
+    "address": "403 West Adams Boulevard, Los Angeles, CA 90007",
+    "functionalAreas": "Medical Pavilion & Ambulatory Surgery Center",
+    "phoneNumber": "(213) 742-1000",
+    "urgentCareOpenHours": "Monday - Friday 8am - 4pm",
+    "urgentCareClosedHours": "Saturday - Sunday Closed",
+    "childrensClinic": "Luskin Children&apos;s Clinic",
+    "childrensClinicAddress": "1225 15th Street, Suite 2100B \n Santa Monica, CA 90404",
+    "childrensClinicPhoneNumber": "(310) 395-4814",
+    "urgentCareHoursHeading": "Urgent Care Center Hours"
+  }
+}
