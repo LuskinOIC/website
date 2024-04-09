@@ -60,13 +60,16 @@
   },
   "organization": {
     "name": "LuskinOIC Pediatric Orthopaedic",
-    "address": "403 West Adams Boulevard, Los Angeles, CA 90007",
-    "functionalAreas": "Medical Pavilion & Ambulatory Surgery Center",
+    "addressLine1": "403 West Adams Boulevard",
+    "addressLine2": "Los Angeles, CA 90007",
+    "medicalPavilion": "Medical Pavilion",
+    "aumbulatorySurgeryCenter": "Ambulatory Surgery Center",
     "phoneNumber": "(213) 742-1000",
     "urgentCareOpenHours": "Monday - Friday 8am - 4pm",
     "urgentCareClosedHours": "Saturday - Sunday Closed",
-    "childrensClinic": "Luskin Children&apos;s Clinic",
-    "childrensClinicAddress": "1225 15th Street, Suite 2100B \n Santa Monica, CA 90404",
+    "childrensClinic": "Luskin Children's Clinic",
+    "childrensClinicAddressLine1": "1225 15th Street, Suite 2100B",
+    "childrensClinicAddressLine2": "Santa Monica, CA 90404",
     "childrensClinicPhoneNumber": "(310) 395-4814",
     "urgentCareHoursHeading": "Urgent Care Center Hours"
   }

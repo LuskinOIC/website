@@ -132,7 +132,8 @@ export default function Footer() {
               className={styles.contactInfoSection}
             >
               <h2 className={styles.subHeader}>
-                {translations.organization.functionalAreas}
+                {translations.organization.medicalPavilion} &amp; <br />
+                {translations.organization.aumbulatorySurgeryCenter}
               </h2>
 
               <div className={styles.iconsContainer}>
@@ -149,7 +150,8 @@ export default function Footer() {
                   className="hover:underline"
                   target="_blank"
                 >
-                  <p>{translations.organization.address}</p>
+                  <p>{translations.organization.addressLine1}</p>
+                  <p>{translations.organization.addressLine2}</p>
                 </a>
               </div>
 
@@ -198,7 +200,8 @@ export default function Footer() {
                   className="hover:underline"
                   target="_blank"
                 >
-                  <p>{translations.organization.childrensClinicAddress}</p>
+                  <p>{translations.organization.childrensClinicAddressLine1}</p>
+                  <p>{translations.organization.childrensClinicAddressLine2}</p>
                 </a>
               </div>
               <div className={styles.iconsContainer}>
