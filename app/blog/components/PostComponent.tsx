@@ -10,16 +10,17 @@ type PostComponentProps = {
 };
 
 const styles = {
-  sectionWrapper: "px-5 md:mx-auto md:w-4/5 py-1.5 md:py-4",
-  postDetailsContainer: "flex flex-col md:flex-row md:gap-x-12",
-  postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4 md:px-2",
+  sectionWrapper: "px-5 md:px-32 md:mx-auto md:w-10/12 py-1.5 md:py-4",
+  postDetailsContainer: "flex flex-col md:flex-row md:gap-12 px-5 md:px-32",
+  postDetailsWrapper: "flex flex-row md:flex-col gap-2 py-1.5 md:py-4 ",
   postDetailsFont: "font-bold",
   socialMediaWrapper: "flex flex-col md:flex-row gap-2 py-1.5 md:py-4",
   postTitle:
     "text-2xl md:text-[40px] py-2 md:py-6 font-normal md:leading-relaxed",
   postSubTitle:
-    "text-xl md:text-2xl font-arial leading-[36px] md:leading-[45px] py-2",
+    "text-xl md:text-2xl font-arial leading-[36px] md:leading-[40px] py-2",
   postImage: "w-full -order-1 md:order-none",
+  postPadding: "md:w-10/12 mx-auto",
 };
 
 const PostComponent = ({ postData }: PostComponentProps) => {
@@ -54,7 +55,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         height={details.image.height}
       />
       <section
-        className={`${styles.postDetailsContainer}, ${styles.sectionWrapper}`}
+        className={`${styles.postPadding} ${styles.postDetailsContainer}`}
       >
         <div className={`${styles.postDetailsWrapper}`}>
           <div className={`${styles.postDetailsFont}`}>Published On:</div>
@@ -78,7 +79,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
             className={`${
               section.fields.columnLayout &&
               section.fields.columnLayout.fields.columnType === "Full Column"
-                ? "md:w-10/12 mx-auto"
+                ? `${styles.postPadding}`
                 : ""
             }`}
           >
