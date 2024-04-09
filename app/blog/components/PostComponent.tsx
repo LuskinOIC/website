@@ -20,7 +20,8 @@ const styles = {
   postSubTitle:
     "text-xl md:text-2xl font-arial leading-[36px] md:leading-[40px] py-2",
   postImage: "w-full -order-1 md:order-none",
-  postPadding: "md:w-10/12 mx-auto",
+  postPadding: "md:w-10/12 md:mx-auto",
+  dividerStyle: "block md:hidden h-[4px] bg-[#99C221] mx-4 mt-3",
 };
 
 const PostComponent = ({ postData }: PostComponentProps) => {
@@ -72,6 +73,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
           </div>
         )}
       </section>
+      <hr className={styles.dividerStyle} />
       <section className="grid">
         {pageSections.map((section: PageSectionType, i: string) => (
           <div
