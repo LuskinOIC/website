@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BlogCardsRowType } from "@/app/constants/types";
 import BlogCard from "@/app/components/BlogCard";
 import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
+import translations from "@/public/locales/en.json";
 
 type BlogCardsRowPropsType = {
   type: "news" | "patient-stories" | "events" | "insights";
@@ -45,7 +46,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
         </Link>
         <Link href={`/${type}`}>
           <Title3 className="block uppercase text-[#0076AD] underline md:no-underline md:hover:underline pr-5">
-            See All
+            {translations.blog.viewAll}
           </Title3>
         </Link>
       </div>

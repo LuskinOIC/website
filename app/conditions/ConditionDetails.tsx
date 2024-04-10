@@ -2,6 +2,7 @@ import { Title3 } from "@/app/components/ui/Typography/Title";
 import RelatedSpecialtiesComponent from "@/app/conditions/RelatedSpecialties";
 import { ConditionsType } from "@/app/constants/types";
 import Link from "next/link";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   desktopTermBox:
@@ -28,7 +29,7 @@ const ConditionItem = ({ condition }: ConditionItemProps) => {
             href={`/conditions/${condition.slug}/learn-more`}
             className={styles.learnMore}
           >
-            Learn More
+            {translations.healthInformationLibrary.learnMore}
           </a>
         </p>
         {condition.relatedSpecialties && (
