@@ -34,6 +34,7 @@
     "contentful": "^10.6.5",
     "contentful-management": "^11.24.0",
     "dotenv": "^16.4.5",
+    "eslint-plugin-i18next": "^6.0.3",
     "fuse.js": "^7.0.0",
     "html-to-text": "^9.0.5",
     "lucide-react": "^0.291.0",

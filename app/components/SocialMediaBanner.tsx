@@ -53,9 +53,7 @@ function DesktopBanner() {
         </div>
         <div className="flex items-center justify-center text-md text-center">
           <p className="w-5/6">
-            Join us in our mission to transform musculoskeletal care for all
-            kids, one child at a time, through education, research, and
-            unwavering support.
+          Join us in our mission to provide outstanding services for all kids, one child at a time, through education and patient center care.
           </p>
         </div>
         <SocialMediaIcons />
