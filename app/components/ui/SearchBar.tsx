@@ -1,5 +1,6 @@
 import { ChangeEventHandler } from "react";
 import { cn } from "@/lib/utils";
+import translations from "@/public/locales/en.json";
 
 export default function SearchBar({
   value,
@@ -36,7 +37,7 @@ export default function SearchBar({
           className="absolute right-0 top-0 px-4 py-2 bg-[#1868F1] text-white rounded-r-md border border-[#1868F1]"
           onClick={onSearch}
         >
-          Search
+          {translations.searchBar.searchButton}
         </button>
       </div>
     </div>

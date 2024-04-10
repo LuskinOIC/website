@@ -5,7 +5,7 @@ import { PageSectionType } from "@/app/constants/types";
 import Dropdown from "@/app/components/ui/Dropdown";
 import PageSection from "@/app/components/PageSection/PageSection";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
-
+import translations from "@/public/locales/en.json";
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
 export async function generateStaticParams() {
@@ -56,7 +56,9 @@ export default async function PhysicianBio({
 
       {docBio.pageSections && (
         <div className="mb-12 md:hidden px-5">
-          <p className="px-1 pb-4">Choose a section you would like to review</p>
+          <p className="px-1 pb-4">
+            {translations.physicians.bio.sectionReviewText}
+          </p>
           <Dropdown placeHolder="Overview" options={options} />
         </div>
       )}

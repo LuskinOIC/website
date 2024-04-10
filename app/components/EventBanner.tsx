@@ -2,6 +2,7 @@ import { PageSectionType } from "@/app/constants/types";
 import Image from "next/image";
 import Link from "next/link";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   wrapper: "w-full md:h-48",
@@ -49,7 +50,7 @@ export default function EventBanner({ section }: { section: PageSectionType }) {
             href={eventBanner.fields.buttonLink}
             className={`${styles.bannerSection} ${styles.btnContainer} ${btnColorClass}`}
           >
-            VIEW EVENT
+            {translations.events.viewEvent}
           </Link>
         </div>
       </div>

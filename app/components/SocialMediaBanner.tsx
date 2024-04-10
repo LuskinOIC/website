@@ -19,6 +19,7 @@ import {
   YELP_URL,
   YOUTUBE_URL,
 } from "@/app/constants/links";
+import translations from "@/public/locales/en.json";
 
 const socialMediaLinks = [
   { url: FACEBOOK_URL, src: FB, alt: "Facebook Logo" },
@@ -48,14 +49,12 @@ function DesktopBanner() {
         </div>
       </div>
       <div className="hidden md:flex flex-col min-h-[90%] justify-evenly items-center self-center row-span-2">
-        <div className="flex items-center justify-center text-center text-[32px] ">
-          <h1>Follow our story on social media!</h1>
+        <div className="flex items-center justify-center text-center text-[32px]">
+          <h1>{translations.socialMedia.followOurStory}</h1>
         </div>
         <div className="flex items-center justify-center text-md text-center">
           <p className="w-5/6">
-            Join us in our mission to transform musculoskeletal care for all
-            kids, one child at a time, through education, research, and
-            unwavering support.
+            {translations.socialMedia.followOurStoryDescription}
           </p>
         </div>
         <SocialMediaIcons />
@@ -68,13 +67,13 @@ function MobileBanner() {
   return (
     <div className="block md:hidden min-h-[75%]">
       <div className="flex flex-row items-center justify-between">
-        <Title1 className="pl-6 pt-4">Follow our story on social media!</Title1>
+        <Title1 className="pl-6 pt-4">
+          {translations.socialMedia.followOurStory}
+        </Title1>
         <Image src={OzzieMobile} alt="Ozzie" />
       </div>
       <Text className="px-6">
-        Join us in our mission to transform musculoskeletal care for all kids,
-        one child at a time, through education, research, and unwavering
-        support.
+        {translations.socialMedia.followOurStoryDescription}
       </Text>
       <SocialMediaIcons />
     </div>

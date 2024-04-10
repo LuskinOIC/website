@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { SearchIndex } from "@/app/constants/types";
 import { filterSearchResults } from "@/app/utils/search";
+import translations from "@/public/locales/en.json";
 
 const styles = {
   input: "w-full pl-4 pr-20 py-2 rounded-l-md border border-r-0 bg-white",
@@ -61,10 +62,14 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
           list="search"
           onChange={handleSearchChange}
         />
-        <button className={styles.searchBtn}>Search</button>
+        <button className={styles.searchBtn}>
+          {translations.searchBar.searchLabel}
+        </button>
       </div>
       {searchAttempted && searchResults.length === 0 && (
-        <div className={styles.noResults}>No results found.</div>
+        <div className={styles.noResults}>
+          {translations.searchBar.noResultsFound}
+        </div>
       )}
       {searchResults.length > 0 && (
         <div id="search" className={styles.inputResults}>

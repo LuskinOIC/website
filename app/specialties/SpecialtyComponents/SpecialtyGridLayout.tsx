@@ -3,6 +3,7 @@ import { SpecialtyType } from "../../constants/types";
 // LOCAL COMPONENTS
 import UrgentCareCard from "./UrgentCareCard";
 import SpecialtyCard from "./SpecialtyCard";
+import translations from "@/public/locales/en.json";
 
 export default function SpecialtyGridLayout({
   showingSearchResults,
@@ -16,7 +17,7 @@ export default function SpecialtyGridLayout({
       <div className="grid justify-items-center">
         {showingSearchResults && (
           <div className="order-first text-sky-700 text-lg md:text-xl font-normal font-['Arial'] leading-[30px] text-left w-full md:w-4/5 px-2 md:px-0 pt-4 md:pt-10 pb-0 md:pb-4">
-            SEARCH RESULTS
+            {translations.specialties.searchResults}
           </div>
         )}
         {specialties.map((specialty) => {
