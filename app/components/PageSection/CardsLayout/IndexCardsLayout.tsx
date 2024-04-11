@@ -6,8 +6,7 @@ import { usePathname } from "next/navigation";
 
 // Types
 import { CardType, TextType } from "@/app/constants/types";
-import { Text } from "../../ui/Typography/Text";
-import { Title2 } from "../../ui/Typography/Title";
+import { Title3 } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
@@ -17,18 +16,18 @@ const styles = {
   sectionContainer:
     "grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12 md:px-32",
   cardContainer:
-    "col-span-1 rounded-[10px]  pb-8 md:p-10 overflow-hidden mx-6 md:mx-0",
+    "flex flex-col h-full col-span-1 rounded-[10px] pb-8 md:p-10 overflow-hidden mx-6 md:mx-0",
   borderGray: "shadow-lg border border-black border-opacity-10",
-  borderGreen: "border-2 border-green-500",
+  borderGreen: "border-2 border-[#99C221]",
 };
 
 const descriptionClassNames: ClassNames = {
-  paragraph: "py-2 text-base md:text-lg",
+  paragraph: "py-2 text-base font-normal md:text-xl md:leading-[30px]",
 };
 
 export function InfoCardContent(cardContent: TextType, i: number) {
   const [isCurrentPage, setCurrentPage] = useState<boolean>(true);
-  const { title, subTitle, content, button } = cardContent.fields;
+  const { title, content, button } = cardContent.fields;
   const pathname = usePathname();
 
   useEffect(() => {
@@ -45,16 +44,18 @@ export function InfoCardContent(cardContent: TextType, i: number) {
         isCurrentPage ? styles.borderGreen : styles.borderGray
       }`}
     >
-      <div className="md:h-min-[242px] px-5 md:px-0 flex-col">
-        <div className="font-arial leading-[30px] py-4 ">
-          <Title2>{title}</Title2>
-          {subTitle && <Text>{subTitle}</Text>}
-        </div>
-        {content &&
-          renderRichTextToReactComponent(content, descriptionClassNames)}
+      <div className="flex flex-col flex-grow px-5 md:px-0">
+        <Title3 className="flex-grow text-[#0076AD] md:leading-[30px]">
+          {title}
+        </Title3>
+        {content && (
+          <div className="flex-grow pb-4">
+            {renderRichTextToReactComponent(content, descriptionClassNames)}
+          </div>
+        )}
         {button && (
           <Button
-            className="w-full sm:w-auto text-center gap-2"
+            className="mt-auto text-center gap-2"
             key={button.sys.id}
             href={button.fields.buttonUrl}
             isExternal={button.fields.externalLink}
