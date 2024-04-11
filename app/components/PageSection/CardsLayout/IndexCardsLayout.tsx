@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
 // Next components
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 // Types
@@ -13,49 +13,66 @@ import renderRichTextToReactComponent, {
 } from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
 
-export function InfoCardContent(cardContent: TextType) {
+const styles = {
+  sectionContainer:
+    "grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12 md:px-32",
+  cardContainer:
+    "col-span-1 rounded-[10px]  pb-8 md:p-10 overflow-hidden mx-6 md:mx-0",
+  borderGray: "shadow-lg border border-black border-opacity-10",
+  borderGreen: "border-2 border-green-500",
+};
+
+const descriptionClassNames: ClassNames = {
+  paragraph: "py-2 text-base md:text-lg",
+};
+
+export function InfoCardContent(cardContent: TextType, i: number) {
+  const [isCurrentPage, setCurrentPage] = useState<boolean>(true);
   const { title, subTitle, content, button } = cardContent.fields;
-  const descriptionClassNames: ClassNames = {
-    paragraph: "py-2 text-base md:text-lg",
-  };
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const formattedButtonUrl = button?.fields.buttonUrl.replace(/\/$/, "");
+    const formattedPathname = pathname.replace(/\/$/, "");
+
+    setCurrentPage(formattedButtonUrl === formattedPathname);
+  }, [pathname, button?.fields.buttonUrl]);
+
   return (
-    <>
-      <div className="font-arial leading-[30px] py-4 ">
-        <Title2>{title}</Title2>
-        {subTitle && <Text>{subTitle}</Text>}
+    <div
+      key={i}
+      className={`${styles.cardContainer} ${
+        isCurrentPage ? styles.borderGreen : styles.borderGray
+      }`}
+    >
+      <div className="md:h-min-[242px] px-5 md:px-0 flex-col">
+        <div className="font-arial leading-[30px] py-4 ">
+          <Title2>{title}</Title2>
+          {subTitle && <Text>{subTitle}</Text>}
+        </div>
+        {content &&
+          renderRichTextToReactComponent(content, descriptionClassNames)}
+        {button && (
+          <Button
+            className="w-full sm:w-auto text-center gap-2"
+            key={button.sys.id}
+            href={button.fields.buttonUrl}
+            isExternal={button.fields.externalLink}
+            text={button.fields.text}
+            variant={button.fields.type}
+          />
+        )}
       </div>
-      {content &&
-        renderRichTextToReactComponent(content, descriptionClassNames)}
-      {button && (
-        <Button
-          className="w-full sm:w-auto text-center gap-2"
-          key={button.sys.id}
-          href={button.fields.buttonUrl}
-          isExternal={button.fields.externalLink}
-          text={button.fields.text}
-          variant={button.fields.type}
-        />
-      )}
-    </>
+    </div>
   );
 }
 
 export default function IndexCardsLayout({ section }: { section: CardType[] }) {
-  // const pathname = usePathname()
-  // console.log(pathname)
   return (
-    <section className="grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12 md:px-32">
+    <section className={styles.sectionContainer}>
       {section.map((card, i) => {
         return (
-          <div
-            key={i}
-            className="col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden mx-6 md:mx-0"
-          >
-            <div className="md:h-min-[242px] px-5 md:px-0 flex-col ">
-              {card.fields.cardContent &&
-                InfoCardContent(card.fields.cardContent)}
-            </div>
-          </div>
+          card.fields.cardContent && InfoCardContent(card.fields.cardContent, i)
         );
       })}
     </section>
