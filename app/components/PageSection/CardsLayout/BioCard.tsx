@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BioCardType } from "@/app/constants/types";
-import { Title3 } from "./ui/Typography/Title";
+import { Title3 } from "../../ui/Typography/Title";
 import { cn } from "@/lib/utils";
 
 const styles = {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
-import renderRichTextToReactComponent from "../utils/rich-text";
+import renderRichTextToReactComponent from "../../../utils/rich-text";
 import { cn } from "@/lib/utils";
 
 const style = {

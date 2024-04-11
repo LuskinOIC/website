@@ -3,7 +3,7 @@ import UrgentCareCard from "@/app/specialties/SpecialtyComponents/UrgentCareCard
 import Divider from "@/app/components/PageSection/Divider";
 import SocialMediaBanner from "@/app/components/SocialMediaBanner";
 import ColumnLayout from "@/app/components/PageSection/ColumnsLayout/ColumnsLayout";
-import CardLayoutSection from "@/app/components/PageSection/CardsLayout";
+import CardLayoutSection from "@/app/components/PageSection/CardsLayout/CardsLayout";
 import ImagesLayout from "@/app/components/ImagesLayoutComponents/ImagesLayout";
 import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "@/app/components/GridLayoutSection";

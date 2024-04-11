@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BioCardsRowPropsType, CardsRowType } from "@/app/constants/types";
 import { Title2 } from "@/app/components/ui/Typography/Title";
-import BioCard from "@/app/components/BioCard";
+import BioCard from "@/app/components/PageSection/CardsLayout/BioCard";
 
 const styles = {
   container: "block px-5 md:px-32 py-2 md:py-4",

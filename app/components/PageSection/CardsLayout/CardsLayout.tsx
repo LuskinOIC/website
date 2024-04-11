@@ -1,11 +1,12 @@
 //Types
 import { PageSectionType } from "@/app/constants/types";
-import QuadCard from "@/app/components/QuadComponent";
 
 //Components
-import InfoCardLayout from "@/app/components/PageSection/InfoCardLayout";
-import QuadTextCard from "@/app/components/QuadTextCard";
-import BioCardsRow from "@/app/components/BioCardsRow";
+import InfoCardLayout from "@/app/components/PageSection/CardsLayout/InfoCardLayout";
+import QuadTextCard from "@/app/components/PageSection/CardsLayout/QuadTextCard";
+import QuadCard from "@/app/components/PageSection/CardsLayout/QuadComponent";
+import BioCardsRow from "@/app/components/PageSection/CardsLayout/BioCardsRow";
+import IndexCardsLayout from "@/app/components/PageSection/CardsLayout/IndexCardsLayout";
 
 export default function ColumnLayout({
   section,
@@ -21,6 +22,8 @@ export default function ColumnLayout({
     cards && cards.filter((card) => card.fields.cardType === "Quad Text Card");
   const bioCards =
     cards && cards.filter((card) => card.fields.cardType === "Bio Cards");
+  const indexCards =
+    cards && cards.filter((card) => card.fields.cardType === "Index Card");
 
   if (infoCards && infoCards.length > 0) {
     return <InfoCardLayout section={infoCards} />;
@@ -38,5 +41,8 @@ export default function ColumnLayout({
         cards={bioCards[0].fields.bioCards}
       />
     );
+  }
+  if (indexCards && indexCards.length > 0) {
+    return <IndexCardsLayout section={indexCards} />;
   }
 }

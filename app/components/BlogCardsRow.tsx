@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { BlogCardsRowType } from "@/app/constants/types";
-import BlogCard from "@/app/components/BlogCard";
+import BlogCard from "@/app/components/PageSection/CardsLayout/BlogCard";
 import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
 import translations from "@/public/locales/en.json";
 

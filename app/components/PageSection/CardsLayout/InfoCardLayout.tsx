@@ -1,10 +1,12 @@
+"use client";
+
 // Next components
 import Image from "next/image";
 
 // Types
 import { CardType, TextType } from "@/app/constants/types";
-import { Text } from "../ui/Typography/Text";
-import { Title2 } from "../ui/Typography/Title";
+import { Text } from "../../ui/Typography/Text";
+import { Title2 } from "../../ui/Typography/Title";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
@@ -35,16 +37,18 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
             key={i}
             className="col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden mx-6 md:mx-0"
           >
-            <div className="relative md:rounded-[10px] overflow-hidden">
-              <Image
-                className="object-cover"
-                src={`https:${card.fields.image.fields.file.url}`}
-                alt={card.fields.image.fields.description}
-                style={{ width: "100%", height: "auto" }}
-                width={500}
-                height={400}
-              />
-            </div>
+            {card.fields.image && (
+              <div className="relative md:rounded-[10px] overflow-hidden">
+                <Image
+                  className="object-cover"
+                  src={`https:${card.fields.image.fields.file.url}`}
+                  alt={card.fields.image.fields.description}
+                  style={{ width: "100%", height: "auto" }}
+                  width={500}
+                  height={400}
+                />
+              </div>
+            )}
             <div className="md:h-min-[242px] px-5 md:px-0 flex-col ">
               {card.fields.cardContent &&
                 InfoCardContent(card.fields.cardContent)}
