@@ -17,15 +17,15 @@ interface PhysicianCardProps {
 
 const styles = {
   sectionTitle:
-    "text-sky-700 text-xl font-normal font-['Arial'] leading-[30px] px-5 md:px-24 py-4 md:py-10",
+    "text-sky-700 text-2xl font-semibold font-['Arial'] leading-[30px] px-5 md:px-24 py-4 md:py-12",
   physicianGrid:
-    "grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center px-5 md:px-24",
+    "grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 px-5 md:px-24",
   clickableStyle: "shadow-lg hover:shadow-xl rounded-lg",
   physicianCard:
     "border rounded-lg p-4 border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12 md:h-full justify-items-center",
   physicianDetailsContainer: "flex flex-col gap-1 md:gap-4 place-self-start",
-  physicianName: "text-lg font-bold",
-  physicianDetails: "md:text-md md:mb-4 text-base",
+  physicianName: "text-xl font-semibold",
+  physicianDetails: "text-base md:text-lg md:mb-4",
 };
 
 const PhysicianCard = ({ physician }: PhysicianCardProps) => {
@@ -41,8 +41,8 @@ const PhysicianCard = ({ physician }: PhysicianCardProps) => {
       </div>
       <div className={styles.physicianDetailsContainer}>
         <h2 className={styles.physicianName}>{physician.name}</h2>
-        <h2>{translations.physicians.gridLayoutSection.specialtyHeading}</h2>
         <div className={styles.physicianDetails}>
+          <h2>{translations.physicians.gridLayoutSection.specialtyHeading}</h2>
           {renderRichTextToReactComponent(
             physician.specialties as unknown as Document,
           )}
