@@ -17,12 +17,16 @@ const styles = {
     "grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12 md:px-32",
   cardContainer:
     "flex flex-col h-full col-span-1 rounded-[10px] pb-8 md:p-10 overflow-hidden mx-6 md:mx-0",
+  contentContainer: "flex flex-col h-full px-5 md:px-0",
+  title: "text-[#0076AD] md:leading-[30px]",
+  contentDetails: "flex flex-col justify-apart gap-2 h-full",
+  button: "mt-auto text-center",
   borderGray: "shadow-lg border border-black border-opacity-10",
   borderGreen: "border-2 border-[#99C221]",
 };
 
 const descriptionClassNames: ClassNames = {
-  paragraph: "py-2 text-base font-normal md:text-xl md:leading-[30px]",
+  paragraph: "py-2 text-base font-normal md:text-xl md:leading-[30px] pb-4",
 };
 
 export function InfoCardContent(cardContent: TextType, i: number) {
@@ -44,25 +48,22 @@ export function InfoCardContent(cardContent: TextType, i: number) {
         isCurrentPage ? styles.borderGreen : styles.borderGray
       }`}
     >
-      <div className="flex flex-col flex-grow px-5 md:px-0">
-        <Title3 className="flex-grow text-[#0076AD] md:leading-[30px]">
-          {title}
-        </Title3>
-        {content && (
-          <div className="flex-grow pb-4">
-            {renderRichTextToReactComponent(content, descriptionClassNames)}
-          </div>
-        )}
-        {button && (
-          <Button
-            className="mt-auto text-center gap-2"
-            key={button.sys.id}
-            href={button.fields.buttonUrl}
-            isExternal={button.fields.externalLink}
-            text={button.fields.text}
-            variant={button.fields.type}
-          />
-        )}
+      <div className={styles.contentContainer}>
+        <Title3 className={styles.title}>{title}</Title3>
+        <div className={styles.contentDetails}>
+          {content &&
+            renderRichTextToReactComponent(content, descriptionClassNames)}
+          {button && (
+            <Button
+              className={styles.button}
+              key={button.sys.id}
+              href={button.fields.buttonUrl}
+              isExternal={button.fields.externalLink}
+              text={button.fields.text}
+              variant={button.fields.type}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
