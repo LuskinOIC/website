@@ -1,26 +1,29 @@
-import { AllPhysiciansProps } from "@/app/constants/types";
+import {
+  AllPhysiciansProps,
+  CardsRowType,
+  PhysicianPageSectionType,
+} from "@/app/constants/types";
 import PhysiciansGridLayout from "@/app/physicians/PhysicianComponents/PhysiciansGridLayoutSection";
 
 export default function AllPhysicians({
   sortedPhysicians,
 }: AllPhysiciansProps) {
-  const mdPhysiciansBioCards = sortedPhysicians[0].fields.cardsLayout
-    .flatMap((cardLayout) => cardLayout.fields.bioCards)
-    .map((physician) => physician.fields);
-
-  const paNpPhysiciansBioCards = sortedPhysicians[1].fields.cardsLayout
-    .flatMap((cardLayout) => cardLayout.fields.bioCards)
-    .map((physician) => physician.fields);
+  const extractBioCards = (physicianGroup: PhysicianPageSectionType) =>
+    physicianGroup.fields.cardsLayout
+      .flatMap(
+        (cardLayout: { fields: { bioCards: CardsRowType[] } }) =>
+          cardLayout.fields.bioCards,
+      )
+      .map((physician: any) => physician.fields);
   return (
     <>
-      <PhysiciansGridLayout
-        title="OUR PHYSICIANS"
-        physicians={mdPhysiciansBioCards}
-      />
-      <PhysiciansGridLayout
-        title="OUR PHYSICIAN'S ASSISTANTS & NURSE PRACTIONERS"
-        physicians={paNpPhysiciansBioCards}
-      />
+      {sortedPhysicians.map((physicianGroup) => (
+        <PhysiciansGridLayout
+          key={physicianGroup.fields.title}
+          title={physicianGroup.fields.title}
+          physicians={extractBioCards(physicianGroup)}
+        />
+      ))}
     </>
   );
 }
