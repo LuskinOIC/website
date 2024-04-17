@@ -23,7 +23,7 @@ export async function generateMetadata({
   const docBio = await getPhysicianBioBySlug(params.slug);
 
   return {
-    title: `OIC Physicians - ${docBio.name}`,
+    title: `LuskinOIC Physicians - ${docBio.name}`,
     description: "",
   };
 }
