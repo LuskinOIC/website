@@ -1,8 +1,10 @@
-# LuskinOIC
+# LuskinOIC Website
 
-Front end app for LuskinOIC powered by [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and integrated with [Contenful](https://www.contentful.com/developers/).
+Public website for The Luskin Orthopaedic Institute for Children (LuskinOIC). Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/).
 
-Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/).
+## License
+
+The code for this project is released under a [Creative Commons License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en) and can be used for educational and non-commercial purposes. Any redistribution of the code should be shared under the same license. All assets, content, and artifacts contained within the public folder are under the copyright of LuskinOIC.
 
 ## Getting Started
 
@@ -94,8 +96,6 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deployment
 
