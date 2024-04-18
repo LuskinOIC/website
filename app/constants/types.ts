@@ -454,6 +454,7 @@ export type MemberType = {
   name: string;
   portrait: ImageType;
   topSection: ColumnType;
+  pageSections?: PageSectionType;
   slug: string;
 };
 
