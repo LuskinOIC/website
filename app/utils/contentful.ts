@@ -126,7 +126,9 @@ export async function getPhysicianBioBySlug(slug: string) {
 }
 
 /* LEADERSHIP MEMBERS */
-export async function getMembers(memberType: string) {
+export async function getMembers(
+  memberType: "leadership" | "researcher" = "leadership",
+) {
   const entries = await client.getEntries({
     content_type: "memberBio",
     "fields.memberType": memberType,
