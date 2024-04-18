@@ -149,17 +149,6 @@ export async function getMemberBySlug(slug: string) {
   return entries.items[0].fields as unknown as MemberType;
 }
 
-export async function getLeadershipBioBySlug(slug: string) {
-  const entry = await client.getEntries({
-    content_type: "memberBio",
-    "fields.slug": slug,
-    locale: "en-US",
-    include: 4,
-  });
-
-  return entry.items[0].fields as unknown as MemberType;
-}
-
 /* PATIENT BIOS */
 export async function getPatientStories(
   numberOfEntries: number | "all" = "all",

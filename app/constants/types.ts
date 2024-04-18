@@ -131,6 +131,7 @@ export type BioCardsRowPropsType = {
 
 export type CardsRowType = {
   fields: {
+    memberType?: string;
     topSummary: ColumnType;
     leadershipRole: string;
     name: string;
