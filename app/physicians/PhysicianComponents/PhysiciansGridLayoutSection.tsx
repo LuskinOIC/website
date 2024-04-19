@@ -58,12 +58,15 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
   title,
   physicians,
 }) => {
+  const filteredPhysicians = physicians.filter(
+    (physician) => physician !== undefined,
+  );
   return (
     <>
       <div className={styles.sectionTitle}>{title}</div>
       <div className={styles.physicianGrid}>
-        {physicians.map((physician) =>
-          physician.topSummary || physician.pageSections ? (
+        {filteredPhysicians.map((physician) =>
+          physician?.topSummary || physician?.pageSections ? (
             <Link
               key={physician.name}
               href={`/physicians/${physician.slug}`}
