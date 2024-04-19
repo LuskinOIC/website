@@ -18,8 +18,11 @@ function getCardHref(card: CardsRowType) {
   switch (card.sys.contentType.sys.id) {
     case "patientBio":
       return `/patient-stories/${card.fields.slug}`;
-    case "memberBio":
-      return `/member/${card.fields.slug}`;
+    case "memberBio": {
+      const memberTypePath =
+        card.fields.memberType === "leadership" ? "leadership" : "researcher";
+      return `/${memberTypePath}/${card.fields.slug}`;
+    }
     case "physicianBio":
       return `/physicians/${card.fields.slug}`;
     default:

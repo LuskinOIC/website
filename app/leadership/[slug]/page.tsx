@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
+import { getMemberBySlug, getMembers } from "@/app/utils/contentful";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
-import { getLeadershipBioBySlug, getMembers } from "@/app/utils/contentful";
+import PageSection from "@/app/components/PageSection/PageSection";
+import { PageSectionType } from "@/app/constants/types";
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const members = await getMembers();
-  return members.map((evt) => ({ slug: evt.slug }));
+  const members = await getMembers("leadership");
+  return members.map((m) => ({
+    slug: m.slug,
+  }));
 }
+
 interface PagePropsType {
   params: { slug: string };
 }
@@ -13,23 +20,30 @@ interface PagePropsType {
 export async function generateMetadata({
   params,
 }: PagePropsType): Promise<Metadata> {
-  const member = await getLeadershipBioBySlug(params.slug);
+  const memberBio = await getMemberBySlug(params.slug);
 
   return {
-    title: `${member.name} - LuskinOIC Leadership Team`,
+    title: `LuskinOIC Researcher - ${memberBio.name}`,
     description: "",
   };
 }
 
-export default async function LeadershipMember({
+export default async function MemberBio({
   params,
 }: {
   params: { slug: string };
 }) {
-  const member = await getLeadershipBioBySlug(params.slug);
+  const memberBio = await getMemberBySlug(params.slug);
+
   return (
-    <div>
-      {member.topSection && <TwoColumnLayout section={member.topSection} />}
+    <div className="">
+      {memberBio.topSection && (
+        <TwoColumnLayout section={memberBio.topSection} />
+      )}
+      {memberBio.pageSections &&
+        memberBio.pageSections.map((pageSection: PageSectionType) => (
+          <PageSection key={pageSection.fields.title} section={pageSection} />
+        ))}
     </div>
   );
 }
