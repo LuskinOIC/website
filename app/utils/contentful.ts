@@ -126,9 +126,12 @@ export async function getPhysicianBioBySlug(slug: string) {
 }
 
 /* LEADERSHIP MEMBERS */
-export async function getMembers() {
+export async function getMembers(
+  memberType: "leadership" | "researcher" = "leadership",
+) {
   const entries = await client.getEntries({
     content_type: "memberBio",
+    "fields.memberType": memberType,
     locale: "en-US",
   });
 
@@ -144,17 +147,6 @@ export async function getMemberBySlug(slug: string) {
   });
 
   return entries.items[0].fields as unknown as MemberType;
-}
-
-export async function getLeadershipBioBySlug(slug: string) {
-  const entry = await client.getEntries({
-    content_type: "memberBio",
-    "fields.slug": slug,
-    locale: "en-US",
-    include: 4,
-  });
-
-  return entry.items[0].fields as unknown as MemberType;
 }
 
 /* PATIENT BIOS */

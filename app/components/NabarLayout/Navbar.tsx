@@ -24,7 +24,7 @@ import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
-    `bg-white fixed max-w-[1600px] border-b-2 border-[#E0E0E0] ${
+    `bg-white fixed max-w-[1600px] ${
       isScrolled
         ? "transition-all duration-300 ease-out md:h-[102px]"
         : "transition-all duration-300 ease-out md:h-[180px]"

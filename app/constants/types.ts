@@ -131,6 +131,7 @@ export type BioCardsRowPropsType = {
 
 export type CardsRowType = {
   fields: {
+    memberType?: string;
     topSummary: ColumnType;
     leadershipRole: string;
     name: string;
@@ -454,6 +455,7 @@ export type MemberType = {
   name: string;
   portrait: ImageType;
   topSection: ColumnType;
+  pageSections?: PageSectionType;
   slug: string;
 };
 
