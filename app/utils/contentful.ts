@@ -155,6 +155,7 @@ export async function getPatientStories(
 ) {
   let query = {
     content_type: "patientBio",
+    order: "-fields.date",
     locale: "en-US",
     ...(numberOfEntries !== "all" && { limit: numberOfEntries }),
   };
