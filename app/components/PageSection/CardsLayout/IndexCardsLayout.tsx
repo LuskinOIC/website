@@ -39,10 +39,10 @@ export function InfoCardContent(
   const { title, content, button } = cardContent.fields;
 
   useEffect(() => {
-    const formattedButtonUrl = button?.fields.buttonUrl.replace(/\/$/, "");
+    const formattedButtonUrl = button?.fields.buttonUrl.replace(/\//g, "");
     const formattedPathname = pathname.replace(/\/$/, "");
 
-    setCurrentPage(formattedButtonUrl === formattedPathname);
+    setCurrentPage(formattedPathname.includes(formattedButtonUrl || ""));
   }, [pathname, button?.fields.buttonUrl]);
 
   return (
