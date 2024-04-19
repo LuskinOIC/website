@@ -45,7 +45,11 @@ export default function SpecialtyCard({ specialty }: SpecialtyCardProps) {
           {medicalProfessionalPage && (
             <Button
               className="my-3"
-              href={slug === 'hand-trauma' ? `/congenital-differences-and-microsurgery` : `/medical-professionals/specialties/${slug}`}
+              href={
+                slug === "hand-trauma"
+                  ? `/congenital-differences-and-microsurgery`
+                  : `/medical-professionals/specialties/${slug}`
+              }
               text="PHYSICIANS"
               variant="physicians"
               isExternal={false}
