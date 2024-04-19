@@ -32,12 +32,14 @@ const PhysicianCard = ({ physician }: PhysicianCardProps) => {
   return (
     <div className={styles.physicianCard}>
       <div className="max-w-[280px] h-auto">
-        <Image
-          src={physician.portrait.fields.file.url}
-          alt={physician.name}
-          width={physician.portrait.fields.file.details.image.width}
-          height={physician.portrait.fields.file.details.image.height}
-        />
+        {physician.portrait && (
+          <Image
+            src={physician.portrait.fields.file.url}
+            alt={physician.name}
+            width={physician.portrait.fields.file.details.image.width}
+            height={physician.portrait.fields.file.details.image.height}
+          />
+        )}
       </div>
       <div className={styles.physicianDetailsContainer}>
         <h2 className={styles.physicianName}>{physician.name}</h2>

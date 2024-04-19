@@ -42,6 +42,7 @@ export default function PhysicianSearchArea({
       {
         name: "specialties",
         getFn: (phys: PhysicianBioType) =>
+          phys.specialties &&
           unorderedListToString(phys.specialties.content[0]),
       },
       // TODO: Add this back.
