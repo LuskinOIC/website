@@ -87,6 +87,10 @@ export default function Navbar({
     });
   };
 
+  const closeMenuItems = () => {
+    setSelectedDropdown("");
+  };
+
   return (
     <NavigationMenu className={styles.navigationMenu(isScrolled)}>
       {/* DESKTOP CONTAINER */}
@@ -121,7 +125,10 @@ export default function Navbar({
             <Image src={bluePhone} alt="Phone Icon" width={20} height={20} />
             <span> 213-742-1000 </span>
           </div>
-          <SearchDropdown searchIndex={searchIndex} />
+          <SearchDropdown
+            searchIndex={searchIndex}
+            onSearchOpen={closeMenuItems}
+          />
         </div>
       </div>
 
@@ -140,7 +147,10 @@ export default function Navbar({
         </li>
 
         <NavigationMenuItem className={styles.navigationMenuItem}>
-          <SearchContainer searchIndex={searchIndex} />
+          <SearchContainer
+            searchIndex={searchIndex}
+            onSearchOpen={closeMenuItems}
+          />
           <button
             onClick={toggleHamburgerDropdown}
             aria-label="Open Navigation Menu"
