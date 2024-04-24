@@ -9,7 +9,8 @@ import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
   container: "block z-10",
-  button: "bg-transparent p-2 rounded-full text-lg hover:text-[#0076AD]",
+  button:
+    "bg-transparent p-2 rounded-full text-lg hover:text-[#0076AD] min-w-[55.5px] relative",
   buttonOpen:
     "flex items-center space-x-2 bg-red-500 p-2 rounded-full text-lg hover:bg-red-600",
   icon: "text-white",
@@ -19,9 +20,10 @@ const styles = {
 
 interface SearchDropdownProps {
   searchIndex: SearchIndex;
+  onSearchOpen: () => void;
 }
 
-const SearchDropdown = ({ searchIndex }: SearchDropdownProps) => {
+const SearchDropdown = ({ searchIndex, onSearchOpen }: SearchDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,14 +43,16 @@ const SearchDropdown = ({ searchIndex }: SearchDropdownProps) => {
     };
   }, [containerRef]);
 
-  function closeSearch() {
-    setIsOpen(false);
-  }
+  const closeSearch = () => setIsOpen(false);
+  const toggleSearch = () => {
+    setIsOpen(!isOpen);
+    onSearchOpen();
+  };
 
   return (
     <div className={styles.container} ref={containerRef}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleSearch}
         className={`${isOpen ? styles.buttonOpen : styles.button}`}
         aria-label={isOpen ? "Close" : "Search"}
       >
