@@ -5,14 +5,14 @@ import { ColumnType } from "@/app/constants/types";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import SectionContent from "@/app/components/PageSection/ColumnsLayout/SectionContent";
 
-export default function FullWidthImageLayout({
-  section,
-}: {
-  section: ColumnType;
-}) {
+export default function FullColumnLayout({ section }: { section: ColumnType }) {
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
+
+  // If there is an image but it is not uploaded, return null. This protects
+  // against intermediate states published accidentally.
+  if (section.fields.image && !section.fields.image.fields?.file) return null;
   return (
     <section
       className={`grid gap-3 md:gap-5 ${bgColor} w-full items-center px-5 md:px-32 py-5`}
