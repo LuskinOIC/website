@@ -23,7 +23,10 @@ export default function BlogCard({
   const [isHovered, setIsHovered] = useState(false);
   const title = cardContent.title;
   if (cardContent.cardPhoto === undefined) return null;
-  const cardPhoto = cardContent.cardPhoto.fields.file;
+  // NOTE: We need to ensure that the cardPhoto is not undefined before
+  // we try to access the fields.
+  if (cardContent.cardPhoto.fields?.file === undefined) return null;
+  const cardPhoto = cardContent.cardPhoto.fields?.file;
   const cardPhotoSource = cardPhoto.url;
   const cardPhotoHeight = cardPhoto.details.image.height;
   const cardPhotoWidth = cardPhoto.details.image.width;
