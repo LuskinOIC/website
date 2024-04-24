@@ -59,6 +59,11 @@ function NavbarDropDown({
     setIsOpen(false);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+    onChange("");
+  };
+
   function handleFocus() {
     if (isOpen) {
       setIsOpen(false);
@@ -158,6 +163,19 @@ function NavbarDropDown({
                     )}
                   </div>
                 ))}
+                <button
+                  className="absolute items-start mx-10 bottom-10"
+                  onClick={closeMenu}
+                >
+                  <span>CLOSE</span>
+                  <Image
+                    src={closeIcon}
+                    alt="Close Dropwdown"
+                    width={20}
+                    height={20}
+                    className={styles.closeIcon}
+                  />
+                </button>
               </div>
             </div>
             <NavImageContainer imageContainer={imageContainer} />
