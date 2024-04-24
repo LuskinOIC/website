@@ -173,7 +173,7 @@ function NavbarDropDown({
                     alt="Close Dropwdown"
                     width={20}
                     height={20}
-                    className={styles.closeIcon}
+                    className={`${styles.closeIcon} -mt-1`}
                   />
                 </button>
               </div>
