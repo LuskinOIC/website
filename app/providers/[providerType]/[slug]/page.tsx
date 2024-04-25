@@ -6,14 +6,12 @@ import Dropdown from "@/app/components/ui/Dropdown";
 import PageSection from "@/app/components/PageSection/PageSection";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import translations from "@/public/locales/en.json";
+import { formatProviderType } from "@/app/providers/PhysicianComponents/formattingProviderPath";
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
 
 export async function generateStaticParams() {
   const providers = await getPhysicians();
-  function formatProviderType(providerType: string) {
-    return providerType?.toLowerCase().replace(/\//g, "-");
-  }
 
   return providers.map((provider: any) => {
     return {

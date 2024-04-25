@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PhysicianBioType } from "@/app/constants/types";
 import { Title3 } from "@/app/components/ui/Typography/Title";
 import Link from "next/link";
+import { getProviderFormattedPath } from "@/app/providers/PhysicianComponents/formattingProviderPath";
 
 const CardContent = ({ physician }: { physician: PhysicianBioType }) => {
   return (
@@ -28,7 +29,7 @@ export default function PhysicianCard({
   const shouldWrapWithLink = physician.topSummary;
   return shouldWrapWithLink ? (
     <Link
-      href={`/physicians/${physician.slug}`}
+      href={getProviderFormattedPath(physician.providerType, physician.slug)}
       className="md:min-h-[273px] bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground shadow-md md:shadow-sm hover:shadow-lg"
     >
       <CardContent physician={physician} />
