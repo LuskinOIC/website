@@ -8,9 +8,19 @@ import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColum
 import translations from "@/public/locales/en.json";
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
+
 export async function generateStaticParams() {
-  const physicians = await getPhysicians();
-  return physicians.map((evt) => ({ slug: evt.slug }));
+  const providers = await getPhysicians();
+  function formatProviderType(providerType: string) {
+    return providerType?.toLowerCase().replace(/\//g, "-");
+  }
+
+  return providers.map((provider: any) => {
+    return {
+      providerType: formatProviderType(provider.providerType) || "physician",
+      slug: provider.slug,
+    };
+  });
 }
 
 interface PagePropsType {
