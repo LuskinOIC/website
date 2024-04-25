@@ -58,13 +58,13 @@ const patientSupportMenuItems = [
 ];
 
 const healthProfessionalsMenuItems = [
-  { text: "LuskinOIC Physicians", href: "/physicians" },
+  { text: "LuskinOIC Physicians", href: "/providers" },
   { text: "Refer a Patient", href: "/medical-professionals" },
   { text: "Careers", href: CAREERS_URL },
   { text: "Volunteer", href: "/ways-to-give" },
   {
     text: "Research",
-    href: "/news/orthopaedic-hospital-research-center-ucla-westwood/",
+    href: "/research",
   },
 ];
 
