@@ -59,6 +59,11 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/physicians/",
+        destination: "/providers",
+        permanent: true,
+      },
     ];
   },
 };
