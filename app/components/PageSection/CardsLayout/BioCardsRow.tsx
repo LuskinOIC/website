@@ -7,7 +7,7 @@ import { formatProviderType } from "@/app/providers/PhysicianComponents/formatti
 const styles = {
   container: "block px-5 md:px-32 py-2 md:py-4",
   grid: "grid grid-rows gap-y-3",
-  gridFull: "md:grid-cols-4",
+  gridFull: "lg:grid-cols-4",
   gridSecondRow: "md:grid-cols-3",
   gridLastRow: "md:grid-cols-2",
   gridPadding: "py-2 md:justify-items-center",
@@ -44,7 +44,7 @@ const renderCards = (cards: CardsRowType[]) => {
           card.fields.leadershipRole ? card.fields.leadershipRole : ""
         }
         providerType={card.fields.providerType ? card.fields.providerType : ""}
-        classNames="md:w-[258px] md:h-full"
+        classNames="md:max-w-[258px] md:h-full"
       />
     );
 
