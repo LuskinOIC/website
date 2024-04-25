@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BioCardsRowPropsType, CardsRowType } from "@/app/constants/types";
 import { Title2 } from "@/app/components/ui/Typography/Title";
 import BioCard from "@/app/components/PageSection/CardsLayout/BioCard";
+import { formatProviderType } from "@/app/providers/PhysicianComponents/formattingProviderPath";
 
 const styles = {
   container: "block px-5 md:px-32 py-2 md:py-4",
@@ -23,8 +24,11 @@ function getCardHref(card: CardsRowType) {
         card.fields.memberType === "leadership" ? "leadership" : "researcher";
       return `/${memberTypePath}/${card.fields.slug}`;
     }
-    case "physicianBio":
-      return `/physicians/${card.fields.slug}`;
+    case "physicianBio": {
+      const providerTypePath =
+        formatProviderType(card.fields.providerType) || "physician";
+      return `/providers/${providerTypePath}/${card.fields.slug}`;
+    }
     default:
       return "/";
   }
@@ -39,7 +43,8 @@ const renderCards = (cards: CardsRowType[]) => {
         leadershipRole={
           card.fields.leadershipRole ? card.fields.leadershipRole : ""
         }
-        classNames="md:w-[258px] md:h-full"
+        providerType={card.fields.providerType ? card.fields.providerType : ""}
+        classNames="md:max-w-[258px] md:h-full"
       />
     );
 
@@ -58,7 +63,6 @@ const renderCards = (cards: CardsRowType[]) => {
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
   const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
   const totalCards = cards.length;
-
   let remainder = totalCards % 4;
   let secondRow: CardsRowType[] = [];
   let lastRow: CardsRowType[] = [];

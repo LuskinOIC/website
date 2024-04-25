@@ -6,6 +6,7 @@ import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { PhysicianBioType } from "@/app/constants/types";
 import { Document } from "@contentful/rich-text-types";
 import translations from "@/public/locales/en.json";
+import { getProviderFormattedPath } from "@/app/providers/PhysicianComponents/formattingProviderPath";
 
 interface PhysiciansGridLayoutProps {
   title: string;
@@ -69,7 +70,10 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
           physician?.topSummary || physician?.pageSections ? (
             <Link
               key={physician.name}
-              href={`/physicians/${physician.slug}`}
+              href={getProviderFormattedPath(
+                physician.providerType,
+                physician.slug,
+              )}
               className={styles.clickableStyle}
             >
               <PhysicianCard physician={physician} />
