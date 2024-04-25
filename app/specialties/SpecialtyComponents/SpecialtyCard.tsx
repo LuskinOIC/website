@@ -5,7 +5,7 @@ import renderRichTextToReactComponent from "../../utils/rich-text";
 import { TitleComponent } from "../../components/ui/Typography/Title";
 import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 import Button from "@/app/components/ui/Button";
-import PhysicianList from "@/app/physicians/PhysicianComponents/PhysicianList";
+import PhysicianList from "@/app/providers/PhysicianComponents/PhysicianList";
 
 type SpecialtyCardProps = {
   specialty: SpecialtyType;

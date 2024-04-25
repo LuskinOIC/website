@@ -9,8 +9,8 @@ import {
 } from "@/app/constants/types";
 // LOCAL COMPONENTS
 import SearchBar from "@/app/components/ui/SearchBar";
-import PhysiciansGridLayout from "@/app/physicians/PhysicianComponents/PhysiciansGridLayoutSection";
-import AllPhysicians from "@/app/physicians/PhysicianComponents/AllSortedPhysicians";
+import PhysiciansGridLayout from "@/app/providers/PhysicianComponents/PhysiciansGridLayoutSection";
+import AllPhysicians from "@/app/providers/PhysicianComponents/AllSortedPhysicians";
 
 export default function PhysicianSearchArea({
   physicians,

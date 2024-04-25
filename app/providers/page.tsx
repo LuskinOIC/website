@@ -11,7 +11,7 @@ import {
   PhysicianBioType,
   PhysicianPageSectionType,
 } from "@/app/constants/types";
-import PhysicianSearchArea from "@/app/physicians/PhysicianComponents/PhysicianSearchArea";
+import PhysicianSearchArea from "@/app/providers/PhysicianComponents/PhysicianSearchArea";
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageByType(PAGE_TYPES.PHYSICIAN_LIST_PAGE, 1);

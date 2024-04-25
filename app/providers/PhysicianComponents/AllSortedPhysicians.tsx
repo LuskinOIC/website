@@ -3,7 +3,7 @@ import {
   CardsRowType,
   PhysicianPageSectionType,
 } from "@/app/constants/types";
-import PhysiciansGridLayout from "@/app/physicians/PhysicianComponents/PhysiciansGridLayoutSection";
+import PhysiciansGridLayout from "@/app/providers/PhysicianComponents/PhysiciansGridLayoutSection";
 
 export default function AllPhysicians({
   sortedPhysicians,
