@@ -39,7 +39,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
             />
           )}
           {section.fields.subHeader && <Text>{section.fields.subHeader}</Text>}
-          <div>{descriptionContent}</div>
+          {section.fields.description && <div>{descriptionContent}</div>}
         </div>
         {section.fields.buttons && (
           <div className="flex flex-wrap md:flex-nowrap gap-3 py-4">
