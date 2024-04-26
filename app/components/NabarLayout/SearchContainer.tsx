@@ -8,7 +8,7 @@ import SearchForm from "@/app/components/NabarLayout/SearchForm";
 import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
-  container: "block z-10",
+  container: "hidden md:block z-10",
   button: "bg-transparent px-2 py-1 rounded-full text-lg hover:text-[#0076AD]",
   buttonOpen: "bg-red-500 px-2 py-1 rounded-full text-lg hover:bg-red-600",
   icon: "text-white",
@@ -16,12 +16,15 @@ const styles = {
     "absolute z-40 left-0 right-0 top-full max-h-screen py-9 px-5 md:px-20 bg-[#EBEBEB]",
 };
 
-interface SearchDropdownProps {
+interface NavSearchContainerProps {
   searchIndex: SearchIndex;
   onSearchOpen: () => void;
 }
 
-const SearchDropdown = ({ searchIndex, onSearchOpen }: SearchDropdownProps) => {
+const NavSearchContainer = ({
+  searchIndex,
+  onSearchOpen,
+}: NavSearchContainerProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -49,39 +52,44 @@ const SearchDropdown = ({ searchIndex, onSearchOpen }: SearchDropdownProps) => {
   };
 
   return (
-    <div className={styles.container} ref={containerRef}>
-      <div className="min-w-[55.5px]">
-        <button
-          onClick={toggleSearch}
-          className={`${isOpen ? styles.buttonOpen : styles.button}`}
-          aria-label={isOpen ? "Close" : "Search"}
-        >
-          {isOpen ? (
-            <>
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={`${styles.icon} pr-1`}
-              />
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className={styles.icon}
-              />
-            </>
-          ) : (
-            <>
-              <FontAwesomeIcon icon={faTimes} className={styles.icon} />
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </>
-          )}
-        </button>
-      </div>
-      {isOpen && (
-        <div className={styles.inputContainer}>
-          <SearchForm onSelect={closeSearch} searchIndex={searchIndex} />
+    <>
+      <div className={styles.container} ref={containerRef}>
+        <div className="min-w-[55.5px]">
+          <button
+            onClick={toggleSearch}
+            className={`${isOpen ? styles.buttonOpen : styles.button}`}
+            aria-label={isOpen ? "Close" : "Search"}
+          >
+            {isOpen ? (
+              <>
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={`${styles.icon} pr-1`}
+                />
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className={styles.icon}
+                />
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon icon={faTimes} className={styles.icon} />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </>
+            )}
+          </button>
         </div>
-      )}
-    </div>
+        {isOpen && (
+          <div className={styles.inputContainer}>
+            <SearchForm onSelect={closeSearch} searchIndex={searchIndex} />
+          </div>
+        )}
+      </div>
+      <div className="block md:hidden py-3.5 px-7">
+        <SearchForm onSelect={closeSearch} searchIndex={searchIndex} />
+      </div>
+    </>
   );
 };
 
-export default SearchDropdown;
+export default NavSearchContainer;

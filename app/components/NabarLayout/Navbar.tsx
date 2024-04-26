@@ -16,10 +16,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SearchDropdown from "./SearchContainer";
+import NavSearchContainer from "./SearchContainer";
 import bluePhone from "@/public/blue-phone-icon.svg";
 import logo from "@/public/Luskin_OIC_v2.png";
-import SearchContainer from "./SearchContainer";
 import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
@@ -42,8 +41,9 @@ const styles = {
     }`,
   navigationItems:
     "hidden md:flex flex-row justify-evenly w-full items-center z-1",
+  theContainer: "flex md:hidden flex-col py-2",
   mobileContainer:
-    "flex flex-row w-full justify-between items-center md:hidden text-black",
+    "flex md:hidden flex-row w-full justify-between items-center text-black",
   mobileLogoContainer: "block md:hidden py-2",
   navigationMenuItem: "block flex flex-row md:hidden list-none",
   mobileMenuButton: "bg-transparent text-black rounded-full px-4 text-xl",
@@ -126,7 +126,7 @@ export default function Navbar({
             <Image src={bluePhone} alt="Phone Icon" width={20} height={20} />
             <span> 213-742-1000 </span>
           </div>
-          <SearchDropdown
+          <NavSearchContainer
             searchIndex={searchIndex}
             onSearchOpen={closeMenuItems}
           />
@@ -134,34 +134,36 @@ export default function Navbar({
       </div>
 
       {/* MOBILE CONTAINER */}
-      <ul className={styles.mobileContainer}>
-        <li className={styles.mobileLogoContainer}>
-          <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
-            <Image
-              className="ml-4 w-contain h-auto"
-              src={logo}
-              alt={"Logo"}
-              width={90}
-              height={60}
-            />
-          </Link>
-        </li>
+      <div className={styles.theContainer}>
+        <ul className={styles.mobileContainer}>
+          <li className={styles.mobileLogoContainer}>
+            <Link href="/" onClick={() => handleClick("Mobile Logo Home")}>
+              <Image
+                className="ml-4 w-contain h-auto"
+                src={logo}
+                alt={"Logo"}
+                width={90}
+                height={60}
+              />
+            </Link>
+          </li>
 
-        <NavigationMenuItem className={styles.navigationMenuItem}>
-          <SearchContainer
-            searchIndex={searchIndex}
-            onSearchOpen={closeMenuItems}
-          />
-          <button
-            onClick={toggleHamburgerDropdown}
-            aria-label="Open Navigation Menu"
-            className={styles.mobileMenuButton}
-          >
-            {" "}
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-        </NavigationMenuItem>
-      </ul>
+          <NavigationMenuItem className={styles.navigationMenuItem}>
+            <button
+              onClick={toggleHamburgerDropdown}
+              aria-label="Open Navigation Menu"
+              className={styles.mobileMenuButton}
+            >
+              {" "}
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+          </NavigationMenuItem>
+        </ul>
+        <NavSearchContainer
+          searchIndex={searchIndex}
+          onSearchOpen={closeMenuItems}
+        />
+      </div>
 
       <MobileMenu
         isHamburgerOpen={isHamburgerOpen}
