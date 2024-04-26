@@ -68,6 +68,7 @@ export type CarouselType = {
 export type CarouselSlideType = {
   fields: {
     image: ImageType;
+    desktopOnly: boolean;
     overlayTitle?: string;
     overlayAlignment: string;
     overlayButton?: ButtonType;

@@ -22,22 +22,22 @@ export default function ImagesLayout({
 }) {
   const imagesType =
     section.fields.imagesLayout && section.fields.imagesLayout.fields.type;
-  const ImagesLayout =
+  const imagesLayout =
     section.fields.imagesLayout && section.fields.imagesLayout;
   switch (imagesType) {
     case "Full Width Image":
-      return <FullWidthImageLayout section={ImagesLayout} />;
+      return <FullWidthImageLayout section={imagesLayout} />;
     case "Tri Image":
-      return <TriImageLayout section={ImagesLayout.fields.images} />;
+      return <TriImageLayout section={imagesLayout.fields.images} />;
     case "Carousel Images Only":
-      return <CarouselImageLayout section={ImagesLayout.fields.images} />;
+      return <CarouselImageLayout section={imagesLayout.fields.images} />;
     case "Carousel Images and Overlays":
       return (
-        <CarouselImageSlider section={ImagesLayout.fields.carouselSlides} />
+        <CarouselImageSlider section={imagesLayout.fields.carouselSlides} />
       );
     //to be removed after text-overlay-carousel branch push
     case "Carousel Image":
-      return <CarouselImageLayout section={ImagesLayout.fields.images} />;
+      return <CarouselImageLayout section={imagesLayout.fields.images} />;
     default:
       return null;
   }
