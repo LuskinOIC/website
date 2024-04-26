@@ -68,6 +68,7 @@ export type CarouselType = {
 export type CarouselSlideType = {
   fields: {
     image: ImageType;
+    desktopOnly: boolean;
     overlayTitle?: string;
     overlayAlignment: string;
     overlayButton?: ButtonType;
@@ -253,18 +254,19 @@ export type PageSectionType = {
   filter: any;
   map: any;
   fields: {
+    cardsLayout: CardType[];
     columnLayout: ColumnType;
-    type: string;
-    title: string;
     dividerText?: string;
+    eventBanner: EventBannerType;
+    imagesLayout: ImagesLayoutType;
     infoCards: CardType[];
+    locations?: LocationType[];
+    mobileOnly: boolean;
     quadCards: CardType[];
     specialty: SpecialtyType[];
     tabs: TabType[];
-    locations?: LocationType[];
-    cardsLayout: CardType[];
-    imagesLayout: ImagesLayoutType;
-    eventBanner: EventBannerType;
+    title: string;
+    type: string;
   };
 };
 

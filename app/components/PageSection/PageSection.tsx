@@ -14,9 +14,7 @@ import NewsletterBanner from "@/app/components/NewsletterBanner";
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
 import ConditionsIndexLayout from "@/app/conditions/ConditionsIndexLayout";
 
-export default function PageSection({ section }: { section: PageSectionType }) {
-  if (!section) return null;
-
+export function PageSectionContent({ section }: { section: PageSectionType }) {
   switch (section.fields.type) {
     case "Column Layout":
       return <ColumnLayout section={section} />;
@@ -47,4 +45,14 @@ export default function PageSection({ section }: { section: PageSectionType }) {
     default:
       return null;
   }
+}
+
+export default function PageSection({ section }: { section: PageSectionType }) {
+  if (!section) return null;
+
+  return (
+    <div className={section.fields.mobileOnly ? "block md:hidden" : ""}>
+      <PageSectionContent section={section} />
+    </div>
+  );
 }

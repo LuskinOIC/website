@@ -39,22 +39,40 @@ const OverlayComponent = ({
   </>
 );
 
+const alignmentClass = (alignment: string) => {
+  switch (alignment) {
+    case "left":
+      return "left-1/2 md:left-1/4";
+    case "center":
+      return "left-1/2 md:left-1/2";
+    case "right":
+      return "left-1/2 md:left-2/3";
+    default:
+      return "left-1/2 md:left-1/4";
+  }
+};
+
+export function CarouselImageOverlay({ slide }: { slide: CarouselSlideType }) {
+  if (!slide.fields.overlayTitle && !slide.fields.overlayButton) return null;
+
+  const mobileClass = slide.fields.desktopOnly ? "hidden md:block" : "";
+  const alignmentStyles = alignmentClass(slide.fields.overlayAlignment);
+  const overlayContainerClass = `${styles.overlayDesktop} ${alignmentStyles} ${mobileClass}`;
+
+  return (
+    <div className={overlayContainerClass}>
+      <OverlayComponent
+        overlayTitle={slide.fields.overlayTitle}
+        overlayButton={slide.fields.overlayButton}
+        btnStyle={styles.btn}
+      />
+    </div>
+  );
+}
+
 export default function CarouselImageSlider({
   section,
 }: CarouselImageLayoutProps) {
-  const alignmentClass = (alignment: string) => {
-    switch (alignment) {
-      case "left":
-        return "left-1/2 md:left-1/4";
-      case "center":
-        return "left-1/2 md:left-1/2";
-      case "right":
-        return "left-1/2 md:left-2/3";
-      default:
-        return "left-1/2 md:left-1/4";
-    }
-  };
-
   return (
     <section>
       <Slider
@@ -69,19 +87,7 @@ export default function CarouselImageSlider({
                   height={slide.fields.image.fields.file.details.image.height}
                   className={styles.image}
                 />
-                {(slide.fields.overlayTitle || slide.fields.overlayButton) && (
-                  <div
-                    className={`${styles.overlayDesktop} ${alignmentClass(
-                      slide.fields.overlayAlignment,
-                    )}`}
-                  >
-                    <OverlayComponent
-                      overlayTitle={slide.fields.overlayTitle}
-                      overlayButton={slide.fields.overlayButton}
-                      btnStyle={styles.btn}
-                    />
-                  </div>
-                )}
+                <CarouselImageOverlay slide={slide} />
               </div>
             </div>
           )) as any

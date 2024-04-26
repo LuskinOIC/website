@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NavigationMenuList } from "@/app/components/ui/NavigationMenu";
-import { MobileDropdowns } from "@/app/components/NabarLayout/NavbarConstants";
 import { DONATE_URL, MYCHART_URL, SAVE_MY_SPOT } from "@/app/constants/links";
 import external_icon_white from "@/public/external-link-icon-white.svg";
 import external_icon_black from "@/public/external-link-icon-black.svg";
@@ -40,14 +39,14 @@ function MobileMenu({
   toggleHamburgerDropdown,
   dropdowns,
 }: MobileMenuProps) {
-  const [mobileMenuOpenStates, setMobileMenuOpenStates] = useState(
-    MobileDropdowns.map(() => false),
-  );
+  const [openSubmenuIndex, setOpenSubmenuIndex] = useState<
+    Record<number, boolean>
+  >({});
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isHamburgerOpen) {
-      setMobileMenuOpenStates(MobileDropdowns.map(() => false));
+      setOpenSubmenuIndex({});
     }
 
     function handleClickOutside(event: MouseEvent) {
@@ -64,10 +63,14 @@ function MobileMenu({
     };
   }, [isHamburgerOpen, closeMenu]);
 
-  const toggleMobileMenu = (index: number) => {
-    const newMobileMenuOpenStates = [...mobileMenuOpenStates];
-    newMobileMenuOpenStates[index] = !newMobileMenuOpenStates[index];
-    setMobileMenuOpenStates(newMobileMenuOpenStates);
+  const toggleSubmenu = (index: number) => {
+    setOpenSubmenuIndex((prevState) => ({
+      ...Object.keys(prevState).reduce(
+        (acc, key) => ({ ...acc, [key]: false }),
+        {},
+      ),
+      [index]: !prevState[index],
+    }));
   };
 
   const handleClick = (text: string) => {
@@ -101,11 +104,11 @@ function MobileMenu({
             </a>
             {dropdowns.map((item, index) => (
               <li key={index} className={`${styles.mobileDropdown}`}>
-                <button onClick={() => toggleMobileMenu(index)}>
+                <button onClick={() => toggleSubmenu(index)}>
                   {item.fields.text}
                 </button>
 
-                {mobileMenuOpenStates[index] && (
+                {openSubmenuIndex[index] && (
                   <ul className={styles.mobileDropdownMenu}>
                     {item.fields.navigationLinks.map((subItem, subIndex) => (
                       <li
@@ -116,7 +119,7 @@ function MobileMenu({
                           <button
                             onClick={() => {
                               handleClick(`Mobile Nav ${subItem.fields.text}}`);
-                              toggleMobileMenu(index);
+                              toggleSubmenu(index);
                             }}
                           >
                             {subItem.fields.text}
@@ -129,7 +132,7 @@ function MobileMenu({
                                 handleClick(
                                   `Mobile Nav ${subItem.fields.text}`,
                                 );
-                                closeMenu;
+                                closeMenu();
                               }}
                             >
                               {subItem.fields.text}
