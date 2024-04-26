@@ -32,13 +32,17 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
     Array<{ path: string; title: string }>
   >([]);
   const [searchAttempted, setSearchAttempted] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchAttempted(false);
     const query = String(e.target.value).toLowerCase().trim();
 
+    setInputValue(query);
+
     if (query === "") {
       setSearchResults([]);
+      setInputValue("");
       return;
     }
 
@@ -55,6 +59,7 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   function closeSearchResults() {
     document.body.style.overflow = "auto";
     setSearchResults([]);
+    setInputValue("");
     onSelect();
   }
 
@@ -77,6 +82,7 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
             className={styles.input}
             placeholder="Search..."
             list="search"
+            value={inputValue}
             onChange={handleSearchChange}
           />
           <div className={styles.searchIconMobile}>
