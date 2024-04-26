@@ -36,7 +36,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     return (
       <div className="grid gap-4 md:gap-5 justify-items-start px-6 py-6 md:py-0">
         <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
-        <div className="grid gap-4 text-base md:text-lg leading-[30px]">
+        <div className="grid gap-4 text-base md:text-lg">
           {descriptionContent}
         </div>
         <Button
