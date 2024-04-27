@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SearchIndex } from "@/app/constants/types";
 import { filterSearchResults } from "@/app/utils/search";
 import translations from "@/public/locales/en.json";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const styles = {
@@ -14,7 +14,7 @@ const styles = {
   inputResults:
     "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 absolute max-h-[90vh] md:max-h-[60vh]",
   searchIconMobile:
-    "absolute inset-y-0 right-3 pr-3 flex items-center pointer-events-none text-[#868787]",
+    "absolute inset-y-0 right-3 pr-3 flex items-center text-[#868787]",
   searchBtnDesktop:
     "hidden md:block px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
   result:
@@ -37,7 +37,6 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchAttempted(false);
     const query = String(e.target.value).toLowerCase().trim();
-
     setInputValue(query);
 
     if (query === "") {
@@ -85,9 +84,18 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
             value={inputValue}
             onChange={handleSearchChange}
           />
-          <div className={styles.searchIconMobile}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </div>
+          {inputValue ? (
+            <button
+              className={styles.searchIconMobile}
+              onClick={closeSearchResults}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+          ) : (
+            <div className={styles.searchIconMobile}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </div>
+          )}
         </div>
         <button className={styles.searchBtnDesktop}>
           {translations.searchBar.searchLabel}
