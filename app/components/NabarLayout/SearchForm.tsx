@@ -48,6 +48,7 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   }
 
   function closeSearchResults() {
+    document.body.style.overflow = "auto";
     setSearchResults([]);
     onSelect();
   }
