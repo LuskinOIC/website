@@ -67,6 +67,22 @@ const nextConfig = {
       {
         source: "/hemophilia/",
         destination: "/specialties/",
+        permanent: true,
+      },
+      {
+        source: "/index.php/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/sitemap.xml.gz",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/.env",
+        destination: "/",
+        permanent: true,
       },
     ];
   },
