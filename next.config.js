@@ -64,6 +64,10 @@ const nextConfig = {
         destination: "/providers",
         permanent: true,
       },
+      {
+        source: "/hemophilia/",
+        destination: "/specialties/",
+      },
     ];
   },
 };
