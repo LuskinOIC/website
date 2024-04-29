@@ -30,6 +30,8 @@ export async function generateMetadata({
   };
 }
 
+export const dynamicParams = false;
+
 // EVENT
 export default async function Event({ params }: { params: { slug: string } }) {
   const orgEvent = await getEventBySlug(params.slug);

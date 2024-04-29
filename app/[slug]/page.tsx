@@ -29,6 +29,8 @@ export async function generateStaticParams() {
     .map((page) => ({ slug: page.slug }));
 }
 
+export const dynamicParams = false;
+
 export default async function AppPage({
   params,
 }: {
