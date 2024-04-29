@@ -24,13 +24,13 @@ import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
-    `bg-white fixed max-w-[1600px] ${
+    `bg-white fixed shadow-lg max-w-[1600px] ${
       isScrolled
         ? "transition-all duration-300 ease-out md:h-[102px]"
-        : "transition-all duration-300 ease-out md:h-[180px]"
+        : "transition-all duration-100 ease-out md:h-[180px]"
     }`,
   mainNavScrollWrapper: (isScrolled: boolean) =>
-    `hidden md:flex z-50 w-full h-full transition-opacity duration-500 ease-out ${
+    `hidden md:flex z-50 w-full h-full transition-opacity duration-300 ease-out ${
       isScrolled ? "absolute inset-x-0 top-0" : ""
     }`,
   logoContainer: "hidden md:block w-fit h-fit h-fit mx-10 pt-4",

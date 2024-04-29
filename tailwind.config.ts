@@ -9,11 +9,15 @@ const config: Config = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      md: "1024px",
+    },
     container: {
       center: true,
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        md: "1024px",
       },
     },
     extend: {
@@ -79,7 +83,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        arial: "arial"
+        arial: "arial",
       },
     },
   },

@@ -47,8 +47,8 @@ export default async function RootLayout({
     "utf8",
   );
   const searchIndexData = JSON.parse(searchIndexDataString);
-
   const bgColor = getBackgroundColor("blue");
+
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200 overscroll-none">
@@ -59,7 +59,8 @@ export default async function RootLayout({
             searchIndex={searchIndexData as SearchIndex}
           />
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className={`h-[89px] md:h-[180px] md:${bgColor}`}></div>
+          <div className={`h-[80px] md:h-[180px] md:${bgColor}`}></div>
+          <div id="overlay"></div>
           <main id="main">{children}</main>
           <Footer />
         </div>
