@@ -17,20 +17,21 @@ interface MobileMenuProps {
 }
 
 const styles = {
-  navigationMenu: "block md:hidden",
+  navigationMenu: "block lg:hidden z-100 overflow-y-scroll",
   menuList:
     "text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0",
   menuItem:
-    "flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2",
+    "flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2 text-lg",
   externalLinkIcon: "text-white px-0.5",
-  mobileDropdown: "w-full text-center py-2 text-black",
+  mobileDropdown: "w-full text-center text-black",
   mobileDropdownMenu:
     "bg-gray-100 text-luskin-blue underline w-full text-sm flex flex-col py-2 ",
   mobileDropdownMenuItem: "w-full text-center py-2",
   myChartLink:
-    "flex flex-row justify-center w-full text-black font-semibold text-center py-2",
-  donateButton: "w-full bg-amber-200 text-black font-semibold text-center py-2",
-  closeButton: "bg-gray-100 w-full text-luskin-blue text-center py-2",
+    "flex flex-row justify-center w-full text-black font-semibold text-center py-1 text-lg",
+  donateButton:
+    "w-full bg-amber-200 text-black font-semibold text-center py-2 text-lg",
+  closeButton: "bg-gray-100 w-full text-luskin-blue text-center py-2 text-lg",
 };
 
 function MobileMenu({
@@ -47,6 +48,16 @@ function MobileMenu({
   useEffect(() => {
     if (!isHamburgerOpen) {
       setOpenSubmenuIndex({});
+    }
+
+    const main = document.getElementById("overlay") as HTMLElement;
+
+    if (!isHamburgerOpen) {
+      document.body.style.overflow = "auto";
+      main.className = "opacity-100";
+    } else {
+      document.body.style.overflow = "hidden";
+      main.className = "absolute h-screen bg-black opacity-70 w-full z-10";
     }
 
     function handleClickOutside(event: MouseEvent) {
@@ -67,7 +78,7 @@ function MobileMenu({
     setOpenSubmenuIndex((prevState) => ({
       ...Object.keys(prevState).reduce(
         (acc, key) => ({ ...acc, [key]: false }),
-        {},
+        {}
       ),
       [index]: !prevState[index],
     }));
@@ -104,7 +115,10 @@ function MobileMenu({
             </a>
             {dropdowns.map((item, index) => (
               <li key={index} className={`${styles.mobileDropdown}`}>
-                <button onClick={() => toggleSubmenu(index)}>
+                <button
+                  className="py-1 text-lg"
+                  onClick={() => toggleSubmenu(index)}
+                >
                   {item.fields.text}
                 </button>
 
@@ -130,7 +144,7 @@ function MobileMenu({
                               href={subItem.fields.url}
                               onClick={() => {
                                 handleClick(
-                                  `Mobile Nav ${subItem.fields.text}`,
+                                  `Mobile Nav ${subItem.fields.text}`
                                 );
                                 closeMenu();
                               }}

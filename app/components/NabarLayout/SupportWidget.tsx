@@ -6,11 +6,11 @@ import translations from "@/public/locales/en.json";
 
 const styles = {
   widgetContainer: (isScrolled: boolean) =>
-    `hidden md:flex flex-row gap-10 justify-end w-full pr-8 text-white bg-[#0076AD] h-10 text-base transition-transform ease-out ${
+    `hidden lg:flex flex-row gap-10 justify-end w-full pr-8 text-white bg-[#0076AD] h-10 text-base transition-transform ease-out ${
       isScrolled ? "transform -translate-y-full" : "transform translate-y-0"
     }`,
   overlapTab: (isScrolled: boolean) =>
-    `hidden md:flex flex-col text-center justify-center z-50 px-7 py-4 rounded-b-2xl hover:underline transition-all duration-500 ease-in-out ${
+    `hidden lg:flex flex-col text-center justify-center z-50 px-7 py-4 rounded-b-2xl hover:underline transition-all duration-500 ease-in-out ${
       isScrolled ? "max-h-0 overflow-hidden" : "max-h-[5rem] h-20"
     }`,
   links: "py-2 font-semibold  hover:underline ",
@@ -65,7 +65,7 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.overlapTab(
-          isScrolled,
+          isScrolled
         )} bg-[#FCE385] text-black font-semibold text-lg`}
       >
         {translations.supportWidget.donate}

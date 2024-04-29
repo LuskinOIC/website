@@ -9,7 +9,7 @@ import NavbarDropdown from "@/app/components/NabarLayout/NavbarDropdown";
 import { sendGAEvent } from "@next/third-parties/google";
 
 const styles = {
-  link: "hidden md:block text-[#171515] font-bold text-xl hover:underline decoration-[#0076AD] underline-offset-4",
+  link: "hidden lg:block text-[#171515] font-bold text-xl hover:underline decoration-[#0076AD] underline-offset-4",
   button: "w-full sm:w-auto text-center gap-2",
 };
 

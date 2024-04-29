@@ -21,7 +21,7 @@ interface NavbarDropDownProps {
 }
 
 const styles = {
-  container: "hidden md:block text-[#171515] text-xl font-bold",
+  container: "hidden lg:block text-[#171515] text-xl font-bold",
   button: (isOpen: boolean) =>
     `text-black hover:underline ${
       isOpen ? "underline" : ""
@@ -29,7 +29,7 @@ const styles = {
   dropdownContainer:
     "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 shadow-lg",
   linksWrapper: "basis-2/3 h-1/2",
-  linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10 pl-10",
+  linksGrid: "hidden lg:grid grid-rows-3 grid-flow-col items-start mx-10 pl-10",
   item: "py-2 px-10 flex items-center",
   link: "no-underline hover:underline text-[#0076AD] font-bold text-lg flex items-center",
   linkIcon: "px-0.5 text-blue-500",
