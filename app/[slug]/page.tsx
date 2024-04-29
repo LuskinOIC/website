@@ -42,3 +42,5 @@ export default async function AppPage({
 
   return <Page page={page} />;
 }
+
+export const dynamic = "force-static";
