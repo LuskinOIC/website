@@ -1,5 +1,13 @@
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
-export default function NotFound() {
-  redirect("/");
+/* eslint-disable i18next/no-literal-string */
+export default function Error() {
+  return (
+    <div>
+      <h2>Page not found</h2>
+      <p>Could not find requested resource</p>
+      <Link href="/">Return Home</Link>
+    </div>
+  );
 }
+/* eslint-enable i18next/no-literal-string */
