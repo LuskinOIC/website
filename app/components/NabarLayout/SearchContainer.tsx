@@ -27,6 +27,7 @@ const SearchDropdown = ({ searchIndex, onSearchOpen }: SearchDropdownProps) => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      document.body.style.overflow = "auto";
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target as Node)
