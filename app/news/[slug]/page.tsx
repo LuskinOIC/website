@@ -6,7 +6,7 @@ import { BlogCardsRowType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import PostComponent from "@/app/blog/components/PostComponent";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 interface PagePropsType {
   params: { slug: string };
 }
@@ -43,7 +43,7 @@ export default async function NewsArticle({
   const news = (await getNewsPosts(4)) as unknown as BlogCardsRowType[];
 
   if (!newsPost) {
-    redirect("/");
+    notFound();
   }
 
   return (

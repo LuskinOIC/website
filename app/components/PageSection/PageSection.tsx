@@ -48,8 +48,6 @@ export function PageSectionContent({ section }: { section: PageSectionType }) {
 }
 
 export default function PageSection({ section }: { section: PageSectionType }) {
-  if (!section) return null;
-
   return (
     <div className={section.fields.mobileOnly ? "block md:hidden" : ""}>
       <PageSectionContent section={section} />
