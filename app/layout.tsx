@@ -44,7 +44,7 @@ export default async function RootLayout({
   const navigationBar = await getNavigationBar();
   const searchIndexDataString = await fs.readFile(
     process.cwd() + "/app/data/searchIndex.json",
-    "utf8"
+    "utf8",
   );
   const searchIndexData = JSON.parse(searchIndexDataString);
   const bgColor = getBackgroundColor("blue");

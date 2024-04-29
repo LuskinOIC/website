@@ -78,7 +78,7 @@ function MobileMenu({
     setOpenSubmenuIndex((prevState) => ({
       ...Object.keys(prevState).reduce(
         (acc, key) => ({ ...acc, [key]: false }),
-        {}
+        {},
       ),
       [index]: !prevState[index],
     }));
@@ -144,7 +144,7 @@ function MobileMenu({
                               href={subItem.fields.url}
                               onClick={() => {
                                 handleClick(
-                                  `Mobile Nav ${subItem.fields.text}`
+                                  `Mobile Nav ${subItem.fields.text}`,
                                 );
                                 closeMenu();
                               }}
