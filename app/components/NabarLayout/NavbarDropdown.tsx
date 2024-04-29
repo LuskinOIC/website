@@ -27,7 +27,7 @@ const styles = {
       isOpen ? "underline" : ""
     } decoration-[#0076AD] underline-offset-4 `,
   dropdownContainer:
-    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4",
+    "absolute z-40 w-full left-0 right-0 top-full h-[340px] flex flex-col-2 bg-white py-4 shadow-lg",
   linksWrapper: "basis-2/3 h-1/2",
   linksGrid: "hidden md:grid grid-rows-3 grid-flow-col items-start mx-10 pl-10",
   item: "py-2 px-10 flex items-center",

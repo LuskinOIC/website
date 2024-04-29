@@ -115,6 +115,7 @@ export default function Navbar({
               <NavigationItem
                 key={item.sys.id}
                 item={item}
+                closeMenuItems={closeMenuItems}
                 selectedDropdown={selectedDropdown}
                 setSelectedDropdown={setSelectedDropdown}
               />
