@@ -19,7 +19,7 @@ interface MobileMenuProps {
 const styles = {
   navigationMenu: "block md:hidden",
   menuList:
-    "text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0",
+    "bg-white text-white w-full text-sm font-semibold flex flex-col justify-center items-center pt-4 pb-0",
   menuItem:
     "flex flex-row justify-center bg-luskin-purple w-full text-white text-center py-2",
   externalLinkIcon: "text-white px-0.5",
