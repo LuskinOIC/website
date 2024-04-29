@@ -17,11 +17,13 @@ function NavigationItem({
   item,
   selectedDropdown,
   setSelectedDropdown,
+  closeMenuItems,
 }: {
   item: NavigationItemType;
   selectedDropdown: string;
   /* eslint-disable no-unused-vars */
   setSelectedDropdown: (id: string) => void;
+  closeMenuItems: () => void;
   /* eslint-enable no-unused-vars */
 }) {
   const handleClick = (text: string) => {
@@ -36,7 +38,10 @@ function NavigationItem({
     return (
       <Link
         href={navigationLink.fields.url}
-        onClick={() => handleClick(`Nav Menu ${navigationLink.fields.text}`)}
+        onClick={() => {
+          handleClick(`Nav Menu ${navigationLink.fields.text}`);
+          closeMenuItems();
+        }}
         className={styles.link}
       >
         {navigationLink.fields.text}
