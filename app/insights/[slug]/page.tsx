@@ -9,6 +9,7 @@ import { BlogCardsRowType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import PostComponent from "@/app/blog/components/PostComponent";
+import { redirect } from "next/navigation";
 
 interface PagePropsType {
   params: { slug: string };
@@ -38,6 +39,11 @@ export default async function Article({
 }) {
   const blogPost = await getInsightsPostBySlug(params.slug);
   const insights = (await getInsightsPosts(4)) as unknown as BlogCardsRowType[];
+
+  if (!blogPost) {
+    redirect("/insights");
+  }
+
   return (
     <div className="flex flex-col">
       <PostComponent postData={blogPost} />

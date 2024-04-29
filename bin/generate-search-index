@@ -32,6 +32,7 @@ function getIndicesOf(searchStr, str) {
 }
 
 async function createSearchIndex(directoryPath) {
+  console.log(directoryPath);
   const { stemmer } = await import("stemmer");
   const searchIndex = {};
 
@@ -40,6 +41,7 @@ async function createSearchIndex(directoryPath) {
 
     files.forEach((file) => {
       const filePath = path.join(currentPath, file);
+      console.log(filePath);
       const stats = fs.statSync(filePath);
 
       if (stats.isDirectory()) {

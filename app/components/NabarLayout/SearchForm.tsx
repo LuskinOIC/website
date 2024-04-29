@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { SearchIndex } from "@/app/constants/types";
 import { filterSearchResults } from "@/app/utils/search";
@@ -9,7 +9,7 @@ import translations from "@/public/locales/en.json";
 const styles = {
   input: "w-full pl-4 pr-20 py-2 rounded-l-md border border-r-0 bg-white",
   inputResults:
-    "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-scroll z-10",
+    "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 absolute max-h-[90vh] md:max-h-[60vh]",
   searchBtn:
     "px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
   result:
@@ -48,12 +48,23 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   }
 
   function closeSearchResults() {
+    document.body.style.overflow = "auto";
     setSearchResults([]);
     onSelect();
   }
 
+  useEffect(() => {
+    if (searchResults.length > 0) {
+      // disable scrolling for the top level document
+      document.body.style.overflow = "hidden";
+    } else {
+      // enable scrolling for the top level document
+      document.body.style.overflow = "auto";
+    }
+  }, [searchResults]);
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="relative">
       <div className="flex flex-row">
         <input
           type="text"
@@ -72,17 +83,19 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
         </div>
       )}
       {searchResults.length > 0 && (
-        <div id="search" className={styles.inputResults}>
-          {searchResults.map((result, i) => (
-            <Link
-              key={i}
-              href={result.path}
-              className={styles.result}
-              onClick={closeSearchResults}
-            >
-              {result.title}
-            </Link>
-          ))}
+        <div className="">
+          <div id="search" className={styles.inputResults}>
+            {searchResults.map((result, i) => (
+              <Link
+                key={i}
+                href={result.path}
+                className={styles.result}
+                onClick={closeSearchResults}
+              >
+                {result.title}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </form>
