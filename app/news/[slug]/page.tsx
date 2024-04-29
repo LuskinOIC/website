@@ -6,7 +6,7 @@ import { BlogCardsRowType } from "@/app/constants/types";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import PostComponent from "@/app/blog/components/PostComponent";
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 interface PagePropsType {
   params: { slug: string };
 }
@@ -41,10 +41,6 @@ export default async function NewsArticle({
 }) {
   const newsPost = await getNewsPostBySlug(params.slug);
   const news = (await getNewsPosts(4)) as unknown as BlogCardsRowType[];
-
-  if (!newsPost) {
-    notFound();
-  }
 
   return (
     <div className="flex flex-col">
