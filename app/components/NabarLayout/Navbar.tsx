@@ -12,7 +12,7 @@ import {
   NavigationMenuItem,
 } from "@/app/components/ui/NavigationMenu";
 import { NavigationBarType } from "@/app/constants/types";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SupportWidget from "./SupportWidget";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -60,9 +60,7 @@ export default function Navbar({
   const [selectedDropdown, setSelectedDropdown] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
-  const resetNavigationMenu = () => {
-    setIsHamburgerOpen(false);
-  };
+  const resetNavigationMenu = () => setIsHamburgerOpen(false);
 
   useEffect(() => {
     window.document.scrollingElement?.scrollTo(0, 0);
@@ -148,15 +146,25 @@ export default function Navbar({
             </Link>
           </li>
 
-          <NavigationMenuItem className={styles.navigationMenuItem}>
-            <button
-              onClick={toggleHamburgerDropdown}
-              aria-label="Open Navigation Menu"
-              className={styles.mobileMenuButton}
-            >
-              {" "}
-              <FontAwesomeIcon icon={faBars} />
-            </button>
+          <NavigationMenuItem
+            className={`${styles.navigationMenuItem} ${styles.mobileMenuButton}`}
+          >
+            {isHamburgerOpen ? (
+              <button
+                onClick={resetNavigationMenu}
+                aria-label="Toggle Navigation Menu Open"
+              >
+                <FontAwesomeIcon icon={faTimes} />{" "}
+              </button>
+            ) : (
+              <button
+                onClick={toggleHamburgerDropdown}
+                aria-label="Toggle Navigation Menu Close"
+              >
+                {" "}
+                <FontAwesomeIcon icon={faBars} />{" "}
+              </button>
+            )}
           </NavigationMenuItem>
         </ul>
         <NavSearchContainer
