@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 /* eslint-disable i18next/no-literal-string */
