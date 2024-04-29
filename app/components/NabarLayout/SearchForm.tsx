@@ -9,7 +9,7 @@ import translations from "@/public/locales/en.json";
 const styles = {
   input: "w-full pl-4 pr-20 py-2 rounded-l-md border border-r-0 bg-white",
   inputResults:
-    "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 max-h-[60vh]",
+    "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 absolute max-h-[90vh] md:max-h-[60vh]",
   searchBtn:
     "px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
   result:
@@ -83,7 +83,7 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
         </div>
       )}
       {searchResults.length > 0 && (
-        <div className="block h-screen">
+        <div className="">
           <div id="search" className={styles.inputResults}>
             {searchResults.map((result, i) => (
               <Link
