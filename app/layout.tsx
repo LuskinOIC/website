@@ -59,7 +59,7 @@ export default async function RootLayout({
             searchIndex={searchIndexData as SearchIndex}
           />
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className={`h-[89px] md:h-[180px] md:${bgColor}`}></div>
+          <div className={`hidden md:block h-[180px] md:${bgColor}`}></div>
           <main id="main">{children}</main>
           <Footer />
         </div>
