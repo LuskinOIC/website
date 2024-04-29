@@ -10,6 +10,12 @@ import { formatProviderType } from "@/app/providers/PhysicianComponents/formatti
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
 
+interface PagePropsType {
+  params: { slug: string };
+}
+
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const providers = await getPhysicians();
 
@@ -19,10 +25,6 @@ export async function generateStaticParams() {
       slug: provider.slug,
     };
   });
-}
-
-interface PagePropsType {
-  params: { slug: string };
 }
 
 export async function generateMetadata({
