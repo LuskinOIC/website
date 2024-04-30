@@ -4,6 +4,10 @@ import { getSpecialties, getSpecialtyBySlug } from "@/app/utils/contentful";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { redirect } from "next/navigation";
 
+interface PagePropsType {
+  params: { slug: string };
+}
+
 export async function generateStaticParams() {
   let specialties = await getSpecialties();
   specialties = specialties.filter(
@@ -15,9 +19,7 @@ export async function generateStaticParams() {
   }));
 }
 
-interface PagePropsType {
-  params: { slug: string };
-}
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,

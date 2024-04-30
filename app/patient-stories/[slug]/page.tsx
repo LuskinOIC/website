@@ -10,6 +10,8 @@ import type { Metadata } from "next";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { PagePropsType } from "@/app/constants/types";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const patients = await getPatientStories();
   return patients.map((patient) => ({ slug: patient.slug }));

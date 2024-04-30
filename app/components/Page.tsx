@@ -9,7 +9,7 @@ interface PagePropsType {
 export default function Page({ page }: PagePropsType) {
   // We want to protect against bad intermediate states where the page or sections
   // are not loaded.
-  if (!page || !page.pageSections) return null;
+  // if (!page || !page.pageSections) return null;
 
   return (
     <div>

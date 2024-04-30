@@ -15,6 +15,8 @@ interface PagePropsType {
   params: { slug: string };
 }
 
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: PagePropsType): Promise<Metadata> {

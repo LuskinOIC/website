@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { PagePropsType } from "@/app/constants/types";
 import { redirect } from "next/navigation";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   let specialties = await getSpecialties();
   specialties = specialties.filter((specialty) => specialty.fields.patientPage);
