@@ -16,7 +16,7 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6"
+    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6",
   );
 
   useEffect(() => {
@@ -46,7 +46,8 @@ export default function NewsletterSignup() {
               aria-label="Subscribe Button"
               id="mc-embedded-subscribe"
               className={desktopButtonClass}
-              value="JoinNewsletter">
+              value="JoinNewsletter"
+            >
               <span className="hidden md:block">
                 {translations.newsletter.joinOurNewsletter}
               </span>
