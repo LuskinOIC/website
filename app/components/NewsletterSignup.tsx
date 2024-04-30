@@ -39,56 +39,16 @@ export default function NewsletterSignup() {
           <Text className="mt-1 w-[70%] text-center md:w-[75%] lg:w-[55%]">
             {translations.newsletter.joinOurNewsletterDescription}
           </Text>
-          <a href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b">
-            <button
-              type="button"
-              name="subscribe"
-              aria-label="Subscribe Button"
-              id="mc-embedded-subscribe"
-              className={desktopButtonClass}
-              value="JoinNewsletter"
-            >
-              <span className="hidden md:block">
-                {translations.newsletter.joinOurNewsletter}
-              </span>
-            </button>
-          </a>
-
-          {/* <form
-            action={NEWSLETTER_URL}
-            method="post"
-            id="mc-embedded-subscribe-form"
-            name="mc-embedded-subscribe-form"
-            className="validate"
-            target="_blank"
+          <a
+            aria-label="Subscribe Button"
+            id="mc-embedded-subscribe"
+            className={desktopButtonClass}
+            href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
           >
-            <input type="hidden" name="tags" value="2637372"></input>
-            <div className="mx-3 mb-12 mt-8 flex w-fit justify-center">
-              <input
-                type="email"
-                name="EMAIL"
-                id="mce-EMAIL"
-                required
-                aria-required="true"
-                aria-label="Email Address"
-                placeholder="Enter your email address"
-                className="w-fit rounded-[5px] border border-luskin-blue px-3 pb-3 pt-2 text-left placeholder:text-[0.92rem] placeholder:text-black placeholder:opacity-50 md:px-6 md:placeholder:text-base"
-              />
-              <button
-                type="submit"
-                name="subscribe"
-                aria-label="Subscribe Button"
-                id="mc-embedded-subscribe"
-                className={desktopButtonClass}
-                value="Subscribe"
-              >
-                <span className="hidden md:block">
-                  {translations.newsletter.submit}
-                </span>
-                <Image src={arrow} alt="Submit" className="mx-3 md:hidden" />
-              </button>
-            </div>
-          </form> */}
+            <span className="hidden md:block">
+              {translations.newsletter.joinOurNewsletter}
+            </span>
+          </a>
         </>
       </div>
     </div>
