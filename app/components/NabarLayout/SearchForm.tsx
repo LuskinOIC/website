@@ -5,13 +5,18 @@ import Link from "next/link";
 import { SearchIndex } from "@/app/constants/types";
 import { filterSearchResults } from "@/app/utils/search";
 import translations from "@/public/locales/en.json";
+import { faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const styles = {
-  input: "w-full pl-4 pr-20 py-2 rounded-l-md border border-r-0 bg-white",
+  input:
+    "w-full pl-4 pr-20 py-2 rounded-md md:rounded-l-md border md:border-r-0 bg-white",
   inputResults:
     "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 absolute max-h-[90vh] md:max-h-[60vh]",
-  searchBtn:
-    "px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
+  searchIconMobile:
+    "absolute inset-y-0 right-3 pr-3 flex items-center text-[#868787]",
+  searchBtnDesktop:
+    "hidden md:block px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
   result:
     "p-4 border-b border-[#0076AD] last:border-b-0 text-[#171515] font-bold text-lg hover:underline underline-offset-4",
   noResults: "p-4 text-center text-sm text-[#171515]",
@@ -27,13 +32,16 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
     Array<{ path: string; title: string }>
   >([]);
   const [searchAttempted, setSearchAttempted] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchAttempted(false);
     const query = String(e.target.value).toLowerCase().trim();
+    setInputValue(query);
 
     if (query === "") {
       setSearchResults([]);
+      setInputValue("");
       return;
     }
 
@@ -50,6 +58,7 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   function closeSearchResults() {
     document.body.style.overflow = "auto";
     setSearchResults([]);
+    setInputValue("");
     onSelect();
   }
 
@@ -66,14 +75,29 @@ const SearchForm = ({ onSelect, searchIndex }: SearchFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="relative">
       <div className="flex flex-row">
-        <input
-          type="text"
-          className={styles.input}
-          placeholder="Search..."
-          list="search"
-          onChange={handleSearchChange}
-        />
-        <button className={styles.searchBtn}>
+        <div className="relative w-full">
+          <input
+            type="text"
+            className={styles.input}
+            placeholder="Search..."
+            list="search"
+            value={inputValue}
+            onChange={handleSearchChange}
+          />
+          {inputValue ? (
+            <button
+              className={styles.searchIconMobile}
+              onClick={closeSearchResults}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+          ) : (
+            <div className={styles.searchIconMobile}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </div>
+          )}
+        </div>
+        <button className={styles.searchBtnDesktop}>
           {translations.searchBar.searchLabel}
         </button>
       </div>

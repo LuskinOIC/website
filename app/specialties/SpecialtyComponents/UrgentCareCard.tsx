@@ -111,13 +111,9 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             <Image
               src={`https:${imageFile.url}`}
               alt={imageTitle}
-              sizes="100vw"
-              width={0}
-              height={0}
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
+              width={imageFile.details.image.width}
+              height={imageFile.details.image.height}
+              style={{ width: "100%", height: "175px", objectFit: "fill" }}
             />
           </div>
         )}

@@ -1,5 +1,6 @@
 export const styles = {
   container: "relative flex flex-col w-full overflow-hidden md:text-left",
+  // TODO: Add min-h-[275px] when we handle adding mobile version of the image
   image: "w-full h-auto aspect-ratio",
   btn: "h-6 md:h-auto text-[10px] md:text-base md:w-auto text-center md:my-2 md:mx-0",
   overlayDesktop:
