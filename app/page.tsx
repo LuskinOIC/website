@@ -18,10 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // This is the root page to the website.
 export default async function Home() {
-  const page = await getPageByType(
-    PAGE_TYPES.LANDING_PAGE,
-    draftMode().isEnabled,
-  );
+  const page = await getPageByType(PAGE_TYPES.LANDING_PAGE);
 
   return <Page page={page} />;
 }
