@@ -14,7 +14,7 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6"
+    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6",
   );
 
   useEffect(() => {
@@ -42,7 +42,8 @@ export default function NewsletterSignup() {
             id="mc-embedded-subscribe"
             className={desktopButtonClass}
             href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
-            target="_blank">
+            target="_blank"
+          >
             <span className="hidden md:block">
               {translations.newsletter.joinOurNewsletter}
             </span>
