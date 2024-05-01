@@ -46,9 +46,6 @@ export default async function Blog() {
 
   return (
     <div>
-      {page.pageSections.map((pageSection: PageSectionType) => (
-        <PageSection key={pageSection.fields.title} section={pageSection} />
-      ))}
       <div className="mb-12 md:hidden px-5">
         <p className="px-1 pb-4">{translations.blog.sectionReviewText}</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
@@ -56,6 +53,9 @@ export default async function Blog() {
       <BlogCardsRow type="news" cards={news} />
       <BlogCardsRow type="insights" cards={insights} />
       <BlogCardsRow type="events" cards={events} />
+      {page.pageSections.map((pageSection: PageSectionType) => (
+        <PageSection key={pageSection.fields.title} section={pageSection} />
+      ))}
       <BlogCardsRow type="patient-stories" cards={patientStories} />
     </div>
   );
