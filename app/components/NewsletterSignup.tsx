@@ -4,11 +4,9 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import ozzie from "@/public/ozzie-wheelchair.png";
-// import arrow from "@/public/submit-arrow.png";
 import { Title1 } from "./ui/Typography/Title";
 import { Text } from "./ui/Typography/Text";
 import { styles } from "./ui/Button";
-// import { NEWSLETTER_URL } from "../constants/links";
 import translations from "@/public/locales/en.json";
 
 export default function NewsletterSignup() {
@@ -16,7 +14,7 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6",
+    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6"
   );
 
   useEffect(() => {
@@ -44,7 +42,7 @@ export default function NewsletterSignup() {
             id="mc-embedded-subscribe"
             className={desktopButtonClass}
             href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
-          >
+            target="_blank">
             <span className="hidden md:block">
               {translations.newsletter.joinOurNewsletter}
             </span>
