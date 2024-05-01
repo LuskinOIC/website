@@ -14,6 +14,7 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
+    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6"
     "bg-luskin-blue ml-[0.6rem] my-4 px-4 md:ml-4 md:my-6"
   );
 
@@ -37,18 +38,14 @@ export default function NewsletterSignup() {
           <Text className="mt-1 w-[70%] text-center md:w-[75%] lg:w-[55%]">
             {translations.newsletter.joinOurNewsletterDescription}
           </Text>
-          <a href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b">
-            <button
-              type="button"
-              name="subscribe"
-              aria-label="Subscribe Button"
-              id="mc-embedded-subscribe"
-              className={desktopButtonClass}
-              value="JoinNewsletter">
-              <span className="hidden md:block">
-                {translations.newsletter.joinOurNewsletter}
-              </span>
-            </button>
+          <a
+            aria-label="Subscribe Button"
+            id="mc-embedded-subscribe"
+            className={desktopButtonClass}
+            href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b">
+            <span className="hidden md:block">
+              {translations.newsletter.joinOurNewsletter}
+            </span>
           </a>
 
           {/* <form
