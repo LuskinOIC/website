@@ -42,7 +42,8 @@ export default function NewsletterSignup() {
             aria-label="Subscribe Button"
             id="mc-embedded-subscribe"
             className={desktopButtonClass}
-            href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b">
+            href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
+            target="_blank">
             <span className="hidden md:block">
               {translations.newsletter.joinOurNewsletter}
             </span>
