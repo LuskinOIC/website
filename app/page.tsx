@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { getPageByType } from "@/app/utils/contentful";
 import { PAGE_TYPES } from "@/app/constants/entries";
 import Page from "@/app/components/Page";
