@@ -1,5 +1,6 @@
 import { getPages, getPageBySlug } from "@/app/utils/contentful";
 import Page from "@/app/components/Page";
+import { draftMode } from "next/headers";
 // import { redirect } from "next/navigation";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import type { Metadata } from "next";
@@ -36,7 +37,7 @@ export default async function AppPage({
 }: {
   params: { slug: string };
 }) {
-  const page = (await getPageBySlug(params.slug)) as PageType;
+  const page = await getPageBySlug(params.slug, draftMode().isEnabled);
 
   if (!page) {
     notFound();

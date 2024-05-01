@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { getPageByType } from "@/app/utils/contentful";
 import { PAGE_TYPES } from "@/app/constants/entries";
 import Page from "@/app/components/Page";
@@ -17,7 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // This is the root page to the website.
 export default async function Home() {
-  const page = await getPageByType(PAGE_TYPES.LANDING_PAGE);
+  const page = await getPageByType(
+    PAGE_TYPES.LANDING_PAGE,
+    draftMode().isEnabled,
+  );
 
   return <Page page={page} />;
 }
