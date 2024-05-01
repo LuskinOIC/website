@@ -19,8 +19,8 @@ const client = createClient({
 
 const previewClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID as string,
-  accessToken: process.env.PREVIEW_CONTENTFUL_ACCESS_TOKEN as string,
-  host: process.env.PREVIEW_CONTENTFUL_HOST,
+  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN as string,
+  host: process.env.CONTENTFUL_PREVIEW_HOST,
 });
 
 /* PAGE */
