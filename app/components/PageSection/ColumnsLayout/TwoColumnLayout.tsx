@@ -22,7 +22,7 @@ export default function ColumnLayout({ section }: { section: ColumnType }) {
       : `md:rounded-l-lg ${isReversedOrder ? "float-right" : "float-left"}`;
 
   return (
-    <section className={""}>
+    <section className="pt-10">
       <div
         className={`flex flex-col md:flex-row md:items-center ${bgColor} ${paddingImageBased} justify-between`}
       >
