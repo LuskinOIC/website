@@ -23,5 +23,5 @@ export async function GET(request: Request) {
   }
 
   draftMode().enable();
-  redirect(redirectPath);
+  return new Response("Draft mode is enabled.");
 }
