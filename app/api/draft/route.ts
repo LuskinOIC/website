@@ -7,10 +7,6 @@ export async function GET(request: Request) {
   const secret = searchParams.get("secret");
   const slug = searchParams.get("slug") as string;
 
-  console.log(secret, slug);
-
-  console.log("token", process.env.CONTENTFUL_PREVIEW_SECRET);
-
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET) {
     return new Response("Invalid token", { status: 401 });
   }
