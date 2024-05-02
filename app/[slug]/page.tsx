@@ -32,6 +32,8 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
+export const dynamic = "force-dynamic";
+
 export default async function AppPage({
   params,
 }: {
@@ -45,5 +47,3 @@ export default async function AppPage({
 
   return <Page page={page} />;
 }
-
-export const dynamic = "force-static";
