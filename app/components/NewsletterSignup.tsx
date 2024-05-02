@@ -14,7 +14,7 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "bg-luskin-blue ml-[0.6rem] my-4 px-4 md:ml-4 md:my-6"
+    "bg-luskin-blue ml-[0.6rem] my-4 px-4 md:ml-4 md:my-6",
   );
 
   useEffect(() => {
