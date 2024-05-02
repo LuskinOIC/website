@@ -239,6 +239,7 @@ export async function getPages(): Promise<PageType[]> {
 export async function getNavigationBar(): Promise<NavigationBarType> {
   const entry = await client.getEntries({
     content_type: "navigationBar",
+    "fields.type": "Header",
     include: 2,
     locale: "en-US",
   });
