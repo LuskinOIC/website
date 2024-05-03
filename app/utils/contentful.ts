@@ -247,6 +247,17 @@ export async function getNavigationBar(): Promise<NavigationBarType> {
   return entry.items[0].fields as NavigationBarType;
 }
 
+export async function getFooter(): Promise<NavigationBarType> {
+  const entry = await client.getEntries({
+    content_type: "navigationBar",
+    "fields.type": "Footer",
+    include: 2,
+    locale: "en-US",
+  });
+
+  return entry.items[0].fields as NavigationBarType;
+}
+
 /* CONDITIONS */
 export async function getConditionTerms() {
   let query = {
