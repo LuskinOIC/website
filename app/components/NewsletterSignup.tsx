@@ -14,9 +14,10 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "bg-luskin-blue ml-[0.6rem] md:ml-4 md:my-6"
-    "bg-luskin-blue ml-[0.6rem] my-4 px-4 md:ml-4 md:my-6"
+    "bg-luskin-blue ml-[0.6rem] my-4 px-4 md:ml-4 md:my-6",
   );
+
+  // flex inline-flex w-fit w-3/5 items-center my-4 md:ml-4 md:my-6justify-center gap-2 rounded-[10px] px-2 py-3 text-center text-base font-bold uppercase leading-[20px] tracking-wide text-neutral-900 text-white sm:w-auto md:px-4
 
   useEffect(() => {
     window.fnames = new Array();
@@ -43,8 +44,9 @@ export default function NewsletterSignup() {
             id="mc-embedded-subscribe"
             className={desktopButtonClass}
             href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
-            target="_blank">
-            <span className="hidden md:block">
+            target="_blank"
+          >
+            <span className="">
               {translations.newsletter.joinOurNewsletter}
             </span>
           </a>
