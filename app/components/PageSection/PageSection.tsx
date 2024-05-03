@@ -56,8 +56,8 @@ function marginClassForSection(section: PageSectionType) {
 }
 
 function paddingClassForSection(section: PageSectionType) {
-  const topPadding = section.fields.showTopPadding ? "pt-20" : "";
-  const bottomPadding = section.fields.showBottomPadding ? "pb-20" : "";
+  const topPadding = section.fields.showTopPadding ? "pt-16" : "";
+  const bottomPadding = section.fields.showBottomPadding ? "pb-16" : "";
   return `${topPadding} ${bottomPadding}`;
 }
 
@@ -78,12 +78,12 @@ export default function PageSection({ section }: { section: PageSectionType }) {
   console.log(process.env.NODE_ENV);
 
   // const dev = process.env.NODE_ENV === "production";
-  // const borderClass = dev ? "border border-3 border-black" : "";
+  const borderClass = "border border-3 border-black";
   const paddingClass = paddingClassForSection(section);
 
   return (
     <section
-      className={`${responsiveClass} ${marginClass}`}
+      className={`${borderClass} ${responsiveClass} ${marginClass}`}
       style={{ backgroundColor }}
     >
       <div className={`${sectionClassName} ${paddingClass}`}>

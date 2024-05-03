@@ -5,13 +5,13 @@ import BioCard from "@/app/components/PageSection/CardsLayout/BioCard";
 import { formatProviderType } from "@/app/providers/PhysicianComponents/formattingProviderPath";
 
 const styles = {
-  container: "block py-2 md:py-4",
+  container: "block",
   grid: "grid grid-rows gap-y-3",
-  gridFull: "md:grid-cols-4",
+  gridFull: "md:grid-cols-5 gap-6",
   gridSecondRow: "md:grid-cols-3",
   gridLastRow: "md:grid-cols-2",
-  gridPadding: "py-2 md:justify-items-center",
-  title: "mb-2 mt-8 font-bold text-[#0076AD] md:mb-4 md:ml-4 md:font-normal",
+  gridPadding: "md:justify-items-center",
+  title: "mb-2 mt-3 font-bold text-[#0076AD] md:mb-4 md:font-normal",
   clickableStyle: "shadow-2xl md:shadow-md hover:shadow-lg rounded-lg",
 };
 
@@ -61,48 +61,14 @@ const renderCards = (cards: CardsRowType[]) => {
 };
 
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
-  const hasCards: boolean = Array.isArray(cards) && cards.length > 0;
-  const totalCards = cards.length;
-  let remainder = totalCards % 4;
-  let secondRow: CardsRowType[] = [];
-  let lastRow: CardsRowType[] = [];
-
-  if (remainder === 1) {
-    let lastFewCards = cards.splice(-5);
-    lastRow = lastFewCards.splice(-2);
-    secondRow = lastFewCards;
-  }
   return (
     <section id="BioCardsRow" className={styles.container}>
       <Title2 className={styles.title}>{title}</Title2>
-      {hasCards && remainder !== 1 && (
-        <div
-          className={`${styles.grid} ${styles.gridFull} ${styles.gridPadding}`}
-        >
-          {renderCards(cards)}
-        </div>
-      )}
-      {remainder === 1 && (
-        <>
-          <div
-            className={`${styles.grid} ${styles.gridFull} ${styles.gridPadding}`}
-          >
-            {renderCards(cards)}
-          </div>
-          <div
-            className={`${styles.grid} ${styles.gridSecondRow} ${styles.gridPadding}`}
-          >
-            {" "}
-            {renderCards(secondRow)}
-          </div>
-          <div
-            className={`${styles.grid} ${styles.gridLastRow} ${styles.gridPadding}`}
-          >
-            {" "}
-            {renderCards(lastRow)}
-          </div>
-        </>
-      )}
+      <div
+        className={`${styles.grid} ${styles.gridFull} ${styles.gridPadding}`}
+      >
+        {renderCards(cards)}
+      </div>
     </section>
   );
 };
