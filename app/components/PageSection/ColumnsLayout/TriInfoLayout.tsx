@@ -1,8 +1,8 @@
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { TriCardContent } from "@/app/constants/types";
 
-const divider =
-  "border-[#825AA4] border-b-[3px] md:border-b-0 md:border-r-[3px]";
+// const divider =
+//   "border-[#825AA4] border-b-[3px] md:border-b-0 md:border-r-[3px]";
 
 const titleSizes = (titleSize: string) => {
   switch (titleSize) {
@@ -15,11 +15,11 @@ const titleSizes = (titleSize: string) => {
   }
 };
 
-function justifyContent(index: number) {
-  if (index === 0) return "justify-start";
-  if (index === 1) return "justify-center";
-  if (index === 2) return "justify-end";
-}
+// function justifyContent(index: number) {
+//   if (index === 0) return "justify-start";
+//   if (index === 1) return "justify-center";
+//   if (index === 2) return "justify-end";
+// }
 
 export default function TriInfo({ section }: any) {
   const cardContents: TriCardContent[] = [];

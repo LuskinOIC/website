@@ -63,7 +63,6 @@ function paddingClassForSection(section: PageSectionType) {
 
 export default function PageSection({ section }: { section: PageSectionType }) {
   const responsiveClass = section.fields.mobileOnly ? "block md:hidden" : "";
-  const width = section.fields.width ? section.fields.width : "NINETY_PERCENT";
   const sectionClassName =
     section.fields.width === "FULL_WIDTH"
       ? SectionStyles.pageSectionFullWidth
@@ -78,8 +77,8 @@ export default function PageSection({ section }: { section: PageSectionType }) {
 
   console.log(process.env.NODE_ENV);
 
-  const dev = process.env.NODE_ENV === "production";
-  const borderClass = dev ? "border border-3 border-black" : "";
+  // const dev = process.env.NODE_ENV === "production";
+  // const borderClass = dev ? "border border-3 border-black" : "";
   const paddingClass = paddingClassForSection(section);
 
   return (
