@@ -47,8 +47,8 @@ export default async function RootLayout({
     "utf8",
   );
   const searchIndexData = JSON.parse(searchIndexDataString);
-
   const bgColor = getBackgroundColor("blue");
+
   return (
     <html lang="en">
       <body className="font-arial block w-full bg-slate-200 overscroll-none">

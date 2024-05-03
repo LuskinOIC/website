@@ -25,8 +25,8 @@ const styles = {
   navigationMenu: (isScrolled: boolean) =>
     `bg-white md:fixed max-w-[1600px] ${
       isScrolled
-        ? "transition-all duration-300 ease-out md:h-[102px]"
-        : "transition-all duration-300 ease-out md:h-[180px]"
+        ? "transition-all duration-400 ease-out md:h-[102px]"
+        : "transition-all duration-75 ease-out md:h-[180px]"
     }`,
   mainNavScrollWrapper: (isScrolled: boolean) =>
     `hidden md:flex z-50 w-full h-full transition-opacity duration-500 ease-out ${
@@ -62,22 +62,6 @@ export default function Navbar({
   const toggleHamburgerDropdown = () => setIsHamburgerOpen(!isHamburgerOpen);
   const resetNavigationMenu = () => setIsHamburgerOpen(false);
 
-  useEffect(() => {
-    window.document.scrollingElement?.scrollTo(0, 0);
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setIsScrolled(scrollY > 500);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const handleClick = (text: string) => {
     sendGAEvent({
       event: "buttonClicked",
@@ -88,6 +72,22 @@ export default function Navbar({
   const closeMenuItems = () => {
     setSelectedDropdown("");
   };
+
+  useEffect(() => {
+    window.document.scrollingElement?.scrollTo(0, 0);
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setIsScrolled(scrollY > 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <NavigationMenu className={styles.navigationMenu(isScrolled)}>

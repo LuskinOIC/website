@@ -77,7 +77,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    
+
     @supports (-webkit-line-clamp: 2) {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -89,13 +89,20 @@
   }
 }
 
+#main {
+  display: block;
+  /* margin-top: 102px; */
+}
+
 .page-container {
   max-width: 1600px;
 }
 
 .rich-text-wrapper a {
   text-decoration: underline;
-  color: #0076AD;
+  color: #0076ad;
 }
 
-.rich-text-wrapper > p:empty { display:none; }
+.rich-text-wrapper > p:empty {
+  display: none;
+}
