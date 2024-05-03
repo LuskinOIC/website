@@ -15,6 +15,7 @@ import { PAGE_TYPES } from "@/app/constants/entries";
 import BlogCardsRow from "../components/BlogCardsRow";
 import Dropdown from "../components/ui/Dropdown";
 import translations from "@/public/locales/en.json";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export function generateMetadata() {
   return {
@@ -50,13 +51,25 @@ export default async function Blog() {
         <p className="px-1 pb-4">{translations.blog.sectionReviewText}</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
-      <BlogCardsRow type="news" cards={news} />
-      <BlogCardsRow type="insights" cards={insights} />
-      <BlogCardsRow type="events" cards={events} />
+
+      {/* TODO: Move into associated sections */}
+      <PageSectionContainer>
+        <BlogCardsRow type="news" cards={news} />
+      </PageSectionContainer>
+      <PageSectionContainer>
+        <BlogCardsRow type="insights" cards={insights} />
+      </PageSectionContainer>
+      <PageSectionContainer>
+        <BlogCardsRow type="events" cards={events} />
+      </PageSectionContainer>
+
       {page.pageSections.map((pageSection: PageSectionType) => (
         <PageSection key={pageSection.fields.title} section={pageSection} />
       ))}
-      <BlogCardsRow type="patient-stories" cards={patientStories} />
+
+      <PageSectionContainer>
+        <BlogCardsRow type="patient-stories" cards={patientStories} />
+      </PageSectionContainer>
     </div>
   );
 }

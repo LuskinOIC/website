@@ -1,3 +1,4 @@
+import React from "react";
 // Components
 import UrgentCareCard from "@/app/specialties/SpecialtyComponents/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
@@ -89,6 +90,18 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       <div className={`${sectionClassName} ${paddingClass}`}>
         <PageSectionContent section={section} />
       </div>
+    </section>
+  );
+}
+
+export function PageSectionContainer({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="">
+      <div className={`${SectionStyles.pageSection}`}>{children}</div>
     </section>
   );
 }

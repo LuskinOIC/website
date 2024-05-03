@@ -218,7 +218,7 @@ function MobileTabSection({
       <Text className="w-4/5" size="regular">
         {translations.blog.sectionReviewText}
       </Text>
-      <div className="sticky top-0 flex flex-col items-center w-full pt-3 pb-1 bg-white">
+      <div className="sticky top-0 flex flex-col items-center w-full pb-1 bg-white">
         <DropdownMenu>
           <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
             <div className="flex flex-row w-full">

@@ -33,7 +33,7 @@ const descriptionClassNames: ClassNames = {
 export function InfoCardContent(
   cardContent: TextType,
   i: number,
-  pathname: string
+  pathname: string,
 ) {
   const [isCurrentPage, setCurrentPage] = useState<boolean>(true);
   const { title, content, button } = cardContent.fields;
@@ -80,7 +80,7 @@ export default function IndexCardsLayout({ section }: { section: CardType[] }) {
     const buttonUrl =
       card.fields.cardContent?.fields.button?.fields.buttonUrl.replace(
         /\/$/,
-        ""
+        "",
       );
     return buttonUrl !== pathname.replace(/\/$/, "");
   })?.fields.cardContent?.fields.button;
