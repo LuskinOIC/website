@@ -13,7 +13,7 @@ export function imageAlignmentClassForColumn(column: ColumnType) {
   return "";
 }
 
-export default function ColumnLayout({ section }: { section: ColumnType }) {
+export default function TwoColumnLayout({ section }: { section: ColumnType }) {
   const isReversedOrder = section.fields.reverseOrder ? "order-last" : "";
   const imageAlignmentClass = imageAlignmentClassForColumn(section);
 

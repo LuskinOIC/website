@@ -7,6 +7,8 @@ import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import PostComponent from "@/app/blog/components/PostComponent";
 // import { notFound } from "next/navigation";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
+
 interface PagePropsType {
   params: { slug: string };
 }
@@ -47,7 +49,9 @@ export default async function NewsArticle({
   return (
     <div className="flex flex-col">
       <PostComponent postData={newsPost} />
-      <BlogCardsRow type="news" cards={news} />
+      <PageSectionContainer>
+        <BlogCardsRow type="news" cards={news} />
+      </PageSectionContainer>
     </div>
   );
 }
