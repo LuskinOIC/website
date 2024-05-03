@@ -384,6 +384,7 @@ export type SpecialtyTypeProps = {
 
 export type NavigationLinkType = {
   fields: {
+    title: string;
     text: string;
     url: string;
     isExternal: boolean;
