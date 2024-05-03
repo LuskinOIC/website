@@ -16,6 +16,10 @@ export type AssetType = {
   };
 };
 
+export interface BackgroundColorType {
+  [key: string]: string;
+}
+
 export type ButtonProps = {
   href: string;
   text: string;
@@ -267,6 +271,12 @@ export type PageSectionType = {
     tabs: TabType[];
     title: string;
     type: string;
+    width: string;
+    backgroundColor: string;
+    showTopMargin: boolean;
+    showBottomMargin: boolean;
+    showTopPadding: boolean;
+    showBottomPadding: boolean;
   };
 };
 

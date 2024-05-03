@@ -118,7 +118,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
           </div>
         ))}
       </div>
-      <div className="hidden md:flex h-full items-center justify-center py-2">
+      <div className="hidden md:flex h-full items-center justify-center py-6">
         <button aria-label="left arrow" onClick={prevSlide}>
           <LeftArrow />
         </button>

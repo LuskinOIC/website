@@ -24,7 +24,7 @@ export default function SpecialtyGridLayout({
           const specialtyName = specialty.fields.name;
           return specialtyName.toLowerCase().includes("urgent care") &&
             !showingSearchResults ? ( // Expand the Urgent Care Card if not showing search results
-            <div className="order-first" key={specialtyName}>
+            <div className="order-first mx-[10%] mt-8 mb-6" key={specialtyName}>
               <UrgentCareCard specialty={specialty} />
             </div>
           ) : (

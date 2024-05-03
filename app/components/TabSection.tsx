@@ -94,11 +94,11 @@ export default function TabSection({
   const queriedTab = params.get("tab");
   // Create list of trimmed tab names
   const abbrvTabs = tabs.map((tab) =>
-    tab.fields.tabTitle.replace(/[^A-z]/g, ""),
+    tab.fields.tabTitle.replace(/[^A-z]/g, "")
   );
   // Use state to switch tabs with the dropdown menu
   const [selectedTab, setSelectedTab] = useState(
-    queriedTab ? queriedTab : abbrvTabs[0],
+    queriedTab ? queriedTab : abbrvTabs[0]
   );
 
   // Use state to trigger component refresh once tabs fully load
@@ -156,7 +156,7 @@ function DesktopTabSection({
 
   return (
     /* Only show on desktop */
-    <div className="hidden md:block mt-6 max-w-4/5 mx-[10%]">
+    <div className="hidden md:block">
       {" "}
       <Tabs value={selectedTab} className="">
         <TabsList className={styles.tabsList(tabCount)}>

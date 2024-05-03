@@ -5,7 +5,7 @@ import BioCard from "@/app/components/PageSection/CardsLayout/BioCard";
 import { formatProviderType } from "@/app/providers/PhysicianComponents/formattingProviderPath";
 
 const styles = {
-  container: "block px-5 md:px-32 py-2 md:py-4",
+  container: "block py-2 md:py-4",
   grid: "grid grid-rows gap-y-3",
   gridFull: "md:grid-cols-4",
   gridSecondRow: "md:grid-cols-3",

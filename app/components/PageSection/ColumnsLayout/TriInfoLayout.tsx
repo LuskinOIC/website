@@ -2,7 +2,7 @@ import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { TriCardContent } from "@/app/constants/types";
 
 const divider =
-  "border-[#825AA4] border-b-[3px] md:border-b-0 md:border-r-[3px] mb-8 md:mb-0 md:mr-12";
+  "border-[#825AA4] border-b-[3px] md:border-b-0 md:border-r-[3px]";
 
 const titleSizes = (titleSize: string) => {
   switch (titleSize) {
@@ -15,6 +15,12 @@ const titleSizes = (titleSize: string) => {
   }
 };
 
+function justifyContent(index: number) {
+  if (index === 0) return "justify-start";
+  if (index === 1) return "justify-center";
+  if (index === 2) return "justify-end";
+}
+
 export default function TriInfo({ section }: any) {
   const cardContents: TriCardContent[] = [];
   const cardSection = section.fields.cardLayout;
@@ -22,16 +28,15 @@ export default function TriInfo({ section }: any) {
     cardContents.push(sec.fields.cardContent.fields);
   });
 
-  if (cardContents.length < 3)
+  if (cardContents.length < 3) {
     return "Tri-Info page section requires 3 card layout entries";
+  }
+
   return (
-    <div className="mx-4 grid py-10 md:mx-10 md:grid-cols-3 md:justify-around">
+    <div className="grid md:grid-cols-3 gap-6 justify-stretch py-6 md:py-12">
       {cardContents.map((cardContent: TriCardContent, i: number) => (
-        <div
-          key={i}
-          className={`flex justify-center mx-6 ${i < 2 ? divider : ""}`}
-        >
-          <div className="w-4/5">
+        <div key={i} className="col-span-1">
+          <div className="w-full">
             <h1
               className={`py-3 ${
                 cardContent.bold ? "font-semibold" : "font-normal"

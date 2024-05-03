@@ -72,7 +72,7 @@ const Button = ({
       blueSecondary: "bg-[#FFFFFF] text-[#0076AD] border-2 border-[#0076AD]",
       physicians: "bg-[#FFFFFF] text-[#171515] border-2 border-[#99C221]",
     }[convertedVariant],
-    className,
+    className
   );
 
   const handleClick = () => {

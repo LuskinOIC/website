@@ -9,6 +9,8 @@ import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "@/app/components/GridLayoutSection";
 import EventBanner from "@/app/components/EventBanner";
 import NewsletterBanner from "@/app/components/NewsletterBanner";
+import { BACKGROUND_COLORS } from "@/app/constants/background-colors";
+import SectionStyles from "@/app/components/PageSection/PageSection.module.css";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -47,10 +49,47 @@ export function PageSectionContent({ section }: { section: PageSectionType }) {
   }
 }
 
+function marginClassForSection(section: PageSectionType) {
+  const topMargin = section.fields.showTopMargin ? "mt-10" : "";
+  const bottomMargin = section.fields.showBottomMargin ? "mb-10" : "";
+  return `${topMargin} ${bottomMargin}`;
+}
+
+function paddingClassForSection(section: PageSectionType) {
+  const topPadding = section.fields.showTopPadding ? "pt-20" : "";
+  const bottomPadding = section.fields.showBottomPadding ? "pb-20" : "";
+  return `${topPadding} ${bottomPadding}`;
+}
+
 export default function PageSection({ section }: { section: PageSectionType }) {
+  const responsiveClass = section.fields.mobileOnly ? "block md:hidden" : "";
+  const width = section.fields.width ? section.fields.width : "NINETY_PERCENT";
+  const sectionClassName =
+    section.fields.width === "FULL_WIDTH"
+      ? SectionStyles.pageSectionFullWidth
+      : SectionStyles.pageSection;
+
+  const backgroundColor =
+    BACKGROUND_COLORS[
+      section.fields.backgroundColor as keyof typeof BACKGROUND_COLORS
+    ] || "";
+
+  const marginClass = marginClassForSection(section);
+
+  console.log(process.env.NODE_ENV);
+
+  const dev = process.env.NODE_ENV === "production";
+  const borderClass = dev ? "border border-3 border-black" : "";
+  const paddingClass = paddingClassForSection(section);
+
   return (
-    <div className={section.fields.mobileOnly ? "block md:hidden" : ""}>
-      <PageSectionContent section={section} />
-    </div>
+    <section
+      className={`${responsiveClass} ${marginClass}`}
+      style={{ backgroundColor }}
+    >
+      <div className={`${sectionClassName} ${paddingClass}`}>
+        <PageSectionContent section={section} />
+      </div>
+    </section>
   );
 }
