@@ -22,7 +22,7 @@ const SectionContent = ({ section }: SectionContentProps) => {
   };
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
-    descriptionClassNames
+    descriptionClassNames,
   );
   const showTitle = section.fields.showTitle;
 
