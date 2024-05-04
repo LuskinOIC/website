@@ -22,13 +22,13 @@ const SectionContent = ({ section }: SectionContentProps) => {
   };
   const descriptionContent = renderRichTextToReactComponent(
     section.fields.description as unknown as Document,
-    descriptionClassNames,
+    descriptionClassNames
   );
   const showTitle = section.fields.showTitle;
 
   return (
     <>
-      <div className="grid py-5">
+      <div className="grid">
         <div className={`grid gap-2 ${textColor}`}>
           {showTitle && (
             <TitleComponent

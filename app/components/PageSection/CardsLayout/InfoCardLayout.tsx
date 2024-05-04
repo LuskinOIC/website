@@ -49,7 +49,7 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
                 />
               </div>
             )}
-            <div className="md:h-min-[242px] px-5 md:px-0 flex-col ">
+            <div className="md:h-min-[242px] px-5 md:px-0 flex-col">
               {card.fields.cardContent &&
                 InfoCardContent(card.fields.cardContent)}
             </div>
