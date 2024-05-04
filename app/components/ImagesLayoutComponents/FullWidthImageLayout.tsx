@@ -17,6 +17,7 @@ export default function FullWidthImageLayout({
           alt={section.fields.images[0].fields.title}
           width={section.fields.images[0].fields.file.details.image.width}
           height={section.fields.images[0].fields.file.details.image.height}
+          style={{ width: "100%", height: "auto" }}
         />
       )}
     </div>
