@@ -12,7 +12,7 @@ import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 import translations from "@/public/locales/en.json";
 
 const styles = {
-  sectionLayout: "grid md:grid-cols-2 gap-2 md:gap-20 p-12",
+  sectionLayout: "grid md:grid-cols-2 gap-2 md:gap-20 p-6 md:p-12",
   boxStyling: "border border-zinc-300 rounded shadow-md",
 };
 
@@ -33,7 +33,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
 
   const cardContent = () => {
     return (
-      <div className="grid gap-4 md:gap-5 justify-items-start px-6 py-6 md:py-0">
+      <div className="grid gap-4 md:gap-5 justify-items-start md:px-6 md:py-0">
         <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
         <div className="grid gap-4 text-base md:text-lg">
           {descriptionContent}

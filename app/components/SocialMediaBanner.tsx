@@ -42,7 +42,7 @@ export default function SocialMediaBanner() {
 
 function DesktopBanner() {
   return (
-    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] px-3 py-2">
+    <div className="hidden md:grid grid-rows-2 md:gap-x-6 md:grid-flow-col w-[65%] py-2">
       <div className="self-center row-span-3">
         <div className="flex flex-row min-h-[75%] justify-center items-center scale-[85%]">
           <Image src={Ozzie} alt="Ozzie" />
@@ -67,12 +67,12 @@ function MobileBanner() {
   return (
     <div className="block md:hidden min-h-[75%]">
       <div className="flex flex-row items-center justify-between">
-        <Title1 className="pl-6 pt-4">
+        <Title1 className="pt-4">
           {translations.socialMedia.followOurStory}
         </Title1>
         <Image src={OzzieMobile} alt="Ozzie" />
       </div>
-      <Text className="px-6">
+      <Text className="">
         {translations.socialMedia.followOurStoryDescription}
       </Text>
       <SocialMediaIcons />
@@ -83,7 +83,7 @@ function MobileBanner() {
 function SocialMediaIcons() {
   return (
     <div className="row-span-1 pt-8 pb-10 md:pt-0 md:pb-0 px-10 md:px-3">
-      <div className="flex flex-row min-h-[75%] justify-center items-center space-x-4 scale-[85%]">
+      <div className="flex flex-row min-h-[75%] items-center space-x-4 scale-[85%]">
         {socialMediaLinks.map(({ url, src, alt }) => (
           <a key={url} href={url} target="blank">
             <Image src={src} alt={alt} />
