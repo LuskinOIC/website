@@ -79,7 +79,7 @@ export default function PageSection({ section }: { section: PageSectionType }) {
   console.log(process.env.NODE_ENV);
 
   // const dev = process.env.NODE_ENV === "production";
-  const borderClass = "border border-3 border-black";
+  const borderClass = ""; // "border border-3 border-black";
   const paddingClass = paddingClassForSection(section);
 
   return (
