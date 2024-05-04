@@ -7,4 +7,5 @@ export const BACKGROUND_COLORS: BackgroundColorType = {
   green: "#99C221",
   purple: "#825AA4",
   yellow: "#FCE385",
+  black: "#020202",
 };

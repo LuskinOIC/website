@@ -51,7 +51,7 @@ export default async function PhysicianBio({
     docBio.pageSections
       .filter(
         (pageSection: { fields: { type: string } }) =>
-          pageSection.fields.type === "Divider"
+          pageSection.fields.type === "Divider",
       )
       .map((pageSection: { fields: { dividerText: string } }) => {
         return {
