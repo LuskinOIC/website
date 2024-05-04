@@ -39,7 +39,7 @@ export default async function PatientStories({
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
   const patients = (await getPatientStories(
-    4,
+    4
   )) as unknown as BlogCardsRowType[];
 
   return (
@@ -51,7 +51,9 @@ export default async function PatientStories({
         patient.pageSections.map((pageSection: PageSectionType) => (
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
-      <BlogCardsRow type="patient-stories" cards={patients} />
+      <PageSectionContainer>
+        <BlogCardsRow type="patient-stories" cards={patients} />
+      </PageSectionContainer>
     </div>
   );
 }
