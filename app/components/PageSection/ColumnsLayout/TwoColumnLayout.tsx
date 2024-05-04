@@ -22,11 +22,12 @@ export default function TwoColumnLayout({ section }: { section: ColumnType }) {
     : "white";
 
   return (
-    <div className={`grid md:grid-cols-2 gap-12 ${bgColor}`}>
+    <div className={`grid md:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
-        className={`grid-cols-1 self-center ${isReversedOrder} ${imageAlignmentClass}`}
+        className={`grid-cols-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass}`}
       >
         <Image
+          className="w-full"
           src={`https:${section.fields.image.fields.file.url}`}
           alt={section.fields.image.fields.description}
           width={section.fields.image.fields.file.details.image.width}

@@ -12,7 +12,7 @@ export default function VideoWithText({ section }: { section: ColumnType }) {
   return (
     <section className={`block ${bgColor} py-5`}>
       <div className="md:mx-auto md:flex flex-col md:flex-row gap-4 md:gap-x-14 items-center">
-        <div className={`px-5 md:w-full md:basis-1/2 ${orderClass} `}>
+        <div className={`mx-auto md:w-full md:basis-1/2 ${orderClass}`}>
           {section.fields.video && (
             <div className="aspect-video">
               <iframe

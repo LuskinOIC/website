@@ -50,15 +50,27 @@ export function PageSectionContent({ section }: { section: PageSectionType }) {
   }
 }
 
-function marginClassForSection(section: PageSectionType) {
-  const topMargin = section.fields.showTopMargin ? "mt-10" : "";
-  const bottomMargin = section.fields.showBottomMargin ? "mb-10" : "";
+function marginStyleClass({
+  showTopMargin,
+  showBottomMargin,
+}: {
+  showTopMargin: boolean;
+  showBottomMargin: boolean;
+}) {
+  const topMargin = showTopMargin ? "mt-10" : "";
+  const bottomMargin = showBottomMargin ? "mb-10" : "";
   return `${topMargin} ${bottomMargin}`;
 }
 
-function paddingClassForSection(section: PageSectionType) {
-  const topPadding = section.fields.showTopPadding ? "pt-16" : "";
-  const bottomPadding = section.fields.showBottomPadding ? "pb-16" : "";
+function paddingStyleClass({
+  showTopPadding,
+  showBottomPadding,
+}: {
+  showTopPadding: boolean;
+  showBottomPadding: boolean;
+}) {
+  const topPadding = showTopPadding ? "pt-16" : "";
+  const bottomPadding = showBottomPadding ? "pb-16" : "";
   return `${topPadding} ${bottomPadding}`;
 }
 
@@ -74,13 +86,16 @@ export default function PageSection({ section }: { section: PageSectionType }) {
       section.fields.backgroundColor as keyof typeof BACKGROUND_COLORS
     ] || "";
 
-  const marginClass = marginClassForSection(section);
-
-  console.log(process.env.NODE_ENV);
-
+  const marginClass = marginStyleClass({
+    showTopMargin: section.fields.showTopMargin,
+    showBottomMargin: section.fields.showBottomMargin,
+  });
   // const dev = process.env.NODE_ENV === "production";
   const borderClass = ""; // "border border-3 border-black";
-  const paddingClass = paddingClassForSection(section);
+  const paddingClass = paddingStyleClass({
+    showTopPadding: section.fields.showTopPadding,
+    showBottomPadding: section.fields.showBottomPadding,
+  });
 
   return (
     <section
@@ -96,12 +111,24 @@ export default function PageSection({ section }: { section: PageSectionType }) {
 
 export function PageSectionContainer({
   children,
+  showTopMargin = false,
+  showBottomMargin = false,
+  showTopPadding = false,
+  showBottomPadding = false,
 }: {
   children: React.ReactNode;
+  showTopMargin?: boolean;
+  showBottomMargin?: boolean;
+  showTopPadding?: boolean;
+  showBottomPadding?: boolean;
 }) {
+  const marginClass = marginStyleClass({ showTopMargin, showBottomMargin });
+  const paddingClass = paddingStyleClass({ showTopPadding, showBottomPadding });
   return (
-    <section className="">
-      <div className={`${SectionStyles.pageSection}`}>{children}</div>
+    <section className={marginClass}>
+      <div className={`${SectionStyles.pageSection} ${paddingClass}`}>
+        {children}
+      </div>
     </section>
   );
 }

@@ -4,6 +4,7 @@ import { BlogPostType, PageSectionType } from "@/app/constants/types";
 import { Title1 } from "@/app/components/ui/Typography/Title";
 import SocialMediaSection from "@/app/components/SocialMediaSection";
 import PageSection from "@/app/components/PageSection/PageSection";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import translations from "@/public/locales/en.json";
 
 type PostComponentProps = {
@@ -45,10 +46,10 @@ const PostComponent = ({ postData }: PostComponentProps) => {
 
   return (
     <>
-      <section className={styles.sectionWrapper}>
+      <PageSectionContainer showBottomMargin={true}>
         <Title1 className={styles.postTitle}>{title}</Title1>
         <div className={styles.postSubTitle}>{newsSubTitle}</div>
-      </section>
+      </PageSectionContainer>
       <Image
         className={styles.postImage}
         src={url}
@@ -56,45 +57,48 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         width={details.image.width}
         height={details.image.height}
       />
-      <section
-        className={`${styles.postPadding} ${styles.postDetailsContainer}`}
-      >
-        <div className={`${styles.postDetailsWrapper}`}>
-          <div className={`${styles.postDetailsFont}`}>
-            {translations.blog.publishedOn}
+      <PageSectionContainer>
+        <div className="grid grid-cols-3">
+          <div className={`${styles.postDetailsWrapper}`}>
+            <div className={`${styles.postDetailsFont}`}>
+              {translations.blog.publishedOn}
+            </div>
+            <div>{formattedDate}</div>
           </div>
-          <div>{formattedDate}</div>
+          <div className={`${styles.postDetailsWrapper}`}>
+            <div className={`${styles.postDetailsFont}`}>
+              {translations.blog.writtenBy}
+            </div>
+            <div>{writtenBy}</div>
+          </div>
+          {followOurStory && (
+            <div className={`${styles.socialMediaWrapper}`}>
+              <div className="font-bold">
+                {translations.blog.followOurStory}
+              </div>
+              {followOurStory && (
+                <SocialMediaSection section={followOurStory} />
+              )}
+            </div>
+          )}
         </div>
-        <div className={`${styles.postDetailsWrapper}`}>
-          <div className={`${styles.postDetailsFont}`}>
-            {translations.blog.writtenBy}
-          </div>
-          <div>{writtenBy}</div>
-        </div>
-        {followOurStory && (
-          <div className={`${styles.socialMediaWrapper}`}>
-            <div className="font-bold">{translations.blog.followOurStory}</div>
-            {followOurStory && <SocialMediaSection section={followOurStory} />}
-          </div>
-        )}
-      </section>
+      </PageSectionContainer>
+
       <hr className={styles.dividerStyle} />
 
-      <section className="grid">
-        {pageSections.map((section: PageSectionType, i: string) => (
-          <div
-            key={i}
-            className={`${
-              section.fields.columnLayout &&
-              section.fields.columnLayout.fields.columnType === "Full Column"
-                ? `${styles.postPadding}`
-                : ""
-            }`}
-          >
-            <PageSection key={section.fields.title} section={section} />
-          </div>
-        ))}
-      </section>
+      {pageSections.map((section: PageSectionType, i: string) => (
+        <div
+          key={i}
+          className={`${
+            section.fields.columnLayout &&
+            section.fields.columnLayout.fields.columnType === "Full Column"
+              ? `${styles.postPadding}`
+              : ""
+          }`}
+        >
+          <PageSection key={section.fields.title} section={section} />
+        </div>
+      ))}
     </>
   );
 };

@@ -35,7 +35,7 @@ export default function InfoCardLayout({ section }: { section: CardType[] }) {
         return (
           <div
             key={i}
-            className="col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden mx-6 md:mx-0"
+            className="col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
           >
             {card.fields.image && (
               <div className="relative md:rounded-[10px] overflow-hidden">

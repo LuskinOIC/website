@@ -2,9 +2,9 @@
   /* border: 1px solid #000; */
   display: block;
   height: min-content;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 80%;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
 }
 
 .pageSectionFullWidth {
@@ -38,7 +38,7 @@
   background-size: cover; */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
   .pageSection {
     margin-left: 5%;
     margin-right: 5%;
