@@ -7,12 +7,11 @@ import { formatProviderType } from "@/app/providers/PhysicianComponents/formatti
 const styles = {
   container: "block",
   grid: "grid grid-rows gap-y-3",
-  gridFull: "md:grid-cols-5 gap-6",
-  gridSecondRow: "md:grid-cols-3",
-  gridLastRow: "md:grid-cols-2",
-  gridPadding: "md:justify-items-center",
+  gridFull: "md:grid-cols-3 gap-6",
+  gridPadding: "md:justify-between place-content-between",
   title: "mb-2 mt-3 font-bold text-[#0076AD] md:mb-4 md:font-normal",
-  clickableStyle: "shadow-2xl md:shadow-md hover:shadow-lg rounded-lg",
+  clickableStyle:
+    "flex md:flex-row shadow-2xl md:shadow-md hover:shadow-lg rounded-lg",
 };
 
 function getCardHref(card: CardsRowType) {
@@ -48,26 +47,40 @@ const renderCards = (cards: CardsRowType[]) => {
       />
     );
 
-    const shouldWrapWithLink = card.fields.topSection || card.fields.topSummary;
+    // const shouldWrapWithLink = card.fields.topSection || card.fields.topSummary;
 
-    return shouldWrapWithLink ? (
-      <Link key={i} href={getCardHref(card)} className={styles.clickableStyle}>
-        {cardContent}
-      </Link>
-    ) : (
-      <div key={i}>{cardContent}</div>
-    );
+    return <div key={i}>{cardContent}</div>;
   });
 };
 
+function gridStyleClass(cards: CardsRowType[]) {
+  return "grid-cols-3 gap-x-12 gap-y-6";
+}
+
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
+  const evenLength = cards.length % 2 === 0;
+  const gridClass = gridStyleClass(cards);
+
   return (
     <section id="BioCardsRow" className={styles.container}>
       <Title2 className={styles.title}>{title}</Title2>
-      <div
-        className={`${styles.grid} ${styles.gridFull} ${styles.gridPadding}`}
-      >
-        {renderCards(cards)}
+      <div className={`grid ${gridClass} ${styles.gridPadding}`}>
+        {cards.map((card) => {
+          return (
+            <BioCard
+              key={card.sys.id}
+              name={card.fields.name}
+              portrait={card.fields.portrait}
+              leadershipRole={
+                card.fields.leadershipRole ? card.fields.leadershipRole : ""
+              }
+              providerType={
+                card.fields.providerType ? card.fields.providerType : ""
+              }
+              classNames="col-span-1 md:h-full"
+            />
+          );
+        })}
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const styles = {
   container:
-    "bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground flex flex-row md:flex-col justify-start",
+    "bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground",
   header:
     "md:pb-0 md:self-center md:text-center text-white md:text-black leading-0 md:leading-0 md:min-h-[50px] md:font-medium",
   paragraph:
