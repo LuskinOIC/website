@@ -14,7 +14,7 @@ export default function NewsletterSignup() {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "w-9/12 bg-luskin-blue my-4 md:my-6",
+    "md:w-1/2 bg-luskin-blue my-4 md:my-6 md:px-8",
   );
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function NewsletterSignup() {
         <Image src={ozzie} alt="Ozzie" className="mx-auto" />
       </div>
       <div className="z-0 flex h-fit flex-col items-center justify-center rounded-[20px] border border-luskin-green pt-[88px] shadow-[0_4px_8px_2px_hsla(0,0%,0%,0.1)] md:pt-[92px] lg:pt-[103px]">
-        <div className="flex flex-col items-center justify-center w-8/12">
+        <div className="flex flex-col items-center justify-center">
           <Title1 className="text-[24px] font-medium md:text-[32px]">
             {translations.newsletter.joinOurNewsletter}
           </Title1>

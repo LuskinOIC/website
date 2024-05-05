@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BioCardsRowPropsType, CardsRowType } from "@/app/constants/types";
 import { Title2 } from "@/app/components/ui/Typography/Title";
 import BioCard from "@/app/components/PageSection/CardsLayout/BioCard";
@@ -33,32 +32,8 @@ function getCardHref(card: CardsRowType) {
   }
 }
 
-const renderCards = (cards: CardsRowType[]) => {
-  return cards.map((card, i) => {
-    const cardContent = (
-      <BioCard
-        name={card.fields.name}
-        portrait={card.fields.portrait}
-        leadershipRole={
-          card.fields.leadershipRole ? card.fields.leadershipRole : ""
-        }
-        providerType={card.fields.providerType ? card.fields.providerType : ""}
-        classNames="md:max-w-[258px] md:h-full"
-      />
-    );
-
-    // const shouldWrapWithLink = card.fields.topSection || card.fields.topSummary;
-
-    return <div key={i}>{cardContent}</div>;
-  });
-};
-
-function gridStyleClass(cards: CardsRowType[]) {
-  return "grid-cols-3 gap-x-12 gap-y-6";
-}
-
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
-  const gridClass = gridStyleClass(cards);
+  const gridClass = "grid-cols-3 gap-x-12 gap-y-6";
 
   return (
     <section id="BioCardsRow" className={styles.container}>
