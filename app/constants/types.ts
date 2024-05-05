@@ -128,6 +128,7 @@ export type BioCardType = {
   classNames?: string;
   leadershipRole: string;
   providerType: string;
+  cardLink?: string;
 };
 
 export type BioCardsRowPropsType = {

@@ -64,7 +64,7 @@ export default async function PhysicianBio({
   return (
     <div>
       {docBio.topSummary && (
-        <PageSectionContainer>
+        <PageSectionContainer showTopPadding={true} showBottomPadding={true}>
           <TwoColumnLayout section={docBio.topSummary} />
         </PageSectionContainer>
       )}

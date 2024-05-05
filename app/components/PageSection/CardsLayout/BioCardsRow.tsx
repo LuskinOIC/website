@@ -58,7 +58,6 @@ function gridStyleClass(cards: CardsRowType[]) {
 }
 
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
-  const evenLength = cards.length % 2 === 0;
   const gridClass = gridStyleClass(cards);
 
   return (
@@ -68,6 +67,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
         {cards.map((card) => {
           return (
             <BioCard
+              classNames="col-span-1 md:h-full"
               key={card.sys.id}
               name={card.fields.name}
               portrait={card.fields.portrait}
@@ -77,7 +77,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
               providerType={
                 card.fields.providerType ? card.fields.providerType : ""
               }
-              classNames="col-span-1 md:h-full"
+              cardLink={getCardHref(card)}
             />
           );
         })}

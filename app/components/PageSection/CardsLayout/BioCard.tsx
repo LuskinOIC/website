@@ -20,10 +20,16 @@ export default function BioCard({
   portrait,
   leadershipRole,
   classNames,
+  cardLink,
 }: BioCardType) {
   const desktopLeadershipRole = leadershipRole ? leadershipRole : "\u00A0";
+
   return (
-    <div id="BioCard" className={cn(styles.container, classNames)}>
+    <a
+      id="BioCard"
+      href={cardLink}
+      className={cn(styles.container, classNames)}
+    >
       {portrait && (
         <Image
           alt={`portrait-${name}`}
@@ -47,6 +53,6 @@ export default function BioCard({
           ""
         )}
       </div>
-    </div>
+    </a>
   );
 }
