@@ -4,6 +4,7 @@ import SpecialtySearchArea from "./SpecialtyComponents/SpecialtySearchArea";
 import { getPageByType } from "@/app/utils/contentful";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { PAGE_TYPES } from "@/app/constants/entries";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   const specialtyPage = await getPageByType(PAGE_TYPES.SPECIALTY_LIST_PAGE, 1);
@@ -20,8 +21,8 @@ export default async function Specialties() {
   const specialties = await getSpecialties();
 
   return (
-    <div>
+    <PageSectionContainer>
       <SpecialtySearchArea specialties={specialties} />
-    </div>
+    </PageSectionContainer>
   );
 }
