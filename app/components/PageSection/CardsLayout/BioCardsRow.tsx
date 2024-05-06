@@ -6,8 +6,8 @@ import { formatProviderType } from "@/app/providers/PhysicianComponents/formatti
 const styles = {
   container: "block",
   grid: "grid grid-rows gap-y-3",
-  gridFull: "md:grid-cols-3 gap-6",
-  gridPadding: "md:justify-between place-content-between",
+  gridFull: "lg:grid-cols-3 gap-6",
+  gridPadding: "", // "md:justify-between place-content-between",
   title: "mb-2 mt-3 font-bold text-[#0076AD] md:mb-4 md:font-normal",
   clickableStyle:
     "flex md:flex-row shadow-2xl md:shadow-md hover:shadow-lg rounded-lg",
@@ -37,7 +37,7 @@ function getCardHref(card: CardsRowType) {
 }
 
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
-  const gridClass = "grid-cols-3 gap-x-12 gap-y-6";
+  const gridClass = "grid-rows md:grid-cols-3 gap-y-2 md:gap-x-2 mx-auto";
 
   return (
     <section id="BioCardsRow" className={styles.container}>
@@ -46,7 +46,7 @@ const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
         {cards.map((card) => {
           return (
             <BioCard
-              classNames="col-span-1 md:h-full"
+              classNames="col-span-1 lg:h-full"
               key={card.sys.id}
               name={card.fields.name}
               portrait={card.fields.portrait}
