@@ -46,7 +46,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
 
   return (
     <>
-      <PageSectionContainer showBottomMargin={true}>
+      <PageSectionContainer showBottomMargin={true} showTopMargin={true}>
         <Title1 className={styles.postTitle}>{title}</Title1>
         <div className={styles.postSubTitle}>{newsSubTitle}</div>
       </PageSectionContainer>
@@ -60,7 +60,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         />
       </PageSectionContainer>
       <PageSectionContainer>
-        <div className="grid grid-cols-3">
+        <div className="grid md:grid-cols-3">
           <div className={`${styles.postDetailsWrapper}`}>
             <div className={`${styles.postDetailsFont}`}>
               {translations.blog.publishedOn}
