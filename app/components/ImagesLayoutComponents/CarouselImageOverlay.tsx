@@ -42,13 +42,13 @@ const OverlayComponent = ({
 const alignmentClass = (alignment: string) => {
   switch (alignment) {
     case "left":
-      return "left-1/2 md:left-1/4";
+      return "left-1/2 lg:left-1/4";
     case "center":
-      return "left-1/2 md:left-1/2";
+      return "left-1/2 lg:left-1/2";
     case "right":
-      return "left-1/2 md:left-2/3";
+      return "left-1/2 lg:left-2/3";
     default:
-      return "left-1/2 md:left-1/4";
+      return "left-1/2 lg:left-1/4";
   }
 };
 
