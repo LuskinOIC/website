@@ -29,7 +29,7 @@ export default function TwoColumnLayout({
     : "white";
 
   return (
-    <div className={`grid md:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
+    <div className={`grid lg:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
         className={`grid-span-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass} w-full`}
       >

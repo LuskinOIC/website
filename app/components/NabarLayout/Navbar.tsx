@@ -23,16 +23,16 @@ import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
   navigationMenu: (isScrolled: boolean) =>
-    `bg-white md:fixed max-w-[1600px] ${
+    `bg-white lg:fixed max-w-[1600px] ${
       isScrolled
-        ? "transition-all duration-400 ease-out md:h-[102px]"
-        : "transition-all duration-75 ease-out md:h-[180px]"
+        ? "transition-all duration-400 ease-out lg:h-[102px]"
+        : "transition-all duration-75 ease-out lg:h-[180px]"
     }`,
   mainNavScrollWrapper: (isScrolled: boolean) =>
-    `hidden md:flex z-50 w-full h-full transition-opacity duration-500 ease-out ${
+    `hidden lg:flex z-50 w-full h-full transition-opacity duration-500 ease-out ${
       isScrolled ? "absolute inset-x-0 top-0" : ""
     }`,
-  logoContainer: "hidden md:block w-fit h-fit h-fit mx-10 pt-4",
+  logoContainer: "hidden lg:block w-fit h-fit h-fit mx-10 pt-4",
   logoImage: (isScrolled: boolean) =>
     ` h-auto ${
       isScrolled
@@ -40,12 +40,12 @@ const styles = {
         : "transition-all duration-300 ease-out w-30"
     }`,
   navigationItems:
-    "hidden md:flex flex-row justify-evenly w-full items-center z-1",
-  theContainer: "flex md:hidden flex-col py-2",
+    "hidden lg:flex flex-row justify-evenly w-full items-center z-1",
+  theContainer: "flex lg:hidden flex-col py-2",
   mobileContainer:
-    "flex md:hidden flex-row w-full justify-between items-center text-black",
-  mobileLogoContainer: "block md:hidden py-2",
-  navigationMenuItem: "block flex flex-row md:hidden list-none",
+    "flex lg:hidden flex-row w-full justify-between items-center text-black",
+  mobileLogoContainer: "block lg:hidden py-2",
+  navigationMenuItem: "block flex flex-row lg:hidden list-none",
   mobileMenuButton: "bg-transparent text-black rounded-full px-4 text-xl",
 };
 

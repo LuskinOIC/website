@@ -28,7 +28,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "flex list-none items-center justify-center py-0 md:flex-row",
+      "flex list-none items-center justify-center py-0 lg:flex-row",
       className,
     )}
     {...props}
@@ -65,7 +65,7 @@ const NavigationMenuContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.Content
     ref={ref}
-    className={cn("w-full md:w-auto", className)}
+    className={cn("w-full lg:w-auto", className)}
     {...props}
   />
 ));

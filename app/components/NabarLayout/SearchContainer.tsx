@@ -8,12 +8,12 @@ import SearchForm from "@/app/components/NabarLayout/SearchForm";
 import { SearchIndex } from "@/app/constants/types";
 
 const styles = {
-  container: "hidden md:block z-10",
+  container: "hidden lg:block z-10",
   button: "bg-transparent px-2 py-1 rounded-full text-lg hover:text-[#0076AD]",
   buttonOpen: "bg-red-500 px-2 py-1 rounded-full text-lg hover:bg-red-600",
   icon: "text-white",
   inputContainer:
-    "absolute z-40 left-0 right-0 top-full max-h-screen py-9 px-5 md:px-20 bg-[#EBEBEB]",
+    "absolute z-40 left-0 right-0 top-full max-h-screen py-9 px-5 lg:px-20 bg-[#EBEBEB]",
 };
 
 interface NavSearchContainerProps {
@@ -85,7 +85,7 @@ const NavSearchContainer = ({
           </div>
         )}
       </div>
-      <div className="block md:hidden py-3.5 px-7">
+      <div className="block lg:hidden py-3.5 px-7">
         <SearchForm onSelect={closeSearch} searchIndex={searchIndex} />
       </div>
     </>

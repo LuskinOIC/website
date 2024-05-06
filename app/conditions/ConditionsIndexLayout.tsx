@@ -9,11 +9,11 @@ type GroupedConditions = {
 };
 
 const styles = {
-  conditionsContainer: "flex flex-cols md:justify-around w-5/6 mx-auto",
+  conditionsContainer: "flex flex-cols md:justify-around mx-auto",
   lettersContainer:
-    "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded",
+    "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded mr-12",
   letter: "flex flex-cols p-1 bold hover:text-[#0076AD] hover:underline",
-  termsContainer: "grid grid-col gap-5 md:w-[80%]",
+  termsContainer: "grid grid-col gap-5",
 };
 
 export default async function ConditionsIndexLayout() {
