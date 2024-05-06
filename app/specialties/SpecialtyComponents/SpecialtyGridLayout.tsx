@@ -4,7 +4,6 @@ import { SpecialtyType } from "../../constants/types";
 import UrgentCareCard from "./UrgentCareCard";
 import SpecialtyCard from "./SpecialtyCard";
 import translations from "@/public/locales/en.json";
-import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export default function SpecialtyGridLayout({
   showingSearchResults,

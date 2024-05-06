@@ -46,7 +46,7 @@ const PhysicianCard = ({ physician }: PhysicianCardProps) => {
         <div className={styles.physicianDetails}>
           <h2>{translations.physicians.gridLayoutSection.specialtyHeading}</h2>
           {renderRichTextToReactComponent(
-            physician.specialties as unknown as Document
+            physician.specialties as unknown as Document,
           )}
         </div>
       </div>
@@ -59,7 +59,7 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
   physicians,
 }) => {
   const filteredPhysicians = physicians.filter(
-    (physician) => physician !== undefined
+    (physician) => physician !== undefined,
   );
   return (
     <>
@@ -71,7 +71,7 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
               key={physician.name}
               href={getProviderFormattedPath(
                 physician.providerType,
-                physician.slug
+                physician.slug,
               )}
               className={styles.clickableStyle}
             >
@@ -81,7 +81,7 @@ const PhysiciansGridLayout: React.FC<PhysiciansGridLayoutProps> = ({
             <div key={physician.name}>
               <PhysicianCard physician={physician} />
             </div>
-          )
+          ),
         )}
       </div>
     </>

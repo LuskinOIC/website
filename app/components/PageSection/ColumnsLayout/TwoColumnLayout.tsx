@@ -13,7 +13,13 @@ export function imageAlignmentClassForColumn(column: ColumnType) {
   return "";
 }
 
-export default function TwoColumnLayout({ section }: { section: ColumnType }) {
+export default function TwoColumnLayout({
+  section,
+  imageClass = "",
+}: {
+  section: ColumnType;
+  imageClass?: string;
+}) {
   const isReversedOrder = section.fields.reverseOrder ? "order-last" : "";
   const imageAlignmentClass = imageAlignmentClassForColumn(section);
 
@@ -24,17 +30,17 @@ export default function TwoColumnLayout({ section }: { section: ColumnType }) {
   return (
     <div className={`grid md:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
-        className={`grid-cols-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass}`}
+        className={`grid-span-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass}`}
       >
         <Image
-          className="w-full"
+          className={imageClass}
           src={`https:${section.fields.image.fields.file.url}`}
           alt={section.fields.image.fields.description}
           width={section.fields.image.fields.file.details.image.width}
           height={section.fields.image.fields.file.details.image.height}
         />
       </div>
-      <div className="grid-cols-1 self-center">
+      <div className="grid-span-1 self-center">
         <SectionContent section={section} />
       </div>
     </div>

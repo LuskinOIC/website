@@ -27,7 +27,7 @@ export default async function Physicians() {
   const physicians = (await getPhysicians()) as unknown as PhysicianBioType[];
   const page = (await getPageByType(
     PAGE_TYPES.PHYSICIAN_LIST_PAGE,
-    4
+    4,
   )) as unknown as PageType;
   const sortedPhysicians: PhysicianPageSectionType[] =
     page.pageSections as unknown as PhysicianPageSectionType[];

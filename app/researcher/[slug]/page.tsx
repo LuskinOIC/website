@@ -3,6 +3,7 @@ import { getMemberBySlug, getMembers } from "@/app/utils/contentful";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionType } from "@/app/constants/types";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export const dynamicParams = false;
 
@@ -39,7 +40,12 @@ export default async function MemberBio({
   return (
     <div className="">
       {memberBio.topSection && (
-        <TwoColumnLayout section={memberBio.topSection} />
+        <PageSectionContainer showTopMargin={true} showBottomMargin={true}>
+          <TwoColumnLayout
+            section={memberBio.topSection}
+            imageClass="mx-auto w-2/3"
+          />
+        </PageSectionContainer>
       )}
       {memberBio.pageSections &&
         memberBio.pageSections.map((pageSection: PageSectionType) => (
