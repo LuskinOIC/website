@@ -13,10 +13,14 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        desktop: "1000px",
       },
     },
     extend: {
+      screens: {
+        lg: "1025px",
+        // => @media (min-width: 992px) { ... }
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -79,7 +83,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        arial: "arial"
+        arial: "arial",
       },
     },
   },

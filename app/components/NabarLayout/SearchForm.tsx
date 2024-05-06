@@ -10,13 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const styles = {
   input:
-    "w-full pl-4 pr-20 py-2 rounded-md md:rounded-l-md border md:border-r-0 bg-white",
+    "w-full pl-4 pr-20 py-2 rounded-md lg:rounded-l-md border lg:border-r-0 bg-white",
   inputResults:
-    "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 absolute max-h-[90vh] md:max-h-[60vh]",
+    "w-full mt-3 rounded-md border-2 border-[#0076AD] bg-white flex flex-col overflow-y-scroll z-0 absolute max-h-[90vh] lg:max-h-[60vh]",
   searchIconMobile:
     "absolute inset-y-0 right-3 pr-3 flex items-center text-[#868787]",
   searchBtnDesktop:
-    "hidden md:block px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
+    "hidden lg:block px-4 py-2 bg-[#0076AD] text-white rounded-r-md border border-[#1868F1]",
   result:
     "p-4 border-b border-[#0076AD] last:border-b-0 text-[#171515] font-bold text-lg hover:underline underline-offset-4",
   noResults: "p-4 text-center text-sm text-[#171515]",

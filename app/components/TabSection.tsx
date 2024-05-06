@@ -215,7 +215,7 @@ function MobileTabSection({
   return (
     /* Only show on mobile */
     <div className="relative flex md:hidden flex-col items-center w-full mt-6">
-      <Text className="w-4/5" size="regular">
+      <Text className="mb-4" size="regular">
         {translations.blog.sectionReviewText}
       </Text>
       <div className="sticky top-0 flex flex-col items-center w-full pb-1 bg-white">

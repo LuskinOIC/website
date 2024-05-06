@@ -57,8 +57,8 @@ function marginStyleClass({
   showTopMargin: boolean;
   showBottomMargin: boolean;
 }) {
-  const topMargin = showTopMargin ? "mt-10" : "";
-  const bottomMargin = showBottomMargin ? "mb-10" : "";
+  const topMargin = showTopMargin ? "mt-6 lg:mt-10" : "";
+  const bottomMargin = showBottomMargin ? "mb-6 lg:mb-10" : "";
   return `${topMargin} ${bottomMargin}`;
 }
 
@@ -69,8 +69,8 @@ function paddingStyleClass({
   showTopPadding: boolean;
   showBottomPadding: boolean;
 }) {
-  const topPadding = showTopPadding ? "pt-16" : "";
-  const bottomPadding = showBottomPadding ? "pb-16" : "";
+  const topPadding = showTopPadding ? "pt-6 lg:pt-16" : "";
+  const bottomPadding = showBottomPadding ? "pb-6 lg:pb-16" : "";
   return `${topPadding} ${bottomPadding}`;
 }
 

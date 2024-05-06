@@ -44,7 +44,7 @@ export default function TriInfo({ section }: any) {
             >
               {cardContent.title}
             </h1>
-            <div className="pb-11 leading-relaxed md:pb-5">
+            <div className="pb-1 leading-relaxed md:pb-5">
               {cardContent.richContent &&
                 renderRichTextToReactComponent(cardContent.richContent)}
             </div>
