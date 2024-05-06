@@ -11,7 +11,7 @@ const styles = {
   contentContainer: "flex flex-row lg:flex-col items-center",
   image: "w-28 h-28 lg:w-40 p-1.5 lg:w-auto lg:h-auto",
   title:
-    "pl-4 lg:px-2 lg:py-4 text-center lg:leading-none text-white lg:text-black",
+    "pl-4 lg:px-2 lg:py-4 text-center leading-2 lg:leading-none text-white lg:text-black",
 };
 
 const CardContent = ({ physician }: { physician: PhysicianBioType }) => {
