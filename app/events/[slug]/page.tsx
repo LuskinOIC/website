@@ -5,6 +5,7 @@ import { BlogCardsRowType, PageSectionType } from "@/app/constants/types";
 import PageSection from "@/app/components/PageSection/PageSection";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 import { notFound } from "next/navigation";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export async function generateStaticParams() {
   const events = await getEvents();
@@ -41,15 +42,16 @@ export default async function Event({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  const pageSections = orgEvent.pageSections || [];
+
   return (
     <div>
-      <div>
-        {orgEvent.pageSections &&
-          orgEvent.pageSections.map((section: PageSectionType) => (
-            <PageSection key={section.fields.title} section={section} />
-          ))}
-      </div>
-      <BlogCardsRow type="events" cards={allEvents} />
+      {pageSections.map((section: PageSectionType) => (
+        <PageSection key={section.fields.title} section={section} />
+      ))}
+      <PageSectionContainer>
+        <BlogCardsRow type="events" cards={allEvents} />
+      </PageSectionContainer>
     </div>
   );
 }

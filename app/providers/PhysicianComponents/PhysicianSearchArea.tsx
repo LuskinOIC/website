@@ -56,7 +56,7 @@ export default function PhysicianSearchArea({
   const fuse = new Fuse(physicians, fuseOptions);
 
   return (
-    <div>
+    <div className="w-full">
       <SearchBar
         value={searchString}
         onChange={(evt) => {

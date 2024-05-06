@@ -7,6 +7,7 @@ import { SpecialtyType } from "../../constants/types";
 // LOCAL COMPONENTS
 import SpecialtyGridLayout from "./SpecialtyGridLayout";
 import SearchBar from "@/app/components/ui/SearchBar";
+// import
 
 // interface SortedSpecialties {
 //   mdPhysicians: PhysicianBioType[];
@@ -64,7 +65,7 @@ export default function SpecialtySearchArea({
   const fuse = new Fuse(specialties, fuseOptions);
 
   return (
-    <div>
+    <div className="w-full">
       <SearchBar
         value={searchString}
         onChange={(evt) => {

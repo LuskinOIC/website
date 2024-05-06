@@ -3,45 +3,46 @@ import { ColumnType } from "@/app/constants/types";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import SectionContent from "./SectionContent";
 
-export default function ColumnLayout({ section }: { section: ColumnType }) {
-  const isReversedOrder = section.fields.reverseOrder;
-  const orderClass = isReversedOrder ? "md:order-1" : "";
-  const textPadding = isReversedOrder
-    ? "px-5 md:pl-[8%] md:pr-0 lg:pl-[10%] lg:pr-[5%]"
-    : "px-5 md:pr-[5%] md:pl-0 lg:pr-[10%] lg:pl-[5%]";
+export function imageAlignmentClassForColumn(column: ColumnType) {
+  if (column.fields.imageOrientation === "Center") return "justify-self-center";
+  if (column.fields.imageOrientation === "Left Align")
+    return "justify-self-start";
+  if (column.fields.imageOrientation === "Right Align")
+    return "justify-self-end";
 
-  const paddingImageBased =
-    section.fields.backgroundColor === "white" ? "py-0" : "md:py-20";
+  return "";
+}
+
+export default function TwoColumnLayout({
+  section,
+  imageClass = "",
+}: {
+  section: ColumnType;
+  imageClass?: string;
+}) {
+  const isReversedOrder = section.fields.reverseOrder ? "order-last" : "";
+  const imageAlignmentClass = imageAlignmentClassForColumn(section);
+
   const bgColor = section.fields.backgroundColor
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
 
-  const orientationClass =
-    section.fields.imageOrientation === "Center Align"
-      ? "mx-auto"
-      : `md:rounded-l-lg ${isReversedOrder ? "float-right" : "float-left"}`;
-
   return (
-    <section className="pt-10">
+    <div className={`grid md:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
-        className={`flex flex-col md:flex-row md:items-center ${bgColor} ${paddingImageBased} justify-between`}
+        className={`grid-span-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass}`}
       >
-        {section.fields.image && (
-          <div className={`${orderClass} ${orientationClass}`}>
-            <div style={{ maxWidth: "768px" }}>
-              <Image
-                src={`https:${section.fields.image.fields.file.url}`}
-                alt={section.fields.image.fields.description}
-                width={section.fields.image.fields.file.details.image.width}
-                height={section.fields.image.fields.file.details.image.height}
-              />
-            </div>
-          </div>
-        )}
-        <div className={`basis-1/2 px-2 ${textPadding}`}>
-          <SectionContent section={section} />
-        </div>
+        <Image
+          className={imageClass}
+          src={`https:${section.fields.image.fields.file.url}`}
+          alt={section.fields.image.fields.description}
+          width={section.fields.image.fields.file.details.image.width}
+          height={section.fields.image.fields.file.details.image.height}
+        />
       </div>
-    </section>
+      <div className="grid-span-1 self-center">
+        <SectionContent section={section} />
+      </div>
+    </div>
   );
 }

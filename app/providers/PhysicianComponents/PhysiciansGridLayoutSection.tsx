@@ -18,15 +18,14 @@ interface PhysicianCardProps {
 
 const styles = {
   sectionTitle:
-    "text-sky-700 text-2xl font-semibold font-['Arial'] leading-[30px] px-5 md:px-24 py-4 md:py-12",
-  physicianGrid:
-    "grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 px-5 md:px-24",
+    "text-sky-700 text-2xl font-semibold font-['Arial'] leading-[30px] py-4 md:py-12",
+  physicianGrid: "grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8",
   clickableStyle: "shadow-lg hover:shadow-xl rounded-lg",
   physicianCard:
     "border rounded-lg p-4 border-zinc-500 md:border-black md:border-opacity-10 grid md:grid-cols-2 gap-12 md:h-full justify-items-center",
   physicianDetailsContainer: "flex flex-col gap-1 md:gap-4 place-self-start",
-  physicianName: "text-xl font-semibold",
-  physicianDetails: "text-base md:text-lg md:mb-4",
+  physicianName: "text-lg font-semibold",
+  physicianDetails: "text-base md:text-base md:mb-4",
 };
 
 const PhysicianCard = ({ physician }: PhysicianCardProps) => {

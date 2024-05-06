@@ -1,11 +1,13 @@
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BioCardType } from "@/app/constants/types";
 import { Title3 } from "../../ui/Typography/Title";
 import { cn } from "@/lib/utils";
 
 const styles = {
   container:
-    "bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground flex flex-row md:flex-col justify-start",
+    "bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground",
   header:
     "md:pb-0 md:self-center md:text-center text-white md:text-black leading-0 md:leading-0 md:min-h-[50px] md:font-medium",
   paragraph:
@@ -15,15 +17,40 @@ const styles = {
   textMobile: "flex flex-col justify-center md:hidden",
 };
 
+export function BioCardContainer({
+  children,
+  cardLink,
+  className,
+}: {
+  children: React.ReactNode;
+  cardLink?: string;
+  className: string;
+}) {
+  if (cardLink) {
+    return (
+      <Link href={cardLink} className={className}>
+        {children}
+      </Link>
+    );
+  } else {
+    return <div className={className}>{children}</div>;
+  }
+}
+
 export default function BioCard({
   name,
   portrait,
   leadershipRole,
   classNames,
+  cardLink,
 }: BioCardType) {
   const desktopLeadershipRole = leadershipRole ? leadershipRole : "\u00A0";
+
   return (
-    <div id="BioCard" className={cn(styles.container, classNames)}>
+    <BioCardContainer
+      cardLink={cardLink}
+      className={cn(styles.container, classNames)}
+    >
       {portrait && (
         <Image
           alt={`portrait-${name}`}
@@ -47,6 +74,6 @@ export default function BioCard({
           ""
         )}
       </div>
-    </div>
+    </BioCardContainer>
   );
 }

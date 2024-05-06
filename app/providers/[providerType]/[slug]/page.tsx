@@ -7,6 +7,7 @@ import PageSection from "@/app/components/PageSection/PageSection";
 import TwoColumnLayout from "@/app/components/PageSection/ColumnsLayout/TwoColumnLayout";
 import translations from "@/public/locales/en.json";
 import { formatProviderType } from "@/app/providers/PhysicianComponents/formattingProviderPath";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 // We need to export this function so that Next.js knows what pages to generate
 // static HTML for.
 
@@ -62,7 +63,14 @@ export default async function PhysicianBio({
 
   return (
     <div>
-      {docBio.topSummary && <TwoColumnLayout section={docBio.topSummary} />}
+      {docBio.topSummary && (
+        <PageSectionContainer showTopPadding={true} showBottomPadding={true}>
+          <TwoColumnLayout
+            section={docBio.topSummary}
+            imageClass="max-w-[355px] m-auto"
+          />
+        </PageSectionContainer>
+      )}
 
       {docBio.pageSections && (
         <div className="mb-12 md:hidden px-5">

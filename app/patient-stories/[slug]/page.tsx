@@ -9,6 +9,7 @@ import BlogCardsRow from "@/app/components/BlogCardsRow";
 import type { Metadata } from "next";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
 import { PagePropsType } from "@/app/constants/types";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export const dynamicParams = false;
 
@@ -43,12 +44,16 @@ export default async function PatientStories({
 
   return (
     <div>
-      <TwoColumnLayout section={patient.topSection} />
+      <PageSectionContainer>
+        <TwoColumnLayout section={patient.topSection} />
+      </PageSectionContainer>
       {patient.pageSections &&
         patient.pageSections.map((pageSection: PageSectionType) => (
           <PageSection key={pageSection.fields.title} section={pageSection} />
         ))}
-      <BlogCardsRow type="patient-stories" cards={patients} />
+      <PageSectionContainer>
+        <BlogCardsRow type="patient-stories" cards={patients} />
+      </PageSectionContainer>
     </div>
   );
 }

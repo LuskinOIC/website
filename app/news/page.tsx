@@ -2,6 +2,7 @@ import { getNewsPosts } from "@/app/utils/contentful";
 import { BlogCardsRowType } from "@/app/constants/types";
 import BackToBrowse from "../components/ui/BackToBrowse";
 import BlogCardsRow from "../components/BlogCardsRow";
+import { PageSectionContainer } from "../components/PageSection/PageSection";
 
 export function generateMetadata() {
   return {
@@ -14,10 +15,10 @@ export function generateMetadata() {
 export default async function News() {
   const news = (await getNewsPosts()) as unknown as BlogCardsRowType[];
   return (
-    <div className="flex flex-col px-[5%] md:justify-center">
+    <PageSectionContainer>
       <BackToBrowse />
       {/* <SearchBar /> */}
       <BlogCardsRow type="news" cards={news} />
-    </div>
+    </PageSectionContainer>
   );
 }

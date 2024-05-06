@@ -156,7 +156,7 @@ function DesktopTabSection({
 
   return (
     /* Only show on desktop */
-    <div className="hidden md:block mt-6 max-w-4/5 mx-[10%]">
+    <div className="hidden md:block">
       {" "}
       <Tabs value={selectedTab} className="">
         <TabsList className={styles.tabsList(tabCount)}>
@@ -218,9 +218,9 @@ function MobileTabSection({
       <Text className="w-4/5" size="regular">
         {translations.blog.sectionReviewText}
       </Text>
-      <div className="sticky top-0 flex flex-col items-center w-full pt-3 pb-1 bg-white">
+      <div className="sticky top-0 flex flex-col items-center w-full pb-1 bg-white">
         <DropdownMenu>
-          <DropdownMenuTrigger className="w-4/5 pl-4 border border-luskin-blue rounded-md">
+          <DropdownMenuTrigger className="w-full pl-4 border border-luskin-blue rounded-md">
             <div className="flex flex-row w-full">
               <p className={styles.dropdownSelectedItem}>
                 {selectedTabFullName}
@@ -250,7 +250,7 @@ function MobileTabSection({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="pt-2 w-4/5">
+      <div className="pt-2">
         {tabs.map((tab, index) => (
           <div
             id={abbrvTabs[index]}
@@ -284,7 +284,7 @@ function TabsTextOrCardContent({
         {cardContent.map((card, index) => (
           <Card
             key={`Card.${index}`}
-            className="col-span-1 shadow-none border-none pb-3 pr-10"
+            className="col-span-1 shadow-none border-none pb-3"
           >
             <CardHeader className="space-y-0 md:space-y-1.5 p-0 md:pb-5">
               <Title2 className="font-semibold">{card.fields.title}</Title2>

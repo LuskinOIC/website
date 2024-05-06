@@ -14,17 +14,16 @@ export default function FullColumnLayout({ section }: { section: ColumnType }) {
   // against intermediate states published accidentally.
   if (section.fields.image && !section.fields.image.fields?.file) return null;
   return (
-    <section
-      className={`grid gap-3 md:gap-5 ${bgColor} w-full items-center px-5 md:px-32 py-5`}
-    >
+    <div className={`grid gap-3 md:gap-5 ${bgColor} w-full items-center`}>
       {section.fields.image && (
-        <div className="justify-self-center">
+        <div className="justify-self-center w-full">
           <Image
             className=""
             src={`https:${section.fields.image.fields.file.url}`}
             alt={section.fields.image.fields.description}
             width={section.fields.image.fields.file.details.image.width}
             height={section.fields.image.fields.file.details.image.height}
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
       )}
@@ -40,6 +39,6 @@ export default function FullColumnLayout({ section }: { section: ColumnType }) {
           />
         </div>
       )}
-    </section>
+    </div>
   );
 }

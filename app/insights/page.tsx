@@ -2,6 +2,7 @@ import { getInsightsPosts } from "@/app/utils/contentful";
 import { BlogCardsRowType } from "@/app/constants/types";
 import BackToBrowse from "@/app/components/ui/BackToBrowse";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export function generateMetadata() {
   return {
@@ -14,10 +15,10 @@ export function generateMetadata() {
 export default async function Insights() {
   const insights = (await getInsightsPosts()) as unknown as BlogCardsRowType[];
   return (
-    <div className="flex flex-col px-[5%] md:justify-center">
+    <PageSectionContainer>
       <BackToBrowse />
       {/* <SearchBar /> */}
       <BlogCardsRow type="insights" cards={insights} />
-    </div>
+    </PageSectionContainer>
   );
 }

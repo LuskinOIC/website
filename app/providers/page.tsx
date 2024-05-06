@@ -5,6 +5,7 @@ import { getPageByType } from "@/app/utils/contentful";
 
 // LOCAL COMPONENTS
 import { getPhysicians } from "@/app/utils/contentful";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 // TYPES
 import {
   PageType,
@@ -32,11 +33,11 @@ export default async function Physicians() {
     page.pageSections as unknown as PhysicianPageSectionType[];
 
   return (
-    <div>
+    <PageSectionContainer>
       <PhysicianSearchArea
         physicians={physicians}
         sortedPhysicians={sortedPhysicians}
       />
-    </div>
+    </PageSectionContainer>
   );
 }

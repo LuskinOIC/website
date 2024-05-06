@@ -14,7 +14,7 @@ import Button from "@/app/components/ui/Button";
 
 const styles = {
   desktopSectionContainer:
-    "hidden md:grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12 md:px-32",
+    "hidden md:grid md:grid-cols-2 gap-6 md:m-auto justify-items-center pt-2 pb-12",
   mobileSectionContainer: "grid justify-items-center md:hidden  py-4 px-5",
   cardContainer:
     "flex flex-col h-full col-span-1 rounded-[10px] pb-8 md:p-10 overflow-hidden mx-6 md:mx-0",

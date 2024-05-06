@@ -12,11 +12,12 @@ export default function FullWidthImageLayout({
     <div>
       {section.fields.images && (
         <Image
-          className="w-full"
+          className="mx-auto"
           src={`https:${section.fields.images[0].fields.file.url}`}
           alt={section.fields.images[0].fields.title}
           width={section.fields.images[0].fields.file.details.image.width}
           height={section.fields.images[0].fields.file.details.image.height}
+          style={{ width: "100%", height: "auto" }}
         />
       )}
     </div>

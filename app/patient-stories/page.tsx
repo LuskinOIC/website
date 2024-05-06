@@ -3,6 +3,7 @@ import BackToBrowse from "../components/ui/BackToBrowse";
 // import SearchBar from "../components/ui/SearchBar";
 import { BlogCardsRowType } from "../constants/types";
 import { getPatientStories } from "../utils/contentful";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 export function generateMetadata() {
   return {
@@ -16,10 +17,10 @@ export function generateMetadata() {
 export default async function PatientStories() {
   const patients = (await getPatientStories()) as unknown as BlogCardsRowType[];
   return (
-    <div className="flex flex-col px-[5%] md:justify-center">
+    <PageSectionContainer>
       <BackToBrowse />
       {/* <SearchBar /> */}
       <BlogCardsRow type="patient-stories" cards={patients} />
-    </div>
+    </PageSectionContainer>
   );
 }

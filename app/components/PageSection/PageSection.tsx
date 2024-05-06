@@ -1,3 +1,4 @@
+import React from "react";
 // Components
 import UrgentCareCard from "@/app/specialties/SpecialtyComponents/UrgentCareCard";
 import Divider from "@/app/components/PageSection/Divider";
@@ -9,6 +10,8 @@ import TabSection from "@/app/components/TabSection";
 import GridLayoutSection from "@/app/components/GridLayoutSection";
 import EventBanner from "@/app/components/EventBanner";
 import NewsletterBanner from "@/app/components/NewsletterBanner";
+import { BACKGROUND_COLORS } from "@/app/constants/background-colors";
+import SectionStyles from "@/app/components/PageSection/PageSection.module.css";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -47,10 +50,85 @@ export function PageSectionContent({ section }: { section: PageSectionType }) {
   }
 }
 
+function marginStyleClass({
+  showTopMargin,
+  showBottomMargin,
+}: {
+  showTopMargin: boolean;
+  showBottomMargin: boolean;
+}) {
+  const topMargin = showTopMargin ? "mt-10" : "";
+  const bottomMargin = showBottomMargin ? "mb-10" : "";
+  return `${topMargin} ${bottomMargin}`;
+}
+
+function paddingStyleClass({
+  showTopPadding,
+  showBottomPadding,
+}: {
+  showTopPadding: boolean;
+  showBottomPadding: boolean;
+}) {
+  const topPadding = showTopPadding ? "pt-16" : "";
+  const bottomPadding = showBottomPadding ? "pb-16" : "";
+  return `${topPadding} ${bottomPadding}`;
+}
+
 export default function PageSection({ section }: { section: PageSectionType }) {
+  const responsiveClass = section.fields.mobileOnly ? "block md:hidden" : "";
+  const sectionClassName =
+    section.fields.width === "FULL_WIDTH"
+      ? SectionStyles.pageSectionFullWidth
+      : SectionStyles.pageSection;
+
+  const backgroundColor =
+    BACKGROUND_COLORS[
+      section.fields.backgroundColor as keyof typeof BACKGROUND_COLORS
+    ] || "";
+
+  const marginClass = marginStyleClass({
+    showTopMargin: section.fields.showTopMargin,
+    showBottomMargin: section.fields.showBottomMargin,
+  });
+  // const dev = process.env.NODE_ENV === "production";
+  const borderClass = ""; // "border border-3 border-black";
+  const paddingClass = paddingStyleClass({
+    showTopPadding: section.fields.showTopPadding,
+    showBottomPadding: section.fields.showBottomPadding,
+  });
+
   return (
-    <div className={section.fields.mobileOnly ? "block md:hidden" : ""}>
-      <PageSectionContent section={section} />
-    </div>
+    <section
+      className={`${borderClass} ${responsiveClass} ${marginClass}`}
+      style={{ backgroundColor }}
+    >
+      <div className={`${sectionClassName} ${paddingClass}`}>
+        <PageSectionContent section={section} />
+      </div>
+    </section>
+  );
+}
+
+export function PageSectionContainer({
+  children,
+  showTopMargin = false,
+  showBottomMargin = false,
+  showTopPadding = false,
+  showBottomPadding = false,
+}: {
+  children: React.ReactNode;
+  showTopMargin?: boolean;
+  showBottomMargin?: boolean;
+  showTopPadding?: boolean;
+  showBottomPadding?: boolean;
+}) {
+  const marginClass = marginStyleClass({ showTopMargin, showBottomMargin });
+  const paddingClass = paddingStyleClass({ showTopPadding, showBottomPadding });
+  return (
+    <section className={marginClass}>
+      <div className={`${SectionStyles.pageSection} ${paddingClass}`}>
+        {children}
+      </div>
+    </section>
   );
 }
