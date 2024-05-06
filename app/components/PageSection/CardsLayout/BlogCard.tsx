@@ -35,7 +35,7 @@ export default function BlogCard({
     typeof cardContent.summary === "string"
       ? cardContent.summary
       : renderRichTextToReactComponent(
-          cardContent.summary as unknown as Document
+          cardContent.summary as unknown as Document,
         );
   const hoverClass = isHovered ? "text-[#04577D]" : "";
 

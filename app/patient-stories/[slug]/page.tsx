@@ -39,7 +39,7 @@ export default async function PatientStories({
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
   const patients = (await getPatientStories(
-    4
+    4,
   )) as unknown as BlogCardsRowType[];
 
   return (
