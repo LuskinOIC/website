@@ -12,7 +12,7 @@ import SpecialtyHoursLayout from "./SpecialtyHoursLayout";
 import translations from "@/public/locales/en.json";
 
 const styles = {
-  sectionLayout: "grid md:grid-cols-2 gap-2 md:gap-20 p-6 md:p-12",
+  sectionLayout: "grid lg:grid-cols-2 gap-2 lg:gap-20 p-6 lg:p-12",
   boxStyling: "border border-zinc-300 rounded shadow-md",
 };
 
@@ -33,19 +33,19 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
 
   const cardContent = () => {
     return (
-      <div className="grid gap-4 md:gap-5 justify-items-start md:px-6 md:py-0">
+      <div className="grid gap-4 lg:gap-5 justify-items-start lg:px-6 lg:py-0">
         <TitleComponent title={name} titleSize={"Title Medium"} bold={true} />
-        <div className="grid gap-4 text-base md:text-lg">
+        <div className="grid gap-4 text-base lg:text-lg">
           {descriptionContent}
         </div>
         <Button
-          className="my-3 w-full mx-auto md:w-auto md:mx-0"
+          className="my-3 w-full mx-auto lg:w-auto lg:mx-0"
           href={SAVE_MY_SPOT}
           text="SAVE MY SPOT"
           variant="purple"
           isExternal={true}
         />
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-2 gap-4">
           <Button
             className="text-black bold"
             href={"/patient-care/specialties/urgent-care"}
@@ -61,7 +61,7 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             isExternal={false}
           />
         </div>
-        <div className="block md:hidden">{walkIns}</div>
+        <div className="block lg:hidden">{walkIns}</div>
         <SpecialtyHoursLayout locationContent={location} />
       </div>
     );
@@ -71,9 +71,9 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
     <section
       className={`${styles.sectionLayout} ${styles.boxStyling} bg-white`}
     >
-      <div className="order-last md:order-first">{cardContent()}</div>
+      <div className="order-last lg:order-first">{cardContent()}</div>
       {/* desktop image section */}
-      <div className="hidden md:grid grid-rows-5 gap-5">
+      <div className="hidden lg:grid grid-rows-5 gap-5">
         {imageFile.url && (
           <div className="relative w-full row-span-3 mb-6">
             <Image
@@ -85,28 +85,28 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
             />
           </div>
         )}
-        <div className="md:flex flex-col gap-5 row-span-2">
+        <div className="lg:flex flex-col gap-5 row-span-2">
           {walkIns}
           <a
             href={englishFormUrl}
             target="_blank"
-            className="underline text-base md:text-lg font-arial leading-150 "
+            className="underline text-base lg:text-lg font-arial leading-150 "
           >
             {translations.urgentCareCard.englishRegistrationFormText}
           </a>
           <a
             href={spanishFormUrl}
             target="_blank"
-            className="underline text-base md:text-lg font-arial leading-150 "
+            className="underline text-base lg:text-lg font-arial leading-150 "
           >
             {translations.urgentCareCard.spanishRegistrationFormText}
           </a>
         </div>
       </div>
       {/* mobile image section */}
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         {imageFile.url && (
-          <div className="w-full md:hidden">
+          <div className="w-full lg:hidden">
             <Image
               src={`https:${imageFile.url}`}
               alt={imageTitle}

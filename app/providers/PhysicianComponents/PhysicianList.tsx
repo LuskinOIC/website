@@ -20,7 +20,7 @@ export default function PhysicianList({
           {specialistsTitle}
         </Title3>
       ) : null}
-      <div className="grid grid-rows md:grid-cols-5 gap-y-2 md:gap-x-2">
+      <div className="grid grid-rows lg:grid-cols-5 gap-y-2 lg:gap-x-2">
         {physicians.map((phys, index) => (
           <PhysicianCard key={index} physician={phys.fields} />
         ))}
