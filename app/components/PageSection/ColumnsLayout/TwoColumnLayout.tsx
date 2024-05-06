@@ -28,8 +28,6 @@ export default function TwoColumnLayout({
     ? getBackgroundColor(section.fields.backgroundColor)
     : "white";
 
-  const baseImageClass = "w-full";
-
   return (
     <div className={`grid md:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
