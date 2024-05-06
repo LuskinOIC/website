@@ -20,7 +20,7 @@ export default async function ConditionsIndexLayout() {
   const conditions = (await getConditionTerms()) as unknown as ConditionsType[];
 
   function groupTermsByFirstLetter(
-    conditions: ConditionsType[]
+    conditions: ConditionsType[],
   ): GroupedConditions {
     return conditions.reduce((acc, condition) => {
       const firstLetter = condition.term[0].toLowerCase();

@@ -20,7 +20,6 @@ import {
 } from "../constants/links";
 import NewsletterSignup from "./NewsletterSignup";
 import translations from "@/public/locales/en.json";
-import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 
 type FooterItem = {
   text: string;

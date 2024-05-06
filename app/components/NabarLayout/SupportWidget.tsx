@@ -68,7 +68,7 @@ export default function SupportWidget({ isScrolled }: SupportWidgetProps) {
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.overlapTab(
-          isScrolled
+          isScrolled,
         )} bg-[#FCE385] text-black font-semibold text-lg`}
       >
         {translations.supportWidget.donate}
