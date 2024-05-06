@@ -6,8 +6,9 @@ import renderRichTextToReactComponent from "../../../utils/rich-text";
 import { cn } from "@/lib/utils";
 
 const style = {
-  image: "place-self-center rounded-xl w-80 object-cover",
-  wrapperDiv: "mx-auto max-w-xs md:max-w-sm flex flex-col gap-y-2 mb-10",
+  image: "place-self-center rounded-xl w-full object-cover",
+  wrapperDiv:
+    "mx-auto w-[95%] md:w-full md:max-w-sm flex flex-col gap-y-2 mb-10",
   header: "line-clamp-3 text-xl font-bold text-center leading-normal pt-2",
   summary: "line-clamp-4 overflow-hidden leading-tight",
 };

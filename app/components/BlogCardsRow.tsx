@@ -40,12 +40,12 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
     <div id={`${type}`} className="block">
       <div className="flex flex-row justify-between items-center mb-2 mt-8 md:mb-4">
         <Link href={`/${type}`}>
-          <Title1 className="font-bold md:font-normal uppercase text-[#0076AD] md:capitalize hover:underline">
+          <Title1 className="text-2xl font-bold md:font-normal uppercase text-[#0076AD] md:capitalize hover:underline">
             {type === "patient-stories" ? "patient stories" : type}
           </Title1>
         </Link>
         <Link href={`/${type}`}>
-          <Title3 className="block uppercase text-[#0076AD] underline md:no-underline md:hover:underline pr-5">
+          <Title3 className="block uppercase text-[#0076AD] underline md:no-underline md:hover:underline">
             {translations.blog.viewAll}
           </Title3>
         </Link>

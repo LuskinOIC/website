@@ -43,9 +43,12 @@ export default async function PatientStories({
   )) as unknown as BlogCardsRowType[];
 
   return (
-    <div>
-      <PageSectionContainer>
-        <TwoColumnLayout section={patient.topSection} />
+    <div className="flex flex-col">
+      <PageSectionContainer showTopMargin={true} showBottomMargin={true}>
+        <TwoColumnLayout
+          section={patient.topSection}
+          imageClass="w-[90%] md:w-[455px] m-auto"
+        />
       </PageSectionContainer>
       {patient.pageSections &&
         patient.pageSections.map((pageSection: PageSectionType) => (

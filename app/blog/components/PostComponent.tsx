@@ -46,19 +46,21 @@ const PostComponent = ({ postData }: PostComponentProps) => {
 
   return (
     <>
-      <PageSectionContainer showBottomMargin={true}>
+      <PageSectionContainer showBottomMargin={true} showTopMargin={true}>
         <Title1 className={styles.postTitle}>{title}</Title1>
         <div className={styles.postSubTitle}>{newsSubTitle}</div>
       </PageSectionContainer>
-      <Image
-        className={styles.postImage}
-        src={url}
-        alt={fileName}
-        width={details.image.width}
-        height={details.image.height}
-      />
+      <PageSectionContainer showBottomMargin={true}>
+        <Image
+          className={styles.postImage}
+          src={url}
+          alt={fileName}
+          width={details.image.width}
+          height={details.image.height}
+        />
+      </PageSectionContainer>
       <PageSectionContainer>
-        <div className="grid grid-cols-3">
+        <div className="grid md:grid-cols-3">
           <div className={`${styles.postDetailsWrapper}`}>
             <div className={`${styles.postDetailsFont}`}>
               {translations.blog.publishedOn}
