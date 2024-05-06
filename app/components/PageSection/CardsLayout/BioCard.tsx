@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 
 const styles = {
   container:
-    "bg-[#0076AD] rounded-lg md:border md:bg-card md:text-card-foreground flex flex-row lg:flex-col items-center p-2",
+    "bg-[#0076AD] rounded-lg lg:border lg:bg-card lg:text-card-foreground flex flex-row lg:flex-col items-center p-2",
   header:
-    "md:pb-0 md:self-center md:text-center text-white md:text-black leading-0 md:leading-0 md:min-h-[50px] md:font-medium",
+    "lg:pb-0 lg:self-center lg:text-center text-white lg:text-black leading-0 lg:leading-0 lg:min-h-[50px] lg:font-medium",
   paragraph:
-    "text-sm md:flex md:min-h-[30px] md:text-lg md:text-center md:items-center md:mx-auto text-white md:text-black ",
-  image: "w-28 h-28 md:w-full md:h-auto md:mx-auto p-2 md:p-6",
-  textDesktop: "hidden md:flex flex-col justify-center pb-4 px-2",
-  textMobile: "pl-2 flex flex-col justify-center md:hidden self-center",
+    "text-sm lg:flex lg:min-h-[30px] lg:text-lg lg:text-center lg:items-center lg:mx-auto text-white lg:text-black ",
+  image: "w-28 h-28 lg:w-full lg:h-auto lg:mx-auto p-2 lg:p-6",
+  textDesktop: "hidden lg:flex flex-col justify-center pb-4 px-2",
+  textMobile: "pl-2 flex flex-col justify-center lg:hidden self-center",
 };
 
 export function BioCardContainer({

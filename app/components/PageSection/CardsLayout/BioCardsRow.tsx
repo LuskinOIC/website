@@ -37,7 +37,7 @@ function getCardHref(card: CardsRowType) {
 }
 
 const BioCardsRow = ({ title, cards }: BioCardsRowPropsType) => {
-  const gridClass = "grid-rows md:grid-cols-3 gap-y-2 md:gap-x-2 mx-auto";
+  const gridClass = "grid-rows lg:grid-cols-3 gap-y-2 lg:gap-x-2 mx-auto";
 
   return (
     <section id="BioCardsRow" className={styles.container}>
