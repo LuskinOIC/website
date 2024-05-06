@@ -50,13 +50,15 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         <Title1 className={styles.postTitle}>{title}</Title1>
         <div className={styles.postSubTitle}>{newsSubTitle}</div>
       </PageSectionContainer>
-      <Image
-        className={styles.postImage}
-        src={url}
-        alt={fileName}
-        width={details.image.width}
-        height={details.image.height}
-      />
+      <PageSectionContainer showBottomMargin={true}>
+        <Image
+          className={styles.postImage}
+          src={url}
+          alt={fileName}
+          width={details.image.width}
+          height={details.image.height}
+        />
+      </PageSectionContainer>
       <PageSectionContainer>
         <div className="grid grid-cols-3">
           <div className={`${styles.postDetailsWrapper}`}>

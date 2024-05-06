@@ -39,13 +39,16 @@ export default async function PatientStories({
 }) {
   const patient = await getPatientStoryBySlug(params.slug);
   const patients = (await getPatientStories(
-    4,
+    4
   )) as unknown as BlogCardsRowType[];
 
   return (
     <div>
-      <PageSectionContainer>
-        <TwoColumnLayout section={patient.topSection} />
+      <PageSectionContainer showTopMargin={true} showBottomMargin={true}>
+        <TwoColumnLayout
+          section={patient.topSection}
+          imageClass="max-w-[455px] m-auto"
+        />
       </PageSectionContainer>
       {patient.pageSections &&
         patient.pageSections.map((pageSection: PageSectionType) => (
