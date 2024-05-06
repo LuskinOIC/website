@@ -94,11 +94,11 @@ export default function TabSection({
   const queriedTab = params.get("tab");
   // Create list of trimmed tab names
   const abbrvTabs = tabs.map((tab) =>
-    tab.fields.tabTitle.replace(/[^A-z]/g, ""),
+    tab.fields.tabTitle.replace(/[^A-z]/g, "")
   );
   // Use state to switch tabs with the dropdown menu
   const [selectedTab, setSelectedTab] = useState(
-    queriedTab ? queriedTab : abbrvTabs[0],
+    queriedTab ? queriedTab : abbrvTabs[0]
   );
 
   // Use state to trigger component refresh once tabs fully load
@@ -215,7 +215,7 @@ function MobileTabSection({
   return (
     /* Only show on mobile */
     <div className="relative flex md:hidden flex-col items-center w-full mt-6">
-      <Text className="w-4/5" size="regular">
+      <Text className="mb-4" size="regular">
         {translations.blog.sectionReviewText}
       </Text>
       <div className="sticky top-0 flex flex-col items-center w-full pb-1 bg-white">

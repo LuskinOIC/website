@@ -13,7 +13,7 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        desktop: "1000px",
       },
     },
     extend: {
@@ -79,7 +79,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        arial: "arial"
+        arial: "arial",
       },
     },
   },

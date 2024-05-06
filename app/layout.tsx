@@ -44,7 +44,7 @@ export default async function RootLayout({
   const navigationBar = await getNavigationBar();
   const searchIndexDataString = await fs.readFile(
     process.cwd() + "/app/data/searchIndex.json",
-    "utf8",
+    "utf8"
   );
   const searchIndexData = JSON.parse(searchIndexDataString);
   const bgColor = getBackgroundColor("blue");
@@ -59,7 +59,7 @@ export default async function RootLayout({
             searchIndex={searchIndexData as SearchIndex}
           />
           {/* This div provides margin for the main layout since the navbar is stick */}
-          <div className={`hidden md:block h-[180px] md:${bgColor}`}></div>
+          <div className={`hidden lg:block h-[180px] lg:${bgColor}`}></div>
           <main id="main">{children}</main>
           <Footer />
         </div>
