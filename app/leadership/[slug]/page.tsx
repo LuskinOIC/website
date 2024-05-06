@@ -40,7 +40,10 @@ export default async function MemberBio({
     <div className="">
       {memberBio.topSection && (
         <PageSectionContainer showBottomPadding={true} showTopPadding={true}>
-          <TwoColumnLayout section={memberBio.topSection} />
+          <TwoColumnLayout
+            section={memberBio.topSection}
+            imageClass="mx-auto w-3/4"
+          />
         </PageSectionContainer>
       )}
       {memberBio.pageSections &&

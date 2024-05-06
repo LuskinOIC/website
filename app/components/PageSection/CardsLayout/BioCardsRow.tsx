@@ -14,6 +14,10 @@ const styles = {
 };
 
 function getCardHref(card: CardsRowType) {
+  const shouldWrapWithLink = card.fields.topSection || card.fields.topSummary;
+
+  if (!shouldWrapWithLink) return;
+
   switch (card.sys.contentType.sys.id) {
     case "patientBio":
       return `/patient-stories/${card.fields.slug}`;

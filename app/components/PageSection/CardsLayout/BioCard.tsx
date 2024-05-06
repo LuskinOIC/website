@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { BioCardType } from "@/app/constants/types";
 import { Title3 } from "../../ui/Typography/Title";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,26 @@ const styles = {
   textMobile: "flex flex-col justify-center md:hidden",
 };
 
+export function BioCardContainer({
+  children,
+  cardLink,
+  className,
+}: {
+  children: React.ReactNode;
+  cardLink?: string;
+  className: string;
+}) {
+  if (cardLink) {
+    return (
+      <Link href={cardLink} className={className}>
+        {children}
+      </Link>
+    );
+  } else {
+    return <div className={className}>{children}</div>;
+  }
+}
+
 export default function BioCard({
   name,
   portrait,
@@ -25,9 +46,8 @@ export default function BioCard({
   const desktopLeadershipRole = leadershipRole ? leadershipRole : "\u00A0";
 
   return (
-    <a
-      id="BioCard"
-      href={cardLink}
+    <BioCardContainer
+      cardLink={cardLink}
       className={cn(styles.container, classNames)}
     >
       {portrait && (
@@ -53,6 +73,6 @@ export default function BioCard({
           ""
         )}
       </div>
-    </a>
+    </BioCardContainer>
   );
 }
