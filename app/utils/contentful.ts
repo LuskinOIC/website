@@ -3,6 +3,7 @@ import {
   EventType,
   MemberType,
   NavigationBarType,
+  FooterBarType,
   BlogPostType,
   PageType,
   PatientType,
@@ -247,7 +248,7 @@ export async function getNavigationBar(): Promise<NavigationBarType> {
   return entry.items[0].fields as NavigationBarType;
 }
 
-export async function getFooter(): Promise<NavigationBarType> {
+export async function getFooter(): Promise<FooterBarType> {
   const entry = await client.getEntries({
     content_type: "navigationBar",
     "fields.type": "Footer",
@@ -255,7 +256,7 @@ export async function getFooter(): Promise<NavigationBarType> {
     locale: "en-US",
   });
 
-  return entry.items[0].fields as NavigationBarType;
+  return entry.items[0].fields as FooterBarType;
 }
 
 /* CONDITIONS */
