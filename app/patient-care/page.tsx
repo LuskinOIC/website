@@ -6,6 +6,7 @@ import { getPageByType } from "@/app/utils/contentful";
 import TabSection from "@/app/components/TabSection";
 import LocationsCard from "@/app/components/LocationsCard";
 import { PageSectionType } from "@/app/constants/types";
+import { PageSectionContainer } from "../components/PageSection/PageSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   const patientCarePage = await getPageByType(PAGE_TYPES.PATIENT_CARE, 10);
@@ -27,9 +28,9 @@ export default async function PatientCare() {
 
   // TODO: Replace hardcoding with map and PageSection components
   return (
-    <div className="mx-[5%] md:mx-[10%] mt-6 md:mt-0">
+    <PageSectionContainer>
       {locations && <LocationsCard locations={locations} />}
       {tabs && <TabSection tabs={tabs} />}
-    </div>
+    </PageSectionContainer>
   );
 }
