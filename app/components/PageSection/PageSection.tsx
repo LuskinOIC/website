@@ -69,8 +69,8 @@ function paddingStyleClass({
   showTopPadding: boolean;
   showBottomPadding: boolean;
 }) {
-  const topPadding = showTopPadding ? "pt-6 lg:pt-16" : "";
-  const bottomPadding = showBottomPadding ? "pb-6 lg:pb-16" : "";
+  const topPadding = showTopPadding ? "pt-6 lg:pt-10" : "";
+  const bottomPadding = showBottomPadding ? "pb-6 lg:pb-10" : "";
   return `${topPadding} ${bottomPadding}`;
 }
 
