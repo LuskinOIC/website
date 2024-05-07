@@ -21,7 +21,7 @@ export default function TwoColumnLayout({
   section: ColumnType;
   imageClass?: string;
 }) {
-  const isReversedOrder = section.fields.reverseOrder ? "order-last" : "";
+  const isReversedOrder = section.fields.reverseOrder ? "lg:order-last" : "";
   const imageAlignmentClass = imageAlignmentClassForColumn(section);
 
   const bgColor = section.fields.backgroundColor
@@ -31,7 +31,7 @@ export default function TwoColumnLayout({
   return (
     <div className={`grid lg:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
-        className={`grid-span-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass} w-full`}
+        className={`justify-self-center lg:self-center lg:w-full ${isReversedOrder} ${imageAlignmentClass}`}
       >
         <Image
           className={cn(imageClass)}
