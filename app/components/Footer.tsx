@@ -9,12 +9,9 @@ import xlogo from "@/public/XLogo.svg";
 import phone from "@/public/phone-white.svg";
 import pin from "@/public/map-pin-white.svg";
 import {
-  CAREERS_URL,
   FACEBOOK_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
-  MYCHART_URL,
-  SAVE_MY_SPOT,
   TWITTER_URL,
   YOUTUBE_URL,
 } from "../constants/links";
