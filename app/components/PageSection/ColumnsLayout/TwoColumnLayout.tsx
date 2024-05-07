@@ -21,7 +21,7 @@ export default function TwoColumnLayout({
   section: ColumnType;
   imageClass?: string;
 }) {
-  const isReversedOrder = section.fields.reverseOrder ? "order-last" : "";
+  const isReversedOrder = section.fields.reverseOrder ? "lg:order-last" : "";
   const imageAlignmentClass = imageAlignmentClassForColumn(section);
 
   const bgColor = section.fields.backgroundColor
