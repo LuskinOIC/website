@@ -20,17 +20,7 @@ import {
 } from "../constants/links";
 import NewsletterSignup from "./NewsletterSignup";
 import translations from "@/public/locales/en.json";
-import { NavigationLinkType } from "../constants/types";
-
-type FooterItemsSectionProps = {
-  title: string;
-  id: string;
-  menuItems: NavigationLinkType[];
-};
-
-type FooterBarType = {
-  navigationItems: NavigationLinkType[];
-};
+import { FooterItemsSectionProps, FooterBarType } from "../constants/types";
 
 const socialMediaLinks = [
   { url: FACEBOOK_URL, src: facebook, alt: "facebook" },

@@ -434,6 +434,16 @@ export type NavigationBarType = {
   navigationItems: NavigationItemType[];
 };
 
+export type FooterItemsSectionProps = {
+  title: string;
+  id: string;
+  menuItems: NavigationLinkType[];
+};
+
+export type FooterBarType = {
+  navigationItems: NavigationLinkType[];
+};
+
 export type SpecialtyType = {
   fields: {
     twoColumn: ColumnType;
