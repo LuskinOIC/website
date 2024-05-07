@@ -75,7 +75,7 @@ function paddingStyleClass({
 }
 
 export default function PageSection({ section }: { section: PageSectionType }) {
-  const responsiveClass = section.fields.mobileOnly ? "block md:hidden" : "";
+  const responsiveClass = section.fields.mobileOnly ? "block lg:hidden" : "";
   const sectionClassName =
     section.fields.width === "FULL_WIDTH"
       ? SectionStyles.pageSectionFullWidth
