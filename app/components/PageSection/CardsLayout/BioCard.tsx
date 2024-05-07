@@ -12,7 +12,7 @@ const styles = {
     "lg:pb-0 lg:self-center lg:text-center text-white lg:text-black leading-0 lg:leading-0 lg:min-h-[50px] lg:font-medium",
   paragraph:
     "text-sm lg:flex lg:min-h-[30px] lg:text-lg lg:text-center lg:items-center lg:mx-auto text-white lg:text-black ",
-  image: "w-28 h-28 lg:w-full lg:h-auto lg:mx-auto p-2 lg:p-6",
+  image: "w-28 h-28 lg:w-60 lg:h-auto lg:mx-auto p-2 lg:p-6",
   textDesktop: "hidden lg:flex flex-col justify-center pb-4 px-2",
   textMobile: "pl-2 flex flex-col justify-center lg:hidden self-center",
 };

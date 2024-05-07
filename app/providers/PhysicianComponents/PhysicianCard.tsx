@@ -6,12 +6,12 @@ import { getProviderFormattedPath } from "@/app/providers/PhysicianComponents/fo
 
 const styles = {
   cardContainer:
-    "lg:min-h-[273px] bg-[#0076AD] rounded-lg lg:border lg:bg-card lg:text-card-foreground py-2 px-4",
+    "lg:min-h-[273px] bg-[#0076AD] rounded-lg lg:border lg:bg-card lg:text-card-foreground py-4 px-6",
   interactiveStates: "shadow-md lg:shadow-sm hover:shadow-lg",
   contentContainer: "flex flex-row lg:flex-col items-center",
-  image: "w-28 h-28 p-1.5 lg:w-auto lg:h-auto",
+  image: "w-28 h-28 lg:w-40 p-1.5 lg:w-auto lg:h-auto",
   title:
-    "pl-4 lg:px-2 lg:py-4 text-center lg:leading-none text-white lg:text-black",
+    "pl-4 lg:px-2 lg:py-4 text-center leading-2 lg:leading-none text-white lg:text-black",
 };
 
 const CardContent = ({ physician }: { physician: PhysicianBioType }) => {
