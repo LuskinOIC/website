@@ -31,7 +31,7 @@ export default function TwoColumnLayout({
   return (
     <div className={`grid lg:grid-cols-2 gap-12 mx-auto ${bgColor}`}>
       <div
-        className={`grid-span-1 self-center mx-auto ${isReversedOrder} ${imageAlignmentClass} w-full`}
+        className={`justify-self-center lg:self-center lg:w-full ${isReversedOrder} ${imageAlignmentClass}`}
       >
         <Image
           className={cn(imageClass)}
