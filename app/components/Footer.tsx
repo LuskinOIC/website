@@ -45,35 +45,6 @@ const socialMediaLinks = [
   },
 ];
 
-const aboutMenuItems = [
-  { text: "Mission & Purpose", href: "/about" },
-  { text: "News", href: "/news" },
-];
-
-const patientSupportMenuItems = [
-  { text: "Urgent Care", href: SAVE_MY_SPOT },
-  { text: "Specialty Treatment", href: "/specialties" },
-  { text: "Billing & Insurance", href: "/patient-care" },
-  { text: "MyChart", href: MYCHART_URL },
-];
-
-const healthProfessionalsMenuItems = [
-  { text: "LuskinOIC Physicians", href: "/providers" },
-  { text: "Refer a Patient", href: "/medical-professionals" },
-  { text: "Careers", href: CAREERS_URL },
-  { text: "Volunteer", href: "/ways-to-give" },
-  {
-    text: "Research",
-    href: "/research",
-  },
-];
-
-const getInvolvedMenuItems = [
-  { text: "Donate", href: "/ways-to-give" },
-  { text: "Events", href: "/events" },
-  { text: "Volunteer", href: "/ways-to-give" },
-];
-
 const styles = {
   footerContainer: "flex justify-evenly bg-[#0076AD] text-white py-8",
   leftContainer: "flex flex-col tracking-wide gap-2 pl-4 lg:pl-4",
