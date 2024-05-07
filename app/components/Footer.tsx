@@ -20,16 +20,16 @@ import {
 } from "../constants/links";
 import NewsletterSignup from "./NewsletterSignup";
 import translations from "@/public/locales/en.json";
-
-type FooterItem = {
-  text: string;
-  href: string;
-};
+import { NavigationLinkType } from "../constants/types";
 
 type FooterItemsSectionProps = {
   title: string;
   id: string;
-  menuItems: FooterItem[];
+  menuItems: NavigationLinkType[];
+};
+
+type FooterBarType = {
+  navigationItems: NavigationLinkType[];
 };
 
 const socialMediaLinks = [
@@ -97,20 +97,28 @@ const FooterItemsSection = ({
   <>
     <h2 className={styles.subHeader}>{title}</h2>
     <ul id={id} className="">
-      {menuItems.map((item, index) => (
-        <li key={index}>
-          <p>
-            <Link role="button" href={item.href} className={"hover:underline"}>
-              {item.text}
-            </Link>
-          </p>
-        </li>
-      ))}
+      {menuItems.map((item, index) => {
+        return item.fields.title === title ? (
+          <li key={index}>
+            <p>
+              <Link
+                role="button"
+                href={item.fields.url}
+                className={"hover:underline"}
+              >
+                {item.fields.text}
+              </Link>
+            </p>
+          </li>
+        ) : (
+          ""
+        );
+      })}
     </ul>
   </>
 );
 
-export default function Footer() {
+export default function Footer({ footer }: { footer: FooterBarType }) {
   return (
     <footer>
       <NewsletterSignup />
@@ -248,12 +256,12 @@ export default function Footer() {
             <FooterItemsSection
               title="About"
               id="about"
-              menuItems={aboutMenuItems}
+              menuItems={footer.navigationItems}
             />
             <FooterItemsSection
               title="Patient Support"
               id="patient-support"
-              menuItems={patientSupportMenuItems}
+              menuItems={footer.navigationItems}
             />
           </div>
           {/* right section of footer-left */}
@@ -264,12 +272,12 @@ export default function Footer() {
             <FooterItemsSection
               title="Health Professionals"
               id="health-professionals"
-              menuItems={healthProfessionalsMenuItems}
+              menuItems={footer.navigationItems}
             />
             <FooterItemsSection
               title="Get Involved"
               id="get-involved"
-              menuItems={getInvolvedMenuItems}
+              menuItems={footer.navigationItems}
             />
           </div>
         </div>

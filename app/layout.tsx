@@ -5,7 +5,7 @@ import Navbar from "@/app/components/NabarLayout/Navbar";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-import { getNavigationBar } from "@/app/utils/contentful";
+import { getNavigationBar, getFooter } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import packageJson from "../package.json";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
@@ -42,6 +42,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const navigationBar = await getNavigationBar();
+  const footer = await getFooter();
   const searchIndexDataString = await fs.readFile(
     process.cwd() + "/app/data/searchIndex.json",
     "utf8",
@@ -61,7 +62,7 @@ export default async function RootLayout({
           {/* This div provides margin for the main layout since the navbar is stick */}
           <div className={`hidden lg:block h-[180px] lg:${bgColor}`}></div>
           <main id="main">{children}</main>
-          <Footer />
+          <Footer footer={footer} />
         </div>
       </body>
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID as string} />
