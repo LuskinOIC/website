@@ -55,23 +55,24 @@ const FooterItemsSection = ({
   <>
     <h2 className={styles.subHeader}>{title}</h2>
     <ul id={id} className="">
-      {menuItems.map((item, index) => {
-        return item.fields.title === title ? (
-          <li key={index}>
-            <p>
-              <Link
-                role="button"
-                href={item.fields.url}
-                className={"hover:underline"}
-              >
-                {item.fields.text}
-              </Link>
-            </p>
-          </li>
-        ) : (
-          ""
-        );
-      })}
+      {menuItems &&
+        menuItems.map((item, index) => {
+          return item.fields.title === title ? (
+            <li key={index}>
+              <p>
+                <Link
+                  role="button"
+                  href={item.fields.url}
+                  className={"hover:underline"}
+                >
+                  {item.fields.text}
+                </Link>
+              </p>
+            </li>
+          ) : (
+            ""
+          );
+        })}
     </ul>
   </>
 );
