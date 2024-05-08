@@ -12,6 +12,7 @@ import EventBanner from "@/app/components/EventBanner";
 import NewsletterBanner from "@/app/components/NewsletterBanner";
 import { BACKGROUND_COLORS } from "@/app/constants/background-colors";
 import SectionStyles from "@/app/components/PageSection/PageSection.module.css";
+import LocationsCard from "@/app/components//LocationsCard";
 
 // Types
 import { PageSectionType, SpecialtyType } from "@/app/constants/types";
@@ -45,6 +46,12 @@ export function PageSectionContent({ section }: { section: PageSectionType }) {
       return <NewsletterBanner />;
     case "Conditions":
       return <ConditionsIndexLayout />;
+    case "Locations":
+      return (
+        section.fields.locations && (
+          <LocationsCard locations={section.fields.locations} />
+        )
+      );
     default:
       return null;
   }
