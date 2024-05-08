@@ -84,6 +84,11 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/donate/",
+        destination: "https://fundraise.givesmart.com/form/P4fGmg?vid=13nh3f",
+        permanent: true,
+      },
     ];
   },
 };
