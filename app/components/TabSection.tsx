@@ -171,7 +171,7 @@ function DesktopTabSection({
               }}
               className={styles.tabsTrigger(index, tabCount)}
             >
-              <p className="uppercase text-base two-line-ellipsis">
+              <p className="w-full uppercase text-base two-line-ellipsis">
                 {tab.fields.tabTitle}
               </p>{" "}
             </TabsTrigger>
