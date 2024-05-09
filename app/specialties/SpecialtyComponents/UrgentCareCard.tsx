@@ -45,13 +45,13 @@ export default function UrgentCareCard({ specialty }: SpecialtyCardProps) {
           {descriptionContent}
         </div>
         <Button
-          className="my-3 w-full mx-auto min-[1020px]:w-auto min-[1020px]:mx-0"
+          className="my-5 min-[1020px]:my-3 w-full mx-auto min-[1020px]:w-auto min-[1020px]:mx-0"
           href={SAVE_MY_SPOT}
           text="SAVE MY SPOT"
           variant="purple"
           isExternal={true}
         />
-        <div className="grid min-[1020px]:grid-cols-2 gap-4">
+        <div className="grid min-[1020px]:grid-cols-2 gap-6">
           <Button
             className="text-black bold"
             href={"/patient-care/specialties/urgent-care"}
