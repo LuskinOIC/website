@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // Next components
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Types
 import { CardType, TextType } from "@/app/constants/types";
@@ -22,7 +23,8 @@ const styles = {
   title: "text-[#0076AD] md:leading-[30px]",
   contentDetails: "flex flex-col justify-apart gap-2 h-full",
   button: "w-full md:w-fit mt-auto text-center",
-  borderGray: "shadow-lg border border-black border-opacity-10",
+  borderGray: "border border-black border-opacity-10",
+  cardShadow: "rounded-[10px] hover:shadow-lg",
   borderGreen: "border-2 border-[#99C221]",
 };
 
@@ -30,11 +32,27 @@ const descriptionClassNames: ClassNames = {
   paragraph: "py-2 text-base font-normal md:text-xl md:leading-[30px] pb-4",
 };
 
-export function InfoCardContent(
-  cardContent: TextType,
-  i: number,
-  pathname: string,
-) {
+export const ClickableCardWrapper = ({
+  cardLink = "/",
+  children,
+}: {
+  cardLink?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <Link href={cardLink} className={styles.cardShadow}>
+      {children}
+    </Link>
+  );
+};
+
+export const InfoCardContent = ({
+  cardContent,
+  pathname,
+}: {
+  cardContent: TextType;
+  pathname: string;
+}) => {
   const [isCurrentPage, setCurrentPage] = useState<boolean>(true);
   const { title, content, button } = cardContent.fields;
 
@@ -47,7 +65,6 @@ export function InfoCardContent(
 
   return (
     <div
-      key={i}
       className={`${styles.cardContainer} ${
         isCurrentPage ? styles.borderGreen : styles.borderGray
       }`}
@@ -71,9 +88,10 @@ export function InfoCardContent(
       </div>
     </div>
   );
-}
+};
 
 export default function IndexCardsLayout({ section }: { section: CardType[] }) {
+  // const [showHover, setShowHover] = useState<boolean>(false);
   const pathname = usePathname();
 
   const mobileButton = section.find((card) => {
@@ -88,12 +106,27 @@ export default function IndexCardsLayout({ section }: { section: CardType[] }) {
   return (
     <>
       <section className={styles.desktopSectionContainer}>
-        {section.map((card, i) => {
-          return (
-            card.fields.cardContent &&
-            InfoCardContent(card.fields.cardContent, i, pathname)
-          );
-        })}
+        {section &&
+          section.map((card, i) => {
+            return card.fields.cardLink ? (
+              <ClickableCardWrapper key={i} cardLink={card.fields.cardLink}>
+                {card.fields.cardContent && (
+                  <InfoCardContent
+                    cardContent={card.fields.cardContent}
+                    pathname={pathname}
+                  />
+                )}
+              </ClickableCardWrapper>
+            ) : (
+              card.fields.cardContent && (
+                <InfoCardContent
+                  key={i}
+                  cardContent={card.fields.cardContent}
+                  pathname={pathname}
+                />
+              )
+            );
+          })}
       </section>
       <section className={styles.mobileSectionContainer}>
         {mobileButton && (

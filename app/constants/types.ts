@@ -48,6 +48,7 @@ export type CardLayoutProps = {
 
 export type CardType = {
   fields: {
+    cardLink?: string;
     bold: boolean | undefined;
     fontSize: string;
     titleSize: string;
