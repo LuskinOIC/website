@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 // Next components
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 // Types
 import { CardType, TextType } from "@/app/constants/types";
@@ -12,6 +11,7 @@ import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
 import Button from "@/app/components/ui/Button";
+import { ClickableCardWrapper } from "@/app/components/PageSection/CardsLayout/ClickableCardWrapper";
 
 const styles = {
   desktopSectionContainer:
@@ -30,20 +30,6 @@ const styles = {
 
 const descriptionClassNames: ClassNames = {
   paragraph: "py-2 text-base font-normal md:text-xl md:leading-[30px] pb-4",
-};
-
-export const ClickableCardWrapper = ({
-  cardLink = "/",
-  children,
-}: {
-  cardLink?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <Link href={cardLink} className={styles.cardShadow}>
-      {children}
-    </Link>
-  );
 };
 
 export const InfoCardContent = ({
@@ -91,7 +77,6 @@ export const InfoCardContent = ({
 };
 
 export default function IndexCardsLayout({ section }: { section: CardType[] }) {
-  // const [showHover, setShowHover] = useState<boolean>(false);
   const pathname = usePathname();
 
   const mobileButton = section.find((card) => {
@@ -105,7 +90,7 @@ export default function IndexCardsLayout({ section }: { section: CardType[] }) {
 
   return (
     <>
-      <section className={styles.desktopSectionContainer}>
+      <div className={styles.desktopSectionContainer}>
         {section &&
           section.map((card, i) => {
             return card.fields.cardLink ? (
@@ -127,8 +112,8 @@ export default function IndexCardsLayout({ section }: { section: CardType[] }) {
               )
             );
           })}
-      </section>
-      <section className={styles.mobileSectionContainer}>
+      </div>
+      <div className={styles.mobileSectionContainer}>
         {mobileButton && (
           <Button
             className={styles.button}
@@ -139,7 +124,7 @@ export default function IndexCardsLayout({ section }: { section: CardType[] }) {
             variant="blueSecondary"
           />
         )}
-      </section>
+      </div>
     </>
   );
 }
