@@ -10,6 +10,7 @@ import { Title2 } from "../../ui/Typography/Title";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";
+import { ClickableCardWrapper } from "./ClickableCardWrapper";
 
 interface CardImageProps {
   image: ImageType;
@@ -63,12 +64,22 @@ export const CardImage = ({ image }: CardImageProps) => {
 export default function InfoCardLayout({ section }: { section: CardType[] }) {
   return (
     <div className={styles.infoCardSection}>
-      {section.map((card, i) => (
-        <div key={i} className={styles.cardWrapper}>
-          {card.fields.image && <CardImage image={card.fields.image} />}
-          {card.fields.cardContent && InfoCardContent(card.fields.cardContent)}
-        </div>
-      ))}
+      {section.map((card, i) => {
+        return card.fields.cardLink ? (
+          <ClickableCardWrapper key={i} cardLink={card.fields.cardLink}>
+            {/* <div key={i} className={styles.cardWrapper}> */}
+            {card.fields.image && <CardImage image={card.fields.image} />}
+            {card.fields.cardContent &&
+              InfoCardContent(card.fields.cardContent)}
+          </ClickableCardWrapper>
+        ) : (
+          <div key={i} className={styles.cardWrapper}>
+            {card.fields.image && <CardImage image={card.fields.image} />}
+            {card.fields.cardContent &&
+              InfoCardContent(card.fields.cardContent)}
+          </div>
+        );
+      })}
     </div>
   );
 }
