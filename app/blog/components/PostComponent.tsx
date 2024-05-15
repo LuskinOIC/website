@@ -2,7 +2,7 @@ import Image from "next/image";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { BlogPostType, PageSectionType } from "@/app/constants/types";
 import { Title1 } from "@/app/components/ui/Typography/Title";
-import SocialMediaSection from "@/app/components/SocialMediaSection";
+// import SocialMediaSection from "@/app/components/SocialMediaSection";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import translations from "@/public/locales/en.json";
@@ -35,7 +35,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
     subTitle,
     date,
     writtenBy,
-    followOurStory,
+    // followOurStory,
     mainImage,
     pageSections,
   } = postData.fields;
@@ -56,7 +56,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
         <div className={`${styles.postDetailsWrapper}`}>
           <div className={`${styles.postDetailsFont}`}>
             <span className={`${styles.postPublishedFont}`}>
-              {translations.blog.publishedOn}
+              {translations.blog.publishedBy}
             </span>
             {` ${writtenBy}`}
             <span> &#x2022;</span>
