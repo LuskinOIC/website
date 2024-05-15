@@ -73,16 +73,6 @@ const PostComponent = ({ postData }: PostComponentProps) => {
             </div>
             <div>{writtenBy}</div>
           </div>
-          {followOurStory && (
-            <div className={`${styles.socialMediaWrapper}`}>
-              <div className="font-bold">
-                {translations.blog.followOurStory}
-              </div>
-              {followOurStory && (
-                <SocialMediaSection section={followOurStory} />
-              )}
-            </div>
-          )}
         </div>
       </PageSectionContainer>
 
@@ -96,8 +86,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
             section.fields.columnLayout.fields.columnType === "Full Column"
               ? `${styles.postPadding}`
               : ""
-          }`}
-        >
+          }`}>
           <PageSection key={section.fields.title} section={section} />
         </div>
       ))}
