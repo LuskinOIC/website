@@ -30,12 +30,12 @@ export function InfoCardContent(cardContent: TextType) {
 
 export default function InfoCardLayout({ section }: { section: CardType[] }) {
   return (
-    <section className="grid md:grid-cols-2 gap-6 md:m-auto justify-items-center">
+    <section className="grid lg:grid-flow-col gap-6 md:m-auto justify-items-center">
       {section.map((card, i) => {
         return (
           <div
             key={i}
-            className="col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
+            className="rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden"
           >
             {card.fields.image && (
               <div className="relative md:rounded-[10px] overflow-hidden">
