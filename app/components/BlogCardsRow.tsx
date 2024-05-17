@@ -37,8 +37,8 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
   }, [cards]);
 
   return (
-    <div id={`${type}`} className="block border-4 border-red-500">
-      <div className="border- mb-2 mt-8 flex flex-row items-center justify-between border-4 border-black md:mb-4">
+    <div id={`${type}`} className="block">
+      <div className="border- mb-2 mt-8 flex flex-row items-center justify-between md:mb-4">
         <Link href={`/${type}`}>
           <Title1 className="text-2xl font-bold uppercase text-[#0076AD] hover:underline md:font-normal md:capitalize">
             {type === "patient-stories" ? "patient stories" : type}
@@ -51,7 +51,7 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
         </Link>
       </div>
       <div
-        className={`sm:grid grid-cols-1 md:grid-cols-4 border-4 border-green-700 ${
+        className={`sm:grid grid-cols-1 md:grid-cols-4  ${
           type === "patient-stories" ? "gap-20" : "gap-4"
         }`}
       >
