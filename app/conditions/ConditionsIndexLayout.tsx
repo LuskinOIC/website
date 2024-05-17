@@ -13,7 +13,7 @@ const styles = {
   lettersContainer:
     "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded mr-12",
   letter: "flex flex-cols p-1 bold hover:text-[#0076AD] hover:underline",
-  termsContainer: "grid grid-col gap-5",
+  termsContainer: "flex-grow grid grid-cols-1 gap-5 overflow-auto max-h-[calc(73rem)] p-4",
 };
 
 export default async function ConditionsIndexLayout() {
