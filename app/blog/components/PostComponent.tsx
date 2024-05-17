@@ -74,7 +74,8 @@ const PostComponent = ({ postData }: PostComponentProps) => {
             section.fields.columnLayout.fields.columnType === "Full Column"
               ? `${styles.postPadding}`
               : ""
-          }`}>
+          }`}
+        >
           <PageSection key={section.fields.title} section={section} />
         </div>
       ))}
