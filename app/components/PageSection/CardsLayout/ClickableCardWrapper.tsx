@@ -12,19 +12,13 @@ const styles = {
   cardShadow: "shadow-lg hover:shadow-2xl",
 };
 
-const isExternalLink = (url: string): boolean => {
-  if (
-    // eslint-disable-next-line no-useless-escape
-    /^\/[^\/]?/.test(url) ||
-    url.includes("luskin.org") ||
-    url.includes("luskinoic.org")
-  ) {
+const isExternalLink = (url: string) => {
+  try {
+    const link = new URL(url);
+    return link.hostname !== window.location.hostname;
+  } catch (e) {
     return false;
   }
-  if (/^(http|https):\/\//.test(url)) {
-    return !url.includes("luskin.org") && !url.includes("luskinoic.org");
-  }
-  return true;
 };
 
 export const ClickableCardWrapper = ({
