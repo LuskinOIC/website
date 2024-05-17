@@ -491,7 +491,6 @@ export type BlogPostType = {
     subTitle: Document;
     date: Date;
     writtenBy: string;
-    // followOurStory: SocialMediaSectionType;
     mainImage: ImageType;
     pageSections: PageSectionType;
   };

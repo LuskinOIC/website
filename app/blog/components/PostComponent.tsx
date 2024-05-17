@@ -2,7 +2,6 @@ import Image from "next/image";
 import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { BlogPostType, PageSectionType } from "@/app/constants/types";
 import { Title1 } from "@/app/components/ui/Typography/Title";
-// import SocialMediaSection from "@/app/components/SocialMediaSection";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import translations from "@/public/locales/en.json";
@@ -27,15 +26,8 @@ const styles = {
 };
 
 const PostComponent = ({ postData }: PostComponentProps) => {
-  const {
-    title,
-    subTitle,
-    date,
-    writtenBy,
-    // followOurStory,
-    mainImage,
-    pageSections,
-  } = postData.fields;
+  const { title, subTitle, date, writtenBy, mainImage, pageSections } =
+    postData.fields;
 
   const { url, details, fileName } = mainImage.fields.file;
   const newsSubTitle = renderRichTextToReactComponent(subTitle);
@@ -46,7 +38,6 @@ const PostComponent = ({ postData }: PostComponentProps) => {
 
   return (
     <>
-      {/* <PageSectionContainer showBottomMargin={true} showTopMargin={true}> */}
       <PageSectionContainer showTopMargin={true}>
         <Title1 className={styles.postTitle}>{title}</Title1>
       </PageSectionContainer>
@@ -83,8 +74,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
             section.fields.columnLayout.fields.columnType === "Full Column"
               ? `${styles.postPadding}`
               : ""
-          }`}
-        >
+          }`}>
           <PageSection key={section.fields.title} section={section} />
         </div>
       ))}
