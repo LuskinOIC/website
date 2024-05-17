@@ -5,8 +5,8 @@ import Image from "next/image";
 
 // Types
 import { CardType, ImageType, TextType } from "@/app/constants/types";
-import { Text } from "../../ui/Typography/Text";
-import { Title2 } from "../../ui/Typography/Title";
+import { Text } from "@/app/components/ui/Typography/Text";
+import { Title2 } from "@/app/components/ui/Typography/Title";
 import renderRichTextToReactComponent, {
   ClassNames,
 } from "@/app/utils/rich-text";

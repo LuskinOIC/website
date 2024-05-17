@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -26,9 +26,12 @@ export const ClickableCardWrapper = ({
   children,
   className = "",
 }: ClickableCardWrapperProps) => {
+  const [isExternal, setIsExternal] = useState(false);
   const combinedClassNames = cn(styles.cardShadow, className);
 
-  const isExternal = isExternalLink(cardLink);
+  useEffect(() => {
+    setIsExternal(isExternalLink(cardLink));
+  }, [cardLink]);
 
   return isExternal ? (
     <a
