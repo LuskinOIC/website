@@ -33,7 +33,7 @@
     "followLuskinOIC": "Follow LuskinOIC!"
   },
   "blog": {
-    "publishedOn": "Published On:",
+    "publishedBy": "Published By",
     "writtenBy": "Written By:",
     "followOurStory": "Follow Our Story",
     "backToBrowse": "Back to Browse",
