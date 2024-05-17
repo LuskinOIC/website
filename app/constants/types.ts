@@ -475,7 +475,7 @@ export type MemberType = {
 };
 
 export type PatientType = {
-  blogCard: any;
+  blogCard: CardType;
   name: string;
   portrait: NestedAssetType;
   slug: string;
