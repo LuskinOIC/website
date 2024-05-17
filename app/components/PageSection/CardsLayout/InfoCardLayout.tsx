@@ -19,9 +19,9 @@ interface CardImageProps {
 const styles = {
   container: "relative md:rounded-[10px] overflow-hidden",
   infoCardContainer: "font-arial leading-[30px] py-4",
-  infoCardSection: "grid md:grid-cols-2 gap-6 md:m-auto justify-items-center",
+  infoCardSection: "grid lg:grid-flow-col gap-6 md:m-auto justify-items-center",
   cardWrapper:
-    "col-span-1 rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden",
+    "rounded-[10px] shadow-lg border border-black border-opacity-10 pb-8 md:p-10 overflow-hidden",
   cardContent: "md:h-min-[242px] px-5 md:px-0 flex-col",
   image: "object-cover",
   description: {
