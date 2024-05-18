@@ -28,7 +28,9 @@ export async function generateMetadata({
     title: patient.name
       ? `Patient Story - ${patient.name}`
       : SEO_DEFAULTS.TITLE,
-    description: SEO_DEFAULTS.DESCRIPTION,
+    description: patient.blogCard.fields.subTitle
+      ? patient.blogCard.fields.subTitle
+      : SEO_DEFAULTS.DESCRIPTION,
   };
 }
 
@@ -41,7 +43,6 @@ export default async function PatientStories({
   const patients = (await getPatientStories(
     4,
   )) as unknown as BlogCardsRowType[];
-
   return (
     <div className="flex flex-col">
       <PageSectionContainer showTopMargin={true} showBottomMargin={true}>
