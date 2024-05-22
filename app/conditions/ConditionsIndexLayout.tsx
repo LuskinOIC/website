@@ -12,8 +12,10 @@ const styles = {
   conditionsContainer: "flex flex-cols md:justify-around mx-auto",
   lettersContainer:
     "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded mr-12",
-  letter: "flex flex-cols justify-center p-1 bold hover:text-[#0076AD] hover:underline",
-  termsContainer: "flex-grow grid grid-cols-1 gap-5 overflow-auto max-h-[calc(73rem)] p-4",
+  letter:
+    "flex flex-cols justify-center p-1 bold hover:text-[#0076AD] hover:underline",
+  termsContainer:
+    "flex-grow grid grid-cols-1 gap-5 overflow-auto max-h-[calc(73rem)] p-4",
 };
 
 export default async function ConditionsIndexLayout() {
