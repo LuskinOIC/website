@@ -26,6 +26,8 @@ export const ClickableCardWrapper = ({
   children,
   className = "",
 }: ClickableCardWrapperProps) => {
+  // NOTE: using useState b/c there is an issue where invoking the method initially on page load
+  // does not behave as expected.
   const [isExternal, setIsExternal] = useState(false);
   const combinedClassNames = cn(styles.cardShadow, className);
 
