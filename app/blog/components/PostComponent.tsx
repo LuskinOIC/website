@@ -15,7 +15,8 @@ const styles = {
   postDetailsWrapper: "flex flex-row md:flex-col py-1.5 md:py-2.5",
   postPublishedFont: "font-bold",
   postDetailsFont: "font-regular md:text-[20px] text-[#868787]",
-  postTitle: "py-0 text-2xl md:text-[36px] md:pt-6 md:pb-0 font-bold",
+  postTitle:
+    "py-0 text-2xl md:text-[36px] md:leading-10 md:pt-6 md:pb-0 font-bold",
   postImage: "w-full -order-1 md:order-none",
   postPadding: "",
 };
