@@ -5,9 +5,12 @@ import { getPageByType } from "@/app/utils/contentful";
 
 // LOCAL COMPONENTS
 import { getPhysicians } from "@/app/utils/contentful";
-import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
+import PageSection, {
+  PageSectionContainer,
+} from "@/app/components/PageSection/PageSection";
 // TYPES
 import {
+  PageSectionType,
   PageType,
   PhysicianBioType,
   PhysicianPageSectionType,
@@ -29,8 +32,13 @@ export default async function Physicians() {
     PAGE_TYPES.PHYSICIAN_LIST_PAGE,
     4,
   )) as unknown as PageType;
-  const sortedPhysicians: PhysicianPageSectionType[] =
-    page.pageSections as unknown as PhysicianPageSectionType[];
+  const sortedPhysicians: PhysicianPageSectionType[] = (
+    page.pageSections as unknown as PhysicianPageSectionType[]
+  ).slice(0, 3);
+
+  const contentPageSections = (
+    page.pageSections as unknown as PhysicianPageSectionType[]
+  ).slice(3);
 
   return (
     <PageSectionContainer>
@@ -38,6 +46,9 @@ export default async function Physicians() {
         physicians={physicians}
         sortedPhysicians={sortedPhysicians}
       />
+      {contentPageSections.map((pageSection: PageSectionType) => (
+        <PageSection key={pageSection.fields.title} section={pageSection} />
+      ))}
     </PageSectionContainer>
   );
 }
