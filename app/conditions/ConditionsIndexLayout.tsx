@@ -14,6 +14,8 @@ const styles = {
     "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded mr-12",
   letter:
     "flex flex-cols justify-center p-1 bold hover:text-[#0076AD] hover:underline",
+  greyedOutLetter:
+    "text-gray-400 pointer-events-none", // New style for greyed-out letters
   termsContainer:
     "flex-grow grid grid-cols-1 gap-5 overflow-auto max-h-[calc(73rem)] p-4",
 };
@@ -35,6 +37,8 @@ export default async function ConditionsIndexLayout() {
   }
 
   const groupedConditions = groupTermsByFirstLetter(conditions);
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters = Object.keys(groupedConditions).join("").toUpperCase();
 
   const GlossarySection = () => {
     return (
@@ -58,9 +62,16 @@ export default async function ConditionsIndexLayout() {
       {/* TO DO: Search + Glossary Index BTN */}
       {/* <SearchBar /> */}
       <div className={styles.lettersContainer}>
-        {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => {
+        {alphabet.split("").map((letter) => {
+          const isLetterPresent = letters.includes(letter);
           return (
-            <a href={`#${letter}`} key={letter} className={styles.letter}>
+            <a
+              href={`#${letter}`}
+              key={letter}
+              className={`${styles.letter} ${
+                !isLetterPresent ? styles.greyedOutLetter : ""
+              }`}
+            >
               {letter}
             </a>
           );
