@@ -3,7 +3,6 @@ import {
   EventType,
   MemberType,
   NavigationBarType,
-  FooterBarType,
   BlogPostType,
   PageType,
   PatientType,
@@ -237,26 +236,15 @@ export async function getPages(): Promise<PageType[]> {
   return entries.items.map((entry) => entry.fields as unknown as PageType);
 }
 
-export async function getNavigationBar(): Promise<NavigationBarType> {
+export async function getNavigationBar(barType: string) {
   const entry = await client.getEntries({
     content_type: "navigationBar",
-    "fields.type": "Header",
+    "fields.type": barType,
     include: 2,
     locale: "en-US",
   });
 
   return entry.items[0].fields as NavigationBarType;
-}
-
-export async function getFooter(): Promise<FooterBarType> {
-  const entry = await client.getEntries({
-    content_type: "navigationBar",
-    "fields.type": "Footer",
-    include: 2,
-    locale: "en-US",
-  });
-
-  return entry.items[0].fields as FooterBarType;
 }
 
 /* CONDITIONS */

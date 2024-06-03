@@ -437,11 +437,7 @@ export type NavigationBarType = {
 export type FooterItemsSectionProps = {
   title: string;
   id: string;
-  menuItems: NavigationLinkType[];
-};
-
-export type FooterBarType = {
-  navigationItems: NavigationLinkType[];
+  footerItems: NavigationLinkType[];
 };
 
 export type SpecialtyType = {

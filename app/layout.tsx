@@ -5,7 +5,7 @@ import Navbar from "@/app/components/NabarLayout/Navbar";
 import Footer from "@/app/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-import { getNavigationBar, getFooter } from "@/app/utils/contentful";
+import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
 import packageJson from "../package.json";
 import { SEO_DEFAULTS } from "@/app/constants/seo";
@@ -41,8 +41,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const navigationBar = await getNavigationBar();
-  const footer = await getFooter();
+  const navigationBar = await getNavigationBar("Header");
+  const footer = await getNavigationBar("Footer");
   const searchIndexDataString = await fs.readFile(
     process.cwd() + "/app/data/searchIndex.json",
     "utf8",
