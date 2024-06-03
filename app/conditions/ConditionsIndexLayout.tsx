@@ -14,8 +14,7 @@ const styles = {
     "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded mr-12",
   letter:
     "flex flex-cols justify-center p-1 bold hover:text-[#0076AD] hover:underline",
-  greyedOutLetter:
-    "text-gray-400 pointer-events-none", // New style for greyed-out letters
+  greyedOutLetter: "text-gray-400 pointer-events-none",
   termsContainer:
     "flex-grow grid grid-cols-1 gap-5 overflow-auto max-h-[calc(73rem)] p-4",
 };
