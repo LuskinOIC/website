@@ -1,17 +1,10 @@
-import PageSection from "@/app/components/PageSection/PageSection";
+import { BlogCardsRowType, OptionType } from "@/app/constants/types";
 import {
-  PageSectionType,
-  BlogCardsRowType,
-  OptionType,
-} from "@/app/constants/types";
-import {
-  getPageByType,
   getNewsPosts,
   getEvents,
   getPatientStories,
   getInsightsPosts,
 } from "@/app/utils/contentful";
-import { PAGE_TYPES } from "@/app/constants/entries";
 import BlogCardsRow from "../components/BlogCardsRow";
 import Dropdown from "../components/ui/Dropdown";
 import translations from "@/public/locales/en.json";
@@ -26,7 +19,6 @@ export function generateMetadata() {
 }
 
 export default async function Blog() {
-  const page = await getPageByType(PAGE_TYPES.BLOG);
   const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
   const insights = (await getInsightsPosts(8)) as unknown as BlogCardsRowType[];
   const events = (await getEvents(8)) as unknown as BlogCardsRowType[];
@@ -52,7 +44,6 @@ export default async function Blog() {
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
 
-      {/* TODO: Move into associated sections */}
       <PageSectionContainer>
         <BlogCardsRow type="news" cards={news} />
       </PageSectionContainer>
@@ -62,10 +53,6 @@ export default async function Blog() {
       <PageSectionContainer>
         <BlogCardsRow type="events" cards={events} />
       </PageSectionContainer>
-
-      {page.pageSections.map((pageSection: PageSectionType) => (
-        <PageSection key={pageSection.fields.title} section={pageSection} />
-      ))}
 
       <PageSectionContainer>
         <BlogCardsRow type="patient-stories" cards={patientStories} />
