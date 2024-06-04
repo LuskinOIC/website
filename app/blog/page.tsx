@@ -21,7 +21,7 @@ export function generateMetadata() {
   return {
     title: "LuskinOIC Blog",
     description:
-      "Read the Luskin OICblog to browse patient stories, explore insights, news & events as they relate to the Luskin Orthopaedic Institute for Children.",
+      "Read the LuskinOIC blog to browse patient stories, explore insights, news & events as they relate to the Luskin Orthopaedic Institute for Children.",
   };
 }
 
