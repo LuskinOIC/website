@@ -9,6 +9,7 @@ import BlogCardsRow from "../components/BlogCardsRow";
 import Dropdown from "../components/ui/Dropdown";
 import translations from "@/public/locales/en.json";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
+import BlogSelector from "@/app/blog/components/BlogSelector";
 
 export function generateMetadata() {
   return {
@@ -43,7 +44,9 @@ export default async function Blog() {
         <p className="px-1 pb-4">{translations.blog.sectionReviewText}</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
-
+      <PageSectionContainer showTopMargin={true}>
+        <BlogSelector />
+      </PageSectionContainer>
       <PageSectionContainer>
         <BlogCardsRow type="news" cards={news} />
       </PageSectionContainer>
