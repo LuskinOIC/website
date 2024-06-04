@@ -12,8 +12,11 @@ const styles = {
   conditionsContainer: "flex flex-cols md:justify-around mx-auto",
   lettersContainer:
     "hidden md:block h-fit bg-[#F1F1F1] text-[24px] p-4 rounded mr-12",
-  letter: "flex flex-cols p-1 bold hover:text-[#0076AD] hover:underline",
-  termsContainer: "grid grid-col gap-5",
+  letter:
+    "flex flex-cols justify-center p-1 bold hover:text-[#0076AD] hover:underline",
+  greyedOutLetter: "text-gray-400 pointer-events-none",
+  termsContainer:
+    "flex-grow grid grid-cols-1 gap-5 overflow-auto max-h-[calc(73rem)] p-4",
 };
 
 export default async function ConditionsIndexLayout() {
@@ -33,6 +36,8 @@ export default async function ConditionsIndexLayout() {
   }
 
   const groupedConditions = groupTermsByFirstLetter(conditions);
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters = Object.keys(groupedConditions).join("").toUpperCase();
 
   const GlossarySection = () => {
     return (
@@ -56,11 +61,20 @@ export default async function ConditionsIndexLayout() {
       {/* TO DO: Search + Glossary Index BTN */}
       {/* <SearchBar /> */}
       <div className={styles.lettersContainer}>
-        {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
-          <a href={`#${letter}`} key={letter} className={styles.letter}>
-            {letter}
-          </a>
-        ))}
+        {alphabet.split("").map((letter) => {
+          const isLetterPresent = letters.includes(letter);
+          return (
+            <a
+              href={`#${letter}`}
+              key={letter}
+              className={`${styles.letter} ${
+                !isLetterPresent ? styles.greyedOutLetter : ""
+              }`}
+            >
+              {letter}
+            </a>
+          );
+        })}
       </div>
       <div className={styles.termsContainer}>{GlossarySection()}</div>
     </section>
