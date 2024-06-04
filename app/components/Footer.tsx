@@ -9,28 +9,18 @@ import xlogo from "@/public/XLogo.svg";
 import phone from "@/public/phone-white.svg";
 import pin from "@/public/map-pin-white.svg";
 import {
-  CAREERS_URL,
   FACEBOOK_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
-  MYCHART_URL,
-  SAVE_MY_SPOT,
   TWITTER_URL,
   YOUTUBE_URL,
 } from "../constants/links";
 import NewsletterSignup from "./NewsletterSignup";
 import translations from "@/public/locales/en.json";
-
-type FooterItem = {
-  text: string;
-  href: string;
-};
-
-type FooterItemsSectionProps = {
-  title: string;
-  id: string;
-  menuItems: FooterItem[];
-};
+import {
+  FooterItemsSectionProps,
+  NavigationBarType,
+} from "@/app/constants/types";
 
 const socialMediaLinks = [
   { url: FACEBOOK_URL, src: facebook, alt: "facebook" },
@@ -45,39 +35,10 @@ const socialMediaLinks = [
   },
 ];
 
-const aboutMenuItems = [
-  { text: "Mission & Purpose", href: "/about" },
-  { text: "News", href: "/news" },
-];
-
-const patientSupportMenuItems = [
-  { text: "Urgent Care", href: SAVE_MY_SPOT },
-  { text: "Specialty Treatment", href: "/specialties" },
-  { text: "Billing & Insurance", href: "/patient-care" },
-  { text: "MyChart", href: MYCHART_URL },
-];
-
-const healthProfessionalsMenuItems = [
-  { text: "LuskinOIC Physicians", href: "/providers" },
-  { text: "Refer a Patient", href: "/medical-professionals" },
-  { text: "Careers", href: CAREERS_URL },
-  { text: "Volunteer", href: "/ways-to-give" },
-  {
-    text: "Research",
-    href: "/research",
-  },
-];
-
-const getInvolvedMenuItems = [
-  { text: "Donate", href: "/ways-to-give" },
-  { text: "Events", href: "/events" },
-  { text: "Volunteer", href: "/ways-to-give" },
-];
-
 const styles = {
   footerContainer: "flex justify-evenly bg-[#0076AD] text-white py-8",
   leftContainer: "flex flex-col tracking-wide gap-2 pl-4 lg:pl-4",
-  rightContainer: "hidden lg:flex flex-row gap-x-20",
+  rightContainer: "hidden lg:grid grid-cols-2 md:grid-cols-2 gap-10",
   subHeader: "font-semibold text-lg text-[#FFF5C6] tracking-wide",
   mainHeader:
     "text-2xl font-semibold tracking-wide text-left pb-2 pl-4 lg:pl-0 lg:self-center",
@@ -92,25 +53,45 @@ const styles = {
 const FooterItemsSection = ({
   title,
   id,
-  menuItems,
+  footerItems,
 }: FooterItemsSectionProps) => (
-  <>
+  <div>
     <h2 className={styles.subHeader}>{title}</h2>
     <ul id={id} className="">
-      {menuItems.map((item, index) => (
-        <li key={index}>
-          <p>
-            <Link role="button" href={item.href} className={"hover:underline"}>
-              {item.text}
-            </Link>
-          </p>
-        </li>
-      ))}
+      {footerItems &&
+        footerItems.map((link, index) => {
+          return link.fields.title === title ? (
+            <li key={index}>
+              <p>
+                {link.fields.isExternal ? (
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={link.fields.url}
+                    className={"hover:underline"}
+                  >
+                    {link.fields.text}
+                  </a>
+                ) : (
+                  <Link
+                    role="button"
+                    href={link.fields.url}
+                    className={"hover:underline"}
+                  >
+                    {link.fields.text}
+                  </Link>
+                )}
+              </p>
+            </li>
+          ) : (
+            ""
+          );
+        })}
     </ul>
-  </>
+  </div>
 );
 
-export default function Footer() {
+export default function Footer({ footer }: { footer: NavigationBarType }) {
   return (
     <footer>
       <NewsletterSignup />
@@ -240,38 +221,14 @@ export default function Footer() {
           id="footer-right-content-container"
           className={`${styles.rightContainer} ${styles.baseText}`}
         >
-          {/* left section of footer-right */}
-          <div
-            id="about-support-container"
-            className={styles.contactInfoSection}
-          >
+          {footer.dropdowns.map((dropdown, index) => (
             <FooterItemsSection
-              title="About"
-              id="about"
-              menuItems={aboutMenuItems}
+              key={index}
+              title={dropdown.fields.text}
+              id={dropdown.sys.id}
+              footerItems={dropdown.fields.navigationLinks || []}
             />
-            <FooterItemsSection
-              title="Patient Support"
-              id="patient-support"
-              menuItems={patientSupportMenuItems}
-            />
-          </div>
-          {/* right section of footer-left */}
-          <div
-            id="prof-involvement-container"
-            className={styles.contactInfoSection}
-          >
-            <FooterItemsSection
-              title="Health Professionals"
-              id="health-professionals"
-              menuItems={healthProfessionalsMenuItems}
-            />
-            <FooterItemsSection
-              title="Get Involved"
-              id="get-involved"
-              menuItems={getInvolvedMenuItems}
-            />
-          </div>
+          ))}
         </div>
       </div>
     </footer>

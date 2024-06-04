@@ -41,7 +41,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const navigationBar = await getNavigationBar();
+  const navigationBar = await getNavigationBar("Header");
+  const footer = await getNavigationBar("Footer");
   const searchIndexDataString = await fs.readFile(
     process.cwd() + "/app/data/searchIndex.json",
     "utf8",
@@ -61,7 +62,7 @@ export default async function RootLayout({
           {/* This div provides margin for the main layout since the navbar is stick */}
           <div className={`hidden lg:block h-[180px] lg:${bgColor}`}></div>
           <main id="main">{children}</main>
-          <Footer />
+          <Footer footer={footer} />
         </div>
       </body>
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID as string} />

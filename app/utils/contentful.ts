@@ -236,10 +236,10 @@ export async function getPages(): Promise<PageType[]> {
   return entries.items.map((entry) => entry.fields as unknown as PageType);
 }
 
-export async function getNavigationBar(): Promise<NavigationBarType> {
+export async function getNavigationBar(barType: string) {
   const entry = await client.getEntries({
     content_type: "navigationBar",
-    "fields.type": "Header",
+    "fields.type": barType,
     include: 2,
     locale: "en-US",
   });

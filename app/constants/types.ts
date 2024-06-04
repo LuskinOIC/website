@@ -384,6 +384,7 @@ export type SpecialtyTypeProps = {
 
 export type NavigationLinkType = {
   fields: {
+    title: string;
     text: string;
     url: string;
     isExternal: boolean;
@@ -431,6 +432,12 @@ export type NavigationBarType = {
   logo: ImageType;
   dropdowns: NavigationDropdownType[];
   navigationItems: NavigationItemType[];
+};
+
+export type FooterItemsSectionProps = {
+  title: string;
+  id: string;
+  footerItems: NavigationLinkType[];
 };
 
 export type SpecialtyType = {
