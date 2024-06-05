@@ -1,15 +1,16 @@
-import { BlogCardsRowType, OptionType } from "@/app/constants/types";
+import { OptionType } from "@/app/constants/types";
 import {
   getNewsPosts,
-  getEvents,
-  getPatientStories,
-  getInsightsPosts,
+  // getEvents,
+  // getPatientStories,
+  // getInsightsPosts,
 } from "@/app/utils/contentful";
-import BlogCardsRow from "../components/BlogCardsRow";
+// import BlogCardsRow from "../components/BlogCardsRow";
 import Dropdown from "../components/ui/Dropdown";
 import translations from "@/public/locales/en.json";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import BlogSelector from "@/app/blog/components/BlogSelector";
+import NewsGallery from "./components/Gallery";
 
 export function generateMetadata() {
   return {
@@ -20,12 +21,14 @@ export function generateMetadata() {
 }
 
 export default async function Blog() {
-  const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
-  const insights = (await getInsightsPosts(8)) as unknown as BlogCardsRowType[];
-  const events = (await getEvents(8)) as unknown as BlogCardsRowType[];
-  const patientStories = (await getPatientStories(
-    8,
-  )) as unknown as BlogCardsRowType[];
+  // TO DO: REPLACE TYPE
+  const news = (await getNewsPosts()) as any;
+  // const news = (await getNewsPosts(8)) as unknown as BlogCardsRowType[];
+  // const insights = (await getInsightsPosts(8)) as unknown as BlogCardsRowType[];
+  // const events = (await getEvents(8)) as unknown as BlogCardsRowType[];
+  // const patientStories = (await getPatientStories(
+  //   8,
+  // )) as unknown as BlogCardsRowType[];
 
   const dropdownOptions: OptionType[] = [
     { label: "News", value: "news", targetID: "news" },
@@ -38,6 +41,8 @@ export default async function Blog() {
     },
   ];
 
+  // console.log(news[0].blogCard)
+
   return (
     <div>
       <div className="mb-12 md:hidden px-5">
@@ -47,7 +52,11 @@ export default async function Blog() {
       <PageSectionContainer showTopMargin={true}>
         <BlogSelector />
       </PageSectionContainer>
-      <PageSectionContainer>
+      <PageSectionContainer showTopMargin={true}>
+        <NewsGallery news={news} />
+      </PageSectionContainer>
+
+      {/* <PageSectionContainer>
         <BlogCardsRow type="news" cards={news} />
       </PageSectionContainer>
       <PageSectionContainer>
@@ -59,7 +68,7 @@ export default async function Blog() {
 
       <PageSectionContainer>
         <BlogCardsRow type="patient-stories" cards={patientStories} />
-      </PageSectionContainer>
+      </PageSectionContainer> */}
     </div>
   );
 }
