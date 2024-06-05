@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import React from "react";
 import Navbar from "@/app/components/NabarLayout/Navbar";
 import Footer from "@/app/components/Footer";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { getNavigationBar } from "@/app/utils/contentful";
 import getBackgroundColor from "@/app/components/ui/BackgroundColor";
@@ -65,7 +65,9 @@ export default async function RootLayout({
           <Footer footer={footer} />
         </div>
       </body>
+      {/* TODO: Remove once we confirm tag manager is working properly. */}
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID as string} />
+      <GoogleTagManager gtmId={process.env.GOOGLE_TAG_MANAGER_ID as string} />
       {process.env.NODE_ENV === "development" ? <AxeDevTools /> : null}
       <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
       <Script
