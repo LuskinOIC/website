@@ -10,11 +10,11 @@ interface Props {
 }
 
 const styles = {
-  gridContainer: "grid grid-cols-3 gap-4",
+  gridContainer: "grid lg:grid-cols-3 gap-4",
   newsItem: "relative w-full h-[300px] rounded-xl",
-  fullSpan: "col-span-3",
-  oneColumn: "col-span-1",
-  twoColumn: "col-span-2",
+  fullSpan: "lg:col-span-3",
+  oneColumn: "lg:col-span-1",
+  twoColumn: "lg:col-span-2",
   imageOverlay: "absolute bottom-0 left-0 text-white text-2xl p-2 rounded",
   image:
     "w-full h-full object-cover rounded-xl opacity-[.89] hover:opacity-100 transform transition-transform duration-300 ease-in-out hover:scale-105",
