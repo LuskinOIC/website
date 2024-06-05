@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 
+interface BlogSelectorProps {
+  onSelect: (section: string) => void;
+}
+
 const styles = {
   selectorContainer:
     "flex justify-between md:justify-normal md:gap-10 lg:gap-16 py-4",
@@ -13,6 +17,7 @@ const styles = {
 
 const sections = ["news", "insights", "events", "patient stories"];
 
+// export default function BlogSelector({ onSelect }: BlogSelectorProps) {
 export default function BlogSelector() {
   const [selectedSection, setSelectedSection] = useState("news");
 

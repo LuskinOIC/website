@@ -46,7 +46,7 @@ const getClassNames = (index: number) => {
 const NewsGallery: React.FC<Props> = ({ news }) => {
   return (
     <div className={styles.gridContainer}>
-      {news.map((post: any, index) => (
+      {news && news.map((post: any, index) => (
         <div
           key={post.slug}
           className={`${styles.newsItem} ${getClassNames(index)}`}
