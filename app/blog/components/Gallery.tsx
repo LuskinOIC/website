@@ -6,6 +6,7 @@ import Image from "next/image";
 import { BlogPostType } from "@/app/constants/types";
 
 interface Props {
+  type: string;
   posts: BlogPostType[];
 }
 
@@ -43,7 +44,7 @@ const getClassNames = (index: number) => {
   }
 };
 
-const Gallery = ({ posts }: Props) => {
+const Gallery = ({ type, posts }: Props) => {
   return (
     <div className={styles.gridContainer}>
       {posts &&
@@ -52,7 +53,7 @@ const Gallery = ({ posts }: Props) => {
             key={post.slug}
             className={`${styles.postsItem} ${getClassNames(index)}`}
           >
-            <Link href={`/news/${post.slug}`}>
+            <Link href={`/${type}/${post.slug}`}>
               <Image
                 src={getImageSrc(post, index)}
                 alt={post.title}

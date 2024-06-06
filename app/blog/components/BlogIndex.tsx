@@ -31,7 +31,7 @@ export default function BlogIndex({ blogData }: any) {
       <BlogSelector onSelect={setSelectedSection} />
 
       {selectedSection === "news" || selectedSection === "insights" ? (
-        <Gallery posts={data} />
+        <Gallery type={selectedSection} posts={data} />
       ) : (
         <BlogCardsRow type={selectedSection} cards={data} />
       )}
