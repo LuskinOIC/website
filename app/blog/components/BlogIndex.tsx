@@ -2,33 +2,12 @@
 
 import { useState } from "react";
 
-import BlogSelector from "./BlogSelector";
-import Gallery from "./Gallery";
+import BlogSelector from "@/app/blog/components/BlogSelector";
+import Gallery from "@/app/blog/components/Gallery";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
-
-// interface OptionType {
-//   label: string;
-//   value: string;
-//   targetID: string;
-// }
 
 export default function BlogIndex({ blogData }: any) {
   const [selectedSection, setSelectedSection] = useState("news");
-
-  // const dropdownOptions: OptionType[] = [
-  //   { label: "News", value: "news", targetID: "news" },
-  //   { label: "Insights", value: "insights", targetID: "insights" },
-  //   { label: "Events", value: "events", targetID: "events" },
-  //   {
-  //     label: "Patient Stories",
-  //     value: "patient-stories",
-  //     targetID: "patient-stories",
-  //   },
-  // ];
-
-  // const handleSectionSelect = (section: string) => {
-  //   setSelectedSection(section);
-  // };
 
   const getSectionData = () => {
     switch (selectedSection) {
