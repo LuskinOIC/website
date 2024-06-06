@@ -6,12 +6,12 @@ import Image from "next/image";
 import { BlogPostType } from "@/app/constants/types";
 
 interface Props {
-  news: BlogPostType[];
+  posts: BlogPostType[];
 }
 
 const styles = {
-  gridContainer: "grid lg:grid-cols-3 gap-4",
-  newsItem: "relative w-full h-[300px] rounded-xl",
+  gridContainer: "grid lg:grid-cols-3 gap-4 pt-6 lg:pt-10",
+  postsItem: "relative w-full h-[300px] rounded-xl",
   fullSpan: "lg:col-span-3",
   oneColumn: "lg:col-span-1",
   twoColumn: "lg:col-span-2",
@@ -43,28 +43,29 @@ const getClassNames = (index: number) => {
   }
 };
 
-const NewsGallery: React.FC<Props> = ({ news }) => {
+const Gallery = ({ posts }: Props) => {
   return (
     <div className={styles.gridContainer}>
-      {news && news.map((post: any, index) => (
-        <div
-          key={post.slug}
-          className={`${styles.newsItem} ${getClassNames(index)}`}
-        >
-          <Link href={`/news/${post.slug}`}>
-            <Image
-              src={getImageSrc(post, index)}
-              alt={post.title}
-              width={500}
-              height={300}
-              className={styles.image}
-            />
-            <div className={styles.imageOverlay}>{post.title}</div>
-          </Link>
-        </div>
-      ))}
+      {posts &&
+        posts.map((post: any, index: number) => (
+          <div
+            key={post.slug}
+            className={`${styles.postsItem} ${getClassNames(index)}`}
+          >
+            <Link href={`/news/${post.slug}`}>
+              <Image
+                src={getImageSrc(post, index)}
+                alt={post.title}
+                width={500}
+                height={300}
+                className={styles.image}
+              />
+              <div className={styles.imageOverlay}>{post.title}</div>
+            </Link>
+          </div>
+        ))}
     </div>
   );
 };
 
-export default NewsGallery;
+export default Gallery;

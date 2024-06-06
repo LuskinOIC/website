@@ -8,7 +8,7 @@ import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
 import translations from "@/public/locales/en.json";
 
 type BlogCardsRowPropsType = {
-  type: "news" | "patient-stories" | "events" | "insights";
+  type: string;
   cards: BlogCardsRowType[];
 };
 

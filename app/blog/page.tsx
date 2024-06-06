@@ -9,8 +9,6 @@ import {
 import Dropdown from "../components/ui/Dropdown";
 import translations from "@/public/locales/en.json";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
-import BlogSelector from "@/app/blog/components/BlogSelector";
-import NewsGallery from "./components/Gallery";
 import BlogIndex from "./components/BlogIndex";
 
 export function generateMetadata() {
@@ -24,9 +22,16 @@ export function generateMetadata() {
 export default async function Blog() {
   // TO DO: REPLACE TYPE
   const news = (await getNewsPosts()) as any;
-  const patientStories = (await getPatientStories(0)) as any;
-  const insights = (await getInsightsPosts(0)) as any;
-  const events = (await getEvents(0)) as any;
+  const patientStories = (await getPatientStories()) as any;
+  const insights = (await getInsightsPosts()) as any;
+  const events = (await getEvents()) as any;
+
+  const blogData = {
+    news,
+    patientStories,
+    insights,
+    events,
+  };
 
   const dropdownOptions: OptionType[] = [
     { label: "News", value: "news", targetID: "news" },
@@ -45,17 +50,9 @@ export default async function Blog() {
         <p className="px-1 pb-4">{translations.blog.sectionReviewText}</p>
         <Dropdown placeHolder="News" options={dropdownOptions} />
       </div>
-{/* 
-      COMMENTED: component not working, note that BlogSelector will have a prop passed
 
-      <BlogIndex /> */}
-
-      
       <PageSectionContainer showTopMargin={true}>
-        <BlogSelector />
-      </PageSectionContainer>
-      <PageSectionContainer showTopMargin={true}>
-        <NewsGallery news={news} />
+        <BlogIndex blogData={blogData} />
       </PageSectionContainer>
     </div>
   );

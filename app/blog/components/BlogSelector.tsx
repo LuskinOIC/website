@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 interface BlogSelectorProps {
+  // eslint-disable-next-line no-unused-vars
   onSelect: (section: string) => void;
 }
 
@@ -15,14 +16,14 @@ const styles = {
   selected: "text-[#0076AD] font-bold underline underline-offset-4",
 };
 
-const sections = ["news", "insights", "events", "patient stories"];
+const sections = ["news", "insights", "events", "patient-stories"];
 
-// export default function BlogSelector({ onSelect }: BlogSelectorProps) {
-export default function BlogSelector() {
+export default function BlogSelector({ onSelect }: BlogSelectorProps) {
   const [selectedSection, setSelectedSection] = useState("news");
 
   const handleSectionSelect = (section: string) => {
     setSelectedSection(section);
+    onSelect(section);
   };
 
   return (
@@ -37,7 +38,9 @@ export default function BlogSelector() {
             selectedSection === section ? styles.selected : ""
           }`}
         >
-          {section.toUpperCase()}
+          {section === "patient-stories"
+            ? "PATIENT STORIES"
+            : section.toUpperCase()}
         </button>
       ))}
     </div>
