@@ -122,6 +122,7 @@ export type MinimalCardType = {
   cardPhoto: NestedAssetType | ImageType;
   summary?: string;
   writtenBy?: string;
+  date?: string;
 };
 
 export type BioCardType = {

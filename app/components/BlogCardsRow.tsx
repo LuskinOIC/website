@@ -53,6 +53,7 @@ export default function BlogCardsRow({
                 cardPhoto: card.blogCard.fields.image,
                 summary: card.blogCard.fields.subTitle || "",
                 writtenBy: card.writtenBy || "",
+                date: card.date,
               }}
             />
           </Link>

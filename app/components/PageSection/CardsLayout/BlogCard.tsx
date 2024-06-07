@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MinimalCardType } from "@/app/constants/types";
 // import renderRichTextToReactComponent from "../../../utils/rich-text";
 // import { cn } from "@/lib/utils";
+import { formatDate } from "@/app/utils/formatDate";
 
 const style = {
   image: "place-self-center rounded-xl h-2",
@@ -38,6 +39,9 @@ export default function BlogCard({
   //     : renderRichTextToReactComponent(
   //         cardContent.summary as unknown as Document,
   //       );
+
+  const formattedDate = cardContent.date ? formatDate(cardContent.date) : "";
+
   const hoverClass = isHovered ? "underline underline-offset-4" : "";
   return (
     <div
@@ -57,11 +61,19 @@ export default function BlogCard({
               <p className="line-clamp-2 text-black"> {summary}</p>
             )}
           </div>
-          {(type === "news" || type === "insights") && (
-            <p className="decoration-transparent text-xs text-[#868787]">
-              {cardContent.writtenBy}
-            </p>
-          )}
+          <div className="flex gap-6">
+            {(type === "news" || type === "insights") && (
+              <p className="decoration-transparent text-xs text-[#868787]">
+                {cardContent.writtenBy}
+              </p>
+            )}
+            {type !== "patient-stories" && (
+              <p className="decoration-transparent text-xs text-[#868787]">
+                {" "}
+                {formattedDate}
+              </p>
+            )}
+          </div>
         </div>
       </div>
       <div className="h-[110px] w-[160px] justify-self-end overflow-hidden">
