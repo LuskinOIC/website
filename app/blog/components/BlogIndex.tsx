@@ -29,7 +29,6 @@ export default function BlogIndex({ blogData }: any) {
   return (
     <>
       <BlogSelector onSelect={setSelectedSection} />
-
       {selectedSection === "news" || selectedSection === "insights" ? (
         <Gallery type={selectedSection} posts={data} />
       ) : (
