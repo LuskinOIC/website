@@ -23,7 +23,11 @@ const styles = {
     "absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent z-0 rounded-xl hover:shadow-2xl pt-56",
 };
 
-const getClassNames = (index: number) => {
+const getClassNames = (index: number, isLast: boolean) => {
+  if (isLast) {
+    return styles.fullSpan;
+  }
+
   switch (index % 7) {
     case 0:
       return styles.fullSpan;
@@ -51,7 +55,10 @@ const Gallery = ({ type, posts }: Props) => {
         posts.map((post: any, index: number) => (
           <div
             key={post.slug}
-            className={`${styles.postsItem} ${getClassNames(index)}`}
+            className={`${styles.postsItem} ${getClassNames(
+              index,
+              index === posts.length - 1,
+            )}`}
           >
             <Link
               href={`/${type}/${post.slug}`}
