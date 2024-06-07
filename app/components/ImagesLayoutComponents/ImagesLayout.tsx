@@ -3,6 +3,7 @@ import FullWidthImageLayout from "@/app/components/ImagesLayoutComponents/FullWi
 import TriImageLayout from "@/app/components/ImagesLayoutComponents/TriImageLayout";
 import CarouselImageLayout from "@/app/components/ImagesLayoutComponents/CarouselImageOnlyLayout";
 import CarouselImageSlider from "@/app/components/ImagesLayoutComponents/CarouselImageOverlay";
+import GalleryImages from "@/app/components/ImagesLayoutComponents/GalleryImagesLayout";
 
 // Types
 import { ImagesLayoutType } from "@/app/constants/types";
@@ -35,6 +36,8 @@ export default function ImagesLayout({
       return (
         <CarouselImageSlider section={imagesLayout.fields.carouselSlides} />
       );
+    case "Gallery":
+      return <GalleryImages section={imagesLayout.fields.images} />;
     default:
       return null;
   }
