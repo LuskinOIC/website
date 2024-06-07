@@ -32,7 +32,13 @@ export default function BlogIndex({ blogData }: any) {
       {selectedSection === "news" || selectedSection === "insights" ? (
         <Gallery type={selectedSection} posts={data} />
       ) : (
-        <BlogCardsRow type={selectedSection} cards={data} />
+        <div className="pt-6 lg:pt-10">
+          <BlogCardsRow
+            type={selectedSection}
+            cards={data}
+            showIndexLinks={false}
+          />
+        </div>
       )}
     </>
   );
