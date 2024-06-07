@@ -35,9 +35,6 @@ export default function ImagesLayout({
       return (
         <CarouselImageSlider section={imagesLayout.fields.carouselSlides} />
       );
-    //to be removed after text-overlay-carousel branch push
-    case "Carousel Image":
-      return <CarouselImageLayout section={imagesLayout.fields.images} />;
     default:
       return null;
   }
