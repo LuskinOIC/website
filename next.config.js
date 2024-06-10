@@ -89,6 +89,26 @@ const nextConfig = {
         destination: "https://fundraise.givesmart.com/form/P4fGmg?vid=13nh3f",
         permanent: true,
       },
+      {
+        source: "/events/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/patient-stories/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/news/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/insights/",
+        destination: "/blog",
+        permanent: true,
+      },
     ];
   },
 };

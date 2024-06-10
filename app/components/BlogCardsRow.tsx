@@ -8,13 +8,18 @@ import { Title1, Title3 } from "@/app/components/ui/Typography/Title";
 import translations from "@/public/locales/en.json";
 
 type BlogCardsRowPropsType = {
-  type: "news" | "patient-stories" | "events" | "insights";
+  type: string;
   cards: BlogCardsRowType[];
+  showIndexLinks?: boolean;
 };
 
 const isMobileScreen = () => window.innerWidth <= 768;
 
-export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
+export default function BlogCardsRow({
+  type,
+  cards,
+  showIndexLinks = true,
+}: BlogCardsRowPropsType) {
   const [displayedCards, setDisplayedCards] = useState(cards);
 
   useEffect(() => {
@@ -38,18 +43,20 @@ export default function BlogCardsRow({ type, cards }: BlogCardsRowPropsType) {
 
   return (
     <div id={`${type}`} className="block">
-      <div className="border- mb-2 mt-8 flex flex-row items-center justify-between md:mb-4">
-        <Link href={`/${type}`}>
-          <Title1 className="text-2xl font-bold uppercase text-[#0076AD] hover:underline md:font-normal md:capitalize">
-            {type === "patient-stories" ? "patient stories" : type}
-          </Title1>
-        </Link>
-        <Link href={`/${type}`}>
-          <Title3 className="block uppercase text-[#0076AD] underline md:no-underline md:hover:underline">
-            {translations.blog.viewAll}
-          </Title3>
-        </Link>
-      </div>
+      {showIndexLinks && (
+        <div className="border- mb-2 mt-8 flex flex-row items-center justify-between md:mb-4">
+          <Link href={`/${type}`}>
+            <Title1 className="text-2xl font-bold uppercase text-[#0076AD] hover:underline md:font-normal md:capitalize">
+              {type === "patient-stories" ? "patient stories" : type}
+            </Title1>
+          </Link>
+          <Link href={`/${type}`}>
+            <Title3 className="block uppercase text-[#0076AD] underline md:no-underline md:hover:underline">
+              {translations.blog.viewAll}
+            </Title3>
+          </Link>
+        </div>
+      )}
       <div
         className={`sm:grid grid-cols-1 md:grid-cols-4  ${
           type === "patient-stories" ? "gap-20" : "gap-4"
