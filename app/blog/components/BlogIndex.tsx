@@ -1,8 +1,8 @@
 "use client";
-
+// TO DELETE
 import { useState } from "react";
 
-import BlogSelector from "@/app/blog/components/BlogSelector";
+// import BlogSelector from "@/app/blog/components/BlogSelector";
 import Gallery from "@/app/blog/components/Gallery";
 import BlogCardsRow from "@/app/components/BlogCardsRow";
 
@@ -28,7 +28,7 @@ export default function BlogIndex({ blogData }: any) {
 
   return (
     <>
-      <BlogSelector onSelect={setSelectedSection} />
+      {/* <BlogSelector onSelect={setSelectedSection} /> */}
       {selectedSection === "news" || selectedSection === "insights" ? (
         <Gallery type={selectedSection} posts={data} />
       ) : (

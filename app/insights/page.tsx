@@ -1,8 +1,8 @@
 import { getInsightsPosts } from "@/app/utils/contentful";
-import { BlogCardsRowType } from "@/app/constants/types";
-import BackToBrowse from "@/app/components/ui/BackToBrowse";
-import BlogCardsRow from "@/app/components/BlogCardsRow";
+import { BlogPostType } from "@/app/constants/types";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
+import Gallery from "@/app/blog/components/Gallery";
+import BlogSelector from "@/app/blog/components/BlogSelector";
 
 export function generateMetadata() {
   return {
@@ -13,12 +13,11 @@ export function generateMetadata() {
 }
 
 export default async function Insights() {
-  const insights = (await getInsightsPosts()) as unknown as BlogCardsRowType[];
+  const insights = (await getInsightsPosts()) as unknown as BlogPostType[];
   return (
-    <PageSectionContainer>
-      <BackToBrowse />
-      {/* <SearchBar /> */}
-      <BlogCardsRow type="insights" cards={insights} />
+    <PageSectionContainer showTopMargin={true}>
+      <BlogSelector blogType={"insights"} />
+      <Gallery type={"insights"} posts={insights} />
     </PageSectionContainer>
   );
 }

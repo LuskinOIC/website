@@ -1,9 +1,9 @@
-import BlogCardsRow from "../components/BlogCardsRow";
-import BackToBrowse from "../components/ui/BackToBrowse";
-// import SearchBar from "../components/ui/SearchBar";
-import { BlogCardsRowType } from "../constants/types";
-import { getPatientStories } from "../utils/contentful";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
+
+import { BlogCardsRowType } from "@/app/constants/types";
+import { getPatientStories } from "@/app/utils/contentful";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
+import BlogSelector from "@/app/blog/components/BlogSelector";
 
 export function generateMetadata() {
   return {
@@ -13,14 +13,18 @@ export function generateMetadata() {
   };
 }
 
-// TODO: Replace SearchBar with a dedicated SearchAreaPatientStories component
 export default async function PatientStories() {
   const patients = (await getPatientStories()) as unknown as BlogCardsRowType[];
   return (
-    <PageSectionContainer>
-      <BackToBrowse />
-      {/* <SearchBar /> */}
-      <BlogCardsRow type="patient-stories" cards={patients} />
+    <PageSectionContainer showTopMargin={true}>
+      <BlogSelector blogType={"patient-stories"} />
+      <div className="pt-6 lg:pt-10">
+        <BlogCardsRow
+          type={"patient-stories"}
+          cards={patients}
+          showIndexLinks={false}
+        />
+      </div>
     </PageSectionContainer>
   );
 }

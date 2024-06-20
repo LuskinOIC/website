@@ -1,10 +1,7 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 
 interface BlogSelectorProps {
-  // eslint-disable-next-line no-unused-vars
-  onSelect: (section: string) => void;
+  blogType: string;
 }
 
 const styles = {
@@ -18,30 +15,42 @@ const styles = {
 
 const sections = ["news", "insights", "events", "patient-stories"];
 
-export default function BlogSelector({ onSelect }: BlogSelectorProps) {
-  const [selectedSection, setSelectedSection] = useState("news");
-
-  const handleSectionSelect = (section: string) => {
-    setSelectedSection(section);
-    onSelect(section);
-  };
+export default function BlogSelector({ blogType = "news" }: BlogSelectorProps) {
+  // const handleSectionSelect = (section: string) => {
+  //   setSelectedSection(section);
+  //   // onSelect(section);
+  // };
 
   return (
     <div
       className={`${styles.selectorContainer} ${styles.fontStyle} ${styles.border}`}
     >
       {sections.map((section) => (
-        <button
+        // TO DELETE
+        // <button
+        //   key={section}
+        //   // onClick={() => handleSectionSelect(section)}
+        //   onClick={() => handleSectionSelect(blogType)}
+        // className={`${styles.hover} ${
+        //   selectedSection === section ? styles.selected : ""
+        // }`}
+        // >
+        //   {section === "patient-stories"
+        //     ? "PATIENT STORIES"
+        //     : section.toUpperCase()}
+        // </button>
+        // <Link href={`/${blogType}`} onClick={() => handleClick("Mobile Logo Home")}>
+        <Link
           key={section}
-          onClick={() => handleSectionSelect(section)}
+          href={`/${section}`}
           className={`${styles.hover} ${
-            selectedSection === section ? styles.selected : ""
+            blogType === section ? styles.selected : ""
           }`}
         >
           {section === "patient-stories"
             ? "PATIENT STORIES"
             : section.toUpperCase()}
-        </button>
+        </Link>
       ))}
     </div>
   );

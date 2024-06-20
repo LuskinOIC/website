@@ -1,7 +1,8 @@
 import { getEvents } from "@/app/utils/contentful";
 import { BlogCardsRowType } from "@/app/constants/types";
-import BackToBrowse from "../components/ui/BackToBrowse";
-import BlogCardsRow from "../components/BlogCardsRow";
+import BlogCardsRow from "@/app/components/BlogCardsRow";
+import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
+import BlogSelector from "@/app/blog/components/BlogSelector";
 
 export function generateMetadata() {
   return {
@@ -12,16 +13,14 @@ export function generateMetadata() {
   };
 }
 
-// TODO: Replace SearchBar with a dedicated SearchAreaEvents component
 export default async function Events() {
   const events = (await getEvents()) as unknown as BlogCardsRowType[];
   return (
-    <div>
-      <div className="flex flex-col px-[5%] md:justify-center">
-        <BackToBrowse />
-        {/* <SearchBar /> */}
-        <BlogCardsRow type="events" cards={events} />
+    <PageSectionContainer showTopMargin={true}>
+      <BlogSelector blogType={"events"} />
+      <div className="pt-6 lg:pt-10">
+        <BlogCardsRow type={"events"} cards={events} showIndexLinks={false} />
       </div>
-    </div>
+    </PageSectionContainer>
   );
 }
