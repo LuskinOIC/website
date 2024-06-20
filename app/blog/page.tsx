@@ -1,3 +1,5 @@
+//To DO: Delete
+
 import {
   getNewsPosts,
   getEvents,

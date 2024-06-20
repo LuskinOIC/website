@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface BlogSelectorProps {
   blogType: string;
@@ -16,33 +19,22 @@ const styles = {
 const sections = ["news", "insights", "events", "patient-stories"];
 
 export default function BlogSelector({ blogType = "news" }: BlogSelectorProps) {
-  // const handleSectionSelect = (section: string) => {
-  //   setSelectedSection(section);
-  //   // onSelect(section);
-  // };
+  const handleClick = (text: string) => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
+  };
 
   return (
     <div
       className={`${styles.selectorContainer} ${styles.fontStyle} ${styles.border}`}
     >
       {sections.map((section) => (
-        // TO DELETE
-        // <button
-        //   key={section}
-        //   // onClick={() => handleSectionSelect(section)}
-        //   onClick={() => handleSectionSelect(blogType)}
-        // className={`${styles.hover} ${
-        //   selectedSection === section ? styles.selected : ""
-        // }`}
-        // >
-        //   {section === "patient-stories"
-        //     ? "PATIENT STORIES"
-        //     : section.toUpperCase()}
-        // </button>
-        // <Link href={`/${blogType}`} onClick={() => handleClick("Mobile Logo Home")}>
         <Link
           key={section}
           href={`/${section}`}
+          onClick={() => handleClick("Blog Selection: " + section)}
           className={`${styles.hover} ${
             blogType === section ? styles.selected : ""
           }`}
