@@ -90,23 +90,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/events/",
-        destination: "/blog",
-        permanent: true,
-      },
-      {
-        source: "/patient-stories/",
-        destination: "/blog",
-        permanent: true,
-      },
-      {
-        source: "/news/",
-        destination: "/blog",
-        permanent: true,
-      },
-      {
-        source: "/insights/",
-        destination: "/blog",
+        source: "/blog/",
+        destination: "/news",
         permanent: true,
       },
     ];

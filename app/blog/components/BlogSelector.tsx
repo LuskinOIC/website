@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface BlogSelectorProps {
-  // eslint-disable-next-line no-unused-vars
-  onSelect: (section: string) => void;
+  blogType: string;
 }
 
 const styles = {
@@ -18,12 +18,12 @@ const styles = {
 
 const sections = ["news", "insights", "events", "patient-stories"];
 
-export default function BlogSelector({ onSelect }: BlogSelectorProps) {
-  const [selectedSection, setSelectedSection] = useState("news");
-
-  const handleSectionSelect = (section: string) => {
-    setSelectedSection(section);
-    onSelect(section);
+export default function BlogSelector({ blogType = "news" }: BlogSelectorProps) {
+  const handleClick = (text: string) => {
+    sendGAEvent({
+      event: "buttonClicked",
+      value: text,
+    });
   };
 
   return (
@@ -31,17 +31,18 @@ export default function BlogSelector({ onSelect }: BlogSelectorProps) {
       className={`${styles.selectorContainer} ${styles.fontStyle} ${styles.border}`}
     >
       {sections.map((section) => (
-        <button
+        <Link
           key={section}
-          onClick={() => handleSectionSelect(section)}
+          href={`/${section}`}
+          onClick={() => handleClick("Blog Selection: " + section)}
           className={`${styles.hover} ${
-            selectedSection === section ? styles.selected : ""
+            blogType === section ? styles.selected : ""
           }`}
         >
           {section === "patient-stories"
             ? "PATIENT STORIES"
             : section.toUpperCase()}
-        </button>
+        </Link>
       ))}
     </div>
   );

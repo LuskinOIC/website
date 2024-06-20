@@ -1,8 +1,8 @@
 import { getNewsPosts } from "@/app/utils/contentful";
-import { BlogCardsRowType } from "@/app/constants/types";
-import BackToBrowse from "../components/ui/BackToBrowse";
-import BlogCardsRow from "../components/BlogCardsRow";
+import { BlogPostType } from "@/app/constants/types";
 import { PageSectionContainer } from "../components/PageSection/PageSection";
+import Gallery from "@/app/blog/components/Gallery";
+import BlogSelector from "@/app/blog/components/BlogSelector";
 
 export function generateMetadata() {
   return {
@@ -13,12 +13,12 @@ export function generateMetadata() {
 }
 
 export default async function News() {
-  const news = (await getNewsPosts()) as unknown as BlogCardsRowType[];
+  const news = (await getNewsPosts()) as unknown as BlogPostType[];
+
   return (
-    <PageSectionContainer>
-      <BackToBrowse />
-      {/* <SearchBar /> */}
-      <BlogCardsRow type="news" cards={news} />
+    <PageSectionContainer showTopMargin={true}>
+      <BlogSelector blogType={"news"} />
+      <Gallery type={"news"} posts={news} />
     </PageSectionContainer>
   );
 }
