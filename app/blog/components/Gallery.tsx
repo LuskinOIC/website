@@ -48,6 +48,21 @@ const getClassNames = (index: number, isLast: boolean) => {
   }
 };
 
+const overlayTitle = (type: string, post: any): string => {
+  switch (type) {
+    case "news":
+      return post.title;
+    case "insights":
+      return post.title;
+    case "events":
+      return post.eventName;
+    case "patient-stories":
+      return post.name;
+    default:
+      return "";
+  }
+};
+
 const Gallery = ({ type, posts }: Props) => {
   return (
     <div className={styles.gridContainer}>
@@ -64,15 +79,19 @@ const Gallery = ({ type, posts }: Props) => {
               href={`/${type}/${post.slug}`}
               className={styles.imageContainer}
             >
-              <Image
-                src={post.mainImage.fields.file.url}
-                alt={post.title}
-                width={500}
-                height={300}
-                className={styles.image}
-              />
+              {post.mainImage && (
+                <Image
+                  src={post.mainImage.fields.file.url}
+                  alt={post.slug}
+                  width={500}
+                  height={300}
+                  className={styles.image}
+                />
+              )}
               <div className={styles.overlayGradient}></div>
-              <div className={styles.imageOverlay}>{post.title}</div>
+              <div className={styles.imageOverlay}>
+                {overlayTitle(type, post)}
+              </div>
             </Link>
           </div>
         ))}
