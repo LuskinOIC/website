@@ -24,7 +24,7 @@ const styles = {
 };
 
 const getClassNames = (index: number, isLast: boolean) => {
-  if (isLast && index % 2 != 0) {
+  if (isLast && (index % 7 === 1 || index % 7 === 3 || index % 7 === 5)) {
     return styles.fullSpan;
   }
 
