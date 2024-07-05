@@ -1,6 +1,5 @@
-import BlogCardsRow from "@/app/components/BlogCardsRow";
-
-import { BlogCardsRowType } from "@/app/constants/types";
+import Gallery from "@/app/blog/components/Gallery";
+import { BlogPostType } from "@/app/constants/types";
 import { getPatientStories } from "@/app/utils/contentful";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import BlogSelector from "@/app/blog/components/BlogSelector";
@@ -14,17 +13,12 @@ export function generateMetadata() {
 }
 
 export default async function PatientStories() {
-  const patients = (await getPatientStories()) as unknown as BlogCardsRowType[];
+  const patientStories =
+    (await getPatientStories()) as unknown as BlogPostType[];
   return (
     <PageSectionContainer showTopMargin={true}>
       <BlogSelector blogType={"patient-stories"} />
-      <div className="pt-6 lg:pt-10">
-        <BlogCardsRow
-          type={"patient-stories"}
-          cards={patients}
-          showIndexLinks={false}
-        />
-      </div>
+      <Gallery type={"patient-stories"} posts={patientStories} />
     </PageSectionContainer>
   );
 }
