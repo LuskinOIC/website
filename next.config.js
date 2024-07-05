@@ -94,6 +94,11 @@ const nextConfig = {
         destination: "/news",
         permanent: true,
       },
+      {
+        source: "/events/",
+        destination: "/news",
+        permanent: true,
+      },
     ];
   },
 };
