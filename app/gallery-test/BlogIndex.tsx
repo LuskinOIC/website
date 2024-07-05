@@ -14,13 +14,17 @@ const styles = {
   selected: "text-[#0076AD] font-bold underline underline-offset-4",
 };
 
-const sections = ["events", "patient-stories"];
+const sections = ["news", "insights", "events", "patient-stories"];
 
 export default function BlogIndex({ blogData }: any) {
   const [selectedSection, setSelectedSection] = useState("events");
 
   const getSectionData = () => {
     switch (selectedSection) {
+      case "news":
+        return blogData.news;
+      case "insights":
+        return blogData.insights;
       case "events":
         return blogData.events;
       case "patient-stories":

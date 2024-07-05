@@ -1,10 +1,8 @@
 import { getEvents } from "@/app/utils/contentful";
-// import { BlogPostType } from "@/app/constants/types";
-import { BlogCardsRowType } from "@/app/constants/types";
+import { BlogPostType } from "@/app/constants/types";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import BlogSelector from "@/app/blog/components/BlogSelector";
-import BlogCardsRow from "../components/BlogCardsRow";
-// import Gallery from "../blog/components/Gallery";
+import Gallery from "../blog/components/Gallery";
 
 export function generateMetadata() {
   return {
@@ -16,15 +14,11 @@ export function generateMetadata() {
 }
 
 export default async function Events() {
-  // const events = (await getEvents()) as unknown as BlogPostType[];
-  const events = (await getEvents()) as unknown as BlogCardsRowType[];
+  const events = (await getEvents()) as unknown as BlogPostType[];
   return (
     <PageSectionContainer showTopMargin={true}>
       <BlogSelector blogType={"events"} />
-      <div className="pt-6 lg:pt-10">
-        <BlogCardsRow type={"events"} cards={events} showIndexLinks={false} />
-      </div>
-      {/* <Gallery type={"events"} posts={events} /> */}
+      <Gallery type={"events"} posts={events} />
     </PageSectionContainer>
   );
 }
