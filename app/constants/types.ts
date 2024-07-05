@@ -498,7 +498,8 @@ export type BlogPostType = {
     title: string;
     profileImage: string;
     subTitle: Document;
-    date: Date;
+    date?: string;
+    eventDate?: string;
     writtenBy: string;
     mainImage: ImageType;
     pageSections: PageSectionType;

@@ -51,7 +51,7 @@ const getClassNames = (index: number, isLast: boolean) => {
 const overlayTitle = (type: string, post: any): string => {
   switch (type) {
     case "news":
-      return post.title;
+      return post.title ? post.title : post.eventName;
     case "insights":
       return post.title;
     case "events":
@@ -76,7 +76,7 @@ const Gallery = ({ type, posts }: Props) => {
             )}`}
           >
             <Link
-              href={`/${type}/${post.slug}`}
+              href={`/${post.eventName ? "events" : type}/${post.slug}`}
               className={styles.imageContainer}
             >
               {post.mainImage && (
