@@ -16,7 +16,7 @@ const styles = {
   selected: "text-[#0076AD] font-bold underline underline-offset-4",
 };
 
-const sections = ["news", "insights", "events", "patient-stories"];
+const sections = ["news", "insights", "patient-stories"];
 
 export default function BlogSelector({ blogType = "news" }: BlogSelectorProps) {
   const handleClick = (text: string) => {

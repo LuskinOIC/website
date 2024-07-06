@@ -4,6 +4,7 @@ import { Title1 } from "@/app/components/ui/Typography/Title";
 import PageSection from "@/app/components/PageSection/PageSection";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import translations from "@/public/locales/en.json";
+import { formatDate } from "@/app/utils/formatDate";
 
 type PostComponentProps = {
   postData: BlogPostType;
@@ -26,10 +27,7 @@ const PostComponent = ({ postData }: PostComponentProps) => {
     postData?.fields ?? {};
 
   const { url, details, fileName } = mainImage.fields.file;
-  const dateDate = new Date(date);
-  const formattedDate = `${
-    dateDate.getMonth() + 1
-  }/${dateDate.getDate()}/${dateDate.getFullYear()}`;
+  const formattedDate = formatDate(date);
 
   return (
     <>
