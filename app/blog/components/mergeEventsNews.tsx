@@ -5,7 +5,7 @@ export default function mergeAndSortArrays(array1: any, array2: any) {
     const dateA = new Date(a.date || a.eventDate).getTime();
     const dateB = new Date(b.date || b.eventDate).getTime();
 
-    return dateA - dateB;
+    return dateB - dateA;
   });
 
   return combinedArray;
