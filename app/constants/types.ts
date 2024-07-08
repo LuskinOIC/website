@@ -502,7 +502,7 @@ export type BlogPostType = {
     eventDate?: string;
     writtenBy: string;
     mainImage: ImageType;
-    pageSections: PageSectionType;
+    pageSections: PageSectionType[];
   };
 };
 

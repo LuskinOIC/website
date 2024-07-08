@@ -29,6 +29,8 @@ const PostComponent = ({ postData }: PostComponentProps) => {
   const { url, details, fileName } = mainImage.fields.file;
   const formattedDate = formatDate(date);
 
+  const shouldDisplayMainImage =
+    pageSections.length > 0 && pageSections[0].fields.type !== "Images Layout";
   return (
     <>
       <PageSectionContainer showTopMargin={true}>
@@ -46,17 +48,19 @@ const PostComponent = ({ postData }: PostComponentProps) => {
           </div>
         </div>
       </PageSectionContainer>
-      <PageSectionContainer showTopPadding={true} showBottomPadding={true}>
-        <Image
-          className={styles.postImage}
-          src={url}
-          alt={fileName}
-          width={details.image.width}
-          height={details.image.height}
-        />
-      </PageSectionContainer>
+      {shouldDisplayMainImage && (
+        <PageSectionContainer showTopPadding={true} showBottomPadding={true}>
+          <Image
+            className={styles.postImage}
+            src={url}
+            alt={fileName}
+            width={details.image.width}
+            height={details.image.height}
+          />
+        </PageSectionContainer>
+      )}
 
-      {pageSections.map((section: PageSectionType, i: string) => (
+      {pageSections.map((section: PageSectionType, i: number) => (
         <div
           key={i}
           className={`${
