@@ -18,7 +18,8 @@ const styles = {
   twoColumn: "lg:col-span-2",
   imageOverlay: "absolute bottom-0 left-0 text-white text-2xl p-2 rounded",
   imageContainer: "w-full h-full overflow-hidden rounded-xl",
-  image: "w-full h-full object-cover rounded-xl",
+  imageDesktop: "hidden lg:block w-full h-full object-cover rounded-xl",
+  imageMobileTablet: "block lg:hidden w-full h-full object-cover rounded-xl",
   overlayGradient:
     "absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent z-0 rounded-xl hover:shadow-2xl pt-56",
 };
@@ -63,38 +64,57 @@ const overlayTitle = (type: string, post: any): string => {
   }
 };
 
+const getImageSource = (post: any, className: string) => {
+  if (className === styles.oneColumn && post.blogCard?.fields.image) {
+    return post.blogCard.fields.image.fields.file.url;
+  } else if (post.mainImage) {
+    return post.mainImage.fields.file.url;
+  }
+  return "";
+};
+
 const Gallery = ({ type, posts }: Props) => {
   return (
     <div className={styles.gridContainer}>
       {posts &&
-        posts.map((post: any, index: number) => (
-          <div
-            key={post.slug}
-            className={`${styles.postsItem} ${getClassNames(
-              index,
-              index === posts.length - 1,
-            )}`}
-          >
-            <Link
-              href={`/${post.eventName ? "events" : type}/${post.slug}`}
-              className={styles.imageContainer}
+        posts.map((post: any, index: number) => {
+          const columnSpan = getClassNames(index, index === posts.length - 1);
+          return (
+            <div
+              key={post.slug}
+              className={`${styles.postsItem} ${columnSpan}`}
             >
-              {post.mainImage && (
-                <Image
-                  src={post.mainImage.fields.file.url}
-                  alt={post.slug}
-                  width={500}
-                  height={300}
-                  className={styles.image}
-                />
-              )}
-              <div className={styles.overlayGradient}></div>
-              <div className={styles.imageOverlay}>
-                {overlayTitle(type, post)}
-              </div>
-            </Link>
-          </div>
-        ))}
+              <Link
+                href={`/${post.eventName ? "events" : type}/${post.slug}`}
+                className={styles.imageContainer}
+              >
+                {post.mainImage && (
+                  <>
+                    <Image
+                      className={styles.imageDesktop}
+                      src={getImageSource(post, columnSpan)}
+                      alt={post.slug}
+                      width={500}
+                      height={300}
+                    />
+                    <Image
+                      className={styles.imageMobileTablet}
+                      src={post.mainImage.fields.file.url}
+                      alt={post.slug}
+                      width={500}
+                      height={300}
+                    />
+                  </>
+                )}
+
+                <div className={styles.overlayGradient}></div>
+                <div className={styles.imageOverlay}>
+                  {overlayTitle(type, post)}
+                </div>
+              </Link>
+            </div>
+          );
+        })}
     </div>
   );
 };
