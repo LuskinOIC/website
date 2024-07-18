@@ -12,7 +12,7 @@ interface Props {
 
 // styles
 
-const overlayTitle = (type: string, post: any): string => {
+const blogTitle = (type: string, post: any): string => {
   switch (type) {
     case "news":
       return post.title ? post.title : post.eventName;
@@ -30,11 +30,10 @@ const overlayTitle = (type: string, post: any): string => {
 const ListView = ({ type, posts }: Props) => {
   return (
     <div>
-      {/* <div>hello world</div> */}
       {posts &&
         posts.map((post: any) => {
           return (
-            <div key={post.slug}>
+            <div key={post.slug} className="flex">
               <Link href={`/${post.eventName ? "events" : type}/${post.slug}`}>
                 {post.mainImage && (
                   <>
@@ -44,15 +43,10 @@ const ListView = ({ type, posts }: Props) => {
                       width={500}
                       height={300}
                     />
-                    {/* <Image
-                      src={post.mainImage.fields.file.url}
-                      alt={post.slug}
-                      width={500}
-                      height={300}
-                    /> */}
                   </>
                 )}
               </Link>
+              {blogTitle(type, post)}
             </div>
           );
         })}

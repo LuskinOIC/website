@@ -52,7 +52,7 @@ export default function BlogSelector({
       </div>
       <div className="hidden lg:block">
         <button className="" onClick={toggleView}>
-          X
+          {isListView ? "Y" : "X"}
         </button>
       </div>
     </div>

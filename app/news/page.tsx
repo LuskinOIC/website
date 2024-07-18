@@ -4,7 +4,7 @@ import { PageSectionContainer } from "../components/PageSection/PageSection";
 import Gallery from "@/app/blog/components/Gallery";
 import BlogSelector from "@/app/blog/components/BlogSelector";
 import mergeAndSortArrays from "../blog/components/mergeEventsNews";
-import BlogPageToggle from "../blog/BlogPageToggle";
+import BlogPageToggle from "../blog/components/BlogPageToggle";
 
 export function generateMetadata() {
   return {
