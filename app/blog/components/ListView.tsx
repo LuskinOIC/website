@@ -30,7 +30,7 @@ const overlayTitle = (type: string, post: any): string => {
 const ListView = ({ type, posts }: Props) => {
   return (
     <div>
-      <div></div>
+      <div>hello world</div>
     </div>
   );
 };

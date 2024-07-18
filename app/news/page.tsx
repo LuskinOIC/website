@@ -4,6 +4,7 @@ import { PageSectionContainer } from "../components/PageSection/PageSection";
 import Gallery from "@/app/blog/components/Gallery";
 import BlogSelector from "@/app/blog/components/BlogSelector";
 import mergeAndSortArrays from "../blog/components/mergeEventsNews";
+import BlogPageToggle from "../blog/BlogPageToggle";
 
 export function generateMetadata() {
   return {
@@ -21,8 +22,9 @@ export default async function News() {
 
   return (
     <PageSectionContainer showTopMargin={true}>
-      <BlogSelector blogType={"news"} />
-      <Gallery type={"news"} posts={posts} />
+      {/* <BlogSelector blogType={"news"} />
+      <Gallery type={"news"} posts={posts} /> */}
+      <BlogPageToggle type={"news"} posts={posts} news={news} />
     </PageSectionContainer>
   );
 }
