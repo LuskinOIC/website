@@ -22,9 +22,13 @@ export default async function News() {
 
   return (
     <PageSectionContainer showTopMargin={true}>
-      {/* <BlogSelector blogType={"news"} />
-      <Gallery type={"news"} posts={posts} /> */}
-      <BlogPageToggle type={"news"} posts={posts} news={news} />
+      <div className="lg:hidden">
+        <BlogSelector blogType={"news"} />
+        <Gallery type={"news"} posts={posts} />
+      </div>
+      <div className="hidden lg:block">
+        <BlogPageToggle type={"news"} posts={posts} news={news} />
+      </div>
     </PageSectionContainer>
   );
 }

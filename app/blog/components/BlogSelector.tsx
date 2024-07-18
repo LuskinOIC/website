@@ -5,8 +5,8 @@ import { sendGAEvent } from "@next/third-parties/google";
 
 interface BlogSelectorProps {
   blogType: string;
-  toggleView: () => void;
-  isListView: boolean;
+  toggleView?: () => void;
+  isListView?: boolean;
 }
 
 const styles = {
@@ -34,7 +34,7 @@ export default function BlogSelector({
 
   return (
     <div
-      className={`${styles.selectorContainer} ${styles.fontStyle} ${styles.border}`}>
+      className={`${styles.fontStyle} ${styles.border} lg:${styles.selectorContainer}`}>
       <div className={`${styles.selection}`}>
         {sections.map((section) => (
           <Link
@@ -50,8 +50,10 @@ export default function BlogSelector({
           </Link>
         ))}
       </div>
-      <div>
-        <button onClick={toggleView}>X</button>
+      <div className="hidden lg:block">
+        <button className="" onClick={toggleView}>
+          X
+        </button>
       </div>
     </div>
   );

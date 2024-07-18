@@ -44,12 +44,12 @@ const ListView = ({ type, posts }: Props) => {
                       width={500}
                       height={300}
                     />
-                    <Image
+                    {/* <Image
                       src={post.mainImage.fields.file.url}
                       alt={post.slug}
                       width={500}
                       height={300}
-                    />
+                    /> */}
                   </>
                 )}
               </Link>
