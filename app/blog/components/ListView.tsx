@@ -30,7 +30,32 @@ const overlayTitle = (type: string, post: any): string => {
 const ListView = ({ type, posts }: Props) => {
   return (
     <div>
-      <div>hello world</div>
+      {/* <div>hello world</div> */}
+      {posts &&
+        posts.map((post: any) => {
+          return (
+            <div key={post.slug}>
+              <Link href={`/${post.eventName ? "events" : type}/${post.slug}`}>
+                {post.mainImage && (
+                  <>
+                    <Image
+                      src={post.mainImage.fields.file.url}
+                      alt={post.slug}
+                      width={500}
+                      height={300}
+                    />
+                    <Image
+                      src={post.mainImage.fields.file.url}
+                      alt={post.slug}
+                      width={500}
+                      height={300}
+                    />
+                  </>
+                )}
+              </Link>
+            </div>
+          );
+        })}
     </div>
   );
 };
