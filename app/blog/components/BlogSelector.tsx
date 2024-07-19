@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
+import gridView from "@/public/gridView.svg";
 
 interface BlogSelectorProps {
   blogType: string;
@@ -50,9 +52,13 @@ export default function BlogSelector({
           </Link>
         ))}
       </div>
-      <div className="hidden lg:block">
-        <button className="" onClick={toggleView}>
-          {isListView ? "Y" : "X"}
+      <div className="mt-4 hidden lg:block">
+        <button className="mr-4" onClick={toggleView}>
+          {isListView ? (
+            <Image src={gridView} alt="grid-icon" width={28} />
+          ) : (
+            "X"
+          )}
         </button>
       </div>
     </div>
