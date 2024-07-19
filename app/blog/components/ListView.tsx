@@ -6,6 +6,9 @@ import Image from "next/image";
 import { BlogPostType } from "@/app/constants/types";
 import ozzieInCircle from "@/public/ozzie-in-Circle.svg";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
+import { styles } from "@/app/components/ui/Button";
+import translations from "@/public/locales/en.json";
+import { cn } from "@/lib/utils";
 
 interface Props {
   type: string;
@@ -30,6 +33,13 @@ const blogTitle = (type: string, post: any): string => {
 };
 
 const ListView = ({ type, posts }: Props) => {
+  const desktopButtonClass = cn(
+    styles.buttonAlignment,
+    styles.buttonContainer,
+    styles.buttonText,
+    "md:mx-10 md:w-72 bg-luskin-blue my-4 md:my-6 md:px-8"
+  );
+
   return (
     <div className="flex">
       <div>
@@ -56,8 +66,8 @@ const ListView = ({ type, posts }: Props) => {
           })}
       </div>
       <div className="flex flex-col border-4 border-green-500">
-        <div className="flex flex-col border-2 border-red-600">
-          <div className="flex w-96 justify-evenly">
+        <div className="flex w-96 flex-col border-2 border-red-600">
+          <div className="flex justify-evenly">
             <Image
               src={ozzieInCircle}
               alt="ozzie in circle"
@@ -70,7 +80,17 @@ const ListView = ({ type, posts }: Props) => {
               luskinHeader={true}
             />
           </div>
-          <div>Join our newsletter</div>
+
+          <a
+            aria-label="Subscribe Button"
+            id="mc-embedded-subscribe"
+            className={desktopButtonClass}
+            href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
+            target="_blank">
+            <span className="block">
+              {translations.newsletter.joinOurNewsletter}
+            </span>
+          </a>
         </div>
         <div className="flex flex-col border-2 border-yellow-400">
           insert featured article
