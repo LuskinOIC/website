@@ -121,6 +121,8 @@ export type MinimalCardType = {
   title: string;
   cardPhoto: NestedAssetType | ImageType;
   summary?: string;
+  writtenBy?: string;
+  date?: string;
 };
 
 export type BioCardType = {
@@ -498,11 +500,10 @@ export type BlogPostType = {
     title: string;
     profileImage: string;
     subTitle: Document;
-    date?: string;
-    eventDate?: string;
+    date: Date;
     writtenBy: string;
     mainImage: ImageType;
-    pageSections: PageSectionType[];
+    pageSections: PageSectionType;
   };
 };
 
@@ -513,6 +514,7 @@ export type BlogCardsRowType = {
   slug: string;
   profileImage: NestedAssetType;
   subTitle: string;
+  writtenBy?: string;
 };
 
 export type TriCardContent = {
