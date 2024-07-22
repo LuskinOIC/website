@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { BlogPostType } from "@/app/constants/types";
-import ozzieInCircle from "@/public/ozzie-in-Circle.svg";
+import ozzieInCircle from "@/public/ozzie-in-circle.svg";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import { styles } from "@/app/components/ui/Button";
 import translations from "@/public/locales/en.json";
@@ -46,7 +46,7 @@ const ListView = ({ type, posts }: Props) => {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "md:mx-10 md:w-72 bg-luskin-blue my-4 md:my-6 md:px-8",
+    "md:mx-10 md:w-72 bg-luskin-blue my-4 md:my-6 md:px-8"
   );
 
   return (
@@ -57,8 +57,7 @@ const ListView = ({ type, posts }: Props) => {
             return (
               <div
                 key={post.slug}
-                className="mt-4 flex flex-row-reverse justify-between"
-              >
+                className="mt-4 flex flex-row-reverse justify-between">
                 <BlogCard
                   type={type}
                   cardContent={{
@@ -94,8 +93,7 @@ const ListView = ({ type, posts }: Props) => {
             id="mc-embedded-subscribe"
             className={desktopButtonClass}
             href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
-            target="_blank"
-          >
+            target="_blank">
             <span className="block">
               {translations.newsletter.joinOurNewsletter}
             </span>
