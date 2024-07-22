@@ -105,7 +105,7 @@ const ListView = ({ type, posts }: Props) => {
           {/* insert featured
            article */}
           <div id="social-media">
-            <ul className="flex pt-3">
+            <ul className="flex justify-center pl-4 pt-3">
               {socialMediaLinks.map(({ url, src, alt }) => (
                 <li key={alt} className="pr-3">
                   <a href={url} target="_blank">
