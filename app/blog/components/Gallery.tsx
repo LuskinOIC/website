@@ -7,7 +7,7 @@ import { BlogPostType } from "@/app/constants/types";
 
 interface Props {
   type: string;
-  posts: BlogPostType[];
+  posts: BlogPostType[] | undefined;
 }
 
 const styles = {
@@ -82,12 +82,10 @@ const Gallery = ({ type, posts }: Props) => {
           return (
             <div
               key={post.slug}
-              className={`${styles.postsItem} ${columnSpan}`}
-            >
+              className={`${styles.postsItem} ${columnSpan}`}>
               <Link
                 href={`/${post.eventName ? "events" : type}/${post.slug}`}
-                className={styles.imageContainer}
-              >
+                className={styles.imageContainer}>
                 {post.mainImage && (
                   <>
                     <Image

@@ -27,7 +27,7 @@ export default async function News() {
         <Gallery type={"news"} posts={posts} />
       </div>
       <div className="hidden lg:block">
-        <BlogPageToggle type={"news"} posts={posts} news={news} />
+        <BlogPageToggle type={"news"} posts={posts} />
       </div>
     </PageSectionContainer>
   );

@@ -26,7 +26,7 @@ import {
 
 interface Props {
   type: string;
-  posts: BlogPostType[];
+  posts: BlogPostType[] | undefined;
 }
 
 // styles
