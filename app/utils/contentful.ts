@@ -10,11 +10,17 @@ import {
   SpecialtyType,
 } from "@/app/constants/types";
 
-// Create the Contentful Client
+// Create the Contentful clients for production and preview.
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID as string,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
   host: process.env.CONTENTFUL_HOST || "cdn.contentful.com",
+});
+
+const previewClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID as string,
+  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN as string,
+  host: process.env.CONTENTFUL_PREVIEW_HOST,
 });
 
 /* PAGE */
@@ -59,8 +65,31 @@ export async function getEventBySlug(slug: string) {
   return entry.items[0].fields as unknown as EventType;
 }
 
-export async function getPageBySlug(slug: string) {
+export async function getPageBySlug(slug: string, preview = false) {
+  if (preview) {
+    return await getPagePreviewBySlug(slug);
+  } else {
+    return await getProductionPageBySlug(slug);
+  }
+}
+
+export async function getProductionPageBySlug(slug: string) {
   const entry = await client.getEntries({
+    content_type: "page",
+    "fields.slug": slug,
+    locale: "en-US",
+    include: 10,
+  });
+
+  if (entry.items.length === 0) {
+    return null;
+  }
+
+  return entry.items[0].fields as unknown as PageType;
+}
+
+export async function getPagePreviewBySlug(slug: string) {
+  const entry = await previewClient.getEntries({
     content_type: "page",
     "fields.slug": slug,
     locale: "en-US",
