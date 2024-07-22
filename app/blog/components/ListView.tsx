@@ -13,7 +13,7 @@ import linkedinBlack from "@/public/linkedinBlack.svg";
 import youtubeBlack from "@/public/youtubeBlack.svg";
 import igBlack from "@/public/igBlack.svg";
 import yelpBlack from "@/public/yelpBlack.svg";
-import xlogo from "@/public/XLogo.svg";
+import xlogo from "@/public/xlogoBlack.svg";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
