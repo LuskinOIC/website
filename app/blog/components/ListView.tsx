@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { BlogPostType } from "@/app/constants/types";
 import ozzieInCircle from "@/public/ozzie-in-Circle.svg";
@@ -9,7 +8,6 @@ import { TitleComponent } from "@/app/components/ui/Typography/Title";
 import { styles } from "@/app/components/ui/Button";
 import translations from "@/public/locales/en.json";
 import { cn } from "@/lib/utils";
-import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import fb from "@/public/fb.svg";
 import linkedinBlack from "@/public/linkedinBlack.svg";
 import youtubeBlack from "@/public/youtubeBlack.svg";
@@ -23,38 +21,11 @@ import {
   TWITTER_URL,
   YOUTUBE_URL,
 } from "@/app/constants/links";
+import BlogCard from "@/app/components/PageSection/CardsLayout/BlogCard";
 
 interface Props {
   type: string;
   posts: BlogPostType[] | undefined;
-}
-
-// styles
-
-const blogTitle = (type: string, post: any): string => {
-  switch (type) {
-    case "news":
-      return post.title ? post.title : post.eventName;
-    case "insights":
-      return post.title;
-    case "events":
-      return post.eventName;
-    case "patient-stories":
-      return post.name;
-    default:
-      return "";
-  }
-};
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  return date.toLocaleDateString("en-US", options);
 }
 
 const socialMediaLinks = [
@@ -87,38 +58,16 @@ const ListView = ({ type, posts }: Props) => {
               <div
                 key={post.slug}
                 className="mt-4 flex flex-row-reverse justify-between">
-                <Link
-                  href={`/${post.eventName ? "events" : type}/${post.slug}`}>
-                  {post.mainImage && (
-                    <>
-                      <Image
-                        src={post.mainImage.fields.file.url}
-                        alt={post.slug}
-                        width={150}
-                        height={50}
-                      />
-                    </>
-                  )}
-                </Link>
-                <div className="w-3/4">
-                  <div className="font-semibold text-luskin-blue">
-                    <Link
-                      href={`/${post.eventName ? "events" : type}/${
-                        post.slug
-                      }`}>
-                      {blogTitle(type, post)}
-                    </Link>
-                  </div>
-                  <div className="pb-3 text-sm">
-                    {renderRichTextToReactComponent(post.subTitle)}
-                  </div>
-                  <div className="flex text-xs text-[#868787]">
-                    <p className="pr-3">
-                      {post.writtenBy ? post.writtenBy : ""}
-                    </p>
-                    <p>{post.date ? formatDate(post.date) : ""}</p>
-                  </div>
-                </div>
+                <BlogCard
+                  type={type}
+                  cardContent={{
+                    title: post.blogCard.fields.title,
+                    cardPhoto: post.blogCard.fields.image,
+                    summary: post.blogCard.fields.subTitle || "",
+                    writtenBy: post.writtenBy || "",
+                    date: post.date,
+                  }}
+                />
               </div>
             );
           })}
@@ -151,7 +100,8 @@ const ListView = ({ type, posts }: Props) => {
           </a>
         </div>
         <div className="flex flex-col pl-4">
-          insert featured article
+          {/* insert featured
+           article */}
           <div id="social-media">
             <ul className="flex pt-3">
               {socialMediaLinks.map(({ url, src, alt }) => (

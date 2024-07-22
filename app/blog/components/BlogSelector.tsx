@@ -36,7 +36,8 @@ export default function BlogSelector({
 
   return (
     <div
-      className={`${styles.fontStyle} ${styles.border} lg:${styles.selectorContainer}`}>
+      className={`${styles.fontStyle} ${styles.border} lg:${styles.selectorContainer}`}
+    >
       <div className={`${styles.selection}`}>
         {sections.map((section) => (
           <Link
@@ -45,7 +46,8 @@ export default function BlogSelector({
             onClick={() => handleClick("Blog Selection: " + section)}
             className={`${styles.hover} ${
               blogType === section ? styles.selected : ""
-            }`}>
+            }`}
+          >
             {section === "patient-stories"
               ? "PATIENT STORIES"
               : section.toUpperCase()}
