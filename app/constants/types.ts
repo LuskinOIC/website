@@ -500,10 +500,10 @@ export type BlogPostType = {
     title: string;
     profileImage: string;
     subTitle: Document;
-    date: Date;
+    date?: Date;
     writtenBy: string;
     mainImage: ImageType;
-    pageSections: PageSectionType;
+    pageSections: PageSectionType[];
   };
 };
 
