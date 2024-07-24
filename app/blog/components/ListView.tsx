@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BlogPostType } from "@/app/constants/types";
 import ozzieInCircle from "@/public/ozzie-in-circle.svg";
 import { TitleComponent } from "@/app/components/ui/Typography/Title";
@@ -48,6 +49,23 @@ const ListView = ({ type, posts }: Props) => {
     styles.buttonText,
     "md:mx-10 md:w-72 bg-luskin-blue my-4 md:my-6 md:px-8"
   );
+
+  // use conditional to check if there IS an article that is featured,
+  // if it IS featured, it should display in 2nd div
+  const overlayTitle = (type: string, post: any): string => {
+    switch (type) {
+      case "news":
+        return post.featuredTitle ? post.featuredTitle : post.eventName;
+      case "insights":
+        return post.title;
+      case "events":
+        return post.eventName;
+      case "patient-stories":
+        return post.name;
+      default:
+        return "";
+    }
+  };
 
   return (
     <div className="flex gap-6">
@@ -99,9 +117,38 @@ const ListView = ({ type, posts }: Props) => {
             </span>
           </a>
         </div>
+        <>
+          {/* prevent more than 1 featured article */}
+          {posts &&
+            posts.map((post: any) => {
+              if (post.featuredArticle)
+                return (
+                  <div className="flex justify-center pb-3 pl-4">
+                    {post.mainImage && (
+                      <>
+                        <Link
+                          href={`/${post.eventName ? "events" : type}/${
+                            post.slug
+                          }`}
+                          className="relative h-full overflow-hidden">
+                          <Image
+                            src={post.featuredImage.fields.file.url}
+                            alt="featured article"
+                            width={300}
+                            height={300}
+                          />
+
+                          <div className="absolute bottom-0 right-0 w-40 pr-2 text-right text-3xl font-semibold text-[#FCE385]">
+                            {overlayTitle(type, post)}
+                          </div>
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                );
+            })}
+        </>
         <div className="flex flex-col pl-4">
-          {/* insert featured
-           article */}
           <div id="social-media">
             <ul className="flex justify-center pl-4 pt-3">
               {socialMediaLinks.map(({ url, src, alt }) => (
