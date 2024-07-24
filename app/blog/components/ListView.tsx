@@ -47,7 +47,7 @@ const ListView = ({ type, posts }: Props) => {
     styles.buttonAlignment,
     styles.buttonContainer,
     styles.buttonText,
-    "md:mx-10 md:w-72 bg-luskin-blue my-4 md:my-6 md:px-8"
+    "md:mx-10 md:w-72 bg-luskin-blue my-4 md:my-6 md:px-8",
   );
 
   // use conditional to check if there IS an article that is featured,
@@ -75,7 +75,8 @@ const ListView = ({ type, posts }: Props) => {
             return (
               <div
                 key={post.slug}
-                className="mt-4 flex flex-row-reverse justify-between">
+                className="mt-4 flex flex-row-reverse justify-between border-b border-[#BBBBBB] pb-4"
+              >
                 <BlogCard
                   type={type}
                   cardContent={{
@@ -111,7 +112,8 @@ const ListView = ({ type, posts }: Props) => {
             id="mc-embedded-subscribe"
             className={desktopButtonClass}
             href="https://share.hsforms.com/1t977b2uBRnauBgzAZqGPfgqwu5b"
-            target="_blank">
+            target="_blank"
+          >
             <span className="block">
               {translations.newsletter.joinOurNewsletter}
             </span>
@@ -130,7 +132,8 @@ const ListView = ({ type, posts }: Props) => {
                           href={`/${post.eventName ? "events" : type}/${
                             post.slug
                           }`}
-                          className="relative h-full overflow-hidden">
+                          className="relative h-full overflow-hidden"
+                        >
                           <Image
                             src={post.featuredImage.fields.file.url}
                             alt="featured article"
