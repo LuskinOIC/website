@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
 import gridView from "@/public/gridView.svg";
+import listView from "@/public/listView.svg";
 
 interface BlogSelectorProps {
   blogType: string;
@@ -36,8 +37,7 @@ export default function BlogSelector({
 
   return (
     <div
-      className={`${styles.fontStyle} ${styles.border} lg:${styles.selectorContainer}`}
-    >
+      className={`${styles.fontStyle} ${styles.border} lg:${styles.selectorContainer}`}>
       <div className={`${styles.selection}`}>
         {sections.map((section) => (
           <Link
@@ -46,8 +46,7 @@ export default function BlogSelector({
             onClick={() => handleClick("Blog Selection: " + section)}
             className={`${styles.hover} ${
               blogType === section ? styles.selected : ""
-            }`}
-          >
+            }`}>
             {section === "patient-stories"
               ? "PATIENT STORIES"
               : section.toUpperCase()}
@@ -59,7 +58,7 @@ export default function BlogSelector({
           {isListView ? (
             <Image src={gridView} alt="grid-icon" width={28} />
           ) : (
-            "X"
+            <Image src={listView} className="pt-1" alt="grid-icon" width={28} />
           )}
         </button>
       </div>
