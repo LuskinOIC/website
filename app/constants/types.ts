@@ -504,6 +504,9 @@ export type BlogPostType = {
     writtenBy: string;
     mainImage: ImageType;
     pageSections: PageSectionType[];
+    featuredArticle?: boolean;
+    featuredImage?: ImageType;
+    featuredTitle?: string;
   };
 };
 
