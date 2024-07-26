@@ -34,15 +34,6 @@ const pattern = [
   styles.fullSpan,
 ];
 
-// const getClassNames = (index: number, isFirst: Boolean) => {
-
-//   if (isFirst && pattern[index % pattern.length] != styles.fullSpan ) {
-//     return styles.fullSpan
-//   }
-
-//   return pattern[index % pattern.length];
-// };
-
 const overlayTitle = (type: string, post: any): string => {
   switch (type) {
     case "news":

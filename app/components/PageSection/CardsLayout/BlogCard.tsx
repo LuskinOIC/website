@@ -2,11 +2,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { Document } from "@contentful/rich-text-types";
 import { MinimalCardType } from "@/app/constants/types";
-import renderRichTextToReactComponent from "../../../utils/rich-text";
+import renderRichTextToReactComponent from "@/app/utils/rich-text";
 import { cn } from "@/lib/utils";
 
 const style = {
-  image: "place-self-center rounded-xl w-full object-cover",
+  image: " h-[280px] place-self-center rounded-xl w-full object-cover",
   wrapperDiv:
     "mx-auto w-[95%] md:w-full md:max-w-sm flex flex-col gap-y-2 mb-10",
   header: "line-clamp-3 text-xl font-bold text-center leading-normal pt-2",
@@ -50,9 +50,7 @@ export default function BlogCard({
         src={cardPhotoSource}
         width={cardPhotoHeight}
         height={cardPhotoWidth}
-        className={`${style.image} ${
-          type === "patient-stories" ? "h-auto md:h-full" : "h-[280px]"
-        } ${isHovered ? "opacity-80" : ""}`}
+        className={`${style.image} ${isHovered ? "opacity-80" : ""}`}
       />
       <h3 className={`${style.header} ${hoverClass}`}>{title}</h3>
       {summary && type === "patient-stories" ? (
