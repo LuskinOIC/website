@@ -24,30 +24,24 @@ const styles = {
     "absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent z-0 rounded-xl hover:shadow-2xl pt-56",
 };
 
-const getClassNames = (index: number, isLast: boolean) => {
-  if (isLast && (index % 7 === 1 || index % 7 === 3 || index % 7 === 5)) {
-    return styles.fullSpan;
-  }
+const pattern = [
+  styles.twoColumn,
+  styles.oneColumn,
+  styles.oneColumn,
+  styles.twoColumn,
+  styles.twoColumn,
+  styles.oneColumn,
+  styles.fullSpan,
+];
 
-  switch (index % 7) {
-    case 0:
-      return styles.fullSpan;
-    case 1:
-      return styles.oneColumn;
-    case 2:
-      return styles.twoColumn;
-    case 3:
-      return styles.twoColumn;
-    case 4:
-      return styles.oneColumn;
-    case 5:
-      return styles.oneColumn;
-    case 6:
-      return styles.twoColumn;
-    default:
-      return "";
-  }
-};
+// const getClassNames = (index: number, isFirst: Boolean) => {
+
+//   if (isFirst && pattern[index % pattern.length] != styles.fullSpan ) {
+//     return styles.fullSpan
+//   }
+
+//   return pattern[index % pattern.length];
+// };
 
 const overlayTitle = (type: string, post: any): string => {
   switch (type) {
@@ -73,16 +67,41 @@ const getImageSource = (post: any, className: string) => {
   return "";
 };
 
+function skewedImageStyle(style: string, postsLength: number) {
+  if ((postsLength % 7) % 2 != 0) {
+    return styles.fullSpan;
+  }
+  return style;
+}
+
+const getPatternForIndex = (index: number) => {
+  const patternLength = pattern.length;
+  return pattern[index % patternLength];
+};
+
 const Gallery = ({ type, posts }: Props) => {
+  const reversedPictures = [...posts].reverse();
+
+  const postsLength = posts.length;
+  const styledPictures = reversedPictures.map((picture, index) => ({
+    ...picture,
+    style: getPatternForIndex(index),
+  }));
+
+  const finalStyledPictures = styledPictures.reverse();
+
   return (
     <div className={styles.gridContainer}>
       {posts &&
-        posts.map((post: any, index: number) => {
-          const columnSpan = getClassNames(index, index === posts.length - 1);
+        finalStyledPictures.map((post: any, index: number) => {
           return (
             <div
               key={post.slug}
-              className={`${styles.postsItem} ${columnSpan}`}
+              className={`${styles.postsItem} ${
+                index === 0
+                  ? skewedImageStyle(post.style, postsLength)
+                  : post.style
+              }`}
             >
               <Link
                 href={`/${post.eventName ? "events" : type}/${post.slug}`}
@@ -92,7 +111,7 @@ const Gallery = ({ type, posts }: Props) => {
                   <>
                     <Image
                       className={styles.imageDesktop}
-                      src={getImageSource(post, columnSpan)}
+                      src={getImageSource(post, post.style)}
                       alt={post.slug}
                       width={500}
                       height={300}
