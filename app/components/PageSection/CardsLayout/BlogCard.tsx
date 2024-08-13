@@ -47,12 +47,14 @@ export default function BlogCard({
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="grid h-full w-full grid-cols-3 gap-2 p-2">
+      className="grid h-full w-full grid-cols-3 gap-2 p-2"
+    >
       <div className="col-span-2 grid">
         <div className="flex min-h-[110px] flex-col justify-between gap-2">
           <div>
             <h3
-              className={`${style.header} ${hoverClass} text-[#04577D] line-clamp-2`}>
+              className={`${style.header} ${hoverClass} text-[#04577D] line-clamp-2`}
+            >
               {title}
             </h3>
             {(type === "news" || type === "insights") && (
