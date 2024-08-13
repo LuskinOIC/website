@@ -3,6 +3,7 @@ import { BlogPostType } from "@/app/constants/types";
 import { getPatientStories } from "@/app/utils/contentful";
 import { PageSectionContainer } from "@/app/components/PageSection/PageSection";
 import BlogSelector from "@/app/blog/components/BlogSelector";
+import BlogPageToggle from "../blog/components/BlogPageToggle";
 
 export function generateMetadata() {
   return {
@@ -17,8 +18,13 @@ export default async function PatientStories() {
     (await getPatientStories()) as unknown as BlogPostType[];
   return (
     <PageSectionContainer showTopMargin={true}>
-      <BlogSelector blogType={"patient-stories"} />
-      <Gallery type={"patient-stories"} posts={patientStories} />
+      <div className="lg:hidden">
+        <BlogSelector blogType={"patient-stories"} />
+        <Gallery type={"patient-stories"} posts={patientStories} />
+      </div>
+      <div className="hidden lg:block">
+        <BlogPageToggle type="patient-stories" posts={patientStories} />
+      </div>
     </PageSectionContainer>
   );
 }
