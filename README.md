@@ -2,6 +2,8 @@
 
 Public website for The Luskin Orthopaedic Institute for Children (LuskinOIC). Built in partnership by [Sustainable Progress and Equality Collective](https://specollective.org/) and [Of Ash and Fire](https://www.ofashandfire.com/).
 
+NOTE: This project is in the process of being migrated to Webflow.
+
 ## License
 
 The code for this project is released under a [Creative Commons License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en) and can be used for educational and non-commercial purposes. Any redistribution of the code should be shared under the same license. All assets, content, and artifacts contained within the public folder are under the copyright of LuskinOIC.
